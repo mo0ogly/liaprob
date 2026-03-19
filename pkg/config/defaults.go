@@ -48,6 +48,10 @@ func Default() *Config {
 		Fingerprint: FingerprintConfig{
 			PatternDirs: []PatternDirConfig{
 				{Path: "patterns/lia", Source: "lia", Priority: 100, Enabled: true},
+				{Path: "patterns/nmap", Source: "nmap", Priority: 80, Enabled: true},
+				{Path: "patterns/recog", Source: "recog", Priority: 60, Enabled: true},
+				{Path: "patterns/nuclei", Source: "nuclei", Priority: 50, Enabled: true},
+				{Path: "patterns/wappalyzer", Source: "wappalyzer", Priority: 40, Enabled: true},
 			},
 			HTTPTimeoutMs:       DefaultHTTPTimeoutMs,
 			TCPTimeoutMs:        DefaultTCPTimeoutMs,

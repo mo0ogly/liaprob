@@ -116,6 +116,10 @@ func (pe *ProbeExecutor) ExecuteProbes(ctx context.Context, host string, port in
 				continue
 			}
 			data.TCPResponses[probe.ID] = resp
+			// Enrich banner from TCP probe response if banner is empty
+			if data.Banner == "" && resp.Data != "" {
+				data.Banner = resp.Data
+			}
 
 		case "L4_TCP_HEX":
 			resp, err := pe.executeTCPHexProbe(ctx, host, port, probe)

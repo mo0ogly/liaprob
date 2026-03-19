@@ -251,30 +251,45 @@ func (e *Executor) executeFingerprint(ctx context.Context, task *ScanTask) Obser
 				continue
 			}
 			patterns := index.ByPort[port.Port]
+
+			// Fallback: if no patterns match this port, try all patterns
+			// (banner-based for TCP, or HTTP probes for web services)
+			if len(patterns) == 0 {
+				patterns = index.All
+			}
 			if len(patterns) == 0 {
 				continue
 			}
 
-			// Collect probe data
-			collected := &fingerprint.CollectedServiceData{}
+			// Collect probe data, injecting the banner already grabbed in t4
+			collected := &fingerprint.CollectedServiceData{
+				Port:   port.Port,
+				Banner: port.Banner,
+			}
 			for _, pattern := range patterns {
 				probeExec.ExecuteProbes(ctx, host.IP, port.Port, pattern.Probes, collected)
 			}
 
-			// Match patterns against collected data
+			// Match patterns against collected data -- keep best match
+			var bestResult *fingerprint.FingerprintResult
 			for _, pattern := range patterns {
 				result := matcher.EvaluatePattern(pattern, collected)
 				if result != nil && result.Confidence >= e.tools.Config.Fingerprint.ConfidenceThreshold {
-					e.memory.AddService(host.IP, ServiceState{
-						Port:       port.Port,
-						Name:       result.TaxonomyName,
-						Product:    result.TaxonomyCode,
-						Version:    result.Version,
-						CPE:        result.CPE23,
-						Confidence: result.Confidence,
-						PatternID:  result.PatternID,
-					})
+					if bestResult == nil || result.Confidence > bestResult.Confidence {
+						bestResult = result
+					}
 				}
+			}
+			if bestResult != nil {
+				e.memory.AddService(host.IP, ServiceState{
+					Port:       port.Port,
+					Name:       bestResult.TaxonomyName,
+					Product:    bestResult.TaxonomyCode,
+					Version:    bestResult.Version,
+					CPE:        bestResult.CPE23,
+					Confidence: bestResult.Confidence,
+					PatternID:  bestResult.PatternID,
+				})
 			}
 		}
 	}

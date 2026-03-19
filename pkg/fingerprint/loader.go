@@ -203,6 +203,9 @@ func (pl *PatternLoader) ValidatePattern(p *FingerprintPattern) error {
 	if p.ID == "" {
 		return fmt.Errorf("id is required")
 	}
+	if p.TaxonomyCode == "" && p.TaxonomyName != "" {
+		p.TaxonomyCode = p.TaxonomyName
+	}
 	if p.TaxonomyCode == "" {
 		return fmt.Errorf("taxonomy_code is required")
 	}
