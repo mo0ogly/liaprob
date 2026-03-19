@@ -1,0 +1,279 @@
+[
+  {
+    "id": "lia-zabbix",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "MONITOR.ZABBIX",
+    "taxonomy_name": "Zabbix",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 10051],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api_jsonrpc.php",
+        "method": "GET"
+      },
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 64,
+        "ports": [10051]
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "zabbix",
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "JSON-RPC",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "contains",
+        "value": "ZBXD",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "Zabbix ([\\d.]+)",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:zabbix:zabbix:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-nagios",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "MONITOR.NAGIOS",
+    "taxonomy_name": "Nagios",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 5693],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/nagios/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "Nagios",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "Nagios[^<]*([\\d.]+)",
+        "confidence_delta": 0.4,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:nagios:nagios:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-kibana",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "VIZ.KIBANA",
+    "taxonomy_name": "Kibana",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [5601],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/status",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"name\":\"kibana\"",
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "http_header.kbn-name",
+        "match_type": "exists",
+        "value": "",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"number\":\"([\\d.]+)\"",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:elastic:kibana:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-sonarqube",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "SAST.SONARQUBE",
+    "taxonomy_name": "SonarQube",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [9000],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/system/status",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"status\"",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"version\"",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.4,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:sonarsource:sonarqube:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-nexus",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "REPO.NEXUS",
+    "taxonomy_name": "Sonatype Nexus",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [8081],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/service/rest/v1/status",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "Nexus",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "Nexus Repository Manager",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "Nexus[/ ]([\\d.]+)",
+        "confidence_delta": 0.1,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:sonatype:nexus:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-gitea",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "SCM.GITEA",
+    "taxonomy_name": "Gitea",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [3000],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/v1/version",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"version\"",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "Gitea",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:gitea:gitea:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-gitlab",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "SCM.GITLAB",
+    "taxonomy_name": "GitLab",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 8080],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/v4/version",
+        "method": "GET"
+      },
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "gitlab",
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "http_header.X-Gitlab-Meta",
+        "match_type": "exists",
+        "value": "",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:gitlab:gitlab:{version}:*:*:*:*:*:*:*"
+  }
+]

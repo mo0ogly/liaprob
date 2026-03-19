@@ -1,0 +1,232 @@
+[
+  {
+    "id": "lia-mysql",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "DB.MYSQL",
+    "taxonomy_name": "MySQL",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [3306],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 128
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "mysql|MariaDB",
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "([\\d.]+)-MariaDB",
+        "confidence_delta": 0.4,
+        "version_group": 1
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "([\\d.]+)-MySQL",
+        "confidence_delta": 0.4,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:oracle:mysql:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-mariadb",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "DB.MARIADB",
+    "taxonomy_name": "MariaDB",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [3306],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 128
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "contains",
+        "value": "MariaDB",
+        "confidence_delta": 0.8
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "([\\d.]+)-MariaDB",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:mariadb:mariadb:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-postgresql",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "DB.POSTGRESQL",
+    "taxonomy_name": "PostgreSQL",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [5432],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 64
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "contains",
+        "value": "PostgreSQL",
+        "confidence_delta": 0.9
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "PostgreSQL ([\\d.]+)",
+        "confidence_delta": 0.1,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:postgresql:postgresql:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-mssql",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "DB.MSSQL",
+    "taxonomy_name": "Microsoft SQL Server",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [1433],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 64
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "Microsoft SQL Server|MSSQL",
+        "confidence_delta": 0.9
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:microsoft:sql_server:*:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-mongodb",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "DB.MONGODB",
+    "taxonomy_name": "MongoDB",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [27017, 27018],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 128
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "contains",
+        "value": "MongoDB",
+        "confidence_delta": 0.8
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "MongoDB server version: ([\\d.]+)",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:mongodb:mongodb:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-redis",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "DB.REDIS",
+    "taxonomy_name": "Redis",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [6379],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "PING\r\n",
+        "read_bytes": 64
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "\\+PONG|redis",
+        "confidence_delta": 0.8
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "redis_version:([\\d.]+)",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:redis:redis:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-elasticsearch",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "DB.ELASTICSEARCH",
+    "taxonomy_name": "Elasticsearch",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [9200, 9300],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "lucene_version",
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"tagline\" : \"You Know, for Search\"",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"number\" : \"([\\d.]+)\"",
+        "confidence_delta": 0.1,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:elastic:elasticsearch:{version}:*:*:*:*:*:*:*"
+  }
+]

@@ -1,0 +1,170 @@
+# LiaProbe Discovery Lab - Docker Compose
+#
+# Provides real services for integration testing and pattern validation.
+# Usage:
+#   docker compose -f docker-compose.lab.yml up -d
+#   liaprobe --mode smart 172.20.0.0/24
+#   docker compose -f docker-compose.lab.yml down
+#
+# Network: 172.20.0.0/24 (liaprobe-lab)
+
+services:
+  # --- Web Servers ---
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: lab-nginx
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.10
+    ports:
+      - "18080:80"
+
+  apache:
+    image: httpd:2.4-alpine
+    container_name: lab-apache
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.11
+    ports:
+      - "18081:80"
+
+  # --- Databases ---
+  mysql:
+    image: mysql:8.0
+    container_name: lab-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: labpass123
+      MYSQL_DATABASE: testdb
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.20
+    ports:
+      - "13306:3306"
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: lab-postgres
+    environment:
+      POSTGRES_PASSWORD: labpass123
+      POSTGRES_DB: testdb
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.21
+    ports:
+      - "15432:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: lab-redis
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.22
+    ports:
+      - "16379:6379"
+
+  mongodb:
+    image: mongo:7
+    container_name: lab-mongodb
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.23
+    ports:
+      - "17017:27017"
+
+  elasticsearch:
+    image: elasticsearch:8.12.0
+    container_name: lab-elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.24
+    ports:
+      - "19200:9200"
+
+  # --- Infrastructure ---
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: lab-rabbitmq
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.30
+    ports:
+      - "15672:15672"
+      - "15673:5672"
+
+  grafana:
+    image: grafana/grafana:10.3.1
+    container_name: lab-grafana
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: labpass123
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.31
+    ports:
+      - "13000:3000"
+
+  prometheus:
+    image: prom/prometheus:v2.49.1
+    container_name: lab-prometheus
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.32
+    ports:
+      - "19090:9090"
+
+  consul:
+    image: hashicorp/consul:1.17
+    container_name: lab-consul
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.33
+    ports:
+      - "18500:8500"
+
+  # --- Security / DevOps ---
+  gitea:
+    image: gitea/gitea:1.21
+    container_name: lab-gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.40
+    ports:
+      - "13001:3000"
+
+  sonarqube:
+    image: sonarqube:10-community
+    container_name: lab-sonarqube
+    environment:
+      - "SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true"
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.41
+    ports:
+      - "19000:9000"
+
+  kibana:
+    image: kibana:8.12.0
+    container_name: lab-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://lab-elasticsearch:9200
+    depends_on:
+      - elasticsearch
+    networks:
+      labnet:
+        ipv4_address: 172.20.0.42
+    ports:
+      - "15601:5601"
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1

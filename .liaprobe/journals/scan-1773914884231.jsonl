@@ -1,0 +1,26 @@
+{"ts":"2026-03-19T10:08:04.23120796Z","level":"PLAN","action":"AGENT_START","details":{"mode":"smart","scan_id":"scan-1773914884231","targets":["172.20.0.10","172.20.0.11","172.20.0.20","172.20.0.24","172.20.0.32","172.20.0.41"]},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.23134235Z","level":"PLAN","action":"PLAN_CREATED","details":{"plan_id":"plan-1773914884231","task_count":8},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.23136708Z","level":"TASK","action":"TASK_START","target":"t1-expand","details":{"type":"EXPAND_TARGETS"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.247359694Z","level":"TASK","action":"TASK_DONE","target":"t1-expand","details":{"needs_replan":false,"status":"COMPLETE","type":"EXPAND_TARGETS"},"duration_ms":15,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.247446164Z","level":"TASK","action":"TASK_START","target":"t2-alive","details":{"type":"ALIVE_CHECK"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.248811979Z","level":"TASK","action":"TASK_DONE","target":"t2-alive","details":{"needs_replan":false,"status":"COMPLETE","type":"ALIVE_CHECK"},"duration_ms":1,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.24889252Z","level":"TASK","action":"TASK_START","target":"t3-portscan","details":{"type":"PORT_SCAN"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.26092242Z","level":"TASK","action":"TASK_DONE","target":"t3-portscan","details":{"needs_replan":false,"status":"COMPLETE","type":"PORT_SCAN"},"duration_ms":12,"plan_rev":0}
+{"ts":"2026-03-19T10:08:04.260978489Z","level":"TASK","action":"TASK_START","target":"t4-banner","details":{"type":"BANNER_GRAB"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:08:16.273695041Z","level":"TASK","action":"TASK_DONE","target":"t4-banner","details":{"needs_replan":true,"status":"COMPLETE","type":"BANNER_GRAB"},"duration_ms":12012,"plan_rev":0}
+{"ts":"2026-03-19T10:08:16.27375061Z","level":"OBSERVE","action":"OBSERVATION","target":"t4-banner","details":{"details":"6 ports with empty banners, AI available for identification","host":"","port":0,"trigger":"UNKNOWN_BANNER"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:08:16.273765481Z","level":"REPLAN","action":"ADD_AI_BANNER_ID","details":{"banner":"","port":0},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:08:16.273770001Z","level":"REPLAN","action":"PLAN_MODIFIED","details":{"revision":1,"task_count":9},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:08:16.27377526Z","level":"TASK","action":"TASK_START","target":"t5-fingerprint","details":{"type":"FINGERPRINT"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:08:16.303000869Z","level":"TASK","action":"TASK_DONE","target":"t5-fingerprint","details":{"needs_replan":false,"status":"COMPLETE","type":"FINGERPRINT"},"duration_ms":29,"plan_rev":1}
+{"ts":"2026-03-19T10:08:16.30304893Z","level":"TASK","action":"TASK_START","target":"t6-context-expand","details":{"type":"CONTEXT_EXPAND"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:08:16.308821969Z","level":"TASK","action":"TASK_DONE","target":"t6-context-expand","details":{"needs_replan":false,"status":"COMPLETE","type":"CONTEXT_EXPAND"},"duration_ms":5,"plan_rev":1}
+{"ts":"2026-03-19T10:08:16.308879649Z","level":"TASK","action":"TASK_START","target":"t7-ai-analyze","details":{"type":"AI_ANALYZE"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:08:16.310906776Z","level":"AI","action":"AI_QUERY_START","details":{"prompt_len":1068,"provider":"ollama"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:10:16.312418479Z","level":"AI","action":"AI_QUERY_FAILED","details":{"error":"ollama request failed: Post \"http://localhost:11434/api/generate\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)","provider":"ollama"},"duration_ms":120001,"plan_rev":1}
+{"ts":"2026-03-19T10:10:16.312490729Z","level":"TASK","action":"TASK_DONE","target":"t7-ai-analyze","details":{"needs_replan":false,"status":"FAILED","type":"AI_ANALYZE"},"duration_ms":120003,"plan_rev":1}
+{"ts":"2026-03-19T10:10:16.312503099Z","level":"TASK","action":"TASK_START","target":"t-ai-banner-r1","details":{"type":"AI_IDENTIFY_BANNER"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:10:16.312526539Z","level":"TASK","action":"TASK_DONE","target":"t-ai-banner-r1","details":{"needs_replan":false,"status":"FAILED","type":"AI_IDENTIFY_BANNER"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:10:16.312535379Z","level":"TASK","action":"TASK_START","target":"t8-report","details":{"type":"REPORT"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:10:16.312540679Z","level":"TASK","action":"TASK_DONE","target":"t8-report","details":{"needs_replan":false,"status":"COMPLETE","type":"REPORT"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:10:16.312575749Z","level":"PLAN","action":"AGENT_COMPLETE","details":{"duration_ms":132081,"hosts_alive":6,"ports_open":7,"replans":1,"scan_id":"scan-1773914884231","techs_found":5},"duration_ms":0,"plan_rev":1}

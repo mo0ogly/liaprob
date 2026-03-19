@@ -1,0 +1,306 @@
+[
+  {
+    "id": "lia-haproxy",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "LB.HAPROXY",
+    "taxonomy_name": "HAProxy",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 8080, 8404],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "HAProxy",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "HAProxy",
+        "confidence_delta": 0.2
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "HAProxy[/ ]([\\d.]+)",
+        "confidence_delta": 0.1,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:haproxy:haproxy:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-traefik",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "LB.TRAEFIK",
+    "taxonomy_name": "Traefik",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 8080],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/version",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"Version\"",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"Codename\"",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"Version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:traefik:traefik:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-envoy",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "LB.ENVOY",
+    "taxonomy_name": "Envoy Proxy",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 8080, 9901],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/server_info",
+        "method": "GET",
+        "ports": [9901]
+      },
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "envoy",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "envoy",
+        "confidence_delta": 0.2
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.1,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:envoyproxy:envoy:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-consul",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "SD.CONSUL",
+    "taxonomy_name": "HashiCorp Consul",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [8500, 8501],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/v1/agent/self",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"Config\"",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"Consul\"",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"Revision\":\"([a-f0-9]+)\"",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:hashicorp:consul:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-vault",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "SEC.VAULT",
+    "taxonomy_name": "HashiCorp Vault",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [8200],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/v1/sys/health",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"initialized\"",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"sealed\"",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:hashicorp:vault:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-squid",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "PROXY.SQUID",
+    "taxonomy_name": "Squid Proxy",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [3128, 8080],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "squid",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "squid/([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:squid-cache:squid:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-varnish",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "CACHE.VARNISH",
+    "taxonomy_name": "Varnish Cache",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 6081, 6082],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Via",
+        "match_type": "contains",
+        "value": "varnish",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "http_header.X-Varnish",
+        "match_type": "exists",
+        "value": "",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_header.Via",
+        "match_type": "regex",
+        "value": "varnish[/ ]?([\\d.]+)?",
+        "confidence_delta": 0.1,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:varnish-software:varnish_cache:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-caddy",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "WEB.CADDY",
+    "taxonomy_name": "Caddy",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 2019],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/config/",
+        "method": "GET",
+        "ports": [2019]
+      },
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "Caddy",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "Caddy/([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:caddyserver:caddy:{version}:*:*:*:*:*:*:*"
+  }
+]

@@ -1,0 +1,23 @@
+{"ts":"2026-03-19T10:06:43.713768199Z","level":"PLAN","action":"AGENT_START","details":{"mode":"smart","scan_id":"scan-1773914803713","targets":["172.20.0.10","172.20.0.11","172.20.0.20","172.20.0.21","172.20.0.22","172.20.0.24","172.20.0.32","172.20.0.33","172.20.0.40","172.20.0.41"]},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.71408134Z","level":"PLAN","action":"PLAN_CREATED","details":{"plan_id":"plan-1773914803714","task_count":8},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.714141959Z","level":"TASK","action":"TASK_START","target":"t1-expand","details":{"type":"EXPAND_TARGETS"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.74105664Z","level":"TASK","action":"TASK_DONE","target":"t1-expand","details":{"needs_replan":false,"status":"COMPLETE","type":"EXPAND_TARGETS"},"duration_ms":26,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.741186861Z","level":"TASK","action":"TASK_START","target":"t2-alive","details":{"type":"ALIVE_CHECK"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.742600245Z","level":"TASK","action":"TASK_DONE","target":"t2-alive","details":{"needs_replan":false,"status":"COMPLETE","type":"ALIVE_CHECK"},"duration_ms":1,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.742687426Z","level":"TASK","action":"TASK_START","target":"t3-portscan","details":{"type":"PORT_SCAN"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.759940505Z","level":"TASK","action":"TASK_DONE","target":"t3-portscan","details":{"needs_replan":false,"status":"COMPLETE","type":"PORT_SCAN"},"duration_ms":17,"plan_rev":0}
+{"ts":"2026-03-19T10:06:43.760001704Z","level":"TASK","action":"TASK_START","target":"t4-banner","details":{"type":"BANNER_GRAB"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:07:03.793920196Z","level":"TASK","action":"TASK_DONE","target":"t4-banner","details":{"needs_replan":true,"status":"COMPLETE","type":"BANNER_GRAB"},"duration_ms":20033,"plan_rev":0}
+{"ts":"2026-03-19T10:07:03.793999827Z","level":"OBSERVE","action":"OBSERVATION","target":"t4-banner","details":{"details":"10 ports with empty banners, AI available for identification","host":"","port":0,"trigger":"UNKNOWN_BANNER"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:07:03.794034087Z","level":"REPLAN","action":"ADD_AI_BANNER_ID","details":{"banner":"","port":0},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:07:03.794048097Z","level":"REPLAN","action":"PLAN_MODIFIED","details":{"revision":1,"task_count":9},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:07:03.794058107Z","level":"TASK","action":"TASK_START","target":"t5-fingerprint","details":{"type":"FINGERPRINT"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:07:05.849967338Z","level":"TASK","action":"TASK_DONE","target":"t5-fingerprint","details":{"needs_replan":false,"status":"COMPLETE","type":"FINGERPRINT"},"duration_ms":2055,"plan_rev":1}
+{"ts":"2026-03-19T10:07:05.850077228Z","level":"TASK","action":"TASK_START","target":"t6-context-expand","details":{"type":"CONTEXT_EXPAND"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:07:05.860320373Z","level":"TASK","action":"TASK_DONE","target":"t6-context-expand","details":{"needs_replan":false,"status":"COMPLETE","type":"CONTEXT_EXPAND"},"duration_ms":10,"plan_rev":1}
+{"ts":"2026-03-19T10:07:05.860366853Z","level":"TASK","action":"TASK_START","target":"t7-ai-analyze","details":{"type":"AI_ANALYZE"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:07:05.861742277Z","level":"AI","action":"AI_QUERY_START","details":{"prompt_len":1376,"provider":"ollama"},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:07:15.870493199Z","level":"AI","action":"AI_QUERY_FAILED","details":{"error":"ollama request failed: Post \"http://localhost:11434/api/generate\": context deadline exceeded (Client.Timeout exceeded while awaiting headers)","provider":"ollama"},"duration_ms":10008,"plan_rev":1}
+{"ts":"2026-03-19T10:07:15.870732301Z","level":"TASK","action":"TASK_DONE","target":"t7-ai-analyze","details":{"needs_replan":false,"status":"FAILED","type":"AI_ANALYZE"},"duration_ms":10010,"plan_rev":1}
+{"ts":"2026-03-19T10:07:15.87076032Z","level":"ERROR","action":"DEADLOCK","details":{"pending":2,"running":0},"duration_ms":0,"plan_rev":1}
+{"ts":"2026-03-19T10:07:15.870815661Z","level":"PLAN","action":"AGENT_COMPLETE","details":{"duration_ms":32157,"hosts_alive":10,"ports_open":12,"replans":1,"scan_id":"scan-1773914803713","techs_found":6},"duration_ms":0,"plan_rev":1}

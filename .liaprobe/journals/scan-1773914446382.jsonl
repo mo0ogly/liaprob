@@ -1,0 +1,15 @@
+{"ts":"2026-03-19T10:00:46.382931817Z","level":"PLAN","action":"AGENT_START","details":{"mode":"specific","scan_id":"scan-1773914446382","targets":["172.20.0.10","172.20.0.20","172.20.0.21","172.20.0.22","172.20.0.23","172.20.0.24"]},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.383009008Z","level":"PLAN","action":"PLAN_CREATED","details":{"plan_id":"plan-1773914446383","task_count":6},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.383026688Z","level":"TASK","action":"TASK_START","target":"t1-expand","details":{"type":"EXPAND_TARGETS"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.399778965Z","level":"TASK","action":"TASK_DONE","target":"t1-expand","details":{"needs_replan":false,"status":"COMPLETE","type":"EXPAND_TARGETS"},"duration_ms":16,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.399831764Z","level":"TASK","action":"TASK_START","target":"t2-alive","details":{"type":"ALIVE_CHECK"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.400636808Z","level":"TASK","action":"TASK_DONE","target":"t2-alive","details":{"needs_replan":false,"status":"COMPLETE","type":"ALIVE_CHECK"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.400685257Z","level":"TASK","action":"TASK_START","target":"t3-portscan","details":{"type":"PORT_SCAN"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.405023881Z","level":"TASK","action":"TASK_DONE","target":"t3-portscan","details":{"needs_replan":false,"status":"COMPLETE","type":"PORT_SCAN"},"duration_ms":4,"plan_rev":0}
+{"ts":"2026-03-19T10:00:46.405060903Z","level":"TASK","action":"TASK_START","target":"t4-banner","details":{"type":"BANNER_GRAB"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:00:56.411832624Z","level":"TASK","action":"TASK_DONE","target":"t4-banner","details":{"needs_replan":false,"status":"COMPLETE","type":"BANNER_GRAB"},"duration_ms":10006,"plan_rev":0}
+{"ts":"2026-03-19T10:00:56.411900194Z","level":"TASK","action":"TASK_START","target":"t5-fingerprint","details":{"type":"FINGERPRINT"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:01:02.432449151Z","level":"TASK","action":"TASK_DONE","target":"t5-fingerprint","details":{"needs_replan":false,"status":"COMPLETE","type":"FINGERPRINT"},"duration_ms":6020,"plan_rev":0}
+{"ts":"2026-03-19T10:01:02.432494361Z","level":"TASK","action":"TASK_START","target":"t8-report","details":{"type":"REPORT"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:01:02.432498381Z","level":"TASK","action":"TASK_DONE","target":"t8-report","details":{"needs_replan":false,"status":"COMPLETE","type":"REPORT"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T10:01:02.432508951Z","level":"PLAN","action":"AGENT_COMPLETE","details":{"duration_ms":16049,"hosts_alive":6,"ports_open":6,"replans":0,"scan_id":"scan-1773914446382","techs_found":2},"duration_ms":0,"plan_rev":0}

@@ -1,0 +1,287 @@
+[
+  {
+    "id": "lia-openssh",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "INFRA.OPENSSH",
+    "taxonomy_name": "OpenSSH",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [22, 2222],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 256
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "startswith",
+        "value": "SSH-2.0-OpenSSH",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "OpenSSH_([\\d.p]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:openbsd:openssh:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-vsftpd",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "INFRA.VSFTPD",
+    "taxonomy_name": "vsftpd",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [21],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 256
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "contains",
+        "value": "vsFTPd",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "vsFTPd ([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:vsftpd_project:vsftpd:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-postfix",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "INFRA.POSTFIX",
+    "taxonomy_name": "Postfix",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [25, 465, 587],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 256
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "contains",
+        "value": "Postfix",
+        "confidence_delta": 0.8
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "ESMTP Postfix",
+        "confidence_delta": 0.2
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:postfix:postfix:*:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-rabbitmq",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "MQ.RABBITMQ",
+    "taxonomy_name": "RabbitMQ",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [5672, 15672],
+    "probes": [
+      {
+        "layer": "L4_TCP",
+        "send": "",
+        "read_bytes": 64
+      },
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/overview",
+        "method": "GET",
+        "ports": [15672]
+      }
+    ],
+    "matchers": [
+      {
+        "field": "tcp_banner",
+        "match_type": "contains",
+        "value": "AMQP",
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "rabbitmq_version",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"rabbitmq_version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.1,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:pivotal_software:rabbitmq:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-docker",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "CONTAINER.DOCKER",
+    "taxonomy_name": "Docker Engine",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [2375, 2376],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/version",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"ApiVersion\"",
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "Docker",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"Version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:docker:docker:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-grafana",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "MONITOR.GRAFANA",
+    "taxonomy_name": "Grafana",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [3000],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/health",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"database\":\"ok\"",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"version\":",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:grafana:grafana:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-jenkins",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "CI.JENKINS",
+    "taxonomy_name": "Jenkins",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [8080],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.X-Jenkins",
+        "match_type": "exists",
+        "value": "",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_header.X-Jenkins",
+        "match_type": "regex",
+        "value": "([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:jenkins:jenkins:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-prometheus",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "MONITOR.PROMETHEUS",
+    "taxonomy_name": "Prometheus",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [9090],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/api/v1/status/buildinfo",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "\"status\":\"success\"",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "prometheus",
+        "confidence_delta": 0.4
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"version\":\"([\\d.]+)\"",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:prometheus:prometheus:{version}:*:*:*:*:*:*:*"
+  }
+]

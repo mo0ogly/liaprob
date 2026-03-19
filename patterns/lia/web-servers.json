@@ -1,0 +1,169 @@
+[
+  {
+    "id": "lia-nginx",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "WEB.NGINX",
+    "taxonomy_name": "Nginx",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 8080, 8443],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "nginx",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "nginx/([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:f5:nginx:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-apache",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "WEB.APACHE",
+    "taxonomy_name": "Apache HTTP Server",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 8080, 8443],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "Apache",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "Apache/([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:apache:http_server:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-iis",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "WEB.IIS",
+    "taxonomy_name": "Microsoft IIS",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443, 8080],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "Microsoft-IIS",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "Microsoft-IIS/([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:microsoft:iis:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-tomcat",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "WEB.TOMCAT",
+    "taxonomy_name": "Apache Tomcat",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [8080, 8443, 8009],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_body",
+        "match_type": "contains",
+        "value": "Apache Tomcat",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "Apache-Coyote/([\\d.]+)",
+        "confidence_delta": 0.2,
+        "version_group": 1
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "Apache Tomcat/([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:apache:tomcat:{version}:*:*:*:*:*:*:*"
+  },
+  {
+    "id": "lia-lighttpd",
+    "schema": "lia-fingerprint-v1",
+    "taxonomy_code": "WEB.LIGHTTPD",
+    "taxonomy_name": "lighttpd",
+    "source": "lia",
+    "priority": 100,
+    "default_ports": [80, 443],
+    "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      }
+    ],
+    "matchers": [
+      {
+        "field": "http_header.Server",
+        "match_type": "contains",
+        "value": "lighttpd",
+        "confidence_delta": 0.7
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "lighttpd/([\\d.]+)",
+        "confidence_delta": 0.3,
+        "version_group": 1
+      }
+    ],
+    "cpe_template": "cpe:2.3:a:lighttpd:lighttpd:{version}:*:*:*:*:*:*:*"
+  }
+]

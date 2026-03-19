@@ -1,0 +1,17 @@
+{"ts":"2026-03-19T09:51:55.455793929Z","level":"PLAN","action":"AGENT_START","details":{"mode":"smart","scan_id":"scan-1773913915455","targets":["172.20.0.10","172.20.0.11","172.20.0.20","172.20.0.21","172.20.0.22","172.20.0.23","172.20.0.24","172.20.0.30","172.20.0.31","172.20.0.32","172.20.0.33","172.20.0.40","172.20.0.41","172.20.0.42"]},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.455950019Z","level":"PLAN","action":"PLAN_CREATED","details":{"plan_id":"plan-1773913915455","task_count":7},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.45598006Z","level":"TASK","action":"TASK_START","target":"t1-expand","details":{"type":"EXPAND_TARGETS"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.50440873Z","level":"TASK","action":"TASK_DONE","target":"t1-expand","details":{"needs_replan":false,"status":"COMPLETE","type":"EXPAND_TARGETS"},"duration_ms":48,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.504469171Z","level":"TASK","action":"TASK_START","target":"t2-alive","details":{"type":"ALIVE_CHECK"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.520570014Z","level":"TASK","action":"TASK_DONE","target":"t2-alive","details":{"needs_replan":false,"status":"COMPLETE","type":"ALIVE_CHECK"},"duration_ms":16,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.520917365Z","level":"TASK","action":"TASK_START","target":"t3-portscan","details":{"type":"PORT_SCAN"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.574674884Z","level":"TASK","action":"TASK_DONE","target":"t3-portscan","details":{"needs_replan":false,"status":"COMPLETE","type":"PORT_SCAN"},"duration_ms":53,"plan_rev":0}
+{"ts":"2026-03-19T09:51:55.574884055Z","level":"TASK","action":"TASK_START","target":"t4-banner","details":{"type":"BANNER_GRAB"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.590347806Z","level":"TASK","action":"TASK_DONE","target":"t4-banner","details":{"needs_replan":false,"status":"COMPLETE","type":"BANNER_GRAB"},"duration_ms":6015,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.590563696Z","level":"TASK","action":"TASK_START","target":"t5-fingerprint","details":{"type":"FINGERPRINT"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.66106995Z","level":"TASK","action":"TASK_DONE","target":"t5-fingerprint","details":{"needs_replan":false,"status":"COMPLETE","type":"FINGERPRINT"},"duration_ms":70,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.66114677Z","level":"TASK","action":"TASK_START","target":"t6-context-expand","details":{"type":"CONTEXT_EXPAND"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.666233467Z","level":"TASK","action":"TASK_DONE","target":"t6-context-expand","details":{"needs_replan":false,"status":"COMPLETE","type":"CONTEXT_EXPAND"},"duration_ms":5,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.666286568Z","level":"TASK","action":"TASK_START","target":"t8-report","details":{"type":"REPORT"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.666293798Z","level":"TASK","action":"TASK_DONE","target":"t8-report","details":{"needs_replan":false,"status":"COMPLETE","type":"REPORT"},"duration_ms":0,"plan_rev":0}
+{"ts":"2026-03-19T09:52:01.666314068Z","level":"PLAN","action":"AGENT_COMPLETE","details":{"duration_ms":6210,"hosts_alive":3,"ports_open":7,"replans":0,"scan_id":"scan-1773913915455","techs_found":2},"duration_ms":0,"plan_rev":0}

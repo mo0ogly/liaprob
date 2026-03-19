@@ -1,0 +1,160 @@
+{
+  "id": "scan-1773914884231",
+  "started_at": "2026-03-19T10:08:04.231205659Z",
+  "completed_at": "2026-03-19T10:10:16.312574099Z",
+  "hosts": [
+    {
+      "target": {
+        "ip": "172.20.0.10"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.10",
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "services": [
+        {
+          "port": 80,
+          "name": "Nginx",
+          "product": "WEB.NGINX",
+          "version": "1.25.5",
+          "cpe": "cpe:2.3:a:f5:nginx:1.25.5:*:*:*:*:*:*:*",
+          "confidence": 0.8999999999999999,
+          "pattern_id": "lia-nginx"
+        }
+      ],
+      "duration": 0
+    },
+    {
+      "target": {
+        "ip": "172.20.0.11"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.11",
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "services": [
+        {
+          "port": 80,
+          "name": "Apache HTTP Server",
+          "product": "WEB.APACHE",
+          "version": "2.4.66",
+          "cpe": "cpe:2.3:a:apache:http_server:2.4.66:*:*:*:*:*:*:*",
+          "confidence": 0.8999999999999999,
+          "pattern_id": "lia-apache"
+        }
+      ],
+      "duration": 0
+    },
+    {
+      "target": {
+        "ip": "172.20.0.20"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.20",
+          "port": 3306,
+          "protocol": "tcp",
+          "banner": "J\n8.0.45aI:pG!FAs+E}YH1caching_sha2_password"
+        }
+      ],
+      "duration": 0
+    },
+    {
+      "target": {
+        "ip": "172.20.0.24"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.24",
+          "port": 9200,
+          "protocol": "tcp"
+        },
+        {
+          "ip": "172.20.0.24",
+          "port": 9300,
+          "protocol": "tcp"
+        }
+      ],
+      "services": [
+        {
+          "port": 9200,
+          "name": "Elasticsearch",
+          "product": "DB.ELASTICSEARCH",
+          "version": "8.12.0",
+          "cpe": "cpe:2.3:a:elastic:elasticsearch:8.12.0:*:*:*:*:*:*:*",
+          "confidence": 1,
+          "pattern_id": "lia-elasticsearch"
+        }
+      ],
+      "duration": 0
+    },
+    {
+      "target": {
+        "ip": "172.20.0.32"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.32",
+          "port": 9090,
+          "protocol": "tcp"
+        }
+      ],
+      "services": [
+        {
+          "port": 9090,
+          "name": "Prometheus",
+          "product": "MONITOR.PROMETHEUS",
+          "version": "2.49.1",
+          "cpe": "cpe:2.3:a:prometheus:prometheus:2.49.1:*:*:*:*:*:*:*",
+          "confidence": 0.6,
+          "pattern_id": "lia-prometheus"
+        }
+      ],
+      "duration": 0
+    },
+    {
+      "target": {
+        "ip": "172.20.0.41"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.41",
+          "port": 9000,
+          "protocol": "tcp"
+        }
+      ],
+      "services": [
+        {
+          "port": 9000,
+          "name": "SonarQube",
+          "product": "SAST.SONARQUBE",
+          "version": "10.7.0.96327",
+          "cpe": "cpe:2.3:a:sonarsource:sonarqube:10.7.0.96327:*:*:*:*:*:*:*",
+          "confidence": 1,
+          "pattern_id": "lia-sonarqube"
+        }
+      ],
+      "duration": 0
+    }
+  ],
+  "stats": {
+    "total_targets": 6,
+    "hosts_alive": 6,
+    "ports_open": 7,
+    "technologies_found": 5,
+    "duration_ms": 132081,
+    "replans": 1
+  }
+}
