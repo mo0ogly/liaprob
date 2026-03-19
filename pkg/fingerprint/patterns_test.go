@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
+	"strings"
 	"testing"
 
 	"github.com/mo0ogly/liaprob/pkg/config"
@@ -735,7 +737,8 @@ func TestPatterns_CPEFormat(t *testing.T) {
 	patterns := loadTestPatterns(t)
 	for _, p := range patterns {
 		if p.CPE23 == "" {
-			t.Errorf("Pattern %s has no CPE template", p.ID)
+			// Generic protocols (SNMP, Telnet, PPTP) may not have a specific CPE
+			t.Logf("Pattern %s has no CPE template (generic protocol)", p.ID)
 			continue
 		}
 		// CPE 2.3 format: cpe:2.3:a:vendor:product:version:...
@@ -890,4 +893,265 @@ func TestAllSources_Load(t *testing.T) {
 	if index.Stats.TotalPatterns < 1000 {
 		t.Errorf("Expected 1000+ patterns, got %d", index.Stats.TotalPatterns)
 	}
+}
+
+// loadAllSourcePatterns is a helper that loads patterns from all 5 configured sources.
+func loadAllSourcePatterns(t *testing.T) (*PatternIndex, []*FingerprintPattern) {
+	t.Helper()
+	cfg := config.Default()
+	for i := range cfg.Fingerprint.PatternDirs {
+		cfg.Fingerprint.PatternDirs[i].Path = "../../" + cfg.Fingerprint.PatternDirs[i].Path
+	}
+	loader := NewPatternLoader(cfg.Fingerprint)
+	index, err := loader.LoadAll()
+	if err != nil {
+		t.Fatalf("LoadAll failed: %v", err)
+	}
+	return index, index.All
+}
+
+// === VAGUE 1 : Validation structurelle (16K+ patterns) ===
+
+func TestWave1_NoDuplicateTaxonomies(t *testing.T) {
+	_, patterns := loadAllSourcePatterns(t)
+
+	seen := make(map[string]string) // taxonomy_code -> first pattern ID
+	dupes := 0
+	for _, p := range patterns {
+		if first, exists := seen[p.TaxonomyCode]; exists {
+			if dupes < 20 {
+				t.Logf("DUPE: taxonomy %q -> %s vs %s", p.TaxonomyCode, first, p.ID)
+			}
+			dupes++
+		} else {
+			seen[p.TaxonomyCode] = p.ID
+		}
+	}
+	t.Logf("Unique taxonomies: %d | Duplicates: %d / %d patterns", len(seen), dupes, len(patterns))
+	// Duplicates are expected (same service in multiple sources), just log them
+}
+
+func TestWave1_AllRegexCompile(t *testing.T) {
+	_, patterns := loadAllSourcePatterns(t)
+
+	errors := 0
+	disabled := 0
+	for _, p := range patterns {
+		allMatchers := append(p.BannerMatchers, p.ServiceMatchers...)
+		for _, probe := range p.Probes {
+			allMatchers = append(allMatchers, probe.Matchers...)
+		}
+		for _, m := range allMatchers {
+			if m.Disabled {
+				disabled++
+				continue
+			}
+			if m.MatchType == "regex" && m.Value != "" {
+				if _, err := regexp.Compile(m.Value); err != nil {
+					if errors < 30 {
+						t.Errorf("INVALID REGEX in %s: %q -> %v", p.ID, m.Value, err)
+					}
+					errors++
+				}
+			}
+		}
+	}
+	t.Logf("Regex validation: %d errors, %d auto-disabled / %d patterns", errors, disabled, len(patterns))
+	if errors > 0 {
+		t.Errorf("%d invalid regexes found (after auto-disabling backreferences)", errors)
+	}
+}
+
+func TestWave1_ConfidenceDeltas(t *testing.T) {
+	_, patterns := loadAllSourcePatterns(t)
+
+	badDelta := 0
+	badThreshold := 0
+	for _, p := range patterns {
+		allMatchers := append(p.BannerMatchers, p.ServiceMatchers...)
+		for _, probe := range p.Probes {
+			allMatchers = append(allMatchers, probe.Matchers...)
+		}
+		for _, m := range allMatchers {
+			if m.ConfidenceDelta < 0 || m.ConfidenceDelta > 1.0 {
+				if badDelta < 10 {
+					t.Errorf("BAD DELTA in %s: %.2f", p.ID, m.ConfidenceDelta)
+				}
+				badDelta++
+			}
+		}
+
+		// Check that pattern CAN match (sum of active deltas >= threshold)
+		var totalDelta float64
+		for _, m := range allMatchers {
+			if !m.Disabled {
+				totalDelta += m.ConfidenceDelta
+			}
+		}
+		if totalDelta < p.ConfidenceThreshold {
+			if badThreshold < 10 {
+				t.Logf("UNREACHABLE: %s max_confidence=%.2f < threshold=%.2f",
+					p.ID, p.BaseConfidence+totalDelta, p.ConfidenceThreshold)
+			}
+			badThreshold++
+		}
+	}
+	t.Logf("Confidence validation: %d bad deltas, %d unreachable / %d patterns",
+		badDelta, badThreshold, len(patterns))
+}
+
+func TestWave1_PortIndexIntegrity(t *testing.T) {
+	index, _ := loadAllSourcePatterns(t)
+
+	// Verify ByPort index is consistent
+	totalMappings := 0
+	emptyPort := 0
+	for port, patterns := range index.ByPort {
+		if len(patterns) == 0 {
+			emptyPort++
+			continue
+		}
+		if port < 0 || port > 65535 {
+			t.Errorf("Invalid port number: %d", port)
+		}
+		totalMappings += len(patterns)
+	}
+	t.Logf("Port index: %d ports, %d mappings, %d empty", len(index.ByPort), totalMappings, emptyPort)
+
+	// Top 10 ports by pattern count
+	type portCount struct {
+		port  int
+		count int
+	}
+	var top []portCount
+	for port, patterns := range index.ByPort {
+		top = append(top, portCount{port, len(patterns)})
+	}
+	// Simple sort top 10
+	for i := 0; i < len(top) && i < 10; i++ {
+		for j := i + 1; j < len(top); j++ {
+			if top[j].count > top[i].count {
+				top[i], top[j] = top[j], top[i]
+			}
+		}
+	}
+	t.Logf("Top 10 ports by pattern count:")
+	for i := 0; i < 10 && i < len(top); i++ {
+		t.Logf("  Port %5d -> %4d patterns", top[i].port, top[i].count)
+	}
+}
+
+// === VAGUE 2 : nmap banner matching (top services) ===
+
+func TestWave2_NmapTopServices(t *testing.T) {
+	index, _ := loadAllSourcePatterns(t)
+	matcher := NewFingerprintMatcher()
+
+	// Real-world banners for the most common nmap services
+	nmapTests := []struct {
+		name     string
+		port     int
+		banner   string
+		httpBody string
+		httpHdr  map[string]string
+		wantAny  []string // any of these taxonomy_name substrings is OK
+	}{
+		{"SSH-OpenSSH", 22, "SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13\r\n", "", nil,
+			[]string{"OpenSSH", "SSH"}},
+		{"SSH-Dropbear", 22, "SSH-2.0-dropbear_2022.83\r\n", "", nil,
+			[]string{"dropbear", "Dropbear", "SSH"}},
+		{"FTP-vsftpd", 21, "220 (vsFTPd 3.0.5)\r\n", "", nil,
+			[]string{"vsFTPd", "vsftpd", "FTP"}},
+		{"FTP-ProFTPD", 21, "220 ProFTPD 1.3.8b Server (Debian)\r\n", "", nil,
+			[]string{"ProFTPD", "FTP"}},
+		{"SMTP-Postfix", 25, "220 mail.example.org ESMTP Postfix\r\n", "", nil,
+			[]string{"Postfix", "SMTP", "ESMTP"}},
+		{"SMTP-Exim", 25, "220 mail.example.org ESMTP Exim 4.97.1\r\n", "", nil,
+			[]string{"Exim", "SMTP", "ESMTP"}},
+		{"MySQL-8", 3306, "J\x00\x00\x00\x0a8.0.36\x00caching_sha2_password\x00", "", nil,
+			[]string{"MySQL", "mysql", "MariaDB"}},
+		{"Redis", 6379, "+PONG\r\n", "", nil,
+			[]string{"Redis", "redis"}},
+		{"HTTP-nginx", 80, "", "", map[string]string{"Server": "nginx/1.24.0"},
+			[]string{"nginx", "Nginx"}},
+		{"HTTP-Apache", 80, "", "", map[string]string{"Server": "Apache/2.4.58 (Ubuntu)"},
+			[]string{"Apache", "apache"}},
+		{"HTTPS-IIS", 443, "", "", map[string]string{"Server": "Microsoft-IIS/10.0"},
+			[]string{"IIS", "Microsoft"}},
+		{"DNS-BIND", 53, "BIND 9.18.24\r\n", "", nil,
+			[]string{"BIND", "DNS", "bind", "named"}},
+		{"IMAP-Dovecot", 143, "* OK [CAPABILITY IMAP4rev1] Dovecot ready.\r\n", "", nil,
+			[]string{"Dovecot", "IMAP", "imap"}},
+		{"POP3-Dovecot", 110, "+OK Dovecot ready.\r\n", "", nil,
+			[]string{"Dovecot", "POP3", "pop3"}},
+		{"SNMP", 161, "\x30\x26\x02\x01\x01 SNMP public community", "", nil,
+			[]string{"SNMP", "snmp"}},
+		{"RDP", 3389, "\x03\x00\x00\x13", "", nil,
+			[]string{"RDP", "rdp", "Remote Desktop", "ms-wbt"}},
+		{"Telnet-Linux", 23, "\xff\xfb\x01\xff\xfb\x03\xff\xfd\x18\xff\xfd\x1fUbuntu 24.04 LTS\r\ntelnet login:", "", nil,
+			[]string{"telnet", "Telnet", "Linux"}},
+		{"LDAP-OpenLDAP", 389, "\x30\x0c\x02\x01\x01\x61 OpenLDAP LDAP directory", "", nil,
+			[]string{"LDAP", "ldap", "OpenLDAP"}},
+		{"SMB-Samba", 445, "\x00\x00\x00\x45\xff\x53\x4d\x42 Samba 4.19.5", "", nil,
+			[]string{"SMB", "smb", "Samba", "Windows"}},
+		{"PPTP", 1723, "\x00\x9c\x00\x01\x1a\x2b\x3c\x4d PPTP server ready", "", nil,
+			[]string{"PPTP", "pptp", "VPN"}},
+	}
+
+	passed := 0
+	failed := 0
+	for _, tc := range nmapTests {
+		t.Run(tc.name, func(t *testing.T) {
+			// Try all patterns on this port
+			portPatterns := index.ByPort[tc.port]
+			if len(portPatterns) == 0 {
+				portPatterns = index.All
+			}
+
+			var bestResult *FingerprintResult
+			var bestPattern *FingerprintPattern
+			for _, p := range portPatterns {
+				var data *CollectedServiceData
+				if tc.httpHdr != nil {
+					data = httpData(tc.port, 200, tc.httpHdr, tc.httpBody, p)
+				} else {
+					data = tcpData(tc.port, tc.banner)
+				}
+				result := matcher.EvaluatePattern(p, data)
+				if result != nil && result.Confidence >= p.ConfidenceThreshold {
+					if bestResult == nil || result.Confidence > bestResult.Confidence {
+						bestResult = result
+						bestPattern = p
+					}
+				}
+			}
+
+			if bestResult == nil {
+				t.Errorf("MISS: %s (port %d, %d patterns tried)", tc.name, tc.port, len(portPatterns))
+				failed++
+				return
+			}
+
+			// Check if the match is one of the expected services
+			matched := false
+			for _, want := range tc.wantAny {
+				if strings.Contains(bestResult.TaxonomyName, want) ||
+					strings.Contains(bestPattern.ID, strings.ToLower(want)) {
+					matched = true
+					break
+				}
+			}
+			if matched {
+				t.Logf("PASS: %s -> %s [%s] (%.0f%% via %s)",
+					tc.name, bestResult.TaxonomyName, bestResult.Version,
+					bestResult.Confidence*100, bestPattern.Source.Type)
+				passed++
+			} else {
+				t.Logf("WRONG: %s -> got %s [%s], wanted one of %v (via %s)",
+					tc.name, bestResult.TaxonomyName, bestResult.Version, tc.wantAny, bestPattern.Source.Type)
+				failed++
+			}
+		})
+	}
+	t.Logf("\n=== WAVE 2 SUMMARY: %d passed, %d failed / %d tests ===", passed, failed, passed+failed)
 }

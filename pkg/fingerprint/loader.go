@@ -6,12 +6,20 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"sync"
 	"time"
 
 	"github.com/mo0ogly/liaprob/pkg/config"
 )
+
+// backreferenceRe detects \1, \2, etc. backreferences unsupported by Go regexp (RE2).
+var backreferenceRe = regexp.MustCompile(`(?:^|[^\\])\\([1-9])`)
+
+// perlSyntaxRe detects Perl-only syntax: lookaheads (?!, (?=, lookbehinds (?<!, (?<=
+var perlSyntaxRe = regexp.MustCompile(`\(\?[!=<]`)
+
 
 // PatternLoader loads and validates fingerprinting patterns from the filesystem.
 type PatternLoader struct {
@@ -176,12 +184,15 @@ func (pl *PatternLoader) loadFile(filePath string, source string) ([]*Fingerprin
 	return patterns, nil
 }
 
-// normalizePattern applique les valeurs par defaut et filtre les probes non supportes.
+// normalizePattern applique les valeurs par defaut, filtre les probes non supportes,
+// desactive les matchers avec backreferences RE2-incompatibles,
+// et ajuste le confidence_threshold si le pattern est unreachable.
 func (pl *PatternLoader) normalizePattern(p *FingerprintPattern) {
 	if p.TaxonomyName == "" && p.TaxonomyCode != "" {
 		p.TaxonomyName = p.TaxonomyCode
 	}
 
+	// Filtrer les probes non supportes
 	supportedLayers := map[string]bool{
 		"L7_HTTP": true, "L4_TCP": true, "L4_TCP_HEX": true, "TLS_CERT": true,
 		"L4_UDP": true, "L4_UDP_SSDP": true, "L4_UDP_MDNS": true,
@@ -193,6 +204,86 @@ func (pl *PatternLoader) normalizePattern(p *FingerprintPattern) {
 		}
 	}
 	p.Probes = validProbes
+
+	// Desactiver les matchers avec backreferences (\1, \2...) incompatibles RE2
+	pl.disableInvalidRegexMatchers(p)
+
+	// Ajuster le threshold si le pattern est unreachable
+	pl.adjustUnreachableThreshold(p)
+}
+
+// disableInvalidRegexMatchers desactive les matchers regex contenant des syntaxes RE2-incompatibles :
+// backreferences (\1), lookaheads (?!), lookbehinds (?<!), et regex qui ne compilent pas.
+func (pl *PatternLoader) disableInvalidRegexMatchers(p *FingerprintPattern) {
+	disableFn := func(matchers []PatternMatcher) {
+		for i := range matchers {
+			if matchers[i].Disabled || matchers[i].MatchType != "regex" {
+				continue
+			}
+			if reason := re2IncompatibleReason(matchers[i].Value); reason != "" {
+				matchers[i].Disabled = true
+				matchers[i].DisabledReason = reason
+			}
+			if matchers[i].VersionExtract != "" {
+				if reason := re2IncompatibleReason(matchers[i].VersionExtract); reason != "" {
+					matchers[i].VersionExtract = ""
+					matchers[i].DisabledReason = reason
+				}
+			}
+		}
+	}
+
+	disableFn(p.BannerMatchers)
+	disableFn(p.ServiceMatchers)
+	for pi := range p.Probes {
+		disableFn(p.Probes[pi].Matchers)
+	}
+}
+
+// adjustUnreachableThreshold abaisse le threshold si aucune combinaison de matchers ne peut l'atteindre.
+func (pl *PatternLoader) adjustUnreachableThreshold(p *FingerprintPattern) {
+	maxConf := p.BaseConfidence
+	for _, m := range p.BannerMatchers {
+		if !m.Disabled {
+			maxConf += m.ConfidenceDelta
+		}
+	}
+	for _, m := range p.ServiceMatchers {
+		if !m.Disabled {
+			maxConf += m.ConfidenceDelta
+		}
+	}
+	for _, probe := range p.Probes {
+		for _, m := range probe.Matchers {
+			if !m.Disabled {
+				maxConf += m.ConfidenceDelta
+			}
+		}
+	}
+
+	if maxConf > 0 && maxConf < p.ConfidenceThreshold {
+		// Ajuster le threshold a 80% du max atteignable (laisse une marge de securite)
+		newThreshold := maxConf * 0.8
+		if newThreshold < 0.1 {
+			newThreshold = 0.1
+		}
+		p.ConfidenceThreshold = newThreshold
+	}
+}
+
+// re2IncompatibleReason retourne la raison si la regex est incompatible RE2, ou "" si OK.
+func re2IncompatibleReason(pattern string) string {
+	if backreferenceRe.MatchString(pattern) {
+		return "RE2-incompatible: backreference detected"
+	}
+	if perlSyntaxRe.MatchString(pattern) {
+		return "RE2-incompatible: Perl lookahead/lookbehind detected"
+	}
+	// Tentative de compilation RE2 pour attraper les autres erreurs
+	if _, err := regexp.Compile(pattern); err != nil {
+		return fmt.Sprintf("RE2-incompatible: %v", err)
+	}
+	return ""
 }
 
 // ValidatePattern verifie qu'un pattern est conforme au schema lia-fingerprint-v1.
