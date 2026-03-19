@@ -10,7 +10,7 @@ LiaProbe combines traditional port scanning with an **OODA agentic loop** (Obser
 - **4 scan modes**: smart (adaptive), full (all ports), specific (user-defined), hunt (find a service)
 - **4 scan profiles**: fast, standard, thorough, stealth
 - **35 fingerprint patterns**: web servers, databases, infrastructure, networking, security tools
-- **AI integration**: Ollama (local), OpenAI-compatible, or custom providers for banner analysis
+- **AI integration**: Ollama, Groq, OpenAI, Anthropic/Claude, or any OpenAI-compatible provider for real-time banner analysis and risk assessment
 - **Dual mode**: CLI standalone + HTTP API server (`--serve` for LIA-SEC integration)
 - **SSE live streaming**: Real-time journal events via Server-Sent Events
 - **YAML config**: File-based configuration with env var and CLI flag overrides
@@ -45,8 +45,14 @@ liaprobe --mode hunt --hunt-service jenkins 10.0.0.0/24
 # Full scan with table output
 liaprobe --mode full --output table 192.168.1.1
 
-# With AI-assisted banner analysis (Ollama)
+# With AI analysis (Groq - fast cloud)
+liaprobe --ai groq 192.168.1.0/24
+
+# With AI analysis (Ollama - local)
 liaprobe --ai ollama --ai-model qwen2.5:7b 192.168.1.0/24
+
+# With AI analysis (Claude)
+ANTHROPIC_API_KEY=sk-... liaprobe --ai claude 192.168.1.0/24
 
 # Stealth profile (slow, low footprint)
 liaprobe --profile stealth 10.0.0.0/24
@@ -223,7 +229,7 @@ liaprobe/
   api/              HTTP API server + SSE streaming
   pkg/
     agent/          OODA agentic loop (planner, executor, observer, replanner, journal, memory)
-    ai/             AI provider abstraction (ollama, openai, liasec, multi-fallback, noop)
+    ai/             AI provider abstraction (ollama, openai, groq, anthropic, liasec, multi-fallback, noop)
     config/         Configuration (YAML, env, profiles, validation)
     fingerprint/    Pattern-based service fingerprinting engine
     log/            Lightweight CLI logger

@@ -1,0 +1,82 @@
+{
+  "id": "scan-1773918045343",
+  "started_at": "2026-03-19T11:00:45.343144574Z",
+  "completed_at": "2026-03-19T11:00:50.771068183Z",
+  "hosts": [
+    {
+      "target": {
+        "ip": "172.20.0.10"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.10",
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "services": [
+        {
+          "port": 80,
+          "name": "Nginx",
+          "product": "WEB.NGINX",
+          "version": "1.25.5",
+          "cpe": "cpe:2.3:a:f5:nginx:1.25.5:*:*:*:*:*:*:*",
+          "confidence": 0.8999999999999999,
+          "pattern_id": "lia-nginx"
+        }
+      ],
+      "duration": 0
+    },
+    {
+      "target": {
+        "ip": "172.20.0.11"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.11",
+          "port": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "services": [
+        {
+          "port": 80,
+          "name": "Apache HTTP Server",
+          "product": "WEB.APACHE",
+          "version": "2.4.66",
+          "cpe": "cpe:2.3:a:apache:http_server:2.4.66:*:*:*:*:*:*:*",
+          "confidence": 0.8999999999999999,
+          "pattern_id": "lia-apache"
+        }
+      ],
+      "duration": 0
+    },
+    {
+      "target": {
+        "ip": "172.20.0.20"
+      },
+      "alive": true,
+      "open_ports": [
+        {
+          "ip": "172.20.0.20",
+          "port": 3306,
+          "protocol": "tcp",
+          "banner": "J\n8.0.45\rr\n]n0([\u003c\u0026ICNc99caching_sha2_password"
+        }
+      ],
+      "duration": 0
+    }
+  ],
+  "stats": {
+    "total_targets": 3,
+    "hosts_alive": 3,
+    "ports_open": 3,
+    "technologies_found": 2,
+    "duration_ms": 5427,
+    "replans": 1,
+    "ai_queries": 2
+  },
+  "ai_analysis": "**Critical Findings:**\n* Exposed services: HTTP (ports 80) on hosts 172.20.0.10 and 172.20.0.11, MySQL (port 3306) on host 172.20.0.20\n* Outdated versions: None explicitly stated, but versions should be verified against current releases\n* Misconfigurations: None explicitly stated, but the exposure of MySQL may indicate a configuration issue\n\n**Risk Assessment per Host:**\n* 172.20.0.10 (Nginx 1.25.5): Medium risk due to exposed HTTP service\n* 172.20.0.11 (Apache HTTP Server 2.4.66): Medium risk due to exposed HTTP service\n* 172.20.0.20 (MySQL 8.0.45): High risk due to exposed MySQL service, potentially allowing unauthorized access\n\n**Prioritized Remediation Steps:**\n* **High Priority:**\n  + Restrict access to MySQL on host 172.20.0.20 by configuring firewall rules or using a VPN\n  + Verify MySQL version and update if necessary\n* **Medium Priority:**\n  + Verify Nginx and Apache versions on hosts 172.20.0.10 and 172.20.0.11, and update if necessary\n  + Implement additional security measures for HTTP services, such as HTTPS and access controls\n* **Low Priority:**\n  + Regularly review and update configurations to ensure ongoing security and compliance"
+}
