@@ -392,28 +392,52 @@ func (e *Executor) executeAIAnalyze(ctx context.Context, task *ScanTask) Observa
 	e.memory.mu.RUnlock()
 
 	prompt := fmt.Sprintf(
-		"Analyze this network scan. Identify security risks, outdated versions, "+
-			"exposed services, and provide actionable recommendations.\n\n"+
-			"Summary: %d targets scanned, %d alive, %d open ports, %d services identified\n"+
-			"--- Detailed Results ---\n%s",
+		"SCAN SUMMARY: %d targets, %d alive, %d open ports, %d services fingerprinted.\n\n"+
+			"HOST DATA:\n%s\n"+
+			"Provide your analysis following the output format specified in the system prompt.",
 		stats.TargetsTotal, stats.HostsAlive, stats.PortsOpen,
 		stats.ServicesIdentified, hostDetails,
 	)
 
 	e.journal.LogAI("AI_QUERY_START", "", map[string]interface{}{
-		"provider": e.tools.AI.Name(),
+		"provider":   e.tools.AI.Name(),
 		"prompt_len": len(prompt),
 	}, 0)
 
+	systemPrompt := "You are a network security auditor analyzing automated scan results from LiaProbe.\n\n" +
+		"RULES:\n" +
+		"- Only report findings supported by the scan data below. Never invent CVEs or versions not present in the data.\n" +
+		"- If a service version is unknown, say \"version unknown\" -- do not guess.\n" +
+		"- Severity levels: CRITICAL, HIGH, MEDIUM, LOW, INFO.\n\n" +
+		"OUTPUT FORMAT (follow exactly):\n" +
+		"## Critical Findings\n" +
+		"* [SEVERITY] Host:Port - Finding description\n\n" +
+		"## Risk Assessment\n" +
+		"* Host IP - CRITICAL|HIGH|MEDIUM|LOW - One-line justification\n\n" +
+		"## Remediation (priority order)\n" +
+		"1. Action - affected hosts - reason\n\n" +
+		"EXAMPLE:\n" +
+		"## Critical Findings\n" +
+		"* [CRITICAL] 10.0.0.5:6379 - Redis exposed without authentication\n" +
+		"* [HIGH] 10.0.0.3:22 - OpenSSH 7.4 (EOL, CVE-2023-38408)\n" +
+		"* [MEDIUM] 10.0.0.1:80 - Apache 2.4.49 (path traversal CVE-2021-41773)\n\n" +
+		"## Risk Assessment\n" +
+		"* 10.0.0.5 - CRITICAL - Unauthenticated data store exposed\n\n" +
+		"## Remediation (priority order)\n" +
+		"1. Bind Redis to 127.0.0.1 or enable AUTH - 10.0.0.5 - data exfiltration risk"
+
+	// Scale max tokens based on host count (minimum 1024, +128 per host)
+	maxTokens := 1024 + stats.HostsAlive*128
+	if maxTokens > 4096 {
+		maxTokens = 4096
+	}
+
 	start := time.Now()
 	resp, err := e.tools.AI.Query(ctx, ai.Request{
-		SystemPrompt: "You are a senior network security analyst performing an infrastructure audit. " +
-			"Analyze the scan results and provide: 1) Critical findings (exposed services, outdated versions, " +
-			"misconfigurations) 2) Risk assessment per host 3) Prioritized remediation steps. " +
-			"Be concise and actionable. Use bullet points.",
-		UserPrompt:  prompt,
-		MaxTokens:   1024,
-		Temperature: 0.3,
+		SystemPrompt: systemPrompt,
+		UserPrompt:   prompt,
+		MaxTokens:    maxTokens,
+		Temperature:  0.2,
 	})
 
 	if err != nil {
@@ -490,26 +514,48 @@ func (e *Executor) executeAIIdentifyBanner(ctx context.Context, task *ScanTask) 
 	}
 
 	prompt := fmt.Sprintf(
-		"Identify the following network services from their port numbers and banners.\n"+
-			"For each, provide: service name, probable version, and CPE 2.3 if possible.\n"+
-			"Format each line as: IP:PORT -> ServiceName Version (CPE)\n\n"+
-			"Unknown services:\n%s",
+		"Identify each service below. Output one line per entry, nothing else.\n\n"+
+			"UNIDENTIFIED PORTS:\n%s",
 		stringJoin(unknownPorts, "\n"),
 	)
+
+	bannerSystemPrompt := "You identify network services from port numbers and TCP banners.\n\n" +
+		"RULES:\n" +
+		"- One line per service, no extra text.\n" +
+		"- Format: IP:PORT -> ServiceName Version (cpe:2.3:a:vendor:product:version)\n" +
+		"- If banner contains a version string, extract it exactly. Do not round or guess versions.\n" +
+		"- If the service cannot be identified with confidence, output: IP:PORT -> UNKNOWN\n" +
+		"- If the service is identified but version is unknown: IP:PORT -> ServiceName (no version)\n" +
+		"- Common port hints: 3306=MySQL, 5432=PostgreSQL, 6379=Redis, 27017=MongoDB, 5672=RabbitMQ, " +
+		"9200=Elasticsearch, 9090=Prometheus, 8500=Consul, 5601=Kibana, 8080/8443=HTTP proxy.\n\n" +
+		"EXAMPLES:\n" +
+		"Input:  10.0.0.1 port 3306/tcp banner=\"J 8.0.36\\x00..caching_sha2_p\"\n" +
+		"Output: 10.0.0.1:3306 -> MySQL 8.0.36 (cpe:2.3:a:oracle:mysql:8.0.36)\n\n" +
+		"Input:  10.0.0.2 port 22/tcp banner=\"SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu1\"\n" +
+		"Output: 10.0.0.2:22 -> OpenSSH 9.6p1 (cpe:2.3:a:openbsd:openssh:9.6p1)\n\n" +
+		"Input:  10.0.0.3 port 8080/tcp\n" +
+		"Output: 10.0.0.3:8080 -> UNKNOWN"
 
 	e.journal.LogAI("AI_BANNER_ID_START", "", map[string]interface{}{
 		"unknown_count": len(unknownPorts),
 		"provider":      e.tools.AI.Name(),
 	}, 0)
 
+	// Scale tokens: ~40 tokens per identification line
+	maxBannerTokens := len(unknownPorts)*40 + 64
+	if maxBannerTokens < 256 {
+		maxBannerTokens = 256
+	}
+	if maxBannerTokens > 2048 {
+		maxBannerTokens = 2048
+	}
+
 	start := time.Now()
 	resp, err := e.tools.AI.Query(ctx, ai.Request{
-		SystemPrompt: "You are a network service identification expert. " +
-			"Identify services from port numbers and TCP banners. " +
-			"Be precise about versions. Use standard CPE 2.3 format when possible.",
-		UserPrompt:  prompt,
-		MaxTokens:   512,
-		Temperature: 0.1,
+		SystemPrompt: bannerSystemPrompt,
+		UserPrompt:   prompt,
+		MaxTokens:    maxBannerTokens,
+		Temperature:  0.0,
 	})
 
 	if err != nil {
