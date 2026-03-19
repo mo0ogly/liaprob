@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_allura",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_ALLUR",
+  "taxonomy_name": "Apache Allura",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-allura-detect.yaml",
+    "original_id": "apache-allura-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-allura-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-allura-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://allura.apache.org/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_allur_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/neighborhood",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>All Neighborhoods</title>",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": ">Apache Allura</a>",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Allura",
+  "cpe23_template": "cpe:2.3:a:apache:allura:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "allura",
+    "apache"
+  ]
+}

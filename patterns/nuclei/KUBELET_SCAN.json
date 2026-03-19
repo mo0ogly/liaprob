@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-kubelet_scan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBELET_SCAN",
+  "taxonomy_name": "Kubelet Scan",
+  "source": {
+    "type": "nuclei",
+    "file": "kubelet-pods.yaml",
+    "original_id": "kubelet-pods",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kubelet-pods.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kubelet-pods (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "kubelet_scan_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/pods",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"PodList\":",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"items\":",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "k8s",
+    "kubernetes",
+    "devops",
+    "kubelet",
+    "pods"
+  ]
+}

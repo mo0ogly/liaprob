@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-bugzilla",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BUGZILLA",
+  "taxonomy_name": "Bugzilla",
+  "source": {
+    "type": "nuclei",
+    "file": "bugzilla-detect.yaml",
+    "original_id": "bugzilla-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/bugzilla-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template bugzilla-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/bugzilla/bugzilla/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "bugzilla_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Bugzilla Main",
+          "confidence_delta": 0.4,
+          "version_extract": "class=\"header_addl_info\">version ([^<]+)</span>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "title=\"Bugzilla",
+          "confidence_delta": 0.4,
+          "version_extract": "class=\"header_addl_info\">version ([^<]+)</span>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "href=\"https://bugzilla.readthedocs.org/",
+          "confidence_delta": 0.4,
+          "version_extract": "class=\"header_addl_info\">version ([^<]+)</span>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Mozilla",
+  "product": "Bugzilla",
+  "cpe23_template": "cpe:2.3:a:mozilla:bugzilla:-:*:*:*:*:*:*:*",
+  "tags": [
+    "bugzilla",
+    "mozilla"
+  ]
+}

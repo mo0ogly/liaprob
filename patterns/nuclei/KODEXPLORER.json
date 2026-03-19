@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-kodexplorer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KODEXPLORER",
+  "taxonomy_name": "KodExplorer",
+  "source": {
+    "type": "nuclei",
+    "file": "kodexplorer-detect.yaml",
+    "original_id": "kodexplorer-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kodexplorer-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kodexplorer-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "kodexplorer_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<title>.* - Powered by KodExplorer</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<title>.* - Powered by KodExplorer</title>",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Kodcloud",
+  "product": "Kodexplorer",
+  "cpe23_template": "cpe:2.3:a:kodcloud:kodexplorer:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "kodexplorer"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-yourls",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOURLS",
+  "taxonomy_name": "YOURLS",
+  "source": {
+    "type": "nuclei",
+    "file": "yourls-detect.yaml",
+    "original_id": "yourls-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/yourls-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template yourls-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/YOURLS/YOURLS",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "yourls_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>YOURLS",
+          "confidence_delta": 0.4,
+          "version_extract": "YOURLS<\\/a>([ a-z0-9.-]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"YOURLS",
+          "confidence_delta": 0.4,
+          "version_extract": "YOURLS<\\/a>([ a-z0-9.-]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "alt=\"YOURLS",
+          "confidence_delta": 0.4,
+          "version_extract": "YOURLS<\\/a>([ a-z0-9.-]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/yourls-logo",
+          "confidence_delta": 0.4,
+          "version_extract": "YOURLS<\\/a>([ a-z0-9.-]+)",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Yourls",
+  "product": "Yourls",
+  "cpe23_template": "cpe:2.3:a:yourls:yourls:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "yourls"
+  ]
+}

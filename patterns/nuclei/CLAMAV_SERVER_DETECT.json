@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-clamav_server_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLAMAV",
+  "taxonomy_name": "ClamAV Server Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "clamav-detect.yaml",
+    "original_id": "clamav-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/clamav-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template clamav-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "clamav_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "ClamAV ([0-9.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "ClamAV ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        3310
+      ],
+      "send": "VERSION"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    3310
+  ],
+  "tags": [
+    "network",
+    "clamav",
+    "tcp"
+  ]
+}

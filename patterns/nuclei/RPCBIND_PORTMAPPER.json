@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-rpcbind_portmapper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RPCBIND_PORT",
+  "taxonomy_name": "Rpcbind Portmapper",
+  "source": {
+    "type": "nuclei",
+    "file": "rpcbind-portmapper-detect.yaml",
+    "original_id": "rpcbind-portmapper-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/rpcbind-portmapper-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template rpcbind-portmapper-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://book.hacktricks.xyz/pentesting/pentesting-rpcbind",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "rpcbind_port_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "/run/rpcbind.sock",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        111
+      ],
+      "send_hex": "8000002836ed646d0000000000000002000186a0000000040000000400000000000000000000000000000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    111
+  ],
+  "tags": [
+    "network",
+    "rpcbind",
+    "portmap",
+    "tcp"
+  ]
+}

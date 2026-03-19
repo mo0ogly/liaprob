@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-graphql_hasura_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRAPHQL_HASU",
+  "taxonomy_name": "Graphql Hasura Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "graphql-hasura-detect.yaml",
+    "original_id": "graphql-hasura-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/graphql-hasura-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template graphql-hasura-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/dolevf/graphw00f/blob/main/graphw00f/lib.py",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "graphql_hasu_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/graphql",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "field \"aa\" not found in type: 'query_root'",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Content-Type: text/html",
+          "confidence_delta": 0.4,
+          "negate": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<html",
+          "confidence_delta": 0.4,
+          "negate": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<body",
+          "confidence_delta": 0.4,
+          "negate": true
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "graphql",
+    "hasura"
+  ]
+}

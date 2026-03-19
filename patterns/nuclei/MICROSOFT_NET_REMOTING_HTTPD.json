@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-microsoft_net_remoting_httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_NE",
+  "taxonomy_name": "Microsoft .NET Remoting httpd",
+  "source": {
+    "type": "nuclei",
+    "file": "dotnet-remoting-service-detect.yaml",
+    "original_id": "dotnet-remoting-service-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/dotnet-remoting-service-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template dotnet-remoting-service-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "microsoft_ne_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Server: MS .NET Remoting",
+          "confidence_delta": 0.4,
+          "version_extract": ".NET CLR ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        8080
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    8080
+  ],
+  "tags": [
+    "network",
+    "microsoft",
+    "dotnet",
+    "tcp"
+  ]
+}

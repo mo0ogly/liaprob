@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-teamspeak_3_serverquery_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TEAMSPEAK_3_",
+  "taxonomy_name": "TeamSpeak 3 ServerQuery Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "teamspeak3-detect.yaml",
+    "original_id": "teamspeak3-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/teamspeak3-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template teamspeak3-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "teamspeak_3__tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "TS3",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "TeamSpeak 3 ServerQuery interface",
+          "confidence_delta": 0.2
+        }
+      ],
+      "ports": [
+        2002
+      ],
+      "send": "\r\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    2002
+  ],
+  "tags": [
+    "network",
+    "service",
+    "teamspeak3",
+    "tcp"
+  ]
+}

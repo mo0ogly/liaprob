@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-azure_container_instance_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AZURE_CONTAI",
+  "taxonomy_name": "Azure Container Instance Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-page-azure-container.yaml",
+    "original_id": "default-page-azure-container",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-page-azure-container.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-page-azure-container (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "azure_contai_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Welcome to Azure Container Instances!</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "azure",
+    "cloud"
+  ]
+}

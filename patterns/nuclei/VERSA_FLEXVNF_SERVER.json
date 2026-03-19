@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-versa_flexvnf_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERSA_FLEXVN",
+  "taxonomy_name": "Versa FlexVNF Server",
+  "source": {
+    "type": "nuclei",
+    "file": "versa-flexvnf-server.yaml",
+    "original_id": "versa-flexvnf-server",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/versa-flexvnf-server.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template versa-flexvnf-server (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://versa-networks.com/products/components/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "versa_flexvn_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/&?=?",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: Server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: Versa",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "FlexVNF",
+          "confidence_delta": 0.2
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "versa",
+    "flexvnf"
+  ]
+}

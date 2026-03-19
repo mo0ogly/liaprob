@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oracle_database_as_a_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_DATAB",
+  "taxonomy_name": "Oracle Database as a Service",
+  "source": {
+    "type": "nuclei",
+    "file": "oracle-dbcs.yaml",
+    "original_id": "oracle-dbcs",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oracle-dbcs.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oracle-dbcs (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oracle_datab_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Oracle Database as a Service</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Oracle",
+  "product": "Database_Server",
+  "cpe23_template": "cpe:2.3:a:oracle:database_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "oracle"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-zap_rest_api_server_running",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZAP_REST_API",
+  "taxonomy_name": "ZAP Rest API Server Running",
+  "source": {
+    "type": "nuclei",
+    "file": "zap-api-detect.yaml",
+    "original_id": "zap-rest-api-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/zap-api-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template zap-rest-api-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.zaproxy.org/docs/api/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "zap_rest_api_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>ZAP API UI</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Welcome to the OWASP Zed Attack Proxy (ZAP)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Access-Control-Allow-Headers: ZAP-Header",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "zap"
+  ]
+}

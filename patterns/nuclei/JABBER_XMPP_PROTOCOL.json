@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jabber_xmpp_protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JABBER_XMPP_",
+  "taxonomy_name": "Jabber XMPP Protocol",
+  "source": {
+    "type": "nuclei",
+    "file": "detect-jabber-xmpp.yaml",
+    "original_id": "detect-jabber-xmpp",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/detect-jabber-xmpp.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template detect-jabber-xmpp (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://datatracker.ietf.org/doc/html/rfc6120",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jabber_xmpp__tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "stream:stream xmlns:stream",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "stream:error xmlns:stream",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        5222
+      ],
+      "send": "a\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    5222
+  ],
+  "tags": [
+    "network",
+    "jabber",
+    "xmpp",
+    "messaging",
+    "tcp"
+  ]
+}

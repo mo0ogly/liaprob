@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-xenforo_forum_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XENFORO_FORU",
+  "taxonomy_name": "XenForo Forum Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "xenforo-detect.yaml",
+    "original_id": "xenforo-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/xenforo-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template xenforo-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "xenforo_foru_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/index.php",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<html id=\"XenForo\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<html id=\"XF\"",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Xenforo",
+  "product": "Xenforo",
+  "cpe23_template": "cpe:2.3:a:xenforo:xenforo:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "xenforo"
+  ]
+}

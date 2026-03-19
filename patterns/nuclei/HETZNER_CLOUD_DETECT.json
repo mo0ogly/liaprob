@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hetzner_cloud_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HETZNER_CLOU",
+  "taxonomy_name": "Hetzner Cloud Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "hetzner-cloud-detect.yaml",
+    "original_id": "hetzner-cloud-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/hetzner-cloud-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template hetzner-cloud-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hetzner_clou_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Hetzner Cloud",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Hetzner Logo",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "hetzner"
+  ]
+}

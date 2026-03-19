@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oracle_fusion_middleware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_FUSIO",
+  "taxonomy_name": "Oracle Fusion Middleware",
+  "source": {
+    "type": "nuclei",
+    "file": "oracle-fusion-detect.yaml",
+    "original_id": "oracle-fusion-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oracle-fusion-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oracle-fusion-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oracle_fusio_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Welcome to Oracle Fusion Middleware",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oracle",
+    "middleware"
+  ]
+}

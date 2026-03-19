@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-google_bucket_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_BUCKE",
+  "taxonomy_name": "Google Bucket detection",
+  "source": {
+    "type": "nuclei",
+    "file": "google-storage.yaml",
+    "original_id": "gstorage-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/google-storage.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template gstorage-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "google_bucke_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-goog-metageneration",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-goog-generation",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "gstorage",
+    "google",
+    "bucket"
+  ]
+}

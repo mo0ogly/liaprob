@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apple_httpserver_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_HTTPSE",
+  "taxonomy_name": "Apple HttpServer Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "apple-httpserver.yaml",
+    "original_id": "apple-httpserver",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apple-httpserver.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apple-httpserver (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apple_httpse_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Apple-Jingle-Correlation-Key",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "AppleHttpServer",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Apple-Request-UUID",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "apple",
+    "httpserver"
+  ]
+}

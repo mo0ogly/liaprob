@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_tapestry_framework_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_TAPES",
+  "taxonomy_name": "Apache Tapestry Framework detect",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-tapestry-detect.yaml",
+    "original_id": "apache-tapestry-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-tapestry-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-tapestry-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_tapes_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Apache Tapestry Framework",
+          "confidence_delta": 0.4,
+          "version_extract": "Tapestry Application Framework, version ([0-9.-A-Z]+)T\" \\/>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Tapestry Application Framework",
+          "confidence_delta": 0.4,
+          "version_extract": "Tapestry Application Framework, version ([0-9.-A-Z]+)T\" \\/>",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Tapestry",
+  "cpe23_template": "cpe:2.3:a:apache:tapestry:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "apache",
+    "tapestry"
+  ]
+}

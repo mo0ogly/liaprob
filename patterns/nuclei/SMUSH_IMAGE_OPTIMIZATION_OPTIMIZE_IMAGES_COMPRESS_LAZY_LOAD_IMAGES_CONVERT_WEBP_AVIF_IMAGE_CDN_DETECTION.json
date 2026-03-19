@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-smush_image_optimization_optimize_images_compress_lazy_load_images_convert_webp_avif_image_cdn_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SMUSH_IMAGE_",
+  "taxonomy_name": "Smush Image Optimization – Optimize Images | Compress & Lazy Load Images | Convert WebP & AVIF | Image CDN Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "wp-smushit.yaml",
+    "original_id": "wordpress-wp-smushit",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/wp-smushit.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-wp-smushit (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/wp-smushit/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "smush_image__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/wp-smushit/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-100",
+    "top-200"
+  ]
+}

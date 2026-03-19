@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_dell_idrac9",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_DELL_",
+  "taxonomy_name": "Detect Dell iDRAC9",
+  "source": {
+    "type": "nuclei",
+    "file": "dell-idrac9-detect.yaml",
+    "original_id": "dell-idrac9-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/dell-idrac9-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template dell-idrac9-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_dell__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/sysmgmt/2015/bmc/info",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "BuildVersion",
+          "confidence_delta": 0.4,
+          "version_extract": "\"FwVer\" *: *\"([^\"]+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SystemModelName",
+          "confidence_delta": 0.4,
+          "version_extract": "\"FwVer\" *: *\"([^\"]+)\"",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dell"
+  ]
+}

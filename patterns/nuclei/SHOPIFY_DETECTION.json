@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-shopify_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPIFY",
+  "taxonomy_name": "Shopify Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "shopify-detect.yaml",
+    "original_id": "shopify-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/shopify-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template shopify-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "shopify_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "X-Shopify-Stage",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by Shopify",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "cdn.shopify.com",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Shopify Store",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Shopify Liquid",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "shopify"
+  ]
+}

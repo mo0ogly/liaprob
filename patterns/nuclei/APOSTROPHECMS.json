@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apostrophecms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APOSTROPHECM",
+  "taxonomy_name": "ApostropheCMS",
+  "source": {
+    "type": "nuclei",
+    "file": "apostrophecms-detect.yaml",
+    "original_id": "apostrophecms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apostrophecms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apostrophecms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://apostrophecms.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apostrophecm_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)window\\.apos\\s*=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)window\\.apos\\s*=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)/modules/apostrophe-",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)/modules/apostrophe-",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "cms",
+    "apostrophe"
+  ]
+}

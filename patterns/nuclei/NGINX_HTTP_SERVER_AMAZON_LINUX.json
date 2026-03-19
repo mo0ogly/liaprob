@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nginx_http_server_amazon_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NGINX_HTTP_S",
+  "taxonomy_name": "Nginx HTTP Server Amazon Linux",
+  "source": {
+    "type": "nuclei",
+    "file": "nginx-linux-page.yaml",
+    "original_id": "nginx-linux-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nginx-linux-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nginx-linux-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nginx_http_s_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Test Page for the Nginx HTTP Server on Amazon Linux</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "nginx",
+    "amazon"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-live_helper_chat_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIVE_HELPER_",
+  "taxonomy_name": "Live Helper Chat Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "livehelperchat-detect.yaml",
+    "original_id": "livehelperchat-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/livehelperchat-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template livehelperchat-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "live_helper__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Live.Helper.Chat",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Live.Helper.Chat",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Copyright.\\(c\\).2019.Remigijus.Kiminas",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Copyright.\\(c\\).2019.Remigijus.Kiminas",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Livehelperchat",
+  "product": "Live_Helper_Chat",
+  "cpe23_template": "cpe:2.3:a:livehelperchat:live_helper_chat:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "livehelperchat"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-vmware_authentication_daemon_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE_AUTHE",
+  "taxonomy_name": "VMware Authentication Daemon Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "vmware-authentication-daemon-detect.yaml",
+    "original_id": "vmware-authentication-daemon",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/vmware-authentication-daemon-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template vmware-authentication-daemon (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "vmware_authe_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "ServerDaemonProtocol:SOAP",
+          "confidence_delta": 0.2,
+          "version_extract": "VMware Authentication Daemon Version ([0-9.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "MKSDisplayProtocol:VNC",
+          "confidence_delta": 0.2,
+          "version_extract": "VMware Authentication Daemon Version ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        902
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    902
+  ],
+  "tags": [
+    "network",
+    "vmware",
+    "authenticated",
+    "tcp"
+  ]
+}

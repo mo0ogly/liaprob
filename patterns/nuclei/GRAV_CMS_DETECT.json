@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-grav_cms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRAV_CMS",
+  "taxonomy_name": "Grav CMS Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "grav-cms-detect.yaml",
+    "original_id": "grav-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/grav-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template grav-cms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/getgrav/grav",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "grav_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: grav-site-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<meta name=\"generator\" content=\"GravCMS\" />",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "grav",
+    "cms"
+  ]
+}

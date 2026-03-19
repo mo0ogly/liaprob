@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-msmq_microsoft_message_queuing_service_remote",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MSMQ_MICROSO",
+  "taxonomy_name": "MSMQ (Microsoft Message Queuing Service) Remote",
+  "source": {
+    "type": "nuclei",
+    "file": "msmq-detect.yaml",
+    "original_id": "msmq-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/msmq-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template msmq-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.shadowserver.org/what-we-do/network-reporting/accessible-msmq-service-report/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-mqqb/f9bbe350-d70b-4e90-b9c7-d39328653166",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "msmq_microso_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "105a0b004c494f523c020000ffffffff",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        1801
+      ],
+      "send_hex": "10c00b004c494f523c020000ffffffff00000200d1587355509195954997b6e611ea26c60789cd434c39118f44459078909ea0fc4ecade1d100300000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    1801
+  ],
+  "tags": [
+    "network",
+    "msmq",
+    "tcp"
+  ]
+}

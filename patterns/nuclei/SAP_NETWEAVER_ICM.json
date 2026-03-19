@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-sap_netweaver_icm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_NETWEAVE",
+  "taxonomy_name": "SAP NetWeaver ICM",
+  "source": {
+    "type": "nuclei",
+    "file": "sap-netweaver-detect.yaml",
+    "original_id": "sap-netweaver-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sap-netweaver-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sap-netweaver-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "sap_netweave_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "sap-server:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "SAP NetWeaver Application Server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SAP NetWeaver Application Server",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SAP NetWeaver Developer Studio",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SAP Management Console",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Sap",
+  "product": "Content_Server",
+  "tags": [
+    "sap",
+    "webserver"
+  ]
+}

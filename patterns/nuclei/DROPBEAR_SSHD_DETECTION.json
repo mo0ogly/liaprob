@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-dropbear_sshd_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DROPBEAR_SSH",
+  "taxonomy_name": "Dropbear sshd Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "sshd-dropbear-detect.yaml",
+    "original_id": "sshd-dropbear-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/sshd-dropbear-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sshd-dropbear-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "dropbear_ssh_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "dropbear",
+          "confidence_delta": 0.4,
+          "version_extract": "SSH-([0-9.]+)-dropbear_([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        22
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    22
+  ],
+  "tags": [
+    "network",
+    "ssh",
+    "dropbear",
+    "tcp"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-red_hat_enterprise_linux_test_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_ENTE",
+  "taxonomy_name": "Red Hat Enterprise Linux Test Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-redhat-test-page.yaml",
+    "original_id": "default-redhat-test-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-redhat-test-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-redhat-test-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "red_hat_ente_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Test Page for the Apache HTTP Server on Red Hat Enterprise Linux</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Redhat",
+  "product": "Enterprise_Linux_Server",
+  "cpe23_template": "cpe:2.3:o:redhat:enterprise_linux_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "redhat"
+  ]
+}

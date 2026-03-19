@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-impresscms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IMPRESSCMS",
+  "taxonomy_name": "ImpressCMS Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "impresscms-detect.yaml",
+    "original_id": "impresscms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/impresscms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template impresscms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/ImpressCMS",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "impresscms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(ImpressCMS)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(ImpressCMS)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "impresscms"
+  ]
+}

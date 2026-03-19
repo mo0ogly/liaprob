@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-blazor_webassembly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLAZOR_WEBAS",
+  "taxonomy_name": "Blazor WebAssembly",
+  "source": {
+    "type": "nuclei",
+    "file": "blazor-webassembly-detect.yaml",
+    "original_id": "blazor-webassembly-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/blazor-webassembly-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template blazor-webassembly-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/righettod/burp-piper-custom-scripts/issues/1",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "blazor_webas_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/_framework/blazor.boot.json",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "dotnet.wasm",
+          "confidence_delta": 0.13,
+          "case_insensitive": true,
+          "version_extract": "dotnet.([0-9.]+).[a-z0-9]+.js",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"entryAssembly\"",
+          "confidence_delta": 0.13,
+          "case_insensitive": true,
+          "version_extract": "dotnet.([0-9.]+).[a-z0-9]+.js",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"Microsoft.JSInterop.WebAssembly.dll\"",
+          "confidence_delta": 0.13,
+          "case_insensitive": true,
+          "version_extract": "dotnet.([0-9.]+).[a-z0-9]+.js",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "blazor",
+    "webassembly"
+  ]
+}

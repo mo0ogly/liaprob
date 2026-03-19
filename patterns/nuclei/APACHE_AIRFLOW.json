@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_airflow",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_AIRFL",
+  "taxonomy_name": "Apache Airflow",
+  "source": {
+    "type": "nuclei",
+    "file": "airflow-detect.yaml",
+    "original_id": "airflow-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/airflow-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template airflow-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_airfl_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/{{randstr}}",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Airflow 404",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Airflow",
+  "cpe23_template": "cpe:2.3:a:apache:airflow:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "apache",
+    "airflow",
+    "intrusive"
+  ]
+}

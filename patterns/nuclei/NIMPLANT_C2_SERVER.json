@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nimplant_c2_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NIMPLANT_C2",
+  "taxonomy_name": "NimPlant C2 Server",
+  "source": {
+    "type": "nuclei",
+    "file": "nimplant-c2.yaml",
+    "original_id": "nimplant-c2",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nimplant-c2.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nimplant-c2 (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/chvancooten/NimPlant",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nimplant_c2_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "NimPlant C2 Server",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "nimplant",
+    "c2"
+  ]
+}

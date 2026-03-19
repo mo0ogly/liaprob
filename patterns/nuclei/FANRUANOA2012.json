@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-fanruanoa2012",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FANRUANOA201",
+  "taxonomy_name": "FanRuanOA2012",
+  "source": {
+    "type": "nuclei",
+    "file": "fanruanoa2012-detect.yaml",
+    "original_id": "fanruanoa2012-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/fanruanoa2012-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template fanruanoa2012-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "fanruanoa201_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "down.download?FM_SYS_ID",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oa",
+    "java",
+    "fanruan"
+  ]
+}

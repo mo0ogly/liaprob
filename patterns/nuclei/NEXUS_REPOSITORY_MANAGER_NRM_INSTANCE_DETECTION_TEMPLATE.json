@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nexus_repository_manager_nrm_instance_detection_template",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXUS_REPOSI",
+  "taxonomy_name": "Nexus Repository Manager (NRM) Instance Detection Template",
+  "source": {
+    "type": "nuclei",
+    "file": "nexus-detect.yaml",
+    "original_id": "nexus-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nexus-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nexus-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nexus_reposi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/service/rest/swagger.json",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Nexus Repository Manager",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Sonatype",
+  "product": "Nexus_Repository_Manager",
+  "cpe23_template": "cpe:2.3:a:sonatype:nexus_repository_manager:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "nexus"
+  ]
+}

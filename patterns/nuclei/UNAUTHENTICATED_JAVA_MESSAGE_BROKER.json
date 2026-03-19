@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-unauthenticated_java_message_broker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNAUTHENTICA",
+  "taxonomy_name": "Unauthenticated Java Message Broker",
+  "source": {
+    "type": "nuclei",
+    "file": "unauth-java-message-broker-detect.yaml",
+    "original_id": "unauth-java-message-broker-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/unauth-java-message-broker-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template unauth-java-message-broker-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "unauthentica_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "101 imqbroker",
+          "confidence_delta": 0.2,
+          "version_extract": "imqbroker ([0-9.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "cluster_discovery",
+          "confidence_delta": 0.2,
+          "version_extract": "imqbroker ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        7676
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    7676
+  ],
+  "tags": [
+    "network",
+    "tcp",
+    "jms",
+    "openmq",
+    "unauth"
+  ]
+}

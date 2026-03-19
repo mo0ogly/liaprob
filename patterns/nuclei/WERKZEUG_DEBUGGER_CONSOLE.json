@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-werkzeug_debugger_console",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WERKZEUG_DEB",
+  "taxonomy_name": "Werkzeug debugger console",
+  "source": {
+    "type": "nuclei",
+    "file": "werkzeug-debugger-detect.yaml",
+    "original_id": "werkzeug-debugger-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/werkzeug-debugger-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template werkzeug-debugger-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "werkzeug_deb_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/console",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<h1>Interactive Console</h1>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "werkzeug"
+  ]
+}

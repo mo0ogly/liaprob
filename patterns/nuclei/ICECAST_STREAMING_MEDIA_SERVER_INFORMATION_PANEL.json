@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-icecast_streaming_media_server_information_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ICECAST_STRE",
+  "taxonomy_name": "Icecast Streaming Media Server Information Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "icecast-mediaserver-detect.yaml",
+    "original_id": "icecast-mediaserver-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/icecast-mediaserver-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template icecast-mediaserver-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "icecast_stre_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/server_version.xsl",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Icecast Streaming Media Server",
+          "confidence_delta": 0.4,
+          "version_extract": "Icecast ([0-9.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Xiph",
+  "product": "Icecast",
+  "cpe23_template": "cpe:2.3:a:xiph:icecast:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "icecast",
+    "media-server"
+  ]
+}

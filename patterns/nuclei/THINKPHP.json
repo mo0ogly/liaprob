@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-thinkphp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THINKPHP",
+  "taxonomy_name": "ThinkPHP",
+  "source": {
+    "type": "nuclei",
+    "file": "thinkphp-detect.yaml",
+    "original_id": "thinkphp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/thinkphp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template thinkphp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "thinkphp_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/Library/Think/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "{ Fast & Simple OOP PHP Framework } -- [ WE CAN DO IT JUST THINK ]",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/thinkphp/library/think/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Powered-By: ThinkPHP",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Thinkphp",
+  "product": "Thinkphp",
+  "cpe23_template": "cpe:2.3:a:thinkphp:thinkphp:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "thinkphp",
+    "intrusive"
+  ]
+}

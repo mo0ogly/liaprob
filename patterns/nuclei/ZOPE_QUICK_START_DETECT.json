@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-zope_quick_start_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOPE_QUICK_S",
+  "taxonomy_name": "Zope Quick Start Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "zope-detect.yaml",
+    "original_id": "zope-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/zope-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template zope-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "zope_quick_s_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Zope QuickStart</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Zope/",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "zope"
+  ]
+}

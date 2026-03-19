@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-materialize_css",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATERIALIZE_",
+  "taxonomy_name": "Materialize CSS",
+  "source": {
+    "type": "nuclei",
+    "file": "materialize-css-detect.yaml",
+    "original_id": "materialize-css-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/materialize-css-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template materialize-css-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://materializecss.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "materialize__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)href=[\"'][^\"']*materialize(?:[\\.-]min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)href=[\"'][^\"']*materialize(?:[\\.-]min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)src=[\"'][^\"']*materialize(?:[\\.-]min)?\\.js",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)src=[\"'][^\"']*materialize(?:[\\.-]min)?\\.js",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)class=[\"'][^\"']*waves-effect",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)class=[\"'][^\"']*waves-effect",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)class=[\"'][^\"']*materialize-textarea",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)class=[\"'][^\"']*materialize-textarea",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "materialize"
+  ]
+}

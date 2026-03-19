@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-weblogic_t3_protocol_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBLOGIC_T3_",
+  "taxonomy_name": "Weblogic T3 Protocol Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "weblogic-t3-detect.yaml",
+    "original_id": "weblogic-t3-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/weblogic-t3-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template weblogic-t3-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "weblogic_t3__tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "HELO",
+          "confidence_delta": 0.4,
+          "version_extract": "HELO:(.*).false",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        7001
+      ],
+      "send": "t3 12.2.1\nAS:255\nHL:19\nMS:10000000\nPU:t3://us-l-breens:7001\n\n"
+    },
+    {
+      "id": "weblogic_t3__tcp_1",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "HELO",
+          "confidence_delta": 0.4,
+          "version_extract": "HELO:(.*).false",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        7002
+      ],
+      "send": "t3s 12.2.1\nAS:255\nHL:19\nMS:10000000\nPU:t3://us-l-breens:7001\n\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    7001,
+    7002
+  ],
+  "tags": [
+    "network",
+    "weblogic",
+    "t3",
+    "oracle",
+    "tcp"
+  ]
+}

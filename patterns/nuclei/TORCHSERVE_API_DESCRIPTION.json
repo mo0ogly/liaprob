@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-torchserve_api_description",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TORCHSERVE_A",
+  "taxonomy_name": "TorchServe API Description",
+  "source": {
+    "type": "nuclei",
+    "file": "torchserve-detect.yaml",
+    "original_id": "torchserve-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/torchserve-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template torchserve-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "torchserve_a_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/api-description",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "TorchServe APIs\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"apiDescription\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "operationId\":",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Pytorch",
+  "product": "Torchserve",
+  "tags": [
+    "pytorch",
+    "api"
+  ]
+}

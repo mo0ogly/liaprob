@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hugegraph_studio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUGEGRAPH_ST",
+  "taxonomy_name": "HugeGraph Studio",
+  "source": {
+    "type": "nuclei",
+    "file": "hugegraph-studio-detect.yaml",
+    "original_id": "hugegraph-studio-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/hugegraph-studio-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template hugegraph-studio-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/hugegraph/hugegraph-studio",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hugegraph_st_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>HugeGraph Studio",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "hugegraph",
+    "studio"
+  ]
+}

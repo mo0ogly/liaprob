@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apollo_server_graphql_introspection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APOLLO_SERVE",
+  "taxonomy_name": "Apollo Server GraphQL Introspection",
+  "source": {
+    "type": "nuclei",
+    "file": "apollo-server-detect.yaml",
+    "original_id": "apollo-server-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apollo-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apollo-server-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/apollographql/apollo-server",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apollo_serve_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/graphql",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Content-Type: application/json",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GraphQL introspection is not allowed by Apollo Server",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "apollo",
+    "graphql"
+  ]
+}

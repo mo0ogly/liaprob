@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-velvet_blues_update_urls_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VELVET_BLUES",
+  "taxonomy_name": "Velvet Blues Update URLs Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "velvet-blues-update-urls.yaml",
+    "original_id": "wordpress-velvet-blues-update-urls",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/velvet-blues-update-urls.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-velvet-blues-update-urls (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/velvet-blues-update-urls/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "velvet_blues_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/velvet-blues-update-urls/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

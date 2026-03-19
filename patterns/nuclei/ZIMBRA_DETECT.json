@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-zimbra_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZIMBRA",
+  "taxonomy_name": "Zimbra Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "zimbra-detect.yaml",
+    "original_id": "zimbra-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/zimbra-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template zimbra-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "zimbra_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/js/zimbraMail/share/model/ZmSettings.js",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Zimbra Collaboration Suite Web Client",
+          "confidence_delta": 0.4,
+          "version_extract": "CLIENT_VERSION\\\",\t\t\t\t\t{type:ZmSetting.T_CONFIG, defaultValue:\\\"(.*?)\"",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "application/x-javascript",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "zimbra"
+  ]
+}

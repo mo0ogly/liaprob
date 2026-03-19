@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-sap_netweaver_webgui_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_NETWEAVE",
+  "taxonomy_name": "SAP NetWeaver WebGUI Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "sap-netweaver-webgui.yaml",
+    "original_id": "sap-netweaver-webgui",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sap-netweaver-webgui.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sap-netweaver-webgui (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "sap_netweave_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/sap/bc/gui/sap/its/webgui",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "sap-system-login",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Logon</title>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sap",
+    "webserver"
+  ]
+}

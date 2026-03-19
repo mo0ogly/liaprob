@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-tornado_server_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TORNADO",
+  "taxonomy_name": "Tornado Server Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "tornado-server-login.yaml",
+    "original_id": "tornado-server-login",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/tornado-server-login.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template tornado-server-login (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "tornado_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Welcome to Docmosis Tornado",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Please log in:",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "panel",
+    "tornado"
+  ]
+}

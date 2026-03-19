@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-esmtp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ESMTP",
+  "taxonomy_name": "ESMTP",
+  "source": {
+    "type": "nuclei",
+    "file": "esmtp-detect.yaml",
+    "original_id": "esmtp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/esmtp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template esmtp-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://nmap.org/nsedoc/scripts/smtp-open-relay.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "esmtp_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "ESMTP Postfix",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "220",
+          "confidence_delta": 0.2
+        }
+      ],
+      "ports": [
+        25,
+        2525,
+        465,
+        587
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    25,
+    2525,
+    465,
+    587
+  ],
+  "tags": [
+    "network",
+    "smtp",
+    "mail",
+    "tcp"
+  ]
+}

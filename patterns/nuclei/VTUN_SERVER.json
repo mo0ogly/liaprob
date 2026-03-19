@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-vtun_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VTUN",
+  "taxonomy_name": "VTUN Server",
+  "source": {
+    "type": "nuclei",
+    "file": "vtun-server.yaml",
+    "original_id": "vtun-server",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/vtun-server.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template vtun-server (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://vtun.sourceforge.net/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://linux.die.net/man/8/vtund",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "vtun_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "VTUN server",
+          "confidence_delta": 0.4,
+          "version_extract": "(VTUN server ver\\s+[0-9A-Za-z.]+(?:\\s+[0-9]{2}/[0-9]{2}/[0-9]{4})?)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        5001
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    5001
+  ],
+  "tags": [
+    "network",
+    "vtun",
+    "tcp",
+    "service"
+  ]
+}

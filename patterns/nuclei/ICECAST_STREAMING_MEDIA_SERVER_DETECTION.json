@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-icecast_streaming_media_server_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ICECAST_STRE",
+  "taxonomy_name": "Icecast Streaming Media Server Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "icecast-server-detect.yaml",
+    "original_id": "icecast-server-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/icecast-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template icecast-server-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "icecast_stre_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Icecast",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Xiph",
+  "product": "Icecast",
+  "cpe23_template": "cpe:2.3:a:xiph:icecast:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "icecast"
+  ]
+}

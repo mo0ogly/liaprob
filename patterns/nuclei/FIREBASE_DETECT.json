@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-firebase_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FIREBASE",
+  "taxonomy_name": "firebase detect",
+  "source": {
+    "type": "nuclei",
+    "file": "firebase-detect.yaml",
+    "original_id": "firebase-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/firebase-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template firebase-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "http://ghostlulz.com/google-exposed-firebase-database/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "firebase_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/.settings/rules.json?auth=FIREBASE_SECRET",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Could not parse auth token",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "firebase"
+  ]
+}

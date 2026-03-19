@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ymhome",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YMHOME",
+  "taxonomy_name": "Ymhome",
+  "source": {
+    "type": "nuclei",
+    "file": "ymhome-detect.yaml",
+    "original_id": "ymhome-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ymhome-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ymhome-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ymhome_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "yimioa.apk",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "isSavePwd:",
+          "confidence_delta": 0.2
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ymhome"
+  ]
+}

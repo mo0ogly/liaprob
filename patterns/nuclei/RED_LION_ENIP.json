@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-red_lion_enip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_LION_ENI",
+  "taxonomy_name": "Red Lion ENIP",
+  "source": {
+    "type": "nuclei",
+    "file": "red-lion-enip-detect.yaml",
+    "original_id": "red-lion-enip-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/red-lion-enip-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template red-lion-enip-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "red_lion_eni_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "starts_with_hex",
+          "value": "526564204c696f6e20436f6e74726f6c73",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        502
+      ],
+      "send_hex": "0004012b1b00"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    502
+  ],
+  "tags": [
+    "ics",
+    "redlion",
+    "network",
+    "tcp"
+  ]
+}

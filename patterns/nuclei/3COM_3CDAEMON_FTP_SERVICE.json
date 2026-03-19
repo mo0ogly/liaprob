@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-3com_3cdaemon_ftp_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "3COM_3CDAEMO",
+  "taxonomy_name": "3Com 3CDaemon FTP Service",
+  "source": {
+    "type": "nuclei",
+    "file": "3com-ftp-detect.yaml",
+    "original_id": "3com-ftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/3com-ftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template 3com-ftp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "3com_3cdaemo_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "3Com 3CDaemon FTP",
+          "confidence_delta": 0.4,
+          "version_extract": "Version ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "3com",
+    "tcp"
+  ]
+}

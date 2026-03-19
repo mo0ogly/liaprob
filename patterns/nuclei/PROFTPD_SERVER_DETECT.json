@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-proftpd_server_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROFTPD",
+  "taxonomy_name": "ProFTPD Server Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "proftpd-server-detect.yaml",
+    "original_id": "proftpd-server-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/proftpd-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template proftpd-server-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "proftpd_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "ProFTPD Server",
+          "confidence_delta": 0.4,
+          "version_extract": "ProFTPD ([0-9.a-z]+) Server",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "proftpd",
+    "tcp"
+  ]
+}

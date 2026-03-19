@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-expn_mail_server_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EXPN_MAIL",
+  "taxonomy_name": "EXPN Mail Server Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "expn-mail-detect.yaml",
+    "original_id": "expn-mail-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/expn-mail-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template expn-mail-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "expn_mail_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "250-EXPN",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        25,
+        2525,
+        465,
+        587
+      ],
+      "send_hex": "65686c6f20636865636b746c730a"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    25,
+    2525,
+    465,
+    587
+  ],
+  "tags": [
+    "mail",
+    "expn",
+    "network",
+    "smtp",
+    "tcp"
+  ]
+}

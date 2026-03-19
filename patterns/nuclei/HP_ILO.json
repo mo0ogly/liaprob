@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hp_ilo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_ILO",
+  "taxonomy_name": "HP iLO",
+  "source": {
+    "type": "nuclei",
+    "file": "ilo-detect.yaml",
+    "original_id": "ilo-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ilo-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ilo-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hp_ilo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/xmldata?item=all",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/xml",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<RIMP>",
+          "confidence_delta": 0.2,
+          "version_extract": "<FWRI>([0-9.]+)</FWRI>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<HSI>",
+          "confidence_delta": 0.2,
+          "version_extract": "<FWRI>([0-9.]+)</FWRI>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ilo"
+  ]
+}

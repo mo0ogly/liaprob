@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_oracle_iplanet_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_ORACL",
+  "taxonomy_name": "Detect Oracle-iPlanet-Web-Server",
+  "source": {
+    "type": "nuclei",
+    "file": "oracle-iplanet-web-server.yaml",
+    "original_id": "oracle-iplanet-web-server",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oracle-iplanet-web-server.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oracle-iplanet-web-server (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_oracl_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Oracle iPlanet Web Server",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Oracle",
+  "product": "Iplanet_Web_Server",
+  "cpe23_template": "cpe:2.3:a:oracle:iplanet_web_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "oracle"
+  ]
+}

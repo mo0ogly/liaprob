@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wso2_products",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WSO2_PRODUCT",
+  "taxonomy_name": "WSO2 Products",
+  "source": {
+    "type": "nuclei",
+    "file": "wso2-products-detect.yaml",
+    "original_id": "wso2-products-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/wso2-products-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wso2-products-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wso2_product_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/services/Version",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "version.services.core.carbon.wso2.org",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wso2"
+  ]
+}

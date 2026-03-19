@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-sitecore_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITECORE_CMS",
+  "taxonomy_name": "Sitecore CMS",
+  "source": {
+    "type": "nuclei",
+    "file": "sitecore-cms.yaml",
+    "original_id": "sitecore-cms",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sitecore-cms.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sitecore-cms (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.sitecore.com",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "sitecore_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/-/media/doo-doo.ashx",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Location: /sitecore/service/notfound.aspx",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Sitecore",
+  "product": "Cms",
+  "cpe23_template": "cpe:2.3:a:sitecore:cms:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "cms",
+    "sitecore"
+  ]
+}

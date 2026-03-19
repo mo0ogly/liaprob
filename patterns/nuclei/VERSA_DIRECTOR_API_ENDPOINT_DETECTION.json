@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-versa_director_api_endpoint_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERSA_DIRECT",
+  "taxonomy_name": "Versa Director API Endpoint Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "versa-director-api.yaml",
+    "original_id": "versa-director-api",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/versa-director-api.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template versa-director-api (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://versa-networks.com/products/components/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "versa_direct_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": ":9182",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\"more_info\":\"http://nms.versa.com/errors/4001\"",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\"more_info\":\"http://nms.versa.com/errors/4001\"",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Versa-Networks",
+  "product": "Versa_Director",
+  "cpe23_template": "cpe:2.3:a:versa-networks:versa_director:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "api",
+    "versa"
+  ]
+}

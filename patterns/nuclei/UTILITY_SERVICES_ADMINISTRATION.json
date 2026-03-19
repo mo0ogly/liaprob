@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-utility_services_administration",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UTILITY_SERV",
+  "taxonomy_name": "Utility Services Administration",
+  "source": {
+    "type": "nuclei",
+    "file": "utility-service-detect.yaml",
+    "original_id": "utility-service-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/utility-service-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template utility-service-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "utility_serv_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Utility Services Administration</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": ">Utility-Services",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Avaya",
+  "product": "Aura_Utility_Services",
+  "cpe23_template": "cpe:2.3:a:avaya:aura_utility_services:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "avaya",
+    "aura"
+  ]
+}

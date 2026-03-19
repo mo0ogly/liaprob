@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-writebook",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WRITEBOOK",
+  "taxonomy_name": "Writebook",
+  "source": {
+    "type": "nuclei",
+    "file": "writebook-detect.yaml",
+    "original_id": "writebook-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/writebook-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template writebook-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://once.com/writebook",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://books.37signals.com/2/the-writebook-manual",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "writebook_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: _writebook_session",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Made with Writebook",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Writebook</h1>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "writebook"
+  ]
+}

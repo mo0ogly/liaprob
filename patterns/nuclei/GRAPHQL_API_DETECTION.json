@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-graphql_api_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRAPHQL_API",
+  "taxonomy_name": "GraphQL API Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "graphql-detect.yaml",
+    "original_id": "graphql-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/graphql-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template graphql-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "graphql_api_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "{{paths}}",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "__schema",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(Introspection|INTROSPECTION|introspection).*?",
+          "confidence_delta": 0.4,
+          "version_extract": "(Introspection|INTROSPECTION|introspection).*?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": ".*?operation not found.*?",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "graphql"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-iparapheur",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IPARAPHEUR",
+  "taxonomy_name": "Iparapheur",
+  "source": {
+    "type": "nuclei",
+    "file": "iparapheur-detect.yaml",
+    "original_id": "iparapheur-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/iparapheur-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template iparapheur-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.libriciel.fr/logiciels/iparapheur/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "iparapheur_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>iparapheur</title>",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Libriciel SCOP",
+          "confidence_delta": 0.2
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "iparapheur"
+  ]
+}

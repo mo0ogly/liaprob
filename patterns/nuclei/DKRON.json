@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-dkron",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DKRON",
+  "taxonomy_name": "Dkron",
+  "source": {
+    "type": "nuclei",
+    "file": "dkron-detect.yaml",
+    "original_id": "dkron-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/dkron-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template dkron-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/distribworks/dkron/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "dkron_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/ui/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Dkron</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dkron"
+  ]
+}

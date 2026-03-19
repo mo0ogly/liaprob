@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-bigip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BIGIP",
+  "taxonomy_name": "BIGIP",
+  "source": {
+    "type": "nuclei",
+    "file": "bigip-detect.yaml",
+    "original_id": "bigip-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/bigip-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template bigip-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.intelisecure.com/how-to-decode-big-ip-f5-persistence-cookie-values",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://support.f5.com/csp/article/K23254150",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "bigip_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "BIGipServer",
+          "confidence_delta": 0.4,
+          "version_extract": "(BIGipServer[a-z\\_\\.\\-\\~0-9A-Z]*)=([!a-z0-9A-Z/.=]+)",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "BigIP",
+          "confidence_delta": 0.4,
+          "version_extract": "(BIGipServer[a-z\\_\\.\\-\\~0-9A-Z]*)=([!a-z0-9A-Z/.=]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "F5 Networks.",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "bigip",
+    "f5"
+  ]
+}

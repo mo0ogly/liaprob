@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-rosariosis_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROSARIOSIS",
+  "taxonomy_name": "Rosariosis Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "rosariosis-detect.yaml",
+    "original_id": "rosariosis-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/rosariosis-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template rosariosis-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/francoisjacquet/rosariosis",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.rosariosis.org/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "rosariosis_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "RosarioSIS=",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "rosariosis"
+  ]
+}

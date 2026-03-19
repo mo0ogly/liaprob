@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-craft_cms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CRAFT_CMS",
+  "taxonomy_name": "Craft CMS Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "craft-cms-detect.yaml",
+    "original_id": "craft-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/craft-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template craft-cms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://craftcms.com",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "craft_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Powered-By: Craft CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Set-Cookie: (Craft|CRAFT)",
+          "confidence_delta": 0.4,
+          "version_extract": "Set-Cookie: (Craft|CRAFT)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)CRAFT_CSRF_TOKEN",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)CRAFT_CSRF_TOKEN",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "craftcms"
+  ]
+}

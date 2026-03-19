@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-akamai_cdn_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKAMAI_CDN",
+  "taxonomy_name": "akamai cdn detection",
+  "source": {
+    "type": "nuclei",
+    "file": "akamai-detect.yaml",
+    "original_id": "akamai-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/akamai-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template akamai-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://support.globaldots.com/hc/en-us/articles/115003996705-Akamai-Pragma-Headers-overview",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://community.akamai.com/customers/s/article/Using-Akamai-Pragma-headers-to-investigate-or-troubleshoot-Akamai-content-delivery?language=en_US",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "akamai_cdn_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "deploy.akamai",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "akamai",
+    "cdn"
+  ]
+}

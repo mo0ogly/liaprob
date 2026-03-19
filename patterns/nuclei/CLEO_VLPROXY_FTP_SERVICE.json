@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-cleo_vlproxy_ftp_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLEO_VLPROXY",
+  "taxonomy_name": "Cleo VLProxy FTP Service",
+  "source": {
+    "type": "nuclei",
+    "file": "cleo-vlproxy-ftp-detect.yaml",
+    "original_id": "cleo-vlproxy-ftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/cleo-vlproxy-ftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template cleo-vlproxy-ftp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "cleo_vlproxy_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Cleo VLProxy",
+          "confidence_delta": 0.4,
+          "version_extract": "VLProxy/([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "cleo",
+    "tcp"
+  ]
+}

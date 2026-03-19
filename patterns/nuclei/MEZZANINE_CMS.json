@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-mezzanine_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEZZANINE_CM",
+  "taxonomy_name": "Mezzanine CMS",
+  "source": {
+    "type": "nuclei",
+    "file": "mezzanine-cms-detect.yaml",
+    "original_id": "mezzanine-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/mezzanine-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template mezzanine-cms-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "mezzanine_cm_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "powered by Mezzanine",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Welcome to Mezzanine",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Mezzanine version",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)mezzanine\\s+(v[0-9.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)mezzanine\\s+(v[0-9.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<title>Mezzanine CMS",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<title>Mezzanine CMS",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "mezzanine",
+    "cms"
+  ]
+}

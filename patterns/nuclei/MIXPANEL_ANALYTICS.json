@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-mixpanel_analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIXPANEL_ANA",
+  "taxonomy_name": "Mixpanel Analytics",
+  "source": {
+    "type": "nuclei",
+    "file": "mixpanel-detect.yaml",
+    "original_id": "mixpanel-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/mixpanel-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template mixpanel-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://mixpanel.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://developer.mixpanel.com/docs/javascript-quickstart",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "mixpanel_ana_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "cdn.mxpnl.com",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "window.mixpanel",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "mixpanel-2-latest.min.js",
+          "confidence_delta": 0.13
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "mixpanel"
+  ]
+}

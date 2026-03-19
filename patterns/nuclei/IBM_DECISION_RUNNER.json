@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ibm_decision_runner",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_DECISION",
+  "taxonomy_name": "IBM Decision Runner",
+  "source": {
+    "type": "nuclei",
+    "file": "ibm-decision-runner.yaml",
+    "original_id": "ibm-decision-runner",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ibm-decision-runner.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ibm-decision-runner (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.ibm.com/docs/en/odm/8.8.1?topic=simulation-tuning-decision-runner-web-application",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ibm_decision_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/DecisionRunner/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Decision Runner</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "Decision Server ([0-9.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ibm",
+    "ibm-decision-runner"
+  ]
+}

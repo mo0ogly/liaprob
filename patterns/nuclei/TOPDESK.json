@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-topdesk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOPDESK",
+  "taxonomy_name": "TOPdesk",
+  "source": {
+    "type": "nuclei",
+    "file": "topdesk-detect.yaml",
+    "original_id": "topdesk-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/topdesk-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template topdesk-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "topdesk_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "href=\"/tas/",
+          "confidence_delta": 0.4,
+          "version_extract": "auth\\.css\\?timestamp=(\\d{10})",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "topdeskidploginforwardurl",
+          "confidence_delta": 0.4,
+          "version_extract": "auth\\.css\\?timestamp=(\\d{10})",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "topdesk"
+  ]
+}

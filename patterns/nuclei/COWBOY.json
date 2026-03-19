@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-cowboy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COWBOY",
+  "taxonomy_name": "Cowboy",
+  "source": {
+    "type": "nuclei",
+    "file": "cowboy-detect.yaml",
+    "original_id": "cowboy-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/cowboy-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template cowboy-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/ninenines/cowboy",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "cowboy_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: Cowboy",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "cowboy"
+  ]
+}

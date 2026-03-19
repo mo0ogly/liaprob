@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ultimate_addons_for_elementor_formerly_elementor_header_footer_builder_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ULTIMATE_ADD",
+  "taxonomy_name": "Ultimate Addons for Elementor (Formerly Elementor Header & Footer Builder) Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "header-footer-elementor.yaml",
+    "original_id": "wordpress-header-footer-elementor",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/header-footer-elementor.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-header-footer-elementor (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/header-footer-elementor/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ultimate_add_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/header-footer-elementor/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-100",
+    "top-200"
+  ]
+}

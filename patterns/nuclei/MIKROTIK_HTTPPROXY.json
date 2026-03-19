@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-mikrotik_httpproxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIKROTIK_HTT",
+  "taxonomy_name": "MikroTik httpproxy",
+  "source": {
+    "type": "nuclei",
+    "file": "mikrotik-httpproxy.yaml",
+    "original_id": "mikrotik-httpproxy",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/mikrotik-httpproxy.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template mikrotik-httpproxy (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "mikrotik_htt_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: Mikrotik HttpProxy",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Mikrotik",
+  "product": "Rb3011Uias-Rm",
+  "cpe23_template": "cpe:2.3:h:mikrotik:rb3011uias-rm:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "mikrotik"
+  ]
+}

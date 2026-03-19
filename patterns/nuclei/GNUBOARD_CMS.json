@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-gnuboard_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GNUBOARD_CMS",
+  "taxonomy_name": "Gnuboard CMS",
+  "source": {
+    "type": "nuclei",
+    "file": "gnuboard-detect.yaml",
+    "original_id": "gnuboard-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/gnuboard-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template gnuboard-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://sir.kr/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "gnuboard_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/LICENSE.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GNU Board",
+          "confidence_delta": 0.2,
+          "version_extract": "\\( GNU Board (.*) \\)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "http://sir.kr",
+          "confidence_delta": 0.2,
+          "version_extract": "\\( GNU Board (.*) \\)",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/plain",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "gnuboard"
+  ]
+}

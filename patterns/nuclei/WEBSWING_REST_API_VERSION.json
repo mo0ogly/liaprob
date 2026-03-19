@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-webswing_rest_api_version",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBSWING_RES",
+  "taxonomy_name": "WebSwing REST API Version",
+  "source": {
+    "type": "nuclei",
+    "file": "webswing-api-version-detect.yaml",
+    "original_id": "webswing-api-version-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/webswing-api-version-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template webswing-api-version-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "webswing_res_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/rest/version",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "webswing.org",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "webswing",
+    "rest",
+    "api",
+    "version"
+  ]
+}

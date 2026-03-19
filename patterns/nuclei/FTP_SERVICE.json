@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ftp_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FTP",
+  "taxonomy_name": "FTP Service",
+  "source": {
+    "type": "nuclei",
+    "file": "ftp-detect.yaml",
+    "original_id": "ftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/ftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ftp-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc959",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ftp_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^220.*Ftp.*",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^220.*Ftp.*",
+          "version_group": 1
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Ftp",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send": "\r\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "tcp"
+  ]
+}

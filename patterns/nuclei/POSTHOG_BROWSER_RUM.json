@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-posthog_browser_rum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POSTHOG_BROW",
+  "taxonomy_name": "PostHog Browser RUM",
+  "source": {
+    "type": "nuclei",
+    "file": "posthog-rum-detect.yaml",
+    "original_id": "posthog-rum-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/posthog-rum-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template posthog-rum-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://posthog.com/docs/integrate/client/js",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/PostHog/posthog-js",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "posthog_brow_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "window\\.posthog",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "api_host[\"']?\\s*:\\s*[\"'][^\"']*posthog",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "posthog\\.init\\s*\\(",
+          "confidence_delta": 0.4,
+          "version_extract": "posthog\\.init\\s*\\(",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "rum",
+    "posthog"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-openai_plugin_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENAI_PLUGI",
+  "taxonomy_name": "OpenAI Plugin Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "openai-plugin.yaml",
+    "original_id": "openai-plugin",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/openai-plugin.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template openai-plugin (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://platform.openai.com/docs/plugins/introduction",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "openai_plugi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/.well-known/ai-plugin.json",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"schema_version\":",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"name_for_model\":",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "openai",
+    "plugin",
+    "ai"
+  ]
+}

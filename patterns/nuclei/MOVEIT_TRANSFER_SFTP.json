@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-moveit_transfer_sftp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOVEIT_TRANS",
+  "taxonomy_name": "MOVEit Transfer SFTP",
+  "source": {
+    "type": "nuclei",
+    "file": "moveit-sftp-detect.yaml",
+    "original_id": "moveit-sftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/moveit-sftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template moveit-sftp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "moveit_trans_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)MOVEit",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)MOVEit",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        22
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    22
+  ],
+  "tags": [
+    "network",
+    "ssh",
+    "moveit",
+    "sftp",
+    "tcp"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-graphql_tartiflette_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRAPHQL_TART",
+  "taxonomy_name": "Graphql Tartiflette Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "graphql-tartiflette-detect.yaml",
+    "original_id": "graphql-tartiflette-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/graphql-tartiflette-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template graphql-tartiflette-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/dolevf/graphw00f/blob/main/graphw00f/lib.py",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "graphql_tart_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/graphql",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Unknow Directive < @a >.",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "graphql",
+    "tartiflette"
+  ]
+}

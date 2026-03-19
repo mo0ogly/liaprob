@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-mojoportal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOJOPORTAL",
+  "taxonomy_name": "Mojoportal",
+  "source": {
+    "type": "nuclei",
+    "file": "mojoportal-detect.yaml",
+    "original_id": "mojoportal-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/mojoportal-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template mojoportal-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "mojoportal_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by mojoPortal",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "title=['\"]mojoPortal",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "alt=['\"]mojoPortal",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "mojoportal"
+  ]
+}

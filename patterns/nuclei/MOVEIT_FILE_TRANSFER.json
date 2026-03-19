@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-moveit_file_transfer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOVEIT_FILE_",
+  "taxonomy_name": "Moveit File Transfer",
+  "source": {
+    "type": "nuclei",
+    "file": "moveit-transfer-detect.yaml",
+    "original_id": "moveit-transfer-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/moveit-transfer-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template moveit-transfer-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "moveit_file__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "stylesheet_MOVEit",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "moveit.transfer",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "MOVEitPopUp",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "MOVEit Automation",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Progress",
+  "product": "Moveit_Transfer",
+  "cpe23_template": "cpe:2.3:a:progress:moveit_transfer:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "moveit"
+  ]
+}

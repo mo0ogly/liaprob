@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-allen_bradley_micro800_series_plc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALLEN_BRADLE",
+  "taxonomy_name": "Allen-Bradley Micro800 Series PLC",
+  "source": {
+    "type": "nuclei",
+    "file": "allen-bradley-micro800-detect.yaml",
+    "original_id": "allen-bradley-micro800-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/allen-bradley-micro800-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template allen-bradley-micro800-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "allen_bradle_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "starts_with_hex",
+          "value": "323038302d",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        44818
+      ],
+      "send_hex": "630000000000000000000000000000000000000000000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    44818
+  ],
+  "tags": [
+    "ics",
+    "allen-bradley",
+    "micro800",
+    "network",
+    "tcp"
+  ]
+}

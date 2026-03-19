@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_telerik_web_ui_dialog_handler",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_TELER",
+  "taxonomy_name": "Detect Telerik Web UI Dialog Handler",
+  "source": {
+    "type": "nuclei",
+    "file": "telerik-dialoghandler-detect.yaml",
+    "original_id": "telerik-dialoghandler-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/telerik-dialoghandler-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template telerik-dialoghandler-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://captmeelo.com/pentest/2018/08/03/pwning-with-telerik.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/bao7uo/dp_crypto",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_teler_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "{{paths}}",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Invalid length for a Base-64 char array",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telerik",
+    "asp"
+  ]
+}

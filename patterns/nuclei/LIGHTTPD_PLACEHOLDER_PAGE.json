@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-lighttpd_placeholder_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIGHTTPD_PLA",
+  "taxonomy_name": "Lighttpd Placeholder Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-lighttpd-placeholder-page.yaml",
+    "original_id": "lighttpd-placeholder-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-lighttpd-placeholder-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template lighttpd-placeholder-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "lighttpd_pla_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "If you find a bug in this Lighttpd package, or in Lighttpd itself",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<h1> Placeholder page </h1>",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Lighttpd",
+  "product": "Lighttpd",
+  "cpe23_template": "cpe:2.3:a:lighttpd:lighttpd:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "lighttpd"
+  ]
+}

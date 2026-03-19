@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hanwang",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HANWANG",
+  "taxonomy_name": "hanwang",
+  "source": {
+    "type": "nuclei",
+    "file": "hanwang-detect.yaml",
+    "original_id": "hanwang-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/hanwang-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template hanwang-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hanwang_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "汉王人脸考勤管理系统",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "hanwang"
+  ]
+}

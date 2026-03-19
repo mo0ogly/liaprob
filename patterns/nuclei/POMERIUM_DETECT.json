@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-pomerium_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POMERIUM",
+  "taxonomy_name": "Pomerium Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "pomerium-detect.yaml",
+    "original_id": "pomerium-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/pomerium-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template pomerium-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.pomerium.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "pomerium_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/.pomerium/index.js",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "https://pomerium.com/docs",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "https://discuss.pomerium.com",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "text/javascript",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pomerium",
+    "sso"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-metatag_cms_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METATAG_CMS",
+  "taxonomy_name": "Metatag CMS Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "metatag-cms.yaml",
+    "original_id": "metatag-cms",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/metatag-cms.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template metatag-cms (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.w3schools.com/tags/att_meta_name.asp",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "metatag_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/html",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<meta\\s+?name=\"?generator\"?\\s+?content=\"[^\"]+?\"",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<meta\\s+?name=\"?generator\"?\\s+?content=\"[^\"]+?\"",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "cms"
+  ]
+}

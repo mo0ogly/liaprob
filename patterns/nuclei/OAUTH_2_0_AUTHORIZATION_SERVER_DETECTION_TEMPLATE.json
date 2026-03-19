@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oauth_2_0_authorization_server_detection_template",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OAUTH_2_0_AU",
+  "taxonomy_name": "OAuth 2.0 Authorization Server Detection Template",
+  "source": {
+    "type": "nuclei",
+    "file": "oauth2-detect.yaml",
+    "original_id": "oauth2-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oauth2-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oauth2-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oauth_2_0_au_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/oauth/token",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "error\":\"invalid_client\"",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oauth"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-coming_soon_page_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMING_SOON_",
+  "taxonomy_name": "Coming Soon Page Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "coming-soon-page-detect.yaml",
+    "original_id": "coming-soon-page-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/coming-soon-page-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template coming-soon-page-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "coming_soon__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Coming Soon",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Future home of something quite cool.",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/html",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "default-page"
+  ]
+}

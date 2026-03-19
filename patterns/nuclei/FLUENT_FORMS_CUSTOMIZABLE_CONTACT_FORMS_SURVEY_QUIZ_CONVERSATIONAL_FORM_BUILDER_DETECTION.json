@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-fluent_forms_customizable_contact_forms_survey_quiz_conversational_form_builder_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLUENT_FORMS",
+  "taxonomy_name": "Fluent Forms – Customizable Contact Forms, Survey, Quiz, & Conversational Form Builder Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "fluentform.yaml",
+    "original_id": "wordpress-fluentform",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/fluentform.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-fluentform (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/fluentform/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "fluent_forms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/fluentform/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-salesforce_b2c_commerce_webdav",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SALESFORCE_B",
+  "taxonomy_name": "Salesforce B2C Commerce WebDAV",
+  "source": {
+    "type": "nuclei",
+    "file": "salesforce-b2c-commerce-webdav.yaml",
+    "original_id": "salesforce-b2c-commerce-webdav",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/salesforce-b2c-commerce-webdav.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template salesforce-b2c-commerce-webdav (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://help.salesforce.com/s/articleView?id=cc.b2c_import_export_transaction_handling_and_feed_size.htm&type=5",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "salesforce_b_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/waroot/style.css",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/waroot/system_arrow.gif",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "salesforce"
+  ]
+}

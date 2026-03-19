@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-erlang_otp_ssh_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ERLANG_OTP_S",
+  "taxonomy_name": "Erlang/OTP SSH Server",
+  "source": {
+    "type": "nuclei",
+    "file": "ERLANG_OTP_SSH_DETECT.json",
+    "original_id": "erlang-otp-ssh-detect",
+    "parsed_at": "2026-03-01",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ssh-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template erlang-otp-ssh-detect (MIT)",
+      "date": "2026-03-01"
+    }
+  ],
+  "probes": [
+    {
+      "id": "erlang_otp_s_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "contains",
+          "value": "SSH-2.0-Erlang",
+          "confidence_delta": 0.4,
+          "version_extract": "SSH-2.0-Erlang/[0-9\\.]+",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        22
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    22
+  ],
+  "tags": [
+    "network",
+    "ssh",
+    "erlang",
+    "tcp"
+  ]
+}

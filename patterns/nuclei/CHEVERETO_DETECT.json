@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-chevereto_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHEVERETO",
+  "taxonomy_name": "Chevereto detect",
+  "source": {
+    "type": "nuclei",
+    "file": "chevereto-detect.yaml",
+    "original_id": "chevereto-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/chevereto-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template chevereto-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "chevereto_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "content=\"Chevereto(.*)\">",
+          "confidence_delta": 0.4,
+          "version_extract": "content=\"Chevereto(.*)\">",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Chevereto",
+  "product": "Chevereto",
+  "cpe23_template": "cpe:2.3:a:chevereto:chevereto:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "chevereto"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-workerman_websocket_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORKERMAN_WE",
+  "taxonomy_name": "Workerman Websocket Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "workerman-websocket-detect.yaml",
+    "original_id": "workerman-websocket-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/workerman-websocket-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template workerman-websocket-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.workerman.net/en/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/walkor/Workerman",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "workerman_we_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: Server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "workerman/",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "workerman",
+    "websocket"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-gnu_inetutils_ftpd_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GNU_INETUTIL",
+  "taxonomy_name": "GNU Inetutils FTPd Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "gnu-inetutils-ftpd-detect.yaml",
+    "original_id": "gnu-inetutils-ftpd-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/gnu-inetutils-ftpd-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template gnu-inetutils-ftpd-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "gnu_inetutil_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "SmartGateway FTP server",
+          "confidence_delta": 0.4,
+          "version_extract": "GNU inetutils ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "smartgateway",
+    "gnu",
+    "inetutils",
+    "tcp"
+  ]
+}

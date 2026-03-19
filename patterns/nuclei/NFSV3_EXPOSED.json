@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nfsv3_exposed",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NFSV3_EXPOSE",
+  "taxonomy_name": "NFSv3 Exposed",
+  "source": {
+    "type": "nuclei",
+    "file": "nfs-v3-exposed.yaml",
+    "original_id": "nfs-v3-exposed",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/nfs-v3-exposed.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nfs-v3-exposed (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://medium.com/@zoomeye_team/threat-intell-report-nfs-exposed-the-silent-attack-vector-8aa4ea0cbce1",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nfsv3_expose_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "starts_with_hex",
+          "value": "5645523300000001000000000000000000000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "HTTP/1.1",
+          "confidence_delta": 0.4,
+          "negate": true
+        }
+      ],
+      "ports": [
+        2049
+      ],
+      "send_hex": "80000028564552330000000000000002000186a3000000030000000000000000000000000000000000000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    2049
+  ],
+  "tags": [
+    "network",
+    "nfs",
+    "rpc",
+    "tcp"
+  ]
+}

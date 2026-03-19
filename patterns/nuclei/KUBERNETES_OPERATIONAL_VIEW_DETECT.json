@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-kubernetes_operational_view_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBERNETES_O",
+  "taxonomy_name": "Kubernetes Operational View Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "kubernetes-operational-view-detect.yaml",
+    "original_id": "kubernetes-operational-view-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kubernetes-operational-view-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kubernetes-operational-view-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/hjacobs/kube-ops-view",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://codeberg.org/hjacobs/kube-ops-view",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "kubernetes_o_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Kubernetes Operational View",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>Kubernetes Operational View (.+)<\\/title>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "k8s",
+    "kubernetes",
+    "devops",
+    "kube"
+  ]
+}

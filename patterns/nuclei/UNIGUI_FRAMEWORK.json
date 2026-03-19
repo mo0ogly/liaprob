@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-unigui_framework",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNIGUI_FRAME",
+  "taxonomy_name": "UniGUI Framework",
+  "source": {
+    "type": "nuclei",
+    "file": "uni-gui-framework.yaml",
+    "original_id": "uni-gui-framework",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/uni-gui-framework.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template uni-gui-framework (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "unigui_frame_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "uni-xtheme-",
+          "confidence_delta": 0.4,
+          "version_extract": "uniVars._extVer=\"(\\d+\\.\\d+\\.\\d+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ext-all.js",
+          "confidence_delta": 0.4,
+          "version_extract": "uniVars._extVer=\"(\\d+\\.\\d+\\.\\d+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "uniVars._extVer=",
+          "confidence_delta": 0.4,
+          "version_extract": "uniVars._extVer=\"(\\d+\\.\\d+\\.\\d+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "uni-(\\d+\\.\\d+\\.\\d+\\.\\d+)/",
+          "confidence_delta": 0.4,
+          "version_extract": "uni-(\\d+\\.\\d+\\.\\d+\\.\\d+)/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "uniVars._extVer=\"(\\d+\\.\\d+\\.\\d+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "uniVars._extVer=\"(\\d+\\.\\d+\\.\\d+)\"",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "unigui"
+  ]
+}

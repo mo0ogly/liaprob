@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-dynatrace_rum_tech_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DYNATRACE_RU",
+  "taxonomy_name": "Dynatrace RUM - Tech Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "dynatrace-rum-detect.yaml",
+    "original_id": "dynatrace-rum-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/dynatrace-rum-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template dynatrace-rum-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://docs.dynatrace.com/docs/observe/digital-experience/rum-concepts/rum-overview",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "dynatrace_ru_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ruxitagentjs_",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "data-dtconfig=",
+          "confidence_delta": 0.2
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "rum",
+    "dynatrace"
+  ]
+}

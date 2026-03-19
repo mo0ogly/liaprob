@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-famatech_radmin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FAMATECH_RAD",
+  "taxonomy_name": "Famatech Radmin",
+  "source": {
+    "type": "nuclei",
+    "file": "famatech-radmin-detect.yaml",
+    "original_id": "famatech-radmin-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/famatech-radmin-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template famatech-radmin-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.famatech.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://seclists.org/nmap-dev/2008/q1/89",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "famatech_rad_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "starts_with_hex",
+          "value": "0100000009",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        4899
+      ],
+      "send": "\u0001\u0000\u0000\u0000\u0001\u0000\u0000\u0000\b\b"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    4899
+  ],
+  "tags": [
+    "network",
+    "tcp",
+    "famatech",
+    "radmin"
+  ]
+}

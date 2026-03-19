@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oqtane_cms_database",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OQTANE_CMS_D",
+  "taxonomy_name": "Oqtane CMS Database",
+  "source": {
+    "type": "nuclei",
+    "file": "oqtane-db-detect.yaml",
+    "original_id": "oqtane-cms-db",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oqtane-db-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oqtane-cms-db (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/oqtane/oqtane.framework?tab=readme-ov-file#oqtane-framework",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/oqtane/oqtane.framework/blob/62879c3e522772830fb19c7c9af569bd6a7c2f78/Oqtane.Server/Controllers/DatabaseController.cs#L23",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oqtane_cms_d_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/api/database",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "controlType\"",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Oqtane",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "dbType\"",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Oqtane",
+  "product": "Oqtane",
+  "tags": [
+    "api",
+    "cms"
+  ]
+}

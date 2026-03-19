@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wondercms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WONDERCMS",
+  "taxonomy_name": "WonderCMS Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "wondercms-detect.yaml",
+    "original_id": "wondercms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/wondercms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wondercms-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wondercms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: wondercms_",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by WonderCMS",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "https://www.wondercms.com",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wondercms"
+  ]
+}

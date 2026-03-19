@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-windows_remote_management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WINDOWS_REMO",
+  "taxonomy_name": "Windows Remote Management",
+  "source": {
+    "type": "nuclei",
+    "file": "winrm-detect.yaml",
+    "original_id": "winrm-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/winrm-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template winrm-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "windows_remo_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/wsman",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Microsoft-HTTPAPI\\/[0-9\\.]+",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Www-Authenticate: NTLM",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Www-Authenticate: Negotiate",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "network",
+    "winrm",
+    "windows"
+  ]
+}

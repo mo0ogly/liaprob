@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-concrete5_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONCRETE5",
+  "taxonomy_name": "Concrete5 Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "concrete5-detect.yaml",
+    "original_id": "concrete5-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/concrete5-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template concrete5-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "concrete5_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by Concrete5",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "version_extract": "concrete5-site-id=([a-z0-9]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "X-Powered-By-Concrete5",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "version_extract": "concrete5-site-id=([a-z0-9]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "concrete5"
+  ]
+}

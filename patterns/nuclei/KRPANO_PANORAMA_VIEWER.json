@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-krpano_panorama_viewer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KRPANO_PANOR",
+  "taxonomy_name": "Krpano Panorama Viewer",
+  "source": {
+    "type": "nuclei",
+    "file": "krpano-detect.yaml",
+    "original_id": "krpano-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/krpano-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template krpano-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://krpano.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "krpano_panor_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "embedpano({",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "passQueryParameters:true",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "swf",
+          "confidence_delta": 0.13
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Krpano",
+  "product": "Panorama_Viewer",
+  "tags": [
+    "krpano",
+    "viewer"
+  ]
+}

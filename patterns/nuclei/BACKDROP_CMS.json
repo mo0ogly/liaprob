@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-backdrop_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BACKDROP_CMS",
+  "taxonomy_name": "Backdrop CMS",
+  "source": {
+    "type": "nuclei",
+    "file": "backdrop-cms-detect.yaml",
+    "original_id": "backdrop-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/backdrop-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template backdrop-cms-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "backdrop_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Added by Backdrop CMS packaging script",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "X-Generator: Backdrop CMS",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "backdrop",
+    "cms"
+  ]
+}

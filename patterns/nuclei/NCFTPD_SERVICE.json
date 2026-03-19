@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ncftpd_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NCFTPD",
+  "taxonomy_name": "NcFTPd Service",
+  "source": {
+    "type": "nuclei",
+    "file": "ncftpd-detect.yaml",
+    "original_id": "ncftpd-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/ncftpd-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ncftpd-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ncftpd_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "NcFTPd Server",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "ncftpd",
+    "tcp"
+  ]
+}

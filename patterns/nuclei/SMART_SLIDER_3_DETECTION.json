@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-smart_slider_3_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SMART_SLIDER",
+  "taxonomy_name": "Smart Slider 3 Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "smart-slider-3.yaml",
+    "original_id": "wordpress-smart-slider-3",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/smart-slider-3.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-smart-slider-3 (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/smart-slider-3/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "smart_slider_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/smart-slider-3/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-100",
+    "top-200"
+  ]
+}

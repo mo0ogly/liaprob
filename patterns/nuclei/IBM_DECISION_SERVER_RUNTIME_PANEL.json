@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ibm_decision_server_runtime_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_DECISION",
+  "taxonomy_name": "IBM Decision Server Runtime Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "ibm-decision-server-runtime.yaml",
+    "original_id": "ibm-decision-server-runtime",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ibm-decision-server-runtime.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ibm-decision-server-runtime (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.ibm.com/docs/en/odm/8.10?topic=services-hosted-transparent-decision",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ibm_decision_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/DecisionService/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Hosted Transparent Decision Service</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "Decision Server ([0-9.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ibm",
+    "decision-server"
+  ]
+}

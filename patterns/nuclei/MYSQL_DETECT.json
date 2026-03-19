@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-mysql",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYSQL",
+  "taxonomy_name": "MySQL",
+  "source": {
+    "type": "nuclei",
+    "file": "MYSQL_DETECT.json",
+    "original_id": "mysql-detect",
+    "parsed_at": "2026-03-01",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/mysql-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template mysql-detect (MIT)",
+      "date": "2026-03-01"
+    }
+  ],
+  "probes": [
+    {
+      "id": "mysql_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "contains",
+          "value": "mysql",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ],
+      "ports": [
+        3306
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    3306
+  ],
+  "tags": [
+    "network",
+    "mysql",
+    "db",
+    "tcp"
+  ]
+}

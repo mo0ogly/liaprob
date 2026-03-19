@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-graphql_java_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRAPHQL_JAVA",
+  "taxonomy_name": "Graphql Java Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "graphql-java-detect.yaml",
+    "original_id": "graphql-java-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/graphql-java-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template graphql-java-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/dolevf/graphw00f/blob/main/graphw00f/lib.py",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "graphql_java_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/graphql",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Invalid Syntax : offending token 'queryy'",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "graphql",
+    "java"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jetpack_boost_website_speed_performance_and_critical_css_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JETPACK_BOOS",
+  "taxonomy_name": "Jetpack Boost – Website Speed, Performance and Critical CSS Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "jetpack-boost.yaml",
+    "original_id": "wordpress-jetpack-boost",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/jetpack-boost.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-jetpack-boost (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/jetpack-boost/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jetpack_boos_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/jetpack-boost/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

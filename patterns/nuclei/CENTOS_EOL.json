@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-centos_eol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CENTOS_EOL",
+  "taxonomy_name": "CentOS EOL",
+  "source": {
+    "type": "nuclei",
+    "file": "centos-eol.yaml",
+    "original_id": "centos-eol",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/centos-eol.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template centos-eol (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://endoflife.date/centos",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://blog.centos.org/2023/04/end-dates-are-coming-for-centos-stream-8-and-centos-linux-7/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "centos_eol_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Apache/(\\d+\\.\\d+\\.\\d+) \\((centos|CentOS)\\)",
+          "confidence_delta": 0.4,
+          "version_extract": "Apache/(\\d+\\.\\d+\\.\\d+) \\((centos|CentOS)\\)",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "centos",
+    "eol"
+  ]
+}

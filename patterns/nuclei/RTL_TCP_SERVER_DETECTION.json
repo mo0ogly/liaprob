@@ -1,0 +1,93 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-rtl_tcp_server_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RTL_TCP",
+  "taxonomy_name": "RTL-TCP Server Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "rtl-tcp-server-detect.yaml",
+    "original_id": "rtl-tcp-server-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/rtl-tcp-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template rtl-tcp-server-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/steve-m/librtlsdr",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://osmocom.org/projects/rtl-sdr/wiki/Rtl-sdr",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "rtl_tcp_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "RTL0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "SoapySDR",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "GNU Radio",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "rtl_tcp",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        1234,
+        8888,
+        50000,
+        50001,
+        1235,
+        8889
+      ],
+      "send": "{{hex_decode('01000000070b8140')}}"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    1234,
+    8888,
+    50000,
+    50001,
+    1235,
+    8889
+  ],
+  "tags": [
+    "rtl-sdr",
+    "sdr",
+    "radio",
+    "iot",
+    "network"
+  ]
+}

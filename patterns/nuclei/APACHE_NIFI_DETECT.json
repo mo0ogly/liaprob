@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_nifi_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_NIFI",
+  "taxonomy_name": "Apache NiFi detect",
+  "source": {
+    "type": "nuclei",
+    "file": "nifi-detech.yaml",
+    "original_id": "apache-nifi-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nifi-detech.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-nifi-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_nifi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/access/config",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "supportsLogin",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "disconnectedNodeAcknowledged",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(aggregate|node)Snapshots?",
+          "confidence_delta": 0.4,
+          "version_extract": "(aggregate|node)Snapshots?",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "apache",
+    "nifi"
+  ]
+}

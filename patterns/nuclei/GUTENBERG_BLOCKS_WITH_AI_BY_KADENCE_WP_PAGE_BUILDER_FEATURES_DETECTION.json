@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-gutenberg_blocks_with_ai_by_kadence_wp_page_builder_features_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GUTENBERG_BL",
+  "taxonomy_name": "Gutenberg Blocks with AI by Kadence WP – Page Builder Features Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "kadence-blocks.yaml",
+    "original_id": "wordpress-kadence-blocks",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kadence-blocks.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-kadence-blocks (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/kadence-blocks/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "gutenberg_bl_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/kadence-blocks/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-creative_mail_easier_wordpress_woocommerce_email_marketing_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CREATIVE_MAI",
+  "taxonomy_name": "Creative Mail – Easier WordPress & WooCommerce Email Marketing Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "creative-mail-by-constant-contact.yaml",
+    "original_id": "wordpress-creative-mail-by-constant-contact",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/creative-mail-by-constant-contact.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-creative-mail-by-constant-contact (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/creative-mail-by-constant-contact/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "creative_mai_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/creative-mail-by-constant-contact/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

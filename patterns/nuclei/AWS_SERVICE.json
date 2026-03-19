@@ -1,0 +1,229 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-aws_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AWS",
+  "taxonomy_name": "AWS Service",
+  "source": {
+    "type": "nuclei",
+    "file": "aws-detect.yaml",
+    "original_id": "aws-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/aws-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template aws-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/6mile/cloud-headers",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "aws_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Content-Sha256:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Date:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Version-Id:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Id-2:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Delete-Marker:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: awselb/2.0",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: AWSALB=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: AWSALBCORS=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Cf-Id:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Cf-Pop:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "arn: arn:aws:codebuild",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Meta-Codebuild-Buildarn:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Meta-Codebuild-Content-Sha256:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Meta-Codebuild-Content-Md5:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Apigw-Id:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amzn-Requestid:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amzn-Errortype: MissingAuthenticationTokenException",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amzn-Remapped-Connection:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amzn-Remapped-Content-Length:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amzn-Remapped-Date:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Server-Side-Encryption:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amzn-Trace-Id:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amzn-Waf-Action:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Crc32:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Amz-Target:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "aws",
+    "amazon",
+    "alb",
+    "cloudfront",
+    "codebuild",
+    "gateway",
+    "xray",
+    "captcha",
+    "dynamodb",
+    "kms"
+  ]
+}

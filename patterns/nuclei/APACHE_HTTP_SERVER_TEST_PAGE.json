@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_http_server_test_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_HTTP_",
+  "taxonomy_name": "Apache HTTP Server Test Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-apache-test-all.yaml",
+    "original_id": "default-apache-test-all",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-apache-test-all.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-apache-test-all (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_http__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: server -> Server"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>.*?Apache(|\\d+) .*?(Default|Test).*?</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>.*?Apache(|\\d+) .*?(Default|Test).*?</title>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>(Default|Test).*? Apache(|\\d+).*?</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>(Default|Test).*? Apache(|\\d+).*?</title>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Http_Server",
+  "cpe23_template": "cpe:2.3:a:apache:http_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "apache"
+  ]
+}

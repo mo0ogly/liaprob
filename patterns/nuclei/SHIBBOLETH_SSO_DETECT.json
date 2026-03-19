@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-shibboleth_sso_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHIBBOLETH_S",
+  "taxonomy_name": "Shibboleth SSO Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "shibboleth-detect.yaml",
+    "original_id": "shibboleth-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/shibboleth-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template shibboleth-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.shibboleth.net/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "shibboleth_s_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Shibboleth IdP</title>",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "shibboleth",
+    "sso"
+  ]
+}

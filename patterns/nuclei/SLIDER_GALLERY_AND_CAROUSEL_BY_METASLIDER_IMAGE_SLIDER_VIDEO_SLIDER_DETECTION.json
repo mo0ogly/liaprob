@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-slider_gallery_and_carousel_by_metaslider_image_slider_video_slider_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SLIDER_GALLE",
+  "taxonomy_name": "Slider, Gallery, and Carousel by MetaSlider – Image Slider, Video Slider Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "ml-slider.yaml",
+    "original_id": "wordpress-ml-slider",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ml-slider.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-ml-slider (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/ml-slider/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "slider_galle_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/ml-slider/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

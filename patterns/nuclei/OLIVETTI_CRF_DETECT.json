@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-olivetti_crf_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OLIVETTI_CRF",
+  "taxonomy_name": "Olivetti CRF Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "olivetti-crf-detect.yaml",
+    "original_id": "olivetti-crf-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/olivetti-crf-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template olivetti-crf-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "olivetti_crf_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<TITLE>Olivetti CRF</TITLE>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "olivetti"
+  ]
+}

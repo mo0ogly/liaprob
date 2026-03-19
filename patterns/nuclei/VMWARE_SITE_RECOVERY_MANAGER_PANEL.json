@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-vmware_site_recovery_manager_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE_SITE_",
+  "taxonomy_name": "VMware Site Recovery Manager Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "vmware-site-recovery-manager.yaml",
+    "original_id": "vmware-site-recovery-manager",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/vmware-site-recovery-manager.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template vmware-site-recovery-manager (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "vmware_site__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/configure/app/landing/welcome-srm-va.html",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Welcome to VMware Site Recovery Manager</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "panel",
+    "vmware"
+  ]
+}

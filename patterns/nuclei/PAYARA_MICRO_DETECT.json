@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-payara_micro_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAYARA_MICRO",
+  "taxonomy_name": "Payara Micro Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "payara-micro-server-detect.yaml",
+    "original_id": "payara-micro-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/payara-micro-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template payara-micro-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "payara_micro_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Payara Micro #badassfish - Error report",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Payara",
+  "product": "Payara",
+  "cpe23_template": "cpe:2.3:a:payara:payara:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "payara"
+  ]
+}

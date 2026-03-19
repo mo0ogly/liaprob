@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-activecollab_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACTIVECOLLAB",
+  "taxonomy_name": "activecollab detect",
+  "source": {
+    "type": "nuclei",
+    "file": "activecollab-detect.yaml",
+    "original_id": "activecollab-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/activecollab-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template activecollab-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "activecollab_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "http://www.activecollab.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<form method=\"post\" id=\"system_form_2\" class=\"uniForm focusFirstField\">",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Activecollab",
+  "product": "Activecollab",
+  "cpe23_template": "cpe:2.3:a:activecollab:activecollab:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "acsoft",
+    "activecollab"
+  ]
+}

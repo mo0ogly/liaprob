@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nginx_version_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NGINX",
+  "taxonomy_name": "Nginx version detect",
+  "source": {
+    "type": "nuclei",
+    "file": "nginx-version.yaml",
+    "original_id": "nginx-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nginx-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nginx-version (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nginx_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "nginx/[0-9.]+",
+          "confidence_delta": 0.4,
+          "version_extract": "nginx/[0-9.]+",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "nginx"
+  ]
+}

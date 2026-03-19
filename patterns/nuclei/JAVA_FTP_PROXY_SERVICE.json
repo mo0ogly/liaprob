@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-java_ftp_proxy_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAVA_FTP_PRO",
+  "taxonomy_name": "Java FTP Proxy Service",
+  "source": {
+    "type": "nuclei",
+    "file": "java-ftp-proxy-detect.yaml",
+    "original_id": "java-ftp-proxy-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/java-ftp-proxy-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template java-ftp-proxy-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "java_ftp_pro_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Java FTP Proxy Server",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "java",
+    "tcp"
+  ]
+}

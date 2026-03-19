@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oneblog_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ONEBLOG",
+  "taxonomy_name": "OneBlog Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "oneblog-detect.yaml",
+    "original_id": "oneblog-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oneblog-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oneblog-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oneblog_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>OneBlog开源博客后台管理系统</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<meta name=\"keywords\" content=\"OneBlog",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oneblog"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-drupal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DRUPAL",
+  "taxonomy_name": "Drupal",
+  "source": {
+    "type": "nuclei",
+    "file": "drupal-detect.yaml",
+    "original_id": "drupal-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/drupal-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template drupal-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "drupal_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Initial release",
+          "confidence_delta": 0.2,
+          "version_extract": "class=\"site-version\">([0-9.x-]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Drupal 1.0.0",
+          "confidence_delta": 0.2,
+          "version_extract": "class=\"site-version\">([0-9.x-]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Drupal",
+          "confidence_delta": 0.4,
+          "version_extract": "class=\"site-version\">([0-9.x-]+)",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)x-drupal",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x-drupal",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)x-generator: drupal",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x-generator: drupal",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Drupal",
+  "product": "Drupal",
+  "cpe23_template": "cpe:2.3:a:drupal:drupal:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "drupal"
+  ]
+}

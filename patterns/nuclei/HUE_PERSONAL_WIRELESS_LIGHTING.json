@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hue_personal_wireless_lighting",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUE_PERSONAL",
+  "taxonomy_name": "Hue Personal Wireless Lighting",
+  "source": {
+    "type": "nuclei",
+    "file": "hue-wireless-lighting.yaml",
+    "original_id": "hue-wireless-lighting",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/hue-wireless-lighting.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template hue-wireless-lighting (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hue_personal_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "hue personal wireless lighting",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Welcome to hue",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "hue",
+    "iot"
+  ]
+}

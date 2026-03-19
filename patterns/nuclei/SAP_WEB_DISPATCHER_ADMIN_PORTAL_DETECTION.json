@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-sap_web_dispatcher_admin_portal_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_WEB_DISP",
+  "taxonomy_name": "SAP Web Dispatcher admin portal detection",
+  "source": {
+    "type": "nuclei",
+    "file": "sap-web-dispatcher-admin-portal.yaml",
+    "original_id": "sap-web-dispatcher-admin-portal",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sap-web-dispatcher-admin-portal.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sap-web-dispatcher-admin-portal (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "sap_web_disp_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/sap/wdisp/admin/public/default.html",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Basic realm=\"WEB ADMIN\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "SAP NetWeaver Application Server",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SAP Web Dispatcher",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Administration</title>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Sap",
+  "product": "Content_Server",
+  "tags": [
+    "sap",
+    "webserver",
+    "proxy"
+  ]
+}

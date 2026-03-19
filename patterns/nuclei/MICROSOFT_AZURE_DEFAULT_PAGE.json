@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-microsoft_azure_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_AZ",
+  "taxonomy_name": "Microsoft Azure Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-microsoft-azure-page.yaml",
+    "original_id": "default-microsoft-azure-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-microsoft-azure-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-microsoft-azure-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "microsoft_az_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Microsoft Azure App Service - Welcome</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Microsoft",
+  "product": "Azure",
+  "cpe23_template": "cpe:2.3:a:microsoft:azure:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "azure",
+    "microsoft"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-blackjumbodog_ftp_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLACKJUMBODO",
+  "taxonomy_name": "BlackJumboDog FTP Service",
+  "source": {
+    "type": "nuclei",
+    "file": "blackjumbodog-ftp-detect.yaml",
+    "original_id": "blackjumbodog-ftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/blackjumbodog-ftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template blackjumbodog-ftp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "blackjumbodo_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "FTP ( BlackJumboDog",
+          "confidence_delta": 0.4,
+          "version_extract": "BlackJumboDog Version ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "blackjumbodog",
+    "tcp"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-gitea_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GITEA",
+  "taxonomy_name": "Gitea Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "gitea-detect.yaml",
+    "original_id": "gitea-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/gitea-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template gitea-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://about.gitea.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://docs.gitea.com/api",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "gitea_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/user/login",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by Gitea",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by Gitea(\\s*)Version:(\\s*)([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Gitea",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by Gitea(\\s*)Version:(\\s*)([\\d.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "gitea"
+  ]
+}

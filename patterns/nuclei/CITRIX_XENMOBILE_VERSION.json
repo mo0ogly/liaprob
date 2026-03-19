@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-citrix_xenmobile_version",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITRIX_XENMO",
+  "taxonomy_name": "Citrix XenMobile Version",
+  "source": {
+    "type": "nuclei",
+    "file": "citrix-xenmobile-version.yaml",
+    "original_id": "citrix-xenmobile-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/citrix-xenmobile-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template citrix-xenmobile-version (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "citrix_xenmo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/js/app/init.js",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "v=([^\"]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "v=([^\"]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Citrix",
+  "product": "Xenmobile_Server",
+  "cpe23_template": "cpe:2.3:a:citrix:xenmobile_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "edb",
+    "citrix",
+    "version"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nimsoft_wasp_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NIMSOFT_WASP",
+  "taxonomy_name": "Nimsoft Wasp Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "nimsoft-wasp.yaml",
+    "original_id": "nimsoft-wasp",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nimsoft-wasp.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nimsoft-wasp (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nimsoft_wasp_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by <b>Nimsoft WASP ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>WASP</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "nimsoft",
+    "exposure"
+  ]
+}

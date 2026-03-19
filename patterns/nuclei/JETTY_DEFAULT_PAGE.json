@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jetty_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JETTY_DEFAUL",
+  "taxonomy_name": "Jetty Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-jetty-page.yaml",
+    "original_id": "default-jetty-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-jetty-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-jetty-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jetty_defaul_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<TITLE>Powered By Jetty</TITLE>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Eclipse",
+  "product": "Jetty",
+  "cpe23_template": "cpe:2.3:a:eclipse:jetty:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "jetty"
+  ]
+}

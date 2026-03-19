@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-finger_daemon_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FINGER_DAEMO",
+  "taxonomy_name": "Finger Daemon Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "finger-detect.yaml",
+    "original_id": "finger-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/finger-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template finger-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "finger_daemo_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "User",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Action",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Node",
+          "confidence_delta": 0.13
+        }
+      ],
+      "ports": [
+        79
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    79
+  ],
+  "tags": [
+    "network",
+    "finger",
+    "tcp"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-microsoft_sharepoint_web_services_discovery",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_SH",
+  "taxonomy_name": "Microsoft SharePoint - Web Services Discovery",
+  "source": {
+    "type": "nuclei",
+    "file": "sharepoint-web-services-discovery.yaml",
+    "original_id": "sharepoint-web-services-discovery",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sharepoint-web-services-discovery.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sharepoint-web-services-discovery (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "microsoft_sh_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/_vti_bin/spdisco.aspx",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<discovery",
+          "confidence_delta": 0.2,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<contractRef",
+          "confidence_delta": 0.2,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "text/xml",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sharepoint",
+    "iis",
+    "microsoft"
+  ]
+}

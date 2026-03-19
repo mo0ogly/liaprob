@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_ranger_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_RANGE",
+  "taxonomy_name": "Apache Ranger Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "ranger-detection.yaml",
+    "original_id": "ranger-detection",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ranger-detection.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ranger-detection (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/apache/ranger",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_range_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/login.jsp",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title> Ranger - Sign In</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Ranger",
+  "cpe23_template": "cpe:2.3:a:apache:ranger:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "apache",
+    "ranger"
+  ]
+}

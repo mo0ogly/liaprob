@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-schneider_electric_modicon_580_series_plc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCHNEIDER_EL",
+  "taxonomy_name": "Schneider Electric Modicon 580 Series PLC",
+  "source": {
+    "type": "nuclei",
+    "file": "schneider-modicon-580-detect.yaml",
+    "original_id": "schneider-modicon-580-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/schneider-modicon-580-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template schneider-modicon-580-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "schneider_el_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "BME P58",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Schneider Electric",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        502
+      ],
+      "send_hex": "000000000005002b0e0200"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    502
+  ],
+  "tags": [
+    "ics",
+    "schenider",
+    "modicon",
+    "network"
+  ]
+}

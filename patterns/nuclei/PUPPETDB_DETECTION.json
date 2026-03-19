@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-puppetdb_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUPPETDB",
+  "taxonomy_name": "PuppetDB Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "puppetdb-detect.yaml",
+    "original_id": "puppetdb-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/puppetdb-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template puppetdb-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://puppet.com/docs/puppetdb/7/api/meta/v1/version.html#pdbmetav1version",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "puppetdb_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/pdb/meta/v1/version",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "\"version\"\\s:\\s\"([0-9.]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "\"version\"\\s:\\s\"([0-9.]+)\"",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "puppet",
+    "exposure"
+  ]
+}

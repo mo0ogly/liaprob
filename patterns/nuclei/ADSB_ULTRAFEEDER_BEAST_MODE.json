@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-adsb_ultrafeeder_beast_mode",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADSB_ULTRAFE",
+  "taxonomy_name": "ADSB Ultrafeeder Beast Mode",
+  "source": {
+    "type": "nuclei",
+    "file": "adsb-ultrafeeder-detect.yaml",
+    "original_id": "adsb-ultrafeeder-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/adsb-ultrafeeder-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template adsb-ultrafeeder-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/flightaware/dump1090",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/wiedehopf/readsb",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "adsb_ultrafe_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "starts_with_hex",
+          "value": "1a31",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "starts_with_hex",
+          "value": "1a32",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "starts_with_hex",
+          "value": "1a33",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        30005
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    30005
+  ],
+  "tags": [
+    "network",
+    "tcp",
+    "flight",
+    "adsb",
+    "enum"
+  ]
+}

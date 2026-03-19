@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-spip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPIP",
+  "taxonomy_name": "SPIP",
+  "source": {
+    "type": "nuclei",
+    "file": "spip-detect.yaml",
+    "original_id": "spip-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/spip-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template spip-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.spip.net/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "spip_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Composed-By: SPIP",
+          "confidence_delta": 0.4,
+          "version_extract": "Composed-By: SPIP ([0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}) @ www.spip.net",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "X-Spip-Cache:",
+          "confidence_delta": 0.4,
+          "version_extract": "Composed-By: SPIP ([0-9]{1,2}.[0-9]{1,2}.[0-9]{1,2}) @ www.spip.net",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Spip",
+  "product": "Spip",
+  "tags": [
+    "spip"
+  ]
+}

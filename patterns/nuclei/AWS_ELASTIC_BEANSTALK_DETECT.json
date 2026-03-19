@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-aws_elastic_beanstalk_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AWS_ELASTIC_",
+  "taxonomy_name": "AWS Elastic Beanstalk Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "aws-elastic-beanstalk-detect.yaml",
+    "original_id": "elastic-beanstalk-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/aws-elastic-beanstalk-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template elastic-beanstalk-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "aws_elastic__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<li><a href=\"http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html\">AWS Elastic Beanstalk overview</a></li>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>([A-Za-z -]+)<\\/title>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<li><a href=\"http://docs.amazonwebservices.com/elasticbeanstalk/latest/dg/\">AWS Elastic Beanstalk overview</a></li>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>([A-Za-z -]+)<\\/title>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "aws",
+    "beanstalk"
+  ]
+}

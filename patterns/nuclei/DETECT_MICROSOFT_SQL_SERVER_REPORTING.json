@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_microsoft_sql_server_reporting",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_MICRO",
+  "taxonomy_name": "Detect Microsoft SQL Server Reporting",
+  "source": {
+    "type": "nuclei",
+    "file": "sql-server-reporting.yaml",
+    "original_id": "sql-server-reporting",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sql-server-reporting.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sql-server-reporting (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_micro_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/Reports/Pages/Folder.aspx",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Report Manager",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "microsoft"
+  ]
+}

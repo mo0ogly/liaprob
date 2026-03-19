@@ -1,0 +1,102 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-openreplay_rum_tech_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENREPLAY_R",
+  "taxonomy_name": "OpenReplay RUM - Tech Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "openreplay-rum-detect.yaml",
+    "original_id": "openreplay-rum-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/openreplay-rum-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template openreplay-rum-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/openreplay/openreplay",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://docs.openreplay.com/en/sdk/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "openreplay_r_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "static\\.openreplay\\.com/(?:latest|[0-9.]+)/openreplay\\.js",
+          "confidence_delta": 0.4,
+          "version_extract": "static\\.openreplay\\.com/(?:latest|[0-9.]+)/openreplay\\.js",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "projectKey[\"']?\\s*:\\s*[\"'][A-Za-z0-9]{10,}[\"']",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "ingestPoint[\"']?\\s*:\\s*[\"']https?://[^\"']+/ingest[\"']",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "[a-z0-9-]+\\.openreplay\\.cloud/ingest",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "window\\.OpenReplay\\s*=\\s*\\[",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "openReplay\\s*:\\s*\\{\\s*projectKey",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "window\\.asayer\\s*=\\s*\\[",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "asayer\\.io/ingest",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "rum",
+    "openreplay"
+  ]
+}

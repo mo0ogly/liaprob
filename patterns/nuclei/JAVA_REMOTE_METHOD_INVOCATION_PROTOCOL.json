@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-java_remote_method_invocation_protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAVA_REMOTE_",
+  "taxonomy_name": "Java Remote Method Invocation Protocol",
+  "source": {
+    "type": "nuclei",
+    "file": "java-rmi-detect.yaml",
+    "original_id": "java-rmi-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/java-rmi-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template java-rmi-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "java_remote__tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^N\\x00\\x0e(\\d{1,3}\\.){3}\\d{1,3}\\x00\\x00",
+          "confidence_delta": 0.4,
+          "version_extract": "^N\\x00\\x0e(\\d{1,3}\\.){3}\\d{1,3}\\x00\\x00",
+          "version_group": 1
+        }
+      ],
+      "send": "{{hex_decode('4a524d4900024b')}}"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "network",
+    "rmi",
+    "java",
+    "tcp"
+  ]
+}

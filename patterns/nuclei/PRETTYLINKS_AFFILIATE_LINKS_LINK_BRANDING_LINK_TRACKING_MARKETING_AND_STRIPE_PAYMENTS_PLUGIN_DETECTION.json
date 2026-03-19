@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-prettylinks_affiliate_links_link_branding_link_tracking_marketing_and_stripe_payments_plugin_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRETTYLINKS_",
+  "taxonomy_name": "PrettyLinks – Affiliate Links, Link Branding, Link Tracking, Marketing and Stripe Payments Plugin Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "pretty-link.yaml",
+    "original_id": "wordpress-pretty-link",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/pretty-link.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-pretty-link (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/pretty-link/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "prettylinks__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/pretty-link/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

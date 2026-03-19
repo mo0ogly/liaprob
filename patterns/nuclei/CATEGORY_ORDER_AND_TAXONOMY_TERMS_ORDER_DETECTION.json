@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-category_order_and_taxonomy_terms_order_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CATEGORY_ORD",
+  "taxonomy_name": "Category Order and Taxonomy Terms Order Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "taxonomy-terms-order.yaml",
+    "original_id": "wordpress-taxonomy-terms-order",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/taxonomy-terms-order.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-taxonomy-terms-order (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/taxonomy-terms-order/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "category_ord_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/taxonomy-terms-order/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

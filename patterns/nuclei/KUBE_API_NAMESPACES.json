@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-kube_api_namespaces",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBE_API_NAM",
+  "taxonomy_name": "Kube API Namespaces",
+  "source": {
+    "type": "nuclei",
+    "file": "kube-api-namespaces.yaml",
+    "original_id": "kube-api-namespaces",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kube-api-namespaces.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kube-api-namespaces (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "kube_api_nam_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/api/v1/namespaces",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"NamespaceList\":",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"items\":",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "k8s",
+    "kubernetes",
+    "devops",
+    "kube"
+  ]
+}

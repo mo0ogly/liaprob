@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache2_ubuntu_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE2_UBUN",
+  "taxonomy_name": "Apache2 Ubuntu Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-apache2-ubuntu-page.yaml",
+    "original_id": "default-apache2-ubuntu-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-apache2-ubuntu-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-apache2-ubuntu-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache2_ubun_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Apache2 Ubuntu Default Page: It works</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "apache"
+  ]
+}

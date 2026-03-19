@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-golden_ftp_server_pro_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOLDEN_FTP_S",
+  "taxonomy_name": "Golden FTP Server Pro Service",
+  "source": {
+    "type": "nuclei",
+    "file": "golden-ftp-detect.yaml",
+    "original_id": "golden-ftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/golden-ftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template golden-ftp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "golden_ftp_s_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Golden FTP Server Pro",
+          "confidence_delta": 0.4,
+          "version_extract": "v([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "golden",
+    "tcp"
+  ]
+}

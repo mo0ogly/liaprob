@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ambassador_edge_stack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMBASSADOR_E",
+  "taxonomy_name": "Ambassador Edge Stack",
+  "source": {
+    "type": "nuclei",
+    "file": "ambassador-edge-stack-detect.yaml",
+    "original_id": "ambassador-edgestack-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ambassador-edge-stack-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ambassador-edgestack-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ambassador_e_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Ambassador Edge Stack</p>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ambassador",
+    "gateway"
+  ]
+}

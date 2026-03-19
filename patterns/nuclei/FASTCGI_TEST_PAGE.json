@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-fastcgi_test_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FASTCGI_TEST",
+  "taxonomy_name": "FastCGI Test Page",
+  "source": {
+    "type": "nuclei",
+    "file": "fastcgi-test-page.yaml",
+    "original_id": "fastcgi-test-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/fastcgi-test-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template fastcgi-test-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "fastcgi_test_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/test/fcgi/test.html",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "FastCGI test page",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "FastCGI possibilities test page",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "fastcgi"
+  ]
+}

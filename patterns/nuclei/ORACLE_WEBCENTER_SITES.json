@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oracle_webcenter_sites",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_WEBCE",
+  "taxonomy_name": "Oracle WebCenter Sites",
+  "source": {
+    "type": "nuclei",
+    "file": "oracle-webcenter-sites.yaml",
+    "original_id": "oracle-webcenter-sites",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oracle-webcenter-sites.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oracle-webcenter-sites (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oracle_webce_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/welcome_webcenter.html",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "FOR ORACLE",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "WebCenter Framework",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Oracle",
+  "product": "Webcenter_Sites",
+  "cpe23_template": "cpe:2.3:a:oracle:webcenter_sites:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "oracle",
+    "webcenter"
+  ]
+}

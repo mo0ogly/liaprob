@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wpcode_insert_headers_and_footers_custom_code_snippets_wordpress_code_manager_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WPCODE_INSER",
+  "taxonomy_name": "WPCode – Insert Headers and Footers + Custom Code Snippets – WordPress Code Manager Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "insert-headers-and-footers.yaml",
+    "original_id": "wordpress-insert-headers-and-footers",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/insert-headers-and-footers.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-insert-headers-and-footers (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/insert-headers-and-footers/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wpcode_inser_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/insert-headers-and-footers/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-100",
+    "top-200"
+  ]
+}

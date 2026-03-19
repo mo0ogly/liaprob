@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-owasp_csrfguard_3_x_4_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OWASP_CSRFGU",
+  "taxonomy_name": "OWASP CSRFGuard 3.x/4.x",
+  "source": {
+    "type": "nuclei",
+    "file": "csrfguard-detect.yaml",
+    "original_id": "csrf-guard-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/csrfguard-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template csrf-guard-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/OWASP/www-project-csrfguard",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "owasp_csrfgu_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "FETCH-CSRF-TOKEN",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:masterTokenValue\\s*=\\s*')([^']+)';",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "masterTokenValue",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:masterTokenValue\\s*=\\s*')([^']+)';",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "csrfguard",
+    "owasp"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-all_in_one_seo_powerful_seo_plugin_to_boost_seo_rankings_increase_traffic_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALL_IN_ONE_S",
+  "taxonomy_name": "All in One SEO – Powerful SEO Plugin to Boost SEO Rankings & Increase Traffic Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "all-in-one-seo-pack.yaml",
+    "original_id": "wordpress-all-in-one-seo-pack",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/all-in-one-seo-pack.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-all-in-one-seo-pack (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/all-in-one-seo-pack/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "all_in_one_s_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/all-in-one-seo-pack/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-100",
+    "top-200"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-limesurvey_survey_software",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIMESURVEY_S",
+  "taxonomy_name": "LimeSurvey Survey Software",
+  "source": {
+    "type": "nuclei",
+    "file": "limesurvey-detect.yaml",
+    "original_id": "limesurvey-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/limesurvey-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template limesurvey-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/LimeSurvey/LimeSurvey",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "limesurvey_s_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"LimeSurvey",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "alt=\"LimeSurvey Survey Software",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "data-limesurvey-lang=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "alt=\"Powered by LimeSurvey",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Limesurvey",
+  "product": "Limesurvey",
+  "cpe23_template": "cpe:2.3:a:limesurvey:limesurvey:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "limesurvey"
+  ]
+}

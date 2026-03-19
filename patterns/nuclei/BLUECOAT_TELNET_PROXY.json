@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-bluecoat_telnet_proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLUECOAT_TEL",
+  "taxonomy_name": "BlueCoat Telnet Proxy",
+  "source": {
+    "type": "nuclei",
+    "file": "bluecoat-telnet-proxy-detect.yaml",
+    "original_id": "bluecoat-telnet-proxy-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/bluecoat-telnet-proxy-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template bluecoat-telnet-proxy-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Blue_Coat_Systems",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://techdocs.broadcom.com/us/en/symantec-security-software/web-and-network-security/edge-swg/7-3/about-ssl-proxy.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "bluecoat_tel_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Blue Coat telnet proxy",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        23
+      ],
+      "send": "\r\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    23
+  ],
+  "tags": [
+    "network",
+    "telnet",
+    "bluecoat",
+    "proxy",
+    "tcp"
+  ]
+}

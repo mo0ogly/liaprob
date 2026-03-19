@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-java_debug_wire_protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAVA_DEBUG_W",
+  "taxonomy_name": "Java Debug Wire Protocol",
+  "source": {
+    "type": "nuclei",
+    "file": "jdwp-detect.yaml",
+    "original_id": "jdwp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/jdwp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template jdwp-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.wiz.io/blog/exposed-jdwp-exploited-in-the-wild",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "java_debug_w_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "JVM version",
+          "confidence_delta": 0.2,
+          "version_extract": "JVM version ([0-9\\.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "VM",
+          "confidence_delta": 0.2,
+          "version_extract": "JVM version ([0-9\\.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        5005
+      ],
+      "send_hex": "4a4457502d48616e647368616b65"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    5005
+  ],
+  "tags": [
+    "network",
+    "jdwp",
+    "tcp"
+  ]
+}

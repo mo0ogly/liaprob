@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-adfs_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADFS",
+  "taxonomy_name": "ADFS Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "adfs-detect.yaml",
+    "original_id": "adfs-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/adfs-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template adfs-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "adfs_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/adfs/ls/idpinitiatedsignon.aspx",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/adfs/portal/css/style.css",
+          "confidence_delta": 0.4,
+          "version_extract": "var\\s+userNameValue\\s*=\\s*'([^\\\\]*)\\\\",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "adfs"
+  ]
+}

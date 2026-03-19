@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_abyss_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_ABYSS",
+  "taxonomy_name": "Detect Abyss Web Server",
+  "source": {
+    "type": "nuclei",
+    "file": "abyss-web-server.yaml",
+    "original_id": "abyss-web-server",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/abyss-web-server.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template abyss-web-server (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_abyss_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Welcome to Abyss Web Server",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6
+}

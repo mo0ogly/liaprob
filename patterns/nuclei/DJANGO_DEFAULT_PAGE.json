@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-django_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DJANGO_DEFAU",
+  "taxonomy_name": "Django Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-django-page.yaml",
+    "original_id": "default-django-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-django-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-django-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "django_defau_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>The install worked successfully! Congratulations!</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Djangoproject",
+  "product": "Django",
+  "cpe23_template": "cpe:2.3:a:djangoproject:django:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "django"
+  ]
+}

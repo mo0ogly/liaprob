@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-default_ibm_http_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEFAULT_IBM_",
+  "taxonomy_name": "Default IBM HTTP Server",
+  "source": {
+    "type": "nuclei",
+    "file": "ibm-http-server.yaml",
+    "original_id": "ibm-http-server",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ibm-http-server.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ibm-http-server (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "default_ibm__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>IBM HTTP Server</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "IBM HTTP Server ([0-9.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Ibm",
+  "product": "Http_Server",
+  "cpe23_template": "cpe:2.3:a:ibm:http_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "ibm"
+  ]
+}

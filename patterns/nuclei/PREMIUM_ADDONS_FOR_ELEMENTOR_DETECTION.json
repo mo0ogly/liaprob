@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-premium_addons_for_elementor_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PREMIUM_ADDO",
+  "taxonomy_name": "Premium Addons for Elementor Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "premium-addons-for-elementor.yaml",
+    "original_id": "wordpress-premium-addons-for-elementor",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/premium-addons-for-elementor.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-premium-addons-for-elementor (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/premium-addons-for-elementor/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "premium_addo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/premium-addons-for-elementor/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-100",
+    "top-200"
+  ]
+}

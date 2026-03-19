@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-couchbase_sync_gateway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COUCHBASE_SY",
+  "taxonomy_name": "Couchbase Sync Gateway",
+  "source": {
+    "type": "nuclei",
+    "file": "couchbase-sync-gateway.yaml",
+    "original_id": "couchbase-sync-gateway",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/couchbase-sync-gateway.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template couchbase-sync-gateway (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "couchbase_sy_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Couchbase Sync Gateway",
+          "confidence_delta": 0.4,
+          "version_extract": "version\":\"Couchbase Sync Gateway\\/([0-9.(;a-z)]+)",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Couchbase",
+  "product": "Sync_Gateway",
+  "cpe23_template": "cpe:2.3:a:couchbase:sync_gateway:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "couchbase"
+  ]
+}

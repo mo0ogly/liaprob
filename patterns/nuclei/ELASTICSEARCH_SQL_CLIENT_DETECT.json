@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-elasticsearch_sql_client_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELASTICSEARC",
+  "taxonomy_name": "Elasticsearch - SQL Client Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "ELASTICSEARCH_SQL_CLIENT_DETECT.json",
+    "original_id": "elasticsearch-sql-client-detect",
+    "parsed_at": "2026-03-01",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/elasticsearch-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template elasticsearch-sql-client-detect (MIT)",
+      "date": "2026-03-01"
+    }
+  ],
+  "probes": [
+    {
+      "id": "elasticsearc_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Elasticsearch-sql client</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Elastic",
+  "product": "Elasticsearch",
+  "cpe23_template": "cpe:2.3:a:elastic:elasticsearch:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "elasticsearch",
+    "sql"
+  ]
+}

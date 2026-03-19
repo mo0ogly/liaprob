@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oscommerce_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OSCOMMERCE",
+  "taxonomy_name": "osCommerce Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "oscommerce-detect.yaml",
+    "original_id": "oscommerce-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oscommerce-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oscommerce-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oscommerce_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by osCommerce",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "oscommerce.com",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "X-Powered-By-osCommerce",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oscommerce"
+  ]
+}

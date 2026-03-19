@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-monstracms_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MONSTRACMS",
+  "taxonomy_name": "MonstraCMS Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "monstracms-detect.yaml",
+    "original_id": "monstracms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/monstracms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template monstracms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/monstra-cms/monstra/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "monstracms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Powered by Monstra",
+          "confidence_delta": 0.4,
+          "version_extract": "content=\"Powered by Monstra ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Monstra",
+  "product": "Monstra_Cms",
+  "tags": [
+    "monstra",
+    "monstracms"
+  ]
+}

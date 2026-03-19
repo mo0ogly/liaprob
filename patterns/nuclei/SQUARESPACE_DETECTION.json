@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-squarespace_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUARESPACE",
+  "taxonomy_name": "Squarespace Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "squarespace-detect.yaml",
+    "original_id": "squarespace-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/squarespace-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template squarespace-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "squarespace_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by Squarespace",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "X-Squarespace-Request-Id",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Squarespace Template",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "squarespace"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-accellion",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACCELLION",
+  "taxonomy_name": "Accellion",
+  "source": {
+    "type": "nuclei",
+    "file": "accellion-detect.yaml",
+    "original_id": "accellion-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/accellion-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template accellion-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "accellion_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/cfadmin/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/cfadmin/img/accellion-logo.png",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "secured by accellion",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "accellion"
+  ]
+}

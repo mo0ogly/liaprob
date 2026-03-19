@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-arcgis_exposed_rest_api_documentation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARCGIS_EXPOS",
+  "taxonomy_name": "ArcGIS Exposed REST API documentation",
+  "source": {
+    "type": "nuclei",
+    "file": "arcgis-rest-api.yaml",
+    "original_id": "arcgis-rest-api",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/arcgis-rest-api.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template arcgis-rest-api (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://enterprise.arcgis.com/en/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "arcgis_expos_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/server/sdk/rest/index.html",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ArcGIS REST API",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Esri",
+  "product": "Arcgis_Engine",
+  "cpe23_template": "cpe:2.3:a:esri:arcgis_engine:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "api",
+    "arcgis",
+    "cms",
+    "esri"
+  ]
+}

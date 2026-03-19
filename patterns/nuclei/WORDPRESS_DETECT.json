@@ -1,0 +1,100 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wordpress_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORDPRESS",
+  "taxonomy_name": "WordPress Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "wordpress-detect.yaml",
+    "original_id": "wordpress-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/wordpress-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wordpress_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<generator>https?:\\/\\/wordpress\\.org.*</generator>",
+          "confidence_delta": 0.4,
+          "version_extract": "install\\.min\\.css\\?ver=((\\d+\\.?)+)\\b",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "wp-login.php",
+          "confidence_delta": 0.4,
+          "version_extract": "install\\.min\\.css\\?ver=((\\d+\\.?)+)\\b",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "name=\"generator\" content=\"wordpress",
+          "confidence_delta": 0.4,
+          "version_extract": "install\\.min\\.css\\?ver=((\\d+\\.?)+)\\b",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+s\\d+\\.wp\\.com",
+          "confidence_delta": 0.4,
+          "version_extract": "install\\.min\\.css\\?ver=((\\d+\\.?)+)\\b",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- This site is optimized with the Yoast (?:WordPress )?SEO plugin v([\\d.]+) -",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- This site is optimized with the Yoast (?:WordPress )?SEO plugin v([\\d.]+) -",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+WP-Super-Cache",
+          "confidence_delta": 0.4,
+          "version_extract": "install\\.min\\.css\\?ver=((\\d+\\.?)+)\\b",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "/wp-content/uploads/(.*)",
+          "confidence_delta": 0.4,
+          "version_extract": "/wp-content/uploads/(.*)",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Wordpress",
+  "product": "Wordpress",
+  "cpe23_template": "cpe:2.3:a:wordpress:wordpress:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "wordpress",
+    "cms",
+    "wp"
+  ]
+}

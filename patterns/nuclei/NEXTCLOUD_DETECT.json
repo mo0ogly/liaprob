@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nextcloud_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXTCLOUD",
+  "taxonomy_name": "Nextcloud Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "nextcloud-detect.yaml",
+    "original_id": "nextcloud-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nextcloud-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nextcloud-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://nextcloud.com",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nextcloud_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "var nc_lastLogin",
+          "confidence_delta": 0.2,
+          "version_extract": "(?m)\"version\":\"([0-9.]+)\",",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "var nc_pageLoad",
+          "confidence_delta": 0.2,
+          "version_extract": "(?m)\"version\":\"([0-9.]+)\",",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Nextcloud",
+  "product": "Nextcloud_Server",
+  "cpe23_template": "cpe:2.3:a:nextcloud:nextcloud_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "nextcloud",
+    "storage"
+  ]
+}

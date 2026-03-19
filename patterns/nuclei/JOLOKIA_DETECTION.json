@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jolokia_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JOLOKIA",
+  "taxonomy_name": "Jolokia Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "jolokia-detect.yaml",
+    "original_id": "jolokia-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/jolokia-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template jolokia-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jolokia_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/jolokia/version",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"timestamp\":",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"protocol\":",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"agent\":",
+          "confidence_delta": 0.13
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "jolokia"
+  ]
+}

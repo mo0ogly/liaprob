@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_activemq_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_ACTIV",
+  "taxonomy_name": "Apache ActiveMQ Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-activemq-detect.yaml",
+    "original_id": "apache-activemq-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/apache-activemq-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-activemq-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_activ_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Unknown STOMP action",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "norg.apache.activemq.transport.stomp",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        61613
+      ],
+      "send": "HELP\n\n\u0000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    61613
+  ],
+  "tags": [
+    "network",
+    "activemq",
+    "oss",
+    "apache",
+    "tcp"
+  ]
+}

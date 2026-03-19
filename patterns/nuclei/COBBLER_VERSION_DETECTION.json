@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-cobbler_version_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COBBLER",
+  "taxonomy_name": "Cobbler Version Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "cobbler-version.yaml",
+    "original_id": "cobbler-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/cobbler-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template cobbler-version (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "cobbler_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/cobbler_api",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<name>version</name>",
+          "confidence_delta": 0.4,
+          "version_extract": "<value><string>([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3})</string></value>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "cobbler",
+    "api"
+  ]
+}

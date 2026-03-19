@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wp_mail_smtp_by_wpforms_the_most_popular_smtp_and_email_log_plugin_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WP_MAIL_SMTP",
+  "taxonomy_name": "WP Mail SMTP by WPForms – The Most Popular SMTP and Email Log Plugin Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "wp-mail-smtp.yaml",
+    "original_id": "wordpress-wp-mail-smtp",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/wp-mail-smtp.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-wp-mail-smtp (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/wp-mail-smtp/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wp_mail_smtp_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/wp-mail-smtp/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-100",
+    "top-200"
+  ]
+}

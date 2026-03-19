@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-phppgadmin_version_information",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPPGADMIN_V",
+  "taxonomy_name": "PhpPgAdmin Version Information",
+  "source": {
+    "type": "nuclei",
+    "file": "phppgadmin-version.yaml",
+    "original_id": "phppgadmin-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/phppgadmin-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template phppgadmin-version (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "phppgadmin_v_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/phppgadmin/intro.php",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<span class=\"appname\">phpPgAdmin</span> <span class=\"version\">.*</span>",
+          "confidence_delta": 0.4,
+          "version_extract": "phpPgAdmin.*\\(.*\\)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "phppgadmin"
+  ]
+}

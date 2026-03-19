@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-kubernetes_version_exposure",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBERNETES_V",
+  "taxonomy_name": "Kubernetes Version Exposure",
+  "source": {
+    "type": "nuclei",
+    "file": "kubernetes-version.yaml",
+    "original_id": "kubernetes-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kubernetes-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kubernetes-version (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://cloud.google.com/kubernetes-engine/docs/release-notes",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "kubernetes_v_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/version",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "gitVersion",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "goVersion",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "platform",
+          "confidence_delta": 0.13
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "k8s",
+    "kubernetes",
+    "devops"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-matrix_server_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATRIX",
+  "taxonomy_name": "Matrix Server Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "matrix-detect.yaml",
+    "original_id": "matrix-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/matrix-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template matrix-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://spec.matrix.org/v1.3/server-server-api/#getwell-knownmatrixserver, https://spec.matrix.org/v1.3/client-server-api/#getwell-knownmatrixclient",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "matrix_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/.well-known/matrix/server",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "\"m\\.([a-z]+)\":",
+          "confidence_delta": 0.4,
+          "version_extract": "\"m\\.([a-z]+)\":",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/html",
+          "confidence_delta": 0.4,
+          "negate": true
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "matrix"
+  ]
+}

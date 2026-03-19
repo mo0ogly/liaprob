@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-moinmoin_wiki_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOINMOIN_WIK",
+  "taxonomy_name": "MoinMoin wiki detect",
+  "source": {
+    "type": "nuclei",
+    "file": "moinmoin-detect.yaml",
+    "original_id": "moinmoin-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/moinmoin-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template moinmoin-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/moinwiki/moin-1.9",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "moinmoin_wik_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<a href=\"http://moinmo.in/\" title=\"This site uses the MoinMoin Wiki software.\">MoinMoin Powered</a>",
+          "confidence_delta": 0.4,
+          "version_extract": "\\/moin_static(\\w+)\\/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<a href=\"http://moinmo.in/Python\" title=\"MoinMoin is written in Python.\">Python Powered</a>",
+          "confidence_delta": 0.4,
+          "version_extract": "\\/moin_static(\\w+)\\/",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "moin",
+    "moinmoin",
+    "wiki"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-totemomail_smtp_server_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOTEMOMAIL_S",
+  "taxonomy_name": "Totemomail SMTP Server Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "totemomail-smtp-detect.yaml",
+    "original_id": "totemomail-smtp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/totemomail-smtp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template totemomail-smtp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "totemomail_s_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "totemomail",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        25,
+        465,
+        587
+      ],
+      "send": "\r\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    25,
+    465,
+    587
+  ],
+  "tags": [
+    "mail",
+    "smtp",
+    "network",
+    "totemomail",
+    "tcp"
+  ]
+}

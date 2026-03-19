@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-basic_auth_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BASIC_AUTH",
+  "taxonomy_name": "Basic Auth Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "basic-auth-detect.yaml",
+    "original_id": "basic-auth-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/basic-auth-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template basic-auth-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "basic_auth_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)www-authenticate: basic",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)www-authenticate: basic",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "basic",
+    "auth"
+  ]
+}

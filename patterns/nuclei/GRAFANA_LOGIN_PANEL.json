@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-grafana_login_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRAFANA",
+  "taxonomy_name": "Grafana Login Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "grafana-detect.yaml",
+    "original_id": "grafana-detect",
+    "parsed_at": "2026-03-01",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/grafana-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template grafana-detect (MIT)",
+      "date": "2026-03-01"
+    }
+  ],
+  "probes": [
+    {
+      "id": "grafana_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/login",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Version",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: version -> Version"
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Grafana</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "\\\"version\\\"\\:\\\"([0-9.]+)\\\"}",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Grafana",
+  "product": "Grafana",
+  "cpe23_template": "cpe:2.3:a:grafana:grafana:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "panel",
+    "grafana"
+  ]
+}

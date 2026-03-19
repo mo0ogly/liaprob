@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-mikrotik_routeros_api",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIKROTIK_ROU",
+  "taxonomy_name": "MikroTik RouterOS API",
+  "source": {
+    "type": "nuclei",
+    "file": "mikrotik-routeros-api.yaml",
+    "original_id": "mikrotik-routeros-api",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/mikrotik-routeros-api.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template mikrotik-routeros-api (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "mikrotik_rou_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "0621666174616c0d6e6f74206c6f6767656420696e00",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        8728
+      ],
+      "send_hex": "3a0000002f00000002000040020f0001003d050000000000000000000000002f000000000000000000401f0000000000000000000000000000000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    8728
+  ],
+  "tags": [
+    "network",
+    "mikrotik",
+    "tcp"
+  ]
+}

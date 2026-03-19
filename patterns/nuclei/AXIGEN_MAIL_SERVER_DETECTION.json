@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-axigen_mail_server_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AXIGEN_MAIL",
+  "taxonomy_name": "Axigen Mail Server Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "axigen-mail-server-detect.yaml",
+    "original_id": "axigen-mail-server-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/axigen-mail-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template axigen-mail-server-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "axigen_mail_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Axigen ESMTP",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "AXIGEN",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        25
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    25
+  ],
+  "tags": [
+    "network",
+    "axigen",
+    "smtp",
+    "tcp"
+  ]
+}

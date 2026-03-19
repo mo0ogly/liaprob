@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_prtg",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_PRTG",
+  "taxonomy_name": "Detect PRTG",
+  "source": {
+    "type": "nuclei",
+    "file": "prtg-detect.yaml",
+    "original_id": "prtg-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/prtg-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template prtg-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_prtg_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/index.htm",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: Server -> Server"
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "PRTG Network Monitor",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "PRTG",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "prtg"
+  ]
+}

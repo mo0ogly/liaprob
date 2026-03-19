@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ispyconnect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ISPYCONNECT",
+  "taxonomy_name": "iSpyConnect",
+  "source": {
+    "type": "nuclei",
+    "file": "ispyconnect-detect.yaml",
+    "original_id": "ispyconnect-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ispyconnect-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ispyconnect-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ispyconnect_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "iSpy is running",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: iSpy",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Ispyconnect",
+  "product": "Ispy",
+  "cpe23_template": "cpe:2.3:a:ispyconnect:ispy:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "ispy"
+  ]
+}

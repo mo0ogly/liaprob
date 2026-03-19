@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_activemq_artemis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_ACTIV",
+  "taxonomy_name": "Apache ActiveMQ Artemis",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-activemq-artemis-detect.yaml",
+    "original_id": "apache-activemq-artemis-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-activemq-artemis-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-activemq-artemis-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/apache/activemq-artemis/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_activ_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/console/hawtconfig.json",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "img/activemq.png",
+          "confidence_delta": 0.2,
+          "version_extract": "\"productInfo\":.*\"value\":\\s*\"(.*)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ActiveMQ Artemis",
+          "confidence_delta": 0.2,
+          "version_extract": "\"productInfo\":.*\"value\":\\s*\"(.*)\"",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Activemq",
+  "tags": [
+    "activemq",
+    "artemis",
+    "apache"
+  ]
+}

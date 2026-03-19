@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-starttls_mail_server_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STARTTLS_MAI",
+  "taxonomy_name": "STARTTLS Mail Server Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "starttls-mail-detect.yaml",
+    "original_id": "starttls-mail-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/starttls-mail-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template starttls-mail-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "starttls_mai_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "250-STARTTLS",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        25,
+        2525,
+        465,
+        587
+      ],
+      "send_hex": "65686c6f20636865636b746c730a"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    25,
+    2525,
+    465,
+    587
+  ],
+  "tags": [
+    "mail",
+    "starttls",
+    "network",
+    "smtp",
+    "tcp"
+  ]
+}

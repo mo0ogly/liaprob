@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-graphql_juniper_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRAPHQL_JUNI",
+  "taxonomy_name": "Graphql Juniper Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "graphql-juniper-detect.yaml",
+    "original_id": "graphql-juniper-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/graphql-juniper-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template graphql-juniper-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/dolevf/graphw00f/blob/main/graphw00f/lib.py",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "graphql_juni_http_0",
+      "layer": "L7_HTTP",
+      "method": "POST",
+      "path": "/graphql",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Unexpected \"queryy\"",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "graphql",
+    "juniper"
+  ]
+}

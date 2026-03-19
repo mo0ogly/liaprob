@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-elfinder_install_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELFINDER_INS",
+  "taxonomy_name": "elFinder - Install Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "elfinder-detect.yaml",
+    "original_id": "elfinder-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/elfinder-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template elfinder-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "elfinder_ins_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<!-- Element where elFinder will be created (REQUIRED) -->",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "elfinder"
+  ]
+}

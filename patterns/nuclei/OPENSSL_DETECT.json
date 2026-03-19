@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-openssl_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENSSL",
+  "taxonomy_name": "Openssl Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "openssl-detect.yaml",
+    "original_id": "openssl-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/openssl-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template openssl-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "openssl_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "OpenSSL",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Openssl",
+  "product": "Openssl",
+  "cpe23_template": "cpe:2.3:a:openssl:openssl:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "openssl"
+  ]
+}

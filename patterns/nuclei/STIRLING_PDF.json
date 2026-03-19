@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-stirling_pdf",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STIRLING_PDF",
+  "taxonomy_name": "Stirling PDF",
+  "source": {
+    "type": "nuclei",
+    "file": "stirling-pdf-detect.yaml",
+    "original_id": "stirling-pdf-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/stirling-pdf-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template stirling-pdf-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/Stirling-Tools/Stirling-PDF",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "stirling_pdf_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Stirling PDF",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Stirling-PDF",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Stirling PDF",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "window.stirlingPDF",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "stirling-pdf"
+  ]
+}

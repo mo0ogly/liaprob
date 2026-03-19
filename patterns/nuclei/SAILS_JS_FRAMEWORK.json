@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-sails_js_framework",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAILS_JS_FRA",
+  "taxonomy_name": "Sails.js Framework",
+  "source": {
+    "type": "nuclei",
+    "file": "sailsjs-detect.yaml",
+    "original_id": "sailsjs-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sailsjs-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sailsjs-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://sailsjs.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "sails_js_fra_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Powered-By: Sails",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)set-cookie:\\s*sails\\.sid=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)set-cookie:\\s*sails\\.sid=",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sailsjs"
+  ]
+}

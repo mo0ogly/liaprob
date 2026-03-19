@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-saprouter_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAPROUTER",
+  "taxonomy_name": "SAPRouter Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "sap-router.yaml",
+    "original_id": "sap-router",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/sap-router.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sap-router (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "saprouter_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "SAProuter",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        3299
+      ],
+      "send_hex": "57484f415245594f553f0a"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    3299
+  ],
+  "tags": [
+    "network",
+    "sap",
+    "saprouter",
+    "tcp"
+  ]
+}

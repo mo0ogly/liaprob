@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-swag_instance_default_page_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SWAG_INSTANC",
+  "taxonomy_name": "Swag Instance Default Page Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "swag-instance-default-page.yaml",
+    "original_id": "swag-instance-default-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/swag-instance-default-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template swag-instance-default-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "swag_instanc_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Welcome to your SWAG instance</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/html",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "panel"
+  ]
+}

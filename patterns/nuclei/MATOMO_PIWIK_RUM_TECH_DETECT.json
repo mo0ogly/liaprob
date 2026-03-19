@@ -1,0 +1,180 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-matomo_piwik_rum_tech_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATOMO_PIWIK",
+  "taxonomy_name": "Matomo (Piwik) RUM - Tech Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "matomo-rum-detect.yaml",
+    "original_id": "matomo-rum-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/matomo-rum-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template matomo-rum-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://matomo.org/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://developer.matomo.org/guides/tracking-javascript-guide",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "matomo_piwik_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "window\\._paq",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "_paq\\.push\\s*\\(",
+          "confidence_delta": 0.4,
+          "version_extract": "_paq\\.push\\s*\\(",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "var\\s+_paq\\s*=\\s*window\\._paq",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "MatomoTagManager",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "window\\.MatomoTagManager",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]trackPageView['\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]trackPageView['\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]setSiteId['\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]setSiteId['\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]setTrackerUrl['\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]setTrackerUrl['\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]enableLinkTracking['\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "_paq\\.push\\s*\\(\\s*\\[\\s*['\"]enableLinkTracking['\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(Matomo|Piwik)\\.getTracker\\s*\\(",
+          "confidence_delta": 0.4,
+          "version_extract": "(Matomo|Piwik)\\.getTracker\\s*\\(",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "src\\s*=\\s*['\"][^'\"]*(matomo|piwik)\\.js['\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "src\\s*=\\s*['\"][^'\"]*(matomo|piwik)\\.js['\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "g\\.src\\s*=\\s*[^;]*(matomo|piwik)\\.js",
+          "confidence_delta": 0.4,
+          "version_extract": "g\\.src\\s*=\\s*[^;]*(matomo|piwik)\\.js",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "['\"]https?://[^'\"]+/(matomo|piwik)\\.php['\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "['\"]https?://[^'\"]+/(matomo|piwik)\\.php['\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "u\\s*\\+\\s*['\"](matomo|piwik)\\.php['\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "u\\s*\\+\\s*['\"](matomo|piwik)\\.php['\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "[a-z0-9-]+\\.matomo\\.cloud/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+src\\s*=\\s*['\"][^'\"]*(matomo|piwik)\\.php\\?idsite=",
+          "confidence_delta": 0.4,
+          "version_extract": "<img[^>]+src\\s*=\\s*['\"][^'\"]*(matomo|piwik)\\.php\\?idsite=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "name=['\"]generator['\"]\\s+content=['\"](Matomo|Piwik)",
+          "confidence_delta": 0.4,
+          "version_extract": "name=['\"]generator['\"]\\s+content=['\"](Matomo|Piwik)",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "rum",
+    "matomo",
+    "piwik",
+    "analytics"
+  ]
+}

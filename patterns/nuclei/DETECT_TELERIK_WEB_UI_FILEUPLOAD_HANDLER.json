@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_telerik_web_ui_fileupload_handler",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_TELER",
+  "taxonomy_name": "Detect Telerik Web UI Fileupload Handler",
+  "source": {
+    "type": "nuclei",
+    "file": "telerik-fileupload-detect.yaml",
+    "original_id": "telerik-fileupload-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/telerik-fileupload-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template telerik-fileupload-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_teler_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/Telerik.Web.UI.WebResource.axd?type=rau",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "RadAsyncUpload handler is registered succesfully",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telerik",
+    "fileupload",
+    "intrusive"
+  ]
+}

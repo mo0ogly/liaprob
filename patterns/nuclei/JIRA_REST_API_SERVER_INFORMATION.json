@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jira_rest_api_server_information",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JIRA_REST_AP",
+  "taxonomy_name": "Jira Rest API Server Information",
+  "source": {
+    "type": "nuclei",
+    "file": "jira-serverinfo.yaml",
+    "original_id": "jira-serverinfo",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/jira-serverinfo.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template jira-serverinfo (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://developer.atlassian.com/cloud/jira/platform/rest/v2/api-group-server-info/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://support.atlassian.com/jira/kb/restrict-unauthenticated-access-for-some-jira-endpoints/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jira_rest_ap_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/rest/api/latest/serverInfo",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"baseUrl\"",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"deploymentType\"",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "jira"
+  ]
+}

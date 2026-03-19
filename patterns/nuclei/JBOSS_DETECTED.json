@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jboss_detected",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JBOSS_DETECT",
+  "taxonomy_name": "JBoss detected",
+  "source": {
+    "type": "nuclei",
+    "file": "jboss-detect.yaml",
+    "original_id": "jboss-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/jboss-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template jboss-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jboss_detect_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "JBoss EAP 7",
+          "confidence_delta": 0.4,
+          "version_extract": "<h1>Welcome to (.+)<\\/h1>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>Welcome to JBoss(.*)</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>Welcome to JBoss(.*)</title>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "jboss"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-yith_woocommerce_compare_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YITH_WOOCOMM",
+  "taxonomy_name": "YITH WooCommerce Compare Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "yith-woocommerce-compare.yaml",
+    "original_id": "wordpress-yith-woocommerce-compare",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/yith-woocommerce-compare.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-yith-woocommerce-compare (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/yith-woocommerce-compare/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "yith_woocomm_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/yith-woocommerce-compare/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

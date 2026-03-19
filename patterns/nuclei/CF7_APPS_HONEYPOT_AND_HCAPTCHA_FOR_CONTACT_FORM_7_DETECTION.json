@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-cf7_apps_honeypot_and_hcaptcha_for_contact_form_7_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CF7_APPS_HON",
+  "taxonomy_name": "CF7 Apps – [Honeypot and hCAPTCHA for Contact Form 7] Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "contact-form-7-honeypot.yaml",
+    "original_id": "wordpress-contact-form-7-honeypot",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/contact-form-7-honeypot.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-contact-form-7-honeypot (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/contact-form-7-honeypot/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "cf7_apps_hon_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/contact-form-7-honeypot/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_amazon_s3_bucket",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_AMAZO",
+  "taxonomy_name": "Detect Amazon-S3 Bucket",
+  "source": {
+    "type": "nuclei",
+    "file": "s3-detect.yaml",
+    "original_id": "s3-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/s3-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template s3-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_amazo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/%c0",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:InvalidURI|InvalidArgument|NoSuchBucket)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:InvalidURI|InvalidArgument|NoSuchBucket)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "aws",
+    "s3",
+    "bucket"
+  ]
+}

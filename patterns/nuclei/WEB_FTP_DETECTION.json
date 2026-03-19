@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-web_ftp_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEB_FTP",
+  "taxonomy_name": "Web FTP Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "web-ftp-detect.yaml",
+    "original_id": "web-ftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/web-ftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template web-ftp-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.exploit-db.com/ghdb/7013",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "web_ftp_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/cgi-bin/upload/web-ftp.cgi",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Web-FTP",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "square login",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "webftp",
+    "ftp"
+  ]
+}

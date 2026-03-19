@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-puppetserver_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUPPETSERVER",
+  "taxonomy_name": "Puppetserver Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "puppetserver-detect.yaml",
+    "original_id": "puppetserver-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/puppetserver-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template puppetserver-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://insinuator.net/2020/09/puppet-assessment-techniques/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "puppetserver_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/puppet-ca/v1/certificate_request/{{randstr}}",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "X-Puppet-Version",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: x_puppet_version -> X-Puppet-Version"
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-puppet-version",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "{{randstr}}",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "puppet",
+    "exposure",
+    "intrusive"
+  ]
+}

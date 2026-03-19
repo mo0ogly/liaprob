@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-web_suite_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEB_SUITE",
+  "taxonomy_name": "Web Suite Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "web-suite-detect.yaml",
+    "original_id": "web-suite-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/web-suite-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template web-suite-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "web_suite_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "www.bqe.com\">BQE Software Inc.</a>",
+          "confidence_delta": 0.2,
+          "version_extract": "Version: (.*)</span>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Web Suite",
+          "confidence_delta": 0.2,
+          "version_extract": "Version: (.*)</span>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "web-suite"
+  ]
+}

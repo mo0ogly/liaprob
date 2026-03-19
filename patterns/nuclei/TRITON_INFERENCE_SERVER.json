@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-triton_inference_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRITON_INFER",
+  "taxonomy_name": "Triton Inference Server",
+  "source": {
+    "type": "nuclei",
+    "file": "nvidia-triton-detect.yaml",
+    "original_id": "nvidia-triton-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nvidia-triton-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nvidia-triton-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/triton-inference-server/server",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "triton_infer_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/v2",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "{\"name\":\"triton\",",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"extensions\"",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Nvidia",
+  "product": "Triton",
+  "tags": [
+    "oss",
+    "nvidia",
+    "triton"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-getsimple_cms_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GETSIMPLE_CM",
+  "taxonomy_name": "GetSimple CMS Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "getsimple-cms-detect.yaml",
+    "original_id": "getsimple-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/getsimple-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template getsimple-cms-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "getsimple_cm_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by  GetSimple",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GetSimple CMS is a flatfile CMS",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "getsimple"
+  ]
+}

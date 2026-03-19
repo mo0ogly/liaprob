@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-iis_7_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IIS_7_DEFAUL",
+  "taxonomy_name": "IIS-7 Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-iis7-page.yaml",
+    "original_id": "default-iis7-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-iis7-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-iis7-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "iis_7_defaul_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>IIS7</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Microsoft",
+  "product": "Iis",
+  "cpe23_template": "cpe:2.3:a:microsoft:iis:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "iis"
+  ]
+}

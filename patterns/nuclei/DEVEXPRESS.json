@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-devexpress",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEVEXPRESS",
+  "taxonomy_name": "DevExpress",
+  "source": {
+    "type": "nuclei",
+    "file": "devexpress-detect.yaml",
+    "original_id": "devexpress-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/devexpress-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template devexpress-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/DevExpress/aspnet-security-bestpractices/blob/master/SecurityBestPractices.WebForms/README.md#53-information-exposure-through-source-code",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://supportcenter.devexpress.com/ticket/details/q311748/dxr-axd-what-is-it-and-how-to-disable-it",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "devexpress_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "DXR.axd",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Devexpress",
+  "product": "Devexpress_Components",
+  "cpe23_template": "cpe:2.3:a:devexpress:devexpress_components:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "devexpress",
+    "iis",
+    "microsoft",
+    "asp"
+  ]
+}

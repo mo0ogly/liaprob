@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oracle_application_server_containers",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_APPLI",
+  "taxonomy_name": "Oracle Application Server Containers",
+  "source": {
+    "type": "nuclei",
+    "file": "default-oracle-application-page.yaml",
+    "original_id": "default-oracle-application-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-oracle-application-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-oracle-application-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oracle_appli_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<TITLE>Oracle Application Server",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\s+\\(([0-9.]+)\\)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oracle"
+  ]
+}

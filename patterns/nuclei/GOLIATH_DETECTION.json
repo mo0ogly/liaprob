@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-goliath_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOLIATH",
+  "taxonomy_name": "Goliath Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "goliath-detect.yaml",
+    "original_id": "goliath-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/goliath-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template goliath-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/postrank-labs/goliath",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "goliath_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: Server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Goliath+",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Goliath_Project",
+  "product": "Goliath",
+  "cpe23_template": "cpe:2.3:a:goliath_project:goliath:{version}:*:*:*:ruby:*:*:*",
+  "tags": [
+    "goliath"
+  ]
+}

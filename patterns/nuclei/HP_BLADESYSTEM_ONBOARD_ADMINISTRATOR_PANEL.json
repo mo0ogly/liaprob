@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hp_bladesystem_onboard_administrator_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_BLADESYST",
+  "taxonomy_name": "HP BladeSystem Onboard Administrator Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "hp-blade-admin-detect.yaml",
+    "original_id": "hp-blade-system",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/hp-blade-admin-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template hp-blade-system (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hp_bladesyst_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>HP BladeSystem Onboard Administrator</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "panel",
+    "hp"
+  ]
+}

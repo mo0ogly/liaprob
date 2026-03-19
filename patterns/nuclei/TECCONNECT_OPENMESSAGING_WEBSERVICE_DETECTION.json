@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-tecconnect_openmessaging_webservice_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TECCONNECT_O",
+  "taxonomy_name": "TecConnect OpenMessaging Webservice Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "teccom-openmessaging-detect.yaml",
+    "original_id": "teccom-openmessaging-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/teccom-openmessaging-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template teccom-openmessaging-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "tecconnect_o_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/openmessaging.asmx?wsdl",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ProcessRequestResponse",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ProcessRequestResult",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "text/xml",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "teccom",
+    "tecconnect",
+    "eol",
+    "wsdl"
+  ]
+}

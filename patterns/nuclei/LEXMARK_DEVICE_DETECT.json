@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-lexmark_device_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEXMARK_DEVI",
+  "taxonomy_name": "Lexmark Device Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "lexmark-detect.yaml",
+    "original_id": "lexmark-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/lexmark-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template lexmark-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "lexmark_devi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>Lexmark (.*)</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>Lexmark (.*)</title>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "airtame",
+    "printer"
+  ]
+}

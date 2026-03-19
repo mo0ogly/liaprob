@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-strapi_cms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STRAPI_CMS",
+  "taxonomy_name": "Strapi CMS detect",
+  "source": {
+    "type": "nuclei",
+    "file": "strapi-cms-detect.yaml",
+    "original_id": "strapi-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/strapi-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template strapi-cms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/strapi/strapi",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "strapi_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/admin/init",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"data\"",
+          "confidence_delta": 0.13,
+          "version_extract": "\"strapiVersion\":\"([0-9.]+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"uuid\"",
+          "confidence_delta": 0.13,
+          "version_extract": "\"strapiVersion\":\"([0-9.]+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"hasAdmin\"",
+          "confidence_delta": 0.13,
+          "version_extract": "\"strapiVersion\":\"([0-9.]+)\"",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "strapi",
+    "cms"
+  ]
+}

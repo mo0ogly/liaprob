@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-glpi_status_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLPI_STATUS_",
+  "taxonomy_name": "GLPI Status Page",
+  "source": {
+    "type": "nuclei",
+    "file": "glpi-status-page.yaml",
+    "original_id": "glpi-status-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/glpi-status-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template glpi-status-page (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://buildmedia.readthedocs.org/media/pdf/glpi-user-documentation/latest/glpi-user-documentation.pdf",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "glpi_status__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/status.php",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GLPI_DB_OK",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GLPI_SESSION_DIR_OK",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GLPI_OK",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Glpi-Project",
+  "product": "Glpi",
+  "cpe23_template": "cpe:2.3:a:glpi-project:glpi:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "status",
+    "glpi"
+  ]
+}

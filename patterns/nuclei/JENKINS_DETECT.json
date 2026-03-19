@@ -1,0 +1,85 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jenkins_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JENKINS",
+  "taxonomy_name": "Jenkins Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "JENKINS_DETECT.json",
+    "original_id": "jenkins-detect",
+    "parsed_at": "2026-03-01",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/jenkins-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template jenkins-detect (MIT)",
+      "date": "2026-03-01"
+    },
+    {
+      "url": "https://www.jenkins.io/doc/book/using/remote-access-api/#RemoteaccessAPI-DetectingJenkinsversion",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-01"
+    },
+    {
+      "url": "https://github.com/jenkinsci/jenkins/pull/470",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-01"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jenkins_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "X-Jenkins",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: x_jenkins -> X-Jenkins"
+        },
+        {
+          "target": "header",
+          "field": "Version",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: version -> Version"
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-jenkins:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Jenkins",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Jenkins",
+  "product": "Jenkins",
+  "cpe23_template": "cpe:2.3:a:jenkins:jenkins:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "jenkins"
+  ]
+}

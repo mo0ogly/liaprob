@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-activemq_openwire_transport_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACTIVEMQ_OPE",
+  "taxonomy_name": "ActiveMQ OpenWire Transport Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "activemq-openwire-transport-detect.yaml",
+    "original_id": "activemq-openwire-transport-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/activemq-openwire-transport-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template activemq-openwire-transport-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "activemq_ope_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "ActiveMQ",
+          "confidence_delta": 0.4,
+          "version_extract": "ProviderVersion...([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        61616,
+        6835
+      ],
+      "send": "VERSION"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    61616,
+    6835
+  ],
+  "tags": [
+    "network",
+    "activemq",
+    "openwire",
+    "tcp"
+  ]
+}

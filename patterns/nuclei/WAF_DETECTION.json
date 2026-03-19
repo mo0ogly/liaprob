@@ -1,0 +1,1947 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-waf_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WAF",
+  "taxonomy_name": "WAF Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "waf-detect.yaml",
+    "original_id": "waf-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/waf-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template waf-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/Ekultek/WhatWaf",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "waf_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)instartrequestid",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)instartrequestid",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)access.to.this.page.has.been.denied.because.we.believe.you.are.using.automation.tool",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)access.to.this.page.has.been.denied.because.we.believe.you.are.using.automation.tool",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)http(s)?://(www.)?perimeterx.\\w+.whywasiblocked",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)http(s)?://(www.)?perimeterx.\\w+.whywasiblocked",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)perimeterx",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)perimeterx",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(..)?client.perimeterx.*/[a-zA-Z]{8,15}/*.*.js",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(..)?client.perimeterx.*/[a-zA-Z]{8,15}/*.*.js",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\bwebknight",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\bwebknight",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)webknight",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)webknight",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)zscaler(.\\d+(.\\d+)?)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)zscaler(.\\d+(.\\d+)?)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)zscaler",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)zscaler",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>powered.by.fortinet<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>powered.by.fortinet<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>fortigate.ips.sensor<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>fortigate.ips.sensor<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)fortigate",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)fortigate",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).fgd_icon",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).fgd_icon",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\AFORTIWAFSID=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\AFORTIWAFSID=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)application.blocked.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)application.blocked.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).fortiGate.application.control",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).fortiGate.application.control",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s)?)?://\\w+.fortinet(.\\w+:)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s)?)?://\\w+.fortinet(.\\w+:)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)fortigate.hostname",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)fortigate.hostname",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)the.page.cannot.be.displayed..please.contact.[^@]+@[^@]+\\.[^@]+.for.additional.information",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)the.page.cannot.be.displayed..please.contact.[^@]+@[^@]+\\.[^@]+.for.additional.information",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Set-Cookie: cookiesession1=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)st8(id|.wa|.wf)?.?(\\d+|\\w+)?=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)st8(id|.wa|.wf)?.?(\\d+|\\w+)?=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)the.request.was.rejected.because.the.url.contained.a.potentially.malicious.string",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)the.request.was.rejected.because.the.url.contained.a.potentially.malicious.string",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)rejected.by.url.scan",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)rejected.by.url.scan",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)/rejected.by.url.scan",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)/rejected.by.url.scan",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<h\\d>\\d{3}.forbidden<.h\\d>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<h\\d>\\d{3}.forbidden<.h\\d>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)request.forbidden.by.administrative.rules.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)request.forbidden.by.administrative.rules.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\ATS\\w{4,}=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\ATS\\w{4,}=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)bigipserver(.i)?|bigipserverinternal",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)bigipserver(.i)?|bigipserverinternal",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)^TS[a-zA-Z0-9]{3,8}=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^TS[a-zA-Z0-9]{3,8}=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)BigIP|BIG-IP|BIGIP",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)BigIP|BIG-IP|BIGIP",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)bigipserver",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)bigipserver",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\Aecdf",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\Aecdf",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).\\bcloudwebsec.radware.com\\b.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).\\bcloudwebsec.radware.com\\b.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>unauthorized.activity.has.been.detected<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>unauthorized.activity.has.been.detected<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)with.the.following.case.number.in.its.subject:.\\d+.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)with.the.following.case.number.in.its.subject:.\\d+.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)varnish",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)varnish",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>.?security.by.cachewall.?<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>.?security.by.cachewall.?<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)cachewall",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)cachewall",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>access.is.blocked.according.to.our.site.security.policy.<+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>access.is.blocked.according.to.our.site.security.policy.<+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)infosafe",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)infosafe",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)by.(http(s)?(.//)?)?7i24.(com|net)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)by.(http(s)?(.//)?)?7i24.(com|net)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)infosafe.\\d.\\d",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)infosafe.\\d.\\d",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)var.infosafekey=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)var.infosafekey=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)error(s)?.aliyun(dun)?.(com|net)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)error(s)?.aliyun(dun)?.(com|net)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)http(s)?://(www.)?aliyun.(com|net)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)http(s)?://(www.)?aliyun.(com|net)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)malcare",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)malcare",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>login.protection<.+.><.+>powered.by<.+.>(<.+.>)?(.?malcare.-.pro|blogvault)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>login.protection<.+.><.+>powered.by<.+.>(<.+.>)?(.?malcare.-.pro|blogvault)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>firewall<.+.><.+>powered.by<.+.>(<.+.>)?(.?malcare.-.pro|blogvault)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>firewall<.+.><.+>powered.by<.+.>(<.+.>)?(.?malcare.-.pro|blogvault)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(<title>)?wts.wa(f)?(\\w+(\\w+(\\w+)?)?)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(<title>)?wts.wa(f)?(\\w+(\\w+(\\w+)?)?)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)dw.inj.check",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)dw.inj.check",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\Acondition.intercepted",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\Acondition.intercepted",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\Asessioncookie=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\Asessioncookie=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<img.class=.yunsuologo.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<img.class=.yunsuologo.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)yunsuo.session",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)yunsuo.session",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)litespeed.web.server",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)litespeed.web.server",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)[a-zA-Z0-9]{,60}.cloudfront.net",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)[a-zA-Z0-9]{,60}.cloudfront.net",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)cloudfront",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)cloudfront",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)x.amz.cf.id|nguardx",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x.amz.cf.id|nguardx",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)sorry.{1,2}your.access.has.been.intercept(ed)?.by.anyu",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)sorry.{1,2}your.access.has.been.intercept(ed)?.by.anyu",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)anyu",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)anyu",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)anyu-?.the.green.channel",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)anyu-?.the.green.channel",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)your.client.has.issued.a.malformed.or.illegal.request",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)your.client.has.issued.a.malformed.or.illegal.request",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)our.systems.have.detected.unusual.traffic",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)our.systems.have.detected.unusual.traffic",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)block(ed)?.by.g.cloud.security.policy.+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)block(ed)?.by.g.cloud.security.policy.+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s)?://)(sec-waf.|www.)?didi(static|yun)?.com(/static/cloudwafstatic)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s)?://)(sec-waf.|www.)?didi(static|yun)?.com(/static/cloudwafstatic)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)didiyun",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)didiyun",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)blockdos\\.net",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)blockdos\\.net",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)the.uri.you.submitted.has.disallowed.characters",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)the.uri.you.submitted.has.disallowed.characters",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\AX-Mapping-",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\AX-Mapping-",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)wt\\d*cdn",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)wt\\d*cdn",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<RequestId>[0-9a-zA-Z]{16,25}<.RequestId>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<RequestId>[0-9a-zA-Z]{16,25}<.RequestId>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<Error><Code>AccessDenied<.Code>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<Error><Code>AccessDenied<.Code>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)x.amz.id.\\d+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x.amz.id.\\d+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)x.amz.request.id",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x.amz.request.id",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)YUNDUN",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)YUNDUN",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)^yd.cookie=",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^yd.cookie=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)http(s)?.//(www\\.)?(\\w+.)?yundun(.com)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)http(s)?.//(www\\.)?(\\w+.)?yundun(.com)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<title>.403.forbidden:.access.is.denied.{0,2}<.{0,2}title>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<title>.403.forbidden:.access.is.denied.{0,2}<.{0,2}title>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\Abarra.counter.session=?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\Abarra.counter.session=?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(\\A|\\b)?barracuda.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(\\A|\\b)?barracuda.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)barracuda.networks.{1,2}inc",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)barracuda.networks.{1,2}inc",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)dod.enterprise.level.protection.system",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)dod.enterprise.level.protection.system",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<h\\d*>secupress<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<h\\d*>secupress<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)block.id.{1,2}bad.url.contents.<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)block.id.{1,2}bad.url.contents.<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)aesecure.denied.png",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)aesecure.denied.png",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)incap_ses|visid_incap",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)incap_ses|visid_incap",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)incapsula",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)incapsula",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)incapsula.incident.id",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)incapsula.incident.id",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)nexus.?guard",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)nexus.?guard",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)((http(s)?://)?speresources.)?nexusguard.com.wafpage",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)((http(s)?://)?speresources.)?nexusguard.com.wafpage",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)cloudflare.ray.id.|var.cloudflare.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)cloudflare.ray.id.|var.cloudflare.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)cloudflare.nginx",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)cloudflare.nginx",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)..cfduid=([a-z0-9]{43})?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)..cfduid=([a-z0-9]{43})?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)cf[-|_]ray(..)?([0-9a-f]{16})?[-|_]?(dfw|iad)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)cf[-|_]ray(..)?([0-9a-f]{16})?[-|_]?(dfw|iad)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>attention.required!.\\|.cloudflare<.+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>attention.required!.\\|.cloudflare<.+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)http(s)?.//report.(uri.)?cloudflare.com(/cdn.cgi(.beacon/expect.ct)?)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)http(s)?.//report.(uri.)?cloudflare.com(/cdn.cgi(.beacon/expect.ct)?)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)ray.id",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)ray.id",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)__cfduid",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)__cfduid",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>access.denied<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>access.denied<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)akamaighost",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)akamaighost",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)ak.bmsc.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)ak.bmsc.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)webseal.error.message.template",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)webseal.error.message.template",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)webseal.server.received.an.invalid.http.request",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)webseal.server.received.an.invalid.http.request",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)dotdefender.blocked.your.request",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)dotdefender.blocked.your.request",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>pkSecurityModule\\W..\\WSecurity.Alert<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>pkSecurityModule\\W..\\WSecurity.Alert<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).http(s)?.//([w]{3})?.kitnetwork.\\w",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).http(s)?.//([w]{3})?.kitnetwork.\\w",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>A.safety.critical.request.was.discovered.and.blocked.<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>A.safety.critical.request.was.discovered.and.blocked.<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>error.-.expressionengine<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>error.-.expressionengine<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>:.the.uri.you.submitted.has.disallowed.characters.<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>:.the.uri.you.submitted.has.disallowed.characters.<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)invalid.(get|post).data",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)invalid.(get|post).data",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)protected.by.comodo.waf",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)protected.by.comodo.waf",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)ace.xml.gateway",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)ace.xml.gateway",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>barikode<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>barikode<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<h\\d{1}>forbidden.access<.h\\d{1}>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<h\\d{1}>forbidden.access<.h\\d{1}>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(request.denied.by.)?watchguard.firewall",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(request.denied.by.)?watchguard.firewall",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)watchguard(.technologies(.inc)?)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)watchguard(.technologies(.inc)?)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)x.binarysec.via",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x.binarysec.via",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)x.binarysec.nocache",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x.binarysec.nocache",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)binarysec",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)binarysec",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)bekchy.(-.)?access.denied",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)bekchy.(-.)?access.denied",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s)?://)(www.)?bekchy.com(/report)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s)?://)(www.)?bekchy.com(/report)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)bitninja",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)bitninja",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)security.check.by.bitninja",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)security.check.by.bitninja",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>visitor.anti(\\S)?robot.validation<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>visitor.anti(\\S)?robot.validation<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)apache",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)apache",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>you.don.t.have.permission.to.access+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>you.don.t.have.permission.to.access+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)was.not.found.on.this.server",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)was.not.found.on.this.server",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<address>apache/([\\d+{1,2}](.[\\d+]{1,2}(.[\\d+]{1,3})?)?)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<address>apache/([\\d+{1,2}](.[\\d+]{1,2}(.[\\d+]{1,3})?)?)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<title>403 Forbidden</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<title>403 Forbidden</title>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)greywizard(.\\d.\\d(.\\d)?)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)greywizard(.\\d.\\d(.\\d)?)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)grey.wizard.block",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)grey.wizard.block",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s)?.//)?(\\w+.)?greywizard.com",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s)?.//)?(\\w+.)?greywizard.com",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)grey.wizard",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)grey.wizard",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>the.firewall.on.this.server.is.blocking.your.connection.<+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>the.firewall.on.this.server.is.blocking.your.connection.<+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<title>access.denied(...)?viettel.waf</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<title>access.denied(...)?viettel.waf</title>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)viettel.waf.system",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)viettel.waf.system",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s).//)?cloudrity.com(.vn)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s).//)?cloudrity.com(.vn)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s)?)?(://)?(www|404|bbs|\\w+)?.safedog.\\w",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s)?)?(://)?(www|404|bbs|\\w+)?.safedog.\\w",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)waf(.?\\d+.?\\d+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)waf(.?\\d+.?\\d+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)yunjiasu.nginx",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)yunjiasu.nginx",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>requested.url.cannot.be.found<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>requested.url.cannot.be.found<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)proceed.to.homepage",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)proceed.to.homepage",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)back.to.previous.page",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)back.to.previous.page",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)we('re|.are)?sorry.{1,2}but.the.page.you.are.looking.for.cannot",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)we('re|.are)?sorry.{1,2}but.the.page.you.are.looking.for.cannot",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)reference.id.?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)reference.id.?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)page.has.either.been.removed.{1,2}renamed",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)page.has.either.been.removed.{1,2}renamed",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)blocked.by.website.protection.from.armour",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)blocked.by.website.protection.from.armour",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)dosarrest",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)dosarrest",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)x.dis.request.id",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)x.dis.request.id",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "has.been.blocked.in.accordance.with.company.policy",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": ".>Virus.Spyware.Download.Blocked<.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)this.generic.403.error.means.that.the.authenticated",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)this.generic.403.error.means.that.the.authenticated",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)request.could.not.be.understood",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)request.could.not.be.understood",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<.+>a.potentially.dangerous.request(.querystring)?.+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<.+>a.potentially.dangerous.request(.querystring)?.+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)runtime.error",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)runtime.error",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>a.potentially.dangerous.request.path.value.was.detected.from.the.client+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>a.potentially.dangerous.request.path.value.was.detected.from.the.client+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)asp.net.sessionid",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)asp.net.sessionid",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)errordocument.to.handle.the.request",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)errordocument.to.handle.the.request",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)an.application.error.occurred.on.the.server",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)an.application.error.occurred.on.the.server",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)error.log.record.number",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)error.log.record.number",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)error.page.might.contain.sensitive.information",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)error.page.might.contain.sensitive.information",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<.+>server.error.in.'/'.application.+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<.+>server.error.in.'/'.application.+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\basp.net\\b",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\basp.net\\b",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Powerful Firewall",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Powerful Firewall",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)http(s)?...tiny.cc.powerful.firewall",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)http(s)?...tiny.cc.powerful.firewall",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)http(s)?.//ucloud",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)http(s)?.//ucloud",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)uewaf(.deny.pages)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)uewaf(.deny.pages)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)janusec",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)janusec",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s)?\\W+(www.)?)?janusec.(com|net|org)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s)?\\W+(www.)?)?janusec.(com|net|org)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)>Powered.by.SiteGuard.Lite<",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)>Powered.by.SiteGuard.Lite<",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)refuse.to.browse",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)refuse.to.browse",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)This.request.is.blocked.by.the.SonicWALL",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)This.request.is.blocked.by.the.SonicWALL",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Dell.SonicWALL",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Dell.SonicWALL",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Web.Site.Blocked.+\\bnsa.banner",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Web.Site.Blocked.+\\bnsa.banner",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)SonicWALL",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)SonicWALL",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>policy.this.site.is.blocked<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>policy.this.site.is.blocked<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)^jsl(_)?tracking",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^jsl(_)?tracking",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(__)?jsluid(=)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(__)?jsluid(=)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)notice.jiasule",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)notice.jiasule",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(static|www|dynamic).jiasule.(com|net)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(static|www|dynamic).jiasule.(com|net)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)nginx",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)nginx",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)you.do(not|n.t)?.have.permission.to.access.this.document",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)you.do(not|n.t)?.have.permission.to.access.this.document",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)action.that.triggered.the.service.and.blocked",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)action.that.triggered.the.service.and.blocked",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<h2>sorry,.you.have.been.blocked.?<.h2>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<h2>sorry,.you.have.been.blocked.?<.h2>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)dxsupport@sabre.com",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)dxsupport@sabre.com",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)generated.by.wordfence",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)generated.by.wordfence",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)your.access.to.this.site.has.been.limited",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)your.access.to.this.site.has.been.limited",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).>wordfence<.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).>wordfence<.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).wzws.waf.cgi.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).wzws.waf.cgi.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)wangzhan\\.360\\.cn",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)wangzhan\\.360\\.cn",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)qianxin.waf",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)qianxin.waf",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)360wzws",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)360wzws",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)transfer.is.blocked",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)transfer.is.blocked",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)the.requested.url.was.rejected..please.consult.with.your.administrator.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)the.requested.url.was.rejected..please.consult.with.your.administrator.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)com.rsfirewall.403.forbidden",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)com.rsfirewall.403.forbidden",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)com.rsfirewall.event",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)com.rsfirewall.event",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(\\b)?rsfirewall(\\b)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(\\b)?rsfirewall(\\b)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)rsfirewall",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)rsfirewall",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)access.denied.-.sucuri.website.firewall",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)access.denied.-.sucuri.website.firewall",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)sucuri.webSite.firewall.-.cloudProxy.-.access.denied",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)sucuri.webSite.firewall.-.cloudProxy.-.access.denied",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)questions\\?.+cloudproxy@sucuri\\.net",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)questions\\?.+cloudproxy@sucuri\\.net",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)http(s)?.\\/\\/(cdn|supportx.)?sucuri(.net|com)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)http(s)?.\\/\\/(cdn|supportx.)?sucuri(.net|com)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)\\Aal[.-]?(sess|lb)=?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)\\Aal[.-]?(sess|lb)=?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)class=.(db)?waf.?(-row.)?>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)class=.(db)?waf.?(-row.)?>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)(http(s)?.//(www.)?)?365cyd.(com|net)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(http(s)?.//(www.)?)?365cyd.(com|net)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<h2>error<.h2>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<h2>error<.h2>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<b>error<.b>",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<b>error<.b>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)<td.class=\"(errormessage|error)\".height=\"[0-9]{1,3}\".width=\"[0-9]{1,3}\">",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)<td.class=\"(errormessage|error)\".height=\"[0-9]{1,3}\".width=\"[0-9]{1,3}\">",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)the.incident.id.(is|number.is).",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)the.incident.id.(is|number.is).",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)page.cannot.be.displayed",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)page.cannot.be.displayed",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)contact.support.for.additional.information",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)contact.support.for.additional.information",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i).aqb_cc.error.",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i).aqb_cc.error.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)ModSecurity|NYOB",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)ModSecurity|NYOB",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)mod_security",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)mod_security",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)this.error.was.generated.by.mod.security",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)this.error.was.generated.by.mod.security",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)web.server at",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)web.server at",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)page.you.are.(accessing|trying)?.(to|is)?.(access)?.(is|to)?.(restricted)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)page.you.are.(accessing|trying)?.(to|is)?.(access)?.(is|to)?.(restricted)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)blocked.by.mod.security",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)blocked.by.mod.security",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)not.acceptable",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)not.acceptable",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)additionally\\S.a.406.not.acceptable",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)additionally\\S.a.406.not.acceptable",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)squid",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)squid",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Access control configuration prevents",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Access control configuration prevents",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)X.Squid.Error",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)X.Squid.Error",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)blocked.by.the.shield",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)blocked.by.the.shield",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)transgression(\\(s\\))?.against.this",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)transgression(\\(s\\))?.against.this",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)url.{1,2}form.or.cookie.data.wasn.t.appropriate",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)url.{1,2}form.or.cookie.data.wasn.t.appropriate",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)nginix.wallarm",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)nginix.wallarm",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)content=\"CloudWAF\"",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)content=\"CloudWAF\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Set-Cookie: HWWAFSESID=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Set-Cookie: HWWAFSESTIME=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "safe3 Web Firewall",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Safe-Firewall",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "safedog-flow",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Squarespace",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Firewall_action",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "yunsuologo",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GoDaddy Security",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "seal.godaddy.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "GoDaddy security",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-TransIP-Balancer",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Secured: By XLabs Security",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Protected-By: shieldon.io",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "waf",
+    "misc"
+  ]
+}

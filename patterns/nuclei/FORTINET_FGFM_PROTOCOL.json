@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-fortinet_fgfm_protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORTINET_FGF",
+  "taxonomy_name": "Fortinet FGFM protocol",
+  "source": {
+    "type": "nuclei",
+    "file": "fortinet-fgfm-detect.yaml",
+    "original_id": "fortinet-fgfm-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/fortinet-fgfm-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template fortinet-fgfm-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://docs.fortinet.com/document/fortigate/6.4.0/hardening-your-fortigate/529217/fortios-ports-and-protocols",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "fortinet_fgf_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": ".fortinet.com",
+          "confidence_delta": 0.2,
+          "version_extract": "[a-z0-9.-]+\\.fortinet\\.com",
+          "version_group": 1
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Certificate Authority",
+          "confidence_delta": 0.2,
+          "version_extract": "[a-z0-9.-]+\\.fortinet\\.com",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        541
+      ],
+      "send_hex": "2E"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    541
+  ],
+  "tags": [
+    "network",
+    "tcp",
+    "fortinet",
+    "fortigate",
+    "fortimanager"
+  ]
+}

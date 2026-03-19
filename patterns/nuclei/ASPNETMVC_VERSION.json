@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-aspnetmvc_version",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASPNETMVC",
+  "taxonomy_name": "AspNetMvc Version",
+  "source": {
+    "type": "nuclei",
+    "file": "aspnetmvc-version-disclosure.yaml",
+    "original_id": "aspnetmvc-version-disclosure",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/aspnetmvc-version-disclosure.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template aspnetmvc-version-disclosure (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "aspnetmvc_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "X-Aspnetmvc-Version",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: X_AspNetMvc_Version -> X-Aspnetmvc-Version"
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "aspnetmvc"
+  ]
+}

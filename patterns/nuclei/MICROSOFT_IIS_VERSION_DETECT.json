@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-microsoft_iis_version_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_II",
+  "taxonomy_name": "Microsoft IIS version detect",
+  "source": {
+    "type": "nuclei",
+    "file": "microsoft-iis-version.yaml",
+    "original_id": "microsoft-iis-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/microsoft-iis-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template microsoft-iis-version (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "microsoft_ii_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: Server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "IIS",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "microsoft",
+    "iis"
+  ]
+}

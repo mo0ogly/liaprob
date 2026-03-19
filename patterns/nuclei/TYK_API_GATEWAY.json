@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-tyk_api_gateway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TYK_API_GATE",
+  "taxonomy_name": "Tyk API Gateway",
+  "source": {
+    "type": "nuclei",
+    "file": "tyk-gateway-detect.yaml",
+    "original_id": "tyk-gateway-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/tyk-gateway-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template tyk-gateway-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/TykTechnologies/tyk",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "tyk_api_gate_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/hello",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Tyk GW",
+          "confidence_delta": 0.2,
+          "version_extract": "\"version\":\"([^\"]*)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "description",
+          "confidence_delta": 0.2,
+          "version_extract": "\"version\":\"([^\"]*)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tyk",
+    "gateway"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-feast_feature_store",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FEAST_FEATUR",
+  "taxonomy_name": "Feast Feature Store",
+  "source": {
+    "type": "nuclei",
+    "file": "feast-detect.yaml",
+    "original_id": "feast-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/feast-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template feast-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/feast-dev/feast",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://feast.dev/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "feast_featur_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/p/automl_pipeline",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Feast Feature Store",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Feast",
+  "product": "Feast",
+  "tags": [
+    "feast",
+    "feature-store",
+    "ml"
+  ]
+}

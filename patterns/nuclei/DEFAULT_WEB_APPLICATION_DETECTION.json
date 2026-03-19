@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-default_web_application_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEFAULT_WEB_",
+  "taxonomy_name": "Default Web Application Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "default-detect-generic.yaml",
+    "original_id": "default-detect-generic",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-detect-generic.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-detect-generic (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "default_web__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Default</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Welcome to</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6
+}

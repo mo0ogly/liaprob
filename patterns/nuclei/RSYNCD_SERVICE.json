@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-rsyncd_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RSYNCD",
+  "taxonomy_name": "Rsyncd Service",
+  "source": {
+    "type": "nuclei",
+    "file": "rsyncd-service-detect.yaml",
+    "original_id": "rsyncd-service-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/rsyncd-service-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template rsyncd-service-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://linux.die.net/man/1/rsync",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "rsyncd_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "RSYNCD: ",
+          "confidence_delta": 0.2,
+          "version_extract": "RSYNCD: \\d\\d.\\d",
+          "version_group": 1
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "ERROR: protocol startup error",
+          "confidence_delta": 0.2,
+          "version_extract": "RSYNCD: \\d\\d.\\d",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        873
+      ],
+      "send": "?\r\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    873
+  ],
+  "tags": [
+    "network",
+    "rsyncd",
+    "tcp"
+  ]
+}

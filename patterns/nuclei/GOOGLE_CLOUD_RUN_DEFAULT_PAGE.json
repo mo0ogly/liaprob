@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-google_cloud_run_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_CLOUD",
+  "taxonomy_name": "Google Cloud Run Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "cloud-run-default-page.yaml",
+    "original_id": "cloud-run-default-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/cloud-run-default-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template cloud-run-default-page (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://cloud.google.com/run/docs/overview/what-is-cloud-run",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "google_cloud_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Congratulations | Cloud Run",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "alt=\"A group celebrating",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "cloudrun",
+    "google"
+  ]
+}

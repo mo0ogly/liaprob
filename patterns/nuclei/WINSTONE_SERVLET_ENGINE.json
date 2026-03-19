@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-winstone_servlet_engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WINSTONE_SER",
+  "taxonomy_name": "Winstone Servlet Engine",
+  "source": {
+    "type": "nuclei",
+    "file": "winstone-detect.yaml",
+    "original_id": "winstone-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/winstone-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template winstone-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "winstone_ser_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)Server:\\s*Winstone Servlet Engine\\s*v?[0-9.]+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Server:\\s*Winstone Servlet Engine\\s*v?[0-9.]+",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)Winstone/[0-9.]+",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Winstone/[0-9.]+",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)X-Powered-By:\\s*Servlet/[0-9.]+\\s*\\(Winstone/[0-9.]+\\)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)X-Powered-By:\\s*Servlet/[0-9.]+\\s*\\(Winstone/[0-9.]+\\)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "winstone"
+  ]
+}

@@ -1,0 +1,4658 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wappalyzer_technology_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WAPPALYZER_T",
+  "taxonomy_name": "Wappalyzer Technology Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "tech-detect.yaml",
+    "original_id": "tech-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/tech-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template tech-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_t_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+\\.mollom\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Project Management Software",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "atlassian.com/software/jira",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?id=\"gxtheme_css_reference\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+flat-ui(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+flat-ui(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=\"\\/DovetailWRP\\/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<svg[^>]*><desc>Created with Highcharts ([\\d.]*)",
+          "confidence_delta": 0.4,
+          "version_extract": "<svg[^>]*><desc>Created with Highcharts ([\\d.]*)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+class=\"video-js+\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]*tictail\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- WIKINGGRUPPEN",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^/]*slimbox(?:-rtl)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=\"[^/]*slimbox(?:-rtl)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "&nbsp;Powered by (?:<a href=[^>]+cs-cart\\.com|CS-Cart)",
+          "confidence_delta": 0.4,
+          "version_extract": "&nbsp;Powered by (?:<a href=[^>]+cs-cart\\.com|CS-Cart)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "\\.cm-noscript[^>]+</style>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+>DirectAdmin</a> Web Control Panel",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:jQuery\\.extend\\(true, XenForo|Forum software by XenForo™|<!--XF:branding|<html[^>]+id=\"XenForo\")",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:jQuery\\.extend\\(true, XenForo|Forum software by XenForo™|<!--XF:branding|<html[^>]+id=\"XenForo\")",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html id=\"XF\" ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<imp:live-info sysid=\"[0-9a-f-]+\"(?: node_id=\"[0-9/]*\")? *\\/>",
+          "confidence_delta": 0.4,
+          "version_extract": "<imp:live-info sysid=\"[0-9a-f-]+\"(?: node_id=\"[0-9/]*\")? *\\/>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body id=\"(?:DiscussionsPage|vanilla)",
+          "confidence_delta": 0.4,
+          "version_extract": "<body id=\"(?:DiscussionsPage|vanilla)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>Kibana</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a[^>]+href=\"https?://(?:www\\.)?cibonfire\\.com[^>]*>Bonfire v([^<]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by <a[^>]+href=\"https?://(?:www\\.)?cibonfire\\.com[^>]*>Bonfire v([^<]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+ipb_[^>]+\\.css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "credits/?\" title=\"Simple Machines Forum\" target=\"_blank\" class=\"new_win\">SMF ([0-9.]+)</a>",
+          "confidence_delta": 0.4,
+          "version_extract": "credits/?\" title=\"Simple Machines Forum\" target=\"_blank\" class=\"new_win\">SMF ([0-9.]+)</a>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=\"[^\"]*xcharts(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=\"[^\"]*xcharts(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]+data-ng-app=\"RbsChangeApp\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*id=\"pb-root\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+nv\\.d3(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+nv\\.d3(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a [^>]*href=\"https?://(?:www\\.)?arastta\\.org[^>]+>Arastta",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by <a [^>]*href=\"https?://(?:www\\.)?arastta\\.org[^>]+>Arastta",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+id='cgit'",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "generated by <a href='http://git\\.zx2c4\\.com/cgit/about/'>cgit v([\\d.a-z-]+)</a>",
+          "confidence_delta": 0.4,
+          "version_extract": "generated by <a href='http://git\\.zx2c4\\.com/cgit/about/'>cgit v([\\d.a-z-]+)</a>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Powered by Strikingly\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+(?:https?:)?//(?:assets|downloads|images|videos)\\.(?:ct?fassets\\.net|contentful\\.com)",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+(?:https?:)?//(?:assets|downloads|images|videos)\\.(?:ct?fassets\\.net|contentful\\.com)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+name=\"__VIEWSTATE",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- (?:Begin|End) Inspectlet Embed Code -->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- (?:Begin|End) Inspectlet Embed Code -->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+moodlelogo",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"[^\"]+minibb[^<]+</a>[^<]+\\n<!--End of copyright link",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*type=[^>]text\\/x-handlebars-template",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=\"[^\"]*materialize(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=\"[^\"]*materialize(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]+data-requiremodule=\"oro/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]+data-requiremodule=\"oroui/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- \\[START\\] 'blocks/head\\.rain' -->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- WooCommerce",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link rel='[^']+' id='woocommerce-(?:layout|smallscreen|general)-css'  href='https?://[^/]+/wp-content/plugins/woocommerce/assets/css/woocommerce(?:-layout|-smallscreen)?\\.css?ver=([\\d.]+)'",
+          "confidence_delta": 0.4,
+          "version_extract": "<link rel='[^']+' id='woocommerce-(?:layout|smallscreen|general)-css'  href='https?://[^/]+/wp-content/plugins/woocommerce/assets/css/woocommerce(?:-layout|-smallscreen)?\\.css?ver=([\\d.]+)'",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- cPanel",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "!\\[CDATA\\[[^<]*PMA_VERSION:\\\"([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "!\\[CDATA\\[[^<]*PMA_VERSION:\\\"([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?: \\| phpMyAdmin ([\\d.]+)<\\/title>|PMA_sendHeaderLocation\\(|<link [^>]*href=\"[^\"]*phpmyadmin\\.css\\.php)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?: \\| phpMyAdmin ([\\d.]+)<\\/title>|PMA_sendHeaderLocation\\(|<link [^>]*href=\"[^\"]*phpmyadmin\\.css\\.php)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style[^>]+[^<]+#cf-hcaptcha-container[^<]+</style>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style[^>]*data-styled(?:-components)?[\\s\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "<style[^>]*data-styled(?:-components)?[\\s\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style[^>]+data-styled-version=\"([0-9]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "<style[^>]+data-styled-version=\"([0-9]+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+sc-component-id: sc-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "no-title=\"YouTrack\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "data-reactid=\"[^\"]+\">youTrack ([0-9.]+)<",
+          "confidence_delta": 0.4,
+          "version_extract": "data-reactid=\"[^\"]+\">youTrack ([0-9.]+)<",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "type=\"application/opensearchdescription\\+xml\" title=\"YouTrack\"/>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<!--GrandNode |<a[^>]+grandnode - Powered by |Powered by: <a[^>]+nopcommerce)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<!--GrandNode |<a[^>]+grandnode - Powered by |Powered by: <a[^>]+nopcommerce)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^-]*OXID eShop",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<!-- Generated by Doxygen ([\\d.]+)|<link[^>]+doxygen\\.css)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<!-- Generated by Doxygen ([\\d.]+)|<link[^>]+doxygen\\.css)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<dd>This OnlineStore is brought to you by ViA-Online GmbH Afterbuy\\. Information and contribution at https://www\\.afterbuy\\.de</dd>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"https?://chevereto\\.com\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"gsNavBar\" class=\"gcBorder1\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"http://gallery\\.sourceforge\\.net\"><img[^>]+Powered by Gallery\\s*(?:(?:v|Version)\\s*([0-9.]+))?",
+          "confidence_delta": 0.4,
+          "version_extract": "<a href=\"http://gallery\\.sourceforge\\.net\"><img[^>]+Powered by Gallery\\s*(?:(?:v|Version)\\s*([0-9.]+))?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<redoc ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- (?:Start|End) Open Web Analytics Tracker -->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- (?:Start|End) Open Web Analytics Tracker -->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+?//cdn\\.jsdelivr\\.net/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+/id=\"ue_widget\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+smartadserver\\.com\\/call",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+=['\"]//cdn\\.mycomandia\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>Shell In A Box</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "must be enabled for ShellInABox</noscript>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+rel=[\"']web-socket[\"']",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:link|a)[^>]+href=[\"']wss?://",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:link|a)[^>]+href=[\"']wss?://",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+gravatar\\.com/avatar/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+Powered by PHP-Nuke",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+ class ?= ?\"(?:e-control|[^\"]+ e-control)(?: )[^\"]* e-lib\\b",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+ class ?= ?\"(?:e-control|[^\"]+ e-control)(?: )[^\"]* e-lib\\b",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<a href=\"[^>]+wolfcms\\.org[^>]+>Wolf CMS(?:</a>)? inside|Thank you for using <a[^>]+>Wolf CMS)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<a href=\"[^>]+wolfcms\\.org[^>]+>Wolf CMS(?:</a>)? inside|Thank you for using <a[^>]+>Wolf CMS)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=\"[^\"]*shapecss(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=\"[^\"]*shapecss(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body[^>]+zbxCallPostScripts",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a[^>]+phpBB",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=phpbb_copyright>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+styles/(?:sub|pro)silver/theme",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+styles/(?:sub|pro)silver/theme",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+i_icon_mini",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<table class=\"[^\"]*forumline",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]+sweet-alert(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]+sweet-alert(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+semantic(?:\\.min)\\.css\"",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+semantic(?:\\.min)\\.css\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<span class=\"versionTag\"><span class=\"vWord\">Version</span> ([\\d\\.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<span class=\"versionTag\"><span class=\"vWord\">Version</span> ([\\d\\.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script[^>]*>__SAPPER__",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+powered by (?:TYPOlight|Contao)[^>]*-->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--[^>]+powered by (?:TYPOlight|Contao)[^>]*-->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+(?:typolight|contao)\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+(?:typolight|contao)\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+wpCache",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"http://www\\.yiiframework\\.com/\" rel=\"external\">Yii Framework</a>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input type=\"hidden\" value=\"[a-zA-Z0-9]{40}\" name=\"YII_CSRF_TOKEN\" \\/>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!\\[CDATA\\[YII-BLOCK-(?:HEAD|BODY-BEGIN|BODY-END)\\]",
+          "confidence_delta": 0.4,
+          "version_extract": "<!\\[CDATA\\[YII-BLOCK-(?:HEAD|BODY-BEGIN|BODY-END)\\]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "href=\"enter_bug\\.cgi\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<main id=\"bugzilla-body\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"https?://www\\.bugzilla\\.org/docs/([0-9.]+)/[^>]+>Help<",
+          "confidence_delta": 0.4,
+          "version_extract": "<a href=\"https?://www\\.bugzilla\\.org/docs/([0-9.]+)/[^>]+>Help<",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<span id=\"information\" class=\"header_addl_info\">version ([\\d.]+)<",
+          "confidence_delta": 0.4,
+          "version_extract": "<span id=\"information\" class=\"header_addl_info\">version ([\\d.]+)<",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<embed[^>]+(?:src=\"https?://mh\\d?\\.adriver\\.ru/|flashvars=\"[^\"]*(?:http:%3A//(?:ad|mh\\d?)\\.adriver\\.ru/|adriver_banner))|<(?:(?:iframe|img)[^>]+src|a[^>]+href)=\"https?://ad\\.adriver\\.ru/)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<embed[^>]+(?:src=\"https?://mh\\d?\\.adriver\\.ru/|flashvars=\"[^\"]*(?:http:%3A//(?:ad|mh\\d?)\\.adriver\\.ru/|adriver_banner))|<(?:(?:iframe|img)[^>]+src|a[^>]+href)=\"https?://ad\\.adriver\\.ru/)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]*/papaya-themes/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"posterous",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=[^>]+umbraco",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"http://www\\.strato\\.de/\" target=\"_blank\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:word\"|<w:WordDocument>|<div [^>]*class=\"?WordSection1[\" >]|<style[^>]*>[^>]*@page WordSection1)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:word\"|<w:WordDocument>|<div [^>]*class=\"?WordSection1[\" >]|<style[^>]*>[^>]*@page WordSection1)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<div[^>]+class=\"coinhive-captcha[^>]+data-key|<div[^>]+data-key[^>]+class=\"coinhive-captcha)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<div[^>]+class=\"coinhive-captcha[^>]+data-key|<div[^>]+data-key[^>]+class=\"coinhive-captcha)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Adminer</a> <span class=\"version\">([\\d.]+)</span>",
+          "confidence_delta": 0.4,
+          "version_extract": "Adminer</a> <span class=\"version\">([\\d.]+)</span>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "onclick=\"bodyClick\\(event\\);\" onload=\"verifyVersion\\('([\\d.]+)'\\);\">",
+          "confidence_delta": 0.4,
+          "version_extract": "onclick=\"bodyClick\\(event\\);\" onload=\"verifyVersion\\('([\\d.]+)'\\);\">",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+tilda(?:cdn|\\.ws|-blocks)",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+tilda(?:cdn|\\.ws|-blocks)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"copyright\">[^<]+<a[^>]+>xt:Commerce",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+_dyncharset",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=(?:\"|')[^\"']*elementor",
+          "confidence_delta": 0.4,
+          "version_extract": "<div class=(?:\"|')[^\"']*elementor",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<section class=(?:\"|')[^\"']*elementor",
+          "confidence_delta": 0.4,
+          "version_extract": "<section class=(?:\"|')[^\"']*elementor",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=(?:\"|')[^\"']*elementor/assets",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=(?:\"|')[^\"']*elementor/assets",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=(?:\"|')[^\"']*uploads/elementor/css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=(?:\"|')[^\"']*uploads/elementor/css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "/(?:<script)[^>]+(?:type=\"application/dart\")/",
+          "confidence_delta": 0.4,
+          "version_extract": "/(?:<script)[^>]+(?:type=\"application/dart\")/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link[^>]* href=[^>]+glyphicons(?:\\.min)?\\.css|<img[^>]* src=[^>]+glyphicons)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<link[^>]* href=[^>]+glyphicons(?:\\.min)?\\.css|<img[^>]* src=[^>]+glyphicons)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:div|aside) id=\"jetshop-branding\">",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:div|aside) id=\"jetshop-branding\">",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- BC_OBNW -->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link rel=[\"']stylesheet[\"'] [^>]+boldgrid",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link rel=[\"']stylesheet[\"'] [^>]+post-and-page-builder",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+s\\d+\\.boldgrid\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+foundation[^>\"]+css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*class=\"[^\"]*(?:small|medium|large)-\\d{1,2} columns",
+          "confidence_delta": 0.4,
+          "version_extract": "<div [^>]*class=\"[^\"]*(?:small|medium|large)-\\d{1,2} columns",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"https?://cdn\\.myshoptet\\.com/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--phpalbum ([.\\d\\s]+)-->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--phpalbum ([.\\d\\s]+)-->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]+xmlns:change=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:iframe|img)[^>]+adnxs\\.(?:net|com)",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:iframe|img)[^>]+adnxs\\.(?:net|com)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^\"]+lightbox(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=\"[^\"]+lightbox(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>Shopware ([\\d\\.]+) [^<]+",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>Shopware ([\\d\\.]+) [^<]+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe[^>]+src=[\\'\"]https://webmine\\.cz/miner\\?key=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<p id=\"poweredby\">[^<]+<a href=\"https?://fluxbb\\.org/\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a [^>]*onclick=\"gemius_hit",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<title>SQL Buddy</title>|<[^>]+onclick=\"sideMainClick\\(\"home\\.php)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<title>SQL Buddy</title>|<[^>]+onclick=\"sideMainClick\\(\"home\\.php)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<span class=\"jenkins_ver\"><a href=\"https://jenkins\\.io/\">Jenkins ver\\. ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<span class=\"jenkins_ver\"><a href=\"https://jenkins\\.io/\">Jenkins ver\\. ([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"http://www\\.tsoft\\.com\\.tr\" target=\"_blank\" title=\"T-Soft E-ticaret Sistemleri\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+https://www\\.datocms-assets\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link href=\"/css/sonar\\.css\\?v=([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<link href=\"/css/sonar\\.css\\?v=([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>SonarQube</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<a [^>]*href=\"[^/]*//[^/]*serving-sys\\.com/|<img [^>]*src=\"[^/]*//[^/]*serving-sys\\.com/)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<a [^>]*href=\"[^/]*//[^/]*serving-sys\\.com/|<img [^>]*src=\"[^/]*//[^/]*serving-sys\\.com/)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html lang=\"en\" class=\"k-source-essays k-lens-essays\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+KOKEN DEBUGGING",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- \\* FreeTextBox v\\d \\((\\d+\\.\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- \\* FreeTextBox v\\d \\((\\d+\\.\\d+\\.\\d+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+>Powered by uKnowva</a>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe[^>]* (?:id=\"comscore\"|scr=[^>]+comscore)|\\.scorecardresearch\\.com/beacon\\.js|COMSCORE\\.beacon",
+          "confidence_delta": 0.4,
+          "version_extract": "<iframe[^>]* (?:id=\"comscore\"|scr=[^>]+comscore)|\\.scorecardresearch\\.com/beacon\\.js|COMSCORE\\.beacon",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+ name=\"ParametricSearch",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div (?:id=\"[a-zA-Z0-9_]*\" )?class=\"goAdverticum\"",
+          "confidence_delta": 0.4,
+          "version_extract": "<div (?:id=\"[a-zA-Z0-9_]*\" )?class=\"goAdverticum\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<clr-main-container",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^\"]*clr-ui(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=\"[^\"]*clr-ui(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style>[\\s\\S]*\\.explain > \\.s[\\s\\S]*\\.explain > \\.ctr > \\.s",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:Powered by <a href=\"[^>]+BIGACE|<!--\\s+Site is running BIGACE)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:Powered by <a href=\"[^>]+BIGACE|<!--\\s+Site is running BIGACE)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:powerpoint\"|<link rel=\"?Presentation-XML\"? href=\"?[^\"]+\\.xml\"?>|<o:PresentationFormat>[^<]+</o:PresentationFormat>[^!]+<o:Slides>\\d+</o:Slides>(?:[^!]+<o:Version>([\\d.]+)</o:Version>)?)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:powerpoint\"|<link rel=\"?Presentation-XML\"? href=\"?[^\"]+\\.xml\"?>|<o:PresentationFormat>[^<]+</o:PresentationFormat>[^!]+<o:Slides>\\d+</o:Slides>(?:[^!]+<o:Version>([\\d.]+)</o:Version>)?)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:div|html)[^>]+ng-app=",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:div|html)[^>]+ng-app=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<ng-app",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+class=\"[^\"]*(?:fr-view|fr-box)",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+class=\"[^\"]*(?:fr-view|fr-box)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+/web/css/(?:web\\.assets_common/|website\\.assets_frontend/)",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+/web/css/(?:web\\.assets_common/|website\\.assets_frontend/)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]*\\s+src=['\"]?https?://www\\.shinystat\\.com/cgi-bin/shinystat\\.cgi\\?[^'\"\\s>]*['\"\\s/>]",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:param|embed|iframe)[^>]+blip\\.tv/play",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:param|embed|iframe)[^>]+blip\\.tv/play",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]+(?:/([\\d.]+)/)?slick-theme\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]+(?:/([\\d.]+)/)?slick-theme\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<a[^>]+>Powered by Flyspray|<map id=\"projectsearchform)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<a[^>]+>Powered by Flyspray|<map id=\"projectsearchform)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Factfinder",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+>Powered By VP-ASP Shopping Cart</a>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^K>-]+Koobi ([a-z\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--[^K>-]+Koobi ([a-z\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<meta property=\"cf:app_domain\" content=\"app\\.clickfunnels\\.com\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--(?: JoomlaWorks \"K2\"| Start K2)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--(?: JoomlaWorks \"K2\"| Start K2)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*class=\"ant-(?:btn|col|row|layout|breadcrumb|menu|pagination|steps|select|cascader|checkbox|calendar|form|input-number|input|mention|rate|radio|slider|switch|tree-select|time-picker|transfer|upload|avatar|badge|card|carousel|collapse|list|popover|tooltip|table|tabs|tag|timeline|tree|alert|modal|message|notification|progress|popconfirm|spin|anchor|back-top|divider|drawer)",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]*class=\"ant-(?:btn|col|row|layout|breadcrumb|menu|pagination|steps|select|cascader|checkbox|calendar|form|input-number|input|mention|rate|radio|slider|switch|tree-select|time-picker|transfer|upload|avatar|badge|card|carousel|collapse|list|popover|tooltip|table|tabs|tag|timeline|tree|alert|modal|message|notification|progress|popconfirm|spin|anchor|back-top|divider|drawer)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<i class=\"anticon anticon-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- ZK [.\\d\\s]+-->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<iframe id=\"meebo-iframe\"|Meebo\\('domReady'\\))",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<iframe id=\"meebo-iframe\"|Meebo\\('domReady'\\))",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+data-stripe",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img [^>]*src=\"[^\"]+tracking\\.veoxa\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Created using <a href=\"https?://(?:www\\.)?sphinx-doc\\.org/\">Sphinx</a> ([0-9.]+)\\.",
+          "confidence_delta": 0.4,
+          "version_extract": "Created using <a href=\"https?://(?:www\\.)?sphinx-doc\\.org/\">Sphinx</a> ([0-9.]+)\\.",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*id=\"__nuxt\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]*>window\\.__NUXT__",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<script id=\"__NEXT_DATA__\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "X-Powered-By: Next.js",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+ ng-version=\"([\\d.]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+ ng-version=\"([\\d.]+)\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=(?:\"|')[^>]*gform_wrapper",
+          "confidence_delta": 0.4,
+          "version_extract": "<div class=(?:\"|')[^>]*gform_wrapper",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=(?:\"|')[^>]*gform_body",
+          "confidence_delta": 0.4,
+          "version_extract": "<div class=(?:\"|')[^>]*gform_body",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<ul [^>]*class=(?:\"|')[^>]*gform_fields",
+          "confidence_delta": 0.4,
+          "version_extract": "<ul [^>]*class=(?:\"|')[^>]*gform_fields",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=(?:\"|')[^>]*wp-content/plugins/gravityforms/css/",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=(?:\"|')[^>]*wp-content/plugins/gravityforms/css/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form [^>]*action=\"[^\"]*\\/cgi-bin\\/UCEditor\\?(?:[^\"]*&)?merchantId=[^\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "<form [^>]*action=\"[^\"]*\\/cgi-bin\\/UCEditor\\?(?:[^\"]*&)?merchantId=[^\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[a-z]+ [^>]*id=\"carbonads-container\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+\\sdata-v(?:ue)?-",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+\\sdata-v(?:ue)?-",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+This website is powered by Koala Web Framework CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Site made with Mobirise Website Builder v([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- Site made with Mobirise Website Builder v([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<(?:param|embed)[^>]+vimeo\\.com/moogaloop|<iframe[^>]player\\.vimeo\\.com)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<(?:param|embed)[^>]+vimeo\\.com/moogaloop|<iframe[^>]player\\.vimeo\\.com)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*type=[^>]text\\/vnd\\.tiddlywiki",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:Powered by|System)\\s+(?:CERN )?<a (?:class=\"footer\" )?href=\"http://(?:cdsware\\.cern\\.ch(?:/invenio)?|invenio-software\\.org|cern\\.ch/invenio)(?:/)?\">(?:CDS )?Invenio</a>\\s*v?([\\d\\.]+)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:Powered by|System)\\s+(?:CERN )?<a (?:class=\"footer\" )?href=\"http://(?:cdsware\\.cern\\.ch(?:/invenio)?|invenio-software\\.org|cern\\.ch/invenio)(?:/)?\">(?:CDS )?Invenio</a>\\s*v?([\\d\\.]+)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "\">Chamilo ([\\d.]+)</a>",
+          "confidence_delta": 0.4,
+          "version_extract": "\">Chamilo ([\\d.]+)</a>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a target=\"_blank\" title=\"Nuvemshop\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link\\s[^>]*href=\"[^\"]*?([\\d.]+)/themes/resources/owafont\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link\\s[^>]*href=\"[^\"]*?([\\d.]+)/themes/resources/owafont\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+pygments\\.css[\"']",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+name=\"ci_csrf_token\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+/smartsite\\.(?:dws|shtml)\\?id=",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+/smartsite\\.(?:dws|shtml)\\?id=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]+epoch(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]+epoch(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>ELOG Logbook Selection</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"https?://www\\.sympa\\.org\">\\s*Powered by Sympa\\s*</a>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]data-xwiki-[^>]>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a [^>]*href=\"https?://sites\\.fastspring\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form [^>]*action=\"https?://sites\\.fastspring\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"flarum-loading\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- <h1>BigDump: Staggered MySQL Dump Importer ver\\. ([\\d.b]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- <h1>BigDump: Staggered MySQL Dump Importer ver\\. ([\\d.b]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+id=\"pw_adbox_",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<meta content=\"https?://[^/]+/assets/gitlab_logo-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<header class=\"navbar navbar-fixed-top navbar-gitlab with-horizontal-nav\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^>]+Redmine",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"copyright\">Powered by vBulletin",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "vBulletin.version",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"vBulletin",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+__meteor-css__",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<asciinema-player",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+data-apos-refreshable[^>]",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link [^>]*href=\"[^\"]*prettyPhoto(?:\\.min)?\\.css|<a [^>]*rel=\"prettyPhoto)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<link [^>]*href=\"[^\"]*prettyPhoto(?:\\.min)?\\.css|<a [^>]*rel=\"prettyPhoto)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link rel=\"alternate\" type=\"application/x-wiki\" title=\"Edit this page\" href=\"[^\"]*/ikiwiki\\.cgi",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"/(?:cgi-bin/)?ikiwiki\\.cgi\\?do=",
+          "confidence_delta": 0.4,
+          "version_extract": "<a href=\"/(?:cgi-bin/)?ikiwiki\\.cgi\\?do=",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link[^>]*/assets/store/all-[a-z\\d]{32}\\.css[^>]+>|<script>\\s*Spree\\.(?:routes|translations|api_key))",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<link[^>]*/assets/store/all-[a-z\\d]{32}\\.css[^>]+>|<script>\\s*Spree\\.(?:routes|translations|api_key))",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^>]+Swiftlet",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]*/sites/[a-z\\d]{24}/theme/stylesheets",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+Site Powered by DTG",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input name=\"koha_login_context\" value=\"intranet\" type=\"hidden\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"/cgi-bin/koha/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"foswiki(?:Copyright|Page|Main)\">",
+          "confidence_delta": 0.4,
+          "version_extract": "<div class=\"foswiki(?:Copyright|Page|Main)\">",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<span[^>]+id=\"xvotes-0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html[^>]* yuilibrary\\.com/rdf/[\\d.]+/yui\\.rdf|<body[^>]+class=\"yui3-skin-sam)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<html[^>]* yuilibrary\\.com/rdf/[\\d.]+/yui\\.rdf|<body[^>]+class=\"yui3-skin-sam)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form [^>]*data-mailchimp-url",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form [^>]*id=\"mc-embedded-subscribe-form\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form [^>]*name=\"mc-embedded-subscribe-form\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input [^>]*id=\"mc-email\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Begin MailChimp Signup Form -->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<noscript> To use Mattermost, please enable JavaScript\\. </noscript>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+ href=\"/?typo3(?:conf|temp)/",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+ href=\"/?typo3(?:conf|temp)/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+ src=\"/?typo3(?:conf|temp)/",
+          "confidence_delta": 0.4,
+          "version_extract": "<img[^>]+ src=\"/?typo3(?:conf|temp)/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "This website is powered by TYPO3",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+class=\"perc-region\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+class=\\\"[^\\\"]+\\ssvelte-[\\w]*\\\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe src=\"[^>]+tumblr\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"[^\"]*parbase",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+data-component-path=\"[^\"+]jcr:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"[^\"]*aem-Grid",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<meta data-chorus-version=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html ng-app=\"kubernetesDashboard\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- (?:End )?Yahoo! Tag Manager -->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- (?:End )?Yahoo! Tag Manager -->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"https://gerrit\\.googlesource\\.com/gitiles/\">Gitiles<",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^/]*slimbox2(?:-rtl)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=\"[^/]*slimbox2(?:-rtl)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link [^>]*href=\"[^\\/]*\\/\\/www\\.fortune3\\.com\\/[^\"]*siterate\\/rate\\.css|Powered by <a [^>]*href=\"[^\"]+fortune3\\.com)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<link [^>]*href=\"[^\\/]*\\/\\/www\\.fortune3\\.com\\/[^\"]*siterate\\/rate\\.css|Powered by <a [^>]*href=\"[^\"]+fortune3\\.com)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+/binaries/(?:[^/]+/)*content/gallery/",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+/binaries/(?:[^/]+/)*content/gallery/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+href=[\"'][^\"]+mg-(?:core|plugins|templates)/",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+href=[\"'][^\"]+mg-(?:core|plugins|templates)/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^>]+php-fusion",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"https?://jekyllrb\\.com\"[^>]*>Jekyll</",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Created with Jekyll Now -",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Begin Jekyll SEO tag",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+(?:\\.vigbo\\.com|\\.gophotoweb\\.com)",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+(?:\\.vigbo\\.com|\\.gophotoweb\\.com)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]* xmlns:jspwiki=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Analytics by WP-Statistics v([\\d.]+) -",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- Analytics by WP-Statistics v([\\d.]+) -",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+Running (?:MySource|Squiz) Matrix",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--\\s+Running (?:MySource|Squiz) Matrix",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- This is Squarespace\\. -->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+id=\"phenomic(?:root)?\"",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+id=\"phenomic(?:root)?\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link href=\"/opencms/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Powered by FaraPy.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"http://octopress\\.org\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:link [^>]*href|img [^>]*src)=\"/polopoly_fs/",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:link [^>]*href|img [^>]*src)=\"/polopoly_fs/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*id=\"_saber\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+/(?:sys_master|hybr|_ui/(?:responsive/)?(?:desktop|common(?:/images|/img)?))/",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+/(?:sys_master|hybr|_ui/(?:responsive/)?(?:desktop|common(?:/images|/img)?))/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]*href=\"https?://(?:www\\.)?statuspage\\.io/powered-by[^>]+>",
+          "confidence_delta": 0.4,
+          "version_extract": "<a[^>]*href=\"https?://(?:www\\.)?statuspage\\.io/powered-by[^>]+>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+id=\"recaptcha_image",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+recaptcha",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+class=\"g-recaptcha\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>Wowza Media Server \\d+ ((?:\\w+ Edition )?\\d+\\.[\\d\\.]+(?: build\\d+)?)?",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>Wowza Media Server \\d+ ((?:\\w+ Edition )?\\d+\\.[\\d\\.]+(?: build\\d+)?)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<span class=\"version\">Artifactory(?: Pro)?(?: Power Pack)?(?: ([\\d.]+))?",
+          "confidence_delta": 0.4,
+          "version_extract": "<span class=\"version\">Artifactory(?: Pro)?(?: Power Pack)?(?: ([\\d.]+))?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=\"[^>]+getpelican\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=\"https?://pelican\\.notmyidea\\.org",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:excel\"|<!--\\s*(?:START|END) OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD\\s*-->|<div [^>]*x:publishsource=\"?Excel\"?)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:excel\"|<!--\\s*(?:START|END) OF OUTPUT FROM EXCEL PUBLISH AS WEB PAGE WIZARD\\s*-->|<div [^>]*x:publishsource=\"?Excel\"?)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+id=\"oracle-cc\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:powered by <a[^>]+>Django ?([\\d.]+)?<\\/a>|<input[^>]*name=[\"']csrfmiddlewaretoken[\"'][^>]*>)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:powered by <a[^>]+>Django ?([\\d.]+)?<\\/a>|<input[^>]*name=[\"']csrfmiddlewaretoken[\"'][^>]*>)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^>]+WikkaWiki",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>XAMPP(?: Version ([\\d\\.]+))?</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>XAMPP(?: Version ([\\d\\.]+))?</title>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<polymer-[^>]+|<link[^>]+rel=\"import\"[^>]+/polymer\\.html\")",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<polymer-[^>]+|<link[^>]+rel=\"import\"[^>]+/polymer\\.html\")",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]{1,512}\\bwire:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<p>Powered by <a[^>]+>GitList ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<p>Powered by <a[^>]+>GitList ([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Methode uuid: \"[a-f\\d]+\" ?-->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:script|link)[^>]/site/[a-z0-9/._-]+/resourceCached/[a-z0-9/._-]+",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:script|link)[^>]/site/[a-z0-9/._-]+/resourceCached/[a-z0-9/._-]+",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+cbi:///cms/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]+usces_default(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]+usces_default(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Welcart version : v([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- Welcart version : v([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Powered by Question2Answer",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<!--Powered by nopCommerce|Powered by: <a[^>]+nopcommerce)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<!--Powered by nopCommerce|Powered by: <a[^>]+nopcommerce)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+=swiper-container",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^>]+punbb",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- [a-zA-Z0-9_]+ [\\d/]+ [\\d:]+ WebDev \\d\\d ([\\d.]+) -->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- [a-zA-Z0-9_]+ [\\d/]+ [\\d:]+ WebDev \\d\\d ([\\d.]+) -->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]+bulma(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]+bulma(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+data-react",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Web site created using create-react-app",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<svg[^>]*><desc>Created with Highstock ([\\d.]*)",
+          "confidence_delta": 0.4,
+          "version_extract": "<svg[^>]*><desc>Created with Highstock ([\\d.]*)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+OTRS: Copyright",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+(?:id|class)=\"livefyre",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+(?:id|class)=\"livefyre",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<div[^>]+id=\"wrapper_r\"|<(?:link|script)[^>]+(?:feed|components)/com_|<table[^>]+class=\"pill)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<div[^>]+id=\"wrapper_r\"|<(?:link|script)[^>]+(?:feed|components)/com_|<table[^>]+class=\"pill)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]+tailwindcss(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]+tailwindcss(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"http://www\\.xonic-solutions\\.de/index\\.php\" target=\"_blank\">xonic-solutions Shopsoftware</a>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^\"]*/vspfiles/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body [^>]*data-vn-page-name",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by X-Cart(?: (\\d+))? <a[^>]+href=\"http://www\\.x-cart\\.com/\"[^>]*>",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by X-Cart(?: (\\d+))? <a[^>]+href=\"http://www\\.x-cart\\.com/\"[^>]*>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+href=\"[^\"]*(?:\\?|&)xcart_form_id=[a-z\\d]{32}(?:&|$)",
+          "confidence_delta": 0.4,
+          "version_extract": "<a[^>]+href=\"[^\"]*(?:\\?|&)xcart_form_id=[a-z\\d]{32}(?:&|$)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- EBiS contents tag",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--EBiS tag",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Tag EBiS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- EBiS common tag",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=[\"']dynamicDiv[\"'] id=[\"']dd\\.\\d\\.\\d(?:\\.\\d)?[\"']>",
+          "confidence_delta": 0.4,
+          "version_extract": "<div class=[\"']dynamicDiv[\"'] id=[\"']dd\\.\\d\\.\\d(?:\\.\\d)?[\"']>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:div|button) class=\"el-(?:table-column|table-filter|popper|pagination|pager|select-group|form|form-item|color-predefine|color-hue-slider|color-svpanel|color-alpha-slider|color-dropdown|color-picker|badge|tree|tree-node|select|message|dialog|checkbox|checkbox-button|checkbox-group|container|steps|carousel|menu|menu-item|submenu|menu-item-group|button|button-group|card|table|select-dropdown|row|tabs|notification|radio|progress|progress-bar|tag|popover|tooltip|cascader|cascader-menus|cascader-menu|time-spinner|spinner|spinner-inner|transfer|transfer-panel|rate|slider|dropdown|dropdown-menu|textarea|input|input-group|popup-parent|radio-group|main|breadcrumb|time-range-picker|date-range-picker|year-table|date-editor|range-editor|time-spinner|date-picker|time-panel|date-table|month-table|picker-panel|collapse|collapse-item|alert|select-dropdown|select-dropdown__empty|select-dropdown__wrap|select-dropdown__list|scrollbar|switch|carousel|upload|upload-dragger|upload-list|upload-cover|aside|input-number|header|message-box|footer|radio-button|step|autocomplete|autocomplete-suggestion|loading-parent|loading-mask|loading-spinner|)",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:div|button) class=\"el-(?:table-column|table-filter|popper|pagination|pager|select-group|form|form-item|color-predefine|color-hue-slider|color-svpanel|color-alpha-slider|color-dropdown|color-picker|badge|tree|tree-node|select|message|dialog|checkbox|checkbox-button|checkbox-group|container|steps|carousel|menu|menu-item|submenu|menu-item-group|button|button-group|card|table|select-dropdown|row|tabs|notification|radio|progress|progress-bar|tag|popover|tooltip|cascader|cascader-menus|cascader-menu|time-spinner|spinner|spinner-inner|transfer|transfer-panel|rate|slider|dropdown|dropdown-menu|textarea|input|input-group|popup-parent|radio-group|main|breadcrumb|time-range-picker|date-range-picker|year-table|date-editor|range-editor|time-spinner|date-picker|time-panel|date-table|month-table|picker-panel|collapse|collapse-item|alert|select-dropdown|select-dropdown__empty|select-dropdown__wrap|select-dropdown__list|scrollbar|switch|carousel|upload|upload-dragger|upload-list|upload-cover|aside|input-number|header|message-box|footer|radio-button|step|autocomplete|autocomplete-suggestion|loading-parent|loading-mask|loading-spinner|)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]+data-requiremodule=\"mage/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]+data-requiremodule=\"Magento_",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script type=\"text/x-magento-init\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe[^>]+adserver\\.yahoo\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+clicks\\.beap\\.bc\\.yahoo\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+Performance optimized by Redis Object Cache",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[\\'\"][^']+revslider[/\\w-]+\\.css\\?ver=([0-9.]+)[\\'\"]",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[\\'\"][^']+revslider[/\\w-]+\\.css\\?ver=([0-9.]+)[\\'\"]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+Powered by GX",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<br />Powered by <a href=\"https?://www\\.oscommerce\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:input|a)[^>]+name=\"osCsid\"",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:input|a)[^>]+name=\"osCsid\"",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:tr|td|table)class=\"[^\"]*infoBoxHeading",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:tr|td|table)class=\"[^\"]*infoBoxHeading",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": ">Gerrit Code Review</a>\\s*\"\\s*\\(([0-9.]+)\\)",
+          "confidence_delta": 0.4,
+          "version_extract": ">Gerrit Code Review</a>\\s*\"\\s*\\(([0-9.]+)\\)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:div|style) id=\"gerrit_",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:div|style) id=\"gerrit_",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<input[^>]+name=\"JTLSHOP|<a href=\"jtl\\.php)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<input[^>]+name=\"JTLSHOP|<a href=\"jtl\\.php)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body class=\"shopatron",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+mediacdn\\.shopatron\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:Portal <a[^>]+>Dokeos|@import \"[^\"]+dokeos_blue)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:Portal <a[^>]+>Dokeos|@import \"[^\"]+dokeos_blue)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+ alt=\"Powered by Mantis Bugtracker",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>(?:Log in to )?FishEye (?:and Crucible )?([\\d.]+)?</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>(?:Log in to )?FishEye (?:and Crucible )?([\\d.]+)?</title>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+_s-xclick",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+data-nette-rules",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+id=\"snippet-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+id=\"frm-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<small>SquirrelMail version ([.\\d]+)[^<]*<br ",
+          "confidence_delta": 0.4,
+          "version_extract": "<small>SquirrelMail version ([.\\d]+)[^<]*<br ",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+id=\"DCSIMG\"[^>]+webtrends",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link[^>]* href=\"templates/gambio/|<a[^>]content\\.php\\?coID=\\d|<!-- gambio eof -->|<!--[\\s=]+Shopsoftware by Gambio GmbH \\(c\\))",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<link[^>]* href=\"templates/gambio/|<a[^>]content\\.php\\?coID=\\d|<!-- gambio eof -->|<!--[\\s=]+Shopsoftware by Gambio GmbH \\(c\\))",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Shopsystem von <a href=[^>]+store-systems\\.de\"|\\.mws_boxTop",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "googletagmanager\\.com/ns\\.html[^>]+></iframe>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- (?:End )?Google Tag Manager -->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- (?:End )?Google Tag Manager -->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a-scene[^<>]*>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]*(?:InstanceBeginEditable|Dreamweaver([^>]+)target|DWLayoutDefaultTable)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--[^>]*(?:InstanceBeginEditable|Dreamweaver([^>]+)target|DWLayoutDefaultTable)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=[^>]+atlassian\\.com/software/confluence(?:[^>]+>Atlassian Confluence</a> ([\\d.]+))?",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by <a href=[^>]+atlassian\\.com/software/confluence(?:[^>]+>Atlassian Confluence</a> ([\\d.]+))?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:param|embed|iframe)[^>]+youtube(?:-nocookie)?\\.com/(?:v|embed)",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:param|embed|iframe)[^>]+youtube(?:-nocookie)?\\.com/(?:v|embed)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:Diese <a href=[^>]+bigware\\.de|<a href=[^>]+/main_bigware_\\d+\\.php)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:Diese <a href=[^>]+bigware\\.de|<a href=[^>]+/main_bigware_\\d+\\.php)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^\"]+owl\\.carousel(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]*href=\"[^\"]+owl\\.carousel(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+>Powered by MODX</a>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:link|script)[^>]+assets/snippets/",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:link|script)[^>]+assets/snippets/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form[^>]+id=\"ajaxSearch_form",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+id=\"ajaxSearch_input",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]*\\s+href=[^>]*styles/kendo\\.common(?:\\.min)?\\.css[^>]*/>",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]*\\s+href=[^>]*styles/kendo\\.common(?:\\.min)?\\.css[^>]*/>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+published by Open Text Web Solutions",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Start of Async HubSpot",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script id=\"staticAssetAggregatedJavascrip",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script[^<>]*>[^]{0,128}?src\\s*=\\s*['\"]//counter\\.yadro\\.ru/hit(?:;\\S+)?\\?(?:t\\d+\\.\\d+;)?r",
+          "confidence_delta": 0.4,
+          "version_extract": "<script[^<>]*>[^]{0,128}?src\\s*=\\s*['\"]//counter\\.yadro\\.ru/hit(?:;\\S+)?\\?(?:t\\d+\\.\\d+;)?r",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--LiveInternet counter-->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--/LiveInternet-->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"http://www\\.liveinternet\\.ru/click\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+_tcm\\d{2,3}-\\d{6}\\.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:publisher\"|<!--[if pub]><xml>)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:publisher\"|<!--[if pub]><xml>)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- START headerTags\\.cfm",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input type=\"hidden\" name=\"_sys_bind_\\d+\" id=\"_sys_bind_\\d+\" />",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"ui left\">\\n\\s+© \\d{4} Gogs Version: ([\\d.]+) Page:",
+          "confidence_delta": 0.4,
+          "version_extract": "<div class=\"ui left\">\\n\\s+© \\d{4} Gogs Version: ([\\d.]+) Page:",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<button class=\"ui basic clone button\" id=\"repo-clone-ssh\" data-link=\"gogs@",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"[^>]+opensolution\\.org/\">CMS by",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:Powered|Code) by <a href=\"[^\"]+phpwind\\.net",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:Powered|Code) by <a href=\"[^\"]+phpwind\\.net",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+(?:([\\d.])+/)?pure(?:-min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+(?:([\\d.])+/)?pure(?:-min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+class=\"[^\"]*pure-u-(?:sm-|md-|lg-|xl-)?\\d-\\d",
+          "confidence_delta": 0.4,
+          "version_extract": "<div[^>]+class=\"[^\"]*pure-u-(?:sm-|md-|lg-|xl-)?\\d-\\d",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img [^>]*src=\"[^\"]+ad\\.zanox\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:script|link)[^>]*sh(?:Core|Brush|ThemeDefault)",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:script|link)[^>]*sh(?:Core|Brush|ThemeDefault)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+FlexCMP[^>v]+v\\. ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--[^>]+FlexCMP[^>v]+v\\. ([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+/dsresource\\?objectid=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a [^>]*href=\"http://hugo\\.spf13\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+href=\"[^\"]*rdoc-style\\.css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Generated by <a[^>]+href=\"https?://rdoc\\.rubyforge\\.org[^>]+>RDoc</a> ([\\d.]*\\d)",
+          "confidence_delta": 0.4,
+          "version_extract": "Generated by <a[^>]+href=\"https?://rdoc\\.rubyforge\\.org[^>]+>RDoc</a> ([\\d.]*\\d)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe[^>]+\\blocalfocus\\b",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a id=\"tracpowered",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^\"]*\"><strong>Trac(?:[ /]([\\d.]+))?",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by <a href=\"[^\"]*\"><strong>Trac(?:[ /]([\\d.]+))?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<script [^>]+\\s+<!--\\s+lang\\.no_new_posts|<a[^>]* title=\"Powered By MyBB)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<script [^>]+\\s+<!--\\s+lang\\.no_new_posts|<a[^>]* title=\"Powered By MyBB)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:link|style|script)[^>]+/assets/frontOffice/",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:link|style|script)[^>]+/assets/frontOffice/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"https://www\\.webxpay\\.com\">WEBXPAY<",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+src=\"[^>]*/~/media/[^>]+\\.ashx",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+#+ Powered by the PhotoShelter Beam platform",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+c\\.photoshelter\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form[^>]+?action=\"[^\"]*airform\\.io[^>]+?>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "clientexec\\.[^>]*\\s?=\\s?[^>]*;",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+(?:([\\d.]+)/)?(?:css/)?font-awesome(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+(?:([\\d.]+)/)?(?:css/)?font-awesome(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]*?(?:F|f)o(?:n|r)t-?(?:A|a)wesome(?:[^>]*?([0-9a-fA-F]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]*?(?:F|f)o(?:n|r)t-?(?:A|a)wesome(?:[^>]*?([0-9a-fA-F]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+id=\"disqus_thread\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link[^>]+components/bitrix|(?:src|href)=\"/bitrix/(?:js|templates))",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<link[^>]+components/bitrix|(?:src|href)=\"/bitrix/(?:js|templates))",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+ rel=\"stylesheet/less\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- git web interface version ([\\d.]+)?",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- git web interface version ([\\d.]+)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"___gatsby\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style id=\"gatsby-inlined-css\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]href=\"rainloop/v/([0-9.]+)/static/apple-touch-icon\\.png/>",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]href=\"rainloop/v/([0-9.]+)/static/apple-touch-icon\\.png/>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]+(?:/([\\d.]+)/)?animate\\.(?:min\\.)?css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link [^>]+(?:/([\\d.]+)/)?animate\\.(?:min\\.)?css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body[^>]+class=\"mediawiki\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:a|img)[^>]+>Powered by MediaWiki</a>",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:a|img)[^>]+>Powered by MediaWiki</a>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+/Special:WhatLinksHere/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body[^>]+govuk-template__body",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+govuk-link",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]+milligram(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]+milligram(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"vmMainPage",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "href=\"(?:\\/|[^>]+)webapp\\/wcs\\/",
+          "confidence_delta": 0.4,
+          "version_extract": "href=\"(?:\\/|[^>]+)webapp\\/wcs\\/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SRVE0255E:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "A WebGroup/Virtual Host to handle",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "$wsep:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "$WSEP:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style>/\\*!\\* Bootstrap v(\\d\\.\\d\\.\\d)",
+          "confidence_delta": 0.4,
+          "version_extract": "<style>/\\*!\\* Bootstrap v(\\d\\.\\d\\.\\d)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=[^\"]/css/([\\d.]+)/bootstrap\\.(?:min\\.)?css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=[^\"]/css/([\\d.]+)/bootstrap\\.(?:min\\.)?css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]*bootstrap(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]*bootstrap(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+class=\"[^\"]*glyphicon glyphicon-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe[^>]+src=\"[^>]+portal\\.combeenation\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+data-bem",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe [^>]*src=\"[^\"]+adzerk\\.net",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+href=\"[^>]*bootstrap-table(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+href=\"[^>]*bootstrap-table(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]* (?:amp|⚡)[^-]",
+          "confidence_delta": 0.4,
+          "version_extract": "<html[^>]* (?:amp|⚡)[^-]",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+=\"brandQuaternaryFgrs\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<p class=\"footer\">&copy; [-\\d]+ Splunk Inc\\.(?: Splunk ([\\d\\.]+(?: build [\\d\\.]*\\d)?))?[^<]*</p>",
+          "confidence_delta": 0.4,
+          "version_extract": "<p class=\"footer\">&copy; [-\\d]+ Splunk Inc\\.(?: Splunk ([\\d\\.]+(?: build [\\d\\.]*\\d)?))?[^<]*</p>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<amp-analytics [^>]*type=[\"']googleanalytics[\"']",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+href=\"[^>]*awesomplete(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+href=\"[^>]*awesomplete(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+data-sr(?:-id)",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+data-sr(?:-id)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+akaunting-green\\.css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered By Akaunting: <a [^>]*href=\"https?://(?:www\\.)?akaunting\\.com[^>]+>",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered By Akaunting: <a [^>]*href=\"https?://(?:www\\.)?akaunting\\.com[^>]+>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+demandware\\.edgesuite",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<\\/div>\\s*<!-- outerContainer -->\\s*<div\\s*id=\"printContainer\"><\\/div>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Powered by RebelMouse\\.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script>[^>]{0,50}script src=[^>]/profiles/apigee",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^>]+yabbforum",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+(?:class|id)=\"phabricator-",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+(?:class|id)=\"phabricator-",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Rendered with Melis CMS V2",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Rendered with Melis Platform",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=\"[^\"]*material(?:\\.[\\w]+-[\\w]+)?(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=\"[^\"]*material(?:\\.[\\w]+-[\\w]+)?(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<!-- start of Sigsiu Online Business Index|<div[^>]* class=\"sobi2)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<!-- start of Sigsiu Online Business Index|<div[^>]* class=\"sobi2)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+?href=\"[^\"]+sweetalert2(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]+?href=\"[^\"]+sweetalert2(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"[^>]+opensolution\\.org/\">(?:Shopping cart by|Sklep internetowy)",
+          "confidence_delta": 0.4,
+          "version_extract": "<a href=\"[^>]+opensolution\\.org/\">(?:Shopping cart by|Sklep internetowy)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by\\s+(?:CERN )?<a href=\"http://(?:cdsware\\.cern\\.ch/indico/|indico-software\\.org|cern\\.ch/indico)\">(?:CDS )?Indico( [\\d\\.]+)?",
+          "confidence_delta": 0.4,
+          "version_extract": "Powered by\\s+(?:CERN )?<a href=\"http://(?:cdsware\\.cern\\.ch/indico/|indico-software\\.org|cern\\.ch/indico)\">(?:CDS )?Indico( [\\d\\.]+)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link href=[^>]+cdn\\d+\\.bigcommerce\\.com/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*data-headjs-load",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Powered by Gitea",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- All in One SEO Pack ([\\d.]+) ",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- All in One SEO Pack ([\\d.]+) ",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form[^>]+id=\"fastsearch\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Built upon the <a href=\"[^>]+banshee-php\\.org/\">[a-z]+</a>(?:v([\\d.]+))?",
+          "confidence_delta": 0.4,
+          "version_extract": "Built upon the <a href=\"[^>]+banshee-php\\.org/\">[a-z]+</a>(?:v([\\d.]+))?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- This comment is expected by the docker HEALTHCHECK  -->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]+Cargo feed",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script[^>]*>\\s*Raven\\.config\\('[^']*', \\{\\s+release: '([0-9\\.]+)'",
+          "confidence_delta": 0.4,
+          "version_extract": "<script[^>]*>\\s*Raven\\.config\\('[^']*', \\{\\s+release: '([0-9\\.]+)'",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- (?:Start|End) Visual Website Optimizer A?Synchronous Code -->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- (?:Start|End) Visual Website Optimizer A?Synchronous Code -->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img [^>]*(?:title|alt)=\"This site is powered by the TWiki collaboration platform",
+          "confidence_delta": 0.4,
+          "version_extract": "<img [^>]*(?:title|alt)=\"This site is powered by the TWiki collaboration platform",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Generated by javadoc -->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"http://tamago\\.temonalab\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<p>Produced by <a href=\"http://www\\.haskell\\.org/haddock/\">Haddock</a> version ([0-9.]+)</p>",
+          "confidence_delta": 0.4,
+          "version_extract": "<p>Produced by <a href=\"http://www\\.haskell\\.org/haddock/\">Haddock</a> version ([0-9.]+)</p>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Lightmon Engine Copyright Lightmon",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*swell\\.is",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*swell\\.store",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*schema\\.io",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input [^>]*name=\"infusionsoft_version\" [^>]*value=\"([^>]*)\" [^>]*\\/>",
+          "confidence_delta": 0.4,
+          "version_extract": "<input [^>]*name=\"infusionsoft_version\" [^>]*value=\"([^>]*)\" [^>]*\\/>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input [^>]*value=\"([^>]*)\" [^>]*name=\"infusionsoft_version\" [^>]*\\/>",
+          "confidence_delta": 0.4,
+          "version_extract": "<input [^>]*value=\"([^>]*)\" [^>]*name=\"infusionsoft_version\" [^>]*\\/>",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=\"https?://edge\\.avangate\\.net/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]*id=\"P6iryBW0Wu\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<yatag class=\"ya-partner__ads\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Powered by XMB",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+WP Rocket",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"[^>]+SilverStripe",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]*href=\"https://www\\.irroba\\.com\\.br",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+class=\"[^\"]*(?:uk-container|uk-section)",
+          "confidence_delta": 0.4,
+          "version_extract": "<[^>]+class=\"[^\"]*(?:uk-container|uk-section)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+=\"vgn-?ext",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<ish-root",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+[^\\w-]x-data[^\\w-][^<]+",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*class=[\"']mermaid[\"']>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+aurelia-app=[^>]",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+data-main=[^>]aurelia-bootstrapper",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+au-target-id=[^>]\\d",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--Coppermine Photo Gallery ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--Coppermine Photo Gallery ([\\d.]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<a[^>]+Powered by Reddit|powered by <a[^>]+>reddit<)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<a[^>]+Powered by Reddit|powered by <a[^>]+>reddit<)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^>]*\\/mt-content\\/[^>]*\\.css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+=['\"]//cdn\\.shopify\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+store\\.yahoo\\.net",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+fonts\\.(?:googleapis|google)\\.com",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+fonts\\.(?:googleapis|google)\\.com",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:link|a href) [^>]+ndxz-studio",
+          "confidence_delta": 0.4,
+          "version_extract": "<(?:link|a href) [^>]+ndxz-studio",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"particles-js\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+ionicons(?:\\.min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "<link[^>]* href=[^>]+ionicons(?:\\.min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- <meta name=\"NextGEN\" version=\"([\\d.]+)\" /> -->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- <meta name=\"NextGEN\" version=\"([\\d.]+)\" /> -->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>RoundCube",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "aws\\.src = [^<]+caphyon-analytics",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*beacon\\.riskified\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*c\\.riskified\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- by DotNetNuke Corporation",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- DNN Platform",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "/js/dnncore.js?cdv",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+W3 Total Cache",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+Tessitura Version: (\\d*\\.\\d*\\.\\d*)?",
+          "confidence_delta": 0.4,
+          "version_extract": "<!--[^>]+Tessitura Version: (\\d*\\.\\d*\\.\\d*)?",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<noscript><div class='syno-no-script'",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe src=\"[^>]+whooshkaa\\.com",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:Powered by <a href=[^>]+cubecart\\.com|<p[^>]+>Powered by CubeCart)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:Powered by <a href=[^>]+cubecart\\.com|<p[^>]+>Powered by CubeCart)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+title=\"POWERGAP",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input type=\"hidden\" name=\"shopid\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<svg[^>]*><desc>JavaScript chart by amCharts ([\\d.]*)",
+          "confidence_delta": 0.4,
+          "version_extract": "<svg[^>]*><desc>JavaScript chart by amCharts ([\\d.]*)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]+data-wf-site",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+id=\"dokuwiki__>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+href=\"#dokuwiki__",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+data-pjax-container",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- Generated by phpDocumentor",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"https://owncloud\\.com\" target=\"_blank\">ownCloud Inc\\.</a><br/>Your Cloud, Your Data, Your Way!",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a href=\"https?://hexo\\.io/?\"[^>]*>Hexo</",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<li>Atlassian Bitbucket <span title=\"[a-z0-9]+\" id=\"product-version\" data-commitid=\"[a-z0-9]+\" data-system-build-number=\"[a-z0-9]+\"> v([\\d.]+)<",
+          "confidence_delta": 0.4,
+          "version_extract": "<li>Atlassian Bitbucket <span title=\"[a-z0-9]+\" id=\"product-version\" data-commitid=\"[a-z0-9]+\" data-system-build-number=\"[a-z0-9]+\"> v([\\d.]+)<",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<title>phpPgAdmin</title>|<span class=\"appname\">phpPgAdmin)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:<title>phpPgAdmin</title>|<span class=\"appname\">phpPgAdmin)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe [^>]*src=\"[^\"]+adnegah\\.net",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": " <a [^>]+Powered by Lithium",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"a-blog cms",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Adobe GoLive",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"AdVantShop.NET",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "AVE.cms",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "alterian",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "= Amiro.CMS (c) =",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Apache Lenya\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Backdrop CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"BaseKit\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Big Cartel\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content='blogger'",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Bolt\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Bricolage",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Composite C1 CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"www.cm4all.com\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CMS Tool www.cms-tool.net\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CMS Tool www.cms-tool.net\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CMS Made Simple",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CMSimple_XH",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CanalBlog",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CoffeeCup",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CommonSpot",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CMS CONTENIDO",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Contensis CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"contentXXL",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Convio CMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CoreMedia",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CorePublish",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"DIAFAN.CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"CMS Danneo",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Dim Works Kernel",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Discourse ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Hycus",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Doteasy Website Creator\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<!-- RT CSS Include d-css-runtime-desktop-one-package-new-->",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Dynamicweb ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"e-plus ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"e-monsite (e-monsite.com)\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"ECSHOP ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Ideagen - WCM ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "src=\"https://dl.episerver.net/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"EverWeb ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Fork CMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Zeta Producer ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"GX WebManager",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"GetSimple\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Ghost ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Starfield Technologies; Go Daddy Website Builder",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Government Site Builder\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Graffiti CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"GravCMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Drupal",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Webnode",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "'Shopsys\\",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"pluck ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Homestead SiteBuilder\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"HostedShop\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"ImageCMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Immediacy .NET CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"ImpressCMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"ImpressPages\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Rails Connector for Infopark CMS Fiona",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"InstantCMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Interactsh-Version",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"InterRed ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "//www.jadu.net",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"jieqi.com\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"JustSystems Homepage Builder",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Kernel Video Sharing ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Komodo CMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Kryptronic Software\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "by Labrador CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Lauyan TOWeb ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"http://www.getLiveEdit.com\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"LogiCommerce\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Loja Integrada\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Mabisy\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Mambo -",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Melody CMS\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Metro Publisher ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "powered\">Midgard CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Mijnwebwinkel\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "MintoxPlaceHolder",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"JetBrains PhpStorm/Intercat/Movable Type",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Netvolution WCM\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Nucleus CMS ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"NukeViet ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"One.com Web Editor\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"OpenNemas ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Orchard\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Orthodox Web Solutions ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "oc-includes/osclass/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Oxatis ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"PHPShop CMS ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"PHPVibe\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Pagecloud\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Pagekit\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Parallels Presence Builder ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"RiteCMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"rCMS ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Rvglobalsoft\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Subrion CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"RapidWeaver\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"SUMOshop\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Sana Commerce\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Sandvox ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"OpenCities ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Serendipity ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"ShopFactory ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Clockwork-Id:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Clockwork-Version:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: symfony=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: laravel_session=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: {{DN}}_session=",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: XSRF-TOKEN=",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Powered-By: Express",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "meta content=\"authenticity_token\" name=\"csrf-param",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ng-app=\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<ng-app",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "*ngIf=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ng-controller=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "lighttpd",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "lighttpd",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "WSGIServer",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "SimpleHTTP",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "TwistedWeb",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "TSM_HTTP",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Microsoft-IIS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Microsoft-HTTPAPI",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "darkhttpd",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "CherryPy",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Cherokee",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Caddy",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Jetty",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: nginx",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Powered-By: PHP",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "PHPSESSID",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: NodeJS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Powered-By: nodejs",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Python/2.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Python/3.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "CPython/3.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Jenkins",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "cloudflare",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": ".*",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": ".*",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "AkamaiGHost",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Sucuri/Cloudproxy",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Iinfo:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "ddos-guard",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "DOSarrest",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-DIS-Request-ID:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "ArvanCloud",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "AR-Request-ID:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/etc/clientlibs/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/content/dam/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: Lotus-Domino",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Set-Cookie: mongo-express=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Login to pfSense",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Weave Scope</title>",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "__WEAVEWORKS_CSRF_TOKEN",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "__CSRF_TOKEN_PLACEHOLDER__",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Mida eFramework</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Server: Mida eFramework",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SEEEMS.CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "SEEEMS.FRAMEWORK",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "awselb",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Login to pfSense",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>pfSense - Login</title>",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "maintained by Netgate",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: monit",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "ThinkPHP",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "initApollo)(i.ApolloTargetServer.Self)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<!-- BEGIN PAN_FORM_CONTENT -->",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "js/pan/",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Powered-By: Sails",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Tengine",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "TornadoServer/",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "uvicorn",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "istio-envoy",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-ClickHouse-Summary",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Coolify",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>IQ Messenger</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "realm=\"Sagemcom TR-069\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>FASTPANEL</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Vaka</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Ksenia Lares WebServer</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/tas/css/auth.css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "topdeskidploginforwardurl",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>UserGate UTM</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>UserGate NGFW</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>RouterOS router configuration page</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>ETHM-1 Plus</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Qlik Sense login page</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: REDY-Process",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "href=\"css/img/ENTEK.ico\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Macroscop Web Client</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>macroscop</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Etic Telecom</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"Quantum Spark Security Appliance - Login\"",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-redis_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDIS",
+  "taxonomy_name": "Redis Service",
+  "source": {
+    "type": "nuclei",
+    "file": "REDIS_DETECT.json",
+    "original_id": "redis-detect",
+    "parsed_at": "2026-03-01",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/redis-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template redis-detect (MIT)",
+      "date": "2026-03-01"
+    }
+  ],
+  "probes": [
+    {
+      "id": "redis_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "contains",
+          "value": "DENIED Redis",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "contains",
+          "value": "CONFIG REWRITE",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "contains",
+          "value": "NOAUTH Authentication",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        6379,
+        6380
+      ],
+      "send": "*1\r\n$4\r\ninfo\r\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Airflow",
+  "default_ports": [
+    6379,
+    6380
+  ],
+  "tags": [
+    "network",
+    "redis",
+    "tcp"
+  ]
+}

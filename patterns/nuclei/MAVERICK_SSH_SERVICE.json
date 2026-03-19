@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-maverick_ssh_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAVERICK_SSH",
+  "taxonomy_name": "Maverick SSH Service",
+  "source": {
+    "type": "nuclei",
+    "file": "maverick-ssh-detect.yaml",
+    "original_id": "maverick-ssh-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/maverick-ssh-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template maverick-ssh-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/sshtools/maverick-synergy",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "maverick_ssh_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)Maverick",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Maverick",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        22
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    22
+  ],
+  "tags": [
+    "network",
+    "ssh",
+    "tcp"
+  ]
+}

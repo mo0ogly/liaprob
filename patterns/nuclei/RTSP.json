@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-rtsp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RTSP",
+  "taxonomy_name": "RTSP",
+  "source": {
+    "type": "nuclei",
+    "file": "rtsp-detect.yaml",
+    "original_id": "rtsp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/rtsp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template rtsp-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://nmap.org/nsedoc/scripts/rtsp-methods.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "rtsp_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "RTSP/1.0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        554
+      ],
+      "send_hex": "4f5054494f4e53207369703a6e6d205349502f322e300d0a5669613a205349502f322e302f544350206e6d3b6272616e63683d666f6f0d0a46726f6d3a203c7369703a6e6d406e6d3e3b7461673d726f6f740d0a546f3a203c7369703a6e6d32406e6d323e0d0a43616c6c2d49443a2035303030300d0a435365713a203432204f5054494f4e530d0a4d61782d466f7277617264733a2037300d0a436f6e74656e742d4c656e6774683a20300d0a436f6e746163743a203c7369703a6e6d406e6d3e0d0a4163636570743a206170706c69636174696f6e2f7364700d0a0d0a"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    554
+  ],
+  "tags": [
+    "network",
+    "rtsp",
+    "tcp"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-prestashop_tech_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRESTASHOP_T",
+  "taxonomy_name": "PrestaShop Tech Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "prestashop-detect.yaml",
+    "original_id": "prestashop-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/prestashop-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template prestashop-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "prestashop_t_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Powered by <a\\s+[^>]+>PrestaShop",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- /Block [a-z ]+ module (?:HEADER|TOP)?\\s?-->",
+          "confidence_delta": 0.4,
+          "version_extract": "<!-- /Block [a-z ]+ module (?:HEADER|TOP)?\\s?-->",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- /Module Block [a-z ]+ -->",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Prestashop",
+  "product": "Prestashop",
+  "cpe23_template": "cpe:2.3:a:prestashop:prestashop:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "cms",
+    "prestashop"
+  ]
+}

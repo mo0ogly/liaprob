@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-docker_registry_browser",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOCKER_REGIS",
+  "taxonomy_name": "Docker Registry Browser",
+  "source": {
+    "type": "nuclei",
+    "file": "docker-registry-browser-detect.yaml",
+    "original_id": "docker-registry-browser-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/docker-registry-browser-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template docker-registry-browser-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/klausmeyer/docker-registry-browser",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "docker_regis_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Docker Registry Browser</title>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "docker",
+    "registry",
+    "browser",
+    "ui"
+  ]
+}

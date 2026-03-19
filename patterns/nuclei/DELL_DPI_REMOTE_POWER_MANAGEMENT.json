@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-dell_dpi_remote_power_management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DELL_DPI_REM",
+  "taxonomy_name": "Dell DPI Remote Power Management",
+  "source": {
+    "type": "nuclei",
+    "file": "dell-dpi-panel.yaml",
+    "original_id": "dell-dpi-panel",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/dell-dpi-panel.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template dell-dpi-panel (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "dell_dpi_rem_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/index2.html",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "title=\"DELL DPI Remote Power Management",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<TITLE>DELL DPI Remote Power Management",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dell",
+    "dpi",
+    "rpm"
+  ]
+}

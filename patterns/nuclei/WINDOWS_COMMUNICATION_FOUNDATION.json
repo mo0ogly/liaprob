@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-windows_communication_foundation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WINDOWS_COMM",
+  "taxonomy_name": "Windows Communication Foundation",
+  "source": {
+    "type": "nuclei",
+    "file": "windows-communication-foundation-detect.yaml",
+    "original_id": "windows-communication-foundation-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/windows-communication-foundation-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template windows-communication-foundation-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "windows_comm_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Endpoint not found.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "class=\"heading1\">Service",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "This is a Windows&#169; Communication Foundation service.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Service</title>",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Windows",
+  "product": "Wcf",
+  "tags": [
+    "wcf",
+    "windows"
+  ]
+}

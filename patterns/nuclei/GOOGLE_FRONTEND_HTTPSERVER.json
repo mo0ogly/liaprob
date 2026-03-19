@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-google_frontend_httpserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_FRONT",
+  "taxonomy_name": "Google frontend HttpServer",
+  "source": {
+    "type": "nuclei",
+    "file": "google-frontend-httpserver.yaml",
+    "original_id": "google-frontend-httpserver",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/google-frontend-httpserver.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template google-frontend-httpserver (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "google_front_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Google Frontend",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "google",
+    "httpserver"
+  ]
+}

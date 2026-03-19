@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-sap_dispatcher",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_DISPATCH",
+  "taxonomy_name": "SAP Dispatcher",
+  "source": {
+    "type": "nuclei",
+    "file": "sap-dispatcher-detect.yaml",
+    "original_id": "sap-dispatcher-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/sap-dispatcher-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sap-dispatcher-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "sap_dispatch_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "DPTMMSG",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        3200
+      ],
+      "send_hex": "00000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    3200
+  ],
+  "tags": [
+    "network",
+    "tcp",
+    "sap"
+  ]
+}

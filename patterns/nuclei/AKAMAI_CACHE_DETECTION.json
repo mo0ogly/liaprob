@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-akamai_cache_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKAMAI_CACHE",
+  "taxonomy_name": "Akamai Cache Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "akamai-cache-detect.yaml",
+    "original_id": "akamai-cache-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/akamai-cache-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template akamai-cache-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://community.akamai.com/customers/s/article/Using-Akamai-Pragma-headers-to-investigate-or-troubleshoot-Akamai-content-delivery?language=en_US",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://spyclub.tech/2022/12/14/unusual-cache-poisoning-akamai-s3/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "akamai_cache_http_0",
+      "layer": "L7_HTTP",
+      "method": "HEAD",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?:TCP_HIT|TCP_MISS).*deploy\\.akamaitechnologies\\.com",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:TCP_HIT|TCP_MISS).*deploy\\.akamaitechnologies\\.com",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "cache",
+    "akamai"
+  ]
+}

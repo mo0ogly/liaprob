@@ -1,0 +1,88 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_kong",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_KONG",
+  "taxonomy_name": "Detect Kong",
+  "source": {
+    "type": "nuclei",
+    "file": "kong-detect.yaml",
+    "original_id": "kong-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kong-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kong-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/Kong/kong",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_kong_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "server: kong",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-kong-response-latency",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-kong-upstream-latency",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-kong-proxy-latency",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-kong-admin-request-id",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "kong"
+  ]
+}

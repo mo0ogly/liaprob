@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_pinot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_PINOT",
+  "taxonomy_name": "Apache Pinot",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-pinot-detect.yaml",
+    "original_id": "apache-pinot-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-pinot-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-pinot-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_pinot_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Apache Pinot</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Pinot",
+  "cpe23_template": "cpe:2.3:a:apache:pinot:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "pinot",
+    "apache"
+  ]
+}

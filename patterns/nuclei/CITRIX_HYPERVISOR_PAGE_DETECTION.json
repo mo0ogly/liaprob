@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-citrix_hypervisor_page_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITRIX_HYPER",
+  "taxonomy_name": "Citrix Hypervisor Page Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "citrix-hypervisor-page.yaml",
+    "original_id": "citrix-hypervisor-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/citrix-hypervisor-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template citrix-hypervisor-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "citrix_hyper_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Welcome to Citrix Hypervisor",
+          "confidence_delta": 0.2,
+          "version_extract": "Welcome to Citrix Hypervisor ([0-9. ]+)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "XenCenter",
+          "confidence_delta": 0.2,
+          "version_extract": "Welcome to Citrix Hypervisor ([0-9. ]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Citrix",
+  "product": "Hypervisor",
+  "cpe23_template": "cpe:2.3:o:citrix:hypervisor:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "citrix",
+    "default-page"
+  ]
+}

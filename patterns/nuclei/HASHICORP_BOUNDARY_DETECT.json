@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hashicorp_boundary_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HASHICORP_BO",
+  "taxonomy_name": "HashiCorp Boundary Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "hashicorp-boundary-detect.yaml",
+    "original_id": "hashicorp-boundary-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/hashicorp-boundary-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template hashicorp-boundary-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hashicorp_bo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "HashiCorp Boundary",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "hashicorp"
+  ]
+}

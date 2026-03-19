@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-semantic_ui_framework",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEMANTIC_UI_",
+  "taxonomy_name": "Semantic UI Framework",
+  "source": {
+    "type": "nuclei",
+    "file": "semantic-ui-detect.yaml",
+    "original_id": "semantic-ui-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/semantic-ui-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template semantic-ui-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://semantic-ui.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "semantic_ui__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)href=[\"'][^\"']*semantic(?:[\\.-]min)?\\.css",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)href=[\"'][^\"']*semantic(?:[\\.-]min)?\\.css",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)src=[\"'][^\"']*semantic(?:[\\.-]min)?\\.js",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)src=[\"'][^\"']*semantic(?:[\\.-]min)?\\.js",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "semantic-ui"
+  ]
+}

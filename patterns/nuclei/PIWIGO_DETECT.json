@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-piwigo_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIWIGO",
+  "taxonomy_name": "Piwigo Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "piwigo-detect.yaml",
+    "original_id": "piwigo-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/piwigo-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template piwigo-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "piwigo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "piwigo.org\">Piwigo</a>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Piwigo (aka PWG), see piwigo.org",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Piwigo",
+  "product": "Piwigo",
+  "tags": [
+    "piwigo"
+  ]
+}

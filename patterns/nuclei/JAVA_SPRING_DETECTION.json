@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-java_spring_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAVA_SPRING",
+  "taxonomy_name": "Java Spring Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "spring-detect.yaml",
+    "original_id": "spring-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/spring-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template spring-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://mkyong.com/spring-boot/spring-rest-error-handling-example/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "java_spring_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/error",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"status\":999",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "java",
+    "spring"
+  ]
+}

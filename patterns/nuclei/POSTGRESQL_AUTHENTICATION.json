@@ -1,0 +1,113 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-postgresql_authentication",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POSTGRESQL_A",
+  "taxonomy_name": "PostgreSQL Authentication",
+  "source": {
+    "type": "nuclei",
+    "file": "pgsql-detect.yaml",
+    "original_id": "pgsql-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/pgsql-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template pgsql-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/errcodes-appendix.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/client-authentication-problems.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "postgresql_a_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "C0A000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "C08P01",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "28000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "28P01",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "SCRAM-SHA-256",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "pg_hba.conf",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "user \"nuclei\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "database \"nuclei\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "HTTP/1.1",
+          "confidence_delta": 0.4,
+          "negate": true
+        }
+      ],
+      "ports": [
+        5432
+      ],
+      "send_hex": "000000500003000075736572006e75636c6569006461746162617365006e75636c6569006170706c69636174696f6e5f6e616d65007073716c00636c69656e745f656e636f64696e6700555446380000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    5432
+  ],
+  "tags": [
+    "network",
+    "postgresql",
+    "db",
+    "tcp"
+  ]
+}

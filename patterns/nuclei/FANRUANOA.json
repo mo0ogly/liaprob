@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-fanruanoa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FANRUANOA",
+  "taxonomy_name": "FanRuanOA",
+  "source": {
+    "type": "nuclei",
+    "file": "fanruanoa-detect.yaml",
+    "original_id": "fanruanoa-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/fanruanoa-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template fanruanoa-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "fanruanoa_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/WebReport/ReportServer",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "DeploySuccess._init",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oa",
+    "dotnet",
+    "fanruan"
+  ]
+}

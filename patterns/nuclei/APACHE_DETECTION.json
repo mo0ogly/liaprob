@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE",
+  "taxonomy_name": "Apache Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-detect.yaml",
+    "original_id": "apache-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: Server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Apache+",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "apache"
+  ]
+}

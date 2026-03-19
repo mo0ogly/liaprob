@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-tp_print_ftp_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TP_PRINT_FTP",
+  "taxonomy_name": "TP Print FTP Service",
+  "source": {
+    "type": "nuclei",
+    "file": "tp-print-ftp-detect.yaml",
+    "original_id": "tp-print-ftp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/tp-print-ftp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template tp-print-ftp-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "tp_print_ftp_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "TP print service:V-",
+          "confidence_delta": 0.4,
+          "version_extract": "TP print service:V-([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        21
+      ],
+      "send_hex": 0
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    21
+  ],
+  "tags": [
+    "network",
+    "ftp",
+    "tp-print",
+    "tcp"
+  ]
+}

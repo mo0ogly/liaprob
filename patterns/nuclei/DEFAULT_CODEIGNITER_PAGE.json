@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-default_codeigniter_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEFAULT_CODE",
+  "taxonomy_name": "Default CodeIgniter Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-codeigniter-page.yaml",
+    "original_id": "default-codeigniter-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-codeigniter-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-codeigniter-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "default_code_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^<title>Welcome to CodeIgniter\\s?(?:[0-9]!)?</title>$",
+          "confidence_delta": 0.4,
+          "version_extract": "^<title>Welcome to CodeIgniter\\s?(?:[0-9]!)?</title>$",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Codeigniter",
+  "product": "Codeigniter",
+  "cpe23_template": "cpe:2.3:a:codeigniter:codeigniter:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "codeigniter"
+  ]
+}

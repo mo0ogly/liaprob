@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-burst_statistics_privacy_friendly_analytics_for_wordpress_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BURST_STATIS",
+  "taxonomy_name": "Burst Statistics – Privacy-Friendly Analytics for WordPress Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "burst-statistics.yaml",
+    "original_id": "wordpress-burst-statistics",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/burst-statistics.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-burst-statistics (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/burst-statistics/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "burst_statis_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/burst-statistics/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-jellyfin_detected",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JELLYFIN_DET",
+  "taxonomy_name": "Jellyfin detected",
+  "source": {
+    "type": "nuclei",
+    "file": "jellyfin-detect.yaml",
+    "original_id": "jellyfin-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/jellyfin-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template jellyfin-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "jellyfin_det_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/home.html",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "name=\"application-name\" content=\"Jellyfin\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "class=\"page homePage libraryPage allLibraryPage backdropPage pageWithAbsoluteTabs withTabs\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "The Free Software Media System",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Jellyfin",
+  "product": "Jellyfin",
+  "cpe23_template": "cpe:2.3:a:jellyfin:jellyfin:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "jellyfin"
+  ]
+}

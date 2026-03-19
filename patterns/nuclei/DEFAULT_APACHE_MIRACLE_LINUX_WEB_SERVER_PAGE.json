@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-default_apache_miracle_linux_web_server_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEFAULT_APAC",
+  "taxonomy_name": "Default Apache Miracle Linux Web Server Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-apache-miracle.yaml",
+    "original_id": "default-apache-miracle",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-apache-miracle.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-apache-miracle (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "default_apac_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<TITLE>Apache Miracle Linux Web Server</TITLE>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "default-page",
+    "apache",
+    "miracle"
+  ]
+}

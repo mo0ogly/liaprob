@@ -1,0 +1,106 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-windows_remote_desktop_protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WINDOWS_REMO",
+  "taxonomy_name": "Windows Remote Desktop Protocol",
+  "source": {
+    "type": "nuclei",
+    "file": "rdp-detection.yaml",
+    "original_id": "rdp-detection",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/rdp-detection.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template rdp-detection (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "windows_remo_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "0300000b06d00000123400",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed000001234000300080002000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed000001234000200080002000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed000001234000209080002000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed000001234000201080002000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed00000123400021f080002000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed00000123400020f080002000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed00000123400020f080008000000",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "030000130ed00000123400021f080008000000",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        3389
+      ],
+      "send_hex": "0300002a25e00000000000436f6f6b69653a206d737473686173683d746573740d0a010008000b000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    3389
+  ],
+  "tags": [
+    "network",
+    "windows",
+    "rdp",
+    "tcp"
+  ]
+}

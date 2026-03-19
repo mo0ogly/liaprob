@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-kubelet_healthz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBELET_HEAL",
+  "taxonomy_name": "Kubelet Healthz",
+  "source": {
+    "type": "nuclei",
+    "file": "kubelet-healthz.yaml",
+    "original_id": "kubelet-healthz",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kubelet-healthz.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kubelet-healthz (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "kubelet_heal_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/healthz",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "text/plain",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ok",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Kubernetes",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "k8s",
+    "kubernetes",
+    "devops",
+    "kubelet"
+  ]
+}

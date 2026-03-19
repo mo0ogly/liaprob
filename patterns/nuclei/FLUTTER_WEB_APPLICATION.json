@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-flutter_web_application",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLUTTER_WEB_",
+  "taxonomy_name": "Flutter Web Application",
+  "source": {
+    "type": "nuclei",
+    "file": "flutter-web-detect.yaml",
+    "original_id": "flutter-web-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/flutter-web-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template flutter-web-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "flutter_web__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/flutter_service_worker.js",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "_flutter.loader.didCreateEngineInitializer",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "_flutter.buildConfig",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "flutter-app-manifest",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "flutter-temp-cache",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "flutter-app-cache",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "ext.flutter.disassemble",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "#flutterweb-theme",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "flutter"
+  ]
+}

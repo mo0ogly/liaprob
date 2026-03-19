@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-sap_message_server_http",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_MESSAGE_",
+  "taxonomy_name": "SAP Message Server HTTP",
+  "source": {
+    "type": "nuclei",
+    "file": "sap-message-server-detect.yaml",
+    "original_id": "sap-message-server-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/sap-message-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template sap-message-server-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "sap_message__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "SAP Message Server",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)server:\\s*(SAP Message Server[^\\r\\n]*)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sap",
+    "recon"
+  ]
+}

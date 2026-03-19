@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oracle_access_manager_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_ACCES",
+  "taxonomy_name": "Oracle Access Manager Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "oracle-access-manager-detect.yaml",
+    "original_id": "oracle-access-manager-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oracle-access-manager-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oracle-access-manager-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oracle_acces_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/oamfed/idp/soap",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "processing the SOAP Request",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/xml",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oracle"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-etcd_version",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ETCD",
+  "taxonomy_name": "Etcd Version",
+  "source": {
+    "type": "nuclei",
+    "file": "etcd-version.yaml",
+    "original_id": "etcd-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/etcd-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template etcd-version (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://etcd.io/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "etcd_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/version",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"etcdserver\"",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"etcdcluster\"",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "k8s",
+    "kubernetes",
+    "devops",
+    "etcd"
+  ]
+}

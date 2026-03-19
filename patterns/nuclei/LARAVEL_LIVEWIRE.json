@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-laravel_livewire",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LARAVEL_LIVE",
+  "taxonomy_name": "Laravel Livewire",
+  "source": {
+    "type": "nuclei",
+    "file": "livewire-detect.yaml",
+    "original_id": "livewire-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/livewire-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template livewire-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://livewire.laravel.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "laravel_live_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "wire:id=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "wire:initial-data=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "window.livewire_app_url",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "window.livewire_token",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "livewire.js",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "livewire.min.js",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Laravel",
+  "product": "Livewire",
+  "tags": [
+    "livewire"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_gunicorn_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_GUNIC",
+  "taxonomy_name": "Detect Gunicorn Server",
+  "source": {
+    "type": "nuclei",
+    "file": "gunicorn-detect.yaml",
+    "original_id": "gunicorn-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/gunicorn-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template gunicorn-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/benoitc/gunicorn",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_gunic_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "Server",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: Server -> Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "gunicorn+",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "gunicorn"
+  ]
+}

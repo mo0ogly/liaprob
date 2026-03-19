@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-magmi_magento_mass_importer_plugin_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAGMI_MAGENT",
+  "taxonomy_name": "MAGMI (Magento Mass Importer) Plugin Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "magmi-detect.yaml",
+    "original_id": "magmi-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/magmi-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template magmi-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "magmi_magent_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/magmi/web/js/magmi_utils.js",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "magmi_multifield",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Magmi_Project",
+  "product": "Magmi",
+  "cpe23_template": "cpe:2.3:a:magmi_project:magmi:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "magento",
+    "magmi",
+    "plugin"
+  ]
+}

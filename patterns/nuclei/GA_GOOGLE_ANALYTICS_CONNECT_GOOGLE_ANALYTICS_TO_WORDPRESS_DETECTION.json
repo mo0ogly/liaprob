@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ga_google_analytics_connect_google_analytics_to_wordpress_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GA_GOOGLE_AN",
+  "taxonomy_name": "GA Google Analytics – Connect Google Analytics to WordPress Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "ga-google-analytics.yaml",
+    "original_id": "wordpress-ga-google-analytics",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ga-google-analytics.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wordpress-ga-google-analytics (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://wordpress.org/plugins/ga-google-analytics/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ga_google_an_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/plugins/ga-google-analytics/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)Stable.tag:\\s?([\\w.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "wordpress",
+    "wp-plugin",
+    "top-200"
+  ]
+}

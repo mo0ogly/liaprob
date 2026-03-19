@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_zeppelin_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_ZEPPE",
+  "taxonomy_name": "Apache Zeppelin detect",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-zeppelin-detect.yaml",
+    "original_id": "apache-zeppelin-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-zeppelin-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-zeppelin-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_zeppe_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title ng-bind=\"$root.pageTitle\">Zeppelin</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Zeppelin",
+  "cpe23_template": "cpe:2.3:a:apache:zeppelin:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "apache",
+    "zeppelin"
+  ]
+}

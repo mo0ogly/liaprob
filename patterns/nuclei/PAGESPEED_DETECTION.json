@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-pagespeed_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAGESPEED",
+  "taxonomy_name": "Pagespeed Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "pagespeed-detect.yaml",
+    "original_id": "pagespeed-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/pagespeed-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template pagespeed-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "pagespeed_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Mod-Pagespeed:",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pagespeed"
+  ]
+}

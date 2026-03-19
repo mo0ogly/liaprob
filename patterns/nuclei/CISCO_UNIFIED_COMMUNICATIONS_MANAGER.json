@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-cisco_unified_communications_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_UNIFIE",
+  "taxonomy_name": "Cisco Unified Communications Manager",
+  "source": {
+    "type": "nuclei",
+    "file": "cisco-ucm-version.yaml",
+    "original_id": "cisco-ucm-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/cisco-ucm-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template cisco-ucm-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://developer.cisco.com/site/user-data-services/develop-and-test/api-reference/#version",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "cisco_unifie_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/cucm-uds/version",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<versionInformation",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<version>",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Cisco",
+  "product": "Unified_Communications_Manager",
+  "tags": [
+    "cisco",
+    "ucm"
+  ]
+}

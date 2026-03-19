@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-pocketbase_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POCKETBASE",
+  "taxonomy_name": "PocketBase Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "pocketbase-detect.yaml",
+    "original_id": "pocketbase-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/pocketbase-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template pocketbase-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://pocketbase.io/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "pocketbase_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>PocketBase",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Pocketbase",
+  "product": "Pocketbase",
+  "tags": [
+    "pocketbase"
+  ]
+}

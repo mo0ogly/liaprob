@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-json_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JSON",
+  "taxonomy_name": "Json Server",
+  "source": {
+    "type": "nuclei",
+    "file": "json-server.yaml",
+    "original_id": "json-server",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/json-server.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template json-server (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.exploit-db.com/ghdb/4550",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "json_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>JSON Server</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "exposure",
+    "devops"
+  ]
+}

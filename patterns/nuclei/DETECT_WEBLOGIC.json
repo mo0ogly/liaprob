@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_weblogic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_WEBLO",
+  "taxonomy_name": "Detect Weblogic",
+  "source": {
+    "type": "nuclei",
+    "file": "weblogic-detect.yaml",
+    "original_id": "weblogic-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/weblogic-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template weblogic-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_weblo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/{{randstr}}",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "From RFC 2068",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Error 404--Not Found",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "weblogic",
+    "intrusive"
+  ]
+}

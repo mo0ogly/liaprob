@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-elfinder_2_1_58_remote_code_execution",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELFINDER_2_1",
+  "taxonomy_name": "elFinder 2.1.58 - Remote Code Execution",
+  "source": {
+    "type": "nuclei",
+    "file": "elfinder-version.yaml",
+    "original_id": "elfinder-version",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/elfinder-version.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template elfinder-version (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/Studio-42/elFinder/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "elfinder_2_1_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/js/elfinder.min.js",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "elFinder - file manager for web",
+          "confidence_delta": 0.4,
+          "version_extract": "\\* Version (.+) \\(",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "elFinder.prototype.version =",
+          "confidence_delta": 0.4,
+          "version_extract": "\\* Version (.+) \\(",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "elfinder",
+    "oss"
+  ]
+}

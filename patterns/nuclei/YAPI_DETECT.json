@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-yapi_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YAPI",
+  "taxonomy_name": "YApi Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "yapi-detect.yaml",
+    "original_id": "yapi-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/yapi-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template yapi-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "yapi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>YApi-高效、易用、功能强大的可视化接口管理平台</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Ymfe",
+  "product": "Yapi",
+  "cpe23_template": "cpe:2.3:a:ymfe:yapi:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "yapi"
+  ]
+}

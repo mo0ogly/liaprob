@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-subrion_cms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUBRION_CMS",
+  "taxonomy_name": "Subrion CMS Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "subrion-cms-detect.yaml",
+    "original_id": "subrion-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/subrion-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template subrion-cms-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "subrion_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "subrion.org\" title=\"Open Source CMS\">Subrion CMS",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Subrion CMS - Open Source Content Management System",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Intelliants",
+  "product": "Subrion",
+  "cpe23_template": "cpe:2.3:a:intelliants:subrion:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "subrion"
+  ]
+}

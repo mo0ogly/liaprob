@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-microsoft_internet_information_services_8",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_IN",
+  "taxonomy_name": "Microsoft Internet Information Services 8",
+  "source": {
+    "type": "nuclei",
+    "file": "microsoft-iis-8.yaml",
+    "original_id": "microsoft-iis-8",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/microsoft-iis-8.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template microsoft-iis-8 (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "microsoft_in_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Microsoft Internet Information Services 8</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Microsoft",
+  "product": "Iis",
+  "cpe23_template": "cpe:2.3:a:microsoft:iis:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "iis",
+    "microsoft"
+  ]
+}

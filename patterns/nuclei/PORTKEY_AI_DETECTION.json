@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-portkey_ai_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PORTKEY_AI",
+  "taxonomy_name": "Portkey AI Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "portkey-ai-detect.yaml",
+    "original_id": "portkey-ai-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/portkey-ai-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template portkey-ai-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://portkey.ai/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/Portkey-AI/gateway",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "portkey_ai_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/login",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Portkey AI",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "portkey",
+    "ai",
+    "llm",
+    "gateway"
+  ]
+}

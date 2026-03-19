@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-osquery_fleet_detection_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OSQUERY_FLEE",
+  "taxonomy_name": "OSQuery Fleet Detection Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "osquery-fleet-detect.yaml",
+    "original_id": "osquery-fleet-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/osquery-fleet-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template osquery-fleet-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://fleetdm.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "osquery_flee_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/login",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Fleet",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "osquery",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/assets/bundle",
+          "confidence_delta": 0.13
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Kolide",
+  "product": "Fleet",
+  "cpe23_template": "cpe:2.3:a:kolide:fleet:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "panel",
+    "fleet",
+    "osquery"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-azure_function_app_default_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AZURE_FUNCTI",
+  "taxonomy_name": "Azure Function App - Default Page",
+  "source": {
+    "type": "nuclei",
+    "file": "default-azure-function-app.yaml",
+    "original_id": "default-azure-function-app",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/default-azure-function-app.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template default-azure-function-app (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "azure_functi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Your Azure Function App is up and running.</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Microsoft",
+  "product": "Azure",
+  "cpe23_template": "cpe:2.3:a:microsoft:azure:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "azure",
+    "microsoft"
+  ]
+}

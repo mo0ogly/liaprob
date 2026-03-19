@@ -1,0 +1,113 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-ivanti_endpoint_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IVANTI_ENDPO",
+  "taxonomy_name": "Ivanti Endpoint Manager",
+  "source": {
+    "type": "nuclei",
+    "file": "ivanti-endpoint-manager.yaml",
+    "original_id": "ivanti-endpoint-manager",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ivanti-endpoint-manager.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ivanti-endpoint-manager (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "ivanti_endpo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Ivanti Endpoint Manager",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "LANDesk Management",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Ivanti(R) Cloud Services",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Ivanti Cloud Services Appliance",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "LANDesk(R) Cloud Services Appliance",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "LANDesk(R) Management",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "LANDesk",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Ivanti EPM",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)landdesk.*management",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)landdesk.*management",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)ivanti.*endpoint\\s*manager",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)ivanti.*endpoint\\s*manager",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ivanti",
+    "epm",
+    "landdesk"
+  ]
+}

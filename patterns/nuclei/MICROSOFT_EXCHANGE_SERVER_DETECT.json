@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-microsoft_exchange_server_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_EX",
+  "taxonomy_name": "Microsoft Exchange Server Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "ms-exchange-server.yaml",
+    "original_id": "ms-exchange-server",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/ms-exchange-server.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template ms-exchange-server (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/GossiTheDog/scanning/blob/main/http-vuln-exchange.nse",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "microsoft_ex_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/owa/auth/logon.aspx",
+      "matchers": [
+        {
+          "target": "header",
+          "field": "X-Owa-Version",
+          "match_type": "exists",
+          "confidence_delta": 0.4,
+          "version_extract": "^(.+)$",
+          "version_group": 1,
+          "note": "kval extractor: x_owa_version -> X-Owa-Version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)(X-Owa-Version:)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)(X-Owa-Version:)",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "/owa/auth/[0-9.]+/",
+          "confidence_delta": 0.4,
+          "version_extract": "/owa/auth/([0-9.]+)/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Exchange Log In</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "/owa/auth/([0-9.]+)/",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Microsoft Exchange - Outlook Web Access</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "/owa/auth/([0-9.]+)/",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "microsoft",
+    "exchange"
+  ]
+}

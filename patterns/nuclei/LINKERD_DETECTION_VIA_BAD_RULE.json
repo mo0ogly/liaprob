@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-linkerd_detection_via_bad_rule",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LINKERD_DETE",
+  "taxonomy_name": "Linkerd detection via bad rule",
+  "source": {
+    "type": "nuclei",
+    "file": "linkerd-detect.yaml",
+    "original_id": "linkerd-badrule-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/linkerd-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template linkerd-badrule-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://linkerd.io",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "linkerd_dete_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?mi)^Via\\s*?:.*?linkerd.*$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?mi)^Via\\s*?:.*?linkerd.*$",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?mi)^l5d-err:.*$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?mi)^l5d-err:.*$",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?mi)^l5d-success-class: 0.*$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?mi)^l5d-success-class: 0.*$",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "expected but end of input found at",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "linkerd"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_lucee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_LUCEE",
+  "taxonomy_name": "Detect Lucee",
+  "source": {
+    "type": "nuclei",
+    "file": "lucee-detect.yaml",
+    "original_id": "lucee-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/lucee-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template lucee-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_lucee_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/lucee/doc/functions.cfm",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)X-Lucee-Version",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)X-Lucee-Version",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)X-CB-Server: LUCEE",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)X-CB-Server: LUCEE",
+          "version_group": 1
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)X-IDG-Appserver: Lucee",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)X-IDG-Appserver: Lucee",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Lucee Function Reference",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "lucee"
+  ]
+}

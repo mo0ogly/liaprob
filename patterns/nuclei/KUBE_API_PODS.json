@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-kube_api_pods",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBE_API_POD",
+  "taxonomy_name": "Kube API Pods",
+  "source": {
+    "type": "nuclei",
+    "file": "kube-api-pods.yaml",
+    "original_id": "kube-api-pods",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/kube-api-pods.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template kube-api-pods (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "kube_api_pod_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/api/v1/namespaces/default/pods",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"PodList\":",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"items\":",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "k8s",
+    "kubernetes",
+    "devops",
+    "kube"
+  ]
+}

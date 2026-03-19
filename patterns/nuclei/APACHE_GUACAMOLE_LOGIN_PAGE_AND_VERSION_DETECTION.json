@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_guacamole_login_page_and_version_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_GUACA",
+  "taxonomy_name": "Apache Guacamole Login Page and version detection",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-guacamole.yaml",
+    "original_id": "apache-guacamole",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-guacamole.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-guacamole (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_guaca_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/translations/en.json",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Apache Guacamole",
+          "confidence_delta": 0.4,
+          "version_extract": "\"VERSION\":\"[0-9]+\\.2\\.0\"",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "apache",
+    "guacamole",
+    "login"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-atlassian_connect_descriptor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATLASSIAN_CO",
+  "taxonomy_name": "Atlassian Connect Descriptor",
+  "source": {
+    "type": "nuclei",
+    "file": "atlassian-connect-descriptor.yaml",
+    "original_id": "atlassian-connect-descriptor",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/atlassian-connect-descriptor.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template atlassian-connect-descriptor (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://developer.atlassian.com/cloud/jira/platform/connect-app-descriptor/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "atlassian_co_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/atlassian-connect.json",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"name\":",
+          "confidence_delta": 0.08
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"vendor\":",
+          "confidence_delta": 0.08
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"key\":",
+          "confidence_delta": 0.08
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"baseUrl\":",
+          "confidence_delta": 0.08
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "\"authentication\":",
+          "confidence_delta": 0.08
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "application/json",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "atlassian",
+    "jira"
+  ]
+}

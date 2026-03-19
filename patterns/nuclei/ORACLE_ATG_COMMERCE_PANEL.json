@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-oracle_atg_commerce_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_ATG_C",
+  "taxonomy_name": "Oracle ATG Commerce Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "oracle-atg-commerce.yaml",
+    "original_id": "oracle-atg-commerce",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oracle-atg-commerce.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oracle-atg-commerce (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://docs.oracle.com/cd/E35319_01/Platform.10-2/ATGPlatformProgGuide/html/s0101introduction01.html",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "oracle_atg_c_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "x-atg-version",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "atg_session_id",
+          "confidence_delta": 0.4,
+          "case_insensitive": true
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oracle",
+    "atg",
+    "commerce"
+  ]
+}

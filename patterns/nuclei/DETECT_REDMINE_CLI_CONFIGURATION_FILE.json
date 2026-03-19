@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_redmine_cli_configuration_file",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_REDMI",
+  "taxonomy_name": "Detect Redmine CLI Configuration File",
+  "source": {
+    "type": "nuclei",
+    "file": "redmine-cli-detect.yaml",
+    "original_id": "redmine-cli-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/redmine-cli-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template redmine-cli-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_redmi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/.redmine-cli",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "default",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "my_id",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "root_url",
+          "confidence_delta": 0.13
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "redmine"
+  ]
+}

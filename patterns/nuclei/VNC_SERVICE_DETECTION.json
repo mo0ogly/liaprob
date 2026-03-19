@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-vnc_service_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VNC",
+  "taxonomy_name": "VNC Service Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "vnc-service-detect.yaml",
+    "original_id": "vnc-service-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/vnc-service-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template vnc-service-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "vnc_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "RFB",
+          "confidence_delta": 0.4,
+          "version_extract": "RFB ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        5900
+      ],
+      "send": "\r\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    5900
+  ],
+  "tags": [
+    "network",
+    "vnc",
+    "service",
+    "tcp"
+  ]
+}

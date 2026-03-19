@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-appdynamics_cisco_rum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPDYNAMICS_",
+  "taxonomy_name": "AppDynamics (Cisco) RUM",
+  "source": {
+    "type": "nuclei",
+    "file": "appdynamics-rum-detect.yaml",
+    "original_id": "appdynamics-rum-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/appdynamics-rum-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template appdynamics-rum-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://docs.appdynamics.com/appd/24.x/latest/en/end-user-monitoring/browser-monitoring/browser-real-user-monitoring",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "appdynamics__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "adrum-config",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "adrum-start-time",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "adrumExtUrlHttp",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "adrumExtUrlHttps",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "rum",
+    "appdynamics"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-apache_cocoon_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_COCOO",
+  "taxonomy_name": "Apache Cocoon detect",
+  "source": {
+    "type": "nuclei",
+    "file": "apache-cocoon-detect.yaml",
+    "original_id": "apache-cocoon-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/apache-cocoon-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template apache-cocoon-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "apache_cocoo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "X-Cocoon-Version",
+          "confidence_delta": 0.4,
+          "version_extract": "X\\-Cocoon\\-Version:([ 0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Apache",
+  "product": "Cocoon",
+  "cpe23_template": "cpe:2.3:a:apache:cocoon:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "apache",
+    "cocoon"
+  ]
+}

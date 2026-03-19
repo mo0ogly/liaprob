@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-projectsend_login_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROJECTSEND",
+  "taxonomy_name": "ProjectSend Login Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "projectsend-detect.yaml",
+    "original_id": "projectsend-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/projectsend-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template projectsend-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.exploit-db.com/ghdb/7380",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/projectsend/projectsend",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "projectsend_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Provided by <a href=\"https?:\\/\\/www\\.projectsend\\.org\\/\" target=\"_blank\">ProjectSend<\\/a>",
+          "confidence_delta": 0.4,
+          "version_extract": "version (.*) - Free software",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Projectsend",
+  "product": "Projectsend",
+  "cpe23_template": "cpe:2.3:a:projectsend:projectsend:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "projectsend",
+    "edb"
+  ]
+}

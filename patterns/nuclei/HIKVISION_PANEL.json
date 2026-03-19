@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-hikvision_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HIKVISION",
+  "taxonomy_name": "Hikvision Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "hikvision-detect.yaml",
+    "original_id": "hikvision-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/hikvision-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template hikvision-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "hikvision_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/favicon.ico",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Hikvision Digital Technology",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Hikvision-Webs",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Hikvision",
+  "product": "Ds-2Cd2026G2-Iu\\/Sl_Firmware",
+  "tags": [
+    "hikvision"
+  ]
+}

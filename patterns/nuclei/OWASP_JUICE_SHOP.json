@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-owasp_juice_shop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OWASP_JUICE_",
+  "taxonomy_name": "OWASP Juice Shop",
+  "source": {
+    "type": "nuclei",
+    "file": "owasp-juice-shop-detected.yaml",
+    "original_id": "owasp-juice-shop-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/owasp-juice-shop-detected.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template owasp-juice-shop-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "owasp_juice__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>OWASP Juice Shop</title>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "owasp"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-imap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IMAP",
+  "taxonomy_name": "IMAP",
+  "source": {
+    "type": "nuclei",
+    "file": "imap-detect.yaml",
+    "original_id": "imap-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/imap-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template imap-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "imap_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "OK ",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "IMAP4rev1",
+          "confidence_delta": 0.2
+        }
+      ],
+      "ports": [
+        143
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    143
+  ],
+  "tags": [
+    "network",
+    "imap",
+    "mail",
+    "tcp"
+  ]
+}

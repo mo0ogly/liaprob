@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wms_server_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WMS",
+  "taxonomy_name": "Wms-Server detect",
+  "source": {
+    "type": "nuclei",
+    "file": "wms-server-detect.yaml",
+    "original_id": "wms-server-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/wms-server-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wms-server-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "WMSServer/",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Wms_Project",
+  "product": "Wms",
+  "cpe23_template": "cpe:2.3:a:wms_project:wms:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "wms",
+    "httpserver"
+  ]
+}

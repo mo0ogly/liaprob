@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-advantech_r_seenet_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADVANTECH_R_",
+  "taxonomy_name": "Advantech R-SeeNet Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "rseenet-detect.yaml",
+    "original_id": "rseenet-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/rseenet-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template rseenet-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://icr.advantech.cz/products/software/r-seenet",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "advantech_r__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>R-SeeNet (.*)</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>R-SeeNet (.*)</title>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Advantech",
+  "product": "R-Seenet",
+  "cpe23_template": "cpe:2.3:a:advantech:r-seenet:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "rseenet"
+  ]
+}

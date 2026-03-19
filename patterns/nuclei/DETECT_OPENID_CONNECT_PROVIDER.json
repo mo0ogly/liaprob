@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_openid_connect_provider",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_OPENI",
+  "taxonomy_name": "Detect OpenID Connect provider",
+  "source": {
+    "type": "nuclei",
+    "file": "oidc-detect.yaml",
+    "original_id": "oidc-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/oidc-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template oidc-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_openi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/.well-known/openid-configuration",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "issuer",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "authorization_endpoint",
+          "confidence_delta": 0.2
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "oidc"
+  ]
+}

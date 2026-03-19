@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-wordpress_bricks_builder_theme_version",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORDPRESS_BR",
+  "taxonomy_name": "WordPress Bricks Builder Theme Version",
+  "source": {
+    "type": "nuclei",
+    "file": "wp-bricks-builder-theme.yaml",
+    "original_id": "wp-bricks-builder-theme",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/wp-bricks-builder-theme.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template wp-bricks-builder-theme (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://0day.today/exploit/description/39489",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "wordpress_br_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/wp-content/themes/bricks/readme.txt",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Bricks - Visual Website Builder",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Stable tag:([ 0-9.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "Stable tag:([ 0-9.]+)",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Bricksbuilder",
+  "product": "Bricks",
+  "cpe23_template": "cpe:2.3:a:bricksbuilder:bricks:{version}:*:*:*:wordpress:*:*:*",
+  "tags": [
+    "wordpress",
+    "theme",
+    "wp-theme",
+    "wp",
+    "bricks"
+  ]
+}

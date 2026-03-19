@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-pbootcms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PBOOTCMS",
+  "taxonomy_name": "PbootCMS Detect",
+  "source": {
+    "type": "nuclei",
+    "file": "pbootcms-detect.yaml",
+    "original_id": "pbootcms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/pbootcms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template pbootcms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.pbootcms.com/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "pbootcms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"PbootCMS",
+          "confidence_delta": 0.4,
+          "version_extract": "title=\"(.*)正式发布\">",
+          "version_group": 1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>PbootCMS(.*)</title>",
+          "confidence_delta": 0.4,
+          "version_extract": "<title>PbootCMS(.*)</title>",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Pbootcms",
+  "product": "Pbootcms",
+  "cpe23_template": "cpe:2.3:a:pbootcms:pbootcms:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "pbootcms"
+  ]
+}

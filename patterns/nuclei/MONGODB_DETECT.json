@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-mongodb_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MONGODB",
+  "taxonomy_name": "MongoDB Service",
+  "source": {
+    "type": "nuclei",
+    "file": "MONGODB_DETECT.json",
+    "original_id": "mongodb-detect",
+    "parsed_at": "2026-03-01",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/mongodb-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template mongodb-detect (MIT)",
+      "date": "2026-03-01"
+    },
+    {
+      "url": "https://github.com/orleven/Tentacle",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-01"
+    }
+  ],
+  "probes": [
+    {
+      "id": "mongodb_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "contains",
+          "value": "logicalSessionTimeout",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "contains",
+          "value": "localTime",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        27017
+      ],
+      "send_hex": "3a000000a741000000000000d40700000000000061646d696e2e24636d640000000000ffffffff130000001069736d6173746572000100000000"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    27017
+  ],
+  "tags": [
+    "network",
+    "mongodb",
+    "tcp"
+  ]
+}

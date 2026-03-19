@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-detect_sentry_instance",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETECT_SENTR",
+  "taxonomy_name": "Detect Sentry Instance",
+  "source": {
+    "type": "nuclei",
+    "file": "detect-sentry.yaml",
+    "original_id": "detect-sentry",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/detect-sentry.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template detect-sentry (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://hackerone.com/reports/374737",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://twitter.com/itsecurityguard/status/1127893545619218432?lang=en",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "detect_sentr_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Sentry.init",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "version_extract": "https://[0-9a-f]*@[a-z0-9]+\\.[a-z.]+.?[0-9]+",
+          "version_group": 1
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssrf",
+    "sentry"
+  ]
+}

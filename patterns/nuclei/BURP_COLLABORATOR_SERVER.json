@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-burp_collaborator_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BURP_COLLABO",
+  "taxonomy_name": "Burp Collaborator Server",
+  "source": {
+    "type": "nuclei",
+    "file": "burp-collaborator-detect.yaml",
+    "original_id": "burp-collaborator-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/burp-collaborator-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template burp-collaborator-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://portswigger.net/burp/documentation/collaborator",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "burp_collabo_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Server: Burp Collaborator https://burpcollaborator.net/",
+          "confidence_delta": 0.4,
+          "version_extract": "(?:X-(Collaborator-Version: [0-9]))",
+          "version_group": 1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Portswigger",
+  "product": "Burp_Suite",
+  "cpe23_template": "cpe:2.3:a:portswigger:burp_suite:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "burp"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-bgp_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BGP",
+  "taxonomy_name": "BGP Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "bgp-detect.yaml",
+    "original_id": "bgp-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/bgp-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template bgp-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.acunetix.com/vulnerabilities/network/vulnerability/bgp-detection/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.tenable.com/plugins/nessus/11907",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "bgp_tcp_hex_0",
+      "layer": "L4_TCP_HEX",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "ffffffffffffffffffffffffffffffff",
+          "confidence_delta": 0.4
+        }
+      ],
+      "ports": [
+        179
+      ],
+      "send_hex": "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF001D010400FFFF0000B4C0"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    179
+  ],
+  "tags": [
+    "network",
+    "bgp",
+    "tcp"
+  ]
+}

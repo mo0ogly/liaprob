@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-zend_server_test_page",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEND_SERVER_",
+  "taxonomy_name": "Zend Server Test Page",
+  "source": {
+    "type": "nuclei",
+    "file": "zend-server-test-page.yaml",
+    "original_id": "zend-server-test-page",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/zend-server-test-page.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template zend-server-test-page (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "zend_server__http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>Zend Server Test Page</title>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "text/html",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Zend",
+  "product": "Zend_Server",
+  "cpe23_template": "cpe:2.3:a:zend:zend_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "zend"
+  ]
+}

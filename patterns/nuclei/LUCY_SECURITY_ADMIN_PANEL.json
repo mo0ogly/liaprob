@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-lucy_security_admin_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LUCY_SECURIT",
+  "taxonomy_name": "Lucy Security Admin Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "lucy-admin-panel.yaml",
+    "original_id": "lucy-admin-panel",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/lucy-admin-panel.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template lucy-admin-panel (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "lucy_securit_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "title=\"Lucy\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "aria-label=\"Lucy",
+          "confidence_delta": 0.4
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "lucy"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-cisco_finger_daemon_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_FINGER",
+  "taxonomy_name": "Cisco Finger Daemon Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "cisco-finger-detect.yaml",
+    "original_id": "cisco-finger-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/cisco-finger-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template cisco-finger-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "cisco_finger_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Interface",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "Mode",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "User",
+          "confidence_delta": 0.13
+        }
+      ],
+      "ports": [
+        79
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    79
+  ],
+  "tags": [
+    "network",
+    "finger",
+    "cisco",
+    "tcp"
+  ]
+}

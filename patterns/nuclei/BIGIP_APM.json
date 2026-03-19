@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-bigip_apm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BIGIP_APM",
+  "taxonomy_name": "BIGIP APM",
+  "source": {
+    "type": "nuclei",
+    "file": "bigip-apm-detect.yaml",
+    "original_id": "bigip-apm-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/bigip-apm-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template bigip-apm-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://my.f5.com/manage/s/article/K000138683",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "bigip_apm_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/pre/config.php?version=2.0",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "F5 Networks",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<PROFILE VERSION=",
+          "confidence_delta": 0.13
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<VERSION>",
+          "confidence_delta": 0.13
+        }
+      ],
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "F5",
+  "product": "Big-Ip_Access_Policy_Manager",
+  "cpe23_template": "cpe:2.3:a:f5:big-ip_access_policy_manager:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "bigip",
+    "f5"
+  ]
+}

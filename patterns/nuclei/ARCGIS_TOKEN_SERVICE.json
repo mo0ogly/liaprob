@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-arcgis_token_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARCGIS_TOKEN",
+  "taxonomy_name": "ArcGIS Token Service",
+  "source": {
+    "type": "nuclei",
+    "file": "arcgis-token-service-detect.yaml",
+    "original_id": "arcgis-token-service-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/arcgis-token-service-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template arcgis-token-service-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://enterprise.arcgis.com/en/",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "arcgis_token_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/arcgis/tokens/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "alt=\"ArcGIS Token Service",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Esri",
+  "product": "Arcgis_Server",
+  "cpe23_template": "cpe:2.3:a:esri:arcgis_server:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "arcgis",
+    "tokens",
+    "esri"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-snipe_it_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SNIPE_IT",
+  "taxonomy_name": "Snipe-IT Panel",
+  "source": {
+    "type": "nuclei",
+    "file": "snipeit-panel.yaml",
+    "original_id": "snipeit-panel",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/snipeit-panel.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template snipeit-panel (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "snipe_it_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/login",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "window.snipeit",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "vendor": "Snipeitapp",
+  "product": "Snipe-It",
+  "cpe23_template": "cpe:2.3:a:snipeitapp:snipe-it:{version}:*:*:*:*:*:*:*",
+  "tags": [
+    "panel",
+    "snipeit"
+  ]
+}

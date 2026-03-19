@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-plone_cms_detect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLONE_CMS",
+  "taxonomy_name": "Plone CMS detect",
+  "source": {
+    "type": "nuclei",
+    "file": "plone-cms-detect.yaml",
+    "original_id": "plone-cms-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/plone-cms-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template plone-cms-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/plone/Products.CMFPlone",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "plone_cms_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<meta name=\"generator\" content=\"Plone - ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<div xmlns:css=\"http://namespaces.plone.org/diazo/css\"",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/++plone++static/plone-compiled.css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "/++plone++static/tinymce-styles.css",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": ">Powered by Plone &amp; Python</a>",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "plone",
+    "cms"
+  ]
+}

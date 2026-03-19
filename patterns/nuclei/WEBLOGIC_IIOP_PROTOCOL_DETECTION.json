@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-weblogic_iiop_protocol_detection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBLOGIC_IIO",
+  "taxonomy_name": "Weblogic IIOP Protocol Detection",
+  "source": {
+    "type": "nuclei",
+    "file": "weblogic-iiop-detect.yaml",
+    "original_id": "weblogic-iiop-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/weblogic-iiop-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template weblogic-iiop-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "weblogic_iio_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "GIOP",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "weblogic",
+          "confidence_delta": 0.2
+        }
+      ],
+      "send": "{{hex_decode('47494f50010200030000001700000002000000000000000b4e616d6553657276696365')}}"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "network",
+    "weblogic",
+    "oracle",
+    "iiop",
+    "tcp"
+  ]
+}

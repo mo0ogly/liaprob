@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-iplanet_messaging_server_imap_protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IPLANET_MESS",
+  "taxonomy_name": "iPlanet Messaging Server IMAP Protocol",
+  "source": {
+    "type": "nuclei",
+    "file": "iplanet-imap-detect.yaml",
+    "original_id": "iplanet-imap-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/network/detection/iplanet-imap-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template iplanet-imap-detect (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "iplanet_mess_tcp_0",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "contains",
+          "value": "iPlanet Messaging Server",
+          "confidence_delta": 0.4,
+          "version_extract": "iPlanet Messaging Server ([0-9.]+)",
+          "version_group": 1
+        }
+      ],
+      "ports": [
+        110
+      ],
+      "send": "\n"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "default_ports": [
+    110
+  ],
+  "tags": [
+    "network",
+    "imap",
+    "iplanet",
+    "tcp"
+  ]
+}

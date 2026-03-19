@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-akamai_bot_manager_protection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKAMAI_BOT_M",
+  "taxonomy_name": "Akamai Bot Manager Protection",
+  "source": {
+    "type": "nuclei",
+    "file": "akamai-bot-manager-detect.yaml",
+    "original_id": "akamai-bot-manager-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/akamai-bot-manager-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template akamai-bot-manager-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://www.akamai.com/legal/manage-cookie-preferences",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://techdocs.akamai.com/identity-cloud/docs/hosted-login-cookies-and-local-storage-1",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "akamai_bot_m_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Set-Cookie:\\s*_abck=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Set-Cookie:\\s*bm_sv=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Set-Cookie:\\s*ak_bmsc=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Set-Cookie:\\s*bm_sz=",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Set-Cookie:\\s*bm_mi=",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "akamai",
+    "bot",
+    "security"
+  ]
+}

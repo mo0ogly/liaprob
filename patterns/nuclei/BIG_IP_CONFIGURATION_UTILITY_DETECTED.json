@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-big_ip_configuration_utility_detected",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BIG_IP_CONFI",
+  "taxonomy_name": "BIG-IP Configuration Utility detected",
+  "source": {
+    "type": "nuclei",
+    "file": "bigip-config-utility-detect.yaml",
+    "original_id": "bigip-config-utility",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/bigip-config-utility-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template bigip-config-utility (MIT)",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "big_ip_confi_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/tmui/login.jsp",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Welcome to the BIG-IP",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "Configuration Utility",
+          "confidence_delta": 0.2
+        }
+      ]
+    },
+    {
+      "id": "big_ip_confi_http_1",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/mgmt/tm/sys/management-ip",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Www-Authenticate: Basic realm",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "header",
+          "match_type": "contains",
+          "value": "Enterprise Manager",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "check your user-id and password and try again",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "bigip"
+  ]
+}

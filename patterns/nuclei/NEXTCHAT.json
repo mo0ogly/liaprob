@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nuclei-nextchat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXTCHAT",
+  "taxonomy_name": "NextChat",
+  "source": {
+    "type": "nuclei",
+    "file": "nextchat-detect.yaml",
+    "original_id": "nextchat-detect",
+    "parsed_at": "2026-03-17",
+    "parser_version": "1.0.0"
+  },
+  "research": [
+    {
+      "url": "https://github.com/projectdiscovery/nuclei-templates/blob/main/http/technologies/nextchat-detect.yaml",
+      "type": "nuclei_template",
+      "evidence": "Nuclei template nextchat-detect (MIT)",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://github.com/ChatGPTNextWeb/NextChat",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    },
+    {
+      "url": "https://nextchat.dev",
+      "type": "official_doc",
+      "evidence": "Reference from Nuclei template",
+      "date": "2026-03-17"
+    }
+  ],
+  "probes": [
+    {
+      "id": "nextchat_http_0",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "<title>NextChat",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "body",
+          "match_type": "contains",
+          "value": "content=\"NextChat\"",
+          "confidence_delta": 0.4
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "chatgpt",
+    "nextchat",
+    "ai"
+  ]
+}
