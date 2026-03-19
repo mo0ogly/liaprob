@@ -101,16 +101,16 @@
     "taxonomy_name": "RabbitMQ",
     "source": "lia",
     "priority": 100,
-    "default_ports": [5672, 15672],
+    "default_ports": [5672, 15672, 15673],
     "probes": [
       {
         "layer": "L4_TCP",
-        "send": "",
-        "read_bytes": 64
+        "send": "AMQP\u0000\u0000\u0009\u0001",
+        "read_bytes": 128
       },
       {
         "layer": "L7_HTTP",
-        "path": "/api/overview",
+        "path": "/",
         "method": "GET",
         "ports": [15672]
       }
@@ -123,15 +123,21 @@
         "confidence_delta": 0.5
       },
       {
-        "field": "http_body",
-        "match_type": "contains",
-        "value": "rabbitmq_version",
-        "confidence_delta": 0.4
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "product.*RabbitMQ|RabbitMQ|amqp",
+        "confidence_delta": 0.3
       },
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"rabbitmq_version\":\"([\\d.]+)\"",
+        "value": "RabbitMQ|rabbitmq",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"rabbitmq_version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.1,
         "version_group": 1
       }
@@ -169,7 +175,7 @@
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"Version\":\"([\\d.]+)\"",
+        "value": "\"Version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.2,
         "version_group": 1
       }
@@ -183,7 +189,7 @@
     "taxonomy_name": "Grafana",
     "source": "lia",
     "priority": 100,
-    "default_ports": [3000],
+    "default_ports": [3000, 13000],
     "probes": [
       {
         "layer": "L7_HTTP",
@@ -194,20 +200,20 @@
     "matchers": [
       {
         "field": "http_body",
-        "match_type": "contains",
-        "value": "\"database\":\"ok\"",
+        "match_type": "regex",
+        "value": "\"database\"\\s*:\\s*\"ok\"",
         "confidence_delta": 0.4
       },
       {
         "field": "http_body",
         "match_type": "contains",
-        "value": "\"version\":",
+        "value": "commit",
         "confidence_delta": 0.3
       },
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"version\":\"([\\d.]+)\"",
+        "value": "\"version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.3,
         "version_group": 1
       }
@@ -253,7 +259,7 @@
     "taxonomy_name": "Prometheus",
     "source": "lia",
     "priority": 100,
-    "default_ports": [9090],
+    "default_ports": [9090, 19090],
     "probes": [
       {
         "layer": "L7_HTTP",
@@ -264,8 +270,8 @@
     "matchers": [
       {
         "field": "http_body",
-        "match_type": "contains",
-        "value": "\"status\":\"success\"",
+        "match_type": "regex",
+        "value": "\"status\"\\s*:\\s*\"success\"",
         "confidence_delta": 0.3
       },
       {
@@ -277,7 +283,7 @@
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"version\":\"([\\d.]+)\"",
+        "value": "\"version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.3,
         "version_group": 1
       }

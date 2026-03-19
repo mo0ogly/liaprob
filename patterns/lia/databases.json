@@ -6,7 +6,7 @@
     "taxonomy_name": "MySQL",
     "source": "lia",
     "priority": 100,
-    "default_ports": [3306],
+    "default_ports": [3306, 13306, 33060],
     "probes": [
       {
         "layer": "L4_TCP",
@@ -18,21 +18,20 @@
       {
         "field": "tcp_banner",
         "match_type": "regex",
+        "value": "caching_sha2_password|mysql_native_password|mysql_clear_password",
+        "confidence_delta": 0.6
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
         "value": "mysql|MariaDB",
         "confidence_delta": 0.5
       },
       {
         "field": "tcp_banner",
         "match_type": "regex",
-        "value": "([\\d.]+)-MariaDB",
-        "confidence_delta": 0.4,
-        "version_group": 1
-      },
-      {
-        "field": "tcp_banner",
-        "match_type": "regex",
-        "value": "([\\d.]+)-MySQL",
-        "confidence_delta": 0.4,
+        "value": "(\\d+\\.\\d+\\.\\d+)",
+        "confidence_delta": 0.3,
         "version_group": 1
       }
     ],
@@ -44,8 +43,8 @@
     "taxonomy_code": "DB.MARIADB",
     "taxonomy_name": "MariaDB",
     "source": "lia",
-    "priority": 100,
-    "default_ports": [3306],
+    "priority": 110,
+    "default_ports": [3306, 13306],
     "probes": [
       {
         "layer": "L4_TCP",
@@ -77,12 +76,12 @@
     "taxonomy_name": "PostgreSQL",
     "source": "lia",
     "priority": 100,
-    "default_ports": [5432],
+    "default_ports": [5432, 15432],
     "probes": [
       {
         "layer": "L4_TCP",
-        "send": "",
-        "read_bytes": 64
+        "send": "\u0000\u0000\u0000\u0008\u0004\u00d2\u0016/",
+        "read_bytes": 256
       }
     ],
     "matchers": [
@@ -90,7 +89,7 @@
         "field": "tcp_banner",
         "match_type": "contains",
         "value": "PostgreSQL",
-        "confidence_delta": 0.9
+        "confidence_delta": 0.5
       },
       {
         "field": "tcp_banner",
@@ -98,6 +97,12 @@
         "value": "PostgreSQL ([\\d.]+)",
         "confidence_delta": 0.1,
         "version_group": 1
+      },
+      {
+        "field": "tcp_banner",
+        "match_type": "regex",
+        "value": "authentication|FATAL|SCRAM-SHA-256|server_version",
+        "confidence_delta": 0.5
       }
     ],
     "cpe_template": "cpe:2.3:a:postgresql:postgresql:{version}:*:*:*:*:*:*:*"
@@ -134,8 +139,13 @@
     "taxonomy_name": "MongoDB",
     "source": "lia",
     "priority": 100,
-    "default_ports": [27017, 27018],
+    "default_ports": [27017, 27018, 17017],
     "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      },
       {
         "layer": "L4_TCP",
         "send": "",
@@ -155,6 +165,12 @@
         "value": "MongoDB server version: ([\\d.]+)",
         "confidence_delta": 0.2,
         "version_group": 1
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "MongoDB|mongod|It looks like you are trying to access MongoDB",
+        "confidence_delta": 0.8
       }
     ],
     "cpe_template": "cpe:2.3:a:mongodb:mongodb:{version}:*:*:*:*:*:*:*"
@@ -166,7 +182,7 @@
     "taxonomy_name": "Redis",
     "source": "lia",
     "priority": 100,
-    "default_ports": [6379],
+    "default_ports": [6379, 16379],
     "probes": [
       {
         "layer": "L4_TCP",
@@ -178,7 +194,7 @@
       {
         "field": "tcp_banner",
         "match_type": "regex",
-        "value": "\\+PONG|redis",
+        "value": "\\+PONG|-NOAUTH|-DENIED|redis",
         "confidence_delta": 0.8
       },
       {
@@ -198,7 +214,7 @@
     "taxonomy_name": "Elasticsearch",
     "source": "lia",
     "priority": 100,
-    "default_ports": [9200, 9300],
+    "default_ports": [9200, 9300, 19200],
     "probes": [
       {
         "layer": "L7_HTTP",
@@ -216,13 +232,13 @@
       {
         "field": "http_body",
         "match_type": "contains",
-        "value": "\"tagline\" : \"You Know, for Search\"",
+        "value": "You Know, for Search",
         "confidence_delta": 0.4
       },
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"number\" : \"([\\d.]+)\"",
+        "value": "\"number\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.1,
         "version_group": 1
       }

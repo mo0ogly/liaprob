@@ -74,7 +74,7 @@
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "Nagios[^<]*([\\d.]+)",
+        "value": "Nagios\\D*?(\\d[\\d.]+)",
         "confidence_delta": 0.4,
         "version_group": 1
       }
@@ -88,7 +88,7 @@
     "taxonomy_name": "Kibana",
     "source": "lia",
     "priority": 100,
-    "default_ports": [5601],
+    "default_ports": [5601, 15601],
     "probes": [
       {
         "layer": "L7_HTTP",
@@ -100,21 +100,21 @@
       {
         "field": "http_body",
         "match_type": "contains",
-        "value": "\"name\":\"kibana\"",
+        "value": "kibana",
         "confidence_delta": 0.5
-      },
-      {
-        "field": "http_header.kbn-name",
-        "match_type": "exists",
-        "value": "",
-        "confidence_delta": 0.3
       },
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"number\":\"([\\d.]+)\"",
-        "confidence_delta": 0.2,
+        "value": "\"number\"\\s*:\\s*\"([\\d.]+)\"",
+        "confidence_delta": 0.3,
         "version_group": 1
+      },
+      {
+        "field": "http_header.kbn-name",
+        "match_type": "contains",
+        "value": "kibana",
+        "confidence_delta": 0.5
       }
     ],
     "cpe_template": "cpe:2.3:a:elastic:kibana:{version}:*:*:*:*:*:*:*"
@@ -126,7 +126,7 @@
     "taxonomy_name": "SonarQube",
     "source": "lia",
     "priority": 100,
-    "default_ports": [9000],
+    "default_ports": [9000, 19000],
     "probes": [
       {
         "layer": "L7_HTTP",
@@ -137,22 +137,22 @@
     "matchers": [
       {
         "field": "http_body",
-        "match_type": "contains",
-        "value": "\"status\"",
-        "confidence_delta": 0.3
-      },
-      {
-        "field": "http_body",
-        "match_type": "contains",
-        "value": "\"version\"",
-        "confidence_delta": 0.3
+        "match_type": "regex",
+        "value": "\"status\"\\s*:\\s*\"UP\"",
+        "confidence_delta": 0.4
       },
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"version\":\"([\\d.]+)\"",
-        "confidence_delta": 0.4,
+        "value": "\"version\"\\s*:\\s*\"([\\d.]+)\"",
+        "confidence_delta": 0.3,
         "version_group": 1
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "sonarqube|SonarQube",
+        "confidence_delta": 0.3
       }
     ],
     "cpe_template": "cpe:2.3:a:sonarsource:sonarqube:{version}:*:*:*:*:*:*:*"
@@ -177,7 +177,14 @@
         "field": "http_header.Server",
         "match_type": "contains",
         "value": "Nexus",
-        "confidence_delta": 0.6
+        "confidence_delta": 0.5
+      },
+      {
+        "field": "http_header.Server",
+        "match_type": "regex",
+        "value": "Nexus/([\\d.]+)",
+        "confidence_delta": 0.1,
+        "version_group": 1
       },
       {
         "field": "http_body",
@@ -202,8 +209,13 @@
     "taxonomy_name": "Gitea",
     "source": "lia",
     "priority": 100,
-    "default_ports": [3000],
+    "default_ports": [3000, 13001],
     "probes": [
+      {
+        "layer": "L7_HTTP",
+        "path": "/",
+        "method": "GET"
+      },
       {
         "layer": "L7_HTTP",
         "path": "/api/v1/version",
@@ -213,20 +225,14 @@
     "matchers": [
       {
         "field": "http_body",
-        "match_type": "contains",
-        "value": "\"version\"",
-        "confidence_delta": 0.4
-      },
-      {
-        "field": "http_header.Server",
-        "match_type": "contains",
+        "match_type": "regex",
         "value": "Gitea",
-        "confidence_delta": 0.3
+        "confidence_delta": 0.7
       },
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"version\":\"([\\d.]+)\"",
+        "value": "Gitea.*?([\\d.]+)",
         "confidence_delta": 0.3,
         "version_group": 1
       }
@@ -269,7 +275,7 @@
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"version\":\"([\\d.]+)\"",
+        "value": "\"version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.2,
         "version_group": 1
       }

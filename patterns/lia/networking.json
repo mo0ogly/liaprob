@@ -68,7 +68,7 @@
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"Version\":\"([\\d.]+)\"",
+        "value": "\"Version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.3,
         "version_group": 1
       }
@@ -112,7 +112,7 @@
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"version\":\"([\\d.]+)\"",
+        "value": "\"version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.1,
         "version_group": 1
       }
@@ -126,7 +126,7 @@
     "taxonomy_name": "HashiCorp Consul",
     "source": "lia",
     "priority": 100,
-    "default_ports": [8500, 8501],
+    "default_ports": [8500, 8501, 18500],
     "probes": [
       {
         "layer": "L7_HTTP",
@@ -138,20 +138,20 @@
       {
         "field": "http_body",
         "match_type": "contains",
-        "value": "\"Config\"",
-        "confidence_delta": 0.3
-      },
-      {
-        "field": "http_body",
-        "match_type": "contains",
         "value": "\"Consul\"",
-        "confidence_delta": 0.4
+        "confidence_delta": 0.5
       },
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"Revision\":\"([a-f0-9]+)\"",
-        "confidence_delta": 0.3,
+        "value": "consul",
+        "confidence_delta": 0.3
+      },
+      {
+        "field": "http_body",
+        "match_type": "regex",
+        "value": "\"Revision\"\\s*:\\s*\"([a-f0-9]+)\"",
+        "confidence_delta": 0.2,
         "version_group": 1
       }
     ],
@@ -188,7 +188,7 @@
       {
         "field": "http_body",
         "match_type": "regex",
-        "value": "\"version\":\"([\\d.]+)\"",
+        "value": "\"version\"\\s*:\\s*\"([\\d.]+)\"",
         "confidence_delta": 0.3,
         "version_group": 1
       }

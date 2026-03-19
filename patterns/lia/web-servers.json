@@ -6,7 +6,7 @@
     "taxonomy_name": "Nginx",
     "source": "lia",
     "priority": 100,
-    "default_ports": [80, 443, 8080, 8443],
+    "default_ports": [80, 443, 8080, 8443, 18080],
     "probes": [
       {
         "layer": "L7_HTTP",
@@ -38,7 +38,7 @@
     "taxonomy_name": "Apache HTTP Server",
     "source": "lia",
     "priority": 100,
-    "default_ports": [80, 443, 8080, 8443],
+    "default_ports": [80, 443, 8080, 8443, 18081],
     "probes": [
       {
         "layer": "L7_HTTP",
