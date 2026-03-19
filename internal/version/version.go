@@ -4,7 +4,7 @@ package version
 
 var (
 	// Version is the semantic version (injected at build).
-	Version = "0.1.0-dev"
+	Version = "0.2.0"
 
 	// Commit is the short git hash (injected at build).
 	Commit = "unknown"
