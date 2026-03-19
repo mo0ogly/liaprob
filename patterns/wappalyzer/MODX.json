@@ -1,0 +1,101 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-modx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MODX",
+  "taxonomy_name": "MODX",
+  "vendor": "",
+  "product": "MODX",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MODX.json",
+    "original_name": "MODX"
+  },
+  "research": [
+    {
+      "url": "https://modx.com/content-management-framework",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_modx_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^modx"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- modx process time debug info -->",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:link|script)[^>]+assets/snippets/",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+>powered by modx</a>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form[^>]+id=\"ajaxsearch_form",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+id=\"ajaxsearch_input",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "modx[^\\d.]*([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "modx[^\\d.]*([\\d.]+)?"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/assets/components/templates/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:modx:modx_revolution:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "MODX (originally MODx) is an open source content management system and web application framework for publishing content on the World Wide Web and intranets.",
+  "website": "https://modx.com/content-management-framework"
+}

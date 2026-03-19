@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquia_content_hub",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIA_CONTENT_HUB",
+  "taxonomy_name": "Acquia Content Hub",
+  "vendor": "",
+  "product": "Acquia Content Hub",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIA_CONTENT_HUB.json",
+    "original_name": "Acquia Content Hub"
+  },
+  "research": [
+    {
+      "url": "https://www.acquia.com/products/drupal-cloud/content-hub",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquia_content_hub_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "content-hub\\.acquia\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "content-hub\\.acquia\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Acquia Cloud Platform"
+  ],
+  "categories": [
+    19
+  ],
+  "notes": "Acquia Content Hub is a cloud-based, centralized content distribution and syndication service.",
+  "website": "https://www.acquia.com/products/drupal-cloud/content-hub"
+}

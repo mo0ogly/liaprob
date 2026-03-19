@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-the_hotels_network",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THE_HOTELS_NETWORK",
+  "taxonomy_name": "The Hotels Network",
+  "vendor": "",
+  "product": "The Hotels Network",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THE_HOTELS_NETWORK.json",
+    "original_name": "The Hotels Network"
+  },
+  "research": [
+    {
+      "url": "https://thehotelsnetwork.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_the_hotels_network_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.thehotelsnetwork\\.com"
+        },
+        {
+          "target": "header",
+          "field": "content-security-policy-report-only",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.thehotelsnetwork\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.thehotelsnetwork\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    76
+  ],
+  "notes": "The Hotels Network provides a SaaS software that enhances hotelier websites with predictive marketing personalisation and user behavior analytics.",
+  "website": "https://thehotelsnetwork.com"
+}

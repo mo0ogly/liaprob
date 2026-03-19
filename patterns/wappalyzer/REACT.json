@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-react",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REACT",
+  "taxonomy_name": "React",
+  "vendor": "",
+  "product": "React",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REACT.json",
+    "original_name": "React"
+  },
+  "research": [
+    {
+      "url": "https://reactjs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_react_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+data-react",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "description",
+          "match_type": "regex",
+          "value": "^web site created using create-react-app$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/([\\d\\.]+)/react(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/([\\d\\.]+)/react(?:\\.min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^react\\b.*\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "react(?:-with-addons)?[.-](\\d+(?:\\.\\d+)+)[^/]*\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "react(?:-with-addons)?[.-](\\d+(?:\\.\\d+)+)[^/]*\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:facebook:react:*:*:*:*:*:*:*:*",
+  "categories": [
+    12
+  ],
+  "notes": "React is an open-source JavaScript library for building user interfaces or UI components.",
+  "website": "https://reactjs.org"
+}

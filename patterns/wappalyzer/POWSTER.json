@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-powster",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWSTER",
+  "taxonomy_name": "Powster",
+  "vendor": "",
+  "product": "Powster",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POWSTER.json",
+    "original_name": "Powster"
+  },
+  "research": [
+    {
+      "url": "https://powster.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_powster_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^powster$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tracking\\.powster\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Powster is a creative studio specialising in analytics, offering data-driven insights to enhance and optimise creative projects.",
+  "website": "https://powster.com"
+}

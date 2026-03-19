@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-schedule_engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCHEDULE_ENGINE",
+  "taxonomy_name": "Schedule Engine",
+  "vendor": "",
+  "product": "Schedule Engine",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SCHEDULE_ENGINE.json",
+    "original_name": "Schedule Engine"
+  },
+  "research": [
+    {
+      "url": "https://www.scheduleengine.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_schedule_engine_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "webchat.scheduleengine.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Schedule Engine is a customer support solution built for contractors.",
+  "website": "https://www.scheduleengine.com/"
+}

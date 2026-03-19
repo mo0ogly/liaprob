@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blitz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLITZ",
+  "taxonomy_name": "Blitz",
+  "vendor": "",
+  "product": "Blitz",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLITZ.json",
+    "original_name": "Blitz"
+  },
+  "research": [
+    {
+      "url": "https://putyourlightson.com/plugins/blitz",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blitz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^blitz$"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- cached by blitz on",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Craft CMS"
+  ],
+  "categories": [
+    92
+  ],
+  "notes": "Blitz provides intelligent static page caching for creating lightning-fast sites with Craft CMS.",
+  "website": "https://putyourlightson.com/plugins/blitz"
+}

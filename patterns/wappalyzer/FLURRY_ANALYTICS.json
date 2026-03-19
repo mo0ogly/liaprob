@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flurry_analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLURRY_ANALYTICS",
+  "taxonomy_name": "Flurry Analytics",
+  "vendor": "",
+  "product": "Flurry Analytics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLURRY_ANALYTICS.json",
+    "original_name": "Flurry Analytics"
+  },
+  "research": [
+    {
+      "url": "https://www.flurry.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flurry_analytics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.flurry\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:flurry:flurry-analytics-android:*:*:*:*:*:*:*:*",
+  "categories": [
+    10
+  ],
+  "notes": "Flurry Analytics is a tool that provides basic insights into user behavior and app performance, with the option to set up advanced analytics for a deeper understanding of complex user interactions and events.",
+  "website": "https://www.flurry.com"
+}

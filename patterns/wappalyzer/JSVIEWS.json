@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jsviews",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JSVIEWS",
+  "taxonomy_name": "JsViews",
+  "vendor": "",
+  "product": "JsViews",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JSVIEWS.json",
+    "original_name": "JsViews"
+  },
+  "research": [
+    {
+      "url": "https://www.jsviews.com/#jsviews",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jsviews_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "([\\d\\.]+)?/jsviews(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "([\\d\\.]+)?/jsviews(?:\\.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "JsObservable",
+    "JsRender"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "JsViews is the MVVM library which provides two-way data binding for the template. The library is developed and maintained by Microsoft employee Boris Moore and is used in projects such as Outlook.com and Windows Azure.",
+  "website": "https://www.jsviews.com/#jsviews"
+}

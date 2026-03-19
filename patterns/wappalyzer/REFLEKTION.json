@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-reflektion",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REFLEKTION",
+  "taxonomy_name": "Reflektion",
+  "vendor": "",
+  "product": "Reflektion",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REFLEKTION.json",
+    "original_name": "Reflektion"
+  },
+  "research": [
+    {
+      "url": "https://reflektion.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_reflektion_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cloudfront\\.net/js/reflektion\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Reflektion is a customer centric personalisation platform that optimizes customer experiences on an individual basis in real time.",
+  "website": "https://reflektion.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jotform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JOTFORM",
+  "taxonomy_name": "Jotform",
+  "vendor": "",
+  "product": "Jotform",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JOTFORM.json",
+    "original_name": "Jotform"
+  },
+  "research": [
+    {
+      "url": "https://www.jotform.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jotform_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.jotform\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "Jotform is an online form builder that enables the creation of robust forms.",
+  "website": "https://www.jotform.com"
+}

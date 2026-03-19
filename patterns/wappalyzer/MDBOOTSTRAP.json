@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mdbootstrap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MDBOOTSTRAP",
+  "taxonomy_name": "MDBootstrap",
+  "vendor": "",
+  "product": "MDBootstrap",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MDBOOTSTRAP.json",
+    "original_name": "MDBootstrap"
+  },
+  "research": [
+    {
+      "url": "https://mdbootstrap.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mdbootstrap_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:/mdbootstrap/([\\d\\.]+)/)?js/mdb\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:/mdbootstrap/([\\d\\.]+)/)?js/mdb\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Bootstrap"
+  ],
+  "categories": [
+    66
+  ],
+  "notes": "MDBootstrap (Material Design for Bootstrap) is a complete UI package that can be integrated with other frameworks such as Angular, React, Vue, etc. It is used to design a fully responsive and mobile-friendly layout using various components, plugins, animation.",
+  "website": "https://mdbootstrap.com"
+}

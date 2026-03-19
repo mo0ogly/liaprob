@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-justo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUSTO",
+  "taxonomy_name": "Justo",
+  "vendor": "",
+  "product": "Justo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JUSTO.json",
+    "original_name": "Justo"
+  },
+  "research": [
+    {
+      "url": "https://www.getjusto.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_justo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getjusto\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Justo is a subscription-based software that allows anyone to set up an online store and sell their products with delivery options.",
+  "website": "https://www.getjusto.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-findgore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FINDGORE",
+  "taxonomy_name": "FindGore",
+  "vendor": "",
+  "product": "FindGore",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FINDGORE.json",
+    "original_name": "FindGore"
+  },
+  "research": [
+    {
+      "url": "https://www.findgore.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_findgore_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.findgore\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "FindGore is a conversion rate improvement analytics tool designed to help businesses optimise their websites by analysing user behaviour and identifying areas for enhancement to increase conversion rates.",
+  "website": "https://www.findgore.com"
+}

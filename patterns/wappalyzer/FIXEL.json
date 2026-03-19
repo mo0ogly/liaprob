@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fixel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FIXEL",
+  "taxonomy_name": "Fixel",
+  "vendor": "",
+  "product": "Fixel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FIXEL.json",
+    "original_name": "Fixel"
+  },
+  "research": [
+    {
+      "url": "https://fixel.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fixel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "script\\.fixel\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    77,
+    86
+  ],
+  "notes": "Fixel is a remarketing and segmentation campaign builder utilising AI technology.",
+  "website": "https://fixel.ai"
+}

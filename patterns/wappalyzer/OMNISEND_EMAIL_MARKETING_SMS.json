@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-omnisend_email_marketing_sms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OMNISEND_EMAIL_MARKETING_SMS",
+  "taxonomy_name": "Omnisend Email Marketing & SMS",
+  "vendor": "",
+  "product": "Omnisend Email Marketing & SMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OMNISEND_EMAIL_MARKETING_SMS.json",
+    "original_name": "Omnisend Email Marketing & SMS"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/omnisend",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_omnisend_email_marketing_sms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "omnis(?:nippet1|rc)\\.com/inshop/embed/shopify\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Omnisend"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Omnisend Email Marketing & SMS is an omnichannel marketing automation channel that allows Shopify store owners to manage their SMS, web push notifications, WhatsApp, Facebook messenger, pop-ups, segmentation, and dynamic Facebook and Google ad integrations.",
+  "website": "https://apps.shopify.com/omnisend"
+}

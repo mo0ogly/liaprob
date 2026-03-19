@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ebasnet",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EBASNET",
+  "taxonomy_name": "Ebasnet",
+  "vendor": "",
+  "product": "Ebasnet",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EBASNET.json",
+    "original_name": "Ebasnet"
+  },
+  "research": [
+    {
+      "url": "https://ebasnet.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ebasnet_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^ebasnet web solutions$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdnebasnet\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP",
+    "Symfony",
+    "Varnish"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Ebasnet is a web project creation and management platform in the cloud. It allows anyone to set up an online store or corporate website without prior IT knowledge.",
+  "website": "https://ebasnet.com"
+}

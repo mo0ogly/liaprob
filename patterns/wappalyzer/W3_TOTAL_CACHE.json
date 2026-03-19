@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-w3_total_cache",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "W3_TOTAL_CACHE",
+  "taxonomy_name": "W3 Total Cache",
+  "vendor": "",
+  "product": "W3 Total Cache",
+  "source": {
+    "type": "wappalyzer",
+    "file": "W3_TOTAL_CACHE.json",
+    "original_name": "W3 Total Cache"
+  },
+  "research": [
+    {
+      "url": "https://www.w3-edge.com/wordpress-plugins/w3-total-cache",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_w3_total_cache_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "w3 total cache(?:/([\\d.]+))?",
+          "version_extract": "w3 total cache(?:/([\\d.]+))?"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+w3 total cache",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    23,
+    87
+  ],
+  "notes": "W3 Total Cache (W3TC) improves the SEO and increases website performance and reducing load times by leveraging features like content delivery network (CDN) integration and the latest best practices.",
+  "website": "https://www.w3-edge.com/wordpress-plugins/w3-total-cache"
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-drupal_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DRUPAL_COMMERCE",
+  "taxonomy_name": "Drupal Commerce",
+  "vendor": "",
+  "product": "Drupal Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DRUPAL_COMMERCE.json",
+    "original_name": "Drupal Commerce"
+  },
+  "research": [
+    {
+      "url": "https://drupalcommerce.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_drupal_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+(?:id=\"block[_-]commerce[_-]cart[_-]cart|class=\"commerce[_-]product[_-]field)",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/modules/(?:contrib/)?commerce/js/conditions\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/profiles/commerce_kickstart/modules/contrib/commerce/modules/checkout/commerce_checkout\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/sites/(?:all|default)/modules/(?:contrib/)?commerce/modules/checkout/commerce_checkout\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:commerceguys:commerce:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Drupal"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Drupal Commerce is open-source ecommerce software that augments the content management system Drupal.",
+  "website": "https://drupalcommerce.org"
+}

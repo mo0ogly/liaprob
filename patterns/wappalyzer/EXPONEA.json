@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-exponea",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EXPONEA",
+  "taxonomy_name": "Exponea",
+  "vendor": "",
+  "product": "Exponea",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EXPONEA.json",
+    "original_name": "Exponea"
+  },
+  "research": [
+    {
+      "url": "https://go.exponea.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_exponea_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:\\.exponea\\.com)?/js/exponea\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Exponea is a cloud-based marketing analysis platform suitable for large and midsize organisations in a variety of industries.",
+  "website": "https://go.exponea.com"
+}

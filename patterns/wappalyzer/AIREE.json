@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-airee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AIREE",
+  "taxonomy_name": "Airee",
+  "vendor": "",
+  "product": "Airee",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AIREE.json",
+    "original_name": "Airee"
+  },
+  "research": [
+    {
+      "url": "https://xn--80aqc2a.xn--p1ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_airee_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^airee"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "website": "https://xn--80aqc2a.xn--p1ai"
+}

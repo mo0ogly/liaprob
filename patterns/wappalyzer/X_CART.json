@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-x_cart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "X_CART",
+  "taxonomy_name": "X-Cart",
+  "vendor": "",
+  "product": "X-Cart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "X_CART.json",
+    "original_name": "X-Cart"
+  },
+  "research": [
+    {
+      "url": "https://kb.x-cart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_x_cart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "x-cart(?: (\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "x-cart(?: (\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": " X-Cart is an open source PHP shopping cart ecommerce software platform.",
+  "website": "https://kb.x-cart.com"
+}

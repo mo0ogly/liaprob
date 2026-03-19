@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-history",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HISTORY",
+  "taxonomy_name": "History",
+  "vendor": "",
+  "product": "History",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HISTORY.json",
+    "original_name": "History"
+  },
+  "research": [
+    {
+      "url": "https://github.com/ReactTraining/history",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_history_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/history(@|/)([\\d.]+)(?:/[a-z]+)?/history(?:(.production|.development))?(?:.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/history(@|/)([\\d.]+)(?:/[a-z]+)?/history(?:(.production|.development))?(?:.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "Manage session history with JavaScript",
+  "website": "https://github.com/ReactTraining/history"
+}

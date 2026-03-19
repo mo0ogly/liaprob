@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-twenty_twelve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TWENTY_TWELVE",
+  "taxonomy_name": "Twenty Twelve",
+  "vendor": "",
+  "product": "Twenty Twelve",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TWENTY_TWELVE.json",
+    "original_name": "Twenty Twelve"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/themes/twentytwelve",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_twenty_twelve_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/twentytwelve/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Twenty Twelve is the default WordPress theme for 2012.",
+  "website": "https://wordpress.org/themes/twentytwelve"
+}

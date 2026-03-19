@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yapla",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YAPLA",
+  "taxonomy_name": "Yapla",
+  "vendor": "",
+  "product": "Yapla",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YAPLA.json",
+    "original_name": "Yapla"
+  },
+  "research": [
+    {
+      "url": "https://www.yapla.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yapla_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^yapla\\sv([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "^yapla\\sv([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    111
+  ],
+  "notes": "Yapla is a web-based software platform that provides event management and fundraising solutions for non-profit organisations, associations, and event planners.",
+  "website": "https://www.yapla.com"
+}

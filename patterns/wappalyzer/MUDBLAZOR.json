@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mudblazor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MUDBLAZOR",
+  "taxonomy_name": "MudBlazor",
+  "vendor": "",
+  "product": "MudBlazor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MUDBLAZOR.json",
+    "original_name": "MudBlazor"
+  },
+  "research": [
+    {
+      "url": "https://mudblazor.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mudblazor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "_content/mudblazor/mudblazor\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Blazor"
+  ],
+  "categories": [
+    66
+  ],
+  "notes": "MudBlazor is a component library for Blazor implementing Material Design.",
+  "website": "https://mudblazor.com/"
+}

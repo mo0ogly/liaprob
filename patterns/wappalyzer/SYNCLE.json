@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-syncle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYNCLE",
+  "taxonomy_name": "Syncle",
+  "vendor": "",
+  "product": "Syncle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SYNCLE.json",
+    "original_name": "Syncle"
+  },
+  "research": [
+    {
+      "url": "https://syncle.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_syncle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.videoly\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    14
+  ],
+  "notes": "Syncle is a tool that automatically integrates relevant product video reviews from YouTube into online shops.",
+  "website": "https://syncle.com"
+}

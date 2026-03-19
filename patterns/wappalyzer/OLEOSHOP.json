@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oleoshop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OLEOSHOP",
+  "taxonomy_name": "Oleoshop",
+  "vendor": "",
+  "product": "Oleoshop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OLEOSHOP.json",
+    "original_name": "Oleoshop"
+  },
+  "research": [
+    {
+      "url": "https://www.oleoshop.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oleoshop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "oleoshop\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Oleoshop is a platform that enables businesses to create and manage their own online stores.",
+  "website": "https://www.oleoshop.com"
+}

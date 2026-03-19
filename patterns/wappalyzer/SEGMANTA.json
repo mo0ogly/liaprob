@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-segmanta",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEGMANTA",
+  "taxonomy_name": "Segmanta",
+  "vendor": "",
+  "product": "Segmanta",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEGMANTA.json",
+    "original_name": "Segmanta"
+  },
+  "research": [
+    {
+      "url": "https://segmanta.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_segmanta_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "pge\\.segmanta\\.com/widget_embed_js(?:/widgetembed-v([\\d.]+)\\.min\\.js)?",
+          "confidence_delta": 0.5,
+          "version_extract": "pge\\.segmanta\\.com/widget_embed_js(?:/widgetembed-v([\\d.]+)\\.min\\.js)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Segmanta is a mobile-first survey platform designed for product feedback, brand awareness and concept testing research.",
+  "website": "https://segmanta.com"
+}

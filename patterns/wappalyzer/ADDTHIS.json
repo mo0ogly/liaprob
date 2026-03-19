@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-addthis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADDTHIS",
+  "taxonomy_name": "AddThis",
+  "vendor": "",
+  "product": "AddThis",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADDTHIS.json",
+    "original_name": "AddThis"
+  },
+  "research": [
+    {
+      "url": "https://www.addthis.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_addthis_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "addthis\\.com/js/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "AddThis is a social bookmarking service that can be integrated into a website with the use of a web widget.",
+  "website": "https://www.addthis.com"
+}

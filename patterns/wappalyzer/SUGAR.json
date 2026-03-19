@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sugar",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUGAR",
+  "taxonomy_name": "Sugar",
+  "vendor": "",
+  "product": "Sugar",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SUGAR.json",
+    "original_name": "Sugar"
+  },
+  "research": [
+    {
+      "url": "https://sugarjs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sugar_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/sugar/([\\d\\.]+)/release/sugar\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/sugar/([\\d\\.]+)/release/sugar\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Sugar is a Javascript utility library for working with native objects.",
+  "website": "https://sugarjs.com"
+}

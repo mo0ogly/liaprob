@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hubtiger",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUBTIGER",
+  "taxonomy_name": "Hubtiger",
+  "vendor": "",
+  "product": "Hubtiger",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HUBTIGER.json",
+    "original_name": "Hubtiger"
+  },
+  "research": [
+    {
+      "url": "https://hubtiger.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hubtiger_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^hubtiger$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53,
+    101
+  ],
+  "notes": "Hubtiger offers rental and workshop management software solutions to help businesses elevate their operations and efficiency.",
+  "website": "https://hubtiger.com"
+}

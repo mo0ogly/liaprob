@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-skitter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SKITTER",
+  "taxonomy_name": "Skitter",
+  "vendor": "",
+  "product": "Skitter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SKITTER.json",
+    "original_name": "Skitter"
+  },
+  "research": [
+    {
+      "url": "https://skitter-slider.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_skitter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/jquery\\.skitter\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Skitter is a jQuery-based slider system.",
+  "website": "https://skitter-slider.net"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sencha_touch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SENCHA_TOUCH",
+  "taxonomy_name": "Sencha Touch",
+  "vendor": "",
+  "product": "Sencha Touch",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SENCHA_TOUCH.json",
+    "original_name": "Sencha Touch"
+  },
+  "research": [
+    {
+      "url": "https://www.sencha.com/products/touch",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sencha_touch_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sencha-touch.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12,
+    26
+  ],
+  "notes": "Sencha Touch is a user interface (UI) JavaScript library, or web framework, specifically built for the Mobile Web.",
+  "website": "https://www.sencha.com/products/touch"
+}

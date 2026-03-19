@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-azure_edge_network",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AZURE_EDGE_NETWORK",
+  "taxonomy_name": "Azure Edge Network",
+  "vendor": "",
+  "product": "Azure Edge Network",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AZURE_EDGE_NETWORK.json",
+    "original_name": "Azure Edge Network"
+  },
+  "research": [
+    {
+      "url": "https://learn.microsoft.com/en-us/azure/cdn/cdn-overview",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_azure_edge_network_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.azureedge\\.net"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.azureedge\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "Azure Edge Network is a global network infrastructure provided by Microsoft Azure. It is designed to deliver content, applications, and services to end-users with low latency and high performance. The Azure Edge Network consists of a combination of Azure Content Delivery Network (CDN), Azure Front Door, and Azure Traffic Manager.",
+  "website": "https://learn.microsoft.com/en-us/azure/cdn/cdn-overview"
+}

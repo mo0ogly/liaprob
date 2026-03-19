@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-publishpress_blocks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUBLISHPRESS_BLOCKS",
+  "taxonomy_name": "PublishPress Blocks",
+  "vendor": "",
+  "product": "PublishPress Blocks",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUBLISHPRESS_BLOCKS.json",
+    "original_name": "PublishPress Blocks"
+  },
+  "research": [
+    {
+      "url": "https://publishpress.com/blocks/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_publishpress_blocks_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+class=[\"']wp-block-advgb-*",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87
+  ],
+  "notes": "PublishPress Blocks is a Gutenberg Blocks page builder plugin that adds extra functionality to the WordPress Block Editor.",
+  "website": "https://publishpress.com/blocks/"
+}

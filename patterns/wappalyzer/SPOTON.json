@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spoton",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPOTON",
+  "taxonomy_name": "SpotOn",
+  "vendor": "",
+  "product": "SpotOn",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPOTON.json",
+    "original_name": "SpotOn"
+  },
+  "research": [
+    {
+      "url": "https://www.spoton.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spoton_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cdn\\.spoton\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "SpotOn is a provider of point-of-sale systems and payment processing software tailored to fit your workflow.",
+  "website": "https://www.spoton.com"
+}

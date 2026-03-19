@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-airship",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AIRSHIP",
+  "taxonomy_name": "Airship",
+  "vendor": "",
+  "product": "Airship",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AIRSHIP.json",
+    "original_name": "Airship"
+  },
+  "research": [
+    {
+      "url": "https://www.airship.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_airship_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "urbanairship\\.\\w+/notify/v([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "urbanairship\\.\\w+/notify/v([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    10
+  ],
+  "notes": "Airship is an American company that provides marketing and branding services. Airship allows companies to generate custom messages to consumers via push notifications, SMS messaging, and similar, and provides customer analytics services.",
+  "website": "https://www.airship.com"
+}

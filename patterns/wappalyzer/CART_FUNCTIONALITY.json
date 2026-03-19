@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cart_functionality",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CART_FUNCTIONALITY",
+  "taxonomy_name": "Cart Functionality",
+  "vendor": "",
+  "product": "Cart Functionality",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CART_FUNCTIONALITY.json",
+    "original_name": "Cart Functionality"
+  },
+  "research": [
+    {
+      "url": "https://www.wappalyzer.com/technologies/ecommerce/cart-functionality",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cart_functionality_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "googlecommerce\\.com/trustedstores/api/js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Websites that have a shopping cart or checkout page, either using a known ecommerce platform or a custom solution.",
+  "website": "https://www.wappalyzer.com/technologies/ecommerce/cart-functionality"
+}

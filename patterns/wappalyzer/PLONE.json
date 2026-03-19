@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-plone",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLONE",
+  "taxonomy_name": "Plone",
+  "vendor": "",
+  "product": "Plone",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLONE.json",
+    "original_name": "Plone"
+  },
+  "research": [
+    {
+      "url": "https://plone.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_plone_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "plone",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^/\\+\\+resource\\+\\+",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:plone:plone:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Python"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Plone is a free and open source content management system (CMS) built on top of the Zope application server.",
+  "website": "https://plone.org/"
+}

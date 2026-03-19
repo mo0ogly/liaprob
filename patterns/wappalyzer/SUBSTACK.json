@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-substack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUBSTACK",
+  "taxonomy_name": "Substack",
+  "vendor": "",
+  "product": "Substack",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SUBSTACK.json",
+    "original_name": "Substack"
+  },
+  "research": [
+    {
+      "url": "https://substack.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_substack_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-cluster",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "substack"
+        },
+        {
+          "target": "header",
+          "field": "x-served-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "substack"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    11
+  ],
+  "notes": "Substack is an American online platform that provides publishing, payment, analytics, and design infrastructure to support subscription newsletters.",
+  "website": "https://substack.com/"
+}

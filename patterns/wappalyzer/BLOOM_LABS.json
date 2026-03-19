@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bloom_labs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLOOM_LABS",
+  "taxonomy_name": "Bloom Labs",
+  "vendor": "",
+  "product": "Bloom Labs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLOOM_LABS.json",
+    "original_name": "Bloom Labs"
+  },
+  "research": [
+    {
+      "url": "https://bloom.li",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bloom_labs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.bloom\\.li/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    86
+  ],
+  "notes": "Bloom Labs is a local content targeting system that uses data analytics to distribute content based on geographic relevance.",
+  "website": "https://bloom.li"
+}

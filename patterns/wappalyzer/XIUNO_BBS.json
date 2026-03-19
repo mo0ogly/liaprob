@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xiuno_bbs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XIUNO_BBS",
+  "taxonomy_name": "Xiuno BBS",
+  "vendor": "",
+  "product": "Xiuno BBS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XIUNO_BBS.json",
+    "original_name": "Xiuno BBS"
+  },
+  "research": [
+    {
+      "url": "https://xiunobbs.cn",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xiuno_bbs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "xiunobbs\\s([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "xiunobbs\\s([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:xiuno:xiunobbs:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1,
+    2
+  ],
+  "notes": "Xiunobbs is an open-source, lightweight forum software designed for easy community management and customization.",
+  "website": "https://xiunobbs.cn"
+}

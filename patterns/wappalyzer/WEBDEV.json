@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webdev",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBDEV",
+  "taxonomy_name": "WEBDEV",
+  "vendor": "",
+  "product": "WEBDEV",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBDEV.json",
+    "original_name": "WEBDEV"
+  },
+  "research": [
+    {
+      "url": "https://www.windev.com/webdev/index.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webdev_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "webdevsrc",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- [a-za-z0-9_]+ [\\d/]+ [\\d:]+ webdev \\d\\d ([\\d.]+) -->",
+          "confidence_delta": 0.5,
+          "version_extract": "<!-- [a-za-z0-9_]+ [\\d/]+ [\\d:]+ webdev \\d\\d ([\\d.]+) -->"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^webdev$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    20
+  ],
+  "notes": "WEBDEV is a tool to develop internet and intranet sites and applications that support data and processes",
+  "website": "https://www.windev.com/webdev/index.html"
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-userlike",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "USERLIKE",
+  "taxonomy_name": "UserLike",
+  "vendor": "",
+  "product": "UserLike",
+  "source": {
+    "type": "wappalyzer",
+    "file": "USERLIKE.json",
+    "original_name": "UserLike"
+  },
+  "research": [
+    {
+      "url": "https://userlike.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_userlike_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//userlike-cdn-widgets\\.",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.userlike\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "userlike\\.min\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "userlikelib\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Userlike is a cloud-based live chat solution that can be integrated with existing websites.",
+  "website": "https://userlike.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nghttpx_http_2_proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NGHTTPX_HTTP_2_PROXY",
+  "taxonomy_name": "nghttpx - HTTP/2 proxy",
+  "vendor": "",
+  "product": "nghttpx - HTTP/2 proxy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NGHTTPX_HTTP_2_PROXY.json",
+    "original_name": "nghttpx - HTTP/2 proxy"
+  },
+  "research": [
+    {
+      "url": "https://nghttp2.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nghttpx_http_2_proxy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "nghttpx nghttp2/?([\\d.]+)?",
+          "version_extract": "nghttpx nghttp2/?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    22
+  ],
+  "website": "https://nghttp2.org"
+}

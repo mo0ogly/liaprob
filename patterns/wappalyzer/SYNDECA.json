@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-syndeca",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYNDECA",
+  "taxonomy_name": "Syndeca",
+  "vendor": "",
+  "product": "Syndeca",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SYNDECA.json",
+    "original_name": "Syndeca"
+  },
+  "research": [
+    {
+      "url": "https://www.syndeca.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_syndeca_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.syndeca\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    76
+  ],
+  "notes": "Syndeca is a visual commerce platform that allows brands to quickly create engaging, actionable campaigns.",
+  "website": "https://www.syndeca.com"
+}

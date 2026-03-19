@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-automabots",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUTOMABOTS",
+  "taxonomy_name": "Automabots",
+  "vendor": "",
+  "product": "Automabots",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUTOMABOTS.json",
+    "original_name": "Automabots"
+  },
+  "research": [
+    {
+      "url": "https://automabots.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_automabots_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.automabots\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Automabots is an automated intelligent workforce designed to match home buyers with suitable properties.",
+  "website": "https://automabots.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-atatus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATATUS",
+  "taxonomy_name": "Atatus",
+  "vendor": "",
+  "product": "Atatus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ATATUS.json",
+    "original_name": "Atatus"
+  },
+  "research": [
+    {
+      "url": "https://www.atatus.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_atatus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/atatus\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    78,
+    13
+  ],
+  "notes": "Atatus is a full-stack observability tool that let you identify the performance bottlenecks and helps you optimise your application at the right time.",
+  "website": "https://www.atatus.com"
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mithril",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MITHRIL",
+  "taxonomy_name": "Mithril",
+  "vendor": "",
+  "product": "Mithril",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MITHRIL.json",
+    "original_name": "Mithril"
+  },
+  "research": [
+    {
+      "url": "https://mithril.js.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mithril_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:((?:\\d+\\.)+\\d+)\\/)?mithril(?:[\\.-]min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:((?:\\d+\\.)+\\d+)\\/)?mithril(?:[\\.-]min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mithril(?:[\\.-]min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "mithril(?:[\\.-]min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12,
+    59
+  ],
+  "notes": "A Javascript Framework for building applications.",
+  "website": "https://mithril.js.org/"
+}

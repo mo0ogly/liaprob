@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shapecss",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHAPECSS",
+  "taxonomy_name": "Shapecss",
+  "vendor": "",
+  "product": "Shapecss",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHAPECSS.json",
+    "original_name": "Shapecss"
+  },
+  "research": [
+    {
+      "url": "https://shapecss.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shapecss_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=\"[^\"]*shapecss(?:\\.min)?\\.css",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/([\\d.]+)/shapecss(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/([\\d.]+)/shapecss(?:\\.min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "shapecss.*\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "shapecss[-.]([\\d.]*\\d)[^/]*\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "shapecss[-.]([\\d.]*\\d)[^/]*\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    66
+  ],
+  "website": "https://shapecss.com"
+}

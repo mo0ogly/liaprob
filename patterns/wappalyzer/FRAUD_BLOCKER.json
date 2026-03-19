@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fraud_blocker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRAUD_BLOCKER",
+  "taxonomy_name": "Fraud Blocker",
+  "vendor": "",
+  "product": "Fraud Blocker",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRAUD_BLOCKER.json",
+    "original_name": "Fraud Blocker"
+  },
+  "research": [
+    {
+      "url": "https://fraudblocker.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fraud_blocker_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "monitor\\.fraudblocker\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Fraud Blocker is an all-in-one solution designed to reduce costs by preventing bots, competitor clicks, fake leads, and other forms of digital ad fraud.",
+  "website": "https://fraudblocker.com"
+}

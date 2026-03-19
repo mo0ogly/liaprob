@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopperapproved",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPPERAPPROVED",
+  "taxonomy_name": "ShopperApproved",
+  "vendor": "",
+  "product": "ShopperApproved",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPPERAPPROVED.json",
+    "original_name": "ShopperApproved"
+  },
+  "research": [
+    {
+      "url": "https://www.shopperapproved.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopperapproved_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.shopperapproved\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "ShopperApproved is a platform that enhances eCommerce traffic, sales, and conversions by leveraging trust signals, user-generated content, and social proof.",
+  "website": "https://www.shopperapproved.com"
+}

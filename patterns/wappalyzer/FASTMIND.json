@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fastmind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FASTMIND",
+  "taxonomy_name": "Fastmind",
+  "vendor": "",
+  "product": "Fastmind",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FASTMIND.json",
+    "original_name": "Fastmind"
+  },
+  "research": [
+    {
+      "url": "https://fastmind.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fastmind_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.fastmind\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Fastmind is an AI-powered chatbot builder that enables customer engagement using live data retrieved directly from a search engine.",
+  "website": "https://fastmind.ai"
+}

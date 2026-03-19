@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-font_awesome",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FONT_AWESOME",
+  "taxonomy_name": "Font Awesome",
+  "vendor": "",
+  "product": "Font Awesome",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FONT_AWESOME.json",
+    "original_name": "Font Awesome"
+  },
+  "research": [
+    {
+      "url": "https://fontawesome.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_font_awesome_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:f|f)o(?:n|r)t-?(?:a|a)wesome(?:.*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.fontawesome\\.com/([0-9a-z]+).js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    17
+  ],
+  "notes": "Font Awesome is a font and icon toolkit based on CSS and Less.",
+  "website": "https://fontawesome.com/"
+}

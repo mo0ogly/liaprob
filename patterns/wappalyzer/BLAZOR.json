@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blazor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLAZOR",
+  "taxonomy_name": "Blazor",
+  "vendor": "",
+  "product": "Blazor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLAZOR.json",
+    "original_name": "Blazor"
+  },
+  "research": [
+    {
+      "url": "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blazor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "blazor\\.host\\.min\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "blazor\\.server\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "blazor\\.webassembly\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    18
+  ],
+  "website": "https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stamped",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STAMPED",
+  "taxonomy_name": "Stamped",
+  "vendor": "",
+  "product": "Stamped",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STAMPED.json",
+    "original_name": "Stamped"
+  },
+  "research": [
+    {
+      "url": "https://stamped.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stamped_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.stamped\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Stamped is a provider of reviews and ratings solution.",
+  "website": "https://stamped.io/"
+}

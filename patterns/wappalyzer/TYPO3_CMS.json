@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-typo3_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TYPO3_CMS",
+  "taxonomy_name": "TYPO3 CMS",
+  "vendor": "",
+  "product": "TYPO3 CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TYPO3_CMS.json",
+    "original_name": "TYPO3 CMS"
+  },
+  "research": [
+    {
+      "url": "https://typo3.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_typo3_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "typo3\\s+(?:cms\\s+)?(?:[\\d.]+)?(?:\\s+cms)?",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^/?typo3(?:conf|temp)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:typo3:typo3:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "TYPO3 is a free and open-source Web content management system written in PHP.",
+  "website": "https://typo3.org/"
+}

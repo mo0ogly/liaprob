@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-alibaba_cloud_cdn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALIBABA_CLOUD_CDN",
+  "taxonomy_name": "Alibaba Cloud CDN",
+  "vendor": "",
+  "product": "Alibaba Cloud CDN",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALIBABA_CLOUD_CDN.json",
+    "original_name": "Alibaba Cloud CDN"
+  },
+  "research": [
+    {
+      "url": "https://www.alibabacloud.com/product/content-delivery-network",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_alibaba_cloud_cdn_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.alicdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "Alibaba Cloud CDN is a global network of servers designed to deliver high-performance, low-latency content to users around the world. It is a cloud-based service provided by Alibaba Cloud, a subsidiary of the Alibaba Group, that enables businesses to accelerate the delivery of their web content, including images, videos, and static files, to end-users.",
+  "website": "https://www.alibabacloud.com/product/content-delivery-network"
+}

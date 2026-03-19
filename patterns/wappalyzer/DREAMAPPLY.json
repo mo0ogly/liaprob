@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dreamapply",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DREAMAPPLY",
+  "taxonomy_name": "DreamApply",
+  "vendor": "",
+  "product": "DreamApply",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DREAMAPPLY.json",
+    "original_name": "DreamApply"
+  },
+  "research": [
+    {
+      "url": "https://dreamapply.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dreamapply_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.cdn\\.dreamapply\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Facebook Login",
+    "Google Sign-in",
+    "Linkedin Sign-in"
+  ],
+  "categories": [
+    101,
+    19
+  ],
+  "notes": "DreamApply is a specialised student application management system designed with and for education institutions.",
+  "website": "https://dreamapply.com"
+}

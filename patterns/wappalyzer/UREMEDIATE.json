@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-uremediate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UREMEDIATE",
+  "taxonomy_name": "uRemediate",
+  "vendor": "",
+  "product": "uRemediate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UREMEDIATE.json",
+    "original_name": "uRemediate"
+  },
+  "research": [
+    {
+      "url": "https://www.user1st.com/uremediate/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_uremediate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "fecdn\\.user1st\\.info/loader/head",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "uRemediate provides web accessibility testing tools and accessibility overlays.",
+  "website": "https://www.user1st.com/uremediate/"
+}

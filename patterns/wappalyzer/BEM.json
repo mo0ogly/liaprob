@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bem",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEM",
+  "taxonomy_name": "BEM",
+  "vendor": "",
+  "product": "BEM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEM.json",
+    "original_name": "BEM"
+  },
+  "research": [
+    {
+      "url": "https://en.bem.info",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bem_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+data-bem",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "BEM (Block, Element, Modifier) is a naming convention for classes in HTML and CSS what was developed by Yandex.",
+  "website": "https://en.bem.info"
+}

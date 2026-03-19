@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mainad",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAINAD",
+  "taxonomy_name": "MainAd",
+  "vendor": "",
+  "product": "MainAd",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAINAD.json",
+    "original_name": "MainAd"
+  },
+  "research": [
+    {
+      "url": "https://www.mainad.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mainad_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.mainadv\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "MainAd is an international advertising technology company specialising in real-time bidding and programmatic ad retargeting.",
+  "website": "https://www.mainad.com"
+}

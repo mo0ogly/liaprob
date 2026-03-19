@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jahia_dx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAHIA_DX",
+  "taxonomy_name": "Jahia DX",
+  "vendor": "",
+  "product": "Jahia DX",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JAHIA_DX.json",
+    "original_name": "Jahia DX"
+  },
+  "research": [
+    {
+      "url": "https://www.jahia.com/dx",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jahia_dx_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script id=\"staticassetaggregatedjavascrip",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    47
+  ],
+  "website": "https://www.jahia.com/dx"
+}

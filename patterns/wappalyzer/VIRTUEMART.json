@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-virtuemart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIRTUEMART",
+  "taxonomy_name": "VirtueMart",
+  "vendor": "",
+  "product": "VirtueMart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VIRTUEMART.json",
+    "original_name": "VirtueMart"
+  },
+  "research": [
+    {
+      "url": "https://virtuemart.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_virtuemart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"vmmainpage",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Joomla"
+  ],
+  "categories": [
+    6
+  ],
+  "website": "https://virtuemart.net"
+}

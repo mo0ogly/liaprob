@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-simplio_upsells",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIMPLIO_UPSELLS",
+  "taxonomy_name": "Simplio Upsells",
+  "vendor": "",
+  "product": "Simplio Upsells",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIMPLIO_UPSELLS.json",
+    "original_name": "Simplio Upsells"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/simple-promotions-and-upsells",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_simplio_upsells_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//upsell\\.simplio\\.app/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Simplio Upsells сreate more revenue with promotions and post purchase upsells.",
+  "website": "https://apps.shopify.com/simple-promotions-and-upsells"
+}

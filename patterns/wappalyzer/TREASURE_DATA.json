@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-treasure_data",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TREASURE_DATA",
+  "taxonomy_name": "Treasure Data",
+  "vendor": "",
+  "product": "Treasure Data",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TREASURE_DATA.json",
+    "original_name": "Treasure Data"
+  },
+  "research": [
+    {
+      "url": "https://www.treasuredata.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_treasure_data_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.treasuredata\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Treasure Data is the only enterprise customer data platform.",
+  "website": "https://www.treasuredata.com"
+}

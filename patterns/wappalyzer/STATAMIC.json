@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-statamic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STATAMIC",
+  "taxonomy_name": "Statamic",
+  "vendor": "",
+  "product": "Statamic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STATAMIC.json",
+    "original_name": "Statamic"
+  },
+  "research": [
+    {
+      "url": "https://statamic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_statamic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^statamic$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:statamic:statamic:*:*:*:*:*:laravel:*:*",
+  "implies": [
+    "Laravel",
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Statamic is an open-source and self-hosted content management system based on the PHP programming language.",
+  "website": "https://statamic.com"
+}

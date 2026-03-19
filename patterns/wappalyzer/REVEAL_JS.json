@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-reveal_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REVEAL_JS",
+  "taxonomy_name": "Reveal.js",
+  "vendor": "",
+  "product": "Reveal.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REVEAL_JS.json",
+    "original_name": "Reveal.js"
+  },
+  "research": [
+    {
+      "url": "https://lab.hakim.se/reveal-js",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_reveal_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:^|/)reveal(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Highlight.js"
+  ],
+  "categories": [
+    12
+  ],
+  "website": "https://lab.hakim.se/reveal-js"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-launchrock",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LAUNCHROCK",
+  "taxonomy_name": "Launchrock",
+  "vendor": "",
+  "product": "Launchrock",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LAUNCHROCK.json",
+    "original_name": "Launchrock"
+  },
+  "research": [
+    {
+      "url": "https://www.launchrock.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_launchrock_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "builder\\.launchrock\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51,
+    75
+  ],
+  "notes": "Launchrock is an online tool designed to help capture email addresses and create online product launching events.",
+  "website": "https://www.launchrock.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tourcms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOURCMS",
+  "taxonomy_name": "TourCMS",
+  "vendor": "",
+  "product": "TourCMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TOURCMS.json",
+    "original_name": "TourCMS"
+  },
+  "research": [
+    {
+      "url": "https://www.tourcms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tourcms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mp\\.tourcms\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "TourCMS is a platform designed for tour and activity operators, offering solutions for managing online and offline bookings and distribution.",
+  "website": "https://www.tourcms.com"
+}

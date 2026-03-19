@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-everwondr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EVERWONDR",
+  "taxonomy_name": "EverWondr",
+  "vendor": "",
+  "product": "EverWondr",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EVERWONDR.json",
+    "original_name": "EverWondr"
+  },
+  "research": [
+    {
+      "url": "https://everwondr.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_everwondr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.everwondr\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "EverWondr is a network providing a collection of plug-ins, including a calendar, directory, blog, guestbook, gallery, and survey.",
+  "website": "https://everwondr.com"
+}

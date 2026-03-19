@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-myrest",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYREST",
+  "taxonomy_name": "MyRest",
+  "vendor": "",
+  "product": "MyRest",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MYREST.json",
+    "original_name": "MyRest"
+  },
+  "research": [
+    {
+      "url": "https://myrest.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_myrest_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.myrest\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "MyRest is a reservation system for restaurants that incorporates updated guidelines for gastro marketing.",
+  "website": "https://myrest.io/"
+}

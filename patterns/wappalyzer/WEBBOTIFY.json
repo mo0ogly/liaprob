@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webbotify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBBOTIFY",
+  "taxonomy_name": "Webbotify",
+  "vendor": "",
+  "product": "Webbotify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBBOTIFY.json",
+    "original_name": "Webbotify"
+  },
+  "research": [
+    {
+      "url": "https://www.webbotify.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webbotify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.webbotify\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Webbotify is a chatbot platform that uses AI trained specifically on a website's content to provide automated responses.",
+  "website": "https://www.webbotify.com"
+}

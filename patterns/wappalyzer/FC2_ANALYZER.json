@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fc2_analyzer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FC2_ANALYZER",
+  "taxonomy_name": "FC2 Analyzer",
+  "vendor": "",
+  "product": "FC2 Analyzer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FC2_ANALYZER.json",
+    "original_name": "FC2 Analyzer"
+  },
+  "research": [
+    {
+      "url": "https://fc2.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fc2_analyzer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.fc2\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "FC2 Analyzer is a platform designed to track and analyze affiliate system performance, providing insights into traffic, conversions, and revenue metrics.",
+  "website": "https://fc2.com"
+}

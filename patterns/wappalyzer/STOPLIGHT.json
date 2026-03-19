@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stoplight",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STOPLIGHT",
+  "taxonomy_name": "Stoplight",
+  "vendor": "",
+  "product": "Stoplight",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STOPLIGHT.json",
+    "original_name": "Stoplight"
+  },
+  "research": [
+    {
+      "url": "https://stoplight.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stoplight_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//stoplight\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "Stoplight is a company that offers a platform for API design, documentation, testing, and collaboration throughout the API development lifecycle.",
+  "website": "https://stoplight.io"
+}

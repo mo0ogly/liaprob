@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-obviyo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OBVIYO",
+  "taxonomy_name": "Obviyo",
+  "vendor": "",
+  "product": "Obviyo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OBVIYO.json",
+    "original_name": "Obviyo"
+  },
+  "research": [
+    {
+      "url": "https://www.obviyo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_obviyo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "deploy\\.hiconversion\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100,
+    76
+  ],
+  "notes": "Obviyo is an ecommerce intelligence platform helping merchants personalise and optimise shopping experience.",
+  "website": "https://www.obviyo.com"
+}

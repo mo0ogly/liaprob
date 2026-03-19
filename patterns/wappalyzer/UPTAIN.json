@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-uptain",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UPTAIN",
+  "taxonomy_name": "Uptain",
+  "vendor": "",
+  "product": "Uptain",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UPTAIN.json",
+    "original_name": "Uptain"
+  },
+  "research": [
+    {
+      "url": "https://uptain.de",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_uptain_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.uptain\\.de/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    98
+  ],
+  "notes": "Uptain is a software solution designed to reduce shopping cart abandonment in ecommerce by utilizing AI-based tools like exit-intent popups and trigger emails.",
+  "website": "https://uptain.de"
+}

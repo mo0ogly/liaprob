@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_ajax_content_delivery_network",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_AJAX_CONTENT_DELIVERY_NETWORK",
+  "taxonomy_name": "Microsoft Ajax Content Delivery Network",
+  "vendor": "",
+  "product": "Microsoft Ajax Content Delivery Network",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_AJAX_CONTENT_DELIVERY_NETWORK.json",
+    "original_name": "Microsoft Ajax Content Delivery Network"
+  },
+  "research": [
+    {
+      "url": "https://docs.microsoft.com/en-us/aspnet/ajax/cdn/overview",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_ajax_content_delivery_network_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ajax\\.aspnetcdn\\.com/ajax/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "Microsoft Ajax Content Delivery Network hosts popular third party JavaScript libraries such as jQuery and enables you to easily add them to your web applications.",
+  "website": "https://docs.microsoft.com/en-us/aspnet/ajax/cdn/overview"
+}

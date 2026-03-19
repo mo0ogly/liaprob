@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-picture_it",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PICTURE_IT",
+  "taxonomy_name": "Picture It",
+  "vendor": "",
+  "product": "Picture It",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PICTURE_IT.json",
+    "original_name": "Picture It"
+  },
+  "research": [
+    {
+      "url": "https://www.pictureit.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_picture_it_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.pictureit\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Picture It is a preview tool designed for Shopify art stores, enabling visualization of products within a single platform.",
+  "website": "https://www.pictureit.co"
+}

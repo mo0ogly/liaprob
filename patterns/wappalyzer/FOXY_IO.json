@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-foxy_io",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOXY_IO",
+  "taxonomy_name": "Foxy.io",
+  "vendor": "",
+  "product": "Foxy.io",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FOXY_IO.json",
+    "original_name": "Foxy.io"
+  },
+  "research": [
+    {
+      "url": "https://www.foxy.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_foxy_io_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.foxycart\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Foxy’s hosted cart & payment page allow you to sell anything, using your existing website or platform.",
+  "website": "https://www.foxy.io"
+}

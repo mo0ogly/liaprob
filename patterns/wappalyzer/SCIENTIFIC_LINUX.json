@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-scientific_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCIENTIFIC_LINUX",
+  "taxonomy_name": "Scientific Linux",
+  "vendor": "",
+  "product": "Scientific Linux",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SCIENTIFIC_LINUX.json",
+    "original_name": "Scientific Linux"
+  },
+  "research": [
+    {
+      "url": "https://scientificlinux.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_scientific_linux_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "scientific linux"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "scientific linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    28
+  ],
+  "notes": "Scientific Linux (SL) is a free open-source operating system based on Red Hat Enterprise Linux.",
+  "website": "https://scientificlinux.org"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-govcms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOVCMS",
+  "taxonomy_name": "govCMS",
+  "vendor": "",
+  "product": "govCMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOVCMS.json",
+    "original_name": "govCMS"
+  },
+  "research": [
+    {
+      "url": "https://www.govcms.gov.au",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_govcms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "drupal ([\\d]+) \\(http:\\/\\/drupal\\.org\\) \\+ govcms",
+          "confidence_delta": 0.5,
+          "version_extract": "drupal ([\\d]+) \\(http:\\/\\/drupal\\.org\\) \\+ govcms"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Drupal"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.govcms.gov.au"
+}

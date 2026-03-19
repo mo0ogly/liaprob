@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-workstand",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORKSTAND",
+  "taxonomy_name": "Workstand",
+  "vendor": "",
+  "product": "Workstand",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORKSTAND.json",
+    "original_name": "Workstand"
+  },
+  "research": [
+    {
+      "url": "https://workstand.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_workstand_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^smartetailing inc$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "smartetailing\\.piwik\\.pro/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6,
+    32
+  ],
+  "notes": "Workstand is a marketing and ecommerce solution designed for bike shops.",
+  "website": "https://workstand.com"
+}

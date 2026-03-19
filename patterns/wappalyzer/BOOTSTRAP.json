@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bootstrap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOOTSTRAP",
+  "taxonomy_name": "Bootstrap",
+  "vendor": "",
+  "product": "Bootstrap",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOOTSTRAP.json",
+    "original_name": "Bootstrap"
+  },
+  "research": [
+    {
+      "url": "https://getbootstrap.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bootstrap_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]*?bootstrap(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>-]*?(?:\\.min)?\\.css",
+          "confidence_delta": 0.5,
+          "version_extract": "<link[^>]* href=[^>]*?bootstrap(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>-]*?(?:\\.min)?\\.css"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style>\\s+/\\*!\\s+\\* bootstrap v(\\d\\.\\d\\.\\d)",
+          "confidence_delta": 0.5,
+          "version_extract": "<style>\\s+/\\*!\\s+\\* bootstrap v(\\d\\.\\d\\.\\d)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "bootstrap(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>]*?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "bootstrap(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>]*?(?:\\.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:getbootstrap:bootstrap:*:*:*:*:*:*:*:*",
+  "categories": [
+    66
+  ],
+  "notes": "Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.",
+  "website": "https://getbootstrap.com"
+}

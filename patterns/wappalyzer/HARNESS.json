@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-harness",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HARNESS",
+  "taxonomy_name": "Harness",
+  "vendor": "",
+  "product": "Harness",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HARNESS.json",
+    "original_name": "Harness"
+  },
+  "research": [
+    {
+      "url": "https://www.goharness.com/nonprofits",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_harness_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.harnessapp\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    111
+  ],
+  "notes": "Harness is a fundraising solution designed to streamline the process of raising funds for various causes and initiatives.",
+  "website": "https://www.goharness.com/nonprofits"
+}

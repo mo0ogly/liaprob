@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-opencms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENCMS",
+  "taxonomy_name": "OpenCms",
+  "vendor": "",
+  "product": "OpenCms",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENCMS.json",
+    "original_name": "OpenCms"
+  },
+  "research": [
+    {
+      "url": "https://www.opencms.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_opencms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "opencms"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link href=\"/opencms/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "opencms",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:alkacon:opencms:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.opencms.org"
+}

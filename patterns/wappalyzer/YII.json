@@ -1,0 +1,85 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yii",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YII",
+  "taxonomy_name": "Yii",
+  "vendor": "",
+  "product": "Yii",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YII.json",
+    "original_name": "Yii"
+  },
+  "research": [
+    {
+      "url": "https://www.yiiframework.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yii_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "yii_csrf_token",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!\\[cdata\\[yii-block-(?:head|body-begin|body-end)\\]",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input type=\"hidden\" value=\"[a-za-z0-9]{40}\" name=\"yii_csrf_token\" \\/>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=\"http://www\\.yiiframework\\.com/\" rel=\"external\">yii framework</a>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/assets/[a-za-z0-9]{8}\\/yii\\.js$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/yii\\.(?:validation|activeform)\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Yii is an open-source, object-oriented, component-based MVC PHP web application framework.",
+  "website": "https://www.yiiframework.com"
+}

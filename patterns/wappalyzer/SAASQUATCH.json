@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-saasquatch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAASQUATCH",
+  "taxonomy_name": "SaaSquatch",
+  "vendor": "",
+  "product": "SaaSquatch",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SAASQUATCH.json",
+    "original_name": "SaaSquatch"
+  },
+  "research": [
+    {
+      "url": "https://www.saasquatch.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_saasquatch_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:\\.cloudfront\\.net/assets/javascripts/(?:v2/)?|/sas)squatch\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    94,
+    84
+  ],
+  "notes": "SaaSquatch is a cloud-based loyalty, referral and rewards marketing platform.",
+  "website": "https://www.saasquatch.com"
+}

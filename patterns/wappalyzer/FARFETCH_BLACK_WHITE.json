@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-farfetch_black_white",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FARFETCH_BLACK_WHITE",
+  "taxonomy_name": "FARFETCH Black & White",
+  "vendor": "",
+  "product": "FARFETCH Black & White",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FARFETCH_BLACK_WHITE.json",
+    "original_name": "FARFETCH Black & White"
+  },
+  "research": [
+    {
+      "url": "https://www.farfetchplatformsolutions.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_farfetch_black_white_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn-static\\.farfetch-contents.com\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Farfetch Platform Solutions is a full service platform and agency providing end-to-end, multichannel e-commerce solutions for luxury fashion brands under the name Farfetch Black & White.",
+  "website": "https://www.farfetchplatformsolutions.com/"
+}

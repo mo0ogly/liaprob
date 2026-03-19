@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-loop54",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOOP54",
+  "taxonomy_name": "Loop54",
+  "vendor": "",
+  "product": "Loop54",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOOP54.json",
+    "original_name": "Loop54"
+  },
+  "research": [
+    {
+      "url": "https://www.loop54.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_loop54_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "loop54user",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29,
+    76
+  ],
+  "notes": "Loop54 is a ecommerce search and navigation SaaS product.",
+  "website": "https://www.loop54.com"
+}

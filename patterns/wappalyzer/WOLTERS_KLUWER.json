@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wolters_kluwer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WOLTERS_KLUWER",
+  "taxonomy_name": "Wolters Kluwer",
+  "vendor": "",
+  "product": "Wolters Kluwer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WOLTERS_KLUWER.json",
+    "original_name": "Wolters Kluwer"
+  },
+  "research": [
+    {
+      "url": "https://www.cchwebsites.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wolters_kluwer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^designed by cch site builder$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.cchwebsites\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Wolters Kluwer is a site builder designed for tax professionals to create and manage websites tailored to their practice needs.",
+  "website": "https://www.cchwebsites.com"
+}

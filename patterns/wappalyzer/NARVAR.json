@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-narvar",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NARVAR",
+  "taxonomy_name": "Narvar",
+  "vendor": "",
+  "product": "Narvar",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NARVAR.json",
+    "original_name": "Narvar"
+  },
+  "research": [
+    {
+      "url": "https://corp.narvar.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_narvar_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.narvar\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    102,
+    99
+  ],
+  "notes": "Narvar is a customer experience platform that helps retailers inspire long-term customer loyalty, at all steps of the post-purchase journey.",
+  "website": "https://corp.narvar.com"
+}

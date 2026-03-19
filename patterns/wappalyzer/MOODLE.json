@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-moodle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOODLE",
+  "taxonomy_name": "Moodle",
+  "vendor": "",
+  "product": "Moodle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOODLE.json",
+    "original_name": "Moodle"
+  },
+  "research": [
+    {
+      "url": "https://moodle.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_moodle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "moodleid_",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "moodlesession",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+moodlelogo",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "keywords",
+          "match_type": "regex",
+          "value": "^moodle",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:moodle:moodle:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    21
+  ],
+  "notes": "Moodle is a free and open-source Learning Management System (LMS) written in PHP and distributed under the GNU General Public License.",
+  "website": "https://moodle.org"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-uvicorn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UVICORN",
+  "taxonomy_name": "Uvicorn",
+  "vendor": "",
+  "product": "Uvicorn",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UVICORN.json",
+    "original_name": "Uvicorn"
+  },
+  "research": [
+    {
+      "url": "https://www.uvicorn.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_uvicorn_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "uvicorn"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Python"
+  ],
+  "categories": [
+    22
+  ],
+  "website": "https://www.uvicorn.org/"
+}

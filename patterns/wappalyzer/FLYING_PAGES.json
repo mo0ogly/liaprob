@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flying_pages",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLYING_PAGES",
+  "taxonomy_name": "Flying Pages",
+  "vendor": "",
+  "product": "Flying Pages",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLYING_PAGES.json",
+    "original_name": "Flying Pages"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/flying-pages/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flying_pages_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/flying-pages/.+\\.js(?:\\?ver=([\\d\\.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/plugins/flying-pages/.+\\.js(?:\\?ver=([\\d\\.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "Flying Pages is a performance optimisation plugin for WordPress websites designed to reduce page load times and improve the user experience.",
+  "website": "https://wordpress.org/plugins/flying-pages/"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_clarity",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_CLARITY",
+  "taxonomy_name": "Microsoft Clarity",
+  "vendor": "",
+  "product": "Microsoft Clarity",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_CLARITY.json",
+    "original_name": "Microsoft Clarity"
+  },
+  "research": [
+    {
+      "url": "https://clarity.microsoft.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_clarity_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.clarity\\.ms/.+/([\\d.]+)/clarity\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "www\\.clarity\\.ms/.+/([\\d.]+)/clarity\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Microsoft's Clarity is a analytics tool which provides website usage statistics, session recording, and heatmaps.",
+  "website": "https://clarity.microsoft.com"
+}

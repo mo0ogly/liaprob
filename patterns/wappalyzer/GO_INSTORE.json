@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-go_instore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GO_INSTORE",
+  "taxonomy_name": "Go Instore",
+  "vendor": "",
+  "product": "Go Instore",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GO_INSTORE.json",
+    "original_name": "Go Instore"
+  },
+  "research": [
+    {
+      "url": "https://goinstore.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_go_instore_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.goinstore\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//gis\\.goinstore\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    103
+  ],
+  "notes": "Go Instore uses high-definition live video to connect online customers with in-store product experts.",
+  "website": "https://goinstore.com"
+}

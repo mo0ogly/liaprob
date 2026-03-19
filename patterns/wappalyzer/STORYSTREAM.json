@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-storystream",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STORYSTREAM",
+  "taxonomy_name": "StoryStream",
+  "vendor": "",
+  "product": "StoryStream",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STORYSTREAM.json",
+    "original_name": "StoryStream"
+  },
+  "research": [
+    {
+      "url": "https://storystream.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_storystream_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "apps\\.storystream\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    96
+  ],
+  "notes": "StoryStream is a content curation platform that specialises in user generated content.",
+  "website": "https://storystream.ai"
+}

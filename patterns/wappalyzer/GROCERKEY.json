@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-grocerkey",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GROCERKEY",
+  "taxonomy_name": "GrocerKey",
+  "vendor": "",
+  "product": "GrocerKey",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GROCERKEY.json",
+    "original_name": "GrocerKey"
+  },
+  "research": [
+    {
+      "url": "https://grocerkey.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_grocerkey_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.grocerywebsite\\.com/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "grocerkey-widget\\.s3\\.amazonaws\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "GrocerKey is an ecommerce platform that helps grocery stores build an online store.",
+  "website": "https://grocerkey.com"
+}

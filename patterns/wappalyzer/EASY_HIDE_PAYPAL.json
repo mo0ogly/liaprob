@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-easy_hide_paypal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EASY_HIDE_PAYPAL",
+  "taxonomy_name": "Easy Hide PayPal",
+  "vendor": "",
+  "product": "Easy Hide PayPal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EASY_HIDE_PAYPAL.json",
+    "original_name": "Easy Hide PayPal"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/easyhide",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_easy_hide_paypal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "easyhide\\.herculesapps\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Easy Hide PayPal hides PayPal button from product page, cart and checkout but keep PayPal as payment option in checkout.",
+  "website": "https://apps.shopify.com/easyhide"
+}

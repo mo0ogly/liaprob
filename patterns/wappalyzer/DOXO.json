@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-doxo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOXO",
+  "taxonomy_name": "doxo",
+  "vendor": "",
+  "product": "doxo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOXO.json",
+    "original_name": "doxo"
+  },
+  "research": [
+    {
+      "url": "https://www.doxo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_doxo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.doxo\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "doxo is a bill payment service that enables users to manage and pay multiple bills in one place through a single account and login.",
+  "website": "https://www.doxo.com"
+}

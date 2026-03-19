@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dr_leonardo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DR_LEONARDO",
+  "taxonomy_name": "Dr. Leonardo",
+  "vendor": "",
+  "product": "Dr. Leonardo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DR_LEONARDO.json",
+    "original_name": "Dr. Leonardo"
+  },
+  "research": [
+    {
+      "url": "https://www.dr-leonardo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dr_leonardo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sitebuilder\\.dr-leonardo\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Dr. Leonardo is an all-in-one eHealth platform designed for healthcare professionals, providing tools for patient engagement, telemedicine, and practice management.",
+  "website": "https://www.dr-leonardo.com"
+}

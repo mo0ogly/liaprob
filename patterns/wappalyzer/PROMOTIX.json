@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-promotix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROMOTIX",
+  "taxonomy_name": "PromoTix",
+  "vendor": "",
+  "product": "PromoTix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROMOTIX.json",
+    "original_name": "PromoTix"
+  },
+  "research": [
+    {
+      "url": "https://www.promotix.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_promotix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "apple-mobile-web-app-title",
+          "match_type": "regex",
+          "value": "^promotix$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    104
+  ],
+  "notes": "PromoTix is a ticketing software application designed to streamline event ticket sales and management.",
+  "website": "https://www.promotix.com"
+}

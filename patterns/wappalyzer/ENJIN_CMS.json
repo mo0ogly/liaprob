@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-enjin_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENJIN_CMS",
+  "taxonomy_name": "Enjin CMS",
+  "vendor": "",
+  "product": "Enjin CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENJIN_CMS.json",
+    "original_name": "Enjin CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.enjin.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_enjin_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.enjin\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Enjin CMS is a content management system which focused creation of websites for gaming guilds, clans, Minecraft servers, or fan communities.",
+  "website": "https://www.enjin.com"
+}

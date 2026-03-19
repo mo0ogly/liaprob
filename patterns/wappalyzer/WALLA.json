@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-walla",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WALLA",
+  "taxonomy_name": "Walla",
+  "vendor": "",
+  "product": "Walla",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WALLA.json",
+    "original_name": "Walla"
+  },
+  "research": [
+    {
+      "url": "https://www.hellowalla.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_walla_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.hellowalla\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Walla is a cloud-based fitness studio management software.",
+  "website": "https://www.hellowalla.com"
+}

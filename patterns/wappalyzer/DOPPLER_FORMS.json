@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-doppler_forms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOPPLER_FORMS",
+  "taxonomy_name": "Doppler Forms",
+  "vendor": "",
+  "product": "Doppler Forms",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOPPLER_FORMS.json",
+    "original_name": "Doppler Forms"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/doppler-form/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_doppler_forms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/doppler-form/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/plugins/doppler-form/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Doppler"
+  ],
+  "categories": [
+    87
+  ],
+  "notes": "The Doppler Forms plugin allows you to create fully customised subscription forms that you can add to your website or blog.",
+  "website": "https://wordpress.org/plugins/doppler-form/"
+}

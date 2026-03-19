@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-discuz_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DISCUZ_X",
+  "taxonomy_name": "Discuz! X",
+  "vendor": "",
+  "product": "Discuz! X",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DISCUZ_X.json",
+    "original_name": "Discuz! X"
+  },
+  "research": [
+    {
+      "url": "https://www.discuz.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_discuz_x_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "discuz! x([\\d\\.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "discuz! x([\\d\\.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "Discuz! X is an internet forum software written in PHP and supports MySQL and PostgreSQL databases.",
+  "website": "https://www.discuz.net"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_dynamics_365_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_DYNAMICS_365_COMMERCE",
+  "taxonomy_name": "Microsoft Dynamics 365 Commerce",
+  "vendor": "",
+  "product": "Microsoft Dynamics 365 Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_DYNAMICS_365_COMMERCE.json",
+    "original_name": "Microsoft Dynamics 365 Commerce"
+  },
+  "research": [
+    {
+      "url": "https://dynamics.microsoft.com/commerce/overview",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_dynamics_365_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.dynamics365commerce\\.ms/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Microsoft Dynamics 365 Commerce, an omnichannel ecommerce solution that allows you to build a website, connect physical and digital stores, track customer behaviours and requirements, deliver personalised experiences.",
+  "website": "https://dynamics.microsoft.com/commerce/overview"
+}

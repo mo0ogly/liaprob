@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cleverbridge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLEVERBRIDGE",
+  "taxonomy_name": "Cleverbridge",
+  "vendor": "",
+  "product": "Cleverbridge",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLEVERBRIDGE.json",
+    "original_name": "Cleverbridge"
+  },
+  "research": [
+    {
+      "url": "https://www.cleverbridge.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cleverbridge_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static-cf\\.cleverbridge\\.\\w+/js/shop\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Cleverbridge is a all-in-one ecommerce and subscription billing solution for software, (SaaS) and digital goods.",
+  "website": "https://www.cleverbridge.com"
+}

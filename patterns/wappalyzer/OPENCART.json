@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-opencart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENCART",
+  "taxonomy_name": "OpenCart",
+  "vendor": "",
+  "product": "OpenCart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENCART.json",
+    "original_name": "OpenCart"
+  },
+  "research": [
+    {
+      "url": "https://www.opencart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_opencart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "ocsessid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:opencart:opencart:*:*:*:*:*:*:*:*",
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    6,
+    1
+  ],
+  "notes": "OpenCart is a free and open-source ecommerce platform used for creating and managing online stores. It is written in PHP and uses a MySQL database to store information.",
+  "website": "https://www.opencart.com"
+}

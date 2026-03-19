@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-roc_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROC_COMMERCE",
+  "taxonomy_name": "ROC Commerce",
+  "vendor": "",
+  "product": "ROC Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ROC_COMMERCE.json",
+    "original_name": "ROC Commerce"
+  },
+  "research": [
+    {
+      "url": "https://www.roccommerce.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_roc_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "search\\.roccommerce\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "ROC Commerce is an omni-channel commerce solution designed for B2B and B2C businesses, enabling streamlined ecommerce operations across multiple platforms.",
+  "website": "https://www.roccommerce.com"
+}

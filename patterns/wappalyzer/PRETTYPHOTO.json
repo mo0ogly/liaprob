@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-prettyphoto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRETTYPHOTO",
+  "taxonomy_name": "prettyPhoto",
+  "vendor": "",
+  "product": "prettyPhoto",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PRETTYPHOTO.json",
+    "original_name": "prettyPhoto"
+  },
+  "research": [
+    {
+      "url": "https://no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_prettyphoto_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link [^>]*href=\"[^\"]*prettyphoto(?:\\.min)?\\.css|<a [^>]*rel=\"prettyphoto)",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jquery\\.prettyphoto\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "website": "https://no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/"
+}

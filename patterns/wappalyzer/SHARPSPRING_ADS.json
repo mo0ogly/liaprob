@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sharpspring_ads",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHARPSPRING_ADS",
+  "taxonomy_name": "SharpSpring Ads",
+  "vendor": "",
+  "product": "SharpSpring Ads",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHARPSPRING_ADS.json",
+    "original_name": "SharpSpring Ads"
+  },
+  "research": [
+    {
+      "url": "https://sharpspring.com/ads",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sharpspring_ads_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.perfectaudience\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    77
+  ],
+  "notes": "SharpSpring Ads is an all-in-one retargeting platform.",
+  "website": "https://sharpspring.com/ads"
+}

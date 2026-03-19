@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-42stores",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "42STORES",
+  "taxonomy_name": "42stores",
+  "vendor": "",
+  "product": "42stores",
+  "source": {
+    "type": "wappalyzer",
+    "file": "42STORES.json",
+    "original_name": "42stores"
+  },
+  "research": [
+    {
+      "url": "https://www.42stores.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_42stores_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^42stores$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "42stores is a French SaaS ecommerce solution that was established in 2008. It offers a range of features such as monitoring, customer support, and regular updates. The platform is known for its flexibility and modularity, making it possible to integrate with various ERP systems.",
+  "website": "https://www.42stores.com"
+}

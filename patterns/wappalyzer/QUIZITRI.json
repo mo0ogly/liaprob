@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-quizitri",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUIZITRI",
+  "taxonomy_name": "Quizitri",
+  "vendor": "",
+  "product": "Quizitri",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUIZITRI.json",
+    "original_name": "Quizitri"
+  },
+  "research": [
+    {
+      "url": "https://www.quizitri.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_quizitri_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.quizitri\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Quizitri is a tool for creating unlimited quizzes aimed at increasing conversions, website traffic, lead generation, and sales.",
+  "website": "https://www.quizitri.com"
+}

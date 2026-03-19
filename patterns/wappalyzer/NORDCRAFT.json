@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nordcraft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NORDCRAFT",
+  "taxonomy_name": "Nordcraft",
+  "vendor": "",
+  "product": "Nordcraft",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NORDCRAFT.json",
+    "original_name": "Nordcraft"
+  },
+  "research": [
+    {
+      "url": "https://nordcraft.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nordcraft_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^nordcraft$"
+        },
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "^nordcraft$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    18
+  ],
+  "notes": "Nordcraft is a platform that integrates a visual design tool with a web framework, enabling the creation of web applications and websites in a unified environment.",
+  "website": "https://nordcraft.com"
+}

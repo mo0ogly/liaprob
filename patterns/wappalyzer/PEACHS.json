@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-peachs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PEACHS",
+  "taxonomy_name": "Peachs",
+  "vendor": "",
+  "product": "Peachs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PEACHS.json",
+    "original_name": "Peachs"
+  },
+  "research": [
+    {
+      "url": "https://peachs.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_peachs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//peachs\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    94
+  ],
+  "notes": "Peachs is a Squarespace ecommerce word-of-mouth marketing system designed to promote products through customer referrals and social sharing.",
+  "website": "https://peachs.co"
+}

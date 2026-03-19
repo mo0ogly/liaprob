@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jplayer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JPLAYER",
+  "taxonomy_name": "jPlayer",
+  "vendor": "",
+  "product": "jPlayer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JPLAYER.json",
+    "original_name": "jPlayer"
+  },
+  "research": [
+    {
+      "url": "https://jplayer.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jplayer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/jquery\\.jplayer\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    14,
+    59
+  ],
+  "notes": "jPlayer is a cross-browser JavaScript library developed as a jQuery plugin which facilitates the embedding of web based media, notably HTML5 audio and video in addition to Adobe Flash based media.",
+  "website": "https://jplayer.org"
+}

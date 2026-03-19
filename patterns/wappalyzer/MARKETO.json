@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-marketo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MARKETO",
+  "taxonomy_name": "Marketo",
+  "vendor": "",
+  "product": "Marketo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MARKETO.json",
+    "original_name": "Marketo"
+  },
+  "research": [
+    {
+      "url": "https://www.marketo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_marketo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "munchkin\\.marketo\\.\\w+/(?:([\\d.]+)/)?munchkin\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "munchkin\\.marketo\\.\\w+/(?:([\\d.]+)/)?munchkin\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Marketo develops and sells marketing automation software for account-based marketing and other marketing services and products including SEO and content creation.",
+  "website": "https://www.marketo.com"
+}

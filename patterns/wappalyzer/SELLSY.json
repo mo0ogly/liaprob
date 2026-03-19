@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sellsy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SELLSY",
+  "taxonomy_name": "Sellsy",
+  "vendor": "",
+  "product": "Sellsy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SELLSY.json",
+    "original_name": "Sellsy"
+  },
+  "research": [
+    {
+      "url": "https://go.sellsy.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sellsy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sellsy\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Sellsy is a cloud-based sales management solution for small to midsize businesses",
+  "website": "https://go.sellsy.com"
+}

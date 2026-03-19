@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-goanywhere",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOANYWHERE",
+  "taxonomy_name": "GoAnywhere",
+  "vendor": "",
+  "product": "GoAnywhere",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOANYWHERE.json",
+    "original_name": "GoAnywhere"
+  },
+  "research": [
+    {
+      "url": "https://www.goanywhere.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_goanywhere_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "goanywhere"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "GoAnywhere by HelpSystems is a Managed File Transfer (MFT) system with sharing and collaboration features",
+  "website": "https://www.goanywhere.com/"
+}

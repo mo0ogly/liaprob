@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-carro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARRO",
+  "taxonomy_name": "Carro",
+  "vendor": "",
+  "product": "Carro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARRO.json",
+    "original_name": "Carro"
+  },
+  "research": [
+    {
+      "url": "https://getcarro.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_carro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/carro\\.min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/carro\\.min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getcarro\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Carro connects participating Shopify stores together to enable cross-store selling or the ability for like-minded partners to directly sell each other products without the need for inventory, managing returns, or minimum order quantities.",
+  "website": "https://getcarro.com"
+}

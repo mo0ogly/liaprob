@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-akamai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKAMAI",
+  "taxonomy_name": "Akamai",
+  "vendor": "",
+  "product": "Akamai",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AKAMAI.json",
+    "original_name": "Akamai"
+  },
+  "research": [
+    {
+      "url": "https://akamai.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_akamai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-akamai-transformed",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-edgeconnect-midmile-rtt",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-edgeconnect-origin-mex-latency",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "Akamai is global content delivery network (CDN) services provider for media and software delivery, and cloud security solutions.",
+  "website": "https://akamai.com"
+}

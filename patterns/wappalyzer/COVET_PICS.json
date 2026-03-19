@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-covet_pics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COVET_PICS",
+  "taxonomy_name": "Covet.pics",
+  "vendor": "",
+  "product": "Covet.pics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COVET_PICS.json",
+    "original_name": "Covet.pics"
+  },
+  "research": [
+    {
+      "url": "https://covet.pics",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_covet_pics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.covet\\.pics/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    96,
+    100
+  ],
+  "notes": "Covet.pics is a customizable Shopify app for Instagram and Lookbook shoppable galleries.",
+  "website": "https://covet.pics"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-trumpia",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRUMPIA",
+  "taxonomy_name": "Trumpia",
+  "vendor": "",
+  "product": "Trumpia",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRUMPIA.json",
+    "original_name": "Trumpia"
+  },
+  "research": [
+    {
+      "url": "https://www.trumpia.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_trumpia_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "trumpiareferer",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.trumpia\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Trumpia is a marketing platform that supports multiple channels, including mobile, email, social media, voice, and chat marketing.",
+  "website": "https://www.trumpia.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flip_pay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLIP_PAY",
+  "taxonomy_name": "Flip-Pay",
+  "vendor": "",
+  "product": "Flip-Pay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLIP_PAY.json",
+    "original_name": "Flip-Pay"
+  },
+  "research": [
+    {
+      "url": "https://www.flip-pay.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flip_pay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.flip-pay\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Flip-Pay is a platform that provides advanced content monetization solutions, offering end-to-end paywall services for publishers and digital businesses.",
+  "website": "https://www.flip-pay.com"
+}

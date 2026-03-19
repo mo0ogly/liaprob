@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-poll_maker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POLL_MAKER",
+  "taxonomy_name": "Poll Maker",
+  "vendor": "",
+  "product": "Poll Maker",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POLL_MAKER.json",
+    "original_name": "Poll Maker"
+  },
+  "research": [
+    {
+      "url": "https://www.poll-maker.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_poll_maker_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "scripts\\.poll-maker\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Poll Maker is a system designed to create and manage online polls, allowing users to gather opinions, feedback, or votes.",
+  "website": "https://www.poll-maker.com"
+}

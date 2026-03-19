@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-theme_horse_newscard",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THEME_HORSE_NEWSCARD",
+  "taxonomy_name": "Theme Horse NewsCard",
+  "vendor": "",
+  "product": "Theme Horse NewsCard",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THEME_HORSE_NEWSCARD.json",
+    "original_name": "Theme Horse NewsCard"
+  },
+  "research": [
+    {
+      "url": "https://www.themehorse.com/themes/newscard",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_theme_horse_newscard_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/newscard(?:-pro)?/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "NewsCard is a multi-purpose magazine/news WordPress theme by Theme Horse.",
+  "website": "https://www.themehorse.com/themes/newscard"
+}

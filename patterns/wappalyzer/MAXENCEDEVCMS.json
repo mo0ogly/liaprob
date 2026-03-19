@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-maxencedevcms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAXENCEDEVCMS",
+  "taxonomy_name": "MaxenceDEVCMS",
+  "vendor": "",
+  "product": "MaxenceDEVCMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAXENCEDEVCMS.json",
+    "original_name": "MaxenceDEVCMS"
+  },
+  "research": [
+    {
+      "url": "https://cms.maxencedev.fr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_maxencedevcms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^maxencedev$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "MaxenceDEVCMS is a simple CMS for ecommerce, esport, landing page.",
+  "website": "https://cms.maxencedev.fr"
+}

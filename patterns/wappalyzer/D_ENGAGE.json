@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-d_engage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "D_ENGAGE",
+  "taxonomy_name": "D.Engage",
+  "vendor": "",
+  "product": "D.Engage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "D_ENGAGE.json",
+    "original_name": "D.Engage"
+  },
+  "research": [
+    {
+      "url": "https://dengage.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_d_engage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "pcdn\\.dengage\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "D.Engage is a platform that enhances customer experiences by leveraging data-driven marketing automation to deliver targeted and efficient campaigns.",
+  "website": "https://dengage.com"
+}

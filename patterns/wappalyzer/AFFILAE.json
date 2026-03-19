@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-affilae",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AFFILAE",
+  "taxonomy_name": "Affilae",
+  "vendor": "",
+  "product": "Affilae",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AFFILAE.json",
+    "original_name": "Affilae"
+  },
+  "research": [
+    {
+      "url": "https://affilae.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_affilae_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.affilae\\.com/(?:.+v([\\d\\.]+)|.+)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "static\\.affilae\\.com/(?:.+v([\\d\\.]+)|.+)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Affilae is an affiliate marketing platform that enables brands to connect, collaborate with influencers and affiliates.",
+  "website": "https://affilae.com"
+}

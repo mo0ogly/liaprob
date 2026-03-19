@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lead_forensics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEAD_FORENSICS",
+  "taxonomy_name": "Lead Forensics",
+  "vendor": "",
+  "product": "Lead Forensics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEAD_FORENSICS.json",
+    "original_name": "Lead Forensics"
+  },
+  "research": [
+    {
+      "url": "https://www.leadforensics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lead_forensics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.leadforensics\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Lead Forensics is a B2B website visitor identification software that processes website traffic data to reveal the companies behind each visit.",
+  "website": "https://www.leadforensics.com"
+}

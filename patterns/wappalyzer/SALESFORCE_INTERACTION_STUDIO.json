@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-salesforce_interaction_studio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SALESFORCE_INTERACTION_STUDIO",
+  "taxonomy_name": "Salesforce Interaction Studio",
+  "vendor": "",
+  "product": "Salesforce Interaction Studio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SALESFORCE_INTERACTION_STUDIO.json",
+    "original_name": "Salesforce Interaction Studio"
+  },
+  "research": [
+    {
+      "url": "https://www.salesforce.com/products/marketing-cloud/customer-interaction",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_salesforce_interaction_studio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.evgnet\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    86
+  ],
+  "notes": "Salesforce Interaction Studio (formerly Evergage) is a cloud-based software that allows users to collect, analyze, and respond to user behavior on their websites and web applications in real-time.",
+  "website": "https://www.salesforce.com/products/marketing-cloud/customer-interaction"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bringie",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BRINGIE",
+  "taxonomy_name": "Bringie",
+  "vendor": "",
+  "product": "Bringie",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BRINGIE.json",
+    "original_name": "Bringie"
+  },
+  "research": [
+    {
+      "url": "https://www.bringie.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bringie_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.bringie\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    74
+  ],
+  "notes": "Bringie is a conversion optimization platform that analyzes user behavior and performance metrics to enhance website effectiveness and increase engagement outcomes.",
+  "website": "https://www.bringie.com"
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aseqbase",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASEQBASE",
+  "taxonomy_name": "Aseqbase",
+  "vendor": "",
+  "product": "Aseqbase",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ASEQBASE.json",
+    "original_name": "Aseqbase"
+  },
+  "research": [
+    {
+      "url": "https://aseqbase.mimfa.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aseqbase_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "framwork",
+          "match_type": "regex",
+          "value": "^aseqbase$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "product",
+          "match_type": "regex",
+          "value": "www\\.aseqbase\\.ir",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    18
+  ],
+  "notes": "Aseqbase is a sequence-based web development framework designed to create robust websites.",
+  "website": "https://aseqbase.mimfa.net"
+}

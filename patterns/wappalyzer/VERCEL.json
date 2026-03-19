@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vercel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERCEL",
+  "taxonomy_name": "Vercel",
+  "vendor": "",
+  "product": "Vercel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VERCEL.json",
+    "original_name": "Vercel"
+  },
+  "research": [
+    {
+      "url": "https://vercel.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vercel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^now|vercel$"
+        },
+        {
+          "target": "header",
+          "field": "x-now-trace",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-vercel-cache",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-vercel-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "Vercel is a cloud platform for static frontends and serverless functions.",
+  "website": "https://vercel.com"
+}

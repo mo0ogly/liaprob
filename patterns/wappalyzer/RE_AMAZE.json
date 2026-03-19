@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-re_amaze",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RE_AMAZE",
+  "taxonomy_name": "Re:amaze",
+  "vendor": "",
+  "product": "Re:amaze",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RE_AMAZE.json",
+    "original_name": "Re:amaze"
+  },
+  "research": [
+    {
+      "url": "https://www.reamaze.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_re_amaze_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.reamaze\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Re:amaze is a multi-brand customer service, live chat, and help desk solution.",
+  "website": "https://www.reamaze.com"
+}

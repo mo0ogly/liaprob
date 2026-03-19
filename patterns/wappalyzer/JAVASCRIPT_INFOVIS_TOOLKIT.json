@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-javascript_infovis_toolkit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAVASCRIPT_INFOVIS_TOOLKIT",
+  "taxonomy_name": "JavaScript Infovis Toolkit",
+  "vendor": "",
+  "product": "JavaScript Infovis Toolkit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JAVASCRIPT_INFOVIS_TOOLKIT.json",
+    "original_name": "JavaScript Infovis Toolkit"
+  },
+  "research": [
+    {
+      "url": "https://philogb.github.io/jit/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_javascript_infovis_toolkit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jit(?:-yc)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    25
+  ],
+  "website": "https://philogb.github.io/jit/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hikari_cs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HIKARI_CS",
+  "taxonomy_name": "Hikari CS",
+  "vendor": "",
+  "product": "Hikari CS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HIKARI_CS.json",
+    "original_name": "Hikari CS"
+  },
+  "research": [
+    {
+      "url": "https://www.hikarics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hikari_cs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.hikarics\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Hicari CS is a solution that helps webshops increase sales and customer loyalty with excellent customer service.",
+  "website": "https://www.hikarics.com"
+}

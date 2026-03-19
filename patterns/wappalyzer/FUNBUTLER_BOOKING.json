@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-funbutler_booking",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUNBUTLER_BOOKING",
+  "taxonomy_name": "Funbutler Booking",
+  "vendor": "",
+  "product": "Funbutler Booking",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FUNBUTLER_BOOKING.json",
+    "original_name": "Funbutler Booking"
+  },
+  "research": [
+    {
+      "url": "https://business.funbutler.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_funbutler_booking_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "booking\\.funbutler\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Funbutler Booking is a booking and operations system designed for activity centers and entertainment venues to manage reservations and streamline daily operations.",
+  "website": "https://business.funbutler.com"
+}

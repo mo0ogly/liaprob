@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-http_2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HTTP_2",
+  "taxonomy_name": "HTTP/2",
+  "vendor": "",
+  "product": "HTTP/2",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HTTP_2.json",
+    "original_name": "HTTP/2"
+  },
+  "research": [
+    {
+      "url": "https://http2.github.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_http_2_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "alt-svc",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "h2"
+        },
+        {
+          "target": "header",
+          "field": "x-firefox-spdy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "h2"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "HTTP/2 (originally named HTTP/2.0) is a major revision of the HTTP network protocol used by the World Wide Web.",
+  "website": "https://http2.github.io"
+}

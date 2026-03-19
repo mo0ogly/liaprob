@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-instantcms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INSTANTCMS",
+  "taxonomy_name": "InstantCMS",
+  "vendor": "",
+  "product": "InstantCMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INSTANTCMS.json",
+    "original_name": "InstantCMS"
+  },
+  "research": [
+    {
+      "url": "https://www.instantcms.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_instantcms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "instantcms[logdate]",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "instantcms",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:instantcms:instantcms:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.instantcms.ru"
+}

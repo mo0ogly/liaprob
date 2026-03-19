@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nemu",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEMU",
+  "taxonomy_name": "Nemu",
+  "vendor": "",
+  "product": "Nemu",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEMU.json",
+    "original_name": "Nemu"
+  },
+  "research": [
+    {
+      "url": "https://usenemu.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nemu_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "trackings\\.nemu\\.com\\.br",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Nemu is a platform that enables end-to-end tracking to monitor and optimize campaign performance, supporting improved profitability.",
+  "website": "https://usenemu.com"
+}

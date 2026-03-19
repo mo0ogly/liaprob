@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-slick",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SLICK",
+  "taxonomy_name": "Slick",
+  "vendor": "",
+  "product": "Slick",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SLICK.json",
+    "original_name": "Slick"
+  },
+  "research": [
+    {
+      "url": "https://kenwheeler.github.io/slick",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_slick_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]+(?:/([\\d.]+)/)?slick-theme\\.css",
+          "confidence_delta": 0.5,
+          "version_extract": "<link [^>]+(?:/([\\d.]+)/)?slick-theme\\.css"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:/([\\d.]+))?/slick(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:/([\\d.]+))?/slick(?:\\.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "website": "https://kenwheeler.github.io/slick"
+}

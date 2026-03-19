@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-readme",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "README",
+  "taxonomy_name": "ReadMe",
+  "vendor": "",
+  "product": "ReadMe",
+  "source": {
+    "type": "wappalyzer",
+    "file": "README.json",
+    "original_name": "ReadMe"
+  },
+  "research": [
+    {
+      "url": "https://readme.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_readme_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "readme-deploy",
+          "match_type": "regex",
+          "value": "^[\\d\\.]+$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "readme-version",
+          "match_type": "regex",
+          "value": "^[\\d\\.]+$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/cdn\\.readme\\.io/js/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4,
+    1
+  ],
+  "notes": "ReadMe is a content management system that businesses use to create and manage technical or API documentation.",
+  "website": "https://readme.com"
+}

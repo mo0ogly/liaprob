@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-docker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOCKER",
+  "taxonomy_name": "Docker",
+  "vendor": "",
+  "product": "Docker",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOCKER.json",
+    "original_name": "Docker"
+  },
+  "research": [
+    {
+      "url": "https://www.docker.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_docker_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- this comment is expected by the docker healthcheck  -->",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:docker:engine:*:*:*:*:*:*:*:*",
+  "categories": [
+    60
+  ],
+  "notes": "Docker is a tool designed to make it easier to create, deploy, and run applications by using containers.",
+  "website": "https://www.docker.com/"
+}

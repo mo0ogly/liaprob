@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dito",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DITO",
+  "taxonomy_name": "Dito",
+  "vendor": "",
+  "product": "Dito",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DITO.json",
+    "original_name": "Dito"
+  },
+  "research": [
+    {
+      "url": "https://www.dito.com.br",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dito_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "storage\\.googleapis\\.com/dito/sdk\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Dito is a tool that centralizes and manages the relationship between brands and their customers.",
+  "website": "https://www.dito.com.br"
+}

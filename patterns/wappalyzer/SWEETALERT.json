@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sweetalert",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SWEETALERT",
+  "taxonomy_name": "SweetAlert",
+  "vendor": "",
+  "product": "SweetAlert",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SWEETALERT.json",
+    "original_name": "SweetAlert"
+  },
+  "research": [
+    {
+      "url": "https://sweetalert.js.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sweetalert_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sweet(?:-)?alert(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "SweetAlert is a JavaScript library that provides alternative alert and modal dialog boxes for web applications, with customisable features, aiming to improve the user interface of the default browser dialogs.",
+  "website": "https://sweetalert.js.org"
+}

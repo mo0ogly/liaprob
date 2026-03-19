@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-convrrt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONVRRT",
+  "taxonomy_name": "Convrrt",
+  "vendor": "",
+  "product": "Convrrt",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONVRRT.json",
+    "original_name": "Convrrt"
+  },
+  "research": [
+    {
+      "url": "https://www.convrrt.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_convrrt_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.convrrt\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Convrrt is a platform that offers tools for creating responsive landing pages.",
+  "website": "https://www.convrrt.com"
+}

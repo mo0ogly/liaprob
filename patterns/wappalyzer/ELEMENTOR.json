@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-elementor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELEMENTOR",
+  "taxonomy_name": "Elementor",
+  "vendor": "",
+  "product": "Elementor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ELEMENTOR.json",
+    "original_name": "Elementor"
+  },
+  "research": [
+    {
+      "url": "https://elementor.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_elementor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^elementor\\s([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "^elementor\\s([\\d\\.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/elementor(?:-pro)?/.+frontend-modules\\.min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/plugins/elementor(?:-pro)?/.+frontend-modules\\.min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51,
+    87
+  ],
+  "notes": "Elementor is a website builder platform for professionals on WordPress.",
+  "website": "https://elementor.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tangled_network",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TANGLED_NETWORK",
+  "taxonomy_name": "Tangled Network",
+  "vendor": "",
+  "product": "Tangled Network",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TANGLED_NETWORK.json",
+    "original_name": "Tangled Network"
+  },
+  "research": [
+    {
+      "url": "https://tanglednetwork.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tangled_network_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-hosting-provider",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "tangled network"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    88
+  ],
+  "notes": "Tangled Network provides a managed services in website devleopment, web and database hosting and domain registration, with a focus on everything managed for small and medium sized businesses.",
+  "website": "https://tanglednetwork.com"
+}

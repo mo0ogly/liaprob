@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-retype",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RETYPE",
+  "taxonomy_name": "Retype",
+  "vendor": "",
+  "product": "Retype",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RETYPE.json",
+    "original_name": "Retype"
+  },
+  "research": [
+    {
+      "url": "https://retype.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_retype_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "retype\\s([\\d\\.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "retype\\s([\\d\\.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    57
+  ],
+  "notes": "Retype is an open-source static site generator built with Node.js that allows users to create and manage websites with ease using Markdown as the primary content format.",
+  "website": "https://retype.com"
+}

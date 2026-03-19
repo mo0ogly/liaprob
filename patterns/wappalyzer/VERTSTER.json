@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vertster",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERTSTER",
+  "taxonomy_name": "Vertster",
+  "vendor": "",
+  "product": "Vertster",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VERTSTER.json",
+    "original_name": "Vertster"
+  },
+  "research": [
+    {
+      "url": "https://vertster.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vertster_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.vertster\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    74
+  ],
+  "notes": "Vertster is a multivariate testing platform that enables users to compare multiple webpage or app variations simultaneously to identify which combination of elements performs best based on user behavior and data analysis.",
+  "website": "https://vertster.com"
+}

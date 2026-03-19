@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mailshake",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAILSHAKE",
+  "taxonomy_name": "Mailshake",
+  "vendor": "",
+  "product": "Mailshake",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAILSHAKE.json",
+    "original_name": "Mailshake"
+  },
+  "research": [
+    {
+      "url": "https://mailshake.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mailshake_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.mailshake\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Mailshake is an AI-powered sales engagement and B2B lead management platform for creating, automating, and tracking outreach campaigns.",
+  "website": "https://mailshake.com"
+}

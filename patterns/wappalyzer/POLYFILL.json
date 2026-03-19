@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-polyfill",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POLYFILL",
+  "taxonomy_name": "Polyfill",
+  "vendor": "",
+  "product": "Polyfill",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POLYFILL.json",
+    "original_name": "Polyfill"
+  },
+  "research": [
+    {
+      "url": "https://polyfill.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_polyfill_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "polyfill\\.io/v([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "polyfill\\.io/v([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Polyfill is a service which accepts a request for a set of browser features and returns only the polyfills that are needed by the requesting browser.",
+  "website": "https://polyfill.io"
+}

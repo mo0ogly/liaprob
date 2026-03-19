@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-metamap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METAMAP",
+  "taxonomy_name": "MetaMap",
+  "vendor": "",
+  "product": "MetaMap",
+  "source": {
+    "type": "wappalyzer",
+    "file": "METAMAP.json",
+    "original_name": "MetaMap"
+  },
+  "research": [
+    {
+      "url": "https://www.metamap.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_metamap_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdk\\.getmati\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "MetaMap is an identity verification platform that provides customizable solutions for gaining customer insights and making informed decisions.",
+  "website": "https://www.metamap.com"
+}

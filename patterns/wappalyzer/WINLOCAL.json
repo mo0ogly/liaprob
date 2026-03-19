@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-winlocal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WINLOCAL",
+  "taxonomy_name": "WinLocal",
+  "vendor": "",
+  "product": "WinLocal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WINLOCAL.json",
+    "original_name": "WinLocal"
+  },
+  "research": [
+    {
+      "url": "https://winlocal.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_winlocal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.winlocal\\.ru",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "WinLocal is a monitoring and feedback collection service that helps businesses track reviews and improve visibility on maps and search results.",
+  "website": "https://winlocal.ru"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-qualitando",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUALITANDO",
+  "taxonomy_name": "Qualitando",
+  "vendor": "",
+  "product": "Qualitando",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUALITANDO.json",
+    "original_name": "Qualitando"
+  },
+  "research": [
+    {
+      "url": "https://www.qualitando.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_qualitando_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.qualitando\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Qualitando is an Italian customer satisfaction widget designed to collect, measure, and analyze user feedback to support service quality evaluation and improvement.",
+  "website": "https://www.qualitando.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-google_optimize",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_OPTIMIZE",
+  "taxonomy_name": "Google Optimize",
+  "vendor": "",
+  "product": "Google Optimize",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOOGLE_OPTIMIZE.json",
+    "original_name": "Google Optimize"
+  },
+  "research": [
+    {
+      "url": "https://optimize.google.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_google_optimize_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "googleoptimize\\.com/optimize\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    74
+  ],
+  "notes": "Google Optimize allows you to test variants of web pages and see how they perform.",
+  "website": "https://optimize.google.com"
+}

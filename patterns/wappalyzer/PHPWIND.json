@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-phpwind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPWIND",
+  "taxonomy_name": "phpwind",
+  "vendor": "",
+  "product": "phpwind",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PHPWIND.json",
+    "original_name": "phpwind"
+  },
+  "research": [
+    {
+      "url": "https://www.phpwind.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_phpwind_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:powered|code) by <a href=\"[^\"]+phpwind\\.net",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^phpwind(?: v([0-9-]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "^phpwind(?: v([0-9-]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1,
+    2
+  ],
+  "website": "https://www.phpwind.net"
+}

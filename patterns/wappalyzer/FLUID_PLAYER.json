@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fluid_player",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLUID_PLAYER",
+  "taxonomy_name": "Fluid Player",
+  "vendor": "",
+  "product": "Fluid Player",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLUID_PLAYER.json",
+    "original_name": "Fluid Player"
+  },
+  "research": [
+    {
+      "url": "https://www.fluidplayer.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fluid_player_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.fluidplayer\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    14
+  ],
+  "notes": "Fluid Player is an open-source HTML5 video player.",
+  "website": "https://www.fluidplayer.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-weebnb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEEBNB",
+  "taxonomy_name": "WeeBnB",
+  "vendor": "",
+  "product": "WeeBnB",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEEBNB.json",
+    "original_name": "WeeBnB"
+  },
+  "research": [
+    {
+      "url": "https://www.weebnb.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_weebnb_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^weebnb$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "WeeBnB is a rental optimization platform that provides a website for managing and promoting vacation rentals.",
+  "website": "https://www.weebnb.com"
+}

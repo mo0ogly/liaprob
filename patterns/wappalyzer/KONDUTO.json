@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-konduto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KONDUTO",
+  "taxonomy_name": "Konduto",
+  "vendor": "",
+  "product": "Konduto",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KONDUTO.json",
+    "original_name": "Konduto"
+  },
+  "research": [
+    {
+      "url": "https://www.konduto.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_konduto_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.k-analytix\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Konduto is a fraud detection service for ecommerce.",
+  "website": "https://www.konduto.com"
+}

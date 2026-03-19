@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gerrit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GERRIT",
+  "taxonomy_name": "Gerrit",
+  "vendor": "",
+  "product": "Gerrit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GERRIT.json",
+    "original_name": "Gerrit"
+  },
+  "research": [
+    {
+      "url": "https://www.gerritcodereview.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gerrit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:div|style) id=\"gerrit_",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": ">gerrit code review</a>\\s*\"\\s*\\(([0-9.]+)\\)",
+          "confidence_delta": 0.5,
+          "version_extract": ">gerrit code review</a>\\s*\"\\s*\\(([0-9.]+)\\)"
+        },
+        {
+          "target": "meta",
+          "field": "title",
+          "match_type": "regex",
+          "value": "^gerrit code review$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^gerrit_ui/gerrit_ui",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java",
+    "git"
+  ],
+  "categories": [
+    47
+  ],
+  "website": "https://www.gerritcodereview.com"
+}

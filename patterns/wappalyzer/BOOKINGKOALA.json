@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bookingkoala",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOOKINGKOALA",
+  "taxonomy_name": "BookingKoala",
+  "vendor": "",
+  "product": "BookingKoala",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOOKINGKOALA.json",
+    "original_name": "BookingKoala"
+  },
+  "research": [
+    {
+      "url": "https://www.bookingkoala.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bookingkoala_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.bookingkoala\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "BookingKoala is a specialized SaaS for service businesses to automate scheduling, quotes, and billing. It features customizable booking forms and provider management tools, ideal for home services like cleaning or landscaping.",
+  "website": "https://www.bookingkoala.com"
+}

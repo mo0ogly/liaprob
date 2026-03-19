@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-alpharank",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALPHARANK",
+  "taxonomy_name": "Alpharank",
+  "vendor": "",
+  "product": "Alpharank",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALPHARANK.json",
+    "original_name": "Alpharank"
+  },
+  "research": [
+    {
+      "url": "https://www.alpharank.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_alpharank_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.alpharank\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Alpharank is a tool focused on customer journey mapping to enhance conversion optimization specifically for banks.",
+  "website": "https://www.alpharank.ai"
+}

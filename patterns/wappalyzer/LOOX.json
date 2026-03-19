@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-loox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOOX",
+  "taxonomy_name": "Loox",
+  "vendor": "",
+  "product": "Loox",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOOX.json",
+    "original_name": "Loox"
+  },
+  "research": [
+    {
+      "url": "https://loox.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_loox_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "loox\\.io/widget",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Loox is a reviews app for Shopify that helps you gather reviews and user-generated photos from your customers.",
+  "website": "https://loox.app"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-optimization_detective",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPTIMIZATION_DETECTIVE",
+  "taxonomy_name": "Optimization Detective",
+  "vendor": "",
+  "product": "Optimization Detective",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPTIMIZATION_DETECTIVE.json",
+    "original_name": "Optimization Detective"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/optimization-detective/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_optimization_detective_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^optimization-detective ([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^optimization-detective ([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "Performance plugin from the WordPress Performance Team, which captures real user metrics about what elements are displayed on the page across a variety of device form factors (e.g. desktop, tablet, and phone) in order to apply loading optimizations.",
+  "website": "https://wordpress.org/plugins/optimization-detective/"
+}

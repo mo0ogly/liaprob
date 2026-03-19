@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-impero",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IMPERO",
+  "taxonomy_name": "Impero",
+  "vendor": "",
+  "product": "Impero",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IMPERO.json",
+    "original_name": "Impero"
+  },
+  "research": [
+    {
+      "url": "https://www.imperosoftware.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_impero_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.netop\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    46
+  ],
+  "notes": "Impero offers educational and corporate customers the most secure way of remotely accessing devices.",
+  "website": "https://www.imperosoftware.com"
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-motocms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOTOCMS",
+  "taxonomy_name": "MotoCMS",
+  "vendor": "",
+  "product": "MotoCMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOTOCMS.json",
+    "original_name": "MotoCMS"
+  },
+  "research": [
+    {
+      "url": "https://motocms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_motocms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^>]*\\/mt-content\\/[^>]*\\.css",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/mt-includes/js/website(?:assets)?\\.(?:min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "AngularJS",
+    "PHP",
+    "jQuery"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://motocms.com"
+}

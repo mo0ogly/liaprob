@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-koobi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KOOBI",
+  "taxonomy_name": "Koobi",
+  "vendor": "",
+  "product": "Koobi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KOOBI.json",
+    "original_name": "Koobi"
+  },
+  "research": [
+    {
+      "url": "https://dream4.de/cms",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_koobi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^k>-]+koobi ([a-z\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "<!--[^k>-]+koobi ([a-z\\d.]+)"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "koobi",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "website": "https://dream4.de/cms"
+}

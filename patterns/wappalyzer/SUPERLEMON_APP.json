@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-superlemon_app",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUPERLEMON_APP",
+  "taxonomy_name": "SuperLemon app",
+  "vendor": "",
+  "product": "SuperLemon app",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SUPERLEMON_APP.json",
+    "original_name": "SuperLemon app"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/whatsapp-chat-button",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_superlemon_app_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/files/superlemon_.+\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WhatsApp Business Chat"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "SuperLemon app is an all-in-one WhatsApp plugin for Shopify stores.",
+  "website": "https://apps.shopify.com/whatsapp-chat-button"
+}

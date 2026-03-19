@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-embed_any_document",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMBED_ANY_DOCUMENT",
+  "taxonomy_name": "Embed Any Document",
+  "vendor": "",
+  "product": "Embed Any Document",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EMBED_ANY_DOCUMENT.json",
+    "original_name": "Embed Any Document"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/embed-any-document",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_embed_any_document_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed-any-document(?:\\/js)?(?:\\/embed-public)?(?:\\/pdfobject)?(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "embed-any-document(?:\\/js)?(?:\\/embed-public)?(?:\\/pdfobject)?(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    87
+  ],
+  "notes": "Embed PDF, DOC, PPT and XLS documents easily on your WordPress website.",
+  "website": "https://wordpress.org/plugins/embed-any-document"
+}

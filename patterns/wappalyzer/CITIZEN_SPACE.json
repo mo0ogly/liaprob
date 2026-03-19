@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-citizen_space",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITIZEN_SPACE",
+  "taxonomy_name": "Citizen Space",
+  "vendor": "",
+  "product": "Citizen Space",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CITIZEN_SPACE.json",
+    "original_name": "Citizen Space"
+  },
+  "research": [
+    {
+      "url": "https://www.delib.net/citizen_space",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_citizen_space_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/static/vendor/dlb-admin-ui/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Citizen Space is an engagement platform by Delib that enhances democratic processes globally.",
+  "website": "https://www.delib.net/citizen_space"
+}

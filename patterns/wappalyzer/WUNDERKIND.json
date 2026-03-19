@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wunderkind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WUNDERKIND",
+  "taxonomy_name": "Wunderkind",
+  "vendor": "",
+  "product": "Wunderkind",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WUNDERKIND.json",
+    "original_name": "Wunderkind"
+  },
+  "research": [
+    {
+      "url": "https://www.wunderkind.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wunderkind_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.smarterhq\\.io"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.bounceexchange\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.smarterhq\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Wunderkind (Formerly BounceX) is a software for behavioural marketing technologies, created to de-anonymise site visitors, analyse their digital behaviour and create relevant digital experiences regardless of channel or device.",
+  "website": "https://www.wunderkind.co"
+}

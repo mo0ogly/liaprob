@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zozi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOZI",
+  "taxonomy_name": "Zozi",
+  "vendor": "",
+  "product": "Zozi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZOZI.json",
+    "original_name": "Zozi"
+  },
+  "research": [
+    {
+      "url": "https://zozi.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zozi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "a\\.zozi\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Zozi is a bookings widget and calendar used to manage reservations, availability, and scheduling.",
+  "website": "https://zozi.com"
+}

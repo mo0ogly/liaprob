@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ahoy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AHOY",
+  "taxonomy_name": "Ahoy",
+  "vendor": "",
+  "product": "Ahoy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AHOY.json",
+    "original_name": "Ahoy"
+  },
+  "research": [
+    {
+      "url": "https://github.com/ankane/ahoy",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ahoy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "ahoy_track",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "ahoy_visit",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "ahoy_visitor",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Ruby on Rails"
+  ],
+  "categories": [
+    10
+  ],
+  "notes": "Ahoy is a Ruby gem that provides simple and powerful analytics for Ruby on Rails applications.",
+  "website": "https://github.com/ankane/ahoy"
+}

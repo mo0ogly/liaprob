@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-atlassian_fisheye",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATLASSIAN_FISHEYE",
+  "taxonomy_name": "Atlassian FishEye",
+  "vendor": "",
+  "product": "Atlassian FishEye",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ATLASSIAN_FISHEYE.json",
+    "original_name": "Atlassian FishEye"
+  },
+  "research": [
+    {
+      "url": "https://www.atlassian.com/software/fisheye/overview/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_atlassian_fisheye_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "fesessionid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>(?:log in to )?fisheye (?:and crucible )?([\\d.]+)?</title>",
+          "confidence_delta": 0.5,
+          "version_extract": "<title>(?:log in to )?fisheye (?:and crucible )?([\\d.]+)?</title>"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:atlassian:fisheye:*:*:*:*:*:*:*:*",
+  "categories": [
+    47
+  ],
+  "website": "https://www.atlassian.com/software/fisheye/overview/"
+}

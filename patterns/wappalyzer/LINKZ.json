@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-linkz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LINKZ",
+  "taxonomy_name": "Linkz",
+  "vendor": "",
+  "product": "Linkz",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LINKZ.json",
+    "original_name": "Linkz"
+  },
+  "research": [
+    {
+      "url": "https://linkz.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_linkz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.linkz\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Linkz is a platform designed to maximize visitor retention by optimizing user engagement and interaction across digital channels.",
+  "website": "https://linkz.ai"
+}

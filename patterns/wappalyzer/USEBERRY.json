@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-useberry",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "USEBERRY",
+  "taxonomy_name": "Useberry",
+  "vendor": "",
+  "product": "Useberry",
+  "source": {
+    "type": "wappalyzer",
+    "file": "USEBERRY.json",
+    "original_name": "Useberry"
+  },
+  "research": [
+    {
+      "url": "https://www.useberry.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_useberry_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.useberry\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Useberry is a platform that provides tools for conducting and analyzing user testing in a single integrated environment.",
+  "website": "https://www.useberry.com"
+}

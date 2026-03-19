@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ultracart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ULTRACART",
+  "taxonomy_name": "UltraCart",
+  "vendor": "",
+  "product": "UltraCart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ULTRACART.json",
+    "original_name": "UltraCart"
+  },
+  "research": [
+    {
+      "url": "https://ultracart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ultracart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form [^>]*action=\"[^\"]*\\/cgi-bin\\/uceditor\\?(?:[^\"]*&)?merchantid=[^\"]",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cgi-bin\\/ucjavascript\\?",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "website": "https://ultracart.com"
+}

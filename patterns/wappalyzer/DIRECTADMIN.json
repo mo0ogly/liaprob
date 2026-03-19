@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-directadmin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DIRECTADMIN",
+  "taxonomy_name": "DirectAdmin",
+  "vendor": "",
+  "product": "DirectAdmin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DIRECTADMIN.json",
+    "original_name": "DirectAdmin"
+  },
+  "research": [
+    {
+      "url": "https://www.directadmin.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_directadmin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "directadmin daemon v([\\d.]+)",
+          "version_extract": "directadmin daemon v([\\d.]+)"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+>directadmin</a> web control panel",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:directadmin:directadmin:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Apache HTTP Server",
+    "PHP"
+  ],
+  "categories": [
+    9
+  ],
+  "notes": "DirectAdmin is a graphical web-based web hosting control panel designed to make administration of websites easier.",
+  "website": "https://www.directadmin.com"
+}

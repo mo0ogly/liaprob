@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-combahton_flowshield",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMBAHTON_FLOWSHIELD",
+  "taxonomy_name": "Combahton FlowShield",
+  "vendor": "",
+  "product": "Combahton FlowShield",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COMBAHTON_FLOWSHIELD.json",
+    "original_name": "Combahton FlowShield"
+  },
+  "research": [
+    {
+      "url": "https://combahton.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_combahton_flowshield_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "antiddos/flowproxy"
+        },
+        {
+          "target": "header",
+          "field": "x-flowproxy-author",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "flowproxy-origin",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Combahton FlowShield is a network security solution designed to protect networks and servers from various cyber threats, including DDoS attacks, malware, and other types of malicious traffic.",
+  "website": "https://combahton.net"
+}

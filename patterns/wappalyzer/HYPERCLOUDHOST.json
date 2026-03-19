@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hypercloudhost",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HYPERCLOUDHOST",
+  "taxonomy_name": "Hypercloudhost",
+  "vendor": "",
+  "product": "Hypercloudhost",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HYPERCLOUDHOST.json",
+    "original_name": "Hypercloudhost"
+  },
+  "research": [
+    {
+      "url": "https://hypercloudhost.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hypercloudhost_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^hypercloudhost$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    88
+  ],
+  "notes": "Hypercloudhost is a hosting service solution in Indonesia offering anti-DDoS protection and high-performance cloud hosting.",
+  "website": "https://hypercloudhost.com"
+}

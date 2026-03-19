@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coveo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COVEO",
+  "taxonomy_name": "Coveo",
+  "vendor": "",
+  "product": "Coveo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COVEO.json",
+    "original_name": "Coveo"
+  },
+  "research": [
+    {
+      "url": "https://www.coveo.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coveo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.cloud\\.coveo\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29,
+    76
+  ],
+  "notes": "Coveo designs enterprise search and predictive insights platforms for businesses.",
+  "website": "https://www.coveo.com/"
+}

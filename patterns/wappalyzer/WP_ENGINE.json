@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wp_engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WP_ENGINE",
+  "taxonomy_name": "WP Engine",
+  "vendor": "",
+  "product": "WP Engine",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WP_ENGINE.json",
+    "original_name": "WP Engine"
+  },
+  "research": [
+    {
+      "url": "https://wpengine.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wp_engine_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "wpe-backend",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-pass-why",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "wp engine"
+        },
+        {
+          "target": "header",
+          "field": "x-wpe-loopback-upstream-addr",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress"
+  ],
+  "categories": [
+    62,
+    88
+  ],
+  "notes": "WP Engine is a website hosting provider.",
+  "website": "https://wpengine.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lime_talk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIME_TALK",
+  "taxonomy_name": "Lime Talk",
+  "vendor": "",
+  "product": "Lime Talk",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIME_TALK.json",
+    "original_name": "Lime Talk"
+  },
+  "research": [
+    {
+      "url": "https://www.limetalk.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lime_talk_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.limetalk\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Lime Talk is a real-time customer messaging platform designed for businesses to engage with website visitors and customers through live chat functionality.",
+  "website": "https://www.limetalk.com"
+}

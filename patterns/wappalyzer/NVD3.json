@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nvd3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NVD3",
+  "taxonomy_name": "NVD3",
+  "vendor": "",
+  "product": "NVD3",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NVD3.json",
+    "original_name": "NVD3"
+  },
+  "research": [
+    {
+      "url": "https://nvd3.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nvd3_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+nv\\.d3(?:\\.min)?\\.css",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "nv\\.d3(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "D3"
+  ],
+  "categories": [
+    25
+  ],
+  "notes": "NVD3 is a JavaScript visualisation library that is a free open-source tool.",
+  "website": "https://nvd3.org"
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aws_waf_captcha",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AWS_WAF_CAPTCHA",
+  "taxonomy_name": "AWS WAF Captcha",
+  "vendor": "",
+  "product": "AWS WAF Captcha",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AWS_WAF_CAPTCHA.json",
+    "original_name": "AWS WAF Captcha"
+  },
+  "research": [
+    {
+      "url": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-captcha.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aws_waf_captcha_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-amzn-waf-action",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^captcha$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "captcha\\.awswaf\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Amazon Web Services"
+  ],
+  "categories": [
+    16
+  ],
+  "notes": "AWS WAF Captcha helps block unwanted bot traffic by requiring users to successfully complete challenges before their web request are allowed to reach AWS WAF protected resources.",
+  "website": "https://docs.aws.amazon.com/waf/latest/developerguide/waf-captcha.html"
+}

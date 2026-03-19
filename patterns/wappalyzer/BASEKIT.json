@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-basekit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BASEKIT",
+  "taxonomy_name": "BaseKit",
+  "vendor": "",
+  "product": "BaseKit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BASEKIT.json",
+    "original_name": "BaseKit"
+  },
+  "research": [
+    {
+      "url": "https://www.basekit.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_basekit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^basekit$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "BaseKit is a platform offering website-building solutions for small businesses and individuals. It enables users to create websites easily with drag-and-drop tools and customizable templates, without the need to write code.",
+  "website": "https://www.basekit.com/"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-widebundle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WIDEBUNDLE",
+  "taxonomy_name": "WideBundle",
+  "vendor": "",
+  "product": "WideBundle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WIDEBUNDLE.json",
+    "original_name": "WideBundle"
+  },
+  "research": [
+    {
+      "url": "https://en.widebundle.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_widebundle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//widebundle\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "WideBundle is a Shopify application that allows a merchant to set up bundles on his store.",
+  "website": "https://en.widebundle.com"
+}

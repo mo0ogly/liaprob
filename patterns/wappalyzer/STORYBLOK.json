@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-storyblok",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STORYBLOK",
+  "taxonomy_name": "Storyblok",
+  "vendor": "",
+  "product": "Storyblok",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STORYBLOK.json",
+    "original_name": "Storyblok"
+  },
+  "research": [
+    {
+      "url": "https://www.storyblok.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_storyblok_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "app\\.storyblok\\.com"
+        },
+        {
+          "target": "header",
+          "field": "x-frame-options",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "app\\.storyblok\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Storyblok is a headless CMS with a visual editor for developers, marketers and content editors. Storyblok helps your team to manage content and digital experiences for every use-case from corporate websites, ecommerce, helpdesks, mobile apps, screen displays, and more.",
+  "website": "https://www.storyblok.com"
+}

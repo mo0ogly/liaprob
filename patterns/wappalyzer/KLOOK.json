@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-klook",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KLOOK",
+  "taxonomy_name": "Klook",
+  "vendor": "",
+  "product": "Klook",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KLOOK.json",
+    "original_name": "Klook"
+  },
+  "research": [
+    {
+      "url": "https://www.klook.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_klook_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.klook\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Klook is a travel affiliate system designed to connect users with various travel services and experiences.",
+  "website": "https://www.klook.com"
+}

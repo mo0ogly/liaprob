@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-snaphop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SNAPHOP",
+  "taxonomy_name": "SnapHop",
+  "vendor": "",
+  "product": "SnapHop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SNAPHOP.json",
+    "original_name": "SnapHop"
+  },
+  "research": [
+    {
+      "url": "https://snaphop.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_snaphop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^snaphop$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "SnapHop is a recruitment marketing platform that helps organizations attract, engage, and convert job seekers through targeted employer branding and outreach strategies.",
+  "website": "https://snaphop.com"
+}

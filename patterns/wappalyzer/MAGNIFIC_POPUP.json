@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-magnific_popup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAGNIFIC_POPUP",
+  "taxonomy_name": "Magnific Popup",
+  "vendor": "",
+  "product": "Magnific Popup",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAGNIFIC_POPUP.json",
+    "original_name": "Magnific Popup"
+  },
+  "research": [
+    {
+      "url": "https://dimsemenov.com/plugins/magnific-popup/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_magnific_popup_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "magnific-popup(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "magnific-popup(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Magnific Popup is a responsive lightbox & dialog script with focus on performance and providing best experience for user with any device.",
+  "website": "https://dimsemenov.com/plugins/magnific-popup/"
+}

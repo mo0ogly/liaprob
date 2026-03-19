@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-talention",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TALENTION",
+  "taxonomy_name": "Talention",
+  "vendor": "",
+  "product": "Talention",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TALENTION.json",
+    "original_name": "Talention"
+  },
+  "research": [
+    {
+      "url": "https://www.talention.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_talention_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.eu\\.talention\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "Talention is a recruitment marketing software designed to help companies attract, engage, and convert job candidates through data-driven strategies and tools.",
+  "website": "https://www.talention.com"
+}

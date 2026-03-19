@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-machothemes_newsmag",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MACHOTHEMES_NEWSMAG",
+  "taxonomy_name": "MachoThemes NewsMag",
+  "vendor": "",
+  "product": "MachoThemes NewsMag",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MACHOTHEMES_NEWSMAG.json",
+    "original_name": "MachoThemes NewsMag"
+  },
+  "research": [
+    {
+      "url": "https://www.machothemes.com/item/newsmag-lite",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_machothemes_newsmag_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/newsmag(?:-child)?/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "MachoThemes Newsmag is a clean and modern magazine, news or blog WordPress theme.",
+  "website": "https://www.machothemes.com/item/newsmag-lite"
+}

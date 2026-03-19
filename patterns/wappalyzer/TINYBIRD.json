@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tinybird",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TINYBIRD",
+  "taxonomy_name": "Tinybird",
+  "vendor": "",
+  "product": "Tinybird",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TINYBIRD.json",
+    "original_name": "Tinybird"
+  },
+  "research": [
+    {
+      "url": "https://www.tinybird.co/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tinybird_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.tinybird.co/js/index\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Tinybird is a cloud-native data processing platform that allows developers and data teams to build real-time data pipelines and perform complex data transformations and analysis at scale.",
+  "website": "https://www.tinybird.co/"
+}

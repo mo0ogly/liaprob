@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gorilla_dash",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GORILLA_DASH",
+  "taxonomy_name": "Gorilla Dash",
+  "vendor": "",
+  "product": "Gorilla Dash",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GORILLA_DASH.json",
+    "original_name": "Gorilla Dash"
+  },
+  "research": [
+    {
+      "url": "https://gorilladash.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gorilla_dash_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//gorilladash\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Gorilla Dash is a tool for franchises and businesses with multiple locations, providing management and operational support.",
+  "website": "https://gorilladash.com"
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-alibaba_cloud_object_storage_service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALIBABA_CLOUD_OBJECT_STORAGE_SERVICE",
+  "taxonomy_name": "Alibaba Cloud Object Storage Service",
+  "vendor": "",
+  "product": "Alibaba Cloud Object Storage Service",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALIBABA_CLOUD_OBJECT_STORAGE_SERVICE.json",
+    "original_name": "Alibaba Cloud Object Storage Service"
+  },
+  "research": [
+    {
+      "url": "https://www.alibabacloud.com/product/object-storage-service",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_alibaba_cloud_object_storage_service_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-oss-object-type",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-oss-request-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-oss-storage-class",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    63
+  ],
+  "notes": "Alibaba Cloud Object Storage Service (OSS) is a cloud-based object storage service provided by Alibaba Cloud, which allows users to store and access large amounts of data in the cloud.",
+  "website": "https://www.alibabacloud.com/product/object-storage-service"
+}

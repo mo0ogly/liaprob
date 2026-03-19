@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-question2answer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUESTION2ANSWER",
+  "taxonomy_name": "Question2Answer",
+  "vendor": "",
+  "product": "Question2Answer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUESTION2ANSWER.json",
+    "original_name": "Question2Answer"
+  },
+  "research": [
+    {
+      "url": "https://www.question2answer.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_question2answer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- powered by question2answer",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\./qa-content/qa-page\\.js\\?([0-9.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "\\./qa-content/qa-page\\.js\\?([0-9.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    15
+  ],
+  "notes": "Question2Answer (Q2A) is a popular open-source Q&A platform for PHP/MySQL.",
+  "website": "https://www.question2answer.org"
+}

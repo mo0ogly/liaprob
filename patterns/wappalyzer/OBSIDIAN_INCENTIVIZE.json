@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-obsidian_incentivize",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OBSIDIAN_INCENTIVIZE",
+  "taxonomy_name": "Obsidian Incentivize",
+  "vendor": "",
+  "product": "Obsidian Incentivize",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OBSIDIAN_INCENTIVIZE.json",
+    "original_name": "Obsidian Incentivize"
+  },
+  "research": [
+    {
+      "url": "https://obsidianapps.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_obsidian_incentivize_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.shopify\\.com/extensions/.+/([\\.\\d]{3,})/assets/upsell\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "cdn\\.shopify\\.com/extensions/.+/([\\.\\d]{3,})/assets/upsell\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Obsidian Incentivize is designed to increase your average order size through in-cart upsells, cross sells and personalised product recommendations.",
+  "website": "https://obsidianapps.co"
+}

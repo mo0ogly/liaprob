@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-datalitics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATALITICS",
+  "taxonomy_name": "Datalitics",
+  "vendor": "",
+  "product": "Datalitics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DATALITICS.json",
+    "original_name": "Datalitics"
+  },
+  "research": [
+    {
+      "url": "https://datalitics.com.br",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_datalitics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.datalitics\\.com\\.br/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Datalitics is a platform designed for advanced lead tracking, offering tools to monitor, analyze, and optimize customer acquisition efforts.",
+  "website": "https://datalitics.com.br"
+}

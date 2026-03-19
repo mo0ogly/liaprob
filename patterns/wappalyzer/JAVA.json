@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-java",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAVA",
+  "taxonomy_name": "Java",
+  "vendor": "",
+  "product": "Java",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JAVA.json",
+    "original_name": "Java"
+  },
+  "research": [
+    {
+      "url": "https://java.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_java_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "jsessionid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:oracle:jre:*:*:*:*:*:*:*:*",
+  "categories": [
+    27
+  ],
+  "notes": "Java is a class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.",
+  "website": "https://java.com"
+}

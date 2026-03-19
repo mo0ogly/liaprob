@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-netsuite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETSUITE",
+  "taxonomy_name": "NetSuite",
+  "vendor": "",
+  "product": "NetSuite",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NETSUITE.json",
+    "original_name": "NetSuite"
+  },
+  "research": [
+    {
+      "url": "https://netsuite.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_netsuite_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "ns_ver",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "website": "https://netsuite.com"
+}

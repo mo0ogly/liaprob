@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-umbraco",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UMBRACO",
+  "taxonomy_name": "Umbraco",
+  "vendor": "",
+  "product": "Umbraco",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UMBRACO.json",
+    "original_name": "Umbraco"
+  },
+  "research": [
+    {
+      "url": "https://umbraco.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_umbraco_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-umbraco-version",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^(.+)$",
+          "version_extract": "^(.+)$"
+        },
+        {
+          "target": "cookie",
+          "field": "merchello",
+          "confidence_delta": 0.5,
+          "match_type": "exists",
+          "version_extract": ""
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "umbraco",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Umbraco is an open-source Microsoft ASP.NET based content management system.",
+  "website": "https://umbraco.com/"
+}

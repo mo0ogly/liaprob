@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wonder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WONDER",
+  "taxonomy_name": "Wonder",
+  "vendor": "",
+  "product": "Wonder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WONDER.json",
+    "original_name": "Wonder"
+  },
+  "research": [
+    {
+      "url": "https://www.wonder-ma.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wonder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.wonder-ma\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    32
+  ],
+  "notes": "Wonder is an analytics and marketing tool that uses offline and online data to implement optimal marketing strategies aimed at achieving website goals, such as conversions.",
+  "website": "https://www.wonder-ma.com"
+}

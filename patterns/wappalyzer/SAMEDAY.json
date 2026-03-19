@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sameday",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAMEDAY",
+  "taxonomy_name": "Sameday",
+  "vendor": "",
+  "product": "Sameday",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SAMEDAY.json",
+    "original_name": "Sameday"
+  },
+  "research": [
+    {
+      "url": "https://www.gosameday.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sameday_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.sameday\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Sameday is an AI-powered platform that provides automated phone answering and communication services for home service businesses.",
+  "website": "https://www.gosameday.com"
+}

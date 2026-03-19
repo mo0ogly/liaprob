@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blue",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLUE",
+  "taxonomy_name": "Blue",
+  "vendor": "",
+  "product": "Blue",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLUE.json",
+    "original_name": "Blue"
+  },
+  "research": [
+    {
+      "url": "https://web.getblue.io/en/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blue_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getblue\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    77
+  ],
+  "notes": "Blue is a ecommerce data marketing, lead generation, real time bidding and recommendation solutions.",
+  "website": "https://web.getblue.io/en/"
+}

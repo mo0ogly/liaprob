@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hubspot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUBSPOT",
+  "taxonomy_name": "HubSpot",
+  "vendor": "",
+  "product": "HubSpot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HUBSPOT.json",
+    "original_name": "HubSpot"
+  },
+  "research": [
+    {
+      "url": "https://www.hubspot.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hubspot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- start of async hubspot",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "HubSpot is a marketing and sales software that helps companies attract visitors, convert leads, and close customers.",
+  "website": "https://www.hubspot.com"
+}

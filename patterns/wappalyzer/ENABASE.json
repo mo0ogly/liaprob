@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-enabase",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENABASE",
+  "taxonomy_name": "Enabase",
+  "vendor": "",
+  "product": "Enabase",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENABASE.json",
+    "original_name": "Enabase"
+  },
+  "research": [
+    {
+      "url": "https://www.enabase.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_enabase_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^enabase$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "publisher",
+          "match_type": "regex",
+          "value": "^enabase$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Enabase is a unified platform for managing web, ecommerce, e-transformation, pre-accounting, and sales channels.",
+  "website": "https://www.enabase.com/"
+}

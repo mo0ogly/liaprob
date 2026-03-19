@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ibm_carbon_design_system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_CARBON_DESIGN_SYSTEM",
+  "taxonomy_name": "IBM Carbon Design System",
+  "vendor": "",
+  "product": "IBM Carbon Design System",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IBM_CARBON_DESIGN_SYSTEM.json",
+    "original_name": "IBM Carbon Design System"
+  },
+  "research": [
+    {
+      "url": "https://carbondesignsystem.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ibm_carbon_design_system_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.s81c\\.com/common/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    66
+  ],
+  "notes": "IBM Carbon Design System is an open-source design system for building products and digital experiences.",
+  "website": "https://carbondesignsystem.com"
+}

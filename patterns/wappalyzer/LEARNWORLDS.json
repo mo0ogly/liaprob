@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-learnworlds",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEARNWORLDS",
+  "taxonomy_name": "LearnWorlds",
+  "vendor": "",
+  "product": "LearnWorlds",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEARNWORLDS.json",
+    "original_name": "LearnWorlds"
+  },
+  "research": [
+    {
+      "url": "https://www.learnworlds.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_learnworlds_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.mycourse\\.app/v([\\d\\.]+)/",
+          "confidence_delta": 0.5,
+          "version_extract": "cdn\\.mycourse\\.app/v([\\d\\.]+)/"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "LearnWorlds is a powerful yet lightweight, user-friendly, white-labeled cloud-based LMS ideal for versatile employee training.",
+  "website": "https://www.learnworlds.com"
+}

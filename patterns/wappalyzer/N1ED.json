@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-n1ed",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "N1ED",
+  "taxonomy_name": "N1ED",
+  "vendor": "",
+  "product": "N1ED",
+  "source": {
+    "type": "wappalyzer",
+    "file": "N1ED.json",
+    "original_name": "N1ED"
+  },
+  "research": [
+    {
+      "url": "https://n1ed.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_n1ed_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.public\\.n1ed\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    24
+  ],
+  "notes": "N1ED is an editor for Bootstrap websites that enables block-by-block content building.",
+  "website": "https://n1ed.com"
+}

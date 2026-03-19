@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pingdom_rum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PINGDOM_RUM",
+  "taxonomy_name": "Pingdom RUM",
+  "vendor": "",
+  "product": "Pingdom RUM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PINGDOM_RUM.json",
+    "original_name": "Pingdom RUM"
+  },
+  "research": [
+    {
+      "url": "https://www.pingdom.com/real-user-monitoring/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pingdom_rum_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "rum-static\\.pingdom\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    78
+  ],
+  "notes": "Pingdom RUM(Real User Monitoring) is a feature of the Pingdom website monitoring and performance testing service. RUM enables you to collect and analyse data on how real users are experiencing your website.",
+  "website": "https://www.pingdom.com/real-user-monitoring/"
+}

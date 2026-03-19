@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-simplehttp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIMPLEHTTP",
+  "taxonomy_name": "SimpleHTTP",
+  "vendor": "",
+  "product": "SimpleHTTP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIMPLEHTTP.json",
+    "original_name": "SimpleHTTP"
+  },
+  "research": [
+    {
+      "url": "https://example.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_simplehttp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "simplehttp(?:/([\\d.]+))?",
+          "version_extract": "simplehttp(?:/([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    22
+  ],
+  "website": "https://example.com"
+}

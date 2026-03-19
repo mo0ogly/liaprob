@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-joinchat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JOINCHAT",
+  "taxonomy_name": "Joinchat",
+  "vendor": "",
+  "product": "Joinchat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JOINCHAT.json",
+    "original_name": "Joinchat"
+  },
+  "research": [
+    {
+      "url": "https://join.chat",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_joinchat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/js/joinchat\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Joinchat is a tool that enables businesses to convert customer conversations into sales or leads through integrated communication features.",
+  "website": "https://join.chat"
+}

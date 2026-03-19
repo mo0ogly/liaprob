@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vitals",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VITALS",
+  "taxonomy_name": "Vitals",
+  "vendor": "",
+  "product": "Vitals",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VITALS.json",
+    "original_name": "Vitals"
+  },
+  "research": [
+    {
+      "url": "https://vitals.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vitals_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//appsolve\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100,
+    32
+  ],
+  "notes": "Vitals is an all-in-one Shopify marketing software.",
+  "website": "https://vitals.co"
+}

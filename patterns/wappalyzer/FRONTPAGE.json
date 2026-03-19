@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-frontpage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRONTPAGE",
+  "taxonomy_name": "FrontPage",
+  "vendor": "",
+  "product": "FrontPage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRONTPAGE.json",
+    "original_name": "FrontPage"
+  },
+  "research": [
+    {
+      "url": "https://office.microsoft.com/frontpage",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_frontpage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "microsoft frontpage(?:\\s((?:express )?[\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "microsoft frontpage(?:\\s((?:express )?[\\d.]+))?"
+        },
+        {
+          "target": "meta",
+          "field": "progid",
+          "match_type": "regex",
+          "value": "^frontpage\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:frontpage:*:*:*:*:*:*:*:*",
+  "categories": [
+    20
+  ],
+  "notes": "FrontPage is a program for developing and maintaining websites.",
+  "website": "https://office.microsoft.com/frontpage"
+}

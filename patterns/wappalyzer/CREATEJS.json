@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-createjs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CREATEJS",
+  "taxonomy_name": "CreateJS",
+  "vendor": "",
+  "product": "CreateJS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CREATEJS.json",
+    "original_name": "CreateJS"
+  },
+  "research": [
+    {
+      "url": "https://code.createjs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_createjs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "code\\.createjs\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "CreateJS is a suite of modular libraries and tools which work together or independently to enable interactive content on open web technologies via HTML5.",
+  "website": "https://code.createjs.com"
+}

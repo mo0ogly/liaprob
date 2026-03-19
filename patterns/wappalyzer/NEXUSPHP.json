@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nexusphp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXUSPHP",
+  "taxonomy_name": "NexusPHP",
+  "vendor": "",
+  "product": "NexusPHP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEXUSPHP.json",
+    "original_name": "NexusPHP"
+  },
+  "research": [
+    {
+      "url": "https://nexusphp.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nexusphp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^nexusphp$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:nexusphp:nexusphp:*:*:*:*:*:*:*:*",
+  "implies": [
+    "MySQL",
+    "PHP",
+    "Redis"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "NexusPHP is an open-sourced private tracker script written in PHP.",
+  "website": "https://nexusphp.org"
+}

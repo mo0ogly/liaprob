@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-perfex_crm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PERFEX_CRM",
+  "taxonomy_name": "Perfex CRM",
+  "vendor": "",
+  "product": "Perfex CRM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PERFEX_CRM.json",
+    "original_name": "Perfex CRM"
+  },
+  "research": [
+    {
+      "url": "https://www.perfexcrm.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_perfex_crm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/assets/themes/perfex/js/global\\.min\\.js(?:\\?v=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/assets/themes/perfex/js/global\\.min\\.js(?:\\?v=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Perfex CRM is self hosted customer relationship management software that is a great fit for almost any company, freelancer or many other uses.",
+  "website": "https://www.perfexcrm.com"
+}

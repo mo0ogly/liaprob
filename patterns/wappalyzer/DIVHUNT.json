@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-divhunt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DIVHUNT",
+  "taxonomy_name": "Divhunt",
+  "vendor": "",
+  "product": "Divhunt",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DIVHUNT.json",
+    "original_name": "Divhunt"
+  },
+  "research": [
+    {
+      "url": "https://www.divhunt.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_divhunt_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "divhunt-site\\.\\w-cdn\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Divhunt is an SPA builder.",
+  "website": "https://www.divhunt.com"
+}

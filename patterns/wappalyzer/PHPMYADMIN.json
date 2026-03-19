@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-phpmyadmin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPMYADMIN",
+  "taxonomy_name": "phpMyAdmin",
+  "vendor": "",
+  "product": "phpMyAdmin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PHPMYADMIN.json",
+    "original_name": "phpMyAdmin"
+  },
+  "research": [
+    {
+      "url": "https://www.phpmyadmin.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_phpmyadmin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "set-cookie",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "phpmyadmin_https"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "!\\[cdata\\[[^<]*pma_version:\\\"([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "!\\[cdata\\[[^<]*pma_version:\\\"([\\d.]+)"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?: \\| phpmyadmin ([\\d.]+)<\\/title>|pma_sendheaderlocation\\(|<link [^>]*href=\"[^\"]*phpmyadmin\\.css\\.php)",
+          "confidence_delta": 0.5,
+          "version_extract": "(?: \\| phpmyadmin ([\\d.]+)<\\/title>|pma_sendheaderlocation\\(|<link [^>]*href=\"[^\"]*phpmyadmin\\.css\\.php)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:phpmyadmin:phpmyadmin:*:*:*:*:*:*:*:*",
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    3
+  ],
+  "notes": "PhpMyAdmin is a free and open-source administration tool for MySQL and MariaDB.",
+  "website": "https://www.phpmyadmin.net"
+}

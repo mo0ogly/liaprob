@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fastly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FASTLY",
+  "taxonomy_name": "Fastly",
+  "vendor": "",
+  "product": "Fastly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FASTLY.json",
+    "original_name": "Fastly"
+  },
+  "research": [
+    {
+      "url": "https://www.fastly.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fastly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "fastly-debug-digest",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "fastly"
+        },
+        {
+          "target": "header",
+          "field": "vary",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "fastly-ssl"
+        },
+        {
+          "target": "header",
+          "field": "x-fastly-origin",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-fastly-request-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-via-fastly:",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "Fastly is a cloud computing services provider. Fastly's cloud platform provides a content delivery network, Internet security services, load balancing, and video & streaming services.",
+  "website": "https://www.fastly.com"
+}

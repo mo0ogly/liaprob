@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-woocommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WOOCOMMERCE",
+  "taxonomy_name": "WooCommerce",
+  "vendor": "",
+  "product": "WooCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WOOCOMMERCE.json",
+    "original_name": "WooCommerce"
+  },
+  "research": [
+    {
+      "url": "https://woocommerce.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_woocommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "woocommerce ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "woocommerce ([\\d.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/woocommerce(?:\\.min)?\\.js(?:\\?ver=([0-9.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/woocommerce(?:\\.min)?\\.js(?:\\?ver=([0-9.]+))?"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "woocommerce",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6,
+    87
+  ],
+  "notes": "WooCommerce is an open-source ecommerce plugin for WordPress.",
+  "website": "https://woocommerce.com"
+}

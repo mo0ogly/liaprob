@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sifr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIFR",
+  "taxonomy_name": "sIFR",
+  "vendor": "",
+  "product": "sIFR",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIFR.json",
+    "original_name": "sIFR"
+  },
+  "research": [
+    {
+      "url": "https://www.mikeindustries.com/blog/sifr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sifr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sifr\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    17
+  ],
+  "notes": "sIFR is a JavaScript and Adobe Flash dynamic web fonts implementation.",
+  "website": "https://www.mikeindustries.com/blog/sifr"
+}

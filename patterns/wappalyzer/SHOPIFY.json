@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPIFY",
+  "taxonomy_name": "Shopify",
+  "vendor": "",
+  "product": "Shopify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPIFY.json",
+    "original_name": "Shopify"
+  },
+  "research": [
+    {
+      "url": "https://shopify.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "shopify"
+        },
+        {
+          "target": "header",
+          "field": "x-shopid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-shopify-stage",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_shopify_s",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_shopify_y",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6,
+    1
+  ],
+  "notes": "Shopify is a subscription-based software that allows anyone to set up an online store and sell their products. Shopify store owners can also sell in physical locations using Shopify POS, a point-of-sale app and accompanying hardware.",
+  "website": "https://shopify.com"
+}

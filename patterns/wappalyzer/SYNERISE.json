@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-synerise",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYNERISE",
+  "taxonomy_name": "Synerise",
+  "vendor": "",
+  "product": "Synerise",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SYNERISE.json",
+    "original_name": "Synerise"
+  },
+  "research": [
+    {
+      "url": "https://synerise.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_synerise_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "snrcdn\\.net/sdk/(3\\.0)/synerise-javascript-sdk\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "snrcdn\\.net/sdk/(3\\.0)/synerise-javascript-sdk\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "website": "https://synerise.com/"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-worldshopping",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORLDSHOPPING",
+  "taxonomy_name": "WorldShopping",
+  "vendor": "",
+  "product": "WorldShopping",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORLDSHOPPING.json",
+    "original_name": "WorldShopping"
+  },
+  "research": [
+    {
+      "url": "https://www.worldshopping.global/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_worldshopping_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "checkout-api\\.worldshopping\\.jp/(v\\d+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "checkout-api\\.worldshopping\\.jp/(v\\d+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    106
+  ],
+  "notes": "WorldShopping makes online purchases in Japan easier for international visitors.",
+  "website": "https://www.worldshopping.global/"
+}

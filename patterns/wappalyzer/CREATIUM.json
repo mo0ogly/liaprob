@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-creatium",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CREATIUM",
+  "taxonomy_name": "Creatium",
+  "vendor": "",
+  "product": "Creatium",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CREATIUM.json",
+    "original_name": "Creatium"
+  },
+  "research": [
+    {
+      "url": "https://creatium.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_creatium_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^creatium$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Creatium is a website builder developed in Russia that provides a user-friendly drag-and-drop interface and a variety of customisation options for creating websites without coding knowledge.",
+  "website": "https://creatium.io"
+}

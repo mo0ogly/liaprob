@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-syte",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYTE",
+  "taxonomy_name": "Syte",
+  "vendor": "",
+  "product": "Syte",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SYTE.json",
+    "original_name": "Syte"
+  },
+  "research": [
+    {
+      "url": "https://www.syte.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_syte_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.syteapi\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    29
+  ],
+  "notes": "Syte is a provider of visual AI technology that aims to improve retailers' site navigation, product discovery, and user experience by powering solutions that engage and convert shoppers.",
+  "website": "https://www.syte.ai"
+}

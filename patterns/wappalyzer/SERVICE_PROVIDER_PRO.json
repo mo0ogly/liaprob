@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-service_provider_pro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERVICE_PROVIDER_PRO",
+  "taxonomy_name": "Service Provider Pro",
+  "vendor": "",
+  "product": "Service Provider Pro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SERVICE_PROVIDER_PRO.json",
+    "original_name": "Service Provider Pro"
+  },
+  "research": [
+    {
+      "url": "https://spp.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_service_provider_pro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "spp_csrf",
+          "confidence_delta": 0.25,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "spp_orderform",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "spp_session",
+          "confidence_delta": 0.25,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "server",
+          "match_type": "regex",
+          "value": "app.spp.co",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.spp\\.io/js/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js/spp_clients\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41,
+    53
+  ],
+  "notes": "Service Provider Pro is a client management & billing software for productized service agencies.",
+  "website": "https://spp.co"
+}

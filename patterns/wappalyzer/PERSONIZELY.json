@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-personizely",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PERSONIZELY",
+  "taxonomy_name": "Personizely",
+  "vendor": "",
+  "product": "Personizely",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PERSONIZELY.json",
+    "original_name": "Personizely"
+  },
+  "research": [
+    {
+      "url": "https://www.personizely.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_personizely_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.personizely\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Personizely is a conversion marketing toolkit which helps websites and ecommerce stores better engage with visitors using website widgets and personalisation.",
+  "website": "https://www.personizely.net"
+}

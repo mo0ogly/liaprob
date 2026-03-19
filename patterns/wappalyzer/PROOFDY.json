@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-proofdy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROOFDY",
+  "taxonomy_name": "Proofdy",
+  "vendor": "",
+  "product": "Proofdy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROOFDY.json",
+    "original_name": "Proofdy"
+  },
+  "research": [
+    {
+      "url": "https://proofdy.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_proofdy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.proofdy\\.ru",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Proofdy is a tool that displays social proof popups on websites to build visitor trust, enhance credibility, and support conversion efforts.",
+  "website": "https://proofdy.ru"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-squarespace",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUARESPACE",
+  "taxonomy_name": "Squarespace",
+  "vendor": "",
+  "product": "Squarespace",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQUARESPACE.json",
+    "original_name": "Squarespace"
+  },
+  "research": [
+    {
+      "url": "https://www.squarespace.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_squarespace_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "squarespace"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Squarespace provides Software-as-a-Service (SaaS) for website building and hosting, and allows users to use pre-built website templates.",
+  "website": "https://www.squarespace.com"
+}

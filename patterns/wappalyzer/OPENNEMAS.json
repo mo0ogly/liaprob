@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-opennemas",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENNEMAS",
+  "taxonomy_name": "OpenNemas",
+  "vendor": "",
+  "product": "OpenNemas",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENNEMAS.json",
+    "original_name": "OpenNemas"
+  },
+  "research": [
+    {
+      "url": "https://www.opennemas.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_opennemas_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "opennemas"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "opennemas",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "website": "https://www.opennemas.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-intercom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTERCOM",
+  "taxonomy_name": "Intercom",
+  "vendor": "",
+  "product": "Intercom",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INTERCOM.json",
+    "original_name": "Intercom"
+  },
+  "research": [
+    {
+      "url": "https://www.intercom.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_intercom_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:api\\.intercom\\.io/api|static\\.intercomcdn\\.com/intercom\\.v1)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52,
+    53
+  ],
+  "notes": "Intercom is an American software company that produces a messaging platform which allows businesses to communicate with prospective and existing customers within their app, on their website, through social media, or via email.",
+  "website": "https://www.intercom.com"
+}

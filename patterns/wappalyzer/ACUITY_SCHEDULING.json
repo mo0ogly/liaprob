@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acuity_scheduling",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACUITY_SCHEDULING",
+  "taxonomy_name": "Acuity Scheduling",
+  "vendor": "",
+  "product": "Acuity Scheduling",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACUITY_SCHEDULING.json",
+    "original_name": "Acuity Scheduling"
+  },
+  "research": [
+    {
+      "url": "https://acuityscheduling.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acuity_scheduling_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.acuityscheduling\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Acuity Scheduling is a cloud-based appointment scheduling software solution.",
+  "website": "https://acuityscheduling.com"
+}

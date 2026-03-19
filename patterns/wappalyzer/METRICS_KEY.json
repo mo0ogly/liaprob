@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-metrics_key",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METRICS_KEY",
+  "taxonomy_name": "Metrics Key",
+  "vendor": "",
+  "product": "Metrics Key",
+  "source": {
+    "type": "wappalyzer",
+    "file": "METRICS_KEY.json",
+    "original_name": "Metrics Key"
+  },
+  "research": [
+    {
+      "url": "https://metricskey.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_metrics_key_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//metricskey\\.net/track\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Metrics Key is software used for tracking performance in software development and search marketing campaigns.",
+  "website": "https://metricskey.net"
+}

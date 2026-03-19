@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopsys",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPSYS",
+  "taxonomy_name": "Shopsys",
+  "vendor": "",
+  "product": "Shopsys",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPSYS.json",
+    "original_name": "Shopsys"
+  },
+  "research": [
+    {
+      "url": "https://www.shopsys.com/shopsys-platform",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopsys_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^shopsys.cz",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Shopsys is an open-code ecommerce platform for building large custom online shops, offering extensive customization.",
+  "website": "https://www.shopsys.com/shopsys-platform"
+}

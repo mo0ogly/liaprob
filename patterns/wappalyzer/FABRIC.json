@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fabric",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FABRIC",
+  "taxonomy_name": "Fabric",
+  "vendor": "",
+  "product": "Fabric",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FABRIC.json",
+    "original_name": "Fabric"
+  },
+  "research": [
+    {
+      "url": "https://fabric.inc",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fabric_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "powered-by",
+          "match_type": "regex",
+          "value": "fabricinc",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Fabric is a headless commerce platform helping direct-to-consumer and B2B brands utilize an ecommerce platform designed for their needs.",
+  "website": "https://fabric.inc"
+}

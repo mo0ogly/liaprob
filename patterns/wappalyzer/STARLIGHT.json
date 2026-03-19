@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-starlight",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STARLIGHT",
+  "taxonomy_name": "Starlight",
+  "vendor": "",
+  "product": "Starlight",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STARLIGHT.json",
+    "original_name": "Starlight"
+  },
+  "research": [
+    {
+      "url": "https://starlight.astro.build/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_starlight_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^starlight\\sv([\\d\\.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^starlight\\sv([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4,
+    57
+  ],
+  "notes": "Starlight is a documentation website builder for the Astro framework.",
+  "website": "https://starlight.astro.build/"
+}

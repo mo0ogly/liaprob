@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-statuspal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STATUSPAL",
+  "taxonomy_name": "Statuspal",
+  "vendor": "",
+  "product": "Statuspal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STATUSPAL.json",
+    "original_name": "Statuspal"
+  },
+  "research": [
+    {
+      "url": "https://statuspal.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_statuspal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//statuspal\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "Statuspal is a hosted status page and monitoring software for businesses of all kinds.",
+  "website": "https://statuspal.io"
+}

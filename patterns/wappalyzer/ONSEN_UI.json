@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-onsen_ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ONSEN_UI",
+  "taxonomy_name": "Onsen UI",
+  "vendor": "",
+  "product": "Onsen UI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ONSEN_UI.json",
+    "original_name": "Onsen UI"
+  },
+  "research": [
+    {
+      "url": "https://onsen.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_onsen_ui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(/.*onsen.*min\\.js|.*angular-onsenui\\.min\\.js)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    26
+  ],
+  "notes": "Onsen UI is an open-source HTML5 hybrid app framework offering mobile UI components for PhoneGap and Cordova development.",
+  "website": "https://onsen.io"
+}

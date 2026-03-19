@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chakra_ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHAKRA_UI",
+  "taxonomy_name": "Chakra UI",
+  "vendor": "",
+  "product": "Chakra UI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHAKRA_UI.json",
+    "original_name": "Chakra UI"
+  },
+  "research": [
+    {
+      "url": "https://chakra-ui.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chakra_ui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.chakra-ui\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "React"
+  ],
+  "categories": [
+    66
+  ],
+  "notes": "Chakra UI is a simple, modular and accessible component library that gives you the building blocks you need to build your React applications.",
+  "website": "https://chakra-ui.com"
+}

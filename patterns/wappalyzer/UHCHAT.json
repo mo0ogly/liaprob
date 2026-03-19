@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-uhchat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UHCHAT",
+  "taxonomy_name": "uhChat",
+  "vendor": "",
+  "product": "uhChat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UHCHAT.json",
+    "original_name": "uhChat"
+  },
+  "research": [
+    {
+      "url": "https://uhchat.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_uhchat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "uhchatrelock",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "uhChat is a tool that enables the creation of an embedded chat box on websites for real-time communication.",
+  "website": "https://uhchat.net"
+}

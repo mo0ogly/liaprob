@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zeald",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEALD",
+  "taxonomy_name": "Zeald",
+  "vendor": "",
+  "product": "Zeald",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZEALD.json",
+    "original_name": "Zeald"
+  },
+  "research": [
+    {
+      "url": "https://www.zeald.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zeald_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "zes_backend",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "zeald"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Zeald is a full-service website design and digital marketing company.",
+  "website": "https://www.zeald.com"
+}

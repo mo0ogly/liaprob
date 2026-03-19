@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-satori",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SATORI",
+  "taxonomy_name": "Satori",
+  "vendor": "",
+  "product": "Satori",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SATORI.json",
+    "original_name": "Satori"
+  },
+  "research": [
+    {
+      "url": "https://satori.marketing",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_satori_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "satori\\.segs\\.jp/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Satori provides marketing automation software.",
+  "website": "https://satori.marketing"
+}

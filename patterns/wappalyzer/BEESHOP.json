@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-beeshop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEESHOP",
+  "taxonomy_name": "Beeshop",
+  "vendor": "",
+  "product": "Beeshop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEESHOP.json",
+    "original_name": "Beeshop"
+  },
+  "research": [
+    {
+      "url": "https://beeshop.pro",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_beeshop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/beeshop/js/beeshop\\.ajax\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Beeshop is a SaaS platform that enables the creation of B2C and B2B ecommerce sites.",
+  "website": "https://beeshop.pro"
+}

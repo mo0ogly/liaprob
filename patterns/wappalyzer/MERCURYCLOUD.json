@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mercurycloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MERCURYCLOUD",
+  "taxonomy_name": "Mercurycloud",
+  "vendor": "",
+  "product": "Mercurycloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MERCURYCLOUD.json",
+    "original_name": "Mercurycloud"
+  },
+  "research": [
+    {
+      "url": "https://mercurycloud.fr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mercurycloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-host",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.mercurycloud\\.fr"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "mercurycloud cdn v([\\d\\.]+)",
+          "version_extract": "mercurycloud cdn v([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    88
+  ],
+  "notes": "Mercurycloud is a hosting service provider offering a range of solutions, including web hosting, virtual private servers (VPS), dedicated servers, and game servers.",
+  "website": "https://mercurycloud.fr"
+}

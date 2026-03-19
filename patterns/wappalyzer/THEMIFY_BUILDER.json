@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-themify_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THEMIFY_BUILDER",
+  "taxonomy_name": "Themify Builder",
+  "vendor": "",
+  "product": "Themify Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THEMIFY_BUILDER.json",
+    "original_name": "Themify Builder"
+  },
+  "research": [
+    {
+      "url": "https://themify.me/builder",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_themify_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+class=[\"']themify_builder_*",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51,
+    87
+  ],
+  "notes": "Themify Builder is a plugin that allows users to create complex layouts and designs by dragging and dropping elements onto their pages.",
+  "website": "https://themify.me/builder"
+}

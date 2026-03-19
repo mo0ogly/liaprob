@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cloudbeds",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDBEDS",
+  "taxonomy_name": "Cloudbeds",
+  "vendor": "",
+  "product": "Cloudbeds",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOUDBEDS.json",
+    "original_name": "Cloudbeds"
+  },
+  "research": [
+    {
+      "url": "https://www.cloudbeds.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cloudbeds_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cloudbeds\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Cloudbeds is a cloud-based hotel management platform which includes tools for managing reservations, availability, rates, distribution channels, payments, guests, housekeeping, and more.",
+  "website": "https://www.cloudbeds.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-beusable",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEUSABLE",
+  "taxonomy_name": "Beusable",
+  "vendor": "",
+  "product": "Beusable",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEUSABLE.json",
+    "original_name": "Beusable"
+  },
+  "research": [
+    {
+      "url": "https://www.beusable.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_beusable_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.beusable\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Beusable is a tool that visualises site visitors' behaviour, offering insights through graphical data representations.",
+  "website": "https://www.beusable.net"
+}

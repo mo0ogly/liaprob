@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-owids",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OWIDS",
+  "taxonomy_name": "Owids",
+  "vendor": "",
+  "product": "Owids",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OWIDS.json",
+    "original_name": "Owids"
+  },
+  "research": [
+    {
+      "url": "https://owids.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_owids_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "access-control-allow-origin",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^x-owids-key$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Owids is a set of widgets designed to improve website conversion rates and visitor engagement across platforms without requiring coding skills.",
+  "website": "https://owids.com"
+}

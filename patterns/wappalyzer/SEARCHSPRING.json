@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-searchspring",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEARCHSPRING",
+  "taxonomy_name": "Searchspring",
+  "vendor": "",
+  "product": "Searchspring",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEARCHSPRING.json",
+    "original_name": "Searchspring"
+  },
+  "research": [
+    {
+      "url": "https://searchspring.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_searchspring_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.searchspring\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "Searchspring is a site search and merchandising platform designed to help ecommerce.",
+  "website": "https://searchspring.com"
+}

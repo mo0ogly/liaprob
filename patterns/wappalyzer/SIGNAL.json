@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-signal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIGNAL",
+  "taxonomy_name": "Signal",
+  "vendor": "",
+  "product": "Signal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIGNAL.json",
+    "original_name": "Signal"
+  },
+  "research": [
+    {
+      "url": "https://www.signal.co/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_signal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//s\\.btstatic\\.com/tag\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//s\\.thebrighttag\\.com/iframe\\?",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    42
+  ],
+  "notes": "Signal is a cross-platform encrypted messaging service.",
+  "website": "https://www.signal.co/"
+}

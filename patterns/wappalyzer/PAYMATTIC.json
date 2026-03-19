@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-paymattic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAYMATTIC",
+  "taxonomy_name": "Paymattic",
+  "vendor": "",
+  "product": "Paymattic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAYMATTIC.json",
+    "original_name": "Paymattic"
+  },
+  "research": [
+    {
+      "url": "https://demo.paymattic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_paymattic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.paymattic\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Paymattic is a WordPress payment plugin that offers built-in donation capabilities and a no-code setup for handling online payments.",
+  "website": "https://demo.paymattic.com"
+}

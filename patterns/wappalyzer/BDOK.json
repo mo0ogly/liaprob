@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bdok",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BDOK",
+  "taxonomy_name": "bdok",
+  "vendor": "",
+  "product": "bdok",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BDOK.json",
+    "original_name": "bdok"
+  },
+  "research": [
+    {
+      "url": "https://bdok.ir",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bdok_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.ibdok\\.ir/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "bdok is a cloud-based platform which provides the capability to create and manage online stores with no technical knowledge.",
+  "website": "https://bdok.ir"
+}

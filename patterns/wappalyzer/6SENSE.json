@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-6sense",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "6SENSE",
+  "taxonomy_name": "6sense",
+  "vendor": "",
+  "product": "6sense",
+  "source": {
+    "type": "wappalyzer",
+    "file": "6SENSE.json",
+    "original_name": "6sense"
+  },
+  "research": [
+    {
+      "url": "https://6sense.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_6sense_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.6sc\\.co/"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.6sc\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    76
+  ],
+  "notes": "6sense is a B2B predictive intelligence platform for marketing and sales.",
+  "website": "https://6sense.com"
+}

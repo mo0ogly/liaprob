@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-global_e",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLOBAL_E",
+  "taxonomy_name": "Global-e",
+  "vendor": "",
+  "product": "Global-e",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLOBAL_E.json",
+    "original_name": "Global-e"
+  },
+  "research": [
+    {
+      "url": "https://www.global-e.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_global_e_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "glbe_sess_id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "globale_consent",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "globale_ct_data",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "globale_data",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "globale_supportthirdpartcookies",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.global-e\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    106
+  ],
+  "notes": "Global-e is a provider of cross-border ecommerce solutions.",
+  "website": "https://www.global-e.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-follow_up_boss",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOLLOW_UP_BOSS",
+  "taxonomy_name": "Follow Up Boss",
+  "vendor": "",
+  "product": "Follow Up Boss",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FOLLOW_UP_BOSS.json",
+    "original_name": "Follow Up Boss"
+  },
+  "research": [
+    {
+      "url": "https://www.followupboss.com/customer-results/debra-beagle",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_follow_up_boss_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.followupboss\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Follow Up Boss is a real estate CRM system that manages leads, tracks client interactions, and organizes sales processes for real estate professionals.",
+  "website": "https://www.followupboss.com/customer-results/debra-beagle"
+}

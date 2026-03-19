@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-randemretail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RANDEMRETAIL",
+  "taxonomy_name": "RandemRetail",
+  "vendor": "",
+  "product": "RandemRetail",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RANDEMRETAIL.json",
+    "original_name": "RandemRetail"
+  },
+  "research": [
+    {
+      "url": "https://www.randemretail.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_randemretail_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cc\\.randemcommerce\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "RandemRetail is a platform that centralizes multichannel selling operations into a single interface.",
+  "website": "https://www.randemretail.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-trusted_shops",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRUSTED_SHOPS",
+  "taxonomy_name": "Trusted Shops",
+  "vendor": "",
+  "product": "Trusted Shops",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRUSTED_SHOPS.json",
+    "original_name": "Trusted Shops"
+  },
+  "research": [
+    {
+      "url": "https://www.trustedshops.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_trusted_shops_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widgets\\.trustedshops\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Trusted Shops is a company that acts as a 3'rd party representing the common interests of both consumers and retailers.",
+  "website": "https://www.trustedshops.co.uk"
+}

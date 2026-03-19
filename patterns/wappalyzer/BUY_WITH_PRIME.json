@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-buy_with_prime",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BUY_WITH_PRIME",
+  "taxonomy_name": "Buy with Prime",
+  "vendor": "",
+  "product": "Buy with Prime",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BUY_WITH_PRIME.json",
+    "original_name": "Buy with Prime"
+  },
+  "research": [
+    {
+      "url": "https://buywithprime.amazon.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_buy_with_prime_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "code\\.buywithprime\\.amazon\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Amazon Pay"
+  ],
+  "categories": [
+    19
+  ],
+  "notes": "Buy with Prime is a feature offered by Amazon that allows Amazon Prime members to make purchases with the benefits associated with their Prime membership.",
+  "website": "https://buywithprime.amazon.com"
+}

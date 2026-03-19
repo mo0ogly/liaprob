@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-track_hospitality_software",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRACK_HOSPITALITY_SOFTWARE",
+  "taxonomy_name": "Track Hospitality Software",
+  "vendor": "",
+  "product": "Track Hospitality Software",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRACK_HOSPITALITY_SOFTWARE.json",
+    "original_name": "Track Hospitality Software"
+  },
+  "research": [
+    {
+      "url": "https://trackhs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_track_hospitality_software_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.trackhs\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "TRACK Hospitality Software is a provider of property management and hospitality SaaS solutions for managing operations in the hospitality industry.",
+  "website": "https://trackhs.com"
+}

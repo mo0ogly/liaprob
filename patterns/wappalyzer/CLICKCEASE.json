@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clickcease",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLICKCEASE",
+  "taxonomy_name": "ClickCease",
+  "vendor": "",
+  "product": "ClickCease",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLICKCEASE.json",
+    "original_name": "ClickCease"
+  },
+  "research": [
+    {
+      "url": "https://www.clickcease.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clickcease_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.clickcease\\.com/monitor/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "ClickCease is an ad fraud and click-fraud detection and protection service software.",
+  "website": "https://www.clickcease.com"
+}

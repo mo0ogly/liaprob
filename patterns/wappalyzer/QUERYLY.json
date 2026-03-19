@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-queryly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUERYLY",
+  "taxonomy_name": "Queryly",
+  "vendor": "",
+  "product": "Queryly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUERYLY.json",
+    "original_name": "Queryly"
+  },
+  "research": [
+    {
+      "url": "https://queryly.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_queryly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.queryly\\.com/js/queryly\\.v([\\d\\.]+)\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "\\.queryly\\.com/js/queryly\\.v([\\d\\.]+)\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "Queryly is a cloud-based API providing site search and content recommendation functionalities, utilizing advanced algorithms to deliver quick, relevant search results and personalized content suggestions.",
+  "website": "https://queryly.com/"
+}

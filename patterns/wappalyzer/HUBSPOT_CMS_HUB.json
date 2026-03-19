@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hubspot_cms_hub",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUBSPOT_CMS_HUB",
+  "taxonomy_name": "HubSpot CMS Hub",
+  "vendor": "",
+  "product": "HubSpot CMS Hub",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HUBSPOT_CMS_HUB.json",
+    "original_name": "HubSpot CMS Hub"
+  },
+  "research": [
+    {
+      "url": "https://www.hubspot.com/products/cms",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hubspot_cms_hub_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-hs-hub-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "hubspot"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "hubspot",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "HubSpot"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "CMS Hub is a content management platform by HubSpot for marketers to manage, optimize, and track content performance on websites, blogs, and landing pages.",
+  "website": "https://www.hubspot.com/products/cms"
+}

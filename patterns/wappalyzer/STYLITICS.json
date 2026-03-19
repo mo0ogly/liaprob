@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stylitics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STYLITICS",
+  "taxonomy_name": "Stylitics",
+  "vendor": "",
+  "product": "Stylitics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STYLITICS.json",
+    "original_name": "Stylitics"
+  },
+  "research": [
+    {
+      "url": "https://stylitics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stylitics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/stylitics/js/stylitics\\.js\\?ver=v([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "/stylitics/js/stylitics\\.js\\?ver=v([\\d.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.stylitics\\.com/v([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "\\.stylitics\\.com/v([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Stylitics is a cloud-based SaaS platform for retailers to automate and distribute visual content at scale.",
+  "website": "https://stylitics.com"
+}

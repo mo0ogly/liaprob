@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gevme",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GEVME",
+  "taxonomy_name": "Gevme",
+  "vendor": "",
+  "product": "Gevme",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GEVME.json",
+    "original_name": "Gevme"
+  },
+  "research": [
+    {
+      "url": "https://www.gevme.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gevme_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^gevme analytics$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "analytics\\.gevme\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    104
+  ],
+  "notes": "Gevme is an omnichannel event management platform designed to streamline planning, coordination, and execution across physical, virtual, and hybrid events.",
+  "website": "https://www.gevme.com"
+}

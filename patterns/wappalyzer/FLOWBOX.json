@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flowbox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLOWBOX",
+  "taxonomy_name": "Flowbox",
+  "vendor": "",
+  "product": "Flowbox",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLOWBOX.json",
+    "original_name": "Flowbox"
+  },
+  "research": [
+    {
+      "url": "https://getflowbox.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flowbox_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getflowbox\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Flowbox is a platform designed to enable brands to use social content to grow engagement, drive revenue and sell more across their marketing and commerce channels.",
+  "website": "https://getflowbox.com"
+}

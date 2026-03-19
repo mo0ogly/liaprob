@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gogs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOGS",
+  "taxonomy_name": "Gogs",
+  "vendor": "",
+  "product": "Gogs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOGS.json",
+    "original_name": "Gogs"
+  },
+  "research": [
+    {
+      "url": "https://gogs.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gogs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "i_like_gogits",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<button class=\"ui basic clone button\" id=\"repo-clone-ssh\" data-link=\"gogs@",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"ui left\">\\n\\s+© \\d{4} gogs version: ([\\d.]+) page:",
+          "confidence_delta": 0.5,
+          "version_extract": "<div class=\"ui left\">\\n\\s+© \\d{4} gogs version: ([\\d.]+) page:"
+        },
+        {
+          "target": "meta",
+          "field": "keywords",
+          "match_type": "regex",
+          "value": "go, git, self-hosted, gogs",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js/gogs\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:gogs:gogs:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Go",
+    "Macaron"
+  ],
+  "categories": [
+    47
+  ],
+  "notes": "Gogs is a self-hosted Git service written in Go.",
+  "website": "https://gogs.io"
+}

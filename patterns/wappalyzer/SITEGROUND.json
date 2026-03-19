@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-siteground",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITEGROUND",
+  "taxonomy_name": "SiteGround",
+  "vendor": "",
+  "product": "SiteGround",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITEGROUND.json",
+    "original_name": "SiteGround"
+  },
+  "research": [
+    {
+      "url": "https://www.siteground.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_siteground_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "host-header",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "192fc2e7e50945beb8231a492d6a8024|b7440e60b07ee7b8044761568fab26e8|624d5be7be38418a3e2a818cc8b7029b|6b7412fb82ca5edfd0917e3957f05d89"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62,
+    88
+  ],
+  "notes": "SiteGround is a web hosting service.",
+  "website": "https://www.siteground.com"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tawk_to",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TAWK_TO",
+  "taxonomy_name": "Tawk.to",
+  "vendor": "",
+  "product": "Tawk.to",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TAWK_TO.json",
+    "original_name": "Tawk.to"
+  },
+  "research": [
+    {
+      "url": "https://tawk.to",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tawk_to_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "tawkconnectiontime",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//embed\\.tawk\\.to",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Tawk.to is a free messaging app to monitor and chat with the visitors to a website, mobile app.",
+  "website": "https://tawk.to"
+}

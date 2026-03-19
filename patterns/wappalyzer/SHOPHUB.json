@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shophub",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPHUB",
+  "taxonomy_name": "ShopHub",
+  "vendor": "",
+  "product": "ShopHub",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPHUB.json",
+    "original_name": "ShopHub"
+  },
+  "research": [
+    {
+      "url": "https://www.tryshophub.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shophub_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.tryshophub\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "ShopHub is a platform that helps Shopify store owners grow their businesses by providing loyalty programs, coupons, and email capture services.",
+  "website": "https://www.tryshophub.com"
+}

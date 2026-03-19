@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-framer_sites",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRAMER_SITES",
+  "taxonomy_name": "Framer Sites",
+  "vendor": "",
+  "product": "Framer Sites",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRAMER_SITES.json",
+    "original_name": "Framer Sites"
+  },
+  "research": [
+    {
+      "url": "https://www.framer.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_framer_sites_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^framer/"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^framer",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "framerusercontent\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "React"
+  ],
+  "categories": [
+    1,
+    51
+  ],
+  "notes": "Framer is a no-code web design platform for designing and publishing responsive websites.",
+  "website": "https://www.framer.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-powr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWR",
+  "taxonomy_name": "POWR",
+  "vendor": "",
+  "product": "POWR",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POWR.json",
+    "original_name": "POWR"
+  },
+  "research": [
+    {
+      "url": "https://www.powr.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_powr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.powr\\.io/powr\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "POWR is a cloud-based system of plugins that work on almost any website.",
+  "website": "https://www.powr.io"
+}

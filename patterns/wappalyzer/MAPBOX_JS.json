@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mapbox_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAPBOX_JS",
+  "taxonomy_name": "Mapbox.js",
+  "vendor": "",
+  "product": "Mapbox.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAPBOX_JS.json",
+    "original_name": "Mapbox.js"
+  },
+  "research": [
+    {
+      "url": "https://github.com/mapbox/mapbox.js",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mapbox_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.mapbox\\.com/mapbox\\.js/v([\\d\\.]+)/",
+          "confidence_delta": 0.5,
+          "version_extract": "api\\.mapbox\\.com/mapbox\\.js/v([\\d\\.]+)/"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Leaflet"
+  ],
+  "categories": [
+    35
+  ],
+  "notes": "Mapbox.js is a JavaScript library provided by Mapbox for working with interactive maps and geospatial data.",
+  "website": "https://github.com/mapbox/mapbox.js"
+}

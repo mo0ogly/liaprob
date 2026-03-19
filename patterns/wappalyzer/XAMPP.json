@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xampp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XAMPP",
+  "taxonomy_name": "XAMPP",
+  "vendor": "",
+  "product": "XAMPP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XAMPP.json",
+    "original_name": "XAMPP"
+  },
+  "research": [
+    {
+      "url": "https://www.apachefriends.org/en/xampp.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xampp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>xampp(?: version ([\\d\\.]+))?</title>",
+          "confidence_delta": 0.5,
+          "version_extract": "<title>xampp(?: version ([\\d\\.]+))?</title>"
+        },
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "kai oswald seidler",
+          "confidence_delta": 0.1
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Apache HTTP Server",
+    "MySQL",
+    "PHP",
+    "Perl"
+  ],
+  "categories": [
+    22
+  ],
+  "website": "https://www.apachefriends.org/en/xampp.html"
+}

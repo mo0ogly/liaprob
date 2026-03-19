@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-equalweb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EQUALWEB",
+  "taxonomy_name": "EqualWeb",
+  "vendor": "",
+  "product": "EqualWeb",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EQUALWEB.json",
+    "original_name": "EqualWeb"
+  },
+  "research": [
+    {
+      "url": "https://www.equalweb.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_equalweb_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.equalweb\\.com.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "EqualWeb provides a web accessibility overlay, and helps some people with disabilities access digital information.",
+  "website": "https://www.equalweb.com/"
+}

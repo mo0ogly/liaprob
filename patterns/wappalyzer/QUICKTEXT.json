@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-quicktext",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUICKTEXT",
+  "taxonomy_name": "Quicktext",
+  "vendor": "",
+  "product": "Quicktext",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUICKTEXT.json",
+    "original_name": "Quicktext"
+  },
+  "research": [
+    {
+      "url": "https://www.quicktext.im",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_quicktext_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.quicktext\\.im/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Quicktext is an AI-powered hotel chatbot and instant communication platform designed to increase direct bookings for hotels.",
+  "website": "https://www.quicktext.im"
+}

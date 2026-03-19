@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-monetate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MONETATE",
+  "taxonomy_name": "Monetate",
+  "vendor": "",
+  "product": "Monetate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MONETATE.json",
+    "original_name": "Monetate"
+  },
+  "research": [
+    {
+      "url": "https://monetate.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_monetate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.monetate\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    74,
+    76
+  ],
+  "notes": "Monetate is a company that specializes in providing personalisation and customer experience optimisation solutions to businesses.",
+  "website": "https://monetate.com"
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-1c_bitrix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "1C_BITRIX",
+  "taxonomy_name": "1C-Bitrix",
+  "vendor": "",
+  "product": "1C-Bitrix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "1C_BITRIX.json",
+    "original_name": "1C-Bitrix"
+  },
+  "research": [
+    {
+      "url": "https://www.1c-bitrix.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_1c_bitrix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "set-cookie",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "bitrix_"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-cms",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "bitrix site manager"
+        },
+        {
+          "target": "cookie",
+          "field": "bitrix_sm_guest_id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "bitrix_sm_last_ip",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "bitrix_sm_sale_uid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "bitrix(?:\\.info/|/js/main/core)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1,
+    6
+  ],
+  "notes": "1C-Bitrix is a system of web project management, universal software for the creation, support and successful development of corporate websites and online stores.",
+  "website": "https://www.1c-bitrix.ru"
+}

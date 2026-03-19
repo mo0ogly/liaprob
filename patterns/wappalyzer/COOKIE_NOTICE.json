@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cookie_notice",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COOKIE_NOTICE",
+  "taxonomy_name": "Cookie Notice",
+  "vendor": "",
+  "product": "Cookie Notice",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COOKIE_NOTICE.json",
+    "original_name": "Cookie Notice"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/cookie-notice",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cookie_notice_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/cookie-notice/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/plugins/cookie-notice/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67,
+    87
+  ],
+  "notes": "Cookie Notice provides a simple, customizable website banner that can be used to help your website comply with certain cookie consent requirements under the EU GDPR cookie law and CCPA regulations and includes seamless integration with Cookie Compliance to help your site comply with the latest updates to existing consent laws.",
+  "website": "https://wordpress.org/plugins/cookie-notice"
+}

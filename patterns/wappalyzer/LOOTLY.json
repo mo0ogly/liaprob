@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lootly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOOTLY",
+  "taxonomy_name": "Lootly",
+  "vendor": "",
+  "product": "Lootly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOOTLY.json",
+    "original_name": "Lootly"
+  },
+  "research": [
+    {
+      "url": "https://lootly.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lootly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "lootly\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84,
+    94
+  ],
+  "notes": "Lootly is a loyalty and referral marketing automation software suite for ecommerce businesses.",
+  "website": "https://lootly.io"
+}

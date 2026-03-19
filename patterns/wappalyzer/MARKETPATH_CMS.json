@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-marketpath_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MARKETPATH_CMS",
+  "taxonomy_name": "Marketpath CMS",
+  "vendor": "",
+  "product": "Marketpath CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MARKETPATH_CMS.json",
+    "original_name": "Marketpath CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.marketpath.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_marketpath_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_mp_permissions",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^session\\^"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Azure",
+    "ZURB Foundation"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Marketpath CMS is a hosted website content management system used by businesses, churches and schools.",
+  "website": "https://www.marketpath.com"
+}

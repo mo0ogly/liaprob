@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-segmate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEGMATE",
+  "taxonomy_name": "SegMate",
+  "vendor": "",
+  "product": "SegMate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEGMATE.json",
+    "original_name": "SegMate"
+  },
+  "research": [
+    {
+      "url": "https://segmateapp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_segmate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.segmate\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "SegMate is a platform that allows businesses to create and manage Facebook Messenger bots for marketing and customer engagement.",
+  "website": "https://segmateapp.com"
+}

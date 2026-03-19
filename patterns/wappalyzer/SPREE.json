@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spree",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPREE",
+  "taxonomy_name": "Spree",
+  "vendor": "",
+  "product": "Spree",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPREE.json",
+    "original_name": "Spree"
+  },
+  "research": [
+    {
+      "url": "https://spreecommerce.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spree_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link[^>]*/assets/store/all-[a-z\\d]{32}\\.css[^>]+>|<script>\\s*spree\\.(?:routes|translations|api_key))",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Ruby on Rails"
+  ],
+  "categories": [
+    6
+  ],
+  "website": "https://spreecommerce.org"
+}

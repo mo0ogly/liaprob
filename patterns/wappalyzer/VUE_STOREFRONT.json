@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vue_storefront",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VUE_STOREFRONT",
+  "taxonomy_name": "Vue Storefront",
+  "vendor": "",
+  "product": "Vue Storefront",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VUE_STOREFRONT.json",
+    "original_name": "Vue Storefront"
+  },
+  "research": [
+    {
+      "url": "https://www.vuestorefront.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vue_storefront_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^vue storefront ([0-9.]+)?$",
+          "confidence_delta": 0.5,
+          "version_extract": "^vue storefront ([0-9.]+)?$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "vsf-layout",
+          "confidence_delta": 0.5,
+          "version_extract": "vsf-layout"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Vue.js"
+  ],
+  "categories": [
+    108
+  ],
+  "notes": "Vue Storefront is a frontend platform for headless ecommerce.",
+  "website": "https://www.vuestorefront.io/"
+}

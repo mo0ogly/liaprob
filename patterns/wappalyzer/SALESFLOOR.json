@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-salesfloor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SALESFLOOR",
+  "taxonomy_name": "Salesfloor",
+  "vendor": "",
+  "product": "Salesfloor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SALESFLOOR.json",
+    "original_name": "Salesfloor"
+  },
+  "research": [
+    {
+      "url": "https://salesfloor.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_salesfloor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.salesfloor\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    6
+  ],
+  "notes": "Salesfloor is a mobile clienteling and virtual selling platform designed for store associates to connect with customers-beyond the store and a mpos platform for frictionless in-store experiences.",
+  "website": "https://salesfloor.net"
+}

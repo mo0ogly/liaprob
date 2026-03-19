@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-squadata",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUADATA",
+  "taxonomy_name": "Squadata",
+  "vendor": "",
+  "product": "Squadata",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQUADATA.json",
+    "original_name": "Squadata"
+  },
+  "research": [
+    {
+      "url": "https://www.squadata.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_squadata_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//asset\\.easydmp\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    77
+  ],
+  "notes": "Squadata provides data based marketing and advertising solutions including email retargeting, CRM onboarding, data monetisation, data management platform.",
+  "website": "https://www.squadata.net"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-june",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUNE",
+  "taxonomy_name": "June",
+  "vendor": "",
+  "product": "June",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JUNE.json",
+    "original_name": "June"
+  },
+  "research": [
+    {
+      "url": "https://june.so",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_june_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_june_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.june\\.so/analytics\\.js/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    97
+  ],
+  "notes": "June is a product analytics for subscription businesses. It automatically generates graphs of the metrics users should track by connecting their segment account.",
+  "website": "https://june.so"
+}

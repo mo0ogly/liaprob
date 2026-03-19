@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pagseguro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAGSEGURO",
+  "taxonomy_name": "PagSeguro",
+  "vendor": "",
+  "product": "PagSeguro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAGSEGURO.json",
+    "original_name": "PagSeguro"
+  },
+  "research": [
+    {
+      "url": "https://pagseguro.uol.com.br",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pagseguro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.pagseguro\\.uol\\.com\\.br/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "PagSeguro is an online or mobile payment-based ecommerce service for commercial operations.",
+  "website": "https://pagseguro.uol.com.br"
+}

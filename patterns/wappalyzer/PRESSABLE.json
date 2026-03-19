@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pressable",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRESSABLE",
+  "taxonomy_name": "Pressable",
+  "vendor": "",
+  "product": "Pressable",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PRESSABLE.json",
+    "original_name": "Pressable"
+  },
+  "research": [
+    {
+      "url": "https://pressable.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pressable_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "host-header",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^pressable"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress"
+  ],
+  "categories": [
+    62
+  ],
+  "notes": "Pressable is a managed hoting platform for WordPress.",
+  "website": "https://pressable.com"
+}

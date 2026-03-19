@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-redoc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDOC",
+  "taxonomy_name": "ReDoc",
+  "vendor": "",
+  "product": "ReDoc",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REDOC.json",
+    "original_name": "ReDoc"
+  },
+  "research": [
+    {
+      "url": "https://github.com/Rebilly/ReDoc",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_redoc_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<redoc ",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/redoc\\.(?:min\\.)?js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "React"
+  ],
+  "categories": [
+    4
+  ],
+  "notes": "Redoc is an open-source tool that generates API documentation from OpenAPI specifications.",
+  "website": "https://github.com/Rebilly/ReDoc"
+}

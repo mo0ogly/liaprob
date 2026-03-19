@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-musement",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MUSEMENT",
+  "taxonomy_name": "Musement",
+  "vendor": "",
+  "product": "Musement",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MUSEMENT.json",
+    "original_name": "Musement"
+  },
+  "research": [
+    {
+      "url": "https://www.musement.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_musement_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.musement\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    104
+  ],
+  "notes": "Musement is a platform that allows users to book tickets for attractions, museums, and activities, providing access to various cultural and entertainment experiences.",
+  "website": "https://www.musement.com"
+}

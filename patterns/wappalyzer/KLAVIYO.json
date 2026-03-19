@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-klaviyo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KLAVIYO",
+  "taxonomy_name": "Klaviyo",
+  "vendor": "",
+  "product": "Klaviyo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KLAVIYO.json",
+    "original_name": "Klaviyo"
+  },
+  "research": [
+    {
+      "url": "https://www.klaviyo.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_klaviyo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "klaviyo\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Klaviyo is an email and SMS marketing platform for online businesses.",
+  "website": "https://www.klaviyo.com/"
+}

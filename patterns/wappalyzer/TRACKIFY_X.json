@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-trackify_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRACKIFY_X",
+  "taxonomy_name": "Trackify X",
+  "vendor": "",
+  "product": "Trackify X",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRACKIFY_X.json",
+    "original_name": "Trackify X"
+  },
+  "research": [
+    {
+      "url": "https://trackifyapp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_trackify_x_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "trackifyx\\.redretarget\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100,
+    10
+  ],
+  "notes": "Trackify X is a pixel engine that helps merchants backup their pixel data and manage multiple pixels.",
+  "website": "https://trackifyapp.com"
+}

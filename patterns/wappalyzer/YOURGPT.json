@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yourgpt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOURGPT",
+  "taxonomy_name": "YourGPT",
+  "vendor": "",
+  "product": "YourGPT",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOURGPT.json",
+    "original_name": "YourGPT"
+  },
+  "research": [
+    {
+      "url": "https://yourgpt.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yourgpt_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.yourgpt\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "YourGPT is a platform that provides customizable AI and GPT tools, enabling the integration of large language models for diverse operational needs and supporting more efficient business processes.",
+  "website": "https://yourgpt.ai"
+}

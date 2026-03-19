@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nuxt_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NUXT_JS",
+  "taxonomy_name": "Nuxt.js",
+  "vendor": "",
+  "product": "Nuxt.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NUXT_JS.json",
+    "original_name": "Nuxt.js"
+  },
+  "research": [
+    {
+      "url": "https://nuxt.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nuxt_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*id=\"__nuxt\"",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]*>window\\.__nuxt__",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/_nuxt/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js",
+    "Vue.js"
+  ],
+  "categories": [
+    12,
+    18,
+    22,
+    57
+  ],
+  "notes": "Nuxt is a Vue framework for developing modern web applications.",
+  "website": "https://nuxt.com"
+}

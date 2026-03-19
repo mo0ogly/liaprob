@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-extole",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EXTOLE",
+  "taxonomy_name": "Extole",
+  "vendor": "",
+  "product": "Extole",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EXTOLE.json",
+    "original_name": "Extole"
+  },
+  "research": [
+    {
+      "url": "https://www.extole.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_extole_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.(?:extole|xtlo)\\.(?:com|net)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    94,
+    84
+  ],
+  "notes": "Extole is an online marketing platform that enables brands and businesses to get new customers through loyalty and referral programs.",
+  "website": "https://www.extole.com"
+}

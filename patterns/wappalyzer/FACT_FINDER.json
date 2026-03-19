@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fact_finder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FACT_FINDER",
+  "taxonomy_name": "Fact Finder",
+  "vendor": "",
+  "product": "Fact Finder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FACT_FINDER.json",
+    "original_name": "Fact Finder"
+  },
+  "research": [
+    {
+      "url": "https://fact-finder.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fact_finder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- factfinder",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "suggest\\.ff",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "Fact Finder is a platform which, combines search, navigation, and merchandising solutions to streamline online search and power sales.",
+  "website": "https://fact-finder.com"
+}

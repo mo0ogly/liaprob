@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-virgool",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIRGOOL",
+  "taxonomy_name": "Virgool",
+  "vendor": "",
+  "product": "Virgool",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VIRGOOL.json",
+    "original_name": "Virgool"
+  },
+  "research": [
+    {
+      "url": "https://virgool.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_virgool_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^virgool$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    11
+  ],
+  "website": "https://virgool.io"
+}

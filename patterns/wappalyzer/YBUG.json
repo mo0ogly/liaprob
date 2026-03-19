@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ybug",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YBUG",
+  "taxonomy_name": "Ybug",
+  "vendor": "",
+  "product": "Ybug",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YBUG.json",
+    "original_name": "Ybug"
+  },
+  "research": [
+    {
+      "url": "https://ybug.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ybug_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ybug\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "Ybug is a visual feedback and bug tracking tool designed for users and clients, enabling identification and reporting of issues.",
+  "website": "https://ybug.io"
+}

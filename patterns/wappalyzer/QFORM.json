@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-qform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QFORM",
+  "taxonomy_name": "QForm",
+  "vendor": "",
+  "product": "QForm",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QFORM.json",
+    "original_name": "QForm"
+  },
+  "research": [
+    {
+      "url": "https://qform.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_qform_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.qform(?:24\\.com|\\.io)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "QForm is a tool for designing and managing customizable forms for data collection and processing.",
+  "website": "https://qform.io"
+}

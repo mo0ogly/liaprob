@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-p3chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "P3CHAT",
+  "taxonomy_name": "P3chat",
+  "vendor": "",
+  "product": "P3chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "P3CHAT.json",
+    "original_name": "P3chat"
+  },
+  "research": [
+    {
+      "url": "https://p3chat.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_p3chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//p3chat\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "P3chat is a live chat platform integrated into websites to enable real-time communication with visitors.",
+  "website": "https://p3chat.com"
+}

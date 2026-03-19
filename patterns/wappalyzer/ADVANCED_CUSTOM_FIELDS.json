@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-advanced_custom_fields",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADVANCED_CUSTOM_FIELDS",
+  "taxonomy_name": "Advanced Custom Fields",
+  "vendor": "",
+  "product": "Advanced Custom Fields",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADVANCED_CUSTOM_FIELDS.json",
+    "original_name": "Advanced Custom Fields"
+  },
+  "research": [
+    {
+      "url": "https://www.advancedcustomfields.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_advanced_custom_fields_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/advanced-custom-fields(?:-pro)?/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/plugins/advanced-custom-fields(?:-pro)?/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87
+  ],
+  "notes": "Advanced Custom Fields is a WordPress plugin which allows you to add extra content fields to your WordPress edit screens.",
+  "website": "https://www.advancedcustomfields.com"
+}

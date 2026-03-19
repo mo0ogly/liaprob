@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-arvancloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARVANCLOUD",
+  "taxonomy_name": "ArvanCloud",
+  "vendor": "",
+  "product": "ArvanCloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ARVANCLOUD.json",
+    "original_name": "ArvanCloud"
+  },
+  "research": [
+    {
+      "url": "https://www.arvancloud.ir",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_arvancloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "arvancloud"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "ArvanCloud is a cloud services provider, offering a wide range of incorporated cloud services including CDN, DDoS mitigation, Cloud Managed DNS, Cloud Security, VoD/AoD Streaming, Live Streaming, Cloud Compute, Cloud Object Storage, and PaaS.",
+  "website": "https://www.arvancloud.ir"
+}

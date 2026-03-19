@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rackcache",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RACKCACHE",
+  "taxonomy_name": "RackCache",
+  "vendor": "",
+  "product": "RackCache",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RACKCACHE.json",
+    "original_name": "RackCache"
+  },
+  "research": [
+    {
+      "url": "https://github.com/rtomayko/rack-cache",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rackcache_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-rack-cache",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Ruby"
+  ],
+  "categories": [
+    23
+  ],
+  "notes": "RackCache is a quick drop-in component to enable HTTP caching for Rack-based applications.",
+  "website": "https://github.com/rtomayko/rack-cache"
+}

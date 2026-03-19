@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-calendarwiz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CALENDARWIZ",
+  "taxonomy_name": "CalendarWiz",
+  "vendor": "",
+  "product": "CalendarWiz",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CALENDARWIZ.json",
+    "original_name": "CalendarWiz"
+  },
+  "research": [
+    {
+      "url": "https://www.calendarwiz.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_calendarwiz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.calendarwiz\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "CalendarWiz is an online scheduling calendar.",
+  "website": "https://www.calendarwiz.com/"
+}

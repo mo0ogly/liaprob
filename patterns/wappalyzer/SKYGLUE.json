@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-skyglue",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SKYGLUE",
+  "taxonomy_name": "SkyGlue",
+  "vendor": "",
+  "product": "SkyGlue",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SKYGLUE.json",
+    "original_name": "SkyGlue"
+  },
+  "research": [
+    {
+      "url": "https://www.skyglue.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_skyglue_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "dc\\.skyglue\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "SkyGlue is a tool that automatically tracks every user action on a website, providing insights into user behavior, their needs, and the reasons for drop-off.",
+  "website": "https://www.skyglue.com"
+}

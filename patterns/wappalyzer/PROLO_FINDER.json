@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-prolo_finder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROLO_FINDER",
+  "taxonomy_name": "Prolo Finder",
+  "vendor": "",
+  "product": "Prolo Finder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROLO_FINDER.json",
+    "original_name": "Prolo Finder"
+  },
+  "research": [
+    {
+      "url": "https://www.prolofinder.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_prolo_finder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.prolofinder\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "Prolo is a tool that adds a store locator feature to any website, enabling users to find nearby store locations through an interactive map or search interface.",
+  "website": "https://www.prolofinder.com"
+}

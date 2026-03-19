@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adobe_fonts",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADOBE_FONTS",
+  "taxonomy_name": "Adobe Fonts",
+  "vendor": "",
+  "product": "Adobe Fonts",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADOBE_FONTS.json",
+    "original_name": "Adobe Fonts"
+  },
+  "research": [
+    {
+      "url": "https://fonts.adobe.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adobe_fonts_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^\"]+use\\.typekit\\.(?:net|com)",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "use\\.typekit\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    17
+  ],
+  "notes": "Adobe Fonts is a web-based service providing access to a vast library of high-quality fonts for web and print design.",
+  "website": "https://fonts.adobe.com"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-elcom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELCOM",
+  "taxonomy_name": "Elcom",
+  "vendor": "",
+  "product": "Elcom",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ELCOM.json",
+    "original_name": "Elcom"
+  },
+  "research": [
+    {
+      "url": "https://www.elcom.com.au/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_elcom_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^elcomcms",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "The Elcom Platform is a web content management and intranet portal software written in Microsoft ASP.NET and SQL Server by Elcom Technology.",
+  "website": "https://www.elcom.com.au/"
+}

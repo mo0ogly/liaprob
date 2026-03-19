@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-optimizely_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPTIMIZELY_COMMERCE",
+  "taxonomy_name": "Optimizely Commerce",
+  "vendor": "",
+  "product": "Optimizely Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPTIMIZELY_COMMERCE.json",
+    "original_name": "Optimizely Commerce"
+  },
+  "research": [
+    {
+      "url": "https://www.optimizely.com/products/commerce/b2c/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_optimizely_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "epi:statemarker",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "episerver",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Optimizely Commerce is a complete suite for digital ecommerce and content management that uses artificial intelligence to deliver personalised experiences, individualised search rankings and product recommendations.",
+  "website": "https://www.optimizely.com/products/commerce/b2c/"
+}

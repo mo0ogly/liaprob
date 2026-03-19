@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-refiner",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REFINER",
+  "taxonomy_name": "Refiner",
+  "vendor": "",
+  "product": "Refiner",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REFINER.json",
+    "original_name": "Refiner"
+  },
+  "research": [
+    {
+      "url": "https://refiner.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_refiner_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.refiner\\.io/v([\\d]+)/client\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "js\\.refiner\\.io/v([\\d]+)/client\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Refiner provides a survey solution designed to help SaaS companies get more survey responses and gain a better understanding of their users.",
+  "website": "https://refiner.io"
+}

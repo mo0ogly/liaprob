@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-directus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DIRECTUS",
+  "taxonomy_name": "Directus",
+  "vendor": "",
+  "product": "Directus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DIRECTUS.json",
+    "original_name": "Directus"
+  },
+  "research": [
+    {
+      "url": "https://directus.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_directus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^directus$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "TinyMCE",
+    "Vue.js",
+    "core-js"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Directus is a free and open-source headless CMS framework for managing custom SQL-based databases.",
+  "website": "https://directus.io"
+}

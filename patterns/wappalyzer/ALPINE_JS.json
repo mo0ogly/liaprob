@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-alpine_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALPINE_JS",
+  "taxonomy_name": "Alpine.js",
+  "vendor": "",
+  "product": "Alpine.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALPINE_JS.json",
+    "original_name": "Alpine.js"
+  },
+  "research": [
+    {
+      "url": "https://github.com/alpinejs/alpine",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_alpine_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+[^\\w-]x-data[^\\w-][^<]+",
+          "confidence_delta": 0.75
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/alpine(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "website": "https://github.com/alpinejs/alpine"
+}

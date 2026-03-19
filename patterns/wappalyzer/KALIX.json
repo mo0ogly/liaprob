@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kalix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KALIX",
+  "taxonomy_name": "Kalix",
+  "vendor": "",
+  "product": "Kalix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KALIX.json",
+    "original_name": "Kalix"
+  },
+  "research": [
+    {
+      "url": "https://kalixhealth.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kalix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.kalixhealth\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Kalix is a HIPAA-compliant electronic medical record, practice management, and telehealth platform designed for dietitians, nutritionists, and other healthcare professionals.",
+  "website": "https://kalixhealth.com"
+}

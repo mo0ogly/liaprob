@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-roboreception",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROBORECEPTION",
+  "taxonomy_name": "RoboReception",
+  "vendor": "",
+  "product": "RoboReception",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ROBORECEPTION.json",
+    "original_name": "RoboReception"
+  },
+  "research": [
+    {
+      "url": "https://www.roboreception.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_roboreception_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.bot\\.roboreception\\.co\\.uk",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "RoboReception is a digital assistant that manages patient inquiries, reduces queues, and tracks new leads to ease the workload on reception staff.",
+  "website": "https://www.roboreception.co.uk"
+}

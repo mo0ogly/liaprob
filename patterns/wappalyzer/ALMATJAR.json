@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-almatjar",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALMATJAR",
+  "taxonomy_name": "AlMatjar",
+  "vendor": "",
+  "product": "AlMatjar",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALMATJAR.json",
+    "original_name": "AlMatjar"
+  },
+  "research": [
+    {
+      "url": "https://almatjar.store",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_almatjar_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^almatjar.store ecommerce builder$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "AlMatjar is an online store builder designed to help users create and manage ecommerce websites.",
+  "website": "https://almatjar.store"
+}

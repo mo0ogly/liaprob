@@ -1,0 +1,106 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dnn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DNN",
+  "taxonomy_name": "DNN",
+  "vendor": "",
+  "product": "DNN",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DNN.json",
+    "original_name": "DNN"
+  },
+  "research": [
+    {
+      "url": "https://www.dnnsoftware.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dnn_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "cookie",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "dnn_ismobile="
+        },
+        {
+          "target": "header",
+          "field": "dnnoutputcache",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-compressed-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "dotnetnuke"
+        },
+        {
+          "target": "cookie",
+          "field": "dotnetnukeanonymous",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- by dotnetnuke corporation",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- dnn platform",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "dotnetnuke",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/js/dnn\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/js/dnncore\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:dnnsoftware:dotnetnuke:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.dnnsoftware.com/"
+}

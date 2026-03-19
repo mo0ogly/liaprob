@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-storepoint",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STOREPOINT",
+  "taxonomy_name": "StorePoint",
+  "vendor": "",
+  "product": "StorePoint",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STOREPOINT.json",
+    "original_name": "StorePoint"
+  },
+  "research": [
+    {
+      "url": "https://storepoint.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_storepoint_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.storepoint\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "StorePoint is a store locator software that allows anyone to build a store locator for their website and fully customize it to match the website theme, branding, colors, exact fonts and much more.",
+  "website": "https://storepoint.co"
+}

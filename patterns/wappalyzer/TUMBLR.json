@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tumblr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TUMBLR",
+  "taxonomy_name": "Tumblr",
+  "vendor": "",
+  "product": "Tumblr",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TUMBLR.json",
+    "original_name": "Tumblr"
+  },
+  "research": [
+    {
+      "url": "https://www.tumblr.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tumblr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-tumblr-user",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe src=\"[^>]+tumblr\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    11
+  ],
+  "notes": "Tumblr is a microblogging and social networking website. The service allows users to post multimedia and other content to a short-form blog.",
+  "website": "https://www.tumblr.com"
+}

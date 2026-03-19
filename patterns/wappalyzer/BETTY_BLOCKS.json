@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-betty_blocks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BETTY_BLOCKS",
+  "taxonomy_name": "Betty Blocks",
+  "vendor": "",
+  "product": "Betty Blocks",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BETTY_BLOCKS.json",
+    "original_name": "Betty Blocks"
+  },
+  "research": [
+    {
+      "url": "https://www.bettyblocks.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_betty_blocks_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "description",
+          "match_type": "regex",
+          "value": "^made with betty blocks$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "React"
+  ],
+  "categories": [
+    47,
+    62
+  ],
+  "notes": "Betty Blocks is a cloud-based application development solution featuring a no-code, drag-and-drop interface for developing business applications.",
+  "website": "https://www.bettyblocks.com"
+}

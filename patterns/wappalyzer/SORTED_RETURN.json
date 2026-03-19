@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sorted_return",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SORTED_RETURN",
+  "taxonomy_name": "Sorted Return",
+  "vendor": "",
+  "product": "Sorted Return",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SORTED_RETURN.json",
+    "original_name": "Sorted Return"
+  },
+  "research": [
+    {
+      "url": "https://sorted.com/give-your-customers-a-5-returns-experience/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sorted_return_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "return\\.clicksit\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    102
+  ],
+  "notes": "Sorted is a global SaaS company that provides data-driven software for checkouts, warehouses, and shipping.",
+  "website": "https://sorted.com/give-your-customers-a-5-returns-experience/"
+}

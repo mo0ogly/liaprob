@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mathjax",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATHJAX",
+  "taxonomy_name": "MathJax",
+  "vendor": "",
+  "product": "MathJax",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MATHJAX.json",
+    "original_name": "MathJax"
+  },
+  "research": [
+    {
+      "url": "https://www.mathjax.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mathjax_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "([\\d.]+)?/mathjax\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "([\\d.]+)?/mathjax\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    25
+  ],
+  "notes": "MathJax is a cross-browser JavaScript library that displays mathematical notation in web browsers, using MathML, LaTeX and ASCIIMathML markup.",
+  "website": "https://www.mathjax.org"
+}

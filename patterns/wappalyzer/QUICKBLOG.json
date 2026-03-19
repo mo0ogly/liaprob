@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-quickblog",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUICKBLOG",
+  "taxonomy_name": "Quickblog",
+  "vendor": "",
+  "product": "Quickblog",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUICKBLOG.json",
+    "original_name": "Quickblog"
+  },
+  "research": [
+    {
+      "url": "https://www.quickblog.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_quickblog_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.quickblog\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    11
+  ],
+  "notes": "Quickblog is a platform that aids bloggers and agencies in producing embedded, SEO-ready blog content seamlessly compatible with any existing website.",
+  "website": "https://www.quickblog.co"
+}

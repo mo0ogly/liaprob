@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adobe_coldfusion",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADOBE_COLDFUSION",
+  "taxonomy_name": "Adobe ColdFusion",
+  "vendor": "",
+  "product": "Adobe ColdFusion",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADOBE_COLDFUSION.json",
+    "original_name": "Adobe ColdFusion"
+  },
+  "research": [
+    {
+      "url": "https://adobe.com/products/coldfusion-family.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adobe_coldfusion_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "cookie",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "cftoken="
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- start headertags\\.cfm",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/cfajax/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:adobe:coldfusion:*:*:*:*:*:*:*:*",
+  "implies": [
+    "CFML"
+  ],
+  "categories": [
+    18
+  ],
+  "website": "https://adobe.com/products/coldfusion-family.html"
+}

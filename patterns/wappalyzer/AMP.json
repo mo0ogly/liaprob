@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-amp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMP",
+  "taxonomy_name": "AMP",
+  "vendor": "",
+  "product": "AMP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AMP.json",
+    "original_name": "AMP"
+  },
+  "research": [
+    {
+      "url": "https://www.amp.dev",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_amp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]* (?:amp|⚡)[^-]",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link rel=\"amphtml\"",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "AMP, originally created by Google, is an open-source HTML framework developed by the AMP open-source Project. AMP is designed to help webpages load faster.",
+  "website": "https://www.amp.dev"
+}

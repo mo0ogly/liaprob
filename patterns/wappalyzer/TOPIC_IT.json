@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-topic_it",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOPIC_IT",
+  "taxonomy_name": "Topic'it",
+  "vendor": "",
+  "product": "Topic'it",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TOPIC_IT.json",
+    "original_name": "Topic'it"
+  },
+  "research": [
+    {
+      "url": "https://topicit.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_topic_it_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "connect\\.topicit\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Topic'it is a tool that optimizes forums for mobile devices, enhancing usability and accessibility across smartphones and tablets.",
+  "website": "https://topicit.net"
+}

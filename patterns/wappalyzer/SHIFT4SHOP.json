@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shift4shop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHIFT4SHOP",
+  "taxonomy_name": "Shift4Shop",
+  "vendor": "",
+  "product": "Shift4Shop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHIFT4SHOP.json",
+    "original_name": "Shift4Shop"
+  },
+  "research": [
+    {
+      "url": "https://www.shift4shop.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shift4shop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "3dcart"
+        },
+        {
+          "target": "cookie",
+          "field": "3dvisit",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:twlh(?:track)?\\.asp|3d_upsell\\.js)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    6
+  ],
+  "notes": "Shift4Shop, formerly known as 3Dcart, is an ecommerce software provider for online businesses.",
+  "website": "https://www.shift4shop.com"
+}

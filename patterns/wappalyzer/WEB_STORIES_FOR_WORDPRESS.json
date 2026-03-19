@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-web_stories_for_wordpress",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEB_STORIES_FOR_WORDPRESS",
+  "taxonomy_name": "Web Stories for WordPress",
+  "vendor": "",
+  "product": "Web Stories for WordPress",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEB_STORIES_FOR_WORDPRESS.json",
+    "original_name": "Web Stories for WordPress"
+  },
+  "research": [
+    {
+      "url": "https://wp.stories.google",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_web_stories_for_wordpress_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "amp-story-generator-name",
+          "match_type": "regex",
+          "value": "^web stories for wordpress$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "amp-story-generator-version",
+          "match_type": "regex",
+          "value": "^(.+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^(.+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Web Stories"
+  ],
+  "categories": [
+    20,
+    87
+  ],
+  "notes": "Web Stories for WordPress is a visual editor for creating Web Stories.",
+  "website": "https://wp.stories.google"
+}

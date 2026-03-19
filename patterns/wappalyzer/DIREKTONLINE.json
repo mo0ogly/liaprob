@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-direktonline",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DIREKTONLINE",
+  "taxonomy_name": "Direktonline",
+  "vendor": "",
+  "product": "Direktonline",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DIREKTONLINE.json",
+    "original_name": "Direktonline"
+  },
+  "research": [
+    {
+      "url": "https://direktonline.se",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_direktonline_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^direktonline bliss webbstudio$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Direktonline is a Swedish enterprise ecommerce designer specializing in creating scalable digital storefronts and tailored online shopping solutions for large businesses.",
+  "website": "https://direktonline.se"
+}

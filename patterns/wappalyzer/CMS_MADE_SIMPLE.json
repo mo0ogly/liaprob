@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cms_made_simple",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CMS_MADE_SIMPLE",
+  "taxonomy_name": "CMS Made Simple",
+  "vendor": "",
+  "product": "CMS Made Simple",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CMS_MADE_SIMPLE.json",
+    "original_name": "CMS Made Simple"
+  },
+  "research": [
+    {
+      "url": "https://cmsmadesimple.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cms_made_simple_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "cmssessid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "cms made simple",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:cmsmadesimple:cms_made_simple:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://cmsmadesimple.org"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-modern_image_formats",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MODERN_IMAGE_FORMATS",
+  "taxonomy_name": "Modern Image Formats",
+  "vendor": "",
+  "product": "Modern Image Formats",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MODERN_IMAGE_FORMATS.json",
+    "original_name": "Modern Image Formats"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/webp-uploads/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_modern_image_formats_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^webp-uploads ([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^webp-uploads ([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "Performance plugin from the WordPress Performance Team, which adds support for outputting images in WebP or AVIF format and supports the `picture` element to enable format fallbacks.",
+  "website": "https://wordpress.org/plugins/webp-uploads/"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-twitter_typeahead_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TWITTER_TYPEAHEAD_JS",
+  "taxonomy_name": "Twitter typeahead.js",
+  "vendor": "",
+  "product": "Twitter typeahead.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TWITTER_TYPEAHEAD_JS.json",
+    "original_name": "Twitter typeahead.js"
+  },
+  "research": [
+    {
+      "url": "https://twitter.github.io/typeahead.js",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_twitter_typeahead_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:typeahead|bloodhound)\\.(?:jquery|bundle)?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "website": "https://twitter.github.io/typeahead.js"
+}

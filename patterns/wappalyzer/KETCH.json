@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ketch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KETCH",
+  "taxonomy_name": "Ketch",
+  "vendor": "",
+  "product": "Ketch",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KETCH.json",
+    "original_name": "Ketch"
+  },
+  "research": [
+    {
+      "url": "https://www.ketch.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ketch_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ketchcdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "Ketch is a data control platform that manages compliance with privacy regulations.",
+  "website": "https://www.ketch.com"
+}

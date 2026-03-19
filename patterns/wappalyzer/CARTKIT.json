@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cartkit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARTKIT",
+  "taxonomy_name": "CartKit",
+  "vendor": "",
+  "product": "CartKit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARTKIT.json",
+    "original_name": "CartKit"
+  },
+  "research": [
+    {
+      "url": "https://www.cartkit.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cartkit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cartkitcdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "CartKit build apps from fuss-free multi-channel marketing automation and campaigns to social proof popups and user session recording.",
+  "website": "https://www.cartkit.com"
+}

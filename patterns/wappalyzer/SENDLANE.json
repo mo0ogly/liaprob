@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sendlane",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SENDLANE",
+  "taxonomy_name": "Sendlane",
+  "vendor": "",
+  "product": "Sendlane",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SENDLANE.json",
+    "original_name": "Sendlane"
+  },
+  "research": [
+    {
+      "url": "https://www.sendlane.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sendlane_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sendlane\\.com/scripts/pusher\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Sendlane is an email and sms marketing platform for online businesses",
+  "website": "https://www.sendlane.com/"
+}

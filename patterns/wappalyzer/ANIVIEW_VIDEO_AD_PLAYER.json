@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aniview_video_ad_player",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANIVIEW_VIDEO_AD_PLAYER",
+  "taxonomy_name": "Aniview Video Ad Player",
+  "vendor": "",
+  "product": "Aniview Video Ad Player",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ANIVIEW_VIDEO_AD_PLAYER.json",
+    "original_name": "Aniview Video Ad Player"
+  },
+  "research": [
+    {
+      "url": "https://aniview.com/video-ad-player/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aniview_video_ad_player_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "player\\.aniview\\.com/script/([\\d\\.]+)/",
+          "confidence_delta": 0.5,
+          "version_extract": "player\\.aniview\\.com/script/([\\d\\.]+)/"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Aniview Ad Server"
+  ],
+  "categories": [
+    14
+  ],
+  "notes": "Aniview Video Ad Player is a video player technology developed by Aniview, a company that specialises in providing video advertising solutions.",
+  "website": "https://aniview.com/video-ad-player/"
+}

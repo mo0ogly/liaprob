@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chayns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHAYNS",
+  "taxonomy_name": "Chayns",
+  "vendor": "",
+  "product": "Chayns",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHAYNS.json",
+    "original_name": "Chayns"
+  },
+  "research": [
+    {
+      "url": "https://chayns.site",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chayns_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.chayns-static\\.space",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Chayns is a web platform that enables businesses and organizations to create customizable websites and apps, providing tools for digital communication, content management, and ecommerce integration.",
+  "website": "https://chayns.site"
+}

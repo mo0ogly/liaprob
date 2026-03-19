@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jumpseller",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUMPSELLER",
+  "taxonomy_name": "Jumpseller",
+  "vendor": "",
+  "product": "Jumpseller",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JUMPSELLER.json",
+    "original_name": "Jumpseller"
+  },
+  "research": [
+    {
+      "url": "https://jumpseller.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jumpseller_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.jumpseller\\.\\w+/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jumpseller-apps\\.herokuapp\\.\\w+/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Jumpseller is a cloud ecommerce solution for small businesses.",
+  "website": "https://jumpseller.com"
+}

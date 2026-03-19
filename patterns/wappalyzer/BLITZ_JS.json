@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blitz_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLITZ_JS",
+  "taxonomy_name": "Blitz.js",
+  "vendor": "",
+  "product": "Blitz.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLITZ_JS.json",
+    "original_name": "Blitz.js"
+  },
+  "research": [
+    {
+      "url": "https://blitzjs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blitz_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^blitz\\.js?([0-9.]+)?",
+          "version_extract": "^blitz\\.js?([0-9.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Next.js"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Blitz.js is a web development framework that uses Next.js and React and includes features for authentication, authorization, and database integration to simplify the creation of high-performance and scalable web applications.",
+  "website": "https://blitzjs.com"
+}

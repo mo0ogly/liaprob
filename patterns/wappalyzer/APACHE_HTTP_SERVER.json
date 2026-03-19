@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-apache_http_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_HTTP_SERVER",
+  "taxonomy_name": "Apache HTTP Server",
+  "vendor": "",
+  "product": "Apache HTTP Server",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APACHE_HTTP_SERVER.json",
+    "original_name": "Apache HTTP Server"
+  },
+  "research": [
+    {
+      "url": "https://httpd.apache.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_apache_http_server_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "(?:apache(?:$|/([\\d.]+)|[^/-])|(?:^|\\b)httpd)",
+          "version_extract": "(?:apache(?:$|/([\\d.]+)|[^/-])|(?:^|\\b)httpd)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*",
+  "categories": [
+    22
+  ],
+  "notes": "Apache is a free and open-source cross-platform web server software.",
+  "website": "https://httpd.apache.org/"
+}

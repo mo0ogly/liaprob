@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-segmentstream",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEGMENTSTREAM",
+  "taxonomy_name": "SegmentStream",
+  "vendor": "",
+  "product": "SegmentStream",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEGMENTSTREAM.json",
+    "original_name": "SegmentStream"
+  },
+  "research": [
+    {
+      "url": "https://segmentstream.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_segmentstream_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.segmentstream\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "SegmentStream is a AI-powered marketing analytics platform built for data-driven CMOs, web analysts and performance marketing teams.",
+  "website": "https://segmentstream.com"
+}

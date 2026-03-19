@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-farcry",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FARCRY",
+  "taxonomy_name": "FarCry",
+  "vendor": "",
+  "product": "FarCry",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FARCRY.json",
+    "original_name": "FarCry"
+  },
+  "research": [
+    {
+      "url": "https://www.farcrycore.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_farcry_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "farcrydevicetype",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    18
+  ],
+  "notes": "FarCry is a web application framework that helps CFML developers build tailor-made content solutions.",
+  "website": "https://www.farcrycore.org"
+}

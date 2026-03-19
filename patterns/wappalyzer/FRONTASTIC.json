@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-frontastic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRONTASTIC",
+  "taxonomy_name": "Frontastic",
+  "vendor": "",
+  "product": "Frontastic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRONTASTIC.json",
+    "original_name": "Frontastic"
+  },
+  "research": [
+    {
+      "url": "https://www.frontastic.cloud/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_frontastic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "frontastic-request-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Frontastic is a Commerce Frontend Platform that unites business and development teams to build commerce sites on headless.",
+  "website": "https://www.frontastic.cloud/"
+}

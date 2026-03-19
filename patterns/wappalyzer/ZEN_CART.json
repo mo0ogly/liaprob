@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zen_cart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEN_CART",
+  "taxonomy_name": "Zen Cart",
+  "vendor": "",
+  "product": "Zen Cart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZEN_CART.json",
+    "original_name": "Zen Cart"
+  },
+  "research": [
+    {
+      "url": "https://www.zen-cart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zen_cart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "zen cart",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "website": "https://www.zen-cart.com"
+}

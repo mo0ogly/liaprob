@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-twenty_twenty_one",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TWENTY_TWENTY_ONE",
+  "taxonomy_name": "Twenty Twenty-One",
+  "vendor": "",
+  "product": "Twenty Twenty-One",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TWENTY_TWENTY_ONE.json",
+    "original_name": "Twenty Twenty-One"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/themes/twentytwentyone",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_twenty_twenty_one_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/twentytwentyone/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Twenty Twenty-One is the default WordPress theme for 2021.",
+  "website": "https://wordpress.org/themes/twentytwentyone"
+}

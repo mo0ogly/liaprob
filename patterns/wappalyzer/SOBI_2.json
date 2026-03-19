@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sobi_2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOBI_2",
+  "taxonomy_name": "SOBI 2",
+  "vendor": "",
+  "product": "SOBI 2",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SOBI_2.json",
+    "original_name": "SOBI 2"
+  },
+  "research": [
+    {
+      "url": "https://www.sigsiu.net/sobi2.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sobi_2_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<!-- start of sigsiu online business index|<div[^>]* class=\"sobi2)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Joomla"
+  ],
+  "categories": [
+    19
+  ],
+  "website": "https://www.sigsiu.net/sobi2.html"
+}

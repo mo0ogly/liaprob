@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mgpanel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MGPANEL",
+  "taxonomy_name": "MGPanel",
+  "vendor": "",
+  "product": "MGPanel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MGPANEL.json",
+    "original_name": "MGPanel"
+  },
+  "research": [
+    {
+      "url": "https://mgpanel.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mgpanel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.mgpanel\\.org/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "MGPanel has it all, a content management system that gives programmers the freedom to create professional web pages from scratch, also providing their clients with a self-managing platform.",
+  "website": "https://mgpanel.org"
+}

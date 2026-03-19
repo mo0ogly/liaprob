@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-net_results",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NET_RESULTS",
+  "taxonomy_name": "NET-RESULTS",
+  "vendor": "",
+  "product": "NET-RESULTS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NET_RESULTS.json",
+    "original_name": "NET-RESULTS"
+  },
+  "research": [
+    {
+      "url": "https://www.net-results.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_net_results_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.net-results\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "NET-RESULTS is a marketing automation platform for the data-driven marketer.",
+  "website": "https://www.net-results.com"
+}

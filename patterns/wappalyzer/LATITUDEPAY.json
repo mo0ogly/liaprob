@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-latitudepay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LATITUDEPAY",
+  "taxonomy_name": "LatitudePay",
+  "vendor": "",
+  "product": "LatitudePay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LATITUDEPAY.json",
+    "original_name": "LatitudePay"
+  },
+  "research": [
+    {
+      "url": "https://www.latitudepay.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_latitudepay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.latitudepayapps\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    91
+  ],
+  "notes": "LatitudePay is an interest-free, buy now, pay later solution.",
+  "website": "https://www.latitudepay.com"
+}

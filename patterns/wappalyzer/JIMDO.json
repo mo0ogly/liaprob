@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jimdo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JIMDO",
+  "taxonomy_name": "Jimdo",
+  "vendor": "",
+  "product": "Jimdo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JIMDO.json",
+    "original_name": "Jimdo"
+  },
+  "research": [
+    {
+      "url": "https://www.jimdo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jimdo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-jimdo-instance",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-jimdo-wid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Jimdo is a website-builder and all-in-one hosting solution, designed to enable users to build their own websites.",
+  "website": "https://www.jimdo.com"
+}

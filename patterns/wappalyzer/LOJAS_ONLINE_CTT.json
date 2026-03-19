@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lojas_online_ctt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOJAS_ONLINE_CTT",
+  "taxonomy_name": "Lojas Online CTT",
+  "vendor": "",
+  "product": "Lojas Online CTT",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOJAS_ONLINE_CTT.json",
+    "original_name": "Lojas Online CTT"
+  },
+  "research": [
+    {
+      "url": "https://www.ctt.pt/empresas/e-commerce-e-logistica/e-commerce/lojas-online-ctt/index",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lojas_online_ctt_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "lojas online ctt",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.lojasonlinectt\\.pt",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Lojas Online CTT is an ecommerce website builder that provides an online storefront with deliveries insured by CTT.",
+  "website": "https://www.ctt.pt/empresas/e-commerce-e-logistica/e-commerce/lojas-online-ctt/index"
+}

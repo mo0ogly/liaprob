@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clickio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLICKIO",
+  "taxonomy_name": "clickio",
+  "vendor": "",
+  "product": "clickio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLICKIO.json",
+    "original_name": "clickio"
+  },
+  "research": [
+    {
+      "url": "https://www.gdpr.clickio.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clickio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "clickio\\.mgr\\.consensu\\.org/t/consent_[0-9]+\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "Clickio Consent Tool collects and communicates consent both to IAB Framework vendors and to Google Ads products.",
+  "website": "https://www.gdpr.clickio.com/"
+}

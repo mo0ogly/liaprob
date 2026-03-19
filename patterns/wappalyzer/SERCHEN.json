@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-serchen",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERCHEN",
+  "taxonomy_name": "Serchen",
+  "vendor": "",
+  "product": "Serchen",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SERCHEN.json",
+    "original_name": "Serchen"
+  },
+  "research": [
+    {
+      "url": "https://www.serchen.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_serchen_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.serchen\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Serchen is a platform that enables buyers to search, compare and evaluate a vast quantity of vendors in an ever increasingly diverse range of industries.",
+  "website": "https://www.serchen.com"
+}

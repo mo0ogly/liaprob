@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-altis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALTIS",
+  "taxonomy_name": "Altis",
+  "vendor": "",
+  "product": "Altis",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALTIS.json",
+    "original_name": "Altis"
+  },
+  "research": [
+    {
+      "url": "https://www.altis-dxp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_altis_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^altis ?([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^altis ?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Altis is a digital experience platform built on top of WordPress.",
+  "website": "https://www.altis-dxp.com"
+}

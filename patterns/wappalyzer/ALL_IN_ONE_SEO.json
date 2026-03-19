@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-all_in_one_seo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALL_IN_ONE_SEO",
+  "taxonomy_name": "All in One SEO",
+  "vendor": "",
+  "product": "All in One SEO",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALL_IN_ONE_SEO.json",
+    "original_name": "All in One SEO"
+  },
+  "research": [
+    {
+      "url": "https://aioseo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_all_in_one_seo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- all in one seo ([\\d.]+) ",
+          "confidence_delta": 0.5,
+          "version_extract": "<!-- all in one seo ([\\d.]+) "
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- all in one seo pack ([\\d.]+) ",
+          "confidence_delta": 0.5,
+          "version_extract": "<!-- all in one seo pack ([\\d.]+) "
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- all in one seo pro ([\\d.]+) ",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^all in one seo \\(aioseo\\) ([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "^all in one seo \\(aioseo\\) ([\\d\\.]+)"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^all in one seo pro \\(aioseo\\) ([\\d\\.]+)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:aioseo:all_in_one_seo:*:*:*:*:*:wordpress:*:*",
+  "implies": [
+    "WordPress"
+  ],
+  "categories": [
+    54,
+    87
+  ],
+  "notes": "All in One SEO optimizes a WordPress website and its content for search engines.",
+  "website": "https://aioseo.com"
+}

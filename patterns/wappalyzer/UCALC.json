@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ucalc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UCALC",
+  "taxonomy_name": "Ucalc",
+  "vendor": "",
+  "product": "Ucalc",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UCALC.json",
+    "original_name": "Ucalc"
+  },
+  "research": [
+    {
+      "url": "https://ucalc.pro",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ucalc_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ucalc\\.pro/api/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    110
+  ],
+  "notes": "Ucalc is a platform offering calculators and form building tools, facilitating efficient computation and streamlined data collection processes.",
+  "website": "https://ucalc.pro"
+}

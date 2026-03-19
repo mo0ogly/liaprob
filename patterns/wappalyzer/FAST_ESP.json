@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fast_esp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FAST_ESP",
+  "taxonomy_name": "FAST ESP",
+  "vendor": "",
+  "product": "FAST ESP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FAST_ESP.json",
+    "original_name": "FAST ESP"
+  },
+  "research": [
+    {
+      "url": "https://microsoft.com/enterprisesearch",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fast_esp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form[^>]+id=\"fastsearch\"",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "FAST ESP is a service-oriented architecture development platform which is geared towards production searchable indexes. It provided a flexible framework for creating ETL applications for efficient indexing of searchable content.",
+  "website": "https://microsoft.com/enterprisesearch"
+}

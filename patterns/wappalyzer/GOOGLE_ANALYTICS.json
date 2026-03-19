@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-google_analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_ANALYTICS",
+  "taxonomy_name": "Google Analytics",
+  "vendor": "",
+  "product": "Google Analytics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOOGLE_ANALYTICS.json",
+    "original_name": "Google Analytics"
+  },
+  "research": [
+    {
+      "url": "https://google.com/analytics",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_google_analytics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "__utma",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_ga",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_ga_*",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_gat",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "google-analytics\\.com/(?:ga|urchin|analytics)\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "googletagmanager\\.com/gtag/js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Google Analytics is a free web analytics service that tracks and reports website traffic.",
+  "website": "https://google.com/analytics"
+}

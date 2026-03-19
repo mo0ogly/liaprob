@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-smash_balloon_instagram_feed",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SMASH_BALLOON_INSTAGRAM_FEED",
+  "taxonomy_name": "Smash Balloon Instagram Feed",
+  "vendor": "",
+  "product": "Smash Balloon Instagram Feed",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SMASH_BALLOON_INSTAGRAM_FEED.json",
+    "original_name": "Smash Balloon Instagram Feed"
+  },
+  "research": [
+    {
+      "url": "https://smashballoon.com/instagram-feed",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_smash_balloon_instagram_feed_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/instagram-feed/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87
+  ],
+  "notes": "Instagram Feed displays Instagram posts from your Instagram accounts, either in the same single feed or in multiple different ones. Created by Smash Balloon.",
+  "website": "https://smashballoon.com/instagram-feed"
+}

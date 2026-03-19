@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webestools",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBESTOOLS",
+  "taxonomy_name": "Webestools",
+  "vendor": "",
+  "product": "Webestools",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBESTOOLS.json",
+    "original_name": "Webestools"
+  },
+  "research": [
+    {
+      "url": "https://www.webestools.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webestools_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.webestools\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Webestools is a platform offering online tools, including counters and widgets, for various functionalities.",
+  "website": "https://www.webestools.com"
+}

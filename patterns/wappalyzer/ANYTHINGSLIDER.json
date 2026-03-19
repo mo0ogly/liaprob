@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-anythingslider",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANYTHINGSLIDER",
+  "taxonomy_name": "AnythingSlider",
+  "vendor": "",
+  "product": "AnythingSlider",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ANYTHINGSLIDER.json",
+    "original_name": "AnythingSlider"
+  },
+  "research": [
+    {
+      "url": "https://css-tricks.com/anythingslider-jquery-plugin/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_anythingslider_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "anythingslider(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "anythingslider(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A robust jQuery-based slider plugin.",
+  "website": "https://css-tricks.com/anythingslider-jquery-plugin/"
+}

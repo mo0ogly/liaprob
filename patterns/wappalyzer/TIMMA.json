@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-timma",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TIMMA",
+  "taxonomy_name": "Timma",
+  "vendor": "",
+  "product": "Timma",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TIMMA.json",
+    "original_name": "Timma"
+  },
+  "research": [
+    {
+      "url": "https://timma.no",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_timma_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^timma",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Timma is a hair and salon booking system that enables users to schedule appointments with salons and stylists through an online platform.",
+  "website": "https://timma.no"
+}

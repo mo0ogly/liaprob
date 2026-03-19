@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-addtoany",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADDTOANY",
+  "taxonomy_name": "AddToAny",
+  "vendor": "",
+  "product": "AddToAny",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADDTOANY.json",
+    "original_name": "AddToAny"
+  },
+  "research": [
+    {
+      "url": "https://www.addtoany.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_addtoany_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "addtoany\\.com/menu/page\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "AddToAny is a universal sharing platform that can be integrated into a website by use of a web widget or plugin.",
+  "website": "https://www.addtoany.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vagaro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VAGARO",
+  "taxonomy_name": "Vagaro",
+  "vendor": "",
+  "product": "Vagaro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VAGARO.json",
+    "original_name": "Vagaro"
+  },
+  "research": [
+    {
+      "url": "https://www.vagaro.com/pro/schedulicity",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vagaro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.schedulicity\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Vagaro is a software platform that enables businesses to manage and book appointments online through a centralized scheduling system.",
+  "website": "https://www.vagaro.com/pro/schedulicity"
+}

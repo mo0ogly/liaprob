@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-google_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_WEB_SERVER",
+  "taxonomy_name": "Google Web Server",
+  "vendor": "",
+  "product": "Google Web Server",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOOGLE_WEB_SERVER.json",
+    "original_name": "Google Web Server"
+  },
+  "research": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Google_Web_Server",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_google_web_server_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "gws"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:google:web_server:*:*:*:*:*:*:*:*",
+  "categories": [
+    22
+  ],
+  "website": "https://en.wikipedia.org/wiki/Google_Web_Server"
+}

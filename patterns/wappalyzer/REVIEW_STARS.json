@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-review_stars",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REVIEW_STARS",
+  "taxonomy_name": "Review Stars",
+  "vendor": "",
+  "product": "Review Stars",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REVIEW_STARS.json",
+    "original_name": "Review Stars"
+  },
+  "research": [
+    {
+      "url": "https://reviewstars.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_review_stars_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.reviewstars\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Review Stars is a digital marketing boutique that assists businesses in enhancing their positive online reputation using review generation technology.",
+  "website": "https://reviewstars.com/"
+}

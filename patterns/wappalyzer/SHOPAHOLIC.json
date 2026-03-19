@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopaholic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPAHOLIC",
+  "taxonomy_name": "Shopaholic",
+  "vendor": "",
+  "product": "Shopaholic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPAHOLIC.json",
+    "original_name": "Shopaholic"
+  },
+  "research": [
+    {
+      "url": "https://shopaholic.one",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopaholic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "shopaholic_cart_id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Shopaholic is an open-source ecosystem of plugins and themes for rapid ecommerce website development that allows building projects from small to large online shops.",
+  "website": "https://shopaholic.one"
+}

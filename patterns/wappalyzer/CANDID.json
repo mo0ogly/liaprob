@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-candid",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CANDID",
+  "taxonomy_name": "Candid",
+  "vendor": "",
+  "product": "Candid",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CANDID.json",
+    "original_name": "Candid"
+  },
+  "research": [
+    {
+      "url": "https://www.getcandid.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_candid_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.getcandid\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Candid is a visual commerce platform that integrates ecommerce with Instagram, enabling product discovery and streamlined shopping experiences.",
+  "website": "https://www.getcandid.com"
+}

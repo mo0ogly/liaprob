@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dynatrace_rum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DYNATRACE_RUM",
+  "taxonomy_name": "Dynatrace RUM",
+  "vendor": "",
+  "product": "Dynatrace RUM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DYNATRACE_RUM.json",
+    "original_name": "Dynatrace RUM"
+  },
+  "research": [
+    {
+      "url": "https://www.dynatrace.com/platform/real-user-monitoring",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dynatrace_rum_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/ruxitagentjs_(?:.+)_(?:.+)\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Dynatrace"
+  ],
+  "categories": [
+    78
+  ],
+  "notes": "Dynatrace RUM is a AI powered, full stack, automated real user monutoring platform built by Dynatrace.",
+  "website": "https://www.dynatrace.com/platform/real-user-monitoring"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-resonate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RESONATE",
+  "taxonomy_name": "Resonate",
+  "vendor": "",
+  "product": "Resonate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RESONATE.json",
+    "original_name": "Resonate"
+  },
+  "research": [
+    {
+      "url": "https://www.resonate.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_resonate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.resonate\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Resonate is a consumer intelligence platform that collects, analyzes, and interprets audience data to provide insights into consumer behavior, preferences, and motivations for strategic decision-making.",
+  "website": "https://www.resonate.com"
+}

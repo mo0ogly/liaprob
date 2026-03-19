@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shionimporter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHIONIMPORTER",
+  "taxonomy_name": "ShionImporter",
+  "vendor": "",
+  "product": "ShionImporter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHIONIMPORTER.json",
+    "original_name": "ShionImporter"
+  },
+  "research": [
+    {
+      "url": "https://shionimporter.site",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shionimporter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.shionimporter\\.site",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "ShionImporter is a platform that provides dropshipping services, product importing, and automated synchronization of prices and inventory for ecommerce businesses.",
+  "website": "https://shionimporter.site"
+}

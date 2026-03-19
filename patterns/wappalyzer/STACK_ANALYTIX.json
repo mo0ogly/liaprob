@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stack_analytix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STACK_ANALYTIX",
+  "taxonomy_name": "Stack Analytix",
+  "vendor": "",
+  "product": "Stack Analytix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STACK_ANALYTIX.json",
+    "original_name": "Stack Analytix"
+  },
+  "research": [
+    {
+      "url": "https://www.stackanalytix.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stack_analytix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.stackanalytix\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Stack Analytix offers heatmaps, session recording, conversion analysis and user engagement tools.",
+  "website": "https://www.stackanalytix.com"
+}

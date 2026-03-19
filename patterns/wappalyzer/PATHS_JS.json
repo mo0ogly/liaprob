@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-paths_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PATHS_JS",
+  "taxonomy_name": "Paths.js",
+  "vendor": "",
+  "product": "Paths.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PATHS_JS.json",
+    "original_name": "Paths.js"
+  },
+  "research": [
+    {
+      "url": "https://github.com/andreaferretti/paths-js",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_paths_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "paths(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    25
+  ],
+  "website": "https://github.com/andreaferretti/paths-js"
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_sharepoint",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_SHAREPOINT",
+  "taxonomy_name": "Microsoft SharePoint",
+  "vendor": "",
+  "product": "Microsoft SharePoint",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_SHAREPOINT.json",
+    "original_name": "Microsoft SharePoint"
+  },
+  "research": [
+    {
+      "url": "https://sharepoint.microsoft.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_sharepoint_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "microsoftsharepointteamservices",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^(.+)$",
+          "version_extract": "^(.+)$"
+        },
+        {
+          "target": "header",
+          "field": "sharepointhealthscore",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "sprequestguid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-sharepointhealthscore",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "microsoft sharepoint",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:sharepoint_server:*:*:*:*:*:*:*:*",
+  "categories": [
+    1
+  ],
+  "notes": "SharePoint is a cloud-based collaborative platform to manage and share content.",
+  "website": "https://sharepoint.microsoft.com"
+}

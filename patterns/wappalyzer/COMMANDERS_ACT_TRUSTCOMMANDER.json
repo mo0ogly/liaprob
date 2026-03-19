@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-commanders_act_trustcommander",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMMANDERS_ACT_TRUSTCOMMANDER",
+  "taxonomy_name": "Commanders Act TrustCommander",
+  "vendor": "",
+  "product": "Commanders Act TrustCommander",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COMMANDERS_ACT_TRUSTCOMMANDER.json",
+    "original_name": "Commanders Act TrustCommander"
+  },
+  "research": [
+    {
+      "url": "https://www.commandersact.com/en/solutions/trustcommander/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_commanders_act_trustcommander_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.trustcommander\\.net/privacy/.+_v([\\d]+)_([\\d]+)\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "Commanders Act TrustCommander is a consent management platform (CMP) which allows you to comply with the general data protection regulation (GDPR) regulation in terms of collecting consent.",
+  "website": "https://www.commandersact.com/en/solutions/trustcommander/"
+}

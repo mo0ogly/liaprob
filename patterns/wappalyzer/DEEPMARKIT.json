@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-deepmarkit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEEPMARKIT",
+  "taxonomy_name": "DeepMarkit",
+  "vendor": "",
+  "product": "DeepMarkit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DEEPMARKIT.json",
+    "original_name": "DeepMarkit"
+  },
+  "research": [
+    {
+      "url": "https://www.deepmarkit.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_deepmarkit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "portal\\.deepmarkit\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Deepmarkit is a customer acquisition platform designed to help businesses attract, engage, and convert potential clients through targeted digital marketing and promotional campaigns.",
+  "website": "https://www.deepmarkit.com"
+}

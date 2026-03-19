@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tablebooker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TABLEBOOKER",
+  "taxonomy_name": "TableBooker",
+  "vendor": "",
+  "product": "TableBooker",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TABLEBOOKER.json",
+    "original_name": "TableBooker"
+  },
+  "research": [
+    {
+      "url": "https://www.tablebooker.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tablebooker_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "reservations\\.tablebooker\\.\\w+/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Tablebooker is an online reservation system for restaurants.",
+  "website": "https://www.tablebooker.com"
+}

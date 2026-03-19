@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopfactory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPFACTORY",
+  "taxonomy_name": "ShopFactory",
+  "vendor": "",
+  "product": "ShopFactory",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPFACTORY.json",
+    "original_name": "ShopFactory"
+  },
+  "research": [
+    {
+      "url": "https://www.shopfactory.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopfactory_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^shopfactory v([0-9.]+) www\\.shopfactory\\.com$",
+          "confidence_delta": 0.5,
+          "version_extract": "^shopfactory v([0-9.]+) www\\.shopfactory\\.com$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "ShopFactory is an all-in-one ecommerce platform that allows businesses to create and manage their online stores without the need for extensive technical expertise.",
+  "website": "https://www.shopfactory.com"
+}

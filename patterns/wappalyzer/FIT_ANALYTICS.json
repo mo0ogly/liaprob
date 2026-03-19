@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fit_analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FIT_ANALYTICS",
+  "taxonomy_name": "Fit Analytics",
+  "vendor": "",
+  "product": "Fit Analytics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FIT_ANALYTICS.json",
+    "original_name": "Fit Analytics"
+  },
+  "research": [
+    {
+      "url": "https://www.fitanalytics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fit_analytics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.fitanalytics\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Fit Analytics is a platform that provides clothing size recommendations for online customers by measuring individual dimensions via webcams.",
+  "website": "https://www.fitanalytics.com"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-instabot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INSTABOT",
+  "taxonomy_name": "Instabot",
+  "vendor": "",
+  "product": "Instabot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INSTABOT.json",
+    "original_name": "Instabot"
+  },
+  "research": [
+    {
+      "url": "https://instabot.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_instabot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/rokoinstabot\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    10,
+    32,
+    52,
+    58
+  ],
+  "notes": "Instabot is a conversion chatbot that understands your users, and curates information, answers questions, captures contacts, and books meetings instantly.",
+  "website": "https://instabot.io/"
+}

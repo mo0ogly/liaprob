@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sirge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIRGE",
+  "taxonomy_name": "Sirge",
+  "vendor": "",
+  "product": "Sirge",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIRGE.json",
+    "original_name": "Sirge"
+  },
+  "research": [
+    {
+      "url": "https://www.sirge.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sirge_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.app\\.sirge\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    100
+  ],
+  "notes": "Sirge is an analytics platform that tracks website visits, customer behavior, and provides insights to optimise return on ad spend (ROAS) and conversions.",
+  "website": "https://www.sirge.com"
+}

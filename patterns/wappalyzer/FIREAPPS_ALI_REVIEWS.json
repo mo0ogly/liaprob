@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fireapps_ali_reviews",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FIREAPPS_ALI_REVIEWS",
+  "taxonomy_name": "FireApps Ali Reviews",
+  "vendor": "",
+  "product": "FireApps Ali Reviews",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FIREAPPS_ALI_REVIEWS.json",
+    "original_name": "FireApps Ali Reviews"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/ali-reviews",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fireapps_ali_reviews_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//alireviews\\.fireapps\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100,
+    90
+  ],
+  "notes": "FireApps Ali Reviews is an all-in-one solution that helps to collect, showcase, and manage impactful reviews.",
+  "website": "https://apps.shopify.com/ali-reviews"
+}

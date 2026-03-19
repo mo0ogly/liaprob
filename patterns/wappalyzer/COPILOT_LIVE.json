@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-copilot_live",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COPILOT_LIVE",
+  "taxonomy_name": "Copilot.Live",
+  "vendor": "",
+  "product": "Copilot.Live",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COPILOT_LIVE.json",
+    "original_name": "Copilot.Live"
+  },
+  "research": [
+    {
+      "url": "https://www.copilot.live",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_copilot_live_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "script\\.copilot\\.live",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Copilot.Live is an AI agent with human-level capabilities, enabling the creation of AI agents for customer support.",
+  "website": "https://www.copilot.live"
+}

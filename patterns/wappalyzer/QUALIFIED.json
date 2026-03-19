@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-qualified",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUALIFIED",
+  "taxonomy_name": "Qualified",
+  "vendor": "",
+  "product": "Qualified",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUALIFIED.json",
+    "original_name": "Qualified"
+  },
+  "research": [
+    {
+      "url": "https://www.qualified.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_qualified_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.qualified\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52,
+    32
+  ],
+  "notes": "Qualified is a B2B marketer that allows buyers and sales reps to connect through real-time website conversations.",
+  "website": "https://www.qualified.com"
+}

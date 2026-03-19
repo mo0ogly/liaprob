@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-speculative_loading",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPECULATIVE_LOADING",
+  "taxonomy_name": "Speculative Loading",
+  "vendor": "",
+  "product": "Speculative Loading",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPECULATIVE_LOADING.json",
+    "original_name": "Speculative Loading"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/speculation-rules/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_speculative_loading_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^speculation-rules ([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^speculation-rules ([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "Performance plugin from the WordPress Performance Team, which adds support for the Speculation Rules API, by which certain URLs are dynamically prefetched or prerendered based on user interaction.",
+  "website": "https://wordpress.org/plugins/speculation-rules/"
+}

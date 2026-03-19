@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-autocommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUTOCOMMERCE",
+  "taxonomy_name": "Autocommerce",
+  "vendor": "",
+  "product": "Autocommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUTOCOMMERCE.json",
+    "original_name": "Autocommerce"
+  },
+  "research": [
+    {
+      "url": "https://autocommerce.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_autocommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.autocommerce\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Autocommerce is a product recommendation app for Shopify stores, similar to Amazon, designed to enhance the shopping experience by suggesting relevant products to customers based on their browsing and purchase history.",
+  "website": "https://autocommerce.io"
+}

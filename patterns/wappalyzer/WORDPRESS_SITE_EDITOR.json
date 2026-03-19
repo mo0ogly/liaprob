@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wordpress_site_editor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORDPRESS_SITE_EDITOR",
+  "taxonomy_name": "WordPress Site Editor",
+  "vendor": "",
+  "product": "WordPress Site Editor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORDPRESS_SITE_EDITOR.json",
+    "original_name": "WordPress Site Editor"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/documentation/article/site-editor/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wordpress_site_editor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"wp-site-blocks\">",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Full Site Editing enables users to design and customize their entire WordPress website with a block-based editor.",
+  "website": "https://wordpress.org/documentation/article/site-editor/"
+}

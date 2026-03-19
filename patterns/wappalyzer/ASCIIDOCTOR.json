@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-asciidoctor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASCIIDOCTOR",
+  "taxonomy_name": "Asciidoctor",
+  "vendor": "",
+  "product": "Asciidoctor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ASCIIDOCTOR.json",
+    "original_name": "Asciidoctor"
+  },
+  "research": [
+    {
+      "url": "https://github.com/asciidoctor/asciidoctor",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_asciidoctor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^asciidoctor\\s([\\d\\.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^asciidoctor\\s([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Ruby"
+  ],
+  "categories": [
+    4
+  ],
+  "notes": "Asciidoctor is an open-source text processor and publishing toolchain, written in Ruby, for converting AsciiDoc content to HTML 5, DocBook 5, and other formats.",
+  "website": "https://github.com/asciidoctor/asciidoctor"
+}

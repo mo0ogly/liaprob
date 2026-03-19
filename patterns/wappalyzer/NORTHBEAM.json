@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-northbeam",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NORTHBEAM",
+  "taxonomy_name": "Northbeam",
+  "vendor": "",
+  "product": "Northbeam",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NORTHBEAM.json",
+    "original_name": "Northbeam"
+  },
+  "research": [
+    {
+      "url": "https://www.northbeam.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_northbeam_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.northbeam\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Northbeam is a platform for marketing measurement that uses machine learning for DTC and ecommerce brands.",
+  "website": "https://www.northbeam.io"
+}

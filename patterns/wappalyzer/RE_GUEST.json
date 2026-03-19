@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-re_guest",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RE_GUEST",
+  "taxonomy_name": "RE:Guest",
+  "vendor": "",
+  "product": "RE:Guest",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RE_GUEST.json",
+    "original_name": "RE:Guest"
+  },
+  "research": [
+    {
+      "url": "https://www.reguest.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_re_guest_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.reguest-hub-api\\.reguest\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Re:Guest is a digital room seller that helps hoteliers increase their online visibility and reach more guests.",
+  "website": "https://www.reguest.io"
+}

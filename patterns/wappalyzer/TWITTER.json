@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-twitter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TWITTER",
+  "taxonomy_name": "Twitter",
+  "vendor": "",
+  "product": "Twitter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TWITTER.json",
+    "original_name": "Twitter"
+  },
+  "research": [
+    {
+      "url": "https://twitter.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_twitter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//platform\\.twitter\\.com/widgets\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Twitter is a 'microblogging' system that allows you to send and receive short posts called tweets.",
+  "website": "https://twitter.com"
+}

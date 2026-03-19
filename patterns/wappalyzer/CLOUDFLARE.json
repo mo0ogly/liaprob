@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cloudflare",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDFLARE",
+  "taxonomy_name": "Cloudflare",
+  "vendor": "",
+  "product": "Cloudflare",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOUDFLARE.json",
+    "original_name": "Cloudflare"
+  },
+  "research": [
+    {
+      "url": "https://www.cloudflare.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cloudflare_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "cf-cache-status",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "cf-ray",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^cloudflare$"
+        },
+        {
+          "target": "cookie",
+          "field": "__cfduid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "image",
+          "match_type": "regex",
+          "value": "//cdn\\.cloudflare",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.",
+  "website": "https://www.cloudflare.com"
+}

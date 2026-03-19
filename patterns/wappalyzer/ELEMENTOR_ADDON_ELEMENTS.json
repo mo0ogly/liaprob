@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-elementor_addon_elements",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELEMENTOR_ADDON_ELEMENTS",
+  "taxonomy_name": "Elementor Addon Elements",
+  "vendor": "",
+  "product": "Elementor Addon Elements",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ELEMENTOR_ADDON_ELEMENTS.json",
+    "original_name": "Elementor Addon Elements"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/addon-elements-for-elementor-page-builder",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_elementor_addon_elements_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "addon-elements-for-elementor-page-builder(?:\\/assets)?(?:\\/js)?(?:\\/lib)?(?:\\/animated-main)?(?:\\/build)?(?:\\/eae)?(?:\\/iconhelper)?(?:\\/index)?(?:\\/magnific)?(?:\\/particles)?(?:\\/vegas){0,2}(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "addon-elements-for-elementor-page-builder(?:\\/assets)?(?:\\/js)?(?:\\/lib)?(?:\\/animated-main)?(?:\\/build)?(?:\\/eae)?(?:\\/iconhelper)?(?:\\/index)?(?:\\/magnific)?(?:\\/particles)?(?:\\/vegas){0,2}(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    87
+  ],
+  "notes": "Widgets and extensions to extend the Elementor Page Builder.",
+  "website": "https://wordpress.org/plugins/addon-elements-for-elementor-page-builder"
+}

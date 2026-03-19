@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-automizely",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUTOMIZELY",
+  "taxonomy_name": "Automizely",
+  "vendor": "",
+  "product": "Automizely",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUTOMIZELY.json",
+    "original_name": "Automizely"
+  },
+  "research": [
+    {
+      "url": "https://www.automizely.com/marketing",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_automizely_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.automizely\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Automizely creates and manages enterprise-level marketing automation systems including contact and CRM mappings, lead funnels, email nurture, lead-generating pages, and blog posts, and website integrations.",
+  "website": "https://www.automizely.com/marketing"
+}

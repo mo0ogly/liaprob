@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-javaserver_pages",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAVASERVER_PAGES",
+  "taxonomy_name": "JavaServer Pages",
+  "vendor": "",
+  "product": "JavaServer Pages",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JAVASERVER_PAGES.json",
+    "original_name": "JavaServer Pages"
+  },
+  "research": [
+    {
+      "url": "https://www.oracle.com/technetwork/java/javaee/jsp/index.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_javaserver_pages_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "jsp(?:/([\\d.]+))?",
+          "version_extract": "jsp(?:/([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    18
+  ],
+  "website": "https://www.oracle.com/technetwork/java/javaee/jsp/index.html"
+}

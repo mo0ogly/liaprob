@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tula",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TULA",
+  "taxonomy_name": "Tula",
+  "vendor": "",
+  "product": "Tula",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TULA.json",
+    "original_name": "Tula"
+  },
+  "research": [
+    {
+      "url": "https://tulasoftware.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tula_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_tulayoga_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53,
+    72
+  ],
+  "notes": "Tula is a web-based yoga studio software facilitating management of payments, memberships, calendar sharing, registrations, credit tracking, attendance recording, and more for studio owners.",
+  "website": "https://tulasoftware.com"
+}

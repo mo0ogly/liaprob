@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-say_ac",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAY_AC",
+  "taxonomy_name": "Say.ac",
+  "vendor": "",
+  "product": "Say.ac",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SAY_AC.json",
+    "original_name": "Say.ac"
+  },
+  "research": [
+    {
+      "url": "https://say.ac",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_say_ac_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//say\\.ac/(v[0-9]+)?\\.php",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Say.ac is a platform for webmasters that analyzes website visitor data and provides insights on traffic patterns and user behavior.",
+  "website": "https://say.ac"
+}

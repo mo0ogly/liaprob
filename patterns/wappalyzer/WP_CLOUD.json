@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wp_cloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WP_CLOUD",
+  "taxonomy_name": "wp.cloud",
+  "vendor": "",
+  "product": "wp.cloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WP_CLOUD.json",
+    "original_name": "wp.cloud"
+  },
+  "research": [
+    {
+      "url": "https://wp.cloud/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wp_cloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "host-header",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "wpcloud"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress"
+  ],
+  "categories": [
+    62,
+    88
+  ],
+  "notes": "WordPress-first cloud hosting.",
+  "website": "https://wp.cloud/"
+}

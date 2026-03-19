@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-apple_mapkit_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_MAPKIT_JS",
+  "taxonomy_name": "Apple MapKit JS",
+  "vendor": "",
+  "product": "Apple MapKit JS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APPLE_MAPKIT_JS.json",
+    "original_name": "Apple MapKit JS"
+  },
+  "research": [
+    {
+      "url": "https://developer.apple.com/maps/web/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_apple_mapkit_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.apple-mapkit\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//cdn\\.apple-mapkit\\.com/mk/([\\d\\.\\w]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "//cdn\\.apple-mapkit\\.com/mk/([\\d\\.\\w]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "Apple MapKit JS lets you embed interactive maps directly into your websites across platforms and operating systems, including iOS and Android.",
+  "website": "https://developer.apple.com/maps/web/"
+}

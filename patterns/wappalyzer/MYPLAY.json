@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-myplay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYPLAY",
+  "taxonomy_name": "MyPlay",
+  "vendor": "",
+  "product": "MyPlay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MYPLAY.json",
+    "original_name": "MyPlay"
+  },
+  "research": [
+    {
+      "url": "https://www.myplay.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_myplay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.myplay\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "MyPlay is a network of Sony Music–owned online stores that enable musicians to sell and distribute their music and related merchandise.",
+  "website": "https://www.myplay.com"
+}

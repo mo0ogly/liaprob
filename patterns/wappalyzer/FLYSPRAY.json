@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flyspray",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLYSPRAY",
+  "taxonomy_name": "Flyspray",
+  "vendor": "",
+  "product": "Flyspray",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLYSPRAY.json",
+    "original_name": "Flyspray"
+  },
+  "research": [
+    {
+      "url": "https://flyspray.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flyspray_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "flyspray_project",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<a[^>]+>powered by flyspray|<map id=\"projectsearchform)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    13
+  ],
+  "website": "https://flyspray.org"
+}

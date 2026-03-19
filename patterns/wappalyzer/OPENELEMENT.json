@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-openelement",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENELEMENT",
+  "taxonomy_name": "OpenElement",
+  "vendor": "",
+  "product": "OpenElement",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENELEMENT.json",
+    "original_name": "OpenElement"
+  },
+  "research": [
+    {
+      "url": "https://openelement.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_openelement_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "openelement\\s\\(([\\d\\.]+)\\)",
+          "confidence_delta": 0.5,
+          "version_extract": "openelement\\s\\(([\\d\\.]+)\\)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "OpenElement is a free website building application with a WYSIWYG interface.",
+  "website": "https://openelement.uk"
+}

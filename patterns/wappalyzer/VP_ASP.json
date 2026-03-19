@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vp_asp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VP_ASP",
+  "taxonomy_name": "VP-ASP",
+  "vendor": "",
+  "product": "VP-ASP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VP_ASP.json",
+    "original_name": "VP-ASP"
+  },
+  "research": [
+    {
+      "url": "https://www.vpasp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vp_asp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+>powered by vp-asp shopping cart</a>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "vs350\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    6
+  ],
+  "website": "https://www.vpasp.com"
+}

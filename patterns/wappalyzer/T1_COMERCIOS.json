@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-t1_comercios",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "T1_COMERCIOS",
+  "taxonomy_name": "T1 Comercios",
+  "vendor": "",
+  "product": "T1 Comercios",
+  "source": {
+    "type": "wappalyzer",
+    "file": "T1_COMERCIOS.json",
+    "original_name": "T1 Comercios"
+  },
+  "research": [
+    {
+      "url": "https://www.t1comercios.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_t1_comercios_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^t1comercios$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "T1 Comercios is an integrator platform with marketplaces(https://www.claroshop.com/,https://www.sears.com.mx/,https://www.sanborns.com.mx/).",
+  "website": "https://www.t1comercios.com"
+}

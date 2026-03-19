@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-howler_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOWLER_JS",
+  "taxonomy_name": "Howler.js",
+  "vendor": "",
+  "product": "Howler.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HOWLER_JS.json",
+    "original_name": "Howler.js"
+  },
+  "research": [
+    {
+      "url": "https://howlerjs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_howler_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "howler/([\\d.]+)/howler(?:\\.core)?\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "howler/([\\d.]+)/howler(?:\\.core)?\\.min\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "howler@([\\d.]+)/dist/howler\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "howler@([\\d.]+)/dist/howler\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Howler.js is an audio library with support for the Web Audio API and a fallback mechanism for HTML5 Audio.",
+  "website": "https://howlerjs.com"
+}

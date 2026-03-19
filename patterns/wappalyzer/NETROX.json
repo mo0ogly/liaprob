@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-netrox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETROX",
+  "taxonomy_name": "Netrox",
+  "vendor": "",
+  "product": "Netrox",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NETROX.json",
+    "original_name": "Netrox"
+  },
+  "research": [
+    {
+      "url": "https://netroxsc.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_netrox_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.netroxsc\\.ru",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Netrox SC is a Russian online consultant technology platform that provides live chat and customer support tools for websites.",
+  "website": "https://netroxsc.ru"
+}

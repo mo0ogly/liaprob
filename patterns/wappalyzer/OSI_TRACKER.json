@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-osi_tracker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OSI_TRACKER",
+  "taxonomy_name": "OSI Tracker",
+  "vendor": "",
+  "product": "OSI Tracker",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OSI_TRACKER.json",
+    "original_name": "OSI Tracker"
+  },
+  "research": [
+    {
+      "url": "https://ositracker.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_osi_tracker_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ositracker\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "OSI Tracker is an affiliate marketing and tracking software.",
+  "website": "https://ositracker.com"
+}

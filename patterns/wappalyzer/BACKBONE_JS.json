@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-backbone_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BACKBONE_JS",
+  "taxonomy_name": "Backbone.js",
+  "vendor": "",
+  "product": "Backbone.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BACKBONE_JS.json",
+    "original_name": "Backbone.js"
+  },
+  "research": [
+    {
+      "url": "https://backbonejs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_backbone_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "backbone.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:backbone_project:backbone:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Underscore.js"
+  ],
+  "categories": [
+    12
+  ],
+  "notes": "BackboneJS is a JavaScript library that allows to develop and structure the client side applications that run in a web browser.",
+  "website": "https://backbonejs.org"
+}

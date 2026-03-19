@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-q4_cookie_monster",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "Q4_COOKIE_MONSTER",
+  "taxonomy_name": "Q4 Cookie Monster",
+  "vendor": "",
+  "product": "Q4 Cookie Monster",
+  "source": {
+    "type": "wappalyzer",
+    "file": "Q4_COOKIE_MONSTER.json",
+    "original_name": "Q4 Cookie Monster"
+  },
+  "research": [
+    {
+      "url": "https://q4mobile.github.io/q4widgets-jquery-ui/doc_html/q4.cookieMonster.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_q4_cookie_monster_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widgets\\.q4app\\.com/widgets/q4\\.cookiemonster\\.([\\d\\.]+)\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "widgets\\.q4app\\.com/widgets/q4\\.cookiemonster\\.([\\d\\.]+)\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    67
+  ],
+  "notes": "Q4 Cookie Monster is an cookie compliance widget built by Q4.",
+  "website": "https://q4mobile.github.io/q4widgets-jquery-ui/doc_html/q4.cookieMonster.html"
+}

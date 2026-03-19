@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-authy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUTHY",
+  "taxonomy_name": "Authy",
+  "vendor": "",
+  "product": "Authy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUTHY.json",
+    "original_name": "Authy"
+  },
+  "research": [
+    {
+      "url": "https://www.authy.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_authy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.authy\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "Authy is a security tool that enables two-factor authentication (2FA) for websites to help protect user accounts from unauthorized access.",
+  "website": "https://www.authy.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-devuelving",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEVUELVING",
+  "taxonomy_name": "Devuelving",
+  "vendor": "",
+  "product": "Devuelving",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DEVUELVING.json",
+    "original_name": "Devuelving"
+  },
+  "research": [
+    {
+      "url": "https://www.devuelving.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_devuelving_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "devuelving_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Devuelving is an online store franchise system designed to support the management, operation, and scaling of e-commerce businesses through centralized tools and processes.",
+  "website": "https://www.devuelving.com"
+}

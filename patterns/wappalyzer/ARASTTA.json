@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-arastta",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARASTTA",
+  "taxonomy_name": "Arastta",
+  "vendor": "",
+  "product": "Arastta",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ARASTTA.json",
+    "original_name": "Arastta"
+  },
+  "research": [
+    {
+      "url": "https://arastta.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_arastta_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "arastta",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^(.+)$",
+          "version_extract": "^(.+)$"
+        },
+        {
+          "target": "header",
+          "field": "x-arastta",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "arastta\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:arastta:ecommerce:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Arastta is a free and open-source project with contributors from all over the world.",
+  "website": "https://arastta.org"
+}

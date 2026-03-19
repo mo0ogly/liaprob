@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cpg_dragonfly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CPG_DRAGONFLY",
+  "taxonomy_name": "CPG Dragonfly",
+  "vendor": "",
+  "product": "CPG Dragonfly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CPG_DRAGONFLY.json",
+    "original_name": "CPG Dragonfly"
+  },
+  "research": [
+    {
+      "url": "https://dragonflycms.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cpg_dragonfly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^dragonfly cms"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "cpg dragonfly",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://dragonflycms.org"
+}

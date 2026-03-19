@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chameleon_system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHAMELEON_SYSTEM",
+  "taxonomy_name": "Chameleon system",
+  "vendor": "",
+  "product": "Chameleon system",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHAMELEON_SYSTEM.json",
+    "original_name": "Chameleon system"
+  },
+  "research": [
+    {
+      "url": "https://www.chameleon-system.de",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chameleon_system_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "chameleon cms/shop system",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    6
+  ],
+  "notes": "Chameleon system is an ecommerce and content management system all-in-one, capable of being integrated straight from the manufacturer.",
+  "website": "https://www.chameleon-system.de"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-supsystic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUPSYSTIC",
+  "taxonomy_name": "Supsystic",
+  "vendor": "",
+  "product": "Supsystic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SUPSYSTIC.json",
+    "original_name": "Supsystic"
+  },
+  "research": [
+    {
+      "url": "https://supsystic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_supsystic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/plugins/data-tables-generator-by-supsystic/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87
+  ],
+  "notes": "Supsystic is a WordPress plugin that enables opt-in popups for collecting user information or promoting content.",
+  "website": "https://supsystic.com"
+}

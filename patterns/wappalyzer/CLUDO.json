@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cludo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLUDO",
+  "taxonomy_name": "Cludo",
+  "vendor": "",
+  "product": "Cludo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLUDO.json",
+    "original_name": "Cludo"
+  },
+  "research": [
+    {
+      "url": "https://www.cludo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cludo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "customer\\.cludo\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "Cludo is a cloud-based search solution.",
+  "website": "https://www.cludo.com"
+}

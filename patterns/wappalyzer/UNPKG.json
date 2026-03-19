@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-unpkg",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNPKG",
+  "taxonomy_name": "Unpkg",
+  "vendor": "",
+  "product": "Unpkg",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UNPKG.json",
+    "original_name": "Unpkg"
+  },
+  "research": [
+    {
+      "url": "https://unpkg.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_unpkg_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "unpkg\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "Unpkg is a content delivery network for everything on npm.",
+  "website": "https://unpkg.com"
+}

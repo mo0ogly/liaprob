@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-launchdarkly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LAUNCHDARKLY",
+  "taxonomy_name": "LaunchDarkly",
+  "vendor": "",
+  "product": "LaunchDarkly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LAUNCHDARKLY.json",
+    "original_name": "LaunchDarkly"
+  },
+  "research": [
+    {
+      "url": "https://launchdarkly.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_launchdarkly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:\\.|\\-)launchdarkly(?:\\.com/|\\-sdk\\.)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    85
+  ],
+  "notes": "LaunchDarkly is a continuous delivery and feature flags as a service platform that integrates into a company's current development cycle.",
+  "website": "https://launchdarkly.com"
+}

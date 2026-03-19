@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lawmatics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LAWMATICS",
+  "taxonomy_name": "Lawmatics",
+  "vendor": "",
+  "product": "Lawmatics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LAWMATICS.json",
+    "original_name": "Lawmatics"
+  },
+  "research": [
+    {
+      "url": "https://www.lawmatics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lawmatics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "navi\\.lawmatics\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Lawmatics is a growth platform for law firms that streamlines client intake, marketing automation, and workflow management.",
+  "website": "https://www.lawmatics.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-procurios",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROCURIOS",
+  "taxonomy_name": "Procurios",
+  "vendor": "",
+  "product": "Procurios",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROCURIOS.json",
+    "original_name": "Procurios"
+  },
+  "research": [
+    {
+      "url": "https://www.procurios.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_procurios_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^procurios$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Procurios is a provider of software solutions tailored to nonprofit and member organizations, offering website management, fundraising, CRM, and event tools.",
+  "website": "https://www.procurios.com"
+}

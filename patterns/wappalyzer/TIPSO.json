@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tipso",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TIPSO",
+  "taxonomy_name": "Tipso",
+  "vendor": "",
+  "product": "Tipso",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TIPSO.json",
+    "original_name": "Tipso"
+  },
+  "research": [
+    {
+      "url": "https://tipso.object505.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tipso_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/js/tipso\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Tipso is a lightweight, responsive jQuery plugin designed to display customizable tooltips across devices and screen sizes.",
+  "website": "https://tipso.object505.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-popcorn_crm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POPCORN_CRM",
+  "taxonomy_name": "Popcorn CRM",
+  "vendor": "",
+  "product": "Popcorn CRM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POPCORN_CRM.json",
+    "original_name": "Popcorn CRM"
+  },
+  "research": [
+    {
+      "url": "https://popcorncrm.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_popcorn_crm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.popcorn\\.email",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Popcorn CRM is a visual CRM providing essential tools to manage customer relationships and support business growth.",
+  "website": "https://popcorncrm.co.uk"
+}

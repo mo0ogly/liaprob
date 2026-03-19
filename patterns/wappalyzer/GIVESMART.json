@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-givesmart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GIVESMART",
+  "taxonomy_name": "GiveSmart",
+  "vendor": "",
+  "product": "GiveSmart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GIVESMART.json",
+    "original_name": "GiveSmart"
+  },
+  "research": [
+    {
+      "url": "https://www.givesmart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_givesmart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.givesmart\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    111
+  ],
+  "notes": "GiveSmart is an event fund gathering technology that offers customisable event size, mobile bidding, text-to-donate, enhanced dashboard and reporting, seating arrangement, and more.",
+  "website": "https://www.givesmart.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-enecto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENECTO",
+  "taxonomy_name": "Enecto",
+  "vendor": "",
+  "product": "Enecto",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENECTO.json",
+    "original_name": "Enecto"
+  },
+  "research": [
+    {
+      "url": "https://www.enecto.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_enecto_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "trk\\.enecto\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Enecto is a tool for analyzing web visitor demographics to provide insights into audience composition and behavior.",
+  "website": "https://www.enecto.com"
+}

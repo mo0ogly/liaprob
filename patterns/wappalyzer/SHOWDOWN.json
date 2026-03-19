@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-showdown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOWDOWN",
+  "taxonomy_name": "Showdown",
+  "vendor": "",
+  "product": "Showdown",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOWDOWN.json",
+    "original_name": "Showdown"
+  },
+  "research": [
+    {
+      "url": "https://showdownjs.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_showdown_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:((?:\\d+\\.)+\\d+)\\/(?:dist\\/)?)?showdown(?:\\.min)?(?:-)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:((?:\\d+\\.)+\\d+)\\/(?:dist\\/)?)?showdown(?:\\.min)?(?:-)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:(?:dist\\/)?)?showdown(?:\\.min)?(?:-?((?:\\d+\\.)+\\d+))?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:(?:dist\\/)?)?showdown(?:\\.min)?(?:-?((?:\\d+\\.)+\\d+))?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A Markdown to HTML converter written in Javascript.",
+  "website": "https://showdownjs.com/"
+}

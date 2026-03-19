@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-preproduct",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PREPRODUCT",
+  "taxonomy_name": "PreProduct",
+  "vendor": "",
+  "product": "PreProduct",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PREPRODUCT.json",
+    "original_name": "PreProduct"
+  },
+  "research": [
+    {
+      "url": "https://preproduct.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_preproduct_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.preproduct\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "PreProduct is a tool that enables businesses to boost sales and manage demand through Shopify’s pre-order system.",
+  "website": "https://preproduct.io"
+}

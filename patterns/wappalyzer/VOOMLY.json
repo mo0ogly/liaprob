@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-voomly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VOOMLY",
+  "taxonomy_name": "Voomly",
+  "vendor": "",
+  "product": "Voomly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VOOMLY.json",
+    "original_name": "Voomly"
+  },
+  "research": [
+    {
+      "url": "https://www.voomly.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_voomly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.voomly\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Voomly is a hosted video course system that facilitates the creation, management, and distribution of video-based educational content.",
+  "website": "https://www.voomly.com"
+}

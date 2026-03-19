@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hotaru_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOTARU_CMS",
+  "taxonomy_name": "Hotaru CMS",
+  "vendor": "",
+  "product": "Hotaru CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HOTARU_CMS.json",
+    "original_name": "Hotaru CMS"
+  },
+  "research": [
+    {
+      "url": "https://hotarucms.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hotaru_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "hotaru_mobile",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "hotaru cms",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://hotarucms.org"
+}

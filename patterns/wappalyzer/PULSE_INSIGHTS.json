@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pulse_insights",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PULSE_INSIGHTS",
+  "taxonomy_name": "Pulse Insights",
+  "vendor": "",
+  "product": "Pulse Insights",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PULSE_INSIGHTS.json",
+    "original_name": "Pulse Insights"
+  },
+  "research": [
+    {
+      "url": "https://www.pulseinsights.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pulse_insights_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.pulseinsights\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Pulse Insights is a customer feedback platform that helps enterprises gather and analyze insights to understand customer needs and improve decision-making.",
+  "website": "https://www.pulseinsights.com"
+}

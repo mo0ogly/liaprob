@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-t1_paginas",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "T1_PAGINAS",
+  "taxonomy_name": "T1 Paginas",
+  "vendor": "",
+  "product": "T1 Paginas",
+  "source": {
+    "type": "wappalyzer",
+    "file": "T1_PAGINAS.json",
+    "original_name": "T1 Paginas"
+  },
+  "research": [
+    {
+      "url": "https://t1paginas.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_t1_paginas_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^t1paginas$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "AngularJS",
+    "MongoDB",
+    "Node.js"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "T1 Paginas is an ecommerce platform.",
+  "website": "https://t1paginas.com"
+}

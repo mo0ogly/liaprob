@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webtrends",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBTRENDS",
+  "taxonomy_name": "Webtrends",
+  "vendor": "",
+  "product": "Webtrends",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBTRENDS.json",
+    "original_name": "Webtrends"
+  },
+  "research": [
+    {
+      "url": "https://worldwide.webtrends.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webtrends_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+id=\"dcsimg\"[^>]+webtrends",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "website": "https://worldwide.webtrends.com"
+}

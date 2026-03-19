@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ektron_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EKTRON_CMS",
+  "taxonomy_name": "Ektron CMS",
+  "vendor": "",
+  "product": "Ektron CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EKTRON_CMS.json",
+    "original_name": "Ektron CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.optimizely.com/ektron-cms",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ektron_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/ektron\\.javascript\\.ashx",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:ektron:ektron_content_management_system:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Ektron CMS is developed on the Microsoft .NET framework and is 100% ASP.NET. In 2015 Ektron merged with EPiServer.",
+  "website": "https://www.optimizely.com/ektron-cms"
+}

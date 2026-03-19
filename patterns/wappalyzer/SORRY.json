@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sorry",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SORRY",
+  "taxonomy_name": "Sorry",
+  "vendor": "",
+  "product": "Sorry",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SORRY.json",
+    "original_name": "Sorry"
+  },
+  "research": [
+    {
+      "url": "https://www.sorryapp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sorry_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sorryapp\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Sorry is a status page service that displays system downtime and operational incidents.",
+  "website": "https://www.sorryapp.com"
+}

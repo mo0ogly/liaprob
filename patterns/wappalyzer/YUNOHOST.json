@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yunohost",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YUNOHOST",
+  "taxonomy_name": "YunoHost",
+  "vendor": "",
+  "product": "YunoHost",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YUNOHOST.json",
+    "original_name": "YunoHost"
+  },
+  "research": [
+    {
+      "url": "https://yunohost.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yunohost_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/ynh_portal\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:o:yunohost:yunohost:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Debian"
+  ],
+  "categories": [
+    28
+  ],
+  "notes": "YunoHost is a server operating system that is free and open-source, allowing users to host their own web applications, email services, and other online tools. It is based on Debian GNU/Linux.",
+  "website": "https://yunohost.org"
+}

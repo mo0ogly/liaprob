@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cwicly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CWICLY",
+  "taxonomy_name": "Cwicly",
+  "vendor": "",
+  "product": "Cwicly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CWICLY.json",
+    "original_name": "Cwicly"
+  },
+  "research": [
+    {
+      "url": "https://cwicly.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cwicly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/cwicly/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress Block Editor"
+  ],
+  "categories": [
+    87
+  ],
+  "notes": "Cwicly is an advanced professional design and block toolkit that integrates directly with the WordPress editor.",
+  "website": "https://cwicly.com"
+}

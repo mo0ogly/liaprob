@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-snews",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SNEWS",
+  "taxonomy_name": "sNews",
+  "vendor": "",
+  "product": "sNews",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SNEWS.json",
+    "original_name": "sNews"
+  },
+  "research": [
+    {
+      "url": "https://snewscms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_snews_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "snews",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "website": "https://snewscms.com"
+}

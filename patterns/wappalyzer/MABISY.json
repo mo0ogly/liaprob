@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mabisy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MABISY",
+  "taxonomy_name": "Mabisy",
+  "vendor": "",
+  "product": "Mabisy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MABISY.json",
+    "original_name": "Mabisy"
+  },
+  "research": [
+    {
+      "url": "https://www.mabisy.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mabisy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^mabisy$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Mabisy is an online platform facilitating the creation of custom ecommerce stores.",
+  "website": "https://www.mabisy.com"
+}

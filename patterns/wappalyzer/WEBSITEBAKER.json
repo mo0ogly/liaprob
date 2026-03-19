@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-websitebaker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBSITEBAKER",
+  "taxonomy_name": "WebsiteBaker",
+  "vendor": "",
+  "product": "WebsiteBaker",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBSITEBAKER.json",
+    "original_name": "WebsiteBaker"
+  },
+  "research": [
+    {
+      "url": "https://websitebaker2.org/en/home.php",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_websitebaker_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "websitebaker",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://websitebaker2.org/en/home.php"
+}

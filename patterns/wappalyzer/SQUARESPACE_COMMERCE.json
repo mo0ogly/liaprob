@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-squarespace_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUARESPACE_COMMERCE",
+  "taxonomy_name": "Squarespace Commerce",
+  "vendor": "",
+  "product": "Squarespace Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQUARESPACE_COMMERCE.json",
+    "original_name": "Squarespace Commerce"
+  },
+  "research": [
+    {
+      "url": "https://www.squarespace.com/ecommerce-website",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_squarespace_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "squarespace"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.squarespace\\.\\w+/universal/scripts-compressed/commerce-\\w+-min\\.[\\w+\\-]+\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Squarespace"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Squarespace Commerce is an ecommerce platform designed to facilitate the creation of websites and online stores, with domain registration and web hosting included.",
+  "website": "https://www.squarespace.com/ecommerce-website"
+}

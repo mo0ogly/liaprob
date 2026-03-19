@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cloudcannon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDCANNON",
+  "taxonomy_name": "CloudCannon",
+  "vendor": "",
+  "product": "CloudCannon",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOUDCANNON.json",
+    "original_name": "CloudCannon"
+  },
+  "research": [
+    {
+      "url": "https://cloudcannon.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cloudcannon_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "cc-build-id",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\d+"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "CloudCannon is a web development platform and content management system (CMS).",
+  "website": "https://cloudcannon.com"
+}

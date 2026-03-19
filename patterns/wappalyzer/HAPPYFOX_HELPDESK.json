@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-happyfox_helpdesk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HAPPYFOX_HELPDESK",
+  "taxonomy_name": "HappyFox Helpdesk",
+  "vendor": "",
+  "product": "HappyFox Helpdesk",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HAPPYFOX_HELPDESK.json",
+    "original_name": "HappyFox Helpdesk"
+  },
+  "research": [
+    {
+      "url": "https://www.happyfox.com/customer-service-software/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_happyfox_helpdesk_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.happyfox\\.com/media/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "HappyFox is a help desk ticketing system that is hosted on cloud, supporting multiple customer support channels like email, voice and live chat.",
+  "website": "https://www.happyfox.com/customer-service-software/"
+}

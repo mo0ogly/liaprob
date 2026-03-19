@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jet_enterprise",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JET_ENTERPRISE",
+  "taxonomy_name": "JET Enterprise",
+  "vendor": "",
+  "product": "JET Enterprise",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JET_ENTERPRISE.json",
+    "original_name": "JET Enterprise"
+  },
+  "research": [
+    {
+      "url": "https://www.jetecommerce.com.br/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jet_enterprise_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "powered",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "jet-enterprise"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "website": "https://www.jetecommerce.com.br/"
+}

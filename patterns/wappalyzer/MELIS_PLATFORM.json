@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-melis_platform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MELIS_PLATFORM",
+  "taxonomy_name": "Melis Platform",
+  "vendor": "",
+  "product": "Melis Platform",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MELIS_PLATFORM.json",
+    "original_name": "Melis Platform"
+  },
+  "research": [
+    {
+      "url": "https://www.melistechnology.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_melis_platform_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- rendered with melis cms v2",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- rendered with melis platform",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^melis platform\\.",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "powered-by",
+          "match_type": "regex",
+          "value": "^melis cms\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:melisplatform:melisplatform:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Apache HTTP Server",
+    "Laravel",
+    "MySQL",
+    "PHP",
+    "Symfony",
+    "Zend"
+  ],
+  "categories": [
+    1,
+    6,
+    11,
+    32
+  ],
+  "website": "https://www.melistechnology.com/"
+}

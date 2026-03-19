@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-groovepages",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GROOVEPAGES",
+  "taxonomy_name": "GroovePages",
+  "vendor": "",
+  "product": "GroovePages",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GROOVEPAGES.json",
+    "original_name": "GroovePages"
+  },
+  "research": [
+    {
+      "url": "https://groove.cm/pages",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_groovepages_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//app\\.groove\\.cm/groovepages/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "GroovePages is a cloud-based drag-and-drop website and funnel builder that enables users to create responsive websites, landing pages, and sales funnels without coding.",
+  "website": "https://groove.cm/pages"
+}

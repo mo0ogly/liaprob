@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jquery_ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JQUERY_UI",
+  "taxonomy_name": "jQuery UI",
+  "vendor": "",
+  "product": "jQuery UI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JQUERY_UI.json",
+    "original_name": "jQuery UI"
+  },
+  "research": [
+    {
+      "url": "https://jqueryui.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jquery_ui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "([\\d.]+)/jquery-ui(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "([\\d.]+)/jquery-ui(?:\\.min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jquery-ui.*\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jquery-ui[.-]([\\d.]*\\d)[^/]*\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "jquery-ui[.-]([\\d.]*\\d)[^/]*\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:jquery:jquery_ui:*:*:*:*:*:*:*:*",
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "jQuery UI is a collection of GUI widgets, animated visual effects, and themes implemented with jQuery, Cascading Style Sheets, and HTML.",
+  "website": "https://jqueryui.com"
+}

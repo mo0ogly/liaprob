@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sitecore_engagement_cloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITECORE_ENGAGEMENT_CLOUD",
+  "taxonomy_name": "Sitecore Engagement Cloud",
+  "vendor": "",
+  "product": "Sitecore Engagement Cloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITECORE_ENGAGEMENT_CLOUD.json",
+    "original_name": "Sitecore Engagement Cloud"
+  },
+  "research": [
+    {
+      "url": "https://www.sitecore.com/products/engagement-cloud",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sitecore_engagement_cloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/sitecore-engage-v\\.([\\d\\.]+)\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/sitecore-engage-v\\.([\\d\\.]+)\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Sitecore"
+  ],
+  "categories": [
+    97
+  ],
+  "notes": "Sitecore Engagement Cloud is a cloud-based customer experience management platform offering content management, personalisation, marketing automation, analytics, and omni-channel delivery for enhancing digital marketing efforts and improving customer experiences.",
+  "website": "https://www.sitecore.com/products/engagement-cloud"
+}

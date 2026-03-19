@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hammer_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HAMMER_JS",
+  "taxonomy_name": "Hammer.js",
+  "vendor": "",
+  "product": "Hammer.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HAMMER_JS.json",
+    "original_name": "Hammer.js"
+  },
+  "research": [
+    {
+      "url": "https://hammerjs.github.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hammer_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "hammer(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "website": "https://hammerjs.github.io"
+}

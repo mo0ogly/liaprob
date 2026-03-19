@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-allyant",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALLYANT",
+  "taxonomy_name": "Allyant",
+  "vendor": "",
+  "product": "Allyant",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALLYANT.json",
+    "original_name": "Allyant"
+  },
+  "research": [
+    {
+      "url": "https://accessible360.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_allyant_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/accessible360/accessible-slick/slick/slick\\.min\\.js\\?v=([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "/accessible360/accessible-slick/slick/slick\\.min\\.js\\?v=([\\d\\.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/npm/@accessible360/accessible-slick@([\\d\\.]+)/",
+          "confidence_delta": 0.5,
+          "version_extract": "/npm/@accessible360/accessible-slick@([\\d\\.]+)/"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "Allyant is a company specializing in accessibility solutions for digital and print documents to ensure compliance with accessibility standards.",
+  "website": "https://accessible360.com"
+}

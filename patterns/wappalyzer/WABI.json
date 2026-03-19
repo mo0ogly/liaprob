@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wabi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WABI",
+  "taxonomy_name": "Wabi",
+  "vendor": "",
+  "product": "Wabi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WABI.json",
+    "original_name": "Wabi"
+  },
+  "research": [
+    {
+      "url": "https://wabi-app.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wabi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.wabi-app\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Wabi is a platform facilitating customer engagement through WhatsApp.",
+  "website": "https://wabi-app.com"
+}

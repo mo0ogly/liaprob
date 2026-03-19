@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-web_wiz_forums",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEB_WIZ_FORUMS",
+  "taxonomy_name": "Web Wiz Forums",
+  "vendor": "",
+  "product": "Web Wiz Forums",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEB_WIZ_FORUMS.json",
+    "original_name": "Web Wiz Forums"
+  },
+  "research": [
+    {
+      "url": "https://www.webwizforums.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_web_wiz_forums_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^web\\swiz\\sforums(?:\\s([\\d\\.]+))?$",
+          "confidence_delta": 0.5,
+          "version_extract": "^web\\swiz\\sforums(?:\\s([\\d\\.]+))?$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "Web Wiz Forums is a web-based forum software that enables developers to create and manage online discussion boards or forums for engaging user interactions and community building.",
+  "website": "https://www.webwizforums.com"
+}

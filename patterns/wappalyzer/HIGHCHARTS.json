@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-highcharts",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HIGHCHARTS",
+  "taxonomy_name": "Highcharts",
+  "vendor": "",
+  "product": "Highcharts",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HIGHCHARTS.json",
+    "original_name": "Highcharts"
+  },
+  "research": [
+    {
+      "url": "https://www.highcharts.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_highcharts_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<svg[^>]*><desc>created with highcharts ([\\d.]*)",
+          "confidence_delta": 0.5,
+          "version_extract": "<svg[^>]*><desc>created with highcharts ([\\d.]*)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "highcharts.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    25
+  ],
+  "notes": "Highcharts is a charting library written in pure JavaScript, for adding interactive charts to a website or web application. Highcharts meets accessibility standards and works with Python, Angular, React, iOS, Android, and more.",
+  "website": "https://www.highcharts.com"
+}

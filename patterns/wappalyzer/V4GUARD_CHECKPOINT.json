@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-v4guard_checkpoint",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "V4GUARD_CHECKPOINT",
+  "taxonomy_name": "v4Guard Checkpoint",
+  "vendor": "",
+  "product": "v4Guard Checkpoint",
+  "source": {
+    "type": "wappalyzer",
+    "file": "V4GUARD_CHECKPOINT.json",
+    "original_name": "v4Guard Checkpoint"
+  },
+  "research": [
+    {
+      "url": "https://v4guard.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_v4guard_checkpoint_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.v4guard\\.io/checkpoint",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Checkpoint is a product of v4Guard that verifies website users and prevents fraudulent access to sensitive areas, by checking for any use of anonymisation services with a captcha-like widget.",
+  "website": "https://v4guard.io"
+}

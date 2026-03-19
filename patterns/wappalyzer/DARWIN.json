@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-darwin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DARWIN",
+  "taxonomy_name": "Darwin",
+  "vendor": "",
+  "product": "Darwin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DARWIN.json",
+    "original_name": "Darwin"
+  },
+  "research": [
+    {
+      "url": "https://opensource.apple.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_darwin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "darwin"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "darwin"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    28
+  ],
+  "notes": "Darwin is the open-source operating system from Apple that forms the basis for macOS.",
+  "website": "https://opensource.apple.com"
+}

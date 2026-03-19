@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-testimonial_robot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TESTIMONIAL_ROBOT",
+  "taxonomy_name": "Testimonial Robot",
+  "vendor": "",
+  "product": "Testimonial Robot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TESTIMONIAL_ROBOT.json",
+    "original_name": "Testimonial Robot"
+  },
+  "research": [
+    {
+      "url": "https://testimonialrobot.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_testimonial_robot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.testimonialrobot\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Testimonial Robot is a testimonials and customer review platform.",
+  "website": "https://testimonialrobot.com"
+}

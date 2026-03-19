@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flexifunnels",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLEXIFUNNELS",
+  "taxonomy_name": "FlexiFunnels",
+  "vendor": "",
+  "product": "FlexiFunnels",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLEXIFUNNELS.json",
+    "original_name": "FlexiFunnels"
+  },
+  "research": [
+    {
+      "url": "https://flexifunnels.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flexifunnels_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.flexifunnels\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "FlexiFunnels is a platform for building high-converting sales funnels, generating leads, and selling products without requiring coding knowledge.",
+  "website": "https://flexifunnels.com"
+}

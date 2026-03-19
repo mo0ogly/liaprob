@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-libwww_perl_daemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIBWWW_PERL_DAEMON",
+  "taxonomy_name": "libwww-perl-daemon",
+  "vendor": "",
+  "product": "libwww-perl-daemon",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIBWWW_PERL_DAEMON.json",
+    "original_name": "libwww-perl-daemon"
+  },
+  "research": [
+    {
+      "url": "https://metacpan.org/pod/HTTP::Daemon",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_libwww_perl_daemon_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "libwww-perl-daemon(?:/([\\d\\.]+))?",
+          "version_extract": "libwww-perl-daemon(?:/([\\d\\.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Perl"
+  ],
+  "categories": [
+    22
+  ],
+  "website": "https://metacpan.org/pod/HTTP::Daemon"
+}

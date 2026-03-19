@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-uxsniff",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UXSNIFF",
+  "taxonomy_name": "UXSniff",
+  "vendor": "",
+  "product": "UXSniff",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UXSNIFF.json",
+    "original_name": "UXSniff"
+  },
+  "research": [
+    {
+      "url": "https://uxsniff.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_uxsniff_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.uxsniff\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "UXSniff is a UX analysis tool that automatically detects usability issues by analyzing user behavior, including layout shifts and rage clicks, to identify potential conversion problems early.",
+  "website": "https://uxsniff.com"
+}

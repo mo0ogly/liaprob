@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-in_cart_upsell_cross_sell",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IN_CART_UPSELL_CROSS_SELL",
+  "taxonomy_name": "In Cart Upsell & Cross-Sell",
+  "vendor": "",
+  "product": "In Cart Upsell & Cross-Sell",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IN_CART_UPSELL_CROSS_SELL.json",
+    "original_name": "In Cart Upsell & Cross-Sell"
+  },
+  "research": [
+    {
+      "url": "https://incartupsell.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_in_cart_upsell_cross_sell_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.incartupsell\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "In Cart Upsell & Cross-Sell is a Shopify app built by InCart Upsell, provides targeted upsells and cross-sells directly in your cart and product page.",
+  "website": "https://incartupsell.com"
+}

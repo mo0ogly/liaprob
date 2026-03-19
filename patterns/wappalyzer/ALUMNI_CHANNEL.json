@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-alumni_channel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALUMNI_CHANNEL",
+  "taxonomy_name": "Alumni Channel",
+  "vendor": "",
+  "product": "Alumni Channel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALUMNI_CHANNEL.json",
+    "original_name": "Alumni Channel"
+  },
+  "research": [
+    {
+      "url": "https://alumnichannel.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_alumni_channel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "alumni channel - www.alumnichannel.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Alumni Channel is a platform facilitating organization and communication with alumni and members.",
+  "website": "https://alumnichannel.com"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-moxie",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOXIE",
+  "taxonomy_name": "Moxie",
+  "vendor": "",
+  "product": "Moxie",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOXIE.json",
+    "original_name": "Moxie"
+  },
+  "research": [
+    {
+      "url": "https://github.com/moxiecode/moxie",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_moxie_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "moxie(?:\\.min)?\\.js(?:\\?ver=([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "moxie(?:\\.min)?\\.js(?:\\?ver=([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    68
+  ],
+  "notes": "Pollyfills for XHR2 and File API",
+  "website": "https://github.com/moxiecode/moxie"
+}

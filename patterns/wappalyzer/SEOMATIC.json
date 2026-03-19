@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-seomatic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEOMATIC",
+  "taxonomy_name": "SEOmatic",
+  "vendor": "",
+  "product": "SEOmatic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEOMATIC.json",
+    "original_name": "SEOmatic"
+  },
+  "research": [
+    {
+      "url": "https://plugins.craftcms.com/seomatic",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_seomatic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^seomatic$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Craft CMS"
+  ],
+  "categories": [
+    54
+  ],
+  "notes": "SEOmatic facilitates modern SEO best practices & implementation for Craft CMS 3.",
+  "website": "https://plugins.craftcms.com/seomatic"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-getsimple_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GETSIMPLE_CMS",
+  "taxonomy_name": "GetSimple CMS",
+  "vendor": "",
+  "product": "GetSimple CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GETSIMPLE_CMS.json",
+    "original_name": "GetSimple CMS"
+  },
+  "research": [
+    {
+      "url": "https://get-simple.info",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_getsimple_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "getsimple",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:get-simple:getsimple_cms:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://get-simple.info"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chatwee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHATWEE",
+  "taxonomy_name": "Chatwee",
+  "vendor": "",
+  "product": "Chatwee",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHATWEE.json",
+    "original_name": "Chatwee"
+  },
+  "research": [
+    {
+      "url": "https://chatwee.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chatwee_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\bchatwee(?:-api)?\\.com/.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Chatwee is a live chat and instant messaging app designed to facilitate real-time communication on websites and online communities.",
+  "website": "https://chatwee.com"
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-youtrack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOUTRACK",
+  "taxonomy_name": "YouTrack",
+  "vendor": "",
+  "product": "YouTrack",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOUTRACK.json",
+    "original_name": "YouTrack"
+  },
+  "research": [
+    {
+      "url": "https://www.jetbrains.com/youtrack/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_youtrack_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "data-reactid=\"[^\"]+\">youtrack ([0-9.]+)<",
+          "confidence_delta": 0.5,
+          "version_extract": "data-reactid=\"[^\"]+\">youtrack ([0-9.]+)<"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "no-title=\"youtrack\">",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "type=\"application/opensearchdescription\\+xml\" title=\"youtrack\"/>",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "YouTrack is a browser-based bug tracker, issue tracking system and project management software.",
+  "website": "https://www.jetbrains.com/youtrack/"
+}

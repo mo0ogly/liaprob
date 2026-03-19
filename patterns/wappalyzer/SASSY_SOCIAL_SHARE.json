@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sassy_social_share",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SASSY_SOCIAL_SHARE",
+  "taxonomy_name": "Sassy Social Share",
+  "vendor": "",
+  "product": "Sassy Social Share",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SASSY_SOCIAL_SHARE.json",
+    "original_name": "Sassy Social Share"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/sassy-social-share",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sassy_social_share_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sassy-social-share(?:-public)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "sassy-social-share(?:-public)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    87
+  ],
+  "notes": "Sassy Social Share allows your website visitors to share your content over Facebook, Twitter, Google, Linkedin, Whatsapp, Tumblr, Pinterest, Reddit, Gab, Gettr and over 110 more social sharing and bookmarking services.",
+  "website": "https://wordpress.org/plugins/sassy-social-share"
+}

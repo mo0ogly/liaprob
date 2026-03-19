@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bagisto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BAGISTO",
+  "taxonomy_name": "Bagisto",
+  "vendor": "",
+  "product": "Bagisto",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BAGISTO.json",
+    "original_name": "Bagisto"
+  },
+  "research": [
+    {
+      "url": "https://bagisto.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bagisto_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "bagisto_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Bagisto is an open-source Laravel ecommerce framework that provides customizable features for building and managing online stores.",
+  "website": "https://bagisto.com"
+}

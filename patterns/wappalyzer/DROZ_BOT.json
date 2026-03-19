@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-droz_bot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DROZ_BOT",
+  "taxonomy_name": "Droz Bot",
+  "vendor": "",
+  "product": "Droz Bot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DROZ_BOT.json",
+    "original_name": "Droz Bot"
+  },
+  "research": [
+    {
+      "url": "https://meudroz.com/droz-bot/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_droz_bot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "chat-app\\.meudroz\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Droz Bot is a multi-channel, customisable chatbot designed to help brands provide customer service across commonly used social apps.",
+  "website": "https://meudroz.com/droz-bot/"
+}

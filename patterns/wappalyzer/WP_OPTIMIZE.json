@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wp_optimize",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WP_OPTIMIZE",
+  "taxonomy_name": "WP-Optimize",
+  "vendor": "",
+  "product": "WP-Optimize",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WP_OPTIMIZE.json",
+    "original_name": "WP-Optimize"
+  },
+  "research": [
+    {
+      "url": "https://getwpo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wp_optimize_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+cached by wp-optimize",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "WP-Optimize is an all-in-one WordPress plugin that cleans your database, compresses your large images and caches your site.",
+  "website": "https://getwpo.com"
+}

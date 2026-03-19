@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-apache_jspwiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_JSPWIKI",
+  "taxonomy_name": "Apache JSPWiki",
+  "vendor": "",
+  "product": "Apache JSPWiki",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APACHE_JSPWIKI.json",
+    "original_name": "Apache JSPWiki"
+  },
+  "research": [
+    {
+      "url": "https://jspwiki.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_apache_jspwiki_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]* xmlns:jspwiki=",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jspwiki",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:apache:jspwiki:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Apache Tomcat"
+  ],
+  "categories": [
+    8
+  ],
+  "notes": "Apache JSPWiki is an open-source Wiki engine, built around standard JEE components (Java, servlets, JSP).",
+  "website": "https://jspwiki.org"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-taggbox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TAGGBOX",
+  "taxonomy_name": "Taggbox",
+  "vendor": "",
+  "product": "Taggbox",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TAGGBOX.json",
+    "original_name": "Taggbox"
+  },
+  "research": [
+    {
+      "url": "https://taggbox.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_taggbox_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.taggbox\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "taggbox\\.com/app/js/embed\\.min\\.js(?:\\?ver=([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "taggbox\\.com/app/js/embed\\.min\\.js(?:\\?ver=([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Taggbox is an UGC platform to collect, curate, manage rights, and publish user-generated content marketing campaigns across multiple channels.",
+  "website": "https://taggbox.com/"
+}

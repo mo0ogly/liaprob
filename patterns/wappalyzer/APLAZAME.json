@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aplazame",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APLAZAME",
+  "taxonomy_name": "Aplazame",
+  "vendor": "",
+  "product": "Aplazame",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APLAZAME.json",
+    "original_name": "Aplazame"
+  },
+  "research": [
+    {
+      "url": "https://aplazame.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aplazame_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "aplazame\\.com/static/aplazame\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.aplazame\\.com/aplazame\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41,
+    91
+  ],
+  "notes": "Aplazame is a consumer credit company that provides instant financing service for online purchases. It combines an overtime payment method integrated at the ecommerce checkout with marketing tools to enable ecommerce to use financing as a promotional lever to boost sales.",
+  "website": "https://aplazame.com"
+}

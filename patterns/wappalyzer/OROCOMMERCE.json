@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-orocommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OROCOMMERCE",
+  "taxonomy_name": "OroCommerce",
+  "vendor": "",
+  "product": "OroCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OROCOMMERCE.json",
+    "original_name": "OroCommerce"
+  },
+  "research": [
+    {
+      "url": "https://oroinc.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_orocommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]+data-requiremodule=\"oro/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script [^>]+data-requiremodule=\"oroui/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "oro\\.min\\.js\\?version=([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "oro\\.min\\.js\\?version=([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    6
+  ],
+  "website": "https://oroinc.com"
+}

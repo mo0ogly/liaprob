@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-moneris",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MONERIS",
+  "taxonomy_name": "Moneris",
+  "vendor": "",
+  "product": "Moneris",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MONERIS.json",
+    "original_name": "Moneris"
+  },
+  "research": [
+    {
+      "url": "https://www.moneris.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_moneris_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.moneris\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Moneris (formerly Moneris Solutions) is Canada's largest financial technology company that specialises in payment processing.",
+  "website": "https://www.moneris.com"
+}

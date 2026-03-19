@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-i_mobile",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "I_MOBILE",
+  "taxonomy_name": "i-mobile",
+  "vendor": "",
+  "product": "i-mobile",
+  "source": {
+    "type": "wappalyzer",
+    "file": "I_MOBILE.json",
+    "original_name": "i-mobile"
+  },
+  "research": [
+    {
+      "url": "https://www2.i-mobile.co.jp",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_i_mobile_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.i-mobile\\.co\\.jp/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "i-mobile is a advertising platform for clients to advertise their product and for publishers to monetize their cyberspace.",
+  "website": "https://www2.i-mobile.co.jp"
+}

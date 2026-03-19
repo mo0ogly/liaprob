@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-reviewgrower",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REVIEWGROWER",
+  "taxonomy_name": "Reviewgrower",
+  "vendor": "",
+  "product": "Reviewgrower",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REVIEWGROWER.json",
+    "original_name": "Reviewgrower"
+  },
+  "research": [
+    {
+      "url": "https://reviewgrower.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_reviewgrower_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.reviewgrower\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Reviewgrower is a white-label reputation management platform that provides tools and services to improve online presence, increase reviews, convert prospects, and boost Google rankings.",
+  "website": "https://reviewgrower.com"
+}

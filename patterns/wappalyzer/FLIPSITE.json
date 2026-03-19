@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flipsite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLIPSITE",
+  "taxonomy_name": "Flipsite",
+  "vendor": "",
+  "product": "Flipsite",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLIPSITE.json",
+    "original_name": "Flipsite"
+  },
+  "research": [
+    {
+      "url": "https://flipsite.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flipsite_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^made with flipsite$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Flipsite is a platform for creating and managing websites.",
+  "website": "https://flipsite.io"
+}

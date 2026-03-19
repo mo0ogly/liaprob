@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mexty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEXTY",
+  "taxonomy_name": "Mexty",
+  "vendor": "",
+  "product": "Mexty",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MEXTY.json",
+    "original_name": "Mexty"
+  },
+  "research": [
+    {
+      "url": "https://mexty.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mexty_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^mexty team$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "creator",
+          "match_type": "regex",
+          "value": "^mexty$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Mexty is a no-code, AI-powered authoring platform that enables educators to create interactive lessons, activities, and courses quickly.",
+  "website": "https://mexty.ai"
+}

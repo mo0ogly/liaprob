@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-athemes_airi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATHEMES_AIRI",
+  "taxonomy_name": "aThemes Airi",
+  "vendor": "",
+  "product": "aThemes Airi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ATHEMES_AIRI.json",
+    "original_name": "aThemes Airi"
+  },
+  "research": [
+    {
+      "url": "https://athemes.com/theme/airi",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_athemes_airi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/airi/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "aThemes Airi is a powerful yet lightweight and flexible WordPress theme for organization or freelancer.",
+  "website": "https://athemes.com/theme/airi"
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-inveon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INVEON",
+  "taxonomy_name": "Inveon",
+  "vendor": "",
+  "product": "Inveon",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INVEON.json",
+    "original_name": "Inveon"
+  },
+  "research": [
+    {
+      "url": "https://www.inveon.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_inveon_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "inv.customer",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "inveonsessionid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "scripts/_app/inv(?:\\w+)\\.js\\?v=(.+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "scripts/_app/inv(?:\\w+)\\.js\\?v=(.+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Inveon is a technology company that has been delivering ecommerce infrastructure software and mcommerce applications.",
+  "website": "https://www.inveon.com"
+}

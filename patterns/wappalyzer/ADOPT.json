@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adopt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADOPT",
+  "taxonomy_name": "AdOpt",
+  "vendor": "",
+  "product": "AdOpt",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADOPT.json",
+    "original_name": "AdOpt"
+  },
+  "research": [
+    {
+      "url": "https://goadopt.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adopt_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tag\\.goadopt\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Svelte"
+  ],
+  "categories": [
+    67
+  ],
+  "notes": "AdOpt is a consent tool that prioritises privacy and usability towards the LGPD.",
+  "website": "https://goadopt.io"
+}

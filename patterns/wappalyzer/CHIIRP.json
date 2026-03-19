@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chiirp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHIIRP",
+  "taxonomy_name": "CHIIRP",
+  "vendor": "",
+  "product": "CHIIRP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHIIRP.json",
+    "original_name": "CHIIRP"
+  },
+  "research": [
+    {
+      "url": "https://chiirp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chiirp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.chiirp\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "CHIIRP is an AI-powered lead conversion tool for trade businesses that captures and manages calls and inquiries to support timely follow-up and improved lead conversion.",
+  "website": "https://chiirp.com"
+}

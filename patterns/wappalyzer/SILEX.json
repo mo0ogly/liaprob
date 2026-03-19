@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-silex",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SILEX",
+  "taxonomy_name": "Silex",
+  "vendor": "",
+  "product": "Silex",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SILEX.json",
+    "original_name": "Silex"
+  },
+  "research": [
+    {
+      "url": "https://www.silex.me",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_silex_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^silex v([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "^silex v([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Silex is an open-source web-based website builder that allows users to create websites without writing code.",
+  "website": "https://www.silex.me"
+}

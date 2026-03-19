@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-simplero_websites",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIMPLERO_WEBSITES",
+  "taxonomy_name": "Simplero Websites",
+  "vendor": "",
+  "product": "Simplero Websites",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIMPLERO_WEBSITES.json",
+    "original_name": "Simplero Websites"
+  },
+  "research": [
+    {
+      "url": "https://simplero.com/websites",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_simplero_websites_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_simplero_session_id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Cart Functionality"
+  ],
+  "categories": [
+    21
+  ],
+  "notes": "Simplero Websites are a learning management system which suited for courses, coaching programs, memberships and digital products by Simplero.",
+  "website": "https://simplero.com/websites"
+}

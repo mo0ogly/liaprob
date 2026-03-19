@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-quantcast_measure",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUANTCAST_MEASURE",
+  "taxonomy_name": "Quantcast Measure",
+  "vendor": "",
+  "product": "Quantcast Measure",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUANTCAST_MEASURE.json",
+    "original_name": "Quantcast Measure"
+  },
+  "research": [
+    {
+      "url": "https://www.quantcast.com/products/measure-audience-insights",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_quantcast_measure_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.quantserve\\.com/quant\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Quantcast Measure is an audience insights and analytics tool.",
+  "website": "https://www.quantcast.com/products/measure-audience-insights"
+}

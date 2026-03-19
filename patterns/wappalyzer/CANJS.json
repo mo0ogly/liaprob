@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-canjs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CANJS",
+  "taxonomy_name": "CanJS",
+  "vendor": "",
+  "product": "CanJS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CANJS.json",
+    "original_name": "CanJS"
+  },
+  "research": [
+    {
+      "url": "https://canjs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_canjs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/canjs/can\\.custom\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "CanJS is an MIT-licensed client-side JavaScript framework used for building maintainable and performant web applications.",
+  "website": "https://canjs.com"
+}

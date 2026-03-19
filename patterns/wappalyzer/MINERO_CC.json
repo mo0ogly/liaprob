@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-minero_cc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MINERO_CC",
+  "taxonomy_name": "Minero.cc",
+  "vendor": "",
+  "product": "Minero.cc",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MINERO_CC.json",
+    "original_name": "Minero.cc"
+  },
+  "research": [
+    {
+      "url": "https://minero.cc/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_minero_cc_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//minero\\.cc/lib/minero(?:-miner|-hidden)?\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    56
+  ],
+  "notes": "Minero.cc is a bot that helps run crypto mining application.",
+  "website": "https://minero.cc/"
+}

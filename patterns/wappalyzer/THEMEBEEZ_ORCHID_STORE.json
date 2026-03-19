@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-themebeez_orchid_store",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THEMEBEEZ_ORCHID_STORE",
+  "taxonomy_name": "Themebeez Orchid Store",
+  "vendor": "",
+  "product": "Themebeez Orchid Store",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THEMEBEEZ_ORCHID_STORE.json",
+    "original_name": "Themebeez Orchid Store"
+  },
+  "research": [
+    {
+      "url": "https://themebeez.com/themes/orchid-store",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_themebeez_orchid_store_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/orchid-store(?:-child)?/.+bundle\\.min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/themes/orchid-store(?:-child)?/.+bundle\\.min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Orchid Store is a clean, flexible, stylish and dynamic ecommerce WordPress theme by Themebeez.",
+  "website": "https://themebeez.com/themes/orchid-store"
+}

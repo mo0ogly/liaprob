@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fittingbox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FITTINGBOX",
+  "taxonomy_name": "Fittingbox",
+  "vendor": "",
+  "product": "Fittingbox",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FITTINGBOX.json",
+    "original_name": "Fittingbox"
+  },
+  "research": [
+    {
+      "url": "https://www.fittingbox.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fittingbox_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.fittingbox\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    105
+  ],
+  "notes": "Fittingbox is a software provider of augmented reality and 3D solutions designed for the eyewear industry.",
+  "website": "https://www.fittingbox.com"
+}

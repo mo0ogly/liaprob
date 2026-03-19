@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-egain_conversation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EGAIN_CONVERSATION",
+  "taxonomy_name": "eGain Conversation",
+  "vendor": "",
+  "product": "eGain Conversation",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EGAIN_CONVERSATION.json",
+    "original_name": "eGain Conversation"
+  },
+  "research": [
+    {
+      "url": "https://www.egain.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_egain_conversation_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.analytics-egain\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "eGain Conversation is a customer engagement platform that centralises and manages customer interactions across multiple channels, including chat, email, social media, and messaging apps.",
+  "website": "https://www.egain.com"
+}

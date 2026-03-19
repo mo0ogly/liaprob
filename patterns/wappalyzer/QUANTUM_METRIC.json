@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-quantum_metric",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUANTUM_METRIC",
+  "taxonomy_name": "Quantum Metric",
+  "vendor": "",
+  "product": "Quantum Metric",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUANTUM_METRIC.json",
+    "original_name": "Quantum Metric"
+  },
+  "research": [
+    {
+      "url": "https://www.quantummetric.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_quantum_metric_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.quantummetric\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Quantum Metric is a continuous product design platform that helps organizations build better products faster.",
+  "website": "https://www.quantummetric.com/"
+}

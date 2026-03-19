@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-paysafe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAYSAFE",
+  "taxonomy_name": "Paysafe",
+  "vendor": "",
+  "product": "Paysafe",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAYSAFE.json",
+    "original_name": "Paysafe"
+  },
+  "research": [
+    {
+      "url": "https://www.paysafe.com/en",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_paysafe_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/hosted\\.paysafe\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Paysafe is a payment platform that enables businesses and consumers to connect and transact by payment processing, digital wallet, and online cash solutions.",
+  "website": "https://www.paysafe.com/en"
+}

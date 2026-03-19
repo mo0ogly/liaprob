@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bloomreach_discovery",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLOOMREACH_DISCOVERY",
+  "taxonomy_name": "Bloomreach Discovery",
+  "vendor": "",
+  "product": "Bloomreach Discovery",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLOOMREACH_DISCOVERY.json",
+    "original_name": "Bloomreach Discovery"
+  },
+  "research": [
+    {
+      "url": "https://www.bloomreach.com/en/products/discovery",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bloomreach_discovery_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.brcdn\\.com/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.brsrvr\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29,
+    74
+  ],
+  "notes": "Bloomreach Discovery is a powerful combination of AI-powered site search, SEO, recommendations, and product merchandising.",
+  "website": "https://www.bloomreach.com/en/products/discovery"
+}

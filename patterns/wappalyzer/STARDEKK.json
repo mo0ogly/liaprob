@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stardekk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STARDEKK",
+  "taxonomy_name": "Stardekk",
+  "vendor": "",
+  "product": "Stardekk",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STARDEKK.json",
+    "original_name": "Stardekk"
+  },
+  "research": [
+    {
+      "url": "https://www.stardekk.com/blog",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stardekk_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^stardekk$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "copyright",
+          "match_type": "regex",
+          "value": "^stardekk$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Stardekk is a platform that provides hotel web design solutions.",
+  "website": "https://www.stardekk.com/blog"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopping_feed",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPPING_FEED",
+  "taxonomy_name": "Shopping Feed",
+  "vendor": "",
+  "product": "Shopping Feed",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPPING_FEED.json",
+    "original_name": "Shopping Feed"
+  },
+  "research": [
+    {
+      "url": "https://shoppingfeed.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopping_feed_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tracking\\.shopping-flux\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Shopping Feed is a multi-channel ecommerce inventory management tool designed to synchronize product listings, stock levels, and order data across various online marketplaces.",
+  "website": "https://shoppingfeed.com"
+}

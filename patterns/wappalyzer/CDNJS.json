@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cdnjs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CDNJS",
+  "taxonomy_name": "cdnjs",
+  "vendor": "",
+  "product": "cdnjs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CDNJS.json",
+    "original_name": "cdnjs"
+  },
+  "research": [
+    {
+      "url": "https://cdnjs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cdnjs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdnjs\\.cloudflare\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Cloudflare"
+  ],
+  "categories": [
+    31
+  ],
+  "notes": "cdnjs is a free distributed JS library delivery service.",
+  "website": "https://cdnjs.com"
+}

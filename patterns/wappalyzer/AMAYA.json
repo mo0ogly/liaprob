@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-amaya",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMAYA",
+  "taxonomy_name": "Amaya",
+  "vendor": "",
+  "product": "Amaya",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AMAYA.json",
+    "original_name": "Amaya"
+  },
+  "research": [
+    {
+      "url": "https://www.w3.org/Amaya",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_amaya_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "amaya(?: v?([\\d.]+[a-z]))?",
+          "confidence_delta": 0.5,
+          "version_extract": "amaya(?: v?([\\d.]+[a-z]))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    20
+  ],
+  "notes": "Amaya is an open-source web browser editor to create and update documents on the web.",
+  "website": "https://www.w3.org/Amaya"
+}

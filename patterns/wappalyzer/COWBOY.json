@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cowboy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COWBOY",
+  "taxonomy_name": "Cowboy",
+  "vendor": "",
+  "product": "Cowboy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COWBOY.json",
+    "original_name": "Cowboy"
+  },
+  "research": [
+    {
+      "url": "https://github.com/ninenines/cowboy",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cowboy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^cowboy$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Erlang"
+  ],
+  "categories": [
+    22
+  ],
+  "notes": "Cowboy is a small, fast, modular HTTP server written in Erlang.",
+  "website": "https://github.com/ninenines/cowboy"
+}

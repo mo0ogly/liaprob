@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-outsystems",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OUTSYSTEMS",
+  "taxonomy_name": "OutSystems",
+  "vendor": "",
+  "product": "OutSystems",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OUTSYSTEMS.json",
+    "original_name": "OutSystems"
+  },
+  "research": [
+    {
+      "url": "https://www.outsystems.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_outsystems_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "scripts/outsystems(?:[\\w]+)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "IIS",
+    "Windows Server"
+  ],
+  "categories": [
+    47
+  ],
+  "notes": "OutSystems is a low-code platform which provides tools for companies to develop, deploy and manage omnichannel enterprise applications.",
+  "website": "https://www.outsystems.com"
+}

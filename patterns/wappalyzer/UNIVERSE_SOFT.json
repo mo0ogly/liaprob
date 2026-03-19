@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-universe_soft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNIVERSE_SOFT",
+  "taxonomy_name": "Universe Soft",
+  "vendor": "",
+  "product": "Universe Soft",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UNIVERSE_SOFT.json",
+    "original_name": "Universe Soft"
+  },
+  "research": [
+    {
+      "url": "https://universe-soft.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_universe_soft_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.universe-soft\\.ru/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Universe-Soft is a business automation platform for salons, clinics, and fitness centers in Russia.",
+  "website": "https://universe-soft.ru"
+}

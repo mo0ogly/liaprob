@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-surfside",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SURFSIDE",
+  "taxonomy_name": "Surfside",
+  "vendor": "",
+  "product": "Surfside",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SURFSIDE.json",
+    "original_name": "Surfside"
+  },
+  "research": [
+    {
+      "url": "https://surfside.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_surfside_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.surfside\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Surfside is an end-to-end marketing technology that aggregates first-party data across customer touchpoints, enabling advertisers to analyze, target, and measure strategies for influencing current and future customers.",
+  "website": "https://surfside.io"
+}

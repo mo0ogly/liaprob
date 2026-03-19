@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ventryshield",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VENTRYSHIELD",
+  "taxonomy_name": "VentryShield",
+  "vendor": "",
+  "product": "VentryShield",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VENTRYSHIELD.json",
+    "original_name": "VentryShield"
+  },
+  "research": [
+    {
+      "url": "https://ventryshield.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ventryshield_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-ventryshield-cache-status",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "no-cache"
+        },
+        {
+          "target": "header",
+          "field": "x-ventryshield-sid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "ventryshield_pre",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "VentryShield offers DDoS Protected VPS and Web Hosting.",
+  "website": "https://ventryshield.net"
+}

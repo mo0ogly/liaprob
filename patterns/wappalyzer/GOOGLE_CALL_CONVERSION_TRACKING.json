@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-google_call_conversion_tracking",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_CALL_CONVERSION_TRACKING",
+  "taxonomy_name": "Google Call Conversion Tracking",
+  "vendor": "",
+  "product": "Google Call Conversion Tracking",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOOGLE_CALL_CONVERSION_TRACKING.json",
+    "original_name": "Google Call Conversion Tracking"
+  },
+  "research": [
+    {
+      "url": "https://support.google.com/google-ads/answer/6100664",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_google_call_conversion_tracking_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "gstatic\\.com/call-tracking/.+\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Google Call Conversion Tracking is conversion tracking that shows which search keywords are driving the most calls.",
+  "website": "https://support.google.com/google-ads/answer/6100664"
+}

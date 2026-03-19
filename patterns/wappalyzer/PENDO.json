@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pendo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PENDO",
+  "taxonomy_name": "Pendo",
+  "vendor": "",
+  "product": "Pendo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PENDO.json",
+    "original_name": "Pendo"
+  },
+  "research": [
+    {
+      "url": "https://www.pendo.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pendo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.pendo\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    58
+  ],
+  "notes": "Pendo is a product analytics platform used in release to enrich the product experience and provide insights to the product management team.",
+  "website": "https://www.pendo.io"
+}

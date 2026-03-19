@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-twitter_emoji_twemoji",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TWITTER_EMOJI_TWEMOJI",
+  "taxonomy_name": "Twitter Emoji (Twemoji)",
+  "vendor": "",
+  "product": "Twitter Emoji (Twemoji)",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TWITTER_EMOJI_TWEMOJI.json",
+    "original_name": "Twitter Emoji (Twemoji)"
+  },
+  "research": [
+    {
+      "url": "https://twitter.github.io/twemoji/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_twitter_emoji_twemoji_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "twemoji(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    17
+  ],
+  "notes": "Twitter Emoji is a set of open-source emoticons and emojis for Twitter, TweetDeck, and also for Android and iOS versions of the application.",
+  "website": "https://twitter.github.io/twemoji/"
+}

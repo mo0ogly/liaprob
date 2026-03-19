@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sap_customer_data_cloud_sign_in",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_CUSTOMER_DATA_CLOUD_SIGN_IN",
+  "taxonomy_name": "SAP Customer Data Cloud Sign-in",
+  "vendor": "",
+  "product": "SAP Customer Data Cloud Sign-in",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SAP_CUSTOMER_DATA_CLOUD_SIGN_IN.json",
+    "original_name": "SAP Customer Data Cloud Sign-in"
+  },
+  "research": [
+    {
+      "url": "https://www.sap.com/uk/acquired-brands/what-is-gigya.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sap_customer_data_cloud_sign_in_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.gigya\\.com/js/gigya\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "website": "https://www.sap.com/uk/acquired-brands/what-is-gigya.html"
+}

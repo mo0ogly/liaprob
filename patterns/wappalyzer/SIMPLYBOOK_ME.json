@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-simplybook_me",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIMPLYBOOK_ME",
+  "taxonomy_name": "SimplyBook.me",
+  "vendor": "",
+  "product": "SimplyBook.me",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIMPLYBOOK_ME.json",
+    "original_name": "SimplyBook.me"
+  },
+  "research": [
+    {
+      "url": "https://simplybook.me",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_simplybook_me_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.simplybook\\.(?:asia|it|me)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "SimplyBook.me is an online appointment scheduling and booking software.",
+  "website": "https://simplybook.me"
+}

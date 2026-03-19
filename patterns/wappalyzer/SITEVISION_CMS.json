@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sitevision_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITEVISION_CMS",
+  "taxonomy_name": "Sitevision CMS",
+  "vendor": "",
+  "product": "Sitevision CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITEVISION_CMS.json",
+    "original_name": "Sitevision CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.sitevision.se",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sitevision_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "sitevisionltm",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sitevision/system-resource/(?:[\\w\\d]+)/envision/envision\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sitevision/system-resource/(?:[\\w\\d]+)/js/appregistry\\.js",
+          "confidence_delta": 0.25
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sitevision/system-resource/(?:[\\w\\d]+)/js/docready-min\\.js",
+          "confidence_delta": 0.25
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sitevision/system-resource/(?:[\\w\\d]+)/webapps/webapp_sdk-min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Sitevision CMS is a platform for web publishing that consists of flexible and pre-made modules. Available as self-hosed software and Cloud SaaS.",
+  "website": "https://www.sitevision.se"
+}

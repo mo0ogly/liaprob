@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wordpress_com",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORDPRESS_COM",
+  "taxonomy_name": "WordPress.com",
+  "vendor": "",
+  "product": "WordPress.com",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORDPRESS_COM.json",
+    "original_name": "WordPress.com"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wordpress_com_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "host-header",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "wordpress\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress"
+  ],
+  "categories": [
+    62
+  ],
+  "notes": "WordPress.com is a platform for self-publishing that is popular for blogging and other works.",
+  "website": "https://wordpress.com"
+}

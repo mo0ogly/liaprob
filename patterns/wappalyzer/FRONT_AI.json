@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-front_ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRONT_AI",
+  "taxonomy_name": "Front AI",
+  "vendor": "",
+  "product": "Front AI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRONT_AI.json",
+    "original_name": "Front AI"
+  },
+  "research": [
+    {
+      "url": "https://front.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_front_ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.front\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Front AI is a platform that offers services for Conversational AI, Virtual Agents, and Service Bots to support automated customer interactions.",
+  "website": "https://front.ai"
+}

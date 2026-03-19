@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-arcspan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARCSPAN",
+  "taxonomy_name": "ArcSpan",
+  "vendor": "",
+  "product": "ArcSpan",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ARCSPAN.json",
+    "original_name": "ArcSpan"
+  },
+  "research": [
+    {
+      "url": "https://www.arcspan.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_arcspan_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "arcid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "aspan_s",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "ArcSpan is an audience monetization DMP platform enabling direct sold and programmatic deal results for the world’s finest publishers and retail media networks.",
+  "website": "https://www.arcspan.com"
+}

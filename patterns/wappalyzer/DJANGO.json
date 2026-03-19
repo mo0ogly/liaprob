@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-django",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DJANGO",
+  "taxonomy_name": "Django",
+  "vendor": "",
+  "product": "Django",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DJANGO.json",
+    "original_name": "Django"
+  },
+  "research": [
+    {
+      "url": "https://djangoproject.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_django_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "django_language",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:powered by <a[^>]+>django ?([\\d.]+)?<\\/a>|<input[^>]*name=[\"']csrfmiddlewaretoken[\"'][^>]*>)",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:powered by <a[^>]+>django ?([\\d.]+)?<\\/a>|<input[^>]*name=[\"']csrfmiddlewaretoken[\"'][^>]*>)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:djangoproject:django:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Python"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Django is a Python-based free and open-source web application framework.",
+  "website": "https://djangoproject.com"
+}

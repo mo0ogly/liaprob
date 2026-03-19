@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shoptet",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPTET",
+  "taxonomy_name": "Shoptet",
+  "vendor": "",
+  "product": "Shoptet",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPTET.json",
+    "original_name": "Shoptet"
+  },
+  "research": [
+    {
+      "url": "https://www.shoptet.cz",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shoptet_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"https?://cdn\\.myshoptet\\.com/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "web_author",
+          "match_type": "regex",
+          "value": "^shoptet",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https?://cdn\\.myshoptet\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Shoptet is an ecommerce solutions from store builder, inventory management of online payments.",
+  "website": "https://www.shoptet.cz"
+}

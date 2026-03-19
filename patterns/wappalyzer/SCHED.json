@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sched",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCHED",
+  "taxonomy_name": "Sched",
+  "vendor": "",
+  "product": "Sched",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SCHED.json",
+    "original_name": "Sched"
+  },
+  "research": [
+    {
+      "url": "https://sched.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sched_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sched\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Sched is an AI-powered platform that provides an all-in-one toolkit for event planning.",
+  "website": "https://sched.com"
+}

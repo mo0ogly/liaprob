@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_publisher",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_PUBLISHER",
+  "taxonomy_name": "Microsoft Publisher",
+  "vendor": "",
+  "product": "Microsoft Publisher",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_PUBLISHER.json",
+    "original_name": "Microsoft Publisher"
+  },
+  "research": [
+    {
+      "url": "https://office.microsoft.com/publisher",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_publisher_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:publisher\"|<!--[if pub]><xml>)",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "microsoft publisher( [\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "microsoft publisher( [\\d.]+)?"
+        },
+        {
+          "target": "meta",
+          "field": "progid",
+          "match_type": "regex",
+          "value": "^publisher\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:publisher:*:*:*:*:*:*:*:*",
+  "categories": [
+    20
+  ],
+  "notes": "Microsoft Publisher is an application that allows you to create professional documents such as newsletters, postcards, flyers, invitations, brochures.",
+  "website": "https://office.microsoft.com/publisher"
+}

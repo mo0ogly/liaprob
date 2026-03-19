@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spin_a_sale",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPIN_A_SALE",
+  "taxonomy_name": "Spin-a-Sale",
+  "vendor": "",
+  "product": "Spin-a-Sale",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPIN_A_SALE.json",
+    "original_name": "Spin-a-Sale"
+  },
+  "research": [
+    {
+      "url": "https://spinasale.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spin_a_sale_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "client\\.spinasale\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100,
+    5
+  ],
+  "notes": "Spin-a-Sale adds the intensity of gamification to your site. Spin-a-Sale overlay displays a special prize wheel for visitors that you can fully configure.",
+  "website": "https://spinasale.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-momence",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOMENCE",
+  "taxonomy_name": "Momence",
+  "vendor": "",
+  "product": "Momence",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOMENCE.json",
+    "original_name": "Momence"
+  },
+  "research": [
+    {
+      "url": "https://momence.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_momence_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//momence\\.com/plugin/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72,
+    104
+  ],
+  "notes": "Momence is an all-in-one toolbox for gyms and studios, enabling scheduling of online and in-person classes, events, appointments, and experiences.",
+  "website": "https://momence.com"
+}

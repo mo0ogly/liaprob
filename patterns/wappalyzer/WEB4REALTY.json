@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-web4realty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEB4REALTY",
+  "taxonomy_name": "Web4Realty",
+  "vendor": "",
+  "product": "Web4Realty",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEB4REALTY.json",
+    "original_name": "Web4Realty"
+  },
+  "research": [
+    {
+      "url": "https://web4realty.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_web4realty_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "idxjs\\.web4realty\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Web4Realty is an all-in-one marketing and sales platform for real estate professionals.",
+  "website": "https://web4realty.com"
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-waitforimages",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WAITFORIMAGES",
+  "taxonomy_name": "waitForImages",
+  "vendor": "",
+  "product": "waitForImages",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WAITFORIMAGES.json",
+    "original_name": "waitForImages"
+  },
+  "research": [
+    {
+      "url": "https://github.com/alexanderdickson/waitForImages",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_waitforimages_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:((?:\\d+\\.)+\\d+)\\/(?:jquery\\.)?)?waitforimages(?:-modded)?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:((?:\\d+\\.)+\\d+)\\/(?:jquery\\.)?)?waitforimages(?:-modded)?(?:\\.min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:(?:jquery\\.)?)?waitforimages(?:-((?:\\d+\\.)+\\d+)-modded)?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:(?:jquery\\.)?)?waitforimages(?:-((?:\\d+\\.)+\\d+)-modded)?(?:\\.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "waitForImages is a lightweight, high-performance JavaScript library that simplifies the handling of image preloading events.",
+  "website": "https://github.com/alexanderdickson/waitForImages"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-planet",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLANET",
+  "taxonomy_name": "Planet",
+  "vendor": "",
+  "product": "Planet",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLANET.json",
+    "original_name": "Planet"
+  },
+  "research": [
+    {
+      "url": "https://planetplanet.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_planet_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^planet(?:/([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "^planet(?:/([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    49
+  ],
+  "notes": "Planet is a feed aggregator, which creates pages with entries from the original feeds in chronological order, most recent entries first.",
+  "website": "https://planetplanet.org"
+}

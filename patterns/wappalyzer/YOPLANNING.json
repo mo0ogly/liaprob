@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yoplanning",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOPLANNING",
+  "taxonomy_name": "YoPlanning",
+  "vendor": "",
+  "product": "YoPlanning",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOPLANNING.json",
+    "original_name": "YoPlanning"
+  },
+  "research": [
+    {
+      "url": "https://yoplanning.pro",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yoplanning_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "booking\\.yoplanning\\.pro",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "YoPlanning is an online software designed for booking and planning activities.",
+  "website": "https://yoplanning.pro"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-admost",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADMOST",
+  "taxonomy_name": "Admost",
+  "vendor": "",
+  "product": "Admost",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADMOST.json",
+    "original_name": "Admost"
+  },
+  "research": [
+    {
+      "url": "https://admost.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_admost_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "run\\.admost\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Admost is a full-cycle monetisation system for app publishers, featuring mediation, revenue analytics, and cross-promotion through a single SDK.",
+  "website": "https://admost.com/"
+}

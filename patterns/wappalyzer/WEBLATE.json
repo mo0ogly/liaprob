@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-weblate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBLATE",
+  "taxonomy_name": "Weblate",
+  "vendor": "",
+  "product": "Weblate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBLATE.json",
+    "original_name": "Weblate"
+  },
+  "research": [
+    {
+      "url": "https://weblate.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_weblate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.weblate\\.org"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    89
+  ],
+  "notes": "Weblate is a web-based continuous localization platform that enables ongoing translation management and integration across software projects.",
+  "website": "https://weblate.org"
+}

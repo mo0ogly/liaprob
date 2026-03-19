@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gtranslate_app",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GTRANSLATE_APP",
+  "taxonomy_name": "GTranslate app",
+  "vendor": "",
+  "product": "GTranslate app",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GTRANSLATE_APP.json",
+    "original_name": "GTranslate app"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/multilingual-shop-by-gtranslate",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gtranslate_app_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "gtranslate\\.io/shopify/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100,
+    89
+  ],
+  "notes": "GTranslate app is a website translator which can translate any website to any language automatically.",
+  "website": "https://apps.shopify.com/multilingual-shop-by-gtranslate"
+}

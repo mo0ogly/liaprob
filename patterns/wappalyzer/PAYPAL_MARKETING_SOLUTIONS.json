@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-paypal_marketing_solutions",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAYPAL_MARKETING_SOLUTIONS",
+  "taxonomy_name": "PayPal Marketing Solutions",
+  "vendor": "",
+  "product": "PayPal Marketing Solutions",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAYPAL_MARKETING_SOLUTIONS.json",
+    "original_name": "PayPal Marketing Solutions"
+  },
+  "research": [
+    {
+      "url": "https://developer.paypal.com/docs/marketing-solutions",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_paypal_marketing_solutions_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.paypal\\.com/tagmanager/pptm\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.paypalobjects\\.com/muse/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PayPal"
+  ],
+  "categories": [
+    10,
+    32
+  ],
+  "notes": "PayPal Marketing Solutions enables merchants to see shopper insights and provide custom rewards for buyers with PayPal accounts.",
+  "website": "https://developer.paypal.com/docs/marketing-solutions"
+}

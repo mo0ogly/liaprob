@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-h5ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "H5AI",
+  "taxonomy_name": "h5ai",
+  "vendor": "",
+  "product": "h5ai",
+  "source": {
+    "type": "wappalyzer",
+    "file": "H5AI.json",
+    "original_name": "h5ai"
+  },
+  "research": [
+    {
+      "url": "https://github.com/lrsjng/h5ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_h5ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/_h5ai/(?:public|client)/js/scripts\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    19
+  ],
+  "notes": "h5ai is a modern HTTP web server index for Apache httpd, lighttpd, and nginx.",
+  "website": "https://github.com/lrsjng/h5ai"
+}

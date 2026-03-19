@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-docfx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOCFX",
+  "taxonomy_name": "DocFX",
+  "vendor": "",
+  "product": "DocFX",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOCFX.json",
+    "original_name": "DocFX"
+  },
+  "research": [
+    {
+      "url": "https://github.com/dotnet/docfx",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_docfx_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "docfx:navrel",
+          "match_type": "regex",
+          "value": "toc.html",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "docfx:tocrel",
+          "match_type": "regex",
+          "value": "toc.html",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "docfx\\s([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "docfx\\s([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "DocFX is a tool for building and publishing API documentation for .NET projects.",
+  "website": "https://github.com/dotnet/docfx"
+}

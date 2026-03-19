@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-easydigitaldownloads",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EASYDIGITALDOWNLOADS",
+  "taxonomy_name": "EasyDigitalDownloads",
+  "vendor": "",
+  "product": "EasyDigitalDownloads",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EASYDIGITALDOWNLOADS.json",
+    "original_name": "EasyDigitalDownloads"
+  },
+  "research": [
+    {
+      "url": "https://easydigitaldownloads.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_easydigitaldownloads_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^easy digital downloads v(.*)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^easy digital downloads v(.*)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6,
+    87
+  ],
+  "notes": "Easy Digital Downloads is a WordPress ecommerce plugin that focuses purely on digital products.",
+  "website": "https://easydigitaldownloads.com"
+}

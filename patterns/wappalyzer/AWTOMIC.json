@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-awtomic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AWTOMIC",
+  "taxonomy_name": "Awtomic",
+  "vendor": "",
+  "product": "Awtomic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AWTOMIC.json",
+    "original_name": "Awtomic"
+  },
+  "research": [
+    {
+      "url": "https://www.awtomic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_awtomic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn/shop/.*awtomic.*\\.js\\?v=\\d+",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Awtomic is a platform that offers shoppers and merchants tools for managing subscription products and membership services.",
+  "website": "https://www.awtomic.com"
+}

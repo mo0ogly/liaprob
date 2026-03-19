@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-danneo_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DANNEO_CMS",
+  "taxonomy_name": "Danneo CMS",
+  "vendor": "",
+  "product": "Danneo CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DANNEO_CMS.json",
+    "original_name": "Danneo CMS"
+  },
+  "research": [
+    {
+      "url": "https://danneo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_danneo_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "cms danneo ([\\d.]+)",
+          "version_extract": "cms danneo ([\\d.]+)"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "danneo cms ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "danneo cms ([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Apache HTTP Server",
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://danneo.com"
+}

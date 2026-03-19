@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-suitecrm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUITECRM",
+  "taxonomy_name": "SuiteCRM",
+  "vendor": "",
+  "product": "SuiteCRM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SUITECRM.json",
+    "original_name": "SuiteCRM"
+  },
+  "research": [
+    {
+      "url": "https://suitecrm.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_suitecrm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "scrmsessid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "themes/suitep/js/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "SuiteCRM is an open-source alternative to proprietary software such as Salesforce and Dynamics, offering customer relationship management features.",
+  "website": "https://suitecrm.com"
+}

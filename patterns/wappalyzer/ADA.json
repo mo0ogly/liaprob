@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ada",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADA",
+  "taxonomy_name": "Ada",
+  "vendor": "",
+  "product": "Ada",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADA.json",
+    "original_name": "Ada"
+  },
+  "research": [
+    {
+      "url": "https://www.ada.cx",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ada_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ada\\.support",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Ada is an automated customer experience company that provides chat bots used in customer support.",
+  "website": "https://www.ada.cx"
+}

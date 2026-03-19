@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-grin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRIN",
+  "taxonomy_name": "Grin",
+  "vendor": "",
+  "product": "Grin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GRIN.json",
+    "original_name": "Grin"
+  },
+  "research": [
+    {
+      "url": "https://grin.co/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_grin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "grin-sdk\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Grin is a influence marketing platform.",
+  "website": "https://grin.co/"
+}

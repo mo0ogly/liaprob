@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ping_parrot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PING_PARROT",
+  "taxonomy_name": "Ping Parrot",
+  "vendor": "",
+  "product": "Ping Parrot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PING_PARROT.json",
+    "original_name": "Ping Parrot"
+  },
+  "research": [
+    {
+      "url": "https://www.pingparrot.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ping_parrot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.pingparrot\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Ping Parrot is an AI powered chatbot that allows any website to create a bot that is trained on their data.",
+  "website": "https://www.pingparrot.com"
+}

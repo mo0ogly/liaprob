@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-verisign",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERISIGN",
+  "taxonomy_name": "Verisign",
+  "vendor": "",
+  "product": "Verisign",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VERISIGN.json",
+    "original_name": "Verisign"
+  },
+  "research": [
+    {
+      "url": "https://www.verisign.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_verisign_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "seal\\.verisign\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    109
+  ],
+  "notes": "Verisign is a provider of internet infrastructure services, known for its secure domain name registry.",
+  "website": "https://www.verisign.com"
+}

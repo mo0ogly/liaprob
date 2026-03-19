@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chaty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHATY",
+  "taxonomy_name": "Chaty",
+  "vendor": "",
+  "product": "Chaty",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHATY.json",
+    "original_name": "Chaty"
+  },
+  "research": [
+    {
+      "url": "https://chaty.app/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chaty_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.chaty\\.app/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Chaty is a communication tool that enables customer engagement through messaging apps like WhatsApp and Messenger.",
+  "website": "https://chaty.app/"
+}

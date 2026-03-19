@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chatbot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHATBOT",
+  "taxonomy_name": "ChatBot",
+  "vendor": "",
+  "product": "ChatBot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHATBOT.json",
+    "original_name": "ChatBot"
+  },
+  "research": [
+    {
+      "url": "https://www.chatbot.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chatbot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.chatbot\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "ChatBot is a framework for AI chatbots, enabling users to create chatbots for various web services.",
+  "website": "https://www.chatbot.com"
+}

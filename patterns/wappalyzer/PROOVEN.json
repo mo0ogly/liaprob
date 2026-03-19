@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-prooven",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROOVEN",
+  "taxonomy_name": "Prooven",
+  "vendor": "",
+  "product": "Prooven",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROOVEN.json",
+    "original_name": "Prooven"
+  },
+  "research": [
+    {
+      "url": "https://prooven.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_prooven_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.prooven\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Prooven is a platform designed to build credibility and increase conversion through trust-driven solutions.",
+  "website": "https://prooven.io"
+}

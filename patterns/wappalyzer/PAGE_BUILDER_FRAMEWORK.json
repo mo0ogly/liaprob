@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-page_builder_framework",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAGE_BUILDER_FRAMEWORK",
+  "taxonomy_name": "Page Builder Framework",
+  "vendor": "",
+  "product": "Page Builder Framework",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAGE_BUILDER_FRAMEWORK.json",
+    "original_name": "Page Builder Framework"
+  },
+  "research": [
+    {
+      "url": "https://wp-pagebuilderframework.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_page_builder_framework_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/page-builder-framework/.+site-min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/themes/page-builder-framework/.+site-min\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Page Builder Framework is a lightweight (less than 50kb on the frontend) and highly customizible WordPress theme.",
+  "website": "https://wp-pagebuilderframework.com"
+}

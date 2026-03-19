@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-imunify360",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IMUNIFY360",
+  "taxonomy_name": "Imunify360",
+  "vendor": "",
+  "product": "Imunify360",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IMUNIFY360.json",
+    "original_name": "Imunify360"
+  },
+  "research": [
+    {
+      "url": "https://www.imunify360.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_imunify360_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "imunify360-webshield/([\\d\\.]+)",
+          "version_extract": "imunify360-webshield/([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Imunify360 is a comprehensive security platform for Linux web servers which utilises machine learning technology and other advanced techniques to provide protection against various types of cyber threats, such as malware, viruses, and other attacks.",
+  "website": "https://www.imunify360.com"
+}

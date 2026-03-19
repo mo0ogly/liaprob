@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ari_network_services",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARI_NETWORK_SERVICES",
+  "taxonomy_name": "ARI Network Services",
+  "vendor": "",
+  "product": "ARI Network Services",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ARI_NETWORK_SERVICES.json",
+    "original_name": "ARI Network Services"
+  },
+  "research": [
+    {
+      "url": "https://arinet.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ari_network_services_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ari-secure\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "ARI Network Services provides website, software, and data solutions to help dealers, distributors, and OEMs improve their selling process.",
+  "website": "https://arinet.com"
+}

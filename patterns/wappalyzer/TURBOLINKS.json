@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-turbolinks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TURBOLINKS",
+  "taxonomy_name": "Turbolinks",
+  "vendor": "",
+  "product": "Turbolinks",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TURBOLINKS.json",
+    "original_name": "Turbolinks"
+  },
+  "research": [
+    {
+      "url": "https://github.com/turbolinks/turbolinks",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_turbolinks_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "turolinks\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    92
+  ],
+  "notes": "Turbolinks is a Rails feature, available as a gem and enabled by default in new Rails apps. It is intended to speed up navigating between pages of your application.",
+  "website": "https://github.com/turbolinks/turbolinks"
+}

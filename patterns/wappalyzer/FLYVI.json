@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flyvi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLYVI",
+  "taxonomy_name": "Flyvi",
+  "vendor": "",
+  "product": "Flyvi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLYVI.json",
+    "original_name": "Flyvi"
+  },
+  "research": [
+    {
+      "url": "https://flyvi.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flyvi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.flyvi\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    66
+  ],
+  "notes": "Flyvi is a platform that generates visually engaging graphics optimized for social media.",
+  "website": "https://flyvi.io"
+}

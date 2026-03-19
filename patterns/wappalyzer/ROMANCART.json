@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-romancart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROMANCART",
+  "taxonomy_name": "RomanCart",
+  "vendor": "",
+  "product": "RomanCart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ROMANCART.json",
+    "original_name": "RomanCart"
+  },
+  "research": [
+    {
+      "url": "https://www.romancart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_romancart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.romancart\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "RomanCart is a shopping cart and internet marketing system designed to support online sales, manage product listings, process transactions, and facilitate basic digital marketing functions for ecommerce websites.",
+  "website": "https://www.romancart.com"
+}

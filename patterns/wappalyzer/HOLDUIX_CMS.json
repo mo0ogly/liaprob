@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-holduix_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOLDUIX_CMS",
+  "taxonomy_name": "Holduix CMS",
+  "vendor": "",
+  "product": "Holduix CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HOLDUIX_CMS.json",
+    "original_name": "Holduix CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.holduix.dev",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_holduix_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^holduix$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Holduix CMS is a lightweight content management solution designed to offer developers and end users a customizable experience.",
+  "website": "https://www.holduix.dev"
+}

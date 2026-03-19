@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-videojs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIDEOJS",
+  "taxonomy_name": "VideoJS",
+  "vendor": "",
+  "product": "VideoJS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VIDEOJS.json",
+    "original_name": "VideoJS"
+  },
+  "research": [
+    {
+      "url": "https://videojs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_videojs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/video\\.js\\/([\\d\\.]+)\\/",
+          "confidence_delta": 0.5,
+          "version_extract": "cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/video\\.js\\/([\\d\\.]+)\\/"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "zencdn\\.net/c/video\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    14
+  ],
+  "notes": "Video.js is a JavaScript and CSS library that makes it easier to work with and build on HTML5 video.",
+  "website": "https://videojs.com"
+}

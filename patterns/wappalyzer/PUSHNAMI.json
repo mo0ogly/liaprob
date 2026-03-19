@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pushnami",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUSHNAMI",
+  "taxonomy_name": "Pushnami",
+  "vendor": "",
+  "product": "Pushnami",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUSHNAMI.json",
+    "original_name": "Pushnami"
+  },
+  "research": [
+    {
+      "url": "https://pushnami.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pushnami_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.pushnami\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Pushnami is an AI-powered messaging platform that uses intelligent analytics to deliver superior push, social, and email performance.",
+  "website": "https://pushnami.com"
+}

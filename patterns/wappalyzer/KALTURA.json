@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kaltura",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KALTURA",
+  "taxonomy_name": "Kaltura",
+  "vendor": "",
+  "product": "Kaltura",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KALTURA.json",
+    "original_name": "Kaltura"
+  },
+  "research": [
+    {
+      "url": "https://corp.kaltura.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kaltura_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.kaltura\\.(?:nordu\\.net|com)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    14,
+    103
+  ],
+  "notes": "Kaltura is a video content management platform that allows users to upload, manage, share, publish, and stream videos.",
+  "website": "https://corp.kaltura.com"
+}

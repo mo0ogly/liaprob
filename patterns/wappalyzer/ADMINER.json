@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adminer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADMINER",
+  "taxonomy_name": "Adminer",
+  "vendor": "",
+  "product": "Adminer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADMINER.json",
+    "original_name": "Adminer"
+  },
+  "research": [
+    {
+      "url": "https://www.adminer.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adminer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "adminer</a> <span class=\"version\">([\\d.]+)</span>",
+          "confidence_delta": 0.5,
+          "version_extract": "adminer</a> <span class=\"version\">([\\d.]+)</span>"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "onclick=\"bodyclick\\(event\\);\" onload=\"verifyversion\\('([\\d.]+)'\\);\">",
+          "confidence_delta": 0.5,
+          "version_extract": "onclick=\"bodyclick\\(event\\);\" onload=\"verifyversion\\('([\\d.]+)'\\);\">"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:adminer:adminer:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    3
+  ],
+  "website": "https://www.adminer.org"
+}

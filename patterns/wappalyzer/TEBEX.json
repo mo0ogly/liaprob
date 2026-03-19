@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tebex",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TEBEX",
+  "taxonomy_name": "Tebex",
+  "vendor": "",
+  "product": "Tebex",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TEBEX.json",
+    "original_name": "Tebex"
+  },
+  "research": [
+    {
+      "url": "https://www.tebex.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tebex_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "tb-cache-country",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^\\w+$"
+        },
+        {
+          "target": "header",
+          "field": "tb-cache-group",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^webstore$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP",
+    "Sass"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Tebex specialises in providing gcommerce solutions for online games.",
+  "website": "https://www.tebex.io"
+}

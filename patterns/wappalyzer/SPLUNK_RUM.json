@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-splunk_rum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPLUNK_RUM",
+  "taxonomy_name": "Splunk RUM",
+  "vendor": "",
+  "product": "Splunk RUM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPLUNK_RUM.json",
+    "original_name": "Splunk RUM"
+  },
+  "research": [
+    {
+      "url": "https://www.splunk.com/en_us/observability/real-user-monitoring.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_splunk_rum_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "browser\\.plumbr\\.io/pa(?:-early)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    78
+  ],
+  "notes": "Splunk RUM is a real-time, front-end user monitoring and troubleshooting.",
+  "website": "https://www.splunk.com/en_us/observability/real-user-monitoring.html"
+}

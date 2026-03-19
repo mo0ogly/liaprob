@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flipsnack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLIPSNACK",
+  "taxonomy_name": "Flipsnack",
+  "vendor": "",
+  "product": "Flipsnack",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLIPSNACK.json",
+    "original_name": "Flipsnack"
+  },
+  "research": [
+    {
+      "url": "https://www.flipsnack.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flipsnack_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^flipsnack$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.flipsnack\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Flipsnack is a web-based platform that allows users to create and publish interactive digital flipbooks.",
+  "website": "https://www.flipsnack.com"
+}

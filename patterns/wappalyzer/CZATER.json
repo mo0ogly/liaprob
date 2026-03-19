@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-czater",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CZATER",
+  "taxonomy_name": "Czater",
+  "vendor": "",
+  "product": "Czater",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CZATER.json",
+    "original_name": "Czater"
+  },
+  "research": [
+    {
+      "url": "https://www.czater.pl",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_czater_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.czater\\.pl",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Czater is an live chat solution with extended CRM and videochat features.",
+  "website": "https://www.czater.pl"
+}

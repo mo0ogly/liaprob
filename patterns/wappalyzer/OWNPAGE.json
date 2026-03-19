@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ownpage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OWNPAGE",
+  "taxonomy_name": "Ownpage",
+  "vendor": "",
+  "product": "Ownpage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OWNPAGE.json",
+    "original_name": "Ownpage"
+  },
+  "research": [
+    {
+      "url": "https://www.ownpage.fr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ownpage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "script\\.ownpage\\.fr/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Ownpage is a technology services provider that enables publishers to personalize their newsletters, websites, and applications, enhancing content delivery for media platforms.",
+  "website": "https://www.ownpage.fr"
+}

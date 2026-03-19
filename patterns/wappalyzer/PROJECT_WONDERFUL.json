@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-project_wonderful",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROJECT_WONDERFUL",
+  "taxonomy_name": "Project Wonderful",
+  "vendor": "",
+  "product": "Project Wonderful",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROJECT_WONDERFUL.json",
+    "original_name": "Project Wonderful"
+  },
+  "research": [
+    {
+      "url": "https://projectwonderful.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_project_wonderful_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+id=\"pw_adbox_",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https?://(?:www\\.)?projectwonderful\\.com/(?:pwa\\.js|gen\\.php)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "website": "https://projectwonderful.com"
+}

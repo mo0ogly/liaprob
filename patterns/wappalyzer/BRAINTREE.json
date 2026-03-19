@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-braintree",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BRAINTREE",
+  "taxonomy_name": "Braintree",
+  "vendor": "",
+  "product": "Braintree",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BRAINTREE.json",
+    "original_name": "Braintree"
+  },
+  "research": [
+    {
+      "url": "https://www.braintreepayments.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_braintree_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.braintreegateway\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Braintree, a division of PayPal, specializes in mobile and web payment systems for ecommerce companies. Braintree provides clients with a merchant account and a payment gateway.",
+  "website": "https://www.braintreepayments.com"
+}

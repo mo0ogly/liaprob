@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-formcan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORMCAN",
+  "taxonomy_name": "Formcan",
+  "vendor": "",
+  "product": "Formcan",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORMCAN.json",
+    "original_name": "Formcan"
+  },
+  "research": [
+    {
+      "url": "https://www.formcan.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_formcan_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "formcan-color-mode",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.formcan\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "Formcan is a form builder that enables creation, customization, and deployment of online forms for data collection and management.",
+  "website": "https://www.formcan.com"
+}

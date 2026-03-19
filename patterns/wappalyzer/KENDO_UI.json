@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kendo_ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KENDO_UI",
+  "taxonomy_name": "Kendo UI",
+  "vendor": "",
+  "product": "Kendo UI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KENDO_UI.json",
+    "original_name": "Kendo UI"
+  },
+  "research": [
+    {
+      "url": "https://www.telerik.com/kendo-ui",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kendo_ui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]*\\s+href=[^>]*styles/kendo\\.common(?:\\.min)?\\.css[^>]*/>",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    66
+  ],
+  "notes": "Kendo UI is a HTML5 user interface framework for building interactive and high-performance websites and applications.",
+  "website": "https://www.telerik.com/kendo-ui"
+}

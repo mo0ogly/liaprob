@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-seatics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEATICS",
+  "taxonomy_name": "Seatics",
+  "vendor": "",
+  "product": "Seatics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEATICS.json",
+    "original_name": "Seatics"
+  },
+  "research": [
+    {
+      "url": "https://seatics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_seatics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tn-widget\\.seatics\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "Seatics is a platform that provides interactive maps for venues like arenas, stadiums, and convention centers, displaying seating arrangements, concession stands, restrooms, and other key locations.",
+  "website": "https://seatics.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ntlm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NTLM",
+  "taxonomy_name": "NTLM",
+  "vendor": "",
+  "product": "NTLM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NTLM.json",
+    "original_name": "NTLM"
+  },
+  "research": [
+    {
+      "url": "https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-ntht/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ntlm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "www-authenticate",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^ntlm"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "NTLM is an authentication method commonly used by Windows servers",
+  "website": "https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-ntht/"
+}

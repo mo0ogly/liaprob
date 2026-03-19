@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-visual_composer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VISUAL_COMPOSER",
+  "taxonomy_name": "Visual Composer",
+  "vendor": "",
+  "product": "Visual Composer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VISUAL_COMPOSER.json",
+    "original_name": "Visual Composer"
+  },
+  "research": [
+    {
+      "url": "https://visualcomposer.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_visual_composer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "powered by visual composer website builder",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP",
+    "WordPress"
+  ],
+  "categories": [
+    51
+  ],
+  "notes": "Visual Composer is an all-in-one web design tool for anyone who uses WordPress.",
+  "website": "https://visualcomposer.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tern",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TERN",
+  "taxonomy_name": "Tern",
+  "vendor": "",
+  "product": "Tern",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TERN.json",
+    "original_name": "Tern"
+  },
+  "research": [
+    {
+      "url": "https://www.tern.eco",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tern_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "live\\.tern-returns\\.eastsideapps\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Tern is a plug and play ecommerce app, built for Shopify, that offers merchants the ability to provide a seamless trade-in service.",
+  "website": "https://www.tern.eco"
+}

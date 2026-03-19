@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-glider_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLIDER_JS",
+  "taxonomy_name": "Glider.js",
+  "vendor": "",
+  "product": "Glider.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLIDER_JS.json",
+    "original_name": "Glider.js"
+  },
+  "research": [
+    {
+      "url": "https://nickpiscitelli.github.io/Glider.js",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_glider_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:/|@)?([\\d\\.]{2,})?/glider\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:/|@)?([\\d\\.]{2,})?/glider\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Glider.js is a fast, lightweight, responsive, dependency-free scrollable list with customisable paging controls.",
+  "website": "https://nickpiscitelli.github.io/Glider.js"
+}

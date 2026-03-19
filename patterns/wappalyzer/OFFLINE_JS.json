@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-offline_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OFFLINE_JS",
+  "taxonomy_name": "Offline.js",
+  "vendor": "",
+  "product": "Offline.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OFFLINE_JS.json",
+    "original_name": "Offline.js"
+  },
+  "research": [
+    {
+      "url": "https://github.hubspot.com/offline/docs/welcome",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_offline_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/(?:bundles/[^/]+|assets/javascripts|js)/offline\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Offline.js is a library that automatically alerts users when they have lost internet connectivity.",
+  "website": "https://github.hubspot.com/offline/docs/welcome"
+}

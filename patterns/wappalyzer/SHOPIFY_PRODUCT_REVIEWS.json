@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopify_product_reviews",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPIFY_PRODUCT_REVIEWS",
+  "taxonomy_name": "Shopify Product Reviews",
+  "vendor": "",
+  "product": "Shopify Product Reviews",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPIFY_PRODUCT_REVIEWS.json",
+    "original_name": "Shopify Product Reviews"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/product-reviews",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopify_product_reviews_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "productreviews\\.shopifycdn\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    90,
+    100
+  ],
+  "notes": "Shopify Product reviews allows you to add a customer review feature to your products.",
+  "website": "https://apps.shopify.com/product-reviews"
+}

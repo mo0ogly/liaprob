@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mod_jk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOD_JK",
+  "taxonomy_name": "mod_jk",
+  "vendor": "",
+  "product": "mod_jk",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOD_JK.json",
+    "original_name": "mod_jk"
+  },
+  "research": [
+    {
+      "url": "https://tomcat.apache.org/tomcat-3.3-doc/mod_jk-howto.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mod_jk_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "mod_jk(?:/([\\d\\.]+))?",
+          "version_extract": "mod_jk(?:/([\\d\\.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Apache HTTP Server",
+    "Apache Tomcat"
+  ],
+  "categories": [
+    33
+  ],
+  "notes": "Mod_jk is an Apache module used to connect the Tomcat servlet container with web servers such as Apache, iPlanet, Sun ONE (formerly Netscape) and even IIS using the Apache JServ Protocol. A web server waits for client HTTP requests.",
+  "website": "https://tomcat.apache.org/tomcat-3.3-doc/mod_jk-howto.html"
+}

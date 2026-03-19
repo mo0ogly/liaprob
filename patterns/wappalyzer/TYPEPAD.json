@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-typepad",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TYPEPAD",
+  "taxonomy_name": "TypePad",
+  "vendor": "",
+  "product": "TypePad",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TYPEPAD.json",
+    "original_name": "TypePad"
+  },
+  "research": [
+    {
+      "url": "https://www.typepad.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_typepad_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "typepad",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    11
+  ],
+  "notes": "Typepad is a blog hosting service.",
+  "website": "https://www.typepad.com"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hamechio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HAMECHIO",
+  "taxonomy_name": "Hamechio",
+  "vendor": "",
+  "product": "Hamechio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HAMECHIO.json",
+    "original_name": "Hamechio"
+  },
+  "research": [
+    {
+      "url": "https://hamech.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hamechio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "hamech\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Hamechio is a web application framework.",
+  "website": "https://hamech.io"
+}

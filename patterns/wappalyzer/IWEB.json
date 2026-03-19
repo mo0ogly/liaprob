@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-iweb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IWEB",
+  "taxonomy_name": "iWeb",
+  "vendor": "",
+  "product": "iWeb",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IWEB.json",
+    "original_name": "iWeb"
+  },
+  "research": [
+    {
+      "url": "https://apple.com/ilife/iweb",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_iweb_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^iweb( [\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^iweb( [\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    20
+  ],
+  "notes": "iWeb is a web site creation tool.",
+  "website": "https://apple.com/ilife/iweb"
+}

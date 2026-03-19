@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sidr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIDR",
+  "taxonomy_name": "sidr",
+  "vendor": "",
+  "product": "sidr",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIDR.json",
+    "original_name": "sidr"
+  },
+  "research": [
+    {
+      "url": "https://www.albertovarela.net/sidr/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sidr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sidr(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "sidr(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Sidr is a jQuery plugin for creating side menus.",
+  "website": "https://www.albertovarela.net/sidr/"
+}

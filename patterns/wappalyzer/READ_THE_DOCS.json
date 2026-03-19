@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-read_the_docs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "READ_THE_DOCS",
+  "taxonomy_name": "Read the Docs",
+  "vendor": "",
+  "product": "Read the Docs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "READ_THE_DOCS.json",
+    "original_name": "Read the Docs"
+  },
+  "research": [
+    {
+      "url": "https://about.readthedocs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_read_the_docs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.readthedocs\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "Read the Docs is a documentation platform that uses a Docs-as-Code workflow to provide versioned content, integrated previews, and secure authentication directly within standard Git development processes.",
+  "website": "https://about.readthedocs.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-typeform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TYPEFORM",
+  "taxonomy_name": "Typeform",
+  "vendor": "",
+  "product": "Typeform",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TYPEFORM.json",
+    "original_name": "Typeform"
+  },
+  "research": [
+    {
+      "url": "https://www.typeform.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_typeform_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.typeform\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Typeform is a Spanish online software as a service (SaaS) company that specialises in online form building and online surveys.",
+  "website": "https://www.typeform.com"
+}

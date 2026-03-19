@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vuepress",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VUEPRESS",
+  "taxonomy_name": "VuePress",
+  "vendor": "",
+  "product": "VuePress",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VUEPRESS.json",
+    "original_name": "VuePress"
+  },
+  "research": [
+    {
+      "url": "https://vuepress.vuejs.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vuepress_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^vuepress(?: ([0-9.]+)(-[a-z]+.[0-9]+)?)?$",
+          "confidence_delta": 0.5,
+          "version_extract": "^vuepress(?: ([0-9.]+)(-[a-z]+.[0-9]+)?)?$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Vue.js"
+  ],
+  "categories": [
+    57
+  ],
+  "notes": "VuePress is a static site generator with a Vue-powered theming system, and a default theme for writing technical documentation.",
+  "website": "https://vuepress.vuejs.org/"
+}

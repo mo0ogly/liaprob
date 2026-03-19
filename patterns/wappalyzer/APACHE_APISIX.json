@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-apache_apisix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_APISIX",
+  "taxonomy_name": "Apache APISIX",
+  "vendor": "",
+  "product": "Apache APISIX",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APACHE_APISIX.json",
+    "original_name": "Apache APISIX"
+  },
+  "research": [
+    {
+      "url": "https://apisix.apache.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_apache_apisix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^apisix(?:/([\\d\\.]+))?$",
+          "version_extract": "^apisix(?:/([\\d\\.]+))?$"
+        },
+        {
+          "target": "header",
+          "field": "x-apisix-upstream-status",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:apache:apisix:*:*:*:*:*:*:*:*",
+  "categories": [
+    22
+  ],
+  "notes": "Apache APISIX is an open-source, cloud-native API gateway developed by the Apache Software Foundation. It provides a scalable and high-performance solution for managing and securing API traffic.",
+  "website": "https://apisix.apache.org"
+}

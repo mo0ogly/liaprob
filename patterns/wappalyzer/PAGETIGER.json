@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pagetiger",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAGETIGER",
+  "taxonomy_name": "Pagetiger",
+  "vendor": "",
+  "product": "Pagetiger",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAGETIGER.json",
+    "original_name": "Pagetiger"
+  },
+  "research": [
+    {
+      "url": "https://www.pagetiger.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pagetiger_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.pagetiger\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Pagetiger is a platform that offers pre-made templates and an in-house creative agency to help users create content quickly and securely.",
+  "website": "https://www.pagetiger.com"
+}

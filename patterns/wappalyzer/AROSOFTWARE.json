@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-arosoftware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AROSOFTWARE",
+  "taxonomy_name": "AroSoftware",
+  "vendor": "",
+  "product": "AroSoftware",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AROSOFTWARE.json",
+    "original_name": "AroSoftware"
+  },
+  "research": [
+    {
+      "url": "https://www.arosoftware.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_arosoftware_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^arosoftware pty ltd$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "AroSoftware provides real estate CRM and website design solutions.",
+  "website": "https://www.arosoftware.com"
+}

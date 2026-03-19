@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aimy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AIMY",
+  "taxonomy_name": "Aimy",
+  "vendor": "",
+  "product": "Aimy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AIMY.json",
+    "original_name": "Aimy"
+  },
+  "research": [
+    {
+      "url": "https://meetaimy.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aimy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.meetaimy\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Aimy is a salon management platform that provides scheduling tools, a virtual assistant, and calendar maintenance features to streamline salon operations.",
+  "website": "https://meetaimy.com"
+}

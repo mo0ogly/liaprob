@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chameleon_power",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHAMELEON_POWER",
+  "taxonomy_name": "Chameleon Power",
+  "vendor": "",
+  "product": "Chameleon Power",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHAMELEON_POWER.json",
+    "original_name": "Chameleon Power"
+  },
+  "research": [
+    {
+      "url": "https://chameleonpower.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chameleon_power_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.chameleonpower\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Chameleon Power is a software platform that enables visualization, design, decoration, and selection of digital images and materials.",
+  "website": "https://chameleonpower.com"
+}

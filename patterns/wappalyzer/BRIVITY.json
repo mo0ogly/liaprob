@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-brivity",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BRIVITY",
+  "taxonomy_name": "Brivity",
+  "vendor": "",
+  "product": "Brivity",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BRIVITY.json",
+    "original_name": "Brivity"
+  },
+  "research": [
+    {
+      "url": "https://www.brivity.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_brivity_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn1\\.brivityidx\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Brivity is a real estate CRM and software platform that helps agents manage contacts, automate workflows, track transactions, and support business development and deal management.",
+  "website": "https://www.brivity.com"
+}

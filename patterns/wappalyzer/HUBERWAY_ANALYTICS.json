@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-huberway_analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUBERWAY_ANALYTICS",
+  "taxonomy_name": "Huberway Analytics",
+  "vendor": "",
+  "product": "Huberway Analytics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HUBERWAY_ANALYTICS.json",
+    "original_name": "Huberway Analytics"
+  },
+  "research": [
+    {
+      "url": "https://www.huberway.com/analytics-software",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_huberway_analytics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "analytics\\.huberway\\.com/pixel/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Huberway Analytics is a free web analytics service that tracks and reports website traffic.",
+  "website": "https://www.huberway.com/analytics-software"
+}

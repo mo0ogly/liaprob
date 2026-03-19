@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-customer_stories",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CUSTOMER_STORIES",
+  "taxonomy_name": "Customer Stories",
+  "vendor": "",
+  "product": "Customer Stories",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CUSTOMER_STORIES.json",
+    "original_name": "Customer Stories"
+  },
+  "research": [
+    {
+      "url": "https://customerstories.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_customer_stories_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.customerstories\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Customer Stories is a customer marketing automation platform designed to support modern marketing and sales teams in streamlining engagement and outreach efforts.",
+  "website": "https://customerstories.net"
+}

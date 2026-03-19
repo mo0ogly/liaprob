@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-justuno_app",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUSTUNO_APP",
+  "taxonomy_name": "Justuno App",
+  "vendor": "",
+  "product": "Justuno App",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JUSTUNO_APP.json",
+    "original_name": "Justuno App"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/justuno-pop-ups-email-conversion",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_justuno_app_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//scripttags\\.justuno\\.com/shopify_justuno",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Justuno"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Justuno is a premium conversion marketing and analytics platform that provides retailers with powerful tools to increase conversions.",
+  "website": "https://apps.shopify.com/justuno-pop-ups-email-conversion"
+}

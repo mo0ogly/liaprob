@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-taketheme",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TAKETHEME",
+  "taxonomy_name": "TakeTheme",
+  "vendor": "",
+  "product": "TakeTheme",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TAKETHEME.json",
+    "original_name": "TakeTheme"
+  },
+  "research": [
+    {
+      "url": "https://taketheme.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_taketheme_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "^taketheme$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "publisher",
+          "match_type": "regex",
+          "value": "^taketheme$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "TakeTheme is a platform that allows users to create online stores, add products, and manage sales.",
+  "website": "https://taketheme.com"
+}

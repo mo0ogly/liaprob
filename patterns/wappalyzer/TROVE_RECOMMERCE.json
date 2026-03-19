@@ -1,0 +1,94 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-trove_recommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TROVE_RECOMMERCE",
+  "taxonomy_name": "Trove Recommerce",
+  "vendor": "",
+  "product": "Trove Recommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TROVE_RECOMMERCE.json",
+    "original_name": "Trove Recommerce"
+  },
+  "research": [
+    {
+      "url": "https://trove.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_trove_recommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-trove-app-name",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-trove-country-code",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-trove-order-uuid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-yerdle-app-name",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "recurate-core\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "recurate-page\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "recurate-pdp\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "recurate-slider\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Trove (formerly Yerdle) builds white-label technology and end-to-end operations for ecommerce platforms.",
+  "website": "https://trove.co"
+}

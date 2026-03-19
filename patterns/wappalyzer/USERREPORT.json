@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-userreport",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "USERREPORT",
+  "taxonomy_name": "UserReport",
+  "vendor": "",
+  "product": "UserReport",
+  "source": {
+    "type": "wappalyzer",
+    "file": "USERREPORT.json",
+    "original_name": "UserReport"
+  },
+  "research": [
+    {
+      "url": "https://www.userreport.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_userreport_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.userreport\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13,
+    73
+  ],
+  "notes": "UserReport is an online survey and feedback management platform.",
+  "website": "https://www.userreport.com"
+}

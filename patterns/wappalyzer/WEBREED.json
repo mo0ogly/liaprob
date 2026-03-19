@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webreed",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBREED",
+  "taxonomy_name": "Webreed",
+  "vendor": "",
+  "product": "Webreed",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBREED.json",
+    "original_name": "Webreed"
+  },
+  "research": [
+    {
+      "url": "https://www.webreed.pet",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webreed_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "webreed_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Webreed is a website-based tool designed for managing animal breeding processes.",
+  "website": "https://www.webreed.pet"
+}

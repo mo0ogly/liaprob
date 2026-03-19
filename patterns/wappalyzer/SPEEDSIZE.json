@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-speedsize",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPEEDSIZE",
+  "taxonomy_name": "SpeedSize",
+  "vendor": "",
+  "product": "SpeedSize",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPEEDSIZE.json",
+    "original_name": "SpeedSize"
+  },
+  "research": [
+    {
+      "url": "https://speedsize.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_speedsize_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/speedsize(?:-sw)?\\.js",
+          "confidence_delta": 0.9
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.speedsize\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    92
+  ],
+  "notes": "SpeedSize is an AI-based media-compression technology that can auto-detect and compress all of a website's images and videos down to 99% of their original size without lowering the image quality.",
+  "website": "https://speedsize.com"
+}

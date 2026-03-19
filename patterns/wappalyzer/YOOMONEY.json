@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yoomoney",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOOMONEY",
+  "taxonomy_name": "YooMoney",
+  "vendor": "",
+  "product": "YooMoney",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOOMONEY.json",
+    "original_name": "YooMoney"
+  },
+  "research": [
+    {
+      "url": "https://yoomoney.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yoomoney_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.yoomoney\\.ru"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.yoomoney\\.ru/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "YooMoney is an IT company working with electronic payments on the Internet, creating and supporting financial services for individuals and businesses.",
+  "website": "https://yoomoney.ru"
+}

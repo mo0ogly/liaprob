@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-programia",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROGRAMIA",
+  "taxonomy_name": "Programia",
+  "vendor": "",
+  "product": "Programia",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROGRAMIA.json",
+    "original_name": "Programia"
+  },
+  "research": [
+    {
+      "url": "https://www.programia.eu",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_programia_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "programia s\\.r\\.o\\., e-mail: info@programia\\.cz",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Programia is a producer of advanced B2C and B2B systems integrated with ERP and economic systems.",
+  "website": "https://www.programia.eu"
+}

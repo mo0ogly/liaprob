@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oh_dear",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OH_DEAR",
+  "taxonomy_name": "Oh Dear",
+  "vendor": "",
+  "product": "Oh Dear",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OH_DEAR.json",
+    "original_name": "Oh Dear"
+  },
+  "research": [
+    {
+      "url": "https://ohdear.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oh_dear_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ohdear\\.app/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "The all-in-one monitoring tool for your entire website. Oh Dear monitors uptime, SSL certificates, broken links, scheduled tasks, application health, DNS, domain expiry and more.",
+  "website": "https://ohdear.app"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aurelia",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AURELIA",
+  "taxonomy_name": "Aurelia",
+  "vendor": "",
+  "product": "Aurelia",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AURELIA.json",
+    "original_name": "Aurelia"
+  },
+  "research": [
+    {
+      "url": "https://aurelia.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aurelia_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/aurelia[\\d\\w\\-\\.]+\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "Aurelia is an open-source UI JavaScript framework designed to create single page applications.",
+  "website": "https://aurelia.io"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-workday",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORKDAY",
+  "taxonomy_name": "Workday",
+  "vendor": "",
+  "product": "Workday",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORKDAY.json",
+    "original_name": "Workday"
+  },
+  "research": [
+    {
+      "url": "https://www.workday.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_workday_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.myworkday\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Workday is an enterprise cloud platform that provides solutions for finance, human resources, and business planning.",
+  "website": "https://www.workday.com"
+}

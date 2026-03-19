@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ordermygear",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORDERMYGEAR",
+  "taxonomy_name": "OrderMyGear",
+  "vendor": "",
+  "product": "OrderMyGear",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ORDERMYGEAR.json",
+    "original_name": "OrderMyGear"
+  },
+  "research": [
+    {
+      "url": "https://www.ordermygear.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ordermygear_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "omg_redesigned_cart",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.mybrightsites\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "OrderMyGear is an online store platform helping dealers, decorators and distributors create custom web stores.",
+  "website": "https://www.ordermygear.com"
+}

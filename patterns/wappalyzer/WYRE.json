@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wyre",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WYRE",
+  "taxonomy_name": "Wyre",
+  "vendor": "",
+  "product": "Wyre",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WYRE.json",
+    "original_name": "Wyre"
+  },
+  "research": [
+    {
+      "url": "https://sendwyre.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wyre_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "verify\\.sendwyre\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Wyre is a financial technology platform that enables cryptocurrency companies to connect digital assets with traditional fiat payment systems.",
+  "website": "https://sendwyre.com"
+}

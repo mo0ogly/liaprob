@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zoho_pagesense",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOHO_PAGESENSE",
+  "taxonomy_name": "Zoho PageSense",
+  "vendor": "",
+  "product": "Zoho PageSense",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZOHO_PAGESENSE.json",
+    "original_name": "Zoho PageSense"
+  },
+  "research": [
+    {
+      "url": "https://www.zoho.com/pagesense/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zoho_pagesense_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.pagesense\\.(?:cn|io)?",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Zoho"
+  ],
+  "categories": [
+    74,
+    76
+  ],
+  "notes": "Zoho PageSense is a conversion optimisation platform which combines the power of web analytics, A/B testing, and personalisation.",
+  "website": "https://www.zoho.com/pagesense/"
+}

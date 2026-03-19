@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-inevent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INEVENT",
+  "taxonomy_name": "InEvent",
+  "vendor": "",
+  "product": "InEvent",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INEVENT.json",
+    "original_name": "InEvent"
+  },
+  "research": [
+    {
+      "url": "https://inevent.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_inevent_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "apiurl",
+          "match_type": "regex",
+          "value": "inevent\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "namespace",
+          "match_type": "regex",
+          "value": "^inevent$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    104
+  ],
+  "notes": "InEvent is event management software designed to streamline planning, organization, and execution of virtual, hybrid, and in-person events.",
+  "website": "https://inevent.com"
+}

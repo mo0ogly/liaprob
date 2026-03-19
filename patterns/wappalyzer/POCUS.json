@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pocus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POCUS",
+  "taxonomy_name": "Pocus",
+  "vendor": "",
+  "product": "Pocus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POCUS.json",
+    "original_name": "Pocus"
+  },
+  "research": [
+    {
+      "url": "https://www.pocus.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pocus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//pocustrack\\.com/pocus\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Pocus is a platform that uses AI agents to monitor B2B accounts and identify real sales opportunities at critical moments.",
+  "website": "https://www.pocus.com"
+}

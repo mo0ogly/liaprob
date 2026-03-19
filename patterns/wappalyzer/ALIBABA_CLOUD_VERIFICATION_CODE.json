@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-alibaba_cloud_verification_code",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALIBABA_CLOUD_VERIFICATION_CODE",
+  "taxonomy_name": "Alibaba Cloud Verification Code",
+  "vendor": "",
+  "product": "Alibaba Cloud Verification Code",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALIBABA_CLOUD_VERIFICATION_CODE.json",
+    "original_name": "Alibaba Cloud Verification Code"
+  },
+  "research": [
+    {
+      "url": "https://help.aliyun.com/document_detail/193141.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_alibaba_cloud_verification_code_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cf\\.aliyun\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Alibaba Cloud Verification Code is a security feature provided by Alibaba Cloud to help protect user accounts from unauthorised access.",
+  "website": "https://help.aliyun.com/document_detail/193141.html"
+}

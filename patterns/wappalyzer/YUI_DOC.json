@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yui_doc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YUI_DOC",
+  "taxonomy_name": "YUI Doc",
+  "vendor": "",
+  "product": "YUI Doc",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YUI_DOC.json",
+    "original_name": "YUI Doc"
+  },
+  "research": [
+    {
+      "url": "https://developer.yahoo.com/yui/yuidoc",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yui_doc_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html[^>]* yuilibrary\\.com/rdf/[\\d.]+/yui\\.rdf|<body[^>]+class=\"yui3-skin-sam)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "UIDoc is a Node.js application used at build time to generate API documentation.",
+  "website": "https://developer.yahoo.com/yui/yuidoc"
+}

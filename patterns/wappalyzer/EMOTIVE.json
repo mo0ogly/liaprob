@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-emotive",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMOTIVE",
+  "taxonomy_name": "Emotive",
+  "vendor": "",
+  "product": "Emotive",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EMOTIVE.json",
+    "original_name": "Emotive"
+  },
+  "research": [
+    {
+      "url": "https://emotive.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_emotive_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "emotivecdn\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Emotive is a computer software company that provides SaaS, Mobile Marketing, NLP, machine learning, and B2B.",
+  "website": "https://emotive.io"
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xwiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XWIKI",
+  "taxonomy_name": "XWiki",
+  "vendor": "",
+  "product": "XWiki",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XWIKI.json",
+    "original_name": "XWiki"
+  },
+  "research": [
+    {
+      "url": "https://www.xwiki.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xwiki_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]data-xwiki-[^>]>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "wiki",
+          "match_type": "regex",
+          "value": "xwiki",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java\\;confidence:99"
+  ],
+  "categories": [
+    8
+  ],
+  "notes": "XWiki is a free wiki software platform written in Java.",
+  "website": "https://www.xwiki.org"
+}

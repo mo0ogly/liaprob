@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cargoserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARGOSERVER",
+  "taxonomy_name": "CargoServer",
+  "vendor": "",
+  "product": "CargoServer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARGOSERVER.json",
+    "original_name": "CargoServer"
+  },
+  "research": [
+    {
+      "url": "https://cargoserver.ch",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cargoserver_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "^cargoserver$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    46
+  ],
+  "notes": "CargoServer is a platform that enables secure data transfer.",
+  "website": "https://cargoserver.ch"
+}

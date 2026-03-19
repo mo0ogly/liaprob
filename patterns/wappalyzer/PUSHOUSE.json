@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pushouse",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUSHOUSE",
+  "taxonomy_name": "Pushouse",
+  "vendor": "",
+  "product": "Pushouse",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUSHOUSE.json",
+    "original_name": "Pushouse"
+  },
+  "research": [
+    {
+      "url": "https://www.pushouse.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pushouse_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "dev\\.pushouse\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Pushouse is a platform that provides solutions to enhance sales in ecommerce through data-driven strategies and automation.",
+  "website": "https://www.pushouse.com"
+}

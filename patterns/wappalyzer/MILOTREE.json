@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-milotree",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MILOTREE",
+  "taxonomy_name": "MiloTree",
+  "vendor": "",
+  "product": "MiloTree",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MILOTREE.json",
+    "original_name": "MiloTree"
+  },
+  "research": [
+    {
+      "url": "https://milotree.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_milotree_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^milotree",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn001\\.milotree\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    32
+  ],
+  "notes": "MiloTree is a pop-up tool that helps websites grow by converting visitors into social media followers and customers.",
+  "website": "https://milotree.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-unilog",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNILOG",
+  "taxonomy_name": "Unilog",
+  "vendor": "",
+  "product": "Unilog",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UNILOG.json",
+    "original_name": "Unilog"
+  },
+  "research": [
+    {
+      "url": "https://unilogcorp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_unilog_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.unilogcorp\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Unilog is a cloud-based ecommerce platform, designed specifically for B2B businesses.",
+  "website": "https://unilogcorp.com"
+}

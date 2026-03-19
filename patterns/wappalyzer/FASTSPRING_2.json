@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fastspring",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FASTSPRING",
+  "taxonomy_name": "Fastspring",
+  "vendor": "",
+  "product": "Fastspring",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FASTSPRING.json",
+    "original_name": "Fastspring"
+  },
+  "research": [
+    {
+      "url": "https://fastspring.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fastspring_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a [^>]*href=\"https?://sites\\.fastspring\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<form [^>]*action=\"https?://sites\\.fastspring\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "website": "https://fastspring.com"
+}

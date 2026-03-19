@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-patientsites",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PATIENTSITES",
+  "taxonomy_name": "PatientSites",
+  "vendor": "",
+  "product": "PatientSites",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PATIENTSITES.json",
+    "original_name": "PatientSites"
+  },
+  "research": [
+    {
+      "url": "https://www.patientsites.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_patientsites_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.patientsites\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "PatientSites is a provider of lead generation services and website development for physical therapy practices.",
+  "website": "https://www.patientsites.com"
+}

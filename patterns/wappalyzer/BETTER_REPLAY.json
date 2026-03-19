@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-better_replay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BETTER_REPLAY",
+  "taxonomy_name": "Better Replay",
+  "vendor": "",
+  "product": "Better Replay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BETTER_REPLAY.json",
+    "original_name": "Better Replay"
+  },
+  "research": [
+    {
+      "url": "https://www.better-replay.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_better_replay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": ".api\\.better-replay\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Better Replay is a platform for session recording and replay, designed to capture and review content efficiently.",
+  "website": "https://www.better-replay.com"
+}

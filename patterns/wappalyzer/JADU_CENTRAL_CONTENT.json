@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jadu_central_content",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JADU_CENTRAL_CONTENT",
+  "taxonomy_name": "Jadu Central Content",
+  "vendor": "",
+  "product": "Jadu Central Content",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JADU_CENTRAL_CONTENT.json",
+    "original_name": "Jadu Central Content"
+  },
+  "research": [
+    {
+      "url": "https://www.jadu.net/cms",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jadu_central_content_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author-template",
+          "match_type": "regex",
+          "value": "^jadu css design$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "www\\.jadu\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Jadu Central Content is a low-code publishing tool for creating, publishing, and managing website content and digital assets.",
+  "website": "https://www.jadu.net/cms"
+}

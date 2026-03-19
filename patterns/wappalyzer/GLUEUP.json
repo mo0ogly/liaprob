@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-glueup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLUEUP",
+  "taxonomy_name": "GlueUp",
+  "vendor": "",
+  "product": "GlueUp",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLUEUP.json",
+    "original_name": "GlueUp"
+  },
+  "research": [
+    {
+      "url": "https://www.glueup.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_glueup_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.glueup\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "GlueUp is an all-in-one CRM platform.",
+  "website": "https://www.glueup.com"
+}

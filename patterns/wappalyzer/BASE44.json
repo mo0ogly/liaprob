@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-base44",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BASE44",
+  "taxonomy_name": "Base44",
+  "vendor": "",
+  "product": "Base44",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BASE44.json",
+    "original_name": "Base44"
+  },
+  "research": [
+    {
+      "url": "https://base44.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_base44_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "apple-mobile-web-app-title",
+          "match_type": "regex",
+          "value": "base44",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Base44 is an AI-powered, no-code platform that lets users build functional web apps from natural language prompts instead of writing code.",
+  "website": "https://base44.com/"
+}

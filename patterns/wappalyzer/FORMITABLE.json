@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-formitable",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORMITABLE",
+  "taxonomy_name": "Formitable",
+  "vendor": "",
+  "product": "Formitable",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORMITABLE.json",
+    "original_name": "Formitable"
+  },
+  "research": [
+    {
+      "url": "https://formitable.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_formitable_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.formitable\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "formitable\\.js(?:\\?ver=([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "formitable\\.js(?:\\?ver=([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Formitable is an reservation management system for restaurants.",
+  "website": "https://formitable.com"
+}

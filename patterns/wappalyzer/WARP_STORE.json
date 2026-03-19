@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-warp_store",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WARP_STORE",
+  "taxonomy_name": "Warp Store",
+  "vendor": "",
+  "product": "Warp Store",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WARP_STORE.json",
+    "original_name": "Warp Store"
+  },
+  "research": [
+    {
+      "url": "https://warpstore.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_warp_store_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.warpstore\\.app/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Cloudflare",
+    "Next.js",
+    "Node.js",
+    "React",
+    "Tailwind CSS"
+  ],
+  "categories": [
+    108
+  ],
+  "notes": "Warp Store is a website creation platform, where you can create a website for any type of game and sell products automatically.",
+  "website": "https://warpstore.app"
+}

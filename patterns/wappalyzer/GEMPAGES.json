@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gempages",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GEMPAGES",
+  "taxonomy_name": "GemPages",
+  "vendor": "",
+  "product": "GemPages",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GEMPAGES.json",
+    "original_name": "GemPages"
+  },
+  "research": [
+    {
+      "url": "https://gempages.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gempages_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/files/gempagev\\d+\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100,
+    51
+  ],
+  "notes": "GemPages is a powerful Shopify landing page buidler that empowers SMEs, agency, and freelancers to build their brands and sell online.",
+  "website": "https://gempages.net"
+}

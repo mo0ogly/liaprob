@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-intensedebate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTENSEDEBATE",
+  "taxonomy_name": "IntenseDebate",
+  "vendor": "",
+  "product": "IntenseDebate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INTENSEDEBATE.json",
+    "original_name": "IntenseDebate"
+  },
+  "research": [
+    {
+      "url": "https://intensedebate.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_intensedebate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "intensedebate\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    15
+  ],
+  "notes": "IntenseDebate is a blog commenting system that supports Typepad, Blogger and Wordpress blogs. The system allows blog owners to track and moderate comments from one place with features like threading, comment analytics, user reputation, and comment aggregation.",
+  "website": "https://intensedebate.com"
+}

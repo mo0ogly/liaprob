@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blackcart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLACKCART",
+  "taxonomy_name": "Blackcart",
+  "vendor": "",
+  "product": "Blackcart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLACKCART.json",
+    "original_name": "Blackcart"
+  },
+  "research": [
+    {
+      "url": "https://blackcart.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blackcart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.blackcart\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Blackcart is a try-before-you-buy platform that enables customers to test products at home before completing a purchase.",
+  "website": "https://blackcart.co"
+}

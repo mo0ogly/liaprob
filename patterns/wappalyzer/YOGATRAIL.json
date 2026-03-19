@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yogatrail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOGATRAIL",
+  "taxonomy_name": "YogaTrail",
+  "vendor": "",
+  "product": "YogaTrail",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOGATRAIL.json",
+    "original_name": "YogaTrail"
+  },
+  "research": [
+    {
+      "url": "https://www.buzzwoo.de/projekte-kunden/yogatrail",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yogatrail_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.yogatrail\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "YogaTrail is a software platform for managing yoga businesses.",
+  "website": "https://www.buzzwoo.de/projekte-kunden/yogatrail"
+}

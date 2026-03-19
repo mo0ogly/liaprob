@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-loyoly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOYOLY",
+  "taxonomy_name": "Loyoly",
+  "vendor": "",
+  "product": "Loyoly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOYOLY.json",
+    "original_name": "Loyoly"
+  },
+  "research": [
+    {
+      "url": "https://www.loyoly.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_loyoly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.loyoly\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "Loyoly is a loyalty and referral platform integrating user-generated content and reviews, enabling customer engagement with brands.",
+  "website": "https://www.loyoly.io"
+}

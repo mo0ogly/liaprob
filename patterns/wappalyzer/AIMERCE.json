@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aimerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AIMERCE",
+  "taxonomy_name": "Aimerce",
+  "vendor": "",
+  "product": "Aimerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AIMERCE.json",
+    "original_name": "Aimerce"
+  },
+  "research": [
+    {
+      "url": "https://www.aimerce.ai/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aimerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.aimerce\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    100
+  ],
+  "notes": "Aimerce is an AI-powered, privacy-focused solution that utilises first-party data to support Shopify brands in a cookieless environment, enhancing data potential and increasing marketing revenue.",
+  "website": "https://www.aimerce.ai/"
+}

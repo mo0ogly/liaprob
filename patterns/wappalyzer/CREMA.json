@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-crema",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CREMA",
+  "taxonomy_name": "CREMA",
+  "vendor": "",
+  "product": "CREMA",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CREMA.json",
+    "original_name": "CREMA"
+  },
+  "research": [
+    {
+      "url": "https://www.cre.ma",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_crema_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//widgets\\.cre\\.ma/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    90
+  ],
+  "notes": "CREMA is a platform offering review management, marketing personalisation, and size recommendations to enhance and streamline the consumer journey.",
+  "website": "https://www.cre.ma"
+}

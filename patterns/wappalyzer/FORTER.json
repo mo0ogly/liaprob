@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-forter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORTER",
+  "taxonomy_name": "Forter",
+  "vendor": "",
+  "product": "Forter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORTER.json",
+    "original_name": "Forter"
+  },
+  "research": [
+    {
+      "url": "https://www.forter.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_forter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "fortertoken",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "forter\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Forter is a SaaS company that provides fraud prevention technology for online retailers and marketplaces.",
+  "website": "https://www.forter.com"
+}

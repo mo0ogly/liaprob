@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webengage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBENGAGE",
+  "taxonomy_name": "WebEngage",
+  "vendor": "",
+  "product": "WebEngage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBENGAGE.json",
+    "original_name": "WebEngage"
+  },
+  "research": [
+    {
+      "url": "https://webengage.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webengage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.webengage\\.co(?:m)?/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    76
+  ],
+  "notes": "WebEngage is a customer data platform and marketing automation suite.",
+  "website": "https://webengage.com"
+}

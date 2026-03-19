@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-artifactory_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARTIFACTORY_WEB_SERVER",
+  "taxonomy_name": "Artifactory Web Server",
+  "vendor": "",
+  "product": "Artifactory Web Server",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ARTIFACTORY_WEB_SERVER.json",
+    "original_name": "Artifactory Web Server"
+  },
+  "research": [
+    {
+      "url": "https://jfrog.com/open-source/#os-arti",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_artifactory_web_server_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "artifactory(?:/([\\d.]+))?",
+          "version_extract": "artifactory(?:/([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:jfrog:artifactory:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Artifactory"
+  ],
+  "categories": [
+    22
+  ],
+  "website": "https://jfrog.com/open-source/#os-arti"
+}

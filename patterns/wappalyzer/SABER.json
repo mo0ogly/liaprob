@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-saber",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SABER",
+  "taxonomy_name": "Saber",
+  "vendor": "",
+  "product": "Saber",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SABER.json",
+    "original_name": "Saber"
+  },
+  "research": [
+    {
+      "url": "https://saber.land/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_saber_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*id=\"_saber\"",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^saber v([\\d.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^saber v([\\d.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Vue.js"
+  ],
+  "categories": [
+    57
+  ],
+  "notes": "Saber is a framework for building static websites.",
+  "website": "https://saber.land/"
+}

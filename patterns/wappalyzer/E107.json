@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-e107",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "E107",
+  "taxonomy_name": "e107",
+  "vendor": "",
+  "product": "e107",
+  "source": {
+    "type": "wappalyzer",
+    "file": "E107.json",
+    "original_name": "e107"
+  },
+  "research": [
+    {
+      "url": "https://e107.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_e107_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "e107"
+        },
+        {
+          "target": "cookie",
+          "field": "e107_tz",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "[^a-z\\d]e107\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://e107.org"
+}

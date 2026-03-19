@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LYTICS",
+  "taxonomy_name": "Lytics",
+  "vendor": "",
+  "product": "Lytics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LYTICS.json",
+    "original_name": "Lytics"
+  },
+  "research": [
+    {
+      "url": "https://www.lytics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lytics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.lytics\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Lytics is a customer data platform built for marketing teams.",
+  "website": "https://www.lytics.com"
+}

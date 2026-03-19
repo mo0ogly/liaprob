@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquia_cloud_site_factory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIA_CLOUD_SITE_FACTORY",
+  "taxonomy_name": "Acquia Cloud Site Factory",
+  "vendor": "",
+  "product": "Acquia Cloud Site Factory",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIA_CLOUD_SITE_FACTORY.json",
+    "original_name": "Acquia Cloud Site Factory"
+  },
+  "research": [
+    {
+      "url": "https://www.acquia.com/products/drupal-cloud/site-factory",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquia_cloud_site_factory_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sites\\/g\\/files",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Acquia Cloud Platform",
+    "Drupal Multisite"
+  ],
+  "categories": [
+    88
+  ],
+  "notes": "Acquia Site Factory is a multisite platform for Drupal.",
+  "website": "https://www.acquia.com/products/drupal-cloud/site-factory"
+}

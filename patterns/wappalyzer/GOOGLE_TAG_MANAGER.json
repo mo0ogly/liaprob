@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-google_tag_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_TAG_MANAGER",
+  "taxonomy_name": "Google Tag Manager",
+  "vendor": "",
+  "product": "Google Tag Manager",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOOGLE_TAG_MANAGER.json",
+    "original_name": "Google Tag Manager"
+  },
+  "research": [
+    {
+      "url": "https://www.google.com/tagmanager",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_google_tag_manager_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- (?:end )?google tag manager -->",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "googletagmanager\\.com/ns\\.html[^>]+></iframe>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "googletagmanager\\.com/gtm\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    42
+  ],
+  "notes": "Google Tag Manager is a tag management system (TMS) that allows you to quickly and easily update measurement codes and related code fragments collectively known as tags on your website or mobile app.",
+  "website": "https://www.google.com/tagmanager"
+}

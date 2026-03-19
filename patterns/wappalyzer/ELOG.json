@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-elog",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELOG",
+  "taxonomy_name": "ELOG",
+  "vendor": "",
+  "product": "ELOG",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ELOG.json",
+    "original_name": "ELOG"
+  },
+  "research": [
+    {
+      "url": "https://midas.psi.ch/elog",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_elog_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>elog logbook selection</title>",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "website": "https://midas.psi.ch/elog"
+}

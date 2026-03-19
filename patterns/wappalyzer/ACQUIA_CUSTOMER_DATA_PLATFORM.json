@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquia_customer_data_platform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIA_CUSTOMER_DATA_PLATFORM",
+  "taxonomy_name": "Acquia Customer Data Platform",
+  "vendor": "",
+  "product": "Acquia Customer Data Platform",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIA_CUSTOMER_DATA_PLATFORM.json",
+    "original_name": "Acquia Customer Data Platform"
+  },
+  "research": [
+    {
+      "url": "https://www.acquia.com/products/marketing-cloud/customer-data-platform",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquia_customer_data_platform_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https?:\\/\\/.+\\.agilone\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https?:\\/\\/scripts\\.agilone\\.com\\/latest\\/a1.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Acquia Customer Data Platform (formerly AgilOne) is a customer data platform for Drupal.",
+  "website": "https://www.acquia.com/products/marketing-cloud/customer-data-platform"
+}

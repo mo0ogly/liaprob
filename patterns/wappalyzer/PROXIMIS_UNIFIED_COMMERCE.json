@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-proximis_unified_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROXIMIS_UNIFIED_COMMERCE",
+  "taxonomy_name": "Proximis Unified Commerce",
+  "vendor": "",
+  "product": "Proximis Unified Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROXIMIS_UNIFIED_COMMERCE.json",
+    "original_name": "Proximis Unified Commerce"
+  },
+  "research": [
+    {
+      "url": "https://www.proximis.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_proximis_unified_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html[^>]+data-ng-app=\"rbschangeapp\"",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "proximis unified commerce",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "AngularJS",
+    "PHP"
+  ],
+  "categories": [
+    6,
+    1
+  ],
+  "website": "https://www.proximis.com"
+}

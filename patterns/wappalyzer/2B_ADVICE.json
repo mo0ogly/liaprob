@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-2b_advice",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "2B_ADVICE",
+  "taxonomy_name": "2B Advice",
+  "vendor": "",
+  "product": "2B Advice",
+  "source": {
+    "type": "wappalyzer",
+    "file": "2B_ADVICE.json",
+    "original_name": "2B Advice"
+  },
+  "research": [
+    {
+      "url": "https://www.2b-advice.com/en/data-privacy-software/cookie-consent-plugin/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_2b_advice_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "2badvice-cdn\\.azureedge\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "2B Advice provides a plug-in to manage GDPR cookie consent.",
+  "website": "https://www.2b-advice.com/en/data-privacy-software/cookie-consent-plugin/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-monocle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MONOCLE",
+  "taxonomy_name": "Monocle",
+  "vendor": "",
+  "product": "Monocle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MONOCLE.json",
+    "original_name": "Monocle"
+  },
+  "research": [
+    {
+      "url": "https://www.usemonocle.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_monocle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.usemonocle\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Monocle is an AI-powered platform that optimizes incentives to boost profits while maintaining brand equity and margins.",
+  "website": "https://www.usemonocle.com"
+}

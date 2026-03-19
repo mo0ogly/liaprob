@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jekyll",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JEKYLL",
+  "taxonomy_name": "Jekyll",
+  "vendor": "",
+  "product": "Jekyll",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JEKYLL.json",
+    "original_name": "Jekyll"
+  },
+  "research": [
+    {
+      "url": "https://jekyllrb.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jekyll_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- begin jekyll seo tag",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- created with jekyll now -",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=\"https?://jekyllrb\\.com\"[^>]*>jekyll</",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "jekyll\\sv([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "jekyll\\sv([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:jekyllrb:jekyll:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Ruby"
+  ],
+  "categories": [
+    57
+  ],
+  "notes": "Jekyll is a blog-aware, static site generator for personal, project, or organisation sites.",
+  "website": "https://jekyllrb.com"
+}

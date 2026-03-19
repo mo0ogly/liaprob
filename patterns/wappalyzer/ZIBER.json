@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ziber",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZIBER",
+  "taxonomy_name": "Ziber",
+  "vendor": "",
+  "product": "Ziber",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZIBER.json",
+    "original_name": "Ziber"
+  },
+  "research": [
+    {
+      "url": "https://ziber.eu",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ziber_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^ziber$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Ziber is an education platform that connects professionals, educators, and organizations involved in childcare and primary education through a centralized digital ecosystem.",
+  "website": "https://ziber.eu"
+}

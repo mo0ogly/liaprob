@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-f5_distributed_cloud_services",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "F5_DISTRIBUTED_CLOUD_SERVICES",
+  "taxonomy_name": "F5 Distributed Cloud Services",
+  "vendor": "",
+  "product": "F5 Distributed Cloud Services",
+  "source": {
+    "type": "wappalyzer",
+    "file": "F5_DISTRIBUTED_CLOUD_SERVICES.json",
+    "original_name": "F5 Distributed Cloud Services"
+  },
+  "research": [
+    {
+      "url": "https://www.f5.com/products/distributed-cloud-services",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_f5_distributed_cloud_services_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-volterra-location",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "F5 Distributed Cloud Services is a SaaS platform providing security, networking, and application management to deploy, secure, and operate applications in cloud-native environments.",
+  "website": "https://www.f5.com/products/distributed-cloud-services"
+}

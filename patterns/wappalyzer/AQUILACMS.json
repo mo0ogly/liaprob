@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aquilacms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AQUILACMS",
+  "taxonomy_name": "AquilaCMS",
+  "vendor": "",
+  "product": "AquilaCMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AQUILACMS.json",
+    "original_name": "AquilaCMS"
+  },
+  "research": [
+    {
+      "url": "https://www.aquila-cms.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aquilacms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "powered-by",
+          "match_type": "regex",
+          "value": "aquilacms",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Amazon Web Services",
+    "MongoDB",
+    "Next.js",
+    "Node.js",
+    "React"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "AquilaCMS is a fullstack, headless CMS written in JavaScript.",
+  "website": "https://www.aquila-cms.com/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-matchi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATCHI",
+  "taxonomy_name": "Matchi",
+  "vendor": "",
+  "product": "Matchi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MATCHI.json",
+    "original_name": "Matchi"
+  },
+  "research": [
+    {
+      "url": "https://www.matchi.se",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_matchi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.matchi\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Matchi is a platform for racket sports enthusiasts to search, book, and play tennis, badminton, table tennis, squash, or padel.",
+  "website": "https://www.matchi.se"
+}

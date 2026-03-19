@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-snipcart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SNIPCART",
+  "taxonomy_name": "Snipcart",
+  "vendor": "",
+  "product": "Snipcart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SNIPCART.json",
+    "original_name": "Snipcart"
+  },
+  "research": [
+    {
+      "url": "https://snipcart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_snipcart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "snipcart-cart",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "https://cdn\\.snipcart\\.com/themes/v([\\w.]+)/default/snipcart\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "https://cdn\\.snipcart\\.com/themes/v([\\w.]+)/default/snipcart\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Snipcart is a shopping cart platform that can be integrated into any website with simple HTML and JavaScript.",
+  "website": "https://snipcart.com"
+}

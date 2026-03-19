@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-retail_rocket",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RETAIL_ROCKET",
+  "taxonomy_name": "Retail Rocket",
+  "vendor": "",
+  "product": "Retail Rocket",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RETAIL_ROCKET.json",
+    "original_name": "Retail Rocket"
+  },
+  "research": [
+    {
+      "url": "https://retailrocket.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_retail_rocket_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "rr-testcookie",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "testvalue"
+        },
+        {
+          "target": "cookie",
+          "field": "rrpvid",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^\\d+$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.retailrocket\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Retail Rocket is a big data-based personalisation platform for ecommerce websites.",
+  "website": "https://retailrocket.net"
+}

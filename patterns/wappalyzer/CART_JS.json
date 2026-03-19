@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cart_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CART_JS",
+  "taxonomy_name": "Cart.js",
+  "vendor": "",
+  "product": "Cart.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CART_JS.json",
+    "original_name": "Cart.js"
+  },
+  "research": [
+    {
+      "url": "https://cartjs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cart_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:shopify-cartjs/([\\d\\.]+)|assets)/rivets-cart\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:shopify-cartjs/([\\d\\.]+)|assets)/rivets-cart\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "Cart.js is a very small open-source Javascript library that makes the addition of powerful Ajax cart functionality to your Shopify theme a breeze.",
+  "website": "https://cartjs.org"
+}

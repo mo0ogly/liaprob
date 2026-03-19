@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-owl_carousel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OWL_CAROUSEL",
+  "taxonomy_name": "OWL Carousel",
+  "vendor": "",
+  "product": "OWL Carousel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OWL_CAROUSEL.json",
+    "original_name": "OWL Carousel"
+  },
+  "research": [
+    {
+      "url": "https://owlcarousel2.github.io/OwlCarousel2/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_owl_carousel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link [^>]*href=\"[^\"]+owl\\.carousel(?:\\.min)?\\.css",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "owl\\.carousel.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "OWL Carousel is an enabled jQuery plugin that lets you create responsive carousel sliders.",
+  "website": "https://owlcarousel2.github.io/OwlCarousel2/"
+}

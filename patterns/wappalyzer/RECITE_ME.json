@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-recite_me",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RECITE_ME",
+  "taxonomy_name": "Recite Me",
+  "vendor": "",
+  "product": "Recite Me",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RECITE_ME.json",
+    "original_name": "Recite Me"
+  },
+  "research": [
+    {
+      "url": "https://reciteme.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_recite_me_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.reciteme\\.com/asset/js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "Recite Me is a web accessibility overlay that claims to allow website visitors to customize a site in a way that works for them.",
+  "website": "https://reciteme.com/"
+}

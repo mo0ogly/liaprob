@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mautic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAUTIC",
+  "taxonomy_name": "Mautic",
+  "vendor": "",
+  "product": "Mautic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAUTIC.json",
+    "original_name": "Mautic"
+  },
+  "research": [
+    {
+      "url": "https://www.mautic.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mautic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "[^a-z]mtc.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:mautic:mautic:*:*:*:*:*:*:*:*",
+  "categories": [
+    32
+  ],
+  "notes": "Mautic is a free and open-source marketing automation tool for Content Management, Social Media, Email Marketing, and can be used for the integration of social networks, campaign management, forms, questionnaires, reports, etc.",
+  "website": "https://www.mautic.org/"
+}

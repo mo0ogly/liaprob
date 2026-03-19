@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopiteka",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPITEKA",
+  "taxonomy_name": "Shopiteka",
+  "vendor": "",
+  "product": "Shopiteka",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPITEKA.json",
+    "original_name": "Shopiteka"
+  },
+  "research": [
+    {
+      "url": "https://www.shopiteka.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopiteka_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/shopiteka\\.lt/_shopi/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Shopiteka is an online shop that provides a platform for browsing products, managing purchases, and completing orders through a web-based storefront.",
+  "website": "https://www.shopiteka.com"
+}

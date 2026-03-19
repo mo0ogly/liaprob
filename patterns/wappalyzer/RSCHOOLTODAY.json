@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rschooltoday",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RSCHOOLTODAY",
+  "taxonomy_name": "rSchoolToday",
+  "vendor": "",
+  "product": "rSchoolToday",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RSCHOOLTODAY.json",
+    "original_name": "rSchoolToday"
+  },
+  "research": [
+    {
+      "url": "https://rschooltoday.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rschooltoday_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.rschooltoday\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "rSchoolToday is an all-in-one platform for managing high school activities.",
+  "website": "https://rschooltoday.com"
+}

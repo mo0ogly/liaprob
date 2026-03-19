@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wordpress_project_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORDPRESS_PROJECT_MANAGER",
+  "taxonomy_name": "WordPress Project Manager",
+  "vendor": "",
+  "product": "WordPress Project Manager",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORDPRESS_PROJECT_MANAGER.json",
+    "original_name": "WordPress Project Manager"
+  },
+  "research": [
+    {
+      "url": "https://wedevs.com/wp-project-manager-pro",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wordpress_project_manager_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/wedevs-project-manager/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "WordPress Project Manager is an open-source project management tool designed to organize tasks and ensure timely project delivery.",
+  "website": "https://wedevs.com/wp-project-manager-pro"
+}

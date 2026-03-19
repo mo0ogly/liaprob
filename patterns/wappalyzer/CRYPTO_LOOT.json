@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-crypto_loot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CRYPTO_LOOT",
+  "taxonomy_name": "Crypto-Loot",
+  "vendor": "",
+  "product": "Crypto-Loot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CRYPTO_LOOT.json",
+    "original_name": "Crypto-Loot"
+  },
+  "research": [
+    {
+      "url": "https://crypto-loot.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_crypto_loot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/crlt\\.js",
+          "confidence_delta": 0.75
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^/crypto-loot\\.com/lib/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^/cryptoloot\\.pro/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^/webmine\\.pro/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    56
+  ],
+  "notes": "Crypto-Loot is a browser based web miner for the uPlexa Blockchain.",
+  "website": "https://crypto-loot.com/"
+}

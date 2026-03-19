@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-appifiny",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPIFINY",
+  "taxonomy_name": "Appifiny",
+  "vendor": "",
+  "product": "Appifiny",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APPIFINY.json",
+    "original_name": "Appifiny"
+  },
+  "research": [
+    {
+      "url": "https://www.appifiny.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_appifiny_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "recently\\.appifiny\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "Appifiny is a platform that provides a streamlined solution for developing, customizing, and launching apps.",
+  "website": "https://www.appifiny.co.uk"
+}

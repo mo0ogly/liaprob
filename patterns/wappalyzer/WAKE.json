@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wake",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WAKE",
+  "taxonomy_name": "Wake",
+  "vendor": "",
+  "product": "Wake",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WAKE.json",
+    "original_name": "Wake"
+  },
+  "research": [
+    {
+      "url": "https://wake.tech/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wake_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "wake"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Wake is an ecommerce software with integrated digital solutions to manage online stores.",
+  "website": "https://wake.tech/"
+}

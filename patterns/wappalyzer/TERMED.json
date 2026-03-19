@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-termed",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TERMED",
+  "taxonomy_name": "TerMed",
+  "vendor": "",
+  "product": "TerMed",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TERMED.json",
+    "original_name": "TerMed"
+  },
+  "research": [
+    {
+      "url": "https://www.termed.de",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_termed_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.termed\\.de",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "TerMed is a platform that simplifies online booking of medical appointments.",
+  "website": "https://www.termed.de"
+}

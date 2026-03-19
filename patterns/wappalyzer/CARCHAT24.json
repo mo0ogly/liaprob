@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-carchat24",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARCHAT24",
+  "taxonomy_name": "CarChat24",
+  "vendor": "",
+  "product": "CarChat24",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARCHAT24.json",
+    "original_name": "CarChat24"
+  },
+  "research": [
+    {
+      "url": "http://carchat24.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_carchat24_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "service11\\.carchat24\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "CarChat24 is a live chat solution built specifically for the automotive industry to facilitate real-time customer engagement and lead generation.",
+  "website": "http://carchat24.com"
+}

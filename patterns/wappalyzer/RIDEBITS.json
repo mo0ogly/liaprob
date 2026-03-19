@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ridebits",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RIDEBITS",
+  "taxonomy_name": "RideBits",
+  "vendor": "",
+  "product": "RideBits",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RIDEBITS.json",
+    "original_name": "RideBits"
+  },
+  "research": [
+    {
+      "url": "https://ridebits.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ridebits_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ridebitsapp\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72,
+    104
+  ],
+  "notes": "RideBits is a provider of trip booking apps for ground transportation companies, offering solutions for managing bookings.",
+  "website": "https://ridebits.com"
+}

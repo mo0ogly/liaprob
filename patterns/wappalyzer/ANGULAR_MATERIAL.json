@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-angular_material",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANGULAR_MATERIAL",
+  "taxonomy_name": "Angular Material",
+  "vendor": "",
+  "product": "Angular Material",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ANGULAR_MATERIAL.json",
+    "original_name": "Angular Material"
+  },
+  "research": [
+    {
+      "url": "https://material.angularjs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_angular_material_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/([\\d.rc-]+)?/angular-material(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/([\\d.rc-]+)?/angular-material(?:\\.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "AngularJS"
+  ],
+  "categories": [
+    66
+  ],
+  "notes": "Angular Material is a UI component library for Angular JS developers. Angular Material components assist in constructing attractive, consistent, and functional web pages and web applications.",
+  "website": "https://material.angularjs.org"
+}

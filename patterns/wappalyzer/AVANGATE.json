@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-avangate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVANGATE",
+  "taxonomy_name": "Avangate",
+  "vendor": "",
+  "product": "Avangate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AVANGATE.json",
+    "original_name": "Avangate"
+  },
+  "research": [
+    {
+      "url": "https://www.2checkout.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_avangate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https?://edge\\.avangate\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Verifone 2Checkout"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Avangate (2Checkout) is a digital ecommerce platform for businesses that sell physical goods or digital products.",
+  "website": "https://www.2checkout.com"
+}

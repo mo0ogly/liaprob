@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jiglu",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JIGLU",
+  "taxonomy_name": "Jiglu",
+  "vendor": "",
+  "product": "Jiglu",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JIGLU.json",
+    "original_name": "Jiglu"
+  },
+  "research": [
+    {
+      "url": "https://www.jiglu.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jiglu_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.jiglu\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    2
+  ],
+  "notes": "Jiglu is a collaboration and communities suite that connects enterprise content with conversations to support improved communication.",
+  "website": "https://www.jiglu.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mypersonas",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYPERSONAS",
+  "taxonomy_name": "MyPersonas",
+  "vendor": "",
+  "product": "MyPersonas",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MYPERSONAS.json",
+    "original_name": "MyPersonas"
+  },
+  "research": [
+    {
+      "url": "https://mypersonas.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mypersonas_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.mypersonas\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "MyPersonas is an AI-powered platform that creates digital replicas of key employees to handle repetitive, routine inquiries, reducing interruptions and streamlining access to internal knowledge.",
+  "website": "https://mypersonas.ai"
+}

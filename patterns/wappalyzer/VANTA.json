@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vanta",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VANTA",
+  "taxonomy_name": "Vanta",
+  "vendor": "",
+  "product": "Vanta",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VANTA.json",
+    "original_name": "Vanta"
+  },
+  "research": [
+    {
+      "url": "https://www.vanta.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vanta_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.vanta\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Vanta is a compliance automation platform for SOC 2, HIPAA, ISO 27001, PCI, and GDPR.",
+  "website": "https://www.vanta.com"
+}

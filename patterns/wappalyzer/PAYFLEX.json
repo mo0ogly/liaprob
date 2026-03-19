@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-payflex",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAYFLEX",
+  "taxonomy_name": "Payflex",
+  "vendor": "",
+  "product": "Payflex",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAYFLEX.json",
+    "original_name": "Payflex"
+  },
+  "research": [
+    {
+      "url": "https://payflex.co.za/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_payflex_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "partpayassets\\.blob\\.core\\.windows\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41,
+    91
+  ],
+  "notes": "Payflex offers an online payment gateway solution to South African merchants that allows shoppers to pay over 6 weeks, interest-free.",
+  "website": "https://payflex.co.za/"
+}

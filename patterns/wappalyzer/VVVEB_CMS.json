@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vvveb_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VVVEB_CMS",
+  "taxonomy_name": "Vvveb CMS",
+  "vendor": "",
+  "product": "Vvveb CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VVVEB_CMS.json",
+    "original_name": "Vvveb CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.vvveb.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vvveb_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^vvveb$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "name",
+          "match_type": "regex",
+          "value": "^vvveb$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Vvveb CMS is user-friendly software for building professional websites, blogs, and ecommerce stores.",
+  "website": "https://www.vvveb.com"
+}

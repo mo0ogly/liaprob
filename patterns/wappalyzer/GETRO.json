@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-getro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GETRO",
+  "taxonomy_name": "Getro",
+  "vendor": "",
+  "product": "Getro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GETRO.json",
+    "original_name": "Getro"
+  },
+  "research": [
+    {
+      "url": "https://www.getro.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_getro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "an\\.getro\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "Gentro is an automated job board and private talent network that removes the manual effort of linking individuals and companies within a network.",
+  "website": "https://www.getro.com"
+}

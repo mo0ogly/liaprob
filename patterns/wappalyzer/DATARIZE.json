@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-datarize",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATARIZE",
+  "taxonomy_name": "Datarize",
+  "vendor": "",
+  "product": "Datarize",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DATARIZE.json",
+    "original_name": "Datarize"
+  },
+  "research": [
+    {
+      "url": "https://datarize.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_datarize_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.datarize\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    53
+  ],
+  "notes": "Datarize is a CRM marketing solution designed to streamline customer relationship management and enhance targeted marketing efforts.",
+  "website": "https://datarize.ai"
+}

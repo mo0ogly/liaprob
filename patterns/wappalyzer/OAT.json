@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OAT",
+  "taxonomy_name": "Oat++",
+  "vendor": "",
+  "product": "Oat++",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OAT.json",
+    "original_name": "Oat++"
+  },
+  "research": [
+    {
+      "url": "https://oatpp.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^oatpp/?([\\d.]+)?",
+          "version_extract": "^oatpp/?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    18
+  ],
+  "notes": "Oat++ is an open source C++ Web Framework.",
+  "website": "https://oatpp.io"
+}

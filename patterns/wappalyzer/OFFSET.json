@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-offset",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OFFSET",
+  "taxonomy_name": "Offset",
+  "vendor": "",
+  "product": "Offset",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OFFSET.json",
+    "original_name": "Offset"
+  },
+  "research": [
+    {
+      "url": "https://offsetpartners.com/wine-ecommerce-platform/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_offset_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "www\\.offsetpartners\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Offset is a platform designed to provide specialized solutions for wine ecommerce.",
+  "website": "https://offsetpartners.com/wine-ecommerce-platform/"
+}

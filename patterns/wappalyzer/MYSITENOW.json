@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mysitenow",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYSITENOW",
+  "taxonomy_name": "MySiteNow",
+  "vendor": "",
+  "product": "MySiteNow",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MYSITENOW.json",
+    "original_name": "MySiteNow"
+  },
+  "research": [
+    {
+      "url": "https://mysitenow.gr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mysitenow_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "app-platform",
+          "match_type": "regex",
+          "value": "^mysitenow$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "MySiteNow provides cloud-based web development services, allowing users to create HTML5 websites and mobile sites.",
+  "website": "https://mysitenow.gr"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tunosite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TUNOSITE",
+  "taxonomy_name": "Tunosite",
+  "vendor": "",
+  "product": "Tunosite",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TUNOSITE.json",
+    "original_name": "Tunosite"
+  },
+  "research": [
+    {
+      "url": "https://tunosite.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tunosite_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.tunosite\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Tunosite is a web app builder for startups and business with combining content, membership, and discussions in one place, under your own brand with no coding skills required.",
+  "website": "https://tunosite.com"
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vbulletin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VBULLETIN",
+  "taxonomy_name": "vBulletin",
+  "vendor": "",
+  "product": "vBulletin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VBULLETIN.json",
+    "original_name": "vBulletin"
+  },
+  "research": [
+    {
+      "url": "https://www.vbulletin.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vbulletin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "bblastactivity",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "bblastvisit",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "bbsessionhash",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div id=\"copyright\">powered by vbulletin",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "vbulletin ?([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "vbulletin ?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:vbulletin:vbulletin:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "vBulletin is tool that is used to create and manage online forums or discussion boards. It is written in PHP and uses a MySQL database server.",
+  "website": "https://www.vbulletin.com"
+}

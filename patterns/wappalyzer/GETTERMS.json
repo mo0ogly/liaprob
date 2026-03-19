@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-getterms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GETTERMS",
+  "taxonomy_name": "GetTerms",
+  "vendor": "",
+  "product": "GetTerms",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GETTERMS.json",
+    "original_name": "GetTerms"
+  },
+  "research": [
+    {
+      "url": "https://getterms.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_getterms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.getterms\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "GetTerms is a tool that generates privacy policies for web platforms.",
+  "website": "https://getterms.io"
+}

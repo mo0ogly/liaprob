@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-godaddy_online_store",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GODADDY_ONLINE_STORE",
+  "taxonomy_name": "GoDaddy Online Store",
+  "vendor": "",
+  "product": "GoDaddy Online Store",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GODADDY_ONLINE_STORE.json",
+    "original_name": "GoDaddy Online Store"
+  },
+  "research": [
+    {
+      "url": "https://www.godaddy.com/en-uk/websites/online-store",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_godaddy_online_store_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "via",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^1\\.1 mysimplestore\\.com$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "website": "https://www.godaddy.com/en-uk/websites/online-store"
+}

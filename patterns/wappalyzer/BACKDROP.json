@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-backdrop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BACKDROP",
+  "taxonomy_name": "Backdrop",
+  "vendor": "",
+  "product": "Backdrop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BACKDROP.json",
+    "original_name": "Backdrop"
+  },
+  "research": [
+    {
+      "url": "https://backdropcms.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_backdrop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-backdrop-cache",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-generator",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^backdrop cms(?:\\s([\\d.]+))?",
+          "version_extract": "^backdrop cms(?:\\s([\\d.]+))?"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^backdrop cms(?:\\s([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "^backdrop cms(?:\\s([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:backdropcms:backdrop:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Backdrop is an open-source content management system (CMS) derived from Drupal 7, offering a user-friendly interface, customisable content types, taxonomies, views, theming capabilities, extensibility through modules, and regular security updates.",
+  "website": "https://backdropcms.org"
+}

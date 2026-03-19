@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shogun_landing_page_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOGUN_LANDING_PAGE_BUILDER",
+  "taxonomy_name": "Shogun Landing Page Builder",
+  "vendor": "",
+  "product": "Shogun Landing Page Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOGUN_LANDING_PAGE_BUILDER.json",
+    "original_name": "Shogun Landing Page Builder"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/shogun",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shogun_landing_page_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getshogun\\.com/.+\\.myshopify\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shogun Page Builder"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Shogun Landing Page Builder is a drag and drop Shopify page builder for creating high-converting store pages.",
+  "website": "https://apps.shopify.com/shogun"
+}

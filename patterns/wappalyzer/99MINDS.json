@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-99minds",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "99MINDS",
+  "taxonomy_name": "99minds",
+  "vendor": "",
+  "product": "99minds",
+  "source": {
+    "type": "wappalyzer",
+    "file": "99MINDS.json",
+    "original_name": "99minds"
+  },
+  "research": [
+    {
+      "url": "https://www.99minds.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_99minds_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.99minds\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "99minds is an online platform for managing and scaling gift cards, store credit, digital wallets, and loyalty programs.",
+  "website": "https://www.99minds.io"
+}

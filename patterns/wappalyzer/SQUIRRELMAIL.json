@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-squirrelmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUIRRELMAIL",
+  "taxonomy_name": "SquirrelMail",
+  "vendor": "",
+  "product": "SquirrelMail",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQUIRRELMAIL.json",
+    "original_name": "SquirrelMail"
+  },
+  "research": [
+    {
+      "url": "https://squirrelmail.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_squirrelmail_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<small>squirrelmail version ([.\\d]+)[^<]*<br ",
+          "confidence_delta": 0.5,
+          "version_extract": "<small>squirrelmail version ([.\\d]+)[^<]*<br "
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:squirrelmail:squirrelmail:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    30
+  ],
+  "notes": "SquirrelMail is an open-source web-mail package that is based on PHP language. It provides a web-based-email client and a proxy server for IMAP protocol.",
+  "website": "https://squirrelmail.org"
+}

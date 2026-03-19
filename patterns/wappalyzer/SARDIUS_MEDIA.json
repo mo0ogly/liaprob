@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sardius_media",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SARDIUS_MEDIA",
+  "taxonomy_name": "Sardius Media",
+  "vendor": "",
+  "product": "Sardius Media",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SARDIUS_MEDIA.json",
+    "original_name": "Sardius Media"
+  },
+  "research": [
+    {
+      "url": "https://www.sardius.media",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sardius_media_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sardiuslive\\.sardius\\.media",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    38
+  ],
+  "notes": "Sardius Media is a platform focused on streamlining broadcast workflows by developing solutions that improve efficiency, organization, and content delivery across digital media platforms.",
+  "website": "https://www.sardius.media"
+}

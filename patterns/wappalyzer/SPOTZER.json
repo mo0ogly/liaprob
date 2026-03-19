@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spotzer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPOTZER",
+  "taxonomy_name": "Spotzer",
+  "vendor": "",
+  "product": "Spotzer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPOTZER.json",
+    "original_name": "Spotzer"
+  },
+  "research": [
+    {
+      "url": "https://spotzerdigital.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spotzer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.spotzer\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    54
+  ],
+  "notes": "Spotzer is a platform offering solutions for crafting online content that garners high exposure on search engines and social networks.",
+  "website": "https://spotzerdigital.com"
+}

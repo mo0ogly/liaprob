@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ai_log",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AI_LOG",
+  "taxonomy_name": "AI LOG",
+  "vendor": "",
+  "product": "AI LOG",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AI_LOG.json",
+    "original_name": "AI LOG"
+  },
+  "research": [
+    {
+      "url": "https://www.ai-log.biz/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ai_log_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ai-log\\.biz/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "AI LOG is a marketing automation and fraud click prevention tool.",
+  "website": "https://www.ai-log.biz/"
+}

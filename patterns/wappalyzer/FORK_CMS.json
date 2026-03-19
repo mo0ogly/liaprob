@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fork_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORK_CMS",
+  "taxonomy_name": "Fork CMS",
+  "vendor": "",
+  "product": "Fork CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORK_CMS.json",
+    "original_name": "Fork CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.fork-cms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fork_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^fork cms$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:fork-cms:fork_cms:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Symfony"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Fork CMS is an open-source content management system.",
+  "website": "https://www.fork-cms.com"
+}

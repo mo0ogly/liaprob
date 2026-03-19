@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hrflow_ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HRFLOW_AI",
+  "taxonomy_name": "HrFlow.ai",
+  "vendor": "",
+  "product": "HrFlow.ai",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HRFLOW_AI.json",
+    "original_name": "HrFlow.ai"
+  },
+  "research": [
+    {
+      "url": "https://hrflow.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hrflow_ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.hrflow\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "HrFlow.ai is an HR data automation API platform.",
+  "website": "https://hrflow.ai"
+}

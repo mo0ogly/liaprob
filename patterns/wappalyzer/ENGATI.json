@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-engati",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENGATI",
+  "taxonomy_name": "Engati",
+  "vendor": "",
+  "product": "Engati",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENGATI.json",
+    "original_name": "Engati"
+  },
+  "research": [
+    {
+      "url": "https://www.engati.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_engati_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.engati\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Engati is a chatbot platform that allows users to build bots without requiring programming skills.",
+  "website": "https://www.engati.com"
+}

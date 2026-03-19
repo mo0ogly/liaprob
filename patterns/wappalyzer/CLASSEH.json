@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-classeh",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLASSEH",
+  "taxonomy_name": "Classeh",
+  "vendor": "",
+  "product": "Classeh",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLASSEH.json",
+    "original_name": "Classeh"
+  },
+  "research": [
+    {
+      "url": "https://fanavar.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_classeh_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^fanavar\\.org$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP",
+    "Python",
+    "React"
+  ],
+  "categories": [
+    21
+  ],
+  "notes": "Classeh is a LMS that allows user to participate in webinars and also use LMS options like messanger,finances,homework,quiz and some extra options like sending messages and more.",
+  "website": "https://fanavar.org"
+}

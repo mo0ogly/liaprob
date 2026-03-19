@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-noddus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NODDUS",
+  "taxonomy_name": "Noddus",
+  "vendor": "",
+  "product": "Noddus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NODDUS.json",
+    "original_name": "Noddus"
+  },
+  "research": [
+    {
+      "url": "https://www.enterprise.noddus.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_noddus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "noddus\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    32
+  ],
+  "notes": "Noddus offers brands and agencies access to an advanced proprietary content marketing platform automating content production, distribution and analytics.",
+  "website": "https://www.enterprise.noddus.com"
+}

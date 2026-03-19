@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kinsta",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KINSTA",
+  "taxonomy_name": "Kinsta",
+  "vendor": "",
+  "product": "Kinsta",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KINSTA.json",
+    "original_name": "Kinsta"
+  },
+  "research": [
+    {
+      "url": "https://kinsta.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kinsta_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-kinsta-cache",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress"
+  ],
+  "categories": [
+    62,
+    88
+  ],
+  "notes": "Kinsta is a leading managed WordPress hosting provider, prioritizing speed and security.",
+  "website": "https://kinsta.com"
+}

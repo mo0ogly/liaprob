@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bownow",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOWNOW",
+  "taxonomy_name": "BowNow",
+  "vendor": "",
+  "product": "BowNow",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOWNOW.json",
+    "original_name": "BowNow"
+  },
+  "research": [
+    {
+      "url": "https://bow-now.jp",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bownow_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "bownow_act",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "bownow_aid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "bownow_cid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "bownow_mbid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "BowNow is a marketing automation tool with business card management, sales support, analysis, and email magazine functions.",
+  "website": "https://bow-now.jp"
+}

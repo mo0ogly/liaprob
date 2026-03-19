@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-owncloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OWNCLOUD",
+  "taxonomy_name": "ownCloud",
+  "vendor": "",
+  "product": "ownCloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OWNCLOUD.json",
+    "original_name": "ownCloud"
+  },
+  "research": [
+    {
+      "url": "https://owncloud.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_owncloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"https://owncloud\\.com\" target=\"_blank\">owncloud inc\\.</a><br/>your cloud, your data, your way!",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "apple-itunes-app",
+          "match_type": "regex",
+          "value": "app-id=543672169",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    19
+  ],
+  "website": "https://owncloud.org"
+}

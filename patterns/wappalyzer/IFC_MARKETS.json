@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ifc_markets",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IFC_MARKETS",
+  "taxonomy_name": "IFC Markets",
+  "vendor": "",
+  "product": "IFC Markets",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IFC_MARKETS.json",
+    "original_name": "IFC Markets"
+  },
+  "research": [
+    {
+      "url": "https://www.ifcmarkets.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ifc_markets_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.ifcmarkets\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "IFC Markets is a provider of Forex and CFD trading.",
+  "website": "https://www.ifcmarkets.com"
+}

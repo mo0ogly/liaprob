@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coconutsoftware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COCONUTSOFTWARE",
+  "taxonomy_name": "CoconutSoftware",
+  "vendor": "",
+  "product": "CoconutSoftware",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COCONUTSOFTWARE.json",
+    "original_name": "CoconutSoftware"
+  },
+  "research": [
+    {
+      "url": "https://www.coconutsoftware.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coconutsoftware_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "coconut_calendar",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    72
+  ],
+  "notes": "Coconut is a cloud-based appointment scheduling solution designed for enterprise financial services organisations such as credit unions, retail banks and more.",
+  "website": "https://www.coconutsoftware.com/"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-2clickshop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "2CLICKSHOP",
+  "taxonomy_name": "2ClickShop",
+  "vendor": "",
+  "product": "2ClickShop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "2CLICKSHOP.json",
+    "original_name": "2ClickShop"
+  },
+  "research": [
+    {
+      "url": "https://2click.pl",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_2clickshop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^trol intermedia / 2clickshop$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "2ClickShop is an ecommerce platform integrated with ERP systems, catering to both B2B and B2C transactions.",
+  "website": "https://2click.pl"
+}

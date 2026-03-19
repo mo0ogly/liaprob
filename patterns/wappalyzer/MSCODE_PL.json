@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mscode_pl",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MSCODE_PL",
+  "taxonomy_name": "MsCode.pl",
+  "vendor": "",
+  "product": "MsCode.pl",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MSCODE_PL.json",
+    "original_name": "MsCode.pl"
+  },
+  "research": [
+    {
+      "url": "https://mscode.pl",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mscode_pl_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-hosting-provider",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "mscode\\.pl"
+        },
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "mscode\\.pl",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "MsCode.pl is a platform focused on developing innovative solutions in programming, hosting, and marketing.",
+  "website": "https://mscode.pl"
+}

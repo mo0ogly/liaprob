@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oneall",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ONEALL",
+  "taxonomy_name": "OneAll",
+  "vendor": "",
+  "product": "OneAll",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ONEALL.json",
+    "original_name": "OneAll"
+  },
+  "research": [
+    {
+      "url": "https://www.oneall.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oneall_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.oneall\\.com/socialize",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "OneAll is a social login solution enables your users to sign into their accounts on your website or mobile app using their login details from networking sites.",
+  "website": "https://www.oneall.com"
+}

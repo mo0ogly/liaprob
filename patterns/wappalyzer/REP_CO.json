@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rep_co",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REP_CO",
+  "taxonomy_name": "Rep.co",
+  "vendor": "",
+  "product": "Rep.co",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REP_CO.json",
+    "original_name": "Rep.co"
+  },
+  "research": [
+    {
+      "url": "https://rep.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rep_co_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.rep\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Rep.co is a review generation platform that helps businesses and agencies manage their online reputation through automated tools.",
+  "website": "https://rep.co"
+}

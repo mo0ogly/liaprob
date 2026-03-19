@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-localiq_live_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOCALIQ_LIVE_CHAT",
+  "taxonomy_name": "LocaliQ Live Chat",
+  "vendor": "",
+  "product": "LocaliQ Live Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOCALIQ_LIVE_CHAT.json",
+    "original_name": "LocaliQ Live Chat"
+  },
+  "research": [
+    {
+      "url": "https://localiq.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_localiq_live_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.reachlocallivechat\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "LocaliQ Live Chat is a customer support tool that enables real-time responses to questions while capturing essential customer information.",
+  "website": "https://localiq.com"
+}

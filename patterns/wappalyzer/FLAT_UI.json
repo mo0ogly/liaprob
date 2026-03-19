@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flat_ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLAT_UI",
+  "taxonomy_name": "Flat UI",
+  "vendor": "",
+  "product": "Flat UI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLAT_UI.json",
+    "original_name": "Flat UI"
+  },
+  "research": [
+    {
+      "url": "https://designmodo.github.io/Flat-UI/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flat_ui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]+flat-ui(?:\\.min)?\\.css",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Bootstrap"
+  ],
+  "categories": [
+    66
+  ],
+  "website": "https://designmodo.github.io/Flat-UI/"
+}

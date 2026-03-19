@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ebay_store",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EBAY_STORE",
+  "taxonomy_name": "eBay Store",
+  "vendor": "",
+  "product": "eBay Store",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EBAY_STORE.json",
+    "original_name": "eBay Store"
+  },
+  "research": [
+    {
+      "url": "https://www.ebay.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ebay_store_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^ebay server$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "eBay is a platform that either redirects users to eBay or displays a link to an eBay store.",
+  "website": "https://www.ebay.com"
+}

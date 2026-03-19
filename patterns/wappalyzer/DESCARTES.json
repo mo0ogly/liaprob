@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-descartes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DESCARTES",
+  "taxonomy_name": "Descartes",
+  "vendor": "",
+  "product": "Descartes",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DESCARTES.json",
+    "original_name": "Descartes"
+  },
+  "research": [
+    {
+      "url": "https://www.descartes.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_descartes_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.descartes\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    107
+  ],
+  "notes": "Descartes is a technology platform that offers solutions for logistics and supply chain management.",
+  "website": "https://www.descartes.com"
+}

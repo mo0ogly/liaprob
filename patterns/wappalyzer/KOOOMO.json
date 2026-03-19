@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kooomo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KOOOMO",
+  "taxonomy_name": "Kooomo",
+  "vendor": "",
+  "product": "Kooomo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KOOOMO.json",
+    "original_name": "Kooomo"
+  },
+  "research": [
+    {
+      "url": "https://www.kooomo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kooomo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "kooomo(?: v([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "kooomo(?: v([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Kooomo is a SaaS ecommerce platform with a focus on localisation and internationalisation.",
+  "website": "https://www.kooomo.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spring_for_creators",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPRING_FOR_CREATORS",
+  "taxonomy_name": "Spring for creators",
+  "vendor": "",
+  "product": "Spring for creators",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPRING_FOR_CREATORS.json",
+    "original_name": "Spring for creators"
+  },
+  "research": [
+    {
+      "url": "https://www.spri.ng",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spring_for_creators_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.creator-spring\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Spring for creators (formerly Teespring) is a creator-centric social ecommerce platform.",
+  "website": "https://www.spri.ng"
+}

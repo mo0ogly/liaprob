@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-recharge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RECHARGE",
+  "taxonomy_name": "Recharge",
+  "vendor": "",
+  "product": "Recharge",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RECHARGE.json",
+    "original_name": "Recharge"
+  },
+  "research": [
+    {
+      "url": "https://rechargepayments.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_recharge_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.rechargecdn\\.com/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "rechargeassets-bootstrapheroes-rechargeapps\\.netdna-ssl\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Cart Functionality"
+  ],
+  "categories": [
+    41
+  ],
+  "notes": "Recharge is the a subscription payments platform designed for merchants to set up and manage dynamic recurring billing across web and mobile.",
+  "website": "https://rechargepayments.com"
+}

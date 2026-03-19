@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-redonner",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDONNER",
+  "taxonomy_name": "Redonner",
+  "vendor": "",
+  "product": "Redonner",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REDONNER.json",
+    "original_name": "Redonner"
+  },
+  "research": [
+    {
+      "url": "https://www.redonner.fr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_redonner_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.redonner\\.fr/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "This company promotes the collection and recycling of textiles by rewarding each donation of clothing made on its website with 'Re' points, allowing you to benefit from advantages and discounts at more than 70 partner brands.",
+  "website": "https://www.redonner.fr"
+}

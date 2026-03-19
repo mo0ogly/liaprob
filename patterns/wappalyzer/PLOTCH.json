@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-plotch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLOTCH",
+  "taxonomy_name": "Plotch",
+  "vendor": "",
+  "product": "Plotch",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLOTCH.json",
+    "original_name": "Plotch"
+  },
+  "research": [
+    {
+      "url": "https://www.plotch.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_plotch_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdnassets\\.plotch\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Plotch is an ecommerce system enabled by ONDC and Web3 technologies, designed to support decentralized and open digital commerce networks.",
+  "website": "https://www.plotch.ai"
+}

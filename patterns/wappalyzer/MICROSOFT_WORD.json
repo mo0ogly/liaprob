@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_word",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WORD",
+  "taxonomy_name": "Microsoft Word",
+  "vendor": "",
+  "product": "Microsoft Word",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_WORD.json",
+    "original_name": "Microsoft Word"
+  },
+  "research": [
+    {
+      "url": "https://office.microsoft.com/word",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_word_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:word\"|<w:worddocument>|<div [^>]*class=\"?wordsection1[\" >]|<style[^>]*>[^>]*@page wordsection1)",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "microsoft word( [\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "microsoft word( [\\d.]+)?"
+        },
+        {
+          "target": "meta",
+          "field": "progid",
+          "match_type": "regex",
+          "value": "^word\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:word:*:*:*:*:*:*:*:*",
+  "categories": [
+    20
+  ],
+  "notes": "MS Word is a word-processing program used primarily for creating documents.",
+  "website": "https://office.microsoft.com/word"
+}

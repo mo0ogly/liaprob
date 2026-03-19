@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-the_church_co",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THE_CHURCH_CO",
+  "taxonomy_name": "The Church Co",
+  "vendor": "",
+  "product": "The Church Co",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THE_CHURCH_CO.json",
+    "original_name": "The Church Co"
+  },
+  "research": [
+    {
+      "url": "https://thechurchco.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_the_church_co_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^thechurchco\\s([\\d\\.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^thechurchco\\s([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "The Church Co is a church-focused website development platform that provides tools and features specifically designed to support the growth and online presence of churches and religious organisations.",
+  "website": "https://thechurchco.com"
+}

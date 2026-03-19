@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-frizbit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRIZBIT",
+  "taxonomy_name": "Frizbit",
+  "vendor": "",
+  "product": "Frizbit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRIZBIT.json",
+    "original_name": "Frizbit"
+  },
+  "research": [
+    {
+      "url": "https://frizbit.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_frizbit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.frizbit\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Frizbit is a marketing tool that helps digital marketeers increase web traffic and revenue by combining web push notification.",
+  "website": "https://frizbit.com"
+}

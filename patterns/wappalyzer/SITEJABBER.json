@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sitejabber",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITEJABBER",
+  "taxonomy_name": "SiteJabber",
+  "vendor": "",
+  "product": "SiteJabber",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITEJABBER.json",
+    "original_name": "SiteJabber"
+  },
+  "research": [
+    {
+      "url": "https://www.sitejabber.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sitejabber_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "biz\\.sitejabber\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Sitejabber is the leading destination for customer ratings and reviews of businesses. Consumers find ratings and read reviews to ensure they buy from the best companies.",
+  "website": "https://www.sitejabber.com/"
+}

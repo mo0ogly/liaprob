@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-postman_api_documentation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POSTMAN_API_DOCUMENTATION",
+  "taxonomy_name": "Postman API Documentation",
+  "vendor": "",
+  "product": "Postman API Documentation",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POSTMAN_API_DOCUMENTATION.json",
+    "original_name": "Postman API Documentation"
+  },
+  "research": [
+    {
+      "url": "https://www.postman.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_postman_api_documentation_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^postman documenter$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "Postman is an API design and documentation platform.",
+  "website": "https://www.postman.com"
+}

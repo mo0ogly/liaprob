@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-phpwcms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPWCMS",
+  "taxonomy_name": "phpwcms",
+  "vendor": "",
+  "product": "phpwcms",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PHPWCMS.json",
+    "original_name": "phpwcms"
+  },
+  "research": [
+    {
+      "url": "https://www.phpwcms.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_phpwcms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-phpwcms-page-processed-in",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-phpwcms-release",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "phpwcms is a web-based content management system and CMS framework built with PHP and MySQL.",
+  "website": "https://www.phpwcms.org"
+}

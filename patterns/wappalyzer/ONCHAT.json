@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-onchat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ONCHAT",
+  "taxonomy_name": "OnChat",
+  "vendor": "",
+  "product": "OnChat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ONCHAT.json",
+    "original_name": "OnChat"
+  },
+  "research": [
+    {
+      "url": "https://onchat.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_onchat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "onchat\\.ai/onchat\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "OnChat is a platform that uses an AI chatbot to handle customer support interactions while assisting with sales-related inquiries and customer communication.",
+  "website": "https://onchat.ai"
+}

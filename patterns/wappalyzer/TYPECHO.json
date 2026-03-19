@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-typecho",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TYPECHO",
+  "taxonomy_name": "Typecho",
+  "vendor": "",
+  "product": "Typecho",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TYPECHO.json",
+    "original_name": "Typecho"
+  },
+  "research": [
+    {
+      "url": "https://typecho.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_typecho_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "typecho( [\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "typecho( [\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    11
+  ],
+  "notes": "Typecho is a PHP Blogging Platform.",
+  "website": "https://typecho.org/"
+}

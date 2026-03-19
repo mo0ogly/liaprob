@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-slate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SLATE",
+  "taxonomy_name": "Slate",
+  "vendor": "",
+  "product": "Slate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SLATE.json",
+    "original_name": "Slate"
+  },
+  "research": [
+    {
+      "url": "https://technolutions.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_slate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "slate-technolutions-net\\.cdn\\.technolutions\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Slate is a CRM system designed specifically for higher education institutions, which helps them to manage student interactions, track admissions, and analyze student data in a flexible and user-friendly way.",
+  "website": "https://technolutions.com"
+}

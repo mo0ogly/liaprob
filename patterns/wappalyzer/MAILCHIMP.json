@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mailchimp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAILCHIMP",
+  "taxonomy_name": "MailChimp",
+  "vendor": "",
+  "product": "MailChimp",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAILCHIMP.json",
+    "original_name": "MailChimp"
+  },
+  "research": [
+    {
+      "url": "https://mailchimp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mailchimp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- begin mailchimp signup form -->",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input [^>]*id=\"mc-email\"",
+          "confidence_delta": 0.2
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn-images\\.mailchimp\\.com/[^>]*\\.css",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "chimpstatic\\.com/mcjs-connected",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "s3\\.amazonaws\\.com/downloads\\.mailchimp\\.com/js/mc-validate\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:thinkshout:mailchimp:*:*:*:*:*:*:*:*",
+  "categories": [
+    32,
+    75
+  ],
+  "notes": "Mailchimp is a marketing automation platform and email marketing service.",
+  "website": "https://mailchimp.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tryzens",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRYZENS",
+  "taxonomy_name": "Tryzens",
+  "vendor": "",
+  "product": "Tryzens",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRYZENS.json",
+    "original_name": "Tryzens"
+  },
+  "research": [
+    {
+      "url": "https://tryzens.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tryzens_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.tryzens-analytics\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "Tryzens is a digital transformation specialist focused on implementing technology-driven strategies to improve business processes.",
+  "website": "https://tryzens.com"
+}

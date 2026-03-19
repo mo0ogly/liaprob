@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-parentapps",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PARENTAPPS",
+  "taxonomy_name": "Parentapps",
+  "vendor": "",
+  "product": "Parentapps",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PARENTAPPS.json",
+    "original_name": "Parentapps"
+  },
+  "research": [
+    {
+      "url": "https://www.parentapps.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_parentapps_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "parentapps(?: v\\.([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "parentapps(?: v\\.([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Parentapps is a school communication platform designed to streamline interaction between parents and teachers through centralized messaging and updates.",
+  "website": "https://www.parentapps.co.uk"
+}

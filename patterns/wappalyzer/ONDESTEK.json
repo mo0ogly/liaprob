@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ondestek",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ONDESTEK",
+  "taxonomy_name": "Ondestek",
+  "vendor": "",
+  "product": "Ondestek",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ONDESTEK.json",
+    "original_name": "Ondestek"
+  },
+  "research": [
+    {
+      "url": "https://ondestek.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ondestek_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "panel\\.ondestek\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Ondestek is a live chat software that enables real-time customer communication through websites.",
+  "website": "https://ondestek.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-colormag",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COLORMAG",
+  "taxonomy_name": "ColorMag",
+  "vendor": "",
+  "product": "ColorMag",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COLORMAG.json",
+    "original_name": "ColorMag"
+  },
+  "research": [
+    {
+      "url": "https://themegrill.com/themes/colormag/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_colormag_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "themes/colormag.*\\.js(?:\\?ver=([0-9.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "themes/colormag.*\\.js(?:\\?ver=([0-9.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "ColorMag theme is for creating news, magazine, newspaper and other kinds of publishing sites. Compatible with Elementor.",
+  "website": "https://themegrill.com/themes/colormag/"
+}

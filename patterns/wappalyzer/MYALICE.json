@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-myalice",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYALICE",
+  "taxonomy_name": "MyAlice",
+  "vendor": "",
+  "product": "MyAlice",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MYALICE.json",
+    "original_name": "MyAlice"
+  },
+  "research": [
+    {
+      "url": "https://www.myalice.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_myalice_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.myalice\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "MyAlice is a customer support platform designed for ecommerce brands to manage and streamline customer service operations.",
+  "website": "https://www.myalice.ai"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-loopi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOOPI",
+  "taxonomy_name": "Loopi",
+  "vendor": "",
+  "product": "Loopi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOOPI.json",
+    "original_name": "Loopi"
+  },
+  "research": [
+    {
+      "url": "https://www.loopi.fr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_loopi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.loopi-velo\\.fr/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Loopi is a digital ecosystem offering tools, integrations, and resources for tourism professionals to create, manage, and distribute multimodal tourist circuits.",
+  "website": "https://www.loopi.fr"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-phprs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPRS",
+  "taxonomy_name": "phpRS",
+  "vendor": "",
+  "product": "phpRS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PHPRS.json",
+    "original_name": "phpRS"
+  },
+  "research": [
+    {
+      "url": "https://phprs.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_phprs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^phprs$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "phpRS is a content management software written in PHP.",
+  "website": "https://phprs.net"
+}

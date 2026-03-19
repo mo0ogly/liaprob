@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-osano",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OSANO",
+  "taxonomy_name": "Osano",
+  "vendor": "",
+  "product": "Osano",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OSANO.json",
+    "original_name": "Osano"
+  },
+  "research": [
+    {
+      "url": "https://www.osano.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_osano_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ajax/libs/cookieconsent2?/([\\d\\.]+)/cookieconsent.min.js",
+          "confidence_delta": 0.5,
+          "version_extract": "ajax/libs/cookieconsent2?/([\\d\\.]+)/cookieconsent.min.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cmp\\.osano\\.com/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "npm/cookieconsent@(\\d)/build/cookieconsent.min.js",
+          "confidence_delta": 0.5,
+          "version_extract": "npm/cookieconsent@(\\d)/build/cookieconsent.min.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "Osano is a data privacy platform that helps your website comply with regulations such as GDPR and CCPA.",
+  "website": "https://www.osano.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chabokan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHABOKAN",
+  "taxonomy_name": "Chabokan",
+  "vendor": "",
+  "product": "Chabokan",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHABOKAN.json",
+    "original_name": "Chabokan"
+  },
+  "research": [
+    {
+      "url": "https://chabokan.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chabokan_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "ch-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "chabokan\\s\\(chabokan\\.net\\)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "Chabokan is a cloud services provider, offering a wide range of incorporated cloud services including Cloud Object Storage, DBaaS, BaaS, and PaaS.",
+  "website": "https://chabokan.net"
+}

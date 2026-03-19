@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-endurance_page_cache",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENDURANCE_PAGE_CACHE",
+  "taxonomy_name": "Endurance Page Cache",
+  "vendor": "",
+  "product": "Endurance Page Cache",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENDURANCE_PAGE_CACHE.json",
+    "original_name": "Endurance Page Cache"
+  },
+  "research": [
+    {
+      "url": "https://github.com/bluehost/endurance-page-cache",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_endurance_page_cache_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-endurance-cache-level",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    23
+  ],
+  "notes": "Endurance Page Cache adds basic file-based caching to WordPress.",
+  "website": "https://github.com/bluehost/endurance-page-cache"
+}

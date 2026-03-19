@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-myonlinestore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYONLINESTORE",
+  "taxonomy_name": "MyOnlineStore",
+  "vendor": "",
+  "product": "MyOnlineStore",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MYONLINESTORE.json",
+    "original_name": "MyOnlineStore"
+  },
+  "research": [
+    {
+      "url": "https://www.myonlinestore.com/ ",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_myonlinestore_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "mijnwebwinkel",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "MyOnlineStore is a web shop system in the Netherlands.",
+  "website": "https://www.myonlinestore.com/ "
+}

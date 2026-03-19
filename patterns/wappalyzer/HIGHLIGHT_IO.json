@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-highlight_io",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HIGHLIGHT_IO",
+  "taxonomy_name": "Highlight.io",
+  "vendor": "",
+  "product": "Highlight.io",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HIGHLIGHT_IO.json",
+    "original_name": "Highlight.io"
+  },
+  "research": [
+    {
+      "url": "https://www.highlight.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_highlight_io_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "unpkg\\.com/highlight\\.run",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    13
+  ],
+  "notes": "Highlight.io is a monitoring software for developers, offering visibility into applications with features like session replay, error monitoring, and logging to identify frontend and backend issues.",
+  "website": "https://www.highlight.io/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-claspo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLASPO",
+  "taxonomy_name": "Claspo",
+  "vendor": "",
+  "product": "Claspo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLASPO.json",
+    "original_name": "Claspo"
+  },
+  "research": [
+    {
+      "url": "https://claspo.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_claspo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "scripts\\.claspo\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Claspo is a pop-up builder designed to generate and capture leads, increase sales, and grow subscriber lists.",
+  "website": "https://claspo.io"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-leadsbridge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEADSBRIDGE",
+  "taxonomy_name": "LeadsBridge",
+  "vendor": "",
+  "product": "LeadsBridge",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEADSBRIDGE.json",
+    "original_name": "LeadsBridge"
+  },
+  "research": [
+    {
+      "url": "https://leadsbridge.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_leadsbridge_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "leadsbridge\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "LeadsBridge is an all-in-one solution for lead generation.",
+  "website": "https://leadsbridge.com"
+}

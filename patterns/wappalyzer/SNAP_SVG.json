@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-snap_svg",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SNAP_SVG",
+  "taxonomy_name": "Snap.svg",
+  "vendor": "",
+  "product": "Snap.svg",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SNAP_SVG.json",
+    "original_name": "Snap.svg"
+  },
+  "research": [
+    {
+      "url": "https://snapsvg.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_snap_svg_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "snap\\.svg(?:-min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "website": "https://snapsvg.io"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lazysizes_unveilhooks_plugin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LAZYSIZES_UNVEILHOOKS_PLUGIN",
+  "taxonomy_name": "LazySizes unveilhooks plugin",
+  "vendor": "",
+  "product": "LazySizes unveilhooks plugin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LAZYSIZES_UNVEILHOOKS_PLUGIN.json",
+    "original_name": "LazySizes unveilhooks plugin"
+  },
+  "research": [
+    {
+      "url": "https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/unveilhooks",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lazysizes_unveilhooks_plugin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ls\\.unveilhooks(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59,
+    92
+  ],
+  "notes": "LazySizes unveilhooks plugin extends lazySizes to lazyload scripts/widgets, background images, styles and video/audio elements.",
+  "website": "https://github.com/aFarkas/lazysizes/tree/gh-pages/plugins/unveilhooks"
+}

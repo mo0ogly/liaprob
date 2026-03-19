@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-control",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONTROL",
+  "taxonomy_name": "Control",
+  "vendor": "",
+  "product": "Control",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONTROL.json",
+    "original_name": "Control"
+  },
+  "research": [
+    {
+      "url": "https://cntrl.site",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_control_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "cntrl\\.site",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Control is a freehand website builder that allows users to create beautiful fully-custom responsive sites.",
+  "website": "https://cntrl.site"
+}

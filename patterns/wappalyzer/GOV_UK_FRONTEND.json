@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gov_uk_frontend",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOV_UK_FRONTEND",
+  "taxonomy_name": "GOV.UK Frontend",
+  "vendor": "",
+  "product": "GOV.UK Frontend",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOV_UK_FRONTEND.json",
+    "original_name": "GOV.UK Frontend"
+  },
+  "research": [
+    {
+      "url": "https://design-system.service.gov.uk/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gov_uk_frontend_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+govuk-link",
+          "confidence_delta": 0.1
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body[^>]+govuk-template__body",
+          "confidence_delta": 0.8
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]* href=[^>]*?govuk-frontend(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>]*?(?:\\.min)?\\.css",
+          "confidence_delta": 0.5,
+          "version_extract": "<link[^>]* href=[^>]*?govuk-frontend(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>]*?(?:\\.min)?\\.css"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "govuk-frontend(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>]*?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "govuk-frontend(?:[^>]*?([0-9a-fa-f]{7,40}|[\\d]+(?:.[\\d]+(?:.[\\d]+)?)?)|)[^>]*?(?:\\.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    66
+  ],
+  "website": "https://design-system.service.gov.uk/"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hextom_free_shipping_bar",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HEXTOM_FREE_SHIPPING_BAR",
+  "taxonomy_name": "Hextom Free Shipping Bar",
+  "vendor": "",
+  "product": "Hextom Free Shipping Bar",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HEXTOM_FREE_SHIPPING_BAR.json",
+    "original_name": "Hextom Free Shipping Bar"
+  },
+  "research": [
+    {
+      "url": "https://hextom.com/case_study/free-shipping-bar",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hextom_free_shipping_bar_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.hextom\\.com/js/freeshippingbar\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Free Shipping Bar is a Shopify app built by Hextom. Free Shipping Bar help promote free shipping with progressive messages to motivate customers to buy more.",
+  "website": "https://hextom.com/case_study/free-shipping-bar"
+}

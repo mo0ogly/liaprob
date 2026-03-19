@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-agility_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AGILITY_CMS",
+  "taxonomy_name": "Agility CMS",
+  "vendor": "",
+  "product": "Agility CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AGILITY_CMS.json",
+    "original_name": "Agility CMS"
+  },
+  "research": [
+    {
+      "url": "https://agilitycms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_agility_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^agility cms$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.agilitycms\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Agility CMS is an enterprise-level content management system provider offering scalable solutions for managing digital content across multiple platforms.",
+  "website": "https://agilitycms.com"
+}

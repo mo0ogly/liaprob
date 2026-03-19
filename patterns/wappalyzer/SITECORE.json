@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sitecore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITECORE",
+  "taxonomy_name": "Sitecore",
+  "vendor": "",
+  "product": "Sitecore",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITECORE.json",
+    "original_name": "Sitecore"
+  },
+  "research": [
+    {
+      "url": "https://www.sitecore.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sitecore_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "sc_analytics_global_cookie",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "sc_expview",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "sc_os_sessionid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "sxa_site",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:sitecore:*:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Sitecore provides web content management, and multichannel marketing automation software.",
+  "website": "https://www.sitecore.com/"
+}

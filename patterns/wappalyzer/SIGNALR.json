@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-signalr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIGNALR",
+  "taxonomy_name": "SignalR",
+  "vendor": "",
+  "product": "SignalR",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIGNALR.json",
+    "original_name": "SignalR"
+  },
+  "research": [
+    {
+      "url": "https://dotnet.microsoft.com/es-es/apps/aspnet/signalr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_signalr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:((?:\\d+\\.)+\\d+)\\/jquery\\.)?signal[rr](?:-)?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:((?:\\d+\\.)+\\d+)\\/jquery\\.)?signal[rr](?:-)?(?:\\.min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:jquery\\.)?signal[rr](?:-((?:\\d+\\.)+\\d+))?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:jquery\\.)?signal[rr](?:-((?:\\d+\\.)+\\d+))?(?:\\.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Realtime web communication framework from Microsoft for ASP.NET.",
+  "website": "https://dotnet.microsoft.com/es-es/apps/aspnet/signalr"
+}

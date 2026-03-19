@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-opentiendas",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENTIENDAS",
+  "taxonomy_name": "OpenTiendas",
+  "vendor": "",
+  "product": "OpenTiendas",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENTIENDAS.json",
+    "original_name": "OpenTiendas"
+  },
+  "research": [
+    {
+      "url": "https://www.opentiendas.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_opentiendas_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^opentiendas$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "OpenTiendas is a hosted no-code All in One ecommerce technology that allows anyone to create online stores with advanced features without plugins.",
+  "website": "https://www.opentiendas.com"
+}

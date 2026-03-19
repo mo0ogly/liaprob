@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ktor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KTOR",
+  "taxonomy_name": "Ktor",
+  "vendor": "",
+  "product": "Ktor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KTOR.json",
+    "original_name": "Ktor"
+  },
+  "research": [
+    {
+      "url": "https://ktor.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ktor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^ktor/debug$"
+        },
+        {
+          "target": "header",
+          "field": "x-engine",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^ktor$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:jetbrains:ktor:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Kotlin"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Ktor is a Kotlin framework that allow developers to write asynchronous clients and servers applications, in Kotlin.",
+  "website": "https://ktor.io"
+}

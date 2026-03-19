@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-point",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POINT",
+  "taxonomy_name": "POINT",
+  "vendor": "",
+  "product": "POINT",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POINT.json",
+    "original_name": "POINT"
+  },
+  "research": [
+    {
+      "url": "https://pointapp.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_point_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//pointapp\\.org(?:/.*)?(?:\\?.*)?$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "POINT is a volunteer management platform and app for nonprofits to find and manage volunteers.",
+  "website": "https://pointapp.org"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yandex_smartcaptcha",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YANDEX_SMARTCAPTCHA",
+  "taxonomy_name": "Yandex SmartCaptcha",
+  "vendor": "",
+  "product": "Yandex SmartCaptcha",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YANDEX_SMARTCAPTCHA.json",
+    "original_name": "Yandex SmartCaptcha"
+  },
+  "research": [
+    {
+      "url": "https://cloud.yandex.com/en/services/smartcaptcha",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yandex_smartcaptcha_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-yandex-captcha",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Yandex SmartCaptcha is a service for verifying queries to identify user requests and block bots.",
+  "website": "https://cloud.yandex.com/en/services/smartcaptcha"
+}

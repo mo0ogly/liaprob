@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-akamai_web_application_protector",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKAMAI_WEB_APPLICATION_PROTECTOR",
+  "taxonomy_name": "Akamai Web Application Protector",
+  "vendor": "",
+  "product": "Akamai Web Application Protector",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AKAMAI_WEB_APPLICATION_PROTECTOR.json",
+    "original_name": "Akamai Web Application Protector"
+  },
+  "research": [
+    {
+      "url": "https://www.akamai.com/us/en/products/security/web-application-protector-enterprise-waf-firewall-ddos-protection.jsp",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_akamai_web_application_protector_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "aksb\\.min\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ds-aksb-a\\.akamaihd\\.net/aksb.min.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Akamai"
+  ],
+  "categories": [
+    16
+  ],
+  "notes": "Akamai Web Application Protector is designed for companies looking for a more automated approach to web application firewall (WAF) and distributed denial-of-service (DDoS) security.",
+  "website": "https://www.akamai.com/us/en/products/security/web-application-protector-enterprise-waf-firewall-ddos-protection.jsp"
+}

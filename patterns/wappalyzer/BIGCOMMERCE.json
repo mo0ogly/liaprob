@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bigcommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BIGCOMMERCE",
+  "taxonomy_name": "BigCommerce",
+  "vendor": "",
+  "product": "BigCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BIGCOMMERCE.json",
+    "original_name": "BigCommerce"
+  },
+  "research": [
+    {
+      "url": "https://www.bigcommerce.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bigcommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:\\.|plugins/)?bigcommerce(?:\\.com)?/(?:assets)?",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "BigCommerce is a hosted ecommerce platform that allows business owners to set up an online store and sell their products online.",
+  "website": "https://www.bigcommerce.com"
+}

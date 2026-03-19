@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-feedmagnet",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FEEDMAGNET",
+  "taxonomy_name": "FeedMagnet",
+  "vendor": "",
+  "product": "FeedMagnet",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FEEDMAGNET.json",
+    "original_name": "FeedMagnet"
+  },
+  "research": [
+    {
+      "url": "https://www.feedmagnet.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_feedmagnet_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.feedmagnet\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    96
+  ],
+  "notes": "FeedMagnet is a platform that merges original content with curated third-party articles and social posts to deliver varied brand experiences.",
+  "website": "https://www.feedmagnet.com"
+}

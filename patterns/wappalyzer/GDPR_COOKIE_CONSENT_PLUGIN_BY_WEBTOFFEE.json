@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gdpr_cookie_consent_plugin_by_webtoffee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GDPR_COOKIE_CONSENT_PLUGIN_BY_WEBTOFFEE",
+  "taxonomy_name": "GDPR Cookie Consent Plugin by Webtoffee",
+  "vendor": "",
+  "product": "GDPR Cookie Consent Plugin by Webtoffee",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GDPR_COOKIE_CONSENT_PLUGIN_BY_WEBTOFFEE.json",
+    "original_name": "GDPR Cookie Consent Plugin by Webtoffee"
+  },
+  "research": [
+    {
+      "url": "https://www.webtoffee.com/product/gdpr-cookie-consent/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gdpr_cookie_consent_plugin_by_webtoffee_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "wt_consent",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "GDPR Cookie Consent Plugin by Webtoffee is a WordPress solution that ensures GDPR and CCPA compliance, supports IAB standards, and integrates with Google Consent Mode.",
+  "website": "https://www.webtoffee.com/product/gdpr-cookie-consent/"
+}

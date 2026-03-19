@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-reputon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REPUTON",
+  "taxonomy_name": "Reputon",
+  "vendor": "",
+  "product": "Reputon",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REPUTON.json",
+    "original_name": "Reputon"
+  },
+  "research": [
+    {
+      "url": "https://reputon.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_reputon_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.reputon\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90,
+    100
+  ],
+  "notes": "Reputon is an customer reviews Shopify app.",
+  "website": "https://reputon.com"
+}

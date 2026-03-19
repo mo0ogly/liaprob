@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-leadspace",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEADSPACE",
+  "taxonomy_name": "Leadspace",
+  "vendor": "",
+  "product": "Leadspace",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEADSPACE.json",
+    "original_name": "Leadspace"
+  },
+  "research": [
+    {
+      "url": "https://www.leadspace.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_leadspace_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sfc\\.leadspace\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Leadspace is a customer data platform catering to B2B sales and marketing needs.",
+  "website": "https://www.leadspace.com"
+}

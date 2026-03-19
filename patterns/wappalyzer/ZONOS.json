@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zonos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZONOS",
+  "taxonomy_name": "Zonos",
+  "vendor": "",
+  "product": "Zonos",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZONOS.json",
+    "original_name": "Zonos"
+  },
+  "research": [
+    {
+      "url": "https://zonos.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zonos_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.zonos\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    106
+  ],
+  "notes": "Zonos is a cross-border ecommerce software and app solution for companies with international business.",
+  "website": "https://zonos.com"
+}

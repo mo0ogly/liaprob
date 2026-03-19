@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cnzz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CNZZ",
+  "taxonomy_name": "CNZZ",
+  "vendor": "",
+  "product": "CNZZ",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CNZZ.json",
+    "original_name": "CNZZ"
+  },
+  "research": [
+    {
+      "url": "https://web.umeng.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cnzz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//[^./]+\\.cnzz\\.com/(?:z_stat.php|core)\\?",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "website": "https://web.umeng.com/"
+}

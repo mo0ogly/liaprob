@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vaadin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VAADIN",
+  "taxonomy_name": "Vaadin",
+  "vendor": "",
+  "product": "Vaadin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VAADIN.json",
+    "original_name": "Vaadin"
+  },
+  "research": [
+    {
+      "url": "https://vaadin.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vaadin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "vaadinbootstrap\\.js(?:\\?v=([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "vaadinbootstrap\\.js(?:\\?v=([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Vaadin is an open-source framework for building user interfaces and single-page applications using Java and TypeScript.",
+  "website": "https://vaadin.com"
+}

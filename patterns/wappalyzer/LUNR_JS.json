@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lunr_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LUNR_JS",
+  "taxonomy_name": "Lunr.js",
+  "vendor": "",
+  "product": "Lunr.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LUNR_JS.json",
+    "original_name": "Lunr.js"
+  },
+  "research": [
+    {
+      "url": "https://lunrjs.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lunr_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:((?:\\d+\\.)+\\d+)\\/)?lunr(?:-store)?(?:-en)?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A very simple search index.",
+  "website": "https://lunrjs.com/"
+}

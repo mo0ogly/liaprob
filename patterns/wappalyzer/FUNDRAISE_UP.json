@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fundraise_up",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUNDRAISE_UP",
+  "taxonomy_name": "Fundraise Up",
+  "vendor": "",
+  "product": "Fundraise Up",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FUNDRAISE_UP.json",
+    "original_name": "Fundraise Up"
+  },
+  "research": [
+    {
+      "url": "https://fundraiseup.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fundraise_up_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.fundraiseup\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    111
+  ],
+  "notes": "Fundraise Up is a platform for online donations.",
+  "website": "https://fundraiseup.com"
+}

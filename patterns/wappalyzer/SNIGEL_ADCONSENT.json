@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-snigel_adconsent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SNIGEL_ADCONSENT",
+  "taxonomy_name": "snigel AdConsent",
+  "vendor": "",
+  "product": "snigel AdConsent",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SNIGEL_ADCONSENT.json",
+    "original_name": "snigel AdConsent"
+  },
+  "research": [
+    {
+      "url": "https://www.snigel.com/adconsent/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_snigel_adconsent_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:staging-)?cdn\\.snigelweb\\.com/(?:snhb|adconsent)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "snigel AdConsent is a IAB-registered consent management platfrom (CMP) which help keep sites speed intact while remaining compliant with GDPR and CCPA.",
+  "website": "https://www.snigel.com/adconsent/"
+}

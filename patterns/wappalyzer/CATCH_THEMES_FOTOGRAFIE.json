@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-catch_themes_fotografie",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CATCH_THEMES_FOTOGRAFIE",
+  "taxonomy_name": "Catch Themes Fotografie",
+  "vendor": "",
+  "product": "Catch Themes Fotografie",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CATCH_THEMES_FOTOGRAFIE.json",
+    "original_name": "Catch Themes Fotografie"
+  },
+  "research": [
+    {
+      "url": "https://catchthemes.com/themes/fotografie",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_catch_themes_fotografie_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/fotografie(?:-pro)?/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Fotografie is a modern photography WordPress theme that comes with high-quality features and minimal design by Catch Themes.",
+  "website": "https://catchthemes.com/themes/fotografie"
+}

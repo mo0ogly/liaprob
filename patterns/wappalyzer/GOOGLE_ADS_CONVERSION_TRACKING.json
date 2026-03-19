@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-google_ads_conversion_tracking",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_ADS_CONVERSION_TRACKING",
+  "taxonomy_name": "Google Ads Conversion Tracking",
+  "vendor": "",
+  "product": "Google Ads Conversion Tracking",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOOGLE_ADS_CONVERSION_TRACKING.json",
+    "original_name": "Google Ads Conversion Tracking"
+  },
+  "research": [
+    {
+      "url": "https://support.google.com/google-ads/answer/1722022",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_google_ads_conversion_tracking_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.googleadservices\\.com/pagead/conversion_async\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Google Ads"
+  ],
+  "categories": [
+    10
+  ],
+  "notes": "Google Ads Conversion Tracking is a free tool that shows you what happens after a customer interacts with your ads.",
+  "website": "https://support.google.com/google-ads/answer/1722022"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-monobill",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MONOBILL",
+  "taxonomy_name": "MonoBill",
+  "vendor": "",
+  "product": "MonoBill",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MONOBILL.json",
+    "original_name": "MonoBill"
+  },
+  "research": [
+    {
+      "url": "https://monobill.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_monobill_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "monobill_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "MonoBill is an ecommerce platform that offers built-in billing, subscription management, and payment processing features for small businesses.",
+  "website": "https://monobill.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-addi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADDI",
+  "taxonomy_name": "Addi",
+  "vendor": "",
+  "product": "Addi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADDI.json",
+    "original_name": "Addi"
+  },
+  "research": [
+    {
+      "url": "https://co.addi.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_addi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "s3\\.amazonaws\\.com/widgets\\.addi\\.com/bundle\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    91
+  ],
+  "notes": "Addi is a service that allows users to make purchases and pay for them in installments over time",
+  "website": "https://co.addi.com/"
+}

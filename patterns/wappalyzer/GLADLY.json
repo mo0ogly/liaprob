@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gladly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLADLY",
+  "taxonomy_name": "Gladly",
+  "vendor": "",
+  "product": "Gladly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLADLY.json",
+    "original_name": "Gladly"
+  },
+  "research": [
+    {
+      "url": "https://www.gladly.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gladly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.gladly\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52,
+    53
+  ],
+  "notes": "Gladly is a customer service platform.",
+  "website": "https://www.gladly.com"
+}

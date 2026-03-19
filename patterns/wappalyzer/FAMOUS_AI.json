@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-famous_ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FAMOUS_AI",
+  "taxonomy_name": "Famous.ai",
+  "vendor": "",
+  "product": "Famous.ai",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FAMOUS_AI.json",
+    "original_name": "Famous.ai"
+  },
+  "research": [
+    {
+      "url": "https://famous.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_famous_ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.famous\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "Famous.ai is a platform that transforms written concepts into functional mobile or web applications using artificial intelligence.",
+  "website": "https://famous.ai"
+}

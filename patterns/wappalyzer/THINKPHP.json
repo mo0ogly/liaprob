@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-thinkphp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THINKPHP",
+  "taxonomy_name": "ThinkPHP",
+  "vendor": "",
+  "product": "ThinkPHP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THINKPHP.json",
+    "original_name": "ThinkPHP"
+  },
+  "research": [
+    {
+      "url": "https://www.thinkphp.cn",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_thinkphp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "thinkphp"
+        },
+        {
+          "target": "cookie",
+          "field": "thinkphp_show_page_trace",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:thinkphp:thinkphp:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "ThinkPHP is an open-source PHP framework with MVC structure developed and maintained by Shanghai Topthink Company.",
+  "website": "https://www.thinkphp.cn"
+}

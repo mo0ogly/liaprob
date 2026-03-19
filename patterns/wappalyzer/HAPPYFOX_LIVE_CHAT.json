@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-happyfox_live_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HAPPYFOX_LIVE_CHAT",
+  "taxonomy_name": "HappyFox Live Chat",
+  "vendor": "",
+  "product": "HappyFox Live Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HAPPYFOX_LIVE_CHAT.json",
+    "original_name": "HappyFox Live Chat"
+  },
+  "research": [
+    {
+      "url": "https://www.happyfox.com/live-chat",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_happyfox_live_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.happyfoxchat\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "HappyFox is a help desk ticketing system that is hosted on cloud, supporting multiple customer support channels like email, voice and live chat.",
+  "website": "https://www.happyfox.com/live-chat"
+}

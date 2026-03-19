@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xeno_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XENO_CHAT",
+  "taxonomy_name": "Xeno Chat",
+  "vendor": "",
+  "product": "Xeno Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XENO_CHAT.json",
+    "original_name": "Xeno Chat"
+  },
+  "research": [
+    {
+      "url": "https://xenoapp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xeno_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.xeno\\.app",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Xeno Chat is a messaging app that enables live responses to support customer attraction, conversion, and retention.",
+  "website": "https://xenoapp.com"
+}

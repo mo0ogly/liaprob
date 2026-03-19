@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-copypoison",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COPYPOISON",
+  "taxonomy_name": "CopyPoison",
+  "vendor": "",
+  "product": "CopyPoison",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COPYPOISON.json",
+    "original_name": "CopyPoison"
+  },
+  "research": [
+    {
+      "url": "https://copypoison.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_copypoison_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "copypoison\\.com/cp\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "Copypoison is a plagarism protection tool that protects content by replacing text with symbols that are visually similar.",
+  "website": "https://copypoison.com/"
+}

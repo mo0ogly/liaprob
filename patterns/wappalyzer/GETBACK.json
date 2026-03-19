@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-getback",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GETBACK",
+  "taxonomy_name": "Getback",
+  "vendor": "",
+  "product": "Getback",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GETBACK.json",
+    "original_name": "Getback"
+  },
+  "research": [
+    {
+      "url": "https://www.getback.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_getback_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.getback\\.ch",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Getback is a web push conversion optimization tool developed by AdFocus to help improve engagement and campaign performance through browser-based notifications.",
+  "website": "https://www.getback.app"
+}

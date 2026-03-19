@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-scannet_webshop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCANNET_WEBSHOP",
+  "taxonomy_name": "ScanNet Webshop",
+  "vendor": "",
+  "product": "ScanNet Webshop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SCANNET_WEBSHOP.json",
+    "original_name": "ScanNet Webshop"
+  },
+  "research": [
+    {
+      "url": "https://www.scannet.dk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_scannet_webshop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^scannet webshop$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "ScanNet Webshop is an ecommerce solution from Denmark designed to support online retail operations with core web shop functionality.",
+  "website": "https://www.scannet.dk"
+}

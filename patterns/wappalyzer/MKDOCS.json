@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mkdocs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MKDOCS",
+  "taxonomy_name": "MkDocs",
+  "vendor": "",
+  "product": "MkDocs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MKDOCS.json",
+    "original_name": "MkDocs"
+  },
+  "research": [
+    {
+      "url": "https://www.mkdocs.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mkdocs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^mkdocs-([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "^mkdocs-([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Python"
+  ],
+  "categories": [
+    4
+  ],
+  "notes": "MkDocs is a static site generator, used for building project documentation.",
+  "website": "https://www.mkdocs.org/"
+}

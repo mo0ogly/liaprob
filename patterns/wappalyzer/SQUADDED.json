@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-squadded",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUADDED",
+  "taxonomy_name": "Squadded",
+  "vendor": "",
+  "product": "Squadded",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQUADDED.json",
+    "original_name": "Squadded"
+  },
+  "research": [
+    {
+      "url": "https://www.squadded.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_squadded_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.squadded\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Cart Functionality"
+  ],
+  "categories": [
+    5
+  ],
+  "notes": "Squadded is a social ecommerce solution that allows visitors to shop together with their friends and with other members of the brands online community.",
+  "website": "https://www.squadded.co"
+}

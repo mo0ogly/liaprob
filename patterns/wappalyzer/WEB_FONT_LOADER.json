@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-web_font_loader",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEB_FONT_LOADER",
+  "taxonomy_name": "Web Font Loader",
+  "vendor": "",
+  "product": "Web Font Loader",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEB_FONT_LOADER.json",
+    "original_name": "Web Font Loader"
+  },
+  "research": [
+    {
+      "url": "https://github.com/typekit/webfontloader",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_web_font_loader_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:((?:\\d+\\.)+\\d+)\\/)?webfontloader(?:\\.min)?(?:[-\\.][\\d\\w]{0,32})?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:((?:\\d+\\.)+\\d+)\\/)?webfontloader(?:\\.min)?(?:[-\\.][\\d\\w]{0,32})?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "WebFont Loader is a versatile JavaScript library that provides enhanced control and flexibility in managing web fonts.",
+  "website": "https://github.com/typekit/webfontloader"
+}

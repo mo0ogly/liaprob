@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-redis_object_cache",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDIS_OBJECT_CACHE",
+  "taxonomy_name": "Redis Object Cache",
+  "vendor": "",
+  "product": "Redis Object Cache",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REDIS_OBJECT_CACHE.json",
+    "original_name": "Redis Object Cache"
+  },
+  "research": [
+    {
+      "url": "https://wprediscache.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_redis_object_cache_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+performance optimized by redis object cache",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Redis",
+    "WordPress"
+  ],
+  "categories": [
+    23
+  ],
+  "website": "https://wprediscache.com"
+}

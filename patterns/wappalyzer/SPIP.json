@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPIP",
+  "taxonomy_name": "SPIP",
+  "vendor": "",
+  "product": "SPIP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPIP.json",
+    "original_name": "SPIP"
+  },
+  "research": [
+    {
+      "url": "https://www.spip.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spip_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "composed-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "spip ([\\d.]+) @",
+          "version_extract": "spip ([\\d.]+) @"
+        },
+        {
+          "target": "header",
+          "field": "x-spip-cache",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "(?:^|\\s)spip(?:\\s([\\d.]+(?:\\s\\[\\d+\\])?))?",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:^|\\s)spip(?:\\s([\\d.]+(?:\\s\\[\\d+\\])?))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:spip:spip:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "SPIP is a content management system written in PHP that uses one or more databases like SQL, SQLite or PostgreSQL.",
+  "website": "https://www.spip.net"
+}

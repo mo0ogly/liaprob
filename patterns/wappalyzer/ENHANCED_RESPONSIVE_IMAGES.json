@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-enhanced_responsive_images",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENHANCED_RESPONSIVE_IMAGES",
+  "taxonomy_name": "Enhanced Responsive Images",
+  "vendor": "",
+  "product": "Enhanced Responsive Images",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENHANCED_RESPONSIVE_IMAGES.json",
+    "original_name": "Enhanced Responsive Images"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/auto-sizes/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_enhanced_responsive_images_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^auto-sizes ([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^auto-sizes ([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "Performance plugin from the WordPress Performance Team, which improves image sizes attribute accuracy and implements the HTML spec for adding sizes='auto' to lazy loaded images.",
+  "website": "https://wordpress.org/plugins/auto-sizes/"
+}

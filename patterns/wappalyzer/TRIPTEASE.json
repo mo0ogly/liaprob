@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-triptease",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRIPTEASE",
+  "taxonomy_name": "Triptease",
+  "vendor": "",
+  "product": "Triptease",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRIPTEASE.json",
+    "original_name": "Triptease"
+  },
+  "research": [
+    {
+      "url": "https://www.triptease.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_triptease_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.triptease\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Triptease is a SaaS that provides digital tools that create better experiences and relationships between hotels and guests.",
+  "website": "https://www.triptease.com"
+}

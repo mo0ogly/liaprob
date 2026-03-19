@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coin_currency_converter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COIN_CURRENCY_CONVERTER",
+  "taxonomy_name": "Coin Currency Converter",
+  "vendor": "",
+  "product": "Coin Currency Converter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COIN_CURRENCY_CONVERTER.json",
+    "original_name": "Coin Currency Converter"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/coin",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coin_currency_converter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/apps/coin/coin\\.js.+\\.myshopify\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Coin Currency Converter is an automatic currency conversion app for Shopify.",
+  "website": "https://apps.shopify.com/coin"
+}

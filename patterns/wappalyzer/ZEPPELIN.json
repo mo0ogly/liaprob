@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zeppelin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEPPELIN",
+  "taxonomy_name": "Zeppelin",
+  "vendor": "",
+  "product": "Zeppelin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZEPPELIN.json",
+    "original_name": "Zeppelin"
+  },
+  "research": [
+    {
+      "url": "https://www.zeppelin-group.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zeppelin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cloud\\.zeppelin-group\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Zeppelin is an internet marketing provider platform designed to support digital advertising and online promotional strategies.",
+  "website": "https://www.zeppelin-group.com"
+}

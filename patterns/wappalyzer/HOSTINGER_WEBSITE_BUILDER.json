@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hostinger_website_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOSTINGER_WEBSITE_BUILDER",
+  "taxonomy_name": "Hostinger Website Builder",
+  "vendor": "",
+  "product": "Hostinger Website Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HOSTINGER_WEBSITE_BUILDER.json",
+    "original_name": "Hostinger Website Builder"
+  },
+  "research": [
+    {
+      "url": "https://www.hostinger.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hostinger_website_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "hostinger website builder",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "userapp\\.zyrosite\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Vue.js"
+  ],
+  "categories": [
+    51
+  ],
+  "notes": "Hostinger Website Builder is a web-based platform that allows users to create and design websites without needing to write code or have extensive technical knowledge.",
+  "website": "https://www.hostinger.com"
+}

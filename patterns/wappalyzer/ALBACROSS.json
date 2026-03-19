@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-albacross",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALBACROSS",
+  "taxonomy_name": "Albacross",
+  "vendor": "",
+  "product": "Albacross",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALBACROSS.json",
+    "original_name": "Albacross"
+  },
+  "research": [
+    {
+      "url": "https://albacross.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_albacross_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.albacross\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    77
+  ],
+  "notes": "Albacross is a lead generation and account intelligence platform. It helps marketing and sales teams identify their ideal customers visiting their website and gives them the insights they need to generate more qualified leads, make prospecting more efficient and close more deals.",
+  "website": "https://albacross.com"
+}

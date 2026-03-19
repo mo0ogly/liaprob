@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-minibc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MINIBC",
+  "taxonomy_name": "MiniBC",
+  "vendor": "",
+  "product": "MiniBC",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MINIBC.json",
+    "original_name": "MiniBC"
+  },
+  "research": [
+    {
+      "url": "https://www.minibc.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_minibc_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "apps\\.minibc\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "MiniBC is a BigCommerce payment app builder that enables the creation and management of custom payment solutions within the BigCommerce platform.",
+  "website": "https://www.minibc.com"
+}

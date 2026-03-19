@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-launchnotes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LAUNCHNOTES",
+  "taxonomy_name": "LaunchNotes",
+  "vendor": "",
+  "product": "LaunchNotes",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LAUNCHNOTES.json",
+    "original_name": "LaunchNotes"
+  },
+  "research": [
+    {
+      "url": "https://launchnotes.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_launchnotes_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.launchnotes\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    85
+  ],
+  "notes": "LaunchNotes is a platform that aligns teams with product development and release pipelines while keeping users informed and engaged with product updates.",
+  "website": "https://launchnotes.com"
+}

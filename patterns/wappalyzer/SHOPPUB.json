@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shoppub",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPPUB",
+  "taxonomy_name": "Shoppub",
+  "vendor": "",
+  "product": "Shoppub",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPPUB.json",
+    "original_name": "Shoppub"
+  },
+  "research": [
+    {
+      "url": "https://www.shoppub.com.br",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shoppub_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^shoppub$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Shoppub is an ecommerce platform that focuses on implementing advanced business rules.",
+  "website": "https://www.shoppub.com.br"
+}

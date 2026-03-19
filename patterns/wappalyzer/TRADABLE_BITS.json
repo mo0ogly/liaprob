@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tradable_bits",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRADABLE_BITS",
+  "taxonomy_name": "Tradable Bits",
+  "vendor": "",
+  "product": "Tradable Bits",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRADABLE_BITS.json",
+    "original_name": "Tradable Bits"
+  },
+  "research": [
+    {
+      "url": "https://tradablebits.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tradable_bits_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tradablebits\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Tradable Bits is a platform that integrates content marketing, e-commerce, CRM, and targeted communication into a unified system.",
+  "website": "https://tradablebits.com"
+}

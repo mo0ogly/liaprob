@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-scrivito",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCRIVITO",
+  "taxonomy_name": "Scrivito",
+  "vendor": "",
+  "product": "Scrivito",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SCRIVITO.json",
+    "original_name": "Scrivito"
+  },
+  "research": [
+    {
+      "url": "https://www.scrivito.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_scrivito_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^scrivito\\sby\\sinfopark\\sag\\s\\(scrivito\\.com\\)$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Scrivito is a decoupled/headless enterprise web CMS.",
+  "website": "https://www.scrivito.com"
+}

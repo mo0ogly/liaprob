@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tritac_katana_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRITAC_KATANA_COMMERCE",
+  "taxonomy_name": "Tritac Katana Commerce",
+  "vendor": "",
+  "product": "Tritac Katana Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRITAC_KATANA_COMMERCE.json",
+    "original_name": "Tritac Katana Commerce"
+  },
+  "research": [
+    {
+      "url": "https://www.tritac.com/nl/producten/katana-commerce/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tritac_katana_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "powered-by",
+          "match_type": "regex",
+          "value": "^katana\\scommerce$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Katana Commerce is Tritac's B2B and B2C ecommerce platform.",
+  "website": "https://www.tritac.com/nl/producten/katana-commerce/"
+}

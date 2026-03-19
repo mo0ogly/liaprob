@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rawabit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAWABIT",
+  "taxonomy_name": "Rawabit",
+  "vendor": "",
+  "product": "Rawabit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RAWABIT.json",
+    "original_name": "Rawabit"
+  },
+  "research": [
+    {
+      "url": "https://www.rawabit.me",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rawabit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "rawabit_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "powered-by",
+          "match_type": "regex",
+          "value": "^rawabit$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Rawabit is a website builder that lets small businesses design landing pages, modify sections, and embed content links using a drag and drop editor.",
+  "website": "https://www.rawabit.me"
+}

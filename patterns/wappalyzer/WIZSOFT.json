@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wizsoft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WIZSOFT",
+  "taxonomy_name": "WizSoft",
+  "vendor": "",
+  "product": "WizSoft",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WIZSOFT.json",
+    "original_name": "WizSoft"
+  },
+  "research": [
+    {
+      "url": "https://www.wizsoft.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wizsoft_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.wizsoft\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "WizSoft is a search engine designed for embedding in ecommerce websites and other platforms where data are stored in records.",
+  "website": "https://www.wizsoft.com"
+}

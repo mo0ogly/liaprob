@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sporcle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPORCLE",
+  "taxonomy_name": "Sporcle",
+  "vendor": "",
+  "product": "Sporcle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPORCLE.json",
+    "original_name": "Sporcle"
+  },
+  "research": [
+    {
+      "url": "https://www.sporcle.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sporcle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.sporcle\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Sporkle is a trivia and quiz widget that provides interactive question-based content for testing knowledge across various topics through embedded or web-based quizzes.",
+  "website": "https://www.sporcle.com"
+}

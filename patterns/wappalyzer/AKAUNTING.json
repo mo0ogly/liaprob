@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-akaunting",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKAUNTING",
+  "taxonomy_name": "Akaunting",
+  "vendor": "",
+  "product": "Akaunting",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AKAUNTING.json",
+    "original_name": "Akaunting"
+  },
+  "research": [
+    {
+      "url": "https://akaunting.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_akaunting_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-akaunting",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^free accounting software$"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+akaunting-green\\.css",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by akaunting: <a [^>]*href=\"https?://(?:www\\.)?akaunting\\.com[^>]+>",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Laravel"
+  ],
+  "categories": [
+    55
+  ],
+  "notes": "Akaunting is a free and online accounting software.",
+  "website": "https://akaunting.com"
+}

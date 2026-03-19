@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pyze",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PYZE",
+  "taxonomy_name": "Pyze",
+  "vendor": "",
+  "product": "Pyze",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PYZE.json",
+    "original_name": "Pyze"
+  },
+  "research": [
+    {
+      "url": "https://www.pyze.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pyze_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.pyze\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Pyze is a digital platform that provides analytics and engagement tools to support and measure digital transformation initiatives.",
+  "website": "https://www.pyze.com"
+}

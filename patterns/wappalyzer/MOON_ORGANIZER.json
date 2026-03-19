@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-moon_organizer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOON_ORGANIZER",
+  "taxonomy_name": "Moon Organizer",
+  "vendor": "",
+  "product": "Moon Organizer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOON_ORGANIZER.json",
+    "original_name": "Moon Organizer"
+  },
+  "research": [
+    {
+      "url": "https://moonorganizer.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_moon_organizer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.moonorganizer\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "Moon Organizer is a platform that tracks lunar cycles, phases, and moon-related events to support planning and provide timely updates.",
+  "website": "https://moonorganizer.com"
+}

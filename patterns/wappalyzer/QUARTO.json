@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-quarto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUARTO",
+  "taxonomy_name": "Quarto",
+  "vendor": "",
+  "product": "Quarto",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUARTO.json",
+    "original_name": "Quarto"
+  },
+  "research": [
+    {
+      "url": "https://quarto.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_quarto_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^quarto-([\\d\\.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^quarto-([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    57
+  ],
+  "notes": "Quarto is an open-source technical publishing system.",
+  "website": "https://quarto.org"
+}

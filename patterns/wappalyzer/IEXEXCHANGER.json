@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-iexexchanger",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IEXEXCHANGER",
+  "taxonomy_name": "iEXExchanger",
+  "vendor": "",
+  "product": "iEXExchanger",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IEXEXCHANGER.json",
+    "original_name": "iEXExchanger"
+  },
+  "research": [
+    {
+      "url": "https://exchanger.iexbase.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_iexexchanger_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "iexexchanger_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "iexexchanger",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Angular",
+    "Apache HTTP Server",
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://exchanger.iexbase.com"
+}

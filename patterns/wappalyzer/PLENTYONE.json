@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-plentyone",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLENTYONE",
+  "taxonomy_name": "PlentyONE",
+  "vendor": "",
+  "product": "PlentyONE",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLENTYONE.json",
+    "original_name": "PlentyONE"
+  },
+  "research": [
+    {
+      "url": "https://www.plentyone.com/product/online-shop",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_plentyone_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-plenty-shop",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^plentyone shop$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js",
+    "Nuxt.js",
+    "Storefront UI",
+    "Tailwind CSS",
+    "Vue Storefront",
+    "Vue.js"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "PlentyONE is a cloud-based ecommerce platform that provides ERP functionality, multichannel integration, and a built-in shop system.",
+  "website": "https://www.plentyone.com/product/online-shop"
+}

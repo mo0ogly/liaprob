@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-smartstore_page_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SMARTSTORE_PAGE_BUILDER",
+  "taxonomy_name": "Smartstore Page Builder",
+  "vendor": "",
+  "product": "Smartstore Page Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SMARTSTORE_PAGE_BUILDER.json",
+    "original_name": "Smartstore Page Builder"
+  },
+  "research": [
+    {
+      "url": "https://www.smartstore.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_smartstore_page_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<section[^>]+class=\"g-stage",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.smartstore.com"
+}

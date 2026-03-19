@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oxatis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OXATIS",
+  "taxonomy_name": "Oxatis",
+  "vendor": "",
+  "product": "Oxatis",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OXATIS.json",
+    "original_name": "Oxatis"
+  },
+  "research": [
+    {
+      "url": "https://www.oxatis.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oxatis_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^oxatis\\s\\(www\\.oxatis\\.com\\)$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Oxatis is a cloud-based ecommerce solution which enables users to create and manage their own online store websites.",
+  "website": "https://www.oxatis.com/"
+}

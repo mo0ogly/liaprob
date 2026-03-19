@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-negate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEGATE",
+  "taxonomy_name": "Negate",
+  "vendor": "",
+  "product": "Negate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEGATE.json",
+    "original_name": "Negate"
+  },
+  "research": [
+    {
+      "url": "https://negate.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_negate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sapi\\.negate\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Negate is a security service that provides premium bot protection for websites, blocking malicious bots in real time.",
+  "website": "https://negate.io"
+}

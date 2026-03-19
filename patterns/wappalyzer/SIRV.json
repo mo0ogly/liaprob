@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sirv",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIRV",
+  "taxonomy_name": "Sirv",
+  "vendor": "",
+  "product": "Sirv",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIRV.json",
+    "original_name": "Sirv"
+  },
+  "research": [
+    {
+      "url": "https://sirv.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sirv_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-sirv-cache",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-sirv-server",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Sirv is a solution for serving images, offering easy management, manipulation, and delivery.",
+  "website": "https://sirv.com"
+}

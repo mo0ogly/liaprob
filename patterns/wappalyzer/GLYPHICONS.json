@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-glyphicons",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLYPHICONS",
+  "taxonomy_name": "Glyphicons",
+  "vendor": "",
+  "product": "Glyphicons",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLYPHICONS.json",
+    "original_name": "Glyphicons"
+  },
+  "research": [
+    {
+      "url": "https://glyphicons.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_glyphicons_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<link[^>]* href=[^>]+glyphicons(?:\\.min)?\\.css|<img[^>]* src=[^>]+glyphicons)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    17
+  ],
+  "notes": "Glyphicons are icon fonts which you can use in your web projects.",
+  "website": "https://glyphicons.com"
+}

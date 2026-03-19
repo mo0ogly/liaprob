@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bandsintown_events_widget",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BANDSINTOWN_EVENTS_WIDGET",
+  "taxonomy_name": "BandsInTown Events Widget",
+  "vendor": "",
+  "product": "BandsInTown Events Widget",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BANDSINTOWN_EVENTS_WIDGET.json",
+    "original_name": "BandsInTown Events Widget"
+  },
+  "research": [
+    {
+      "url": "https://artists.bandsintown.com/support/events-widget",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bandsintown_events_widget_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.bandsintown\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Bandsintown Events Widget is a free widget which makes it simple to embed your event listings and allow fans to buy tickets, RSVP, follow you and join your Email & SMS lists.",
+  "website": "https://artists.bandsintown.com/support/events-widget"
+}

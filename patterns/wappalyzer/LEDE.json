@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lede",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEDE",
+  "taxonomy_name": "Lede",
+  "vendor": "",
+  "product": "Lede",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEDE.json",
+    "original_name": "Lede"
+  },
+  "research": [
+    {
+      "url": "https://joinlede.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lede_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a [^>]*href=\"[^\"]+joinlede.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "og:image",
+          "match_type": "regex",
+          "value": "https?\\:\\/\\/lede-admin",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress",
+    "WordPress VIP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Lede is a publishing platform and growth program designed to support journalism startups and news media.",
+  "website": "https://joinlede.com/"
+}

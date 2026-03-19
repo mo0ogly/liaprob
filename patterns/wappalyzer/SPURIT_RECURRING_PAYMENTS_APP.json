@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spurit_recurring_payments_app",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPURIT_RECURRING_PAYMENTS_APP",
+  "taxonomy_name": "SpurIT Recurring Payments App",
+  "vendor": "",
+  "product": "SpurIT Recurring Payments App",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPURIT_RECURRING_PAYMENTS_APP.json",
+    "original_name": "SpurIT Recurring Payments App"
+  },
+  "research": [
+    {
+      "url": "https://spur-i-t.com/shopify-apps/recurring-order-subscription",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spurit_recurring_payments_app_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn-spurit\\.com/shopify-apps/recurring-invoices/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    41,
+    100
+  ],
+  "notes": "SpurIT Recurring Payments App is a simple way to create a system of bill payment,subscriptions and invoicing.",
+  "website": "https://spur-i-t.com/shopify-apps/recurring-order-subscription"
+}

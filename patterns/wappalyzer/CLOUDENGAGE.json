@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cloudengage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDENGAGE",
+  "taxonomy_name": "CloudEngage",
+  "vendor": "",
+  "product": "CloudEngage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOUDENGAGE.json",
+    "original_name": "CloudEngage"
+  },
+  "research": [
+    {
+      "url": "https://cloudengage.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cloudengage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cloudengage\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "CloudEngage is a platform enabling no-code personalization for enhanced revenue and customer satisfaction.",
+  "website": "https://cloudengage.com"
+}

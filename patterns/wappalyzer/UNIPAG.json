@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-unipag",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNIPAG",
+  "taxonomy_name": "Unipag",
+  "vendor": "",
+  "product": "Unipag",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UNIPAG.json",
+    "original_name": "Unipag"
+  },
+  "research": [
+    {
+      "url": "https://www.unipag.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_unipag_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.unipag\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Unipag is a universal sales promotion platform designed to streamline and manage promotional campaigns across various channels.",
+  "website": "https://www.unipag.com"
+}

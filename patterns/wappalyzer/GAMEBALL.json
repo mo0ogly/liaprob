@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gameball",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GAMEBALL",
+  "taxonomy_name": "Gameball",
+  "vendor": "",
+  "product": "Gameball",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GAMEBALL.json",
+    "original_name": "Gameball"
+  },
+  "research": [
+    {
+      "url": "https://www.gameball.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gameball_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.gameball\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "Gameball is a loyalty & retention platform that offers gamified customer engagement tools for customers such as rewards, points, and referrals.",
+  "website": "https://www.gameball.co"
+}

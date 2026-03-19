@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-izooto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IZOOTO",
+  "taxonomy_name": "Izooto",
+  "vendor": "",
+  "product": "Izooto",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IZOOTO.json",
+    "original_name": "Izooto"
+  },
+  "research": [
+    {
+      "url": "https://www.izooto.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_izooto_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.izooto\\.\\w+",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    5
+  ],
+  "notes": "iZooto is a user engagement and retention tool that leverages web push notifications to help business to drive repeat traffic, leads and sales.",
+  "website": "https://www.izooto.com"
+}

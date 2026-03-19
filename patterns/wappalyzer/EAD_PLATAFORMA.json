@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ead_plataforma",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EAD_PLATAFORMA",
+  "taxonomy_name": "EAD Plataforma",
+  "vendor": "",
+  "product": "EAD Plataforma",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EAD_PLATAFORMA.json",
+    "original_name": "EAD Plataforma"
+  },
+  "research": [
+    {
+      "url": "https://eadplataforma.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ead_plataforma_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.eadplataforma\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "EAD Plataforma is a distance learning platform designed to deliver online educational content and support remote instruction across various subjects.",
+  "website": "https://eadplataforma.com"
+}

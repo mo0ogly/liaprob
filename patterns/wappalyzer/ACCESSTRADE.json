@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-accesstrade",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACCESSTRADE",
+  "taxonomy_name": "AccessTrade",
+  "vendor": "",
+  "product": "AccessTrade",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACCESSTRADE.json",
+    "original_name": "AccessTrade"
+  },
+  "research": [
+    {
+      "url": "https://accesstrade.global/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_accesstrade_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "accesstrade\\.net/js/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "click\\.accesstra\\.de/js/nct/lp\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "AccessTrade is an affiliate marketing platform based on the CPA model developed by Interspace Co.",
+  "website": "https://accesstrade.global/"
+}

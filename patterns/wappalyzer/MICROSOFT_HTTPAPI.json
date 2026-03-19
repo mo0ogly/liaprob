@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_httpapi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_HTTPAPI",
+  "taxonomy_name": "Microsoft HTTPAPI",
+  "vendor": "",
+  "product": "Microsoft HTTPAPI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_HTTPAPI.json",
+    "original_name": "Microsoft HTTPAPI"
+  },
+  "research": [
+    {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/http/http-api-start-page",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_httpapi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "microsoft-httpapi(?:/([\\d.]+))?",
+          "version_extract": "microsoft-httpapi(?:/([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    22
+  ],
+  "notes": "Microsoft HTTPAPI is a kernel-mode HTTP driver in the Windows operating system responsible for handling HTTP requests and responses with efficiency, scalability, and security.",
+  "website": "https://learn.microsoft.com/en-us/windows/win32/http/http-api-start-page"
+}

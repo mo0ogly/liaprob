@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-prediggo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PREDIGGO",
+  "taxonomy_name": "Prediggo",
+  "vendor": "",
+  "product": "Prediggo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PREDIGGO.json",
+    "original_name": "Prediggo"
+  },
+  "research": [
+    {
+      "url": "https://prediggo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_prediggo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js/prediggo/(?:[\\w]+)\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    32
+  ],
+  "notes": "Prediggo is an ecommerce personalisation and marketing automation software provider.",
+  "website": "https://prediggo.com"
+}

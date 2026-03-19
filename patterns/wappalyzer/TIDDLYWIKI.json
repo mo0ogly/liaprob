@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tiddlywiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TIDDLYWIKI",
+  "taxonomy_name": "TiddlyWiki",
+  "vendor": "",
+  "product": "TiddlyWiki",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TIDDLYWIKI.json",
+    "original_name": "TiddlyWiki"
+  },
+  "research": [
+    {
+      "url": "https://tiddlywiki.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tiddlywiki_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*type=[^>]text\\/vnd\\.tiddlywiki",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "^tiddlywiki$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "copyright",
+          "match_type": "regex",
+          "value": "^tiddlywiki created by jeremy ruston",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^tiddlywiki$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "tiddlywiki-version",
+          "match_type": "regex",
+          "value": "^(.+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^(.+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "notes": "TiddlyWiki is an open-source notebook for capturing, organising and sharing complex information.",
+  "website": "https://tiddlywiki.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stackbit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STACKBIT",
+  "taxonomy_name": "Stackbit",
+  "vendor": "",
+  "product": "Stackbit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STACKBIT.json",
+    "original_name": "Stackbit"
+  },
+  "research": [
+    {
+      "url": "https://www.stackbit.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stackbit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.stackbit\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Stackbit is a visual experience platform for building decoupled websites.",
+  "website": "https://www.stackbit.com"
+}

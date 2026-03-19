@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquia_cloud_ide",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIA_CLOUD_IDE",
+  "taxonomy_name": "Acquia Cloud IDE",
+  "vendor": "",
+  "product": "Acquia Cloud IDE",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIA_CLOUD_IDE.json",
+    "original_name": "Acquia Cloud IDE"
+  },
+  "research": [
+    {
+      "url": "https://www.acquia.com/products/drupal-cloud/cloud-ide",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquia_cloud_ide_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "https?:\\/\\/.+\\.web\\.ahdev\\.cloud",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Acquia Cloud Platform"
+  ],
+  "categories": [
+    47
+  ],
+  "notes": "Acquia Cloud IDE is a browser-based source code editor and a Drupal development stack running on the Acquia Cloud Platform.",
+  "website": "https://www.acquia.com/products/drupal-cloud/cloud-ide"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rybbit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RYBBIT",
+  "taxonomy_name": "Rybbit",
+  "vendor": "",
+  "product": "Rybbit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RYBBIT.json",
+    "original_name": "Rybbit"
+  },
+  "research": [
+    {
+      "url": "https://www.rybbit.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rybbit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.rybbit\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Rybbit is a privacy-focused, open-source web analytics platform that provides real-time tracking without cookies using a modular architecture and ClickHouse backend.",
+  "website": "https://www.rybbit.io"
+}

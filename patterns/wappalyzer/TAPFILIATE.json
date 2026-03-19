@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tapfiliate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TAPFILIATE",
+  "taxonomy_name": "Tapfiliate",
+  "vendor": "",
+  "product": "Tapfiliate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TAPFILIATE.json",
+    "original_name": "Tapfiliate"
+  },
+  "research": [
+    {
+      "url": "https://tapfiliate.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tapfiliate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.tapfiliate\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Tapfiliate is a cloud-based affiliate marketing software that helps businesses to create, track, and optimise their own affiliate marketing programs.",
+  "website": "https://tapfiliate.com"
+}

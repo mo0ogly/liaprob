@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-niagahoster",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NIAGAHOSTER",
+  "taxonomy_name": "Niagahoster",
+  "vendor": "",
+  "product": "Niagahoster",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NIAGAHOSTER.json",
+    "original_name": "Niagahoster"
+  },
+  "research": [
+    {
+      "url": "https://niagahoster.co.id",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_niagahoster_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "niagahoster"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Niagahoster"
+  ],
+  "categories": [
+    88
+  ],
+  "notes": "Niagahoster is a web hosting service for small and medium enterprises. It provides shared hosting, WordPress hosting, Virtual Private Server (VPS), and more.",
+  "website": "https://niagahoster.co.id"
+}

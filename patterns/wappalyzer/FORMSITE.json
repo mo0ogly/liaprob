@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-formsite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORMSITE",
+  "taxonomy_name": "Formsite",
+  "vendor": "",
+  "product": "Formsite",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORMSITE.json",
+    "original_name": "Formsite"
+  },
+  "research": [
+    {
+      "url": "https://www.formsite.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_formsite_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.formsite\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "Formsite is a platform for creating professional online forms, surveys, and workflows for data collection and process automation.",
+  "website": "https://www.formsite.com"
+}

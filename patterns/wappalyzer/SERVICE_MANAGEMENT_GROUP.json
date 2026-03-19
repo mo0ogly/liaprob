@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-service_management_group",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERVICE_MANAGEMENT_GROUP",
+  "taxonomy_name": "Service Management Group",
+  "vendor": "",
+  "product": "Service Management Group",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SERVICE_MANAGEMENT_GROUP.json",
+    "original_name": "Service Management Group"
+  },
+  "research": [
+    {
+      "url": "https://www.smg.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_service_management_group_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.smg\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Service Management Group offers customer experience measurement, employee engagement, social monitoring, publishing, and brand research services.",
+  "website": "https://www.smg.com"
+}

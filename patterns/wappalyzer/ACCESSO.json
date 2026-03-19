@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-accesso",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACCESSO",
+  "taxonomy_name": "Accesso",
+  "vendor": "",
+  "product": "Accesso",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACCESSO.json",
+    "original_name": "Accesso"
+  },
+  "research": [
+    {
+      "url": "https://accesso.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_accesso_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/embed/accesso\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6,
+    72
+  ],
+  "notes": "Accesso provides ticketing, ecommerce and Point-of-Sale (PoS) solutions.",
+  "website": "https://accesso.com/"
+}

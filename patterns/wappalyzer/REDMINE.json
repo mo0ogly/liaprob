@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-redmine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDMINE",
+  "taxonomy_name": "Redmine",
+  "vendor": "",
+  "product": "Redmine",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REDMINE.json",
+    "original_name": "Redmine"
+  },
+  "research": [
+    {
+      "url": "https://www.redmine.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_redmine_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_redmine_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=\"[^>]+redmine",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "description",
+          "match_type": "regex",
+          "value": "redmine",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:redmine:redmine:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Ruby on Rails"
+  ],
+  "categories": [
+    13
+  ],
+  "notes": "Redmine is a free and open-source, web-based project management and issue tracking tool.",
+  "website": "https://www.redmine.org"
+}

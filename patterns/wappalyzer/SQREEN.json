@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sqreen",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQREEN",
+  "taxonomy_name": "Sqreen",
+  "vendor": "",
+  "product": "Sqreen",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQREEN.json",
+    "original_name": "Sqreen"
+  },
+  "research": [
+    {
+      "url": "https://sqreen.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sqreen_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-protected-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^sqreen$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16,
+    19
+  ],
+  "notes": "Sqreen is the application security platform for the modern enterprise. Acquired by Datadog in Apr 2021.",
+  "website": "https://sqreen.io"
+}

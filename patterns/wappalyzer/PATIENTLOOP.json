@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-patientloop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PATIENTLOOP",
+  "taxonomy_name": "PatientLoop",
+  "vendor": "",
+  "product": "PatientLoop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PATIENTLOOP.json",
+    "original_name": "PatientLoop"
+  },
+  "research": [
+    {
+      "url": "https://www.patientloop.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_patientloop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.patientloop\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "PatientLoop is a software platform that helps organizations measure, demonstrate, and report the return on investment of their services to clients, supporting scalable performance tracking and impact analysis.",
+  "website": "https://www.patientloop.com"
+}

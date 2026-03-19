@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pimster",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIMSTER",
+  "taxonomy_name": "Pimster",
+  "vendor": "",
+  "product": "Pimster",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PIMSTER.json",
+    "original_name": "Pimster"
+  },
+  "research": [
+    {
+      "url": "https://pimster.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pimster_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.pimster\\.app",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Pimster is a platform that enables the creation and distribution of interactive, shoppable web stories across websites, email campaigns, and QR codes.",
+  "website": "https://pimster.app"
+}

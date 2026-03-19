@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-forethought_solve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORETHOUGHT_SOLVE",
+  "taxonomy_name": "Forethought Solve",
+  "vendor": "",
+  "product": "Forethought Solve",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORETHOUGHT_SOLVE.json",
+    "original_name": "Forethought Solve"
+  },
+  "research": [
+    {
+      "url": "https://forethought.ai/platform/solve/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_forethought_solve_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "solve-widget\\.forethought\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Forethought Solve is a live-chat widget that uses generative AI to automate responses for common questions across all channels.",
+  "website": "https://forethought.ai/platform/solve/"
+}

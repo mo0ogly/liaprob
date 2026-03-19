@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-artifactory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARTIFACTORY",
+  "taxonomy_name": "Artifactory",
+  "vendor": "",
+  "product": "Artifactory",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ARTIFACTORY.json",
+    "original_name": "Artifactory"
+  },
+  "research": [
+    {
+      "url": "https://jfrog.com/open-source/#os-arti",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_artifactory_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<span class=\"version\">artifactory(?: pro)?(?: power pack)?(?: ([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "<span class=\"version\">artifactory(?: pro)?(?: power pack)?(?: ([\\d.]+))?"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "wicket/resource/org\\.artifactory\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:jfrog:artifactory:*:*:*:*:*:*:*:*",
+  "categories": [
+    47
+  ],
+  "website": "https://jfrog.com/open-source/#os-arti"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-logicommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOGICOMMERCE",
+  "taxonomy_name": "LogiCommerce",
+  "vendor": "",
+  "product": "LogiCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOGICOMMERCE.json",
+    "original_name": "LogiCommerce"
+  },
+  "research": [
+    {
+      "url": "https://www.logicommerce.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_logicommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^logicommerce$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "LogiCommerce is the headless ecommerce platform.",
+  "website": "https://www.logicommerce.com"
+}

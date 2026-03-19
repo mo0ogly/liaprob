@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-terminus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TERMINUS",
+  "taxonomy_name": "Terminus",
+  "vendor": "",
+  "product": "Terminus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TERMINUS.json",
+    "original_name": "Terminus"
+  },
+  "research": [
+    {
+      "url": "https://terminus.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_terminus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.terminus\\.services/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Terminus is a platform that helps identify target audiences, deliver relevant messages across multiple channels, integrate sales teams throughout the revenue process, and measure performance across all activities.",
+  "website": "https://terminus.com"
+}

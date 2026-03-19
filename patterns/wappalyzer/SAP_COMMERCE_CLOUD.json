@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sap_commerce_cloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_COMMERCE_CLOUD",
+  "taxonomy_name": "SAP Commerce Cloud",
+  "vendor": "",
+  "product": "SAP Commerce Cloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SAP_COMMERCE_CLOUD.json",
+    "original_name": "SAP Commerce Cloud"
+  },
+  "research": [
+    {
+      "url": "https://www.sap.com/products/commerce-cloud.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sap_commerce_cloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_hybris",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+/(?:sys_master|hybr|_ui/(?:.*responsive/)?(?:desktop|common(?:/images|/img|/css|ico)?))/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script[^>].*hybris.*.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:sap:commerce_cloud:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "SAP Commerce Cloud is a cloud-native omnichannel commerce solution for B2B, B2C, and B2B2C companies.",
+  "website": "https://www.sap.com/products/commerce-cloud.html"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-elm_ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELM_UI",
+  "taxonomy_name": "Elm-ui",
+  "vendor": "",
+  "product": "Elm-ui",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ELM_UI.json",
+    "original_name": "Elm-ui"
+  },
+  "research": [
+    {
+      "url": "https://github.com/mdgriffith/elm-ui",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_elm_ui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<style>[\\s\\s]*\\.explain > \\.s[\\s\\s]*\\.explain > \\.ctr > \\.s",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Elm"
+  ],
+  "categories": [
+    66
+  ],
+  "notes": "Elm-UI is a library for creating user interfaces in Elm programming language. It provides a set of functions and abstractions for building responsive and reusable UI components, such as buttons, forms, and layouts, in a declarative and type-safe way.",
+  "website": "https://github.com/mdgriffith/elm-ui"
+}

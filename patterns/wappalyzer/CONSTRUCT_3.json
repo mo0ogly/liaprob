@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-construct_3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONSTRUCT_3",
+  "taxonomy_name": "Construct 3",
+  "vendor": "",
+  "product": "Construct 3",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONSTRUCT_3.json",
+    "original_name": "Construct 3"
+  },
+  "research": [
+    {
+      "url": "https://www.construct.net/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_construct_3_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^construct 3$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "Construct 3 is a browser-based game development platform that enables the creation of 2D games using a visual, drag-and-drop interface without requiring programming knowledge.",
+  "website": "https://www.construct.net/"
+}

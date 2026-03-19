@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jouwweb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JOUWWEB",
+  "taxonomy_name": "JouwWeb",
+  "vendor": "",
+  "product": "JouwWeb",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JOUWWEB.json",
+    "original_name": "JouwWeb"
+  },
+  "research": [
+    {
+      "url": "https://www.jouwweb.nl",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jouwweb_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:cdn)?\\.(?:jwwb|jouwweb)\\.nl/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    51
+  ],
+  "notes": "JouwWeb is an online website builder that allows internet users to create own website.",
+  "website": "https://www.jouwweb.nl"
+}

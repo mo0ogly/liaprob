@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-catberry_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CATBERRY_JS",
+  "taxonomy_name": "Catberry.js",
+  "vendor": "",
+  "product": "Catberry.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CATBERRY_JS.json",
+    "original_name": "Catberry.js"
+  },
+  "research": [
+    {
+      "url": "https://catberry.github.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_catberry_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "catberry"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    12,
+    18
+  ],
+  "website": "https://catberry.github.io/"
+}

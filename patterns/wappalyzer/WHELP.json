@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-whelp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WHELP",
+  "taxonomy_name": "Whelp",
+  "vendor": "",
+  "product": "Whelp",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WHELP.json",
+    "original_name": "Whelp"
+  },
+  "research": [
+    {
+      "url": "https://whelp.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_whelp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.getwhelp\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Whelp is an AI-based omnichannel customer support platform that provides automated chatbot-driven assistance across multiple communication channels.",
+  "website": "https://whelp.co"
+}

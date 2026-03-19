@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-facil_iti",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FACIL_ITI",
+  "taxonomy_name": "Facil-iti",
+  "vendor": "",
+  "product": "Facil-iti",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FACIL_ITI.json",
+    "original_name": "Facil-iti"
+  },
+  "research": [
+    {
+      "url": "https://www.facil-iti.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_facil_iti_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ws\\.facil-iti\\.com/tag/faciliti-tag\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "Facil-iti is a web accessibility overlay which provides support for some people with disabilities and seniors.",
+  "website": "https://www.facil-iti.com/"
+}

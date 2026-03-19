@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-enrollware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENROLLWARE",
+  "taxonomy_name": "Enrollware",
+  "vendor": "",
+  "product": "Enrollware",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENROLLWARE.json",
+    "original_name": "Enrollware"
+  },
+  "research": [
+    {
+      "url": "https://www.enrollwaresolutions.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_enrollware_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jquery\\.enrollware\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Enrollware is a CPR class management software that streamlines course scheduling, student registration, instructor tracking, and certification management for training providers.",
+  "website": "https://www.enrollwaresolutions.com"
+}

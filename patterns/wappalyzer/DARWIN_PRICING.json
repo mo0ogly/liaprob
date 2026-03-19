@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-darwin_pricing",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DARWIN_PRICING",
+  "taxonomy_name": "Darwin Pricing",
+  "vendor": "",
+  "product": "Darwin Pricing",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DARWIN_PRICING.json",
+    "original_name": "Darwin Pricing"
+  },
+  "research": [
+    {
+      "url": "https://www.darwinpricing.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_darwin_pricing_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.darwinpricing\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Darwin Pricing is a data science platform that applies dynamic pricing strategies by analyzing market conditions and customer behavior to optimize revenue and pricing decisions.",
+  "website": "https://www.darwinpricing.com"
+}

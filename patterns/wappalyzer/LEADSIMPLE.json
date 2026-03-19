@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-leadsimple",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEADSIMPLE",
+  "taxonomy_name": "LeadSimple",
+  "vendor": "",
+  "product": "LeadSimple",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEADSIMPLE.json",
+    "original_name": "LeadSimple"
+  },
+  "research": [
+    {
+      "url": "https://www.leadsimple.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_leadsimple_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets2\\.leadsimple\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "LeadSimple is a platform that allows property managers to automate their sales and operational processes.",
+  "website": "https://www.leadsimple.com"
+}

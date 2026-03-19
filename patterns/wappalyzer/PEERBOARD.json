@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-peerboard",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PEERBOARD",
+  "taxonomy_name": "PeerBoard",
+  "vendor": "",
+  "product": "PeerBoard",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PEERBOARD.json",
+    "original_name": "PeerBoard"
+  },
+  "research": [
+    {
+      "url": "https://peerboard.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_peerboard_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.peerboard\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    2
+  ],
+  "notes": "PeerBoard is a plug-and-play community solution, which helps groups, clubs, startups, marketplaces and businesses create discussion forums.",
+  "website": "https://peerboard.com"
+}

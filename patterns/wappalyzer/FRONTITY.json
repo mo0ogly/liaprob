@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-frontity",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRONTITY",
+  "taxonomy_name": "Frontity",
+  "vendor": "",
+  "product": "Frontity",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRONTITY.json",
+    "original_name": "Frontity"
+  },
+  "research": [
+    {
+      "url": "https://frontity.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_frontity_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^frontity",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "React",
+    "Webpack",
+    "WordPress"
+  ],
+  "categories": [
+    12,
+    18
+  ],
+  "notes": "Frontity is a React open-source framework focused on WordPress.",
+  "website": "https://frontity.org"
+}

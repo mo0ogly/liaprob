@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-h2o",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "H2O",
+  "taxonomy_name": "H2O",
+  "vendor": "",
+  "product": "H2O",
+  "source": {
+    "type": "wappalyzer",
+    "file": "H2O.json",
+    "original_name": "H2O"
+  },
+  "research": [
+    {
+      "url": "https://github.com/h2o/h2o",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_h2o_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^h2o(?:/)?([\\d\\.]+)?",
+          "version_extract": "^h2o(?:/)?([\\d\\.]+)?"
+        },
+        {
+          "target": "cookie",
+          "field": "h2o_casper",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "C",
+    "HTTP/2"
+  ],
+  "categories": [
+    22
+  ],
+  "notes": "H2O is a fast and secure HTTP/2 server written in C by Kazuho Oku.",
+  "website": "https://github.com/h2o/h2o"
+}

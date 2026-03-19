@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aforest_lms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AFOREST_LMS",
+  "taxonomy_name": "Aforest LMS",
+  "vendor": "",
+  "product": "Aforest LMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AFOREST_LMS.json",
+    "original_name": "Aforest LMS"
+  },
+  "research": [
+    {
+      "url": "https://www.groupe-aforest.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aforest_lms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "publisher",
+          "match_type": "regex",
+          "value": "^aforest lux - c.i.d.$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "AFOREST LMS is a training management system that supports the entire training cycle, including client needs assessment, course organization, learner tracking, quality control, assessments, certification, and e-learning integration, with invoicing capabilities.",
+  "website": "https://www.groupe-aforest.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shoutout_testimonial",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOUTOUT_TESTIMONIAL",
+  "taxonomy_name": "Shoutout Testimonial",
+  "vendor": "",
+  "product": "Shoutout Testimonial",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOUTOUT_TESTIMONIAL.json",
+    "original_name": "Shoutout Testimonial"
+  },
+  "research": [
+    {
+      "url": "https://shoutout.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shoutout_testimonial_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.shoutout\\.so",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Shoutout Testimonial is a platform that enables businesses to collect customer testimonials and display them on their websites through a simple and streamlined process.",
+  "website": "https://shoutout.io"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clock_pms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOCK_PMS",
+  "taxonomy_name": "Clock PMS",
+  "vendor": "",
+  "product": "Clock PMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOCK_PMS.json",
+    "original_name": "Clock PMS"
+  },
+  "research": [
+    {
+      "url": "https://www.clock-software.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clock_pms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.clock-software\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Clock PMS is a hotel booking software designed to streamline reservations, manage guest information, and optimise hotel operations.",
+  "website": "https://www.clock-software.com"
+}

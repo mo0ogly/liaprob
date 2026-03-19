@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-polylang",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POLYLANG",
+  "taxonomy_name": "Polylang",
+  "vendor": "",
+  "product": "Polylang",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POLYLANG.json",
+    "original_name": "Polylang"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/polylang",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_polylang_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-redirected-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "polylang(?: (pro))?",
+          "version_extract": "polylang(?: (pro))?"
+        },
+        {
+          "target": "cookie",
+          "field": "pll_language",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "[a-z]{2}"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    89
+  ],
+  "notes": "Polylang is a WordPress plugin which allows you to create multilingual WordPress site.",
+  "website": "https://wordpress.org/plugins/polylang"
+}

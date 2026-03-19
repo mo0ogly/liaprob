@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dojo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOJO",
+  "taxonomy_name": "Dojo",
+  "vendor": "",
+  "product": "Dojo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOJO.json",
+    "original_name": "Dojo"
+  },
+  "research": [
+    {
+      "url": "https://dojotoolkit.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dojo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "([\\d.]+)/dojo/dojo(?:\\.xd)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "([\\d.]+)/dojo/dojo(?:\\.xd)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:dojotoolkit:dojo:*:*:*:*:*:*:*:*",
+  "categories": [
+    59
+  ],
+  "website": "https://dojotoolkit.org"
+}

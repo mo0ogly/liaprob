@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blackbaud_crm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLACKBAUD_CRM",
+  "taxonomy_name": "Blackbaud CRM",
+  "vendor": "",
+  "product": "Blackbaud CRM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLACKBAUD_CRM.json",
+    "original_name": "Blackbaud CRM"
+  },
+  "research": [
+    {
+      "url": "https://www.blackbaud.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blackbaud_crm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js/convio/modules\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    111
+  ],
+  "notes": "Blackbaud CRM gathers fundraising, online applications, actionable prospect research and analytics, and multichannel direct marketing into one platform.",
+  "website": "https://www.blackbaud.com"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-salesforce_service_cloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SALESFORCE_SERVICE_CLOUD",
+  "taxonomy_name": "Salesforce Service Cloud",
+  "vendor": "",
+  "product": "Salesforce Service Cloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SALESFORCE_SERVICE_CLOUD.json",
+    "original_name": "Salesforce Service Cloud"
+  },
+  "research": [
+    {
+      "url": "https://www.salesforce.com/au/products/service-cloud/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_salesforce_service_cloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "service\\.force\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Salesforce"
+  ],
+  "categories": [
+    52,
+    53
+  ],
+  "notes": "Salesforce Service Cloud is a customer relationship management (CRM) platform for customer service and support.",
+  "website": "https://www.salesforce.com/au/products/service-cloud/"
+}

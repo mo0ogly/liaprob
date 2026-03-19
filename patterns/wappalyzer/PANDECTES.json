@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pandectes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PANDECTES",
+  "taxonomy_name": "Pandectes",
+  "vendor": "",
+  "product": "Pandectes",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PANDECTES.json",
+    "original_name": "Pandectes"
+  },
+  "research": [
+    {
+      "url": "https://pandectes.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pandectes_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_pandectes_gdpr",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "gdpr-privacy-policy-assets\\.s3-us-west-2\\.amazonaws\\.com/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "pandectes-core\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "s3\\.us-west-2\\.amazonaws\\.com/gdpr-privacy-policy-assets/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    67,
+    100
+  ],
+  "notes": "Pandectes is a cloud-based data privacy management compliance platform for Shopify stores, ensuring compliance with GDPR, CCPA/CPRA, VCDPA, APPI, PIPEDA, and PDPA regulations.",
+  "website": "https://pandectes.io"
+}

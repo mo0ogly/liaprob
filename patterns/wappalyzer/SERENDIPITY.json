@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-serendipity",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERENDIPITY",
+  "taxonomy_name": "Serendipity",
+  "vendor": "",
+  "product": "Serendipity",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SERENDIPITY.json",
+    "original_name": "Serendipity"
+  },
+  "research": [
+    {
+      "url": "https://s9y.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_serendipity_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "serendipity(?: v\\.([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "serendipity(?: v\\.([\\d.]+))?"
+        },
+        {
+          "target": "meta",
+          "field": "powered-by",
+          "match_type": "regex",
+          "value": "serendipity v\\.([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "serendipity v\\.([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1,
+    11
+  ],
+  "website": "https://s9y.org"
+}

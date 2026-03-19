@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adminbuy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADMINBUY",
+  "taxonomy_name": "AdminBuy",
+  "vendor": "",
+  "product": "AdminBuy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADMINBUY.json",
+    "original_name": "AdminBuy"
+  },
+  "research": [
+    {
+      "url": "https://www.adminbuy.cn",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adminbuy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "www\\.adminbuy\\.cn",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "AdminBuy is an open-source content management system from China designed for building and managing websites.",
+  "website": "https://www.adminbuy.cn"
+}

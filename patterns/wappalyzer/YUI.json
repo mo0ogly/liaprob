@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YUI",
+  "taxonomy_name": "YUI",
+  "vendor": "",
+  "product": "YUI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YUI.json",
+    "original_name": "YUI"
+  },
+  "research": [
+    {
+      "url": "https://clarle.github.io/yui3",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:/yui/|yui\\.yahooapis\\.com)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:yahoo:yui:*:*:*:*:*:*:*:*",
+  "categories": [
+    59
+  ],
+  "notes": "YUI is a JavaScript and CSS library with more than 30 unique components including low-level DOM utilities and high-level user-interface widgets.",
+  "website": "https://clarle.github.io/yui3"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-beeketing",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEEKETING",
+  "taxonomy_name": "Beeketing",
+  "vendor": "",
+  "product": "Beeketing",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEEKETING.json",
+    "original_name": "Beeketing"
+  },
+  "research": [
+    {
+      "url": "https://beeketing.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_beeketing_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdk\\.beeketing\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Beeketing is a suite of marketing apps for ecommerce shop owners.",
+  "website": "https://beeketing.com"
+}

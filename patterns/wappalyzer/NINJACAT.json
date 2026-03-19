@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ninjacat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NINJACAT",
+  "taxonomy_name": "NinjaCat",
+  "vendor": "",
+  "product": "NinjaCat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NINJACAT.json",
+    "original_name": "NinjaCat"
+  },
+  "research": [
+    {
+      "url": "https://www.ninjacat.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ninjacat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "scripts\\.ninjacat\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    32
+  ],
+  "notes": "NinjaCat is a marketing analytics platform that aggregates, analyzes, and reports performance data across multiple marketing channels.",
+  "website": "https://www.ninjacat.io"
+}

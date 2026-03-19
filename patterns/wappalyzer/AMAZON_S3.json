@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-amazon_s3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMAZON_S3",
+  "taxonomy_name": "Amazon S3",
+  "vendor": "",
+  "product": "Amazon S3",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AMAZON_S3.json",
+    "original_name": "Amazon S3"
+  },
+  "research": [
+    {
+      "url": "https://aws.amazon.com/s3/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_amazon_s3_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "s3[^ ]*amazonaws\\.com"
+        },
+        {
+          "target": "header",
+          "field": "content-security-policy-report-only",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "s3[^ ]*\\.amazonaws\\.com"
+        },
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^amazons3$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "s3[^ ]*\\.amazonaws\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Amazon Web Services"
+  ],
+  "categories": [
+    31
+  ],
+  "notes": "Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.",
+  "website": "https://aws.amazon.com/s3/"
+}

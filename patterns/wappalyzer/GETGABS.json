@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-getgabs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GETGABS",
+  "taxonomy_name": "Getgabs",
+  "vendor": "",
+  "product": "Getgabs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GETGABS.json",
+    "original_name": "Getgabs"
+  },
+  "research": [
+    {
+      "url": "https://getgabs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_getgabs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.getgabs\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WhatsApp Business Chat"
+  ],
+  "categories": [
+    32
+  ],
+  "notes": "Getgabs is a WhatsApp marketing automation platform that enhances sales, marketing, and support through the WhatsApp Business API.",
+  "website": "https://getgabs.com"
+}

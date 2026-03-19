@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cookie_assistant",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COOKIE_ASSISTANT",
+  "taxonomy_name": "Cookie Assistant",
+  "vendor": "",
+  "product": "Cookie Assistant",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COOKIE_ASSISTANT.json",
+    "original_name": "Cookie Assistant"
+  },
+  "research": [
+    {
+      "url": "https://www.cookieassistant.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cookie_assistant_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.cookieassistant\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    67
+  ],
+  "notes": "Cookie Assistant is a system designed to manage user consent for cookies while providing analytics.",
+  "website": "https://www.cookieassistant.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-leaddyno",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEADDYNO",
+  "taxonomy_name": "LeadDyno",
+  "vendor": "",
+  "product": "LeadDyno",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEADDYNO.json",
+    "original_name": "LeadDyno"
+  },
+  "research": [
+    {
+      "url": "https://www.leaddyno.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_leaddyno_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_leaddyno_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71,
+    10
+  ],
+  "notes": "LeadDyno is a platform that provides affiliate marketing and tracking services, allowing businesses to set up, manage, and analyse their affiliate programs.",
+  "website": "https://www.leaddyno.com"
+}

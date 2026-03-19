@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-open_classifieds",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPEN_CLASSIFIEDS",
+  "taxonomy_name": "Open Classifieds",
+  "vendor": "",
+  "product": "Open Classifieds",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPEN_CLASSIFIEDS.json",
+    "original_name": "Open Classifieds"
+  },
+  "research": [
+    {
+      "url": "https://open-classifieds.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_open_classifieds_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "open-classifieds\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "copyright",
+          "match_type": "regex",
+          "value": "open classifieds ?([0-9.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "open classifieds ?([0-9.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:open-classifieds:open_classifieds:*:*:*:*:*:*:*:*",
+  "categories": [
+    6
+  ],
+  "website": "https://open-classifieds.com"
+}

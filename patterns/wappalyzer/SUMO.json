@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sumo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUMO",
+  "taxonomy_name": "Sumo",
+  "vendor": "",
+  "product": "Sumo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SUMO.json",
+    "original_name": "Sumo"
+  },
+  "research": [
+    {
+      "url": "https://sumo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sumo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sumo(?:me)?\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    32
+  ],
+  "notes": "Sumo is a plugin offering set of marketing tools to automate a website's growth. These tools help drive extra traffic, engage visitors, increase email subscribers and build community.",
+  "website": "https://sumo.com"
+}

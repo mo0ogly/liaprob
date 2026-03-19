@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-knorish",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KNORISH",
+  "taxonomy_name": "Knorish",
+  "vendor": "",
+  "product": "Knorish",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KNORISH.json",
+    "original_name": "Knorish"
+  },
+  "research": [
+    {
+      "url": "https://knorish.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_knorish_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "kn-antiforgery-cookie",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Knorish is a platform that enables users to create and sell online courses directly from their own websites.",
+  "website": "https://knorish.com"
+}

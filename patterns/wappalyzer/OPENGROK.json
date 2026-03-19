@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-opengrok",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENGROK",
+  "taxonomy_name": "OpenGrok",
+  "vendor": "",
+  "product": "OpenGrok",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENGROK.json",
+    "original_name": "OpenGrok"
+  },
+  "research": [
+    {
+      "url": "https://hub.opensolaris.org/bin/view/Project+opengrok/WebHome",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_opengrok_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "opengrok",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "opengrok(?: v?([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "opengrok(?: v?([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    19
+  ],
+  "website": "https://hub.opensolaris.org/bin/view/Project+opengrok/WebHome"
+}

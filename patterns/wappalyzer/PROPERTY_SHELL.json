@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-property_shell",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROPERTY_SHELL",
+  "taxonomy_name": "Property Shell",
+  "vendor": "",
+  "product": "Property Shell",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROPERTY_SHELL.json",
+    "original_name": "Property Shell"
+  },
+  "research": [
+    {
+      "url": "https://propertyshell.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_property_shell_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.propertyshell\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Property Shell is a real estate CRM solution to manage, develop, and drive the selling of residential and commercial property, and more.",
+  "website": "https://propertyshell.com"
+}

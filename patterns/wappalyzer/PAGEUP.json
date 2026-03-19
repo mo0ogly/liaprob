@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pageup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAGEUP",
+  "taxonomy_name": "PageUp",
+  "vendor": "",
+  "product": "PageUp",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAGEUP.json",
+    "original_name": "PageUp"
+  },
+  "research": [
+    {
+      "url": "https://www.pageuppeople.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pageup_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "careers-static\\.pageuppeople\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "website": "https://www.pageuppeople.com"
+}

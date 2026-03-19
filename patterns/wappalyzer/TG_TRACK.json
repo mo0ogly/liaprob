@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tg_track",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TG_TRACK",
+  "taxonomy_name": "TG Track",
+  "vendor": "",
+  "product": "TG Track",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TG_TRACK.json",
+    "original_name": "TG Track"
+  },
+  "research": [
+    {
+      "url": "https://tgtrack.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tg_track_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.tgtrack\\.ru/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "TG Track is a Telegram bot that analyzes subscription data upon registration.",
+  "website": "https://tgtrack.ru"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-valuecommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VALUECOMMERCE",
+  "taxonomy_name": "ValueCommerce",
+  "vendor": "",
+  "product": "ValueCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VALUECOMMERCE.json",
+    "original_name": "ValueCommerce"
+  },
+  "research": [
+    {
+      "url": "https://www.valuecommerce.co.jp",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_valuecommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.valuecommerce\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "ValueCommerce is a pay-per-performance advertising affiliate marketing network.",
+  "website": "https://www.valuecommerce.co.jp"
+}

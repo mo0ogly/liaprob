@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-metricscube",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METRICSCUBE",
+  "taxonomy_name": "MetricsCube",
+  "vendor": "",
+  "product": "MetricsCube",
+  "source": {
+    "type": "wappalyzer",
+    "file": "METRICSCUBE.json",
+    "original_name": "MetricsCube"
+  },
+  "research": [
+    {
+      "url": "https://www.metricscube.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_metricscube_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "metricscube_analitycs",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.metricscube\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "MetricsCube is a WHMCS-integrated business analysis platform, offering real-time stats and reports.",
+  "website": "https://www.metricscube.io"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tracify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRACIFY",
+  "taxonomy_name": "Tracify",
+  "vendor": "",
+  "product": "Tracify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRACIFY.json",
+    "original_name": "Tracify"
+  },
+  "research": [
+    {
+      "url": "https://www.tracify.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tracify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "scripting\\.tracify\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Tracify is a tracking solution that uses adblock-proof AI technology to help optimize performance and maximize profitability.",
+  "website": "https://www.tracify.ai"
+}

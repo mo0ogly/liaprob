@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mintpay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MINTPAY",
+  "taxonomy_name": "Mintpay",
+  "vendor": "",
+  "product": "Mintpay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MINTPAY.json",
+    "original_name": "Mintpay"
+  },
+  "research": [
+    {
+      "url": "https://mintpay.lk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mintpay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/mintpay/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Mintpay is a system that allows purchases to be made immediately and paid for later in installments.",
+  "website": "https://mintpay.lk"
+}

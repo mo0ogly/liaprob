@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquia_cloud_platform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIA_CLOUD_PLATFORM",
+  "taxonomy_name": "Acquia Cloud Platform",
+  "vendor": "",
+  "product": "Acquia Cloud Platform",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIA_CLOUD_PLATFORM.json",
+    "original_name": "Acquia Cloud Platform"
+  },
+  "research": [
+    {
+      "url": "https://www.acquia.com/products/drupal-cloud/cloud-platform",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquia_cloud_platform_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-ah-environment",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^(next)?.*$",
+          "version_static": "\\1?next:"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Amazon Web Services"
+  ],
+  "categories": [
+    62
+  ],
+  "notes": "Acquia Cloud Platform is a Drupal-tuned application lifecycle management suite with an infrastructure to support Drupal deployment workflow processes.",
+  "website": "https://www.acquia.com/products/drupal-cloud/cloud-platform"
+}

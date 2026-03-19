@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vicomi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VICOMI",
+  "taxonomy_name": "Vicomi",
+  "vendor": "",
+  "product": "Vicomi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VICOMI.json",
+    "original_name": "Vicomi"
+  },
+  "research": [
+    {
+      "url": "https://www.vicomi.com/emotion-analytics-for-brands-and-agencies",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vicomi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets-prod\\.vicomi\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Vicomi is a tool that provides insights into audience reactions to content.",
+  "website": "https://www.vicomi.com/emotion-analytics-for-brands-and-agencies"
+}

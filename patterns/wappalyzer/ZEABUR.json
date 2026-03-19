@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zeabur",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEABUR",
+  "taxonomy_name": "Zeabur",
+  "vendor": "",
+  "product": "Zeabur",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZEABUR.json",
+    "original_name": "Zeabur"
+  },
+  "research": [
+    {
+      "url": "https://zeabur.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zeabur_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-zeabur-request-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "Zeabur is a platform for running full stack apps and databases.",
+  "website": "https://zeabur.com"
+}

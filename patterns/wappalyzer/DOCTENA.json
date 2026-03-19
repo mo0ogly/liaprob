@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-doctena",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOCTENA",
+  "taxonomy_name": "Doctena",
+  "vendor": "",
+  "product": "Doctena",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOCTENA.json",
+    "original_name": "Doctena"
+  },
+  "research": [
+    {
+      "url": "https://www.doctena.at",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_doctena_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "proddoctenasessid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.doctena\\.at",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Doctena is an online appointment booking platform that allows users to schedule visits with doctors, dentists, and other healthcare practitioners.",
+  "website": "https://www.doctena.at"
+}

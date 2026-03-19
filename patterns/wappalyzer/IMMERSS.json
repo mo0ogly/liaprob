@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-immerss",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IMMERSS",
+  "taxonomy_name": "Immerss",
+  "vendor": "",
+  "product": "Immerss",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IMMERSS.json",
+    "original_name": "Immerss"
+  },
+  "research": [
+    {
+      "url": "https://www.immerss.live",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_immerss_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.immerss\\.live/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Immerss is a platform that offers 1-to-1 Digital Clienteling, allowing customers to connect with businesses in real time via dynamic video, chat, and messaging for a personalized shopping experience.",
+  "website": "https://www.immerss.live"
+}

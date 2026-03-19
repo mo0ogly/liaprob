@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hextom_ultimate_sales_boost",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HEXTOM_ULTIMATE_SALES_BOOST",
+  "taxonomy_name": "Hextom Ultimate Sales Boost",
+  "vendor": "",
+  "product": "Hextom Ultimate Sales Boost",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HEXTOM_ULTIMATE_SALES_BOOST.json",
+    "original_name": "Hextom Ultimate Sales Boost"
+  },
+  "research": [
+    {
+      "url": "https://hextom.com/case_study/ultimate-sales-boost",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hextom_ultimate_sales_boost_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.hextom\\.com/js/ultimatesalesboost\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Ultimate Sales Boost by Hextom is an app designed to help you drive more sales by creating a sense of urgency, scarcity and trust.",
+  "website": "https://hextom.com/case_study/ultimate-sales-boost"
+}

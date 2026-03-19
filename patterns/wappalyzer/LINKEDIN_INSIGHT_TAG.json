@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-linkedin_insight_tag",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LINKEDIN_INSIGHT_TAG",
+  "taxonomy_name": "Linkedin Insight Tag",
+  "vendor": "",
+  "product": "Linkedin Insight Tag",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LINKEDIN_INSIGHT_TAG.json",
+    "original_name": "Linkedin Insight Tag"
+  },
+  "research": [
+    {
+      "url": "https://business.linkedin.com/marketing-solutions/insight-tag",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_linkedin_insight_tag_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.oribi\\.io",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "snap\\.licdn\\.com/li\\.lms-analytics/insight\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.",
+  "website": "https://business.linkedin.com/marketing-solutions/insight-tag"
+}

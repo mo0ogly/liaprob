@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-amiro_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMIRO_CMS",
+  "taxonomy_name": "Amiro.CMS",
+  "vendor": "",
+  "product": "Amiro.CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AMIRO_CMS.json",
+    "original_name": "Amiro.CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.amiro.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_amiro_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "amiro",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Amiro.CMS is a commercial content management system developed and distributed by the Russian company Amiro. Written in PHP and uses MySQL as a database.",
+  "website": "https://www.amiro.ru"
+}

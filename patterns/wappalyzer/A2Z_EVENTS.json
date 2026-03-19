@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-a2z_events",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "A2Z_EVENTS",
+  "taxonomy_name": "A2Z Events",
+  "vendor": "",
+  "product": "A2Z Events",
+  "source": {
+    "type": "wappalyzer",
+    "file": "A2Z_EVENTS.json",
+    "original_name": "A2Z Events"
+  },
+  "research": [
+    {
+      "url": "https://mya2zevents.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_a2z_events_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.a2zinc\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "A2Z Events is an event management solution designed by and for event professionals.",
+  "website": "https://mya2zevents.com"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spark_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPARK_CMS",
+  "taxonomy_name": "Spark CMS",
+  "vendor": "",
+  "product": "Spark CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPARK_CMS.json",
+    "original_name": "Spark CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.councilconnect.com.au/our-websites/about-spark-cms.aspx",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spark_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "bni_sparkcmslb",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/spark-scripts/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "The CMS has been custom built by our web developers based on feedback from our clients, ensuring an easy to use platform that's been designed in consultation with the end user in mind.",
+  "website": "https://www.councilconnect.com.au/our-websites/about-spark-cms.aspx"
+}

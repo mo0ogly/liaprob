@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webyn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBYN",
+  "taxonomy_name": "Webyn",
+  "vendor": "",
+  "product": "Webyn",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBYN.json",
+    "original_name": "Webyn"
+  },
+  "research": [
+    {
+      "url": "https://www.webyn.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webyn_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "files\\.webyn\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Webyn is a SaaS platform employing AI to analyse website traffic and implement automated, personalised enhancements aimed at improving user experience and potentially increasing conversions for clients.",
+  "website": "https://www.webyn.ai"
+}

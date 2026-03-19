@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adaptix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADAPTIX",
+  "taxonomy_name": "Adaptix",
+  "vendor": "",
+  "product": "Adaptix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADAPTIX.json",
+    "original_name": "Adaptix"
+  },
+  "research": [
+    {
+      "url": "https://www.adaptix.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adaptix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.adaptix\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    32
+  ],
+  "notes": "Adaptix is a marketing automation platform that uses AI to help businesses create personalized customer experiences.",
+  "website": "https://www.adaptix.ai"
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-october_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OCTOBER_CMS",
+  "taxonomy_name": "October CMS",
+  "vendor": "",
+  "product": "October CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OCTOBER_CMS.json",
+    "original_name": "October CMS"
+  },
+  "research": [
+    {
+      "url": "https://octobercms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_october_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "october_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "octobercms",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Laravel"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "October is a free, open-source, self-hosted CMS platform based on the Laravel PHP Framework.",
+  "website": "https://octobercms.com"
+}

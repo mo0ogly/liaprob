@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dixa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DIXA",
+  "taxonomy_name": "Dixa",
+  "vendor": "",
+  "product": "Dixa",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DIXA.json",
+    "original_name": "Dixa"
+  },
+  "research": [
+    {
+      "url": "https://www.dixa.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dixa_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.dixa\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Dixa is a customer experience platform designed for consumer brands, enabling management of customer interactions across channels.",
+  "website": "https://www.dixa.com"
+}

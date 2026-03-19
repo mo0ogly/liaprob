@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fohr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOHR",
+  "taxonomy_name": "Fohr",
+  "vendor": "",
+  "product": "Fohr",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FOHR.json",
+    "original_name": "Fohr"
+  },
+  "research": [
+    {
+      "url": "https://www.fohr.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fohr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.fohr\\.co"
+        },
+        {
+          "target": "meta",
+          "field": "name",
+          "match_type": "regex",
+          "value": "^fohr$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "title",
+          "match_type": "regex",
+          "value": "^fohr$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Fohr is a platform that improves collaboration between brands and influencers, focusing on building brands through influencer marketing.",
+  "website": "https://www.fohr.co"
+}

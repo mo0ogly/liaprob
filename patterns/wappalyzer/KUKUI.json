@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kukui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUKUI",
+  "taxonomy_name": "KUKUI",
+  "vendor": "",
+  "product": "KUKUI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KUKUI.json",
+    "original_name": "KUKUI"
+  },
+  "research": [
+    {
+      "url": "https://www.kukui.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kukui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.kukui\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "KUKUI is an all-in-one solution designed to enhance profitability, streamline lead management, and boost customer engagement for shop marketing.",
+  "website": "https://www.kukui.com"
+}

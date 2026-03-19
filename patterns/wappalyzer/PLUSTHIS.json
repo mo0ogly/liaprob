@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-plusthis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLUSTHIS",
+  "taxonomy_name": "PlusThis",
+  "vendor": "",
+  "product": "PlusThis",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLUSTHIS.json",
+    "original_name": "PlusThis"
+  },
+  "research": [
+    {
+      "url": "https://www.plusthis.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_plusthis_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.plusthis\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "PlusThis is a campaign toolkit for marketing automation that offers tools to streamline, integrate, and enhance marketing workflows.",
+  "website": "https://www.plusthis.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-weblocks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBLOCKS",
+  "taxonomy_name": "WeBlocks",
+  "vendor": "",
+  "product": "WeBlocks",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBLOCKS.json",
+    "original_name": "WeBlocks"
+  },
+  "research": [
+    {
+      "url": "https://www.weblocks.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_weblocks_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//weblocks\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "WeBlocks is an educational platform for creating custom JavaScript and Webflow projects using Blocks.",
+  "website": "https://www.weblocks.com"
+}

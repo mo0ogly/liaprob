@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-black_book",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLACK_BOOK",
+  "taxonomy_name": "Black Book",
+  "vendor": "",
+  "product": "Black Book",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLACK_BOOK.json",
+    "original_name": "Black Book"
+  },
+  "research": [
+    {
+      "url": "https://www.hearst.com/black-book",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_black_book_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.blackbookinformation\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Black Book is a provider of precise data and analytics for the automotive industry, offering market insights to support informed decision-making.",
+  "website": "https://www.hearst.com/black-book"
+}

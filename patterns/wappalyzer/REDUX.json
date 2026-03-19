@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-redux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDUX",
+  "taxonomy_name": "Redux",
+  "vendor": "",
+  "product": "Redux",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REDUX.json",
+    "original_name": "Redux"
+  },
+  "research": [
+    {
+      "url": "https://redux.js.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_redux_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/redux(@|/)([\\d.]+)(?:/[a-z]+)?/redux(?:.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/redux(@|/)([\\d.]+)(?:/[a-z]+)?/redux(?:.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "Redux is a predictable state container for JavaScript applications.",
+  "website": "https://redux.js.org"
+}

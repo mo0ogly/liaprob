@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-avizi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVIZI",
+  "taxonomy_name": "Avizi",
+  "vendor": "",
+  "product": "Avizi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AVIZI.json",
+    "original_name": "Avizi"
+  },
+  "research": [
+    {
+      "url": "https://www.avizi.fr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_avizi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.avizi\\.fr",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Avizi is a tourism CRM system from France designed to manage customer relationships, bookings, and marketing for travel businesses.",
+  "website": "https://www.avizi.fr"
+}

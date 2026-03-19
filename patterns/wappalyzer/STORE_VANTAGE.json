@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-store_vantage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STORE_VANTAGE",
+  "taxonomy_name": "Store Vantage",
+  "vendor": "",
+  "product": "Store Vantage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STORE_VANTAGE.json",
+    "original_name": "Store Vantage"
+  },
+  "research": [
+    {
+      "url": "https://storevantage.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_store_vantage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "storevantage",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "svsession",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Store Vantage is a scheduling and customer relationship management platform designed to help small businesses organize appointments, manage client records, and track interactions.",
+  "website": "https://storevantage.com"
+}

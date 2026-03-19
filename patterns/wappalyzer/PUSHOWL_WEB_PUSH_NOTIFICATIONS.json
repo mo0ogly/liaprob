@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pushowl_web_push_notifications",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUSHOWL_WEB_PUSH_NOTIFICATIONS",
+  "taxonomy_name": "PushOwl Web Push Notifications",
+  "vendor": "",
+  "product": "PushOwl Web Push Notifications",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUSHOWL_WEB_PUSH_NOTIFICATIONS.json",
+    "original_name": "PushOwl Web Push Notifications"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/pushowl",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pushowl_web_push_notifications_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/sdks/pushowl-shopify\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PushOwl"
+  ],
+  "categories": [
+    98,
+    100
+  ],
+  "notes": "PushOwl Web Push Notifications are a Shopify app which helps recover abandoned carts and market better with web push.",
+  "website": "https://apps.shopify.com/pushowl"
+}

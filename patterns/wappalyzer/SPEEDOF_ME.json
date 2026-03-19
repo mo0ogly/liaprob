@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-speedof_me",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPEEDOF_ME",
+  "taxonomy_name": "SpeedOf.Me",
+  "vendor": "",
+  "product": "SpeedOf.Me",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPEEDOF_ME.json",
+    "original_name": "SpeedOf.Me"
+  },
+  "research": [
+    {
+      "url": "https://speedof.me/api.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_speedof_me_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "speedof\\.me/api/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    92
+  ],
+  "notes": "SpeedOf.Me is a client-based bandwidth test API that measures internet speed without requiring plugins, using HTML5 and JavaScript for real-time results.",
+  "website": "https://speedof.me/api.html"
+}

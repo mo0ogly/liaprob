@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-essent_sitebuilder_pro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ESSENT_SITEBUILDER_PRO",
+  "taxonomy_name": "Essent SiteBuilder Pro",
+  "vendor": "",
+  "product": "Essent SiteBuilder Pro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ESSENT_SITEBUILDER_PRO.json",
+    "original_name": "Essent SiteBuilder Pro"
+  },
+  "research": [
+    {
+      "url": "https://www.essent.com/SiteBuilderPro.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_essent_sitebuilder_pro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^essent® sitebuilder pro$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    6
+  ],
+  "notes": "Essent SiteBuilder Pro is a fully-integrated web-based website design system, content management and ecommerce system.",
+  "website": "https://www.essent.com/SiteBuilderPro.html"
+}

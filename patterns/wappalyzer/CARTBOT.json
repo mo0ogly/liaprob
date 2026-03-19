@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cartbot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARTBOT",
+  "taxonomy_name": "CartBot",
+  "vendor": "",
+  "product": "CartBot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARTBOT.json",
+    "original_name": "CartBot"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/cartbot-auto-add-to-cart",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cartbot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn-app\\.cart-bot\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    98,
+    100
+  ],
+  "notes": "CartBot is a tool that automatically adds products or gifts to a customer's cart based on predefined conditions.",
+  "website": "https://apps.shopify.com/cartbot-auto-add-to-cart"
+}

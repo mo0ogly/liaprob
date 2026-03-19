@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oney",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ONEY",
+  "taxonomy_name": "Oney",
+  "vendor": "",
+  "product": "Oney",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ONEY.json",
+    "original_name": "Oney"
+  },
+  "research": [
+    {
+      "url": "https://www.oney.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oney_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/modules/oney(?:/)?/views/js/front\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    91
+  ],
+  "notes": "Oney is an app that gives consumers back the power over their spending and makes split payments universal.",
+  "website": "https://www.oney.com"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-affirm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AFFIRM",
+  "taxonomy_name": "Affirm",
+  "vendor": "",
+  "product": "Affirm",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AFFIRM.json",
+    "original_name": "Affirm"
+  },
+  "research": [
+    {
+      "url": "https://www.affirm.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_affirm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.affirm\\.com/js/v([\\d\\.]+)/affirm\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "\\.affirm\\.com/js/v([\\d\\.]+)/affirm\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41,
+    91
+  ],
+  "notes": "Affirm is a loan company that allows users to buy goods or services offered by online merchants and pay off those purchases in fixed monthly payments.",
+  "website": "https://www.affirm.com"
+}

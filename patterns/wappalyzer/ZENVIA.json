@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zenvia",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZENVIA",
+  "taxonomy_name": "Zenvia",
+  "vendor": "",
+  "product": "Zenvia",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZENVIA.json",
+    "original_name": "Zenvia"
+  },
+  "research": [
+    {
+      "url": "https://www.zenvia.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zenvia_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.zenvia\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Zenvia is a customer engagement platform that enables businesses to communicate with clients through multiple digital channels.",
+  "website": "https://www.zenvia.com"
+}

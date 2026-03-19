@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gcore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GCORE",
+  "taxonomy_name": "Gcore",
+  "vendor": "",
+  "product": "Gcore",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GCORE.json",
+    "original_name": "Gcore"
+  },
+  "research": [
+    {
+      "url": "https://gcore.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gcore_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-id",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^[\\w-]+-gc\\d{2}$"
+        },
+        {
+          "target": "header",
+          "field": "x-id-fe",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^[\\w-]+-gc\\d{2}$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "Gcore is a public cloud and content delivery network (CDN) company.",
+  "website": "https://gcore.com"
+}

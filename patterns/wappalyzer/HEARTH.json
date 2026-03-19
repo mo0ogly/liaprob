@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hearth",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HEARTH",
+  "taxonomy_name": "Hearth",
+  "vendor": "",
+  "product": "Hearth",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HEARTH.json",
+    "original_name": "Hearth"
+  },
+  "research": [
+    {
+      "url": "https://gethearth.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hearth_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.gethearth\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "Hearth is a financial services platform that provides financing options for home improvement projects.",
+  "website": "https://gethearth.com"
+}

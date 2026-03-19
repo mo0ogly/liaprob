@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adloox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADLOOX",
+  "taxonomy_name": "Adloox",
+  "vendor": "",
+  "product": "Adloox",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADLOOX.json",
+    "original_name": "Adloox"
+  },
+  "research": [
+    {
+      "url": "https://www.adloox.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adloox_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.adlooxtracking\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Adloox is a European-born buy-side ad verification and insights company.",
+  "website": "https://www.adloox.com"
+}

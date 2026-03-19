@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bookstack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOOKSTACK",
+  "taxonomy_name": "BookStack",
+  "vendor": "",
+  "product": "BookStack",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOOKSTACK.json",
+    "original_name": "BookStack"
+  },
+  "research": [
+    {
+      "url": "https://www.bookstackapp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bookstack_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "bookstack_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:bookstackapp:bookstack:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Laravel",
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    4
+  ],
+  "notes": "BookStack is a simple, open-source, self-hosted, easy-to-use platform for organising and storing information.",
+  "website": "https://www.bookstackapp.com"
+}

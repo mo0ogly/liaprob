@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mixpanel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIXPANEL",
+  "taxonomy_name": "Mixpanel",
+  "vendor": "",
+  "product": "Mixpanel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MIXPANEL.json",
+    "original_name": "Mixpanel"
+  },
+  "research": [
+    {
+      "url": "https://mixpanel.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mixpanel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.mixpanel\\.com/track",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.mxpnl\\.com/libs/mixpanel\\-([0-9.]+)\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "cdn\\.mxpnl\\.com/libs/mixpanel\\-([0-9.]+)\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Mixpanel provides a business analytics service. It tracks user interactions with web and mobile applications and provides tools for targeted communication with them. Its toolset contains in-app A/B tests and user survey forms.",
+  "website": "https://mixpanel.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-naver_maps",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NAVER_MAPS",
+  "taxonomy_name": "Naver Maps",
+  "vendor": "",
+  "product": "Naver Maps",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NAVER_MAPS.json",
+    "original_name": "Naver Maps"
+  },
+  "research": [
+    {
+      "url": "https://www.ncloud.com/product/applicationService/maps",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_naver_maps_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "openapi\\.map\\.naver\\.com/openapi/v([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "openapi\\.map\\.naver\\.com/openapi/v([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "Naver Maps help develop location-based services which provided by Naver.",
+  "website": "https://www.ncloud.com/product/applicationService/maps"
+}

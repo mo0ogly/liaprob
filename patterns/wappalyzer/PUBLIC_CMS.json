@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-public_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUBLIC_CMS",
+  "taxonomy_name": "Public CMS",
+  "vendor": "",
+  "product": "Public CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUBLIC_CMS.json",
+    "original_name": "Public CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.publiccms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_public_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-publiccms",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^(.+)$",
+          "version_extract": "^(.+)$"
+        },
+        {
+          "target": "cookie",
+          "field": "publiccms_user",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.publiccms.com"
+}

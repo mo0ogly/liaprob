@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gitlab",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GITLAB",
+  "taxonomy_name": "GitLab",
+  "vendor": "",
+  "product": "GitLab",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GITLAB.json",
+    "original_name": "GitLab"
+  },
+  "research": [
+    {
+      "url": "https://about.gitlab.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gitlab_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_gitlab_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<header class=\"navbar navbar-fixed-top navbar-gitlab with-horizontal-nav\">",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<meta content=\"https?://[^/]+/assets/gitlab_logo-",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "og:site_name",
+          "match_type": "regex",
+          "value": "^gitlab$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:gitlab:gitlab:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Ruby on Rails",
+    "Vue.js"
+  ],
+  "categories": [
+    13,
+    47
+  ],
+  "notes": "GitLab is a web-based DevOps lifecycle tool that provides a Git-repository manager providing wiki, issue-tracking and continuous integration and deployment pipeline features, using an open-source license.",
+  "website": "https://about.gitlab.com"
+}

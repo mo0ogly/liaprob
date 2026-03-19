@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-peity",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PEITY",
+  "taxonomy_name": "Peity",
+  "vendor": "",
+  "product": "Peity",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PEITY.json",
+    "original_name": "Peity"
+  },
+  "research": [
+    {
+      "url": "https://benpickles.github.io/peity/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_peity_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:jquery\\.)?peity(?:-demo)?(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:jquery\\.)?peity(?:-demo)?(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Peity is a jQuery plugin that converts an element's content into a simple mini svg pie, line or bar chart.",
+  "website": "https://benpickles.github.io/peity/"
+}

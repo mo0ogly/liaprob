@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sobot_live_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOBOT_LIVE_CHAT",
+  "taxonomy_name": "Sobot Live Chat",
+  "vendor": "",
+  "product": "Sobot Live Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SOBOT_LIVE_CHAT.json",
+    "original_name": "Sobot Live Chat"
+  },
+  "research": [
+    {
+      "url": "https://www.sobot.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sobot_live_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sobot\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Sobot Live Chat is a platform for instant customer engagement, enabling real-time communication on a single interface.",
+  "website": "https://www.sobot.io"
+}

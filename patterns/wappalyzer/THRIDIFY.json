@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-thridify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THRIDIFY",
+  "taxonomy_name": "Thridify",
+  "vendor": "",
+  "product": "Thridify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THRIDIFY.json",
+    "original_name": "Thridify"
+  },
+  "research": [
+    {
+      "url": "https://www.thridify.store",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_thridify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "thridify\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    105
+  ],
+  "notes": "Thirdify is a tool that enables businesses to convert browsers into buyers using 3D and AR technologies, with no app installation or coding required.",
+  "website": "https://www.thridify.store"
+}

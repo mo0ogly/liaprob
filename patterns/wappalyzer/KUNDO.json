@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kundo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUNDO",
+  "taxonomy_name": "Kundo",
+  "vendor": "",
+  "product": "Kundo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KUNDO.json",
+    "original_name": "Kundo"
+  },
+  "research": [
+    {
+      "url": "https://www.kundo.se",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kundo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static-chat\\.kundo\\.se",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Kundo is a customer service system for all digital channels, enhanced with AI and automation to resolve inquiries.",
+  "website": "https://www.kundo.se"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-optimise",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPTIMISE",
+  "taxonomy_name": "Optimise",
+  "vendor": "",
+  "product": "Optimise",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPTIMISE.json",
+    "original_name": "Optimise"
+  },
+  "research": [
+    {
+      "url": "https://www.optimisemedia.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_optimise_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "track\\.omguk\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71,
+    36
+  ],
+  "notes": "Optimise Media Group is a UK-based performance advertising network.",
+  "website": "https://www.optimisemedia.com"
+}

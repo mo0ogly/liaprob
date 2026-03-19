@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mailerlite_website_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAILERLITE_WEBSITE_BUILDER",
+  "taxonomy_name": "MailerLite Website Builder",
+  "vendor": "",
+  "product": "MailerLite Website Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAILERLITE_WEBSITE_BUILDER.json",
+    "original_name": "MailerLite Website Builder"
+  },
+  "research": [
+    {
+      "url": "https://www.mailerlite.com/features/website-builder",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mailerlite_website_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.mailerlite\\.com/moment/moment\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "MailerLite Website Builder is a free drag & drop website builder with interactive blocks and ecommerce integrations.",
+  "website": "https://www.mailerlite.com/features/website-builder"
+}

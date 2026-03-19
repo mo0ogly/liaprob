@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flipbuilder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLIPBUILDER",
+  "taxonomy_name": "FlipBuilder",
+  "vendor": "",
+  "product": "FlipBuilder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLIPBUILDER.json",
+    "original_name": "FlipBuilder"
+  },
+  "research": [
+    {
+      "url": "https://www.flipbuilder.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flipbuilder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "flip pdf professional ([\\d\\.]+) at https?://www\\.flipbuilder\\.com",
+          "confidence_delta": 0.5,
+          "version_extract": "flip pdf professional ([\\d\\.]+) at https?://www\\.flipbuilder\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.flipbuilder\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:flipbuilder:flip_pdf:*:*:*:*:*:*:*:*",
+  "categories": [
+    1
+  ],
+  "notes": "FlipBuilder is a tool that enables the batch conversion of standard PDF files into interactive booklets, featuring page flip animations and sound effects.",
+  "website": "https://www.flipbuilder.com"
+}

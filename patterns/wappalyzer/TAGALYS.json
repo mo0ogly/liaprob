@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tagalys",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TAGALYS",
+  "taxonomy_name": "Tagalys",
+  "vendor": "",
+  "product": "Tagalys",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TAGALYS.json",
+    "original_name": "Tagalys"
+  },
+  "research": [
+    {
+      "url": "https://www.tagalys.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tagalys_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.tagalys\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Tagalys is an ecommerce personalization software that enables data-driven product discovery, recommendations, and merchandising optimization across online stores.",
+  "website": "https://www.tagalys.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-replyment",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REPLYMENT",
+  "taxonomy_name": "Replyment",
+  "vendor": "",
+  "product": "Replyment",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REPLYMENT.json",
+    "original_name": "Replyment"
+  },
+  "research": [
+    {
+      "url": "https://replyment.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_replyment_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.replyment\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Engage with your customers effortlessly on their preferred messaging app using Replyment, including WhatsApp, Messenger, and more. We support 20+ apps and platforms for seamless engagement.",
+  "website": "https://replyment.com"
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-koken",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KOKEN",
+  "taxonomy_name": "Koken",
+  "vendor": "",
+  "product": "Koken",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KOKEN.json",
+    "original_name": "Koken"
+  },
+  "research": [
+    {
+      "url": "https://koken.me",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_koken_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "koken_referrer",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+koken debugging",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<html lang=\"en\" class=\"k-source-essays k-lens-essays\">",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "koken ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "koken ([\\d.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "koken(?:\\.js\\?([\\d.]+)|/storage)",
+          "confidence_delta": 0.5,
+          "version_extract": "koken(?:\\.js\\?([\\d.]+)|/storage)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://koken.me"
+}

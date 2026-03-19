@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nodebb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NODEBB",
+  "taxonomy_name": "NodeBB",
+  "vendor": "",
+  "product": "NodeBB",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NODEBB.json",
+    "original_name": "NodeBB"
+  },
+  "research": [
+    {
+      "url": "https://nodebb.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nodebb_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^nodebb$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/nodebb\\.min\\.js\\?",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:nodebb:nodebb:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "NodeBB forum software is powered by Node.js and built on either a Redis or MongoDB database.",
+  "website": "https://nodebb.org"
+}

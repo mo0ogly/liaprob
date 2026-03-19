@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ikiwiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IKIWIKI",
+  "taxonomy_name": "ikiwiki",
+  "vendor": "",
+  "product": "ikiwiki",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IKIWIKI.json",
+    "original_name": "ikiwiki"
+  },
+  "research": [
+    {
+      "url": "https://ikiwiki.info",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ikiwiki_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"/(?:cgi-bin/)?ikiwiki\\.cgi\\?do=",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link rel=\"alternate\" type=\"application/x-wiki\" title=\"edit this page\" href=\"[^\"]*/ikiwiki\\.cgi",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    8
+  ],
+  "notes": "ikiwiki is a free and open-source wiki application.",
+  "website": "https://ikiwiki.info"
+}

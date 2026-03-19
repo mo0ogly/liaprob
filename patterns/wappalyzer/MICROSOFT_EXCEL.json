@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_excel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_EXCEL",
+  "taxonomy_name": "Microsoft Excel",
+  "vendor": "",
+  "product": "Microsoft Excel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_EXCEL.json",
+    "original_name": "Microsoft Excel"
+  },
+  "research": [
+    {
+      "url": "https://office.microsoft.com/excel",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_excel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:<html [^>]*xmlns:w=\"urn:schemas-microsoft-com:office:excel\"|<!--\\s*(?:start|end) of output from excel publish as web page wizard\\s*-->|<div [^>]*x:publishsource=\"?excel\"?)",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "microsoft excel( [\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "microsoft excel( [\\d.]+)?"
+        },
+        {
+          "target": "meta",
+          "field": "progid",
+          "match_type": "regex",
+          "value": "^excel\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:excel:*:*:*:*:*:*:*:*",
+  "categories": [
+    20
+  ],
+  "notes": "Microsoft Excel is an electronic spreadsheet program used for storing, organizing, and manipulating data.",
+  "website": "https://office.microsoft.com/excel"
+}

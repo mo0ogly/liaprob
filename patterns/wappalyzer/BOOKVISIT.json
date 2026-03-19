@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bookvisit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOOKVISIT",
+  "taxonomy_name": "BookVisit",
+  "vendor": "",
+  "product": "BookVisit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOOKVISIT.json",
+    "original_name": "BookVisit"
+  },
+  "research": [
+    {
+      "url": "https://bookvisit.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bookvisit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "online\\.bookvisit\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "BookVisit is an IT services and IT consulting, recreation, and hotel company located in Goteborg,Sweden.",
+  "website": "https://bookvisit.com"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lendi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LENDI",
+  "taxonomy_name": "Lendi",
+  "vendor": "",
+  "product": "Lendi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LENDI.json",
+    "original_name": "Lendi"
+  },
+  "research": [
+    {
+      "url": "https://www.lendi.pl",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lendi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "access-control-allow-origin",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "www\\.lendi\\.pl"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.lendi\\.pl",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    55
+  ],
+  "notes": "Lendi is a Poland-based provider of loan system solutions designed to support financial operations and lending processes.",
+  "website": "https://www.lendi.pl"
+}

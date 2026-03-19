@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-auth0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUTH0",
+  "taxonomy_name": "Auth0",
+  "vendor": "",
+  "product": "Auth0",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUTH0.json",
+    "original_name": "Auth0"
+  },
+  "research": [
+    {
+      "url": "https://auth0.github.io/auth0.js/index.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_auth0_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-auth0-requestid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/auth0(?:-js)?/([\\d.]+)/auth0(?:.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/auth0(?:-js)?/([\\d.]+)/auth0(?:.min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/auth0-js@([\\d.]+)/([a-z]+)/auth0\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/auth0-js@([\\d.]+)/([a-z]+)/auth0\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:auth0:auth0.js:*:*:*:*:*:node.js:*:*",
+  "categories": [
+    69
+  ],
+  "notes": "Auth0 provides authentication and authorisation as a service.",
+  "website": "https://auth0.github.io/auth0.js/index.html"
+}

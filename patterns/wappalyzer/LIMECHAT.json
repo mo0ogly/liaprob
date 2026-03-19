@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-limechat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIMECHAT",
+  "taxonomy_name": "LimeChat",
+  "vendor": "",
+  "product": "LimeChat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIMECHAT.json",
+    "original_name": "LimeChat"
+  },
+  "research": [
+    {
+      "url": "https://www.limechat.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_limechat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.limechat\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "LimeChat is India's first level-3 AI chatbot company.",
+  "website": "https://www.limechat.ai"
+}

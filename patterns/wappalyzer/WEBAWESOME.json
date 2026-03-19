@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webawesome",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBAWESOME",
+  "taxonomy_name": "WebAwesome",
+  "vendor": "",
+  "product": "WebAwesome",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBAWESOME.json",
+    "original_name": "WebAwesome"
+  },
+  "research": [
+    {
+      "url": "https://webawesome.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webawesome_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/webawesome\\.loader\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    66
+  ],
+  "notes": "Web Awesome is an open-source library of customizable, standards-based, and framework-agnostic UI components designed to support interoperable web interfaces.",
+  "website": "https://webawesome.com/"
+}

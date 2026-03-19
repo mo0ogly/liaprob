@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-firepush",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FIREPUSH",
+  "taxonomy_name": "Firepush",
+  "vendor": "",
+  "product": "Firepush",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FIREPUSH.json",
+    "original_name": "Firepush"
+  },
+  "research": [
+    {
+      "url": "https://getfirepush.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_firepush_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.firepush\\.\\w+",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "fpcdn\\.me/.+shopify",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    32,
+    100
+  ],
+  "notes": "Firepush is an omnichannel marketing app that helps Shopify stores to drive sales with automated web push, email and SMS campaigns.",
+  "website": "https://getfirepush.com"
+}

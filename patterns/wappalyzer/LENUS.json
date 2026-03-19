@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lenus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LENUS",
+  "taxonomy_name": "Lenus",
+  "vendor": "",
+  "product": "Lenus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LENUS.json",
+    "original_name": "Lenus"
+  },
+  "research": [
+    {
+      "url": "https://lenushealth.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lenus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^lenus$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Lenus is a platform that develops healthcare optimization systems designed to improve operational efficiency.",
+  "website": "https://lenushealth.com"
+}

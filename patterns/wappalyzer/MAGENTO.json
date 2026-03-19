@@ -1,0 +1,114 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-magento",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAGENTO",
+  "taxonomy_name": "Magento",
+  "vendor": "",
+  "product": "Magento",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAGENTO.json",
+    "original_name": "Magento"
+  },
+  "research": [
+    {
+      "url": "https://magento.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_magento_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "frontend",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "mage-cache-storage",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "mage-cache-storage-section-invalidation",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "mage-translation-file-version",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "mage-translation-storage",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "x-magento-vary",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js/mage",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "skin/frontend/(?:default|(enterprise))",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "skin/frontend/",
+          "confidence_delta": 0.5,
+          "version_extract": "skin/frontend/"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static/_requirejs",
+          "confidence_delta": 0.5,
+          "version_extract": "static/_requirejs"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:magento:magento:*:*:*:*:*:*:*:*",
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    6,
+    1
+  ],
+  "notes": "Magento is an open-source ecommerce platform written in PHP.",
+  "website": "https://magento.com"
+}

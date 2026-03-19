@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stripe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STRIPE",
+  "taxonomy_name": "Stripe",
+  "vendor": "",
+  "product": "Stripe",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STRIPE.json",
+    "original_name": "Stripe"
+  },
+  "research": [
+    {
+      "url": "https://stripe.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stripe_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "__stripe_mid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "__stripe_sid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+data-stripe",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.stripe\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Stripe offers online payment processing for internet businesses as well as fraud prevention, invoicing and subscription management.",
+  "website": "https://stripe.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cordial",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CORDIAL",
+  "taxonomy_name": "Cordial",
+  "vendor": "",
+  "product": "Cordial",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CORDIAL.json",
+    "original_name": "Cordial"
+  },
+  "research": [
+    {
+      "url": "https://cordial.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cordial_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cordial\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    32
+  ],
+  "notes": "Cordial is a cross-channel marketing and customer engagement platform for enterprise brands to send personalized email, SMS, mobile push notifications.",
+  "website": "https://cordial.com"
+}

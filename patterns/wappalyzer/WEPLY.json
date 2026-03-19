@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-weply",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEPLY",
+  "taxonomy_name": "Weply",
+  "vendor": "",
+  "product": "Weply",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEPLY.json",
+    "original_name": "Weply"
+  },
+  "research": [
+    {
+      "url": "https://weply.chat",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_weply_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.weply\\.chat/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Weply is a Nordic lead generation chat system designed to enhance lead generation from existing website traffic.",
+  "website": "https://weply.chat"
+}

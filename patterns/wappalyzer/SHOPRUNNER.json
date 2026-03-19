@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shoprunner",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPRUNNER",
+  "taxonomy_name": "Shoprunner",
+  "vendor": "",
+  "product": "Shoprunner",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPRUNNER.json",
+    "original_name": "Shoprunner"
+  },
+  "research": [
+    {
+      "url": "https://www.shoprunner.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shoprunner_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/shoprunner/shoprunner_init\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    107,
+    102
+  ],
+  "notes": "ShopRunner is a service offering consumers free two-day shipping and returns on online orders placed with certain retailers.",
+  "website": "https://www.shoprunner.com"
+}

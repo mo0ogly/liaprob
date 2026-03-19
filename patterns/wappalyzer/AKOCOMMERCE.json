@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-akocommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKOCOMMERCE",
+  "taxonomy_name": "AkoCommerce",
+  "vendor": "",
+  "product": "AkoCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AKOCOMMERCE.json",
+    "original_name": "AkoCommerce"
+  },
+  "research": [
+    {
+      "url": "https://akocommerce.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_akocommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.akocommerce\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "AkoCommerce is a Shopify partner based in Taiwan that provides website planning and construction, as well as ecommerce store opening consultation services.",
+  "website": "https://akocommerce.com"
+}

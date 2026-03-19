@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-akinon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKINON",
+  "taxonomy_name": "Akinon",
+  "vendor": "",
+  "product": "Akinon",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AKINON.json",
+    "original_name": "Akinon"
+  },
+  "research": [
+    {
+      "url": "https://www.akinon.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_akinon_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn-mgsm\\.akinon\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Akinon is a cloud-based headless commerce platform with an integrated application suite including omnichannel and marketplace capabilities, mobile and in-store solutions, and an OMS.",
+  "website": "https://www.akinon.com/"
+}

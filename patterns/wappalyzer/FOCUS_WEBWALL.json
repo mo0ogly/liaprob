@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-focus_webwall",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOCUS_WEBWALL",
+  "taxonomy_name": "FOCUS WebWall",
+  "vendor": "",
+  "product": "FOCUS WebWall",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FOCUS_WEBWALL.json",
+    "original_name": "FOCUS WebWall"
+  },
+  "research": [
+    {
+      "url": "https://appsphere.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_focus_webwall_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/focus_webwall/.*?/focus-webwall\\.js$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "FOCUS WebWall is a zero-overhead security layer designed for websites using Cloudflare.",
+  "website": "https://appsphere.app"
+}

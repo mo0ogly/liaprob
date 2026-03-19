@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-accessibly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACCESSIBLY",
+  "taxonomy_name": "Accessibly",
+  "vendor": "",
+  "product": "Accessibly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACCESSIBLY.json",
+    "original_name": "Accessibly"
+  },
+  "research": [
+    {
+      "url": "https://www.onthemapmarketing.com/accessibly/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_accessibly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "accessibly\\.onthemapmarketing\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "Accessibly is an app which is designed to assist with meeting certain requirements of WCAG 2.1 using an overlay solution.",
+  "website": "https://www.onthemapmarketing.com/accessibly/"
+}

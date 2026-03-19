@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-formsort",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORMSORT",
+  "taxonomy_name": "Formsort",
+  "vendor": "",
+  "product": "Formsort",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORMSORT.json",
+    "original_name": "Formsort"
+  },
+  "research": [
+    {
+      "url": "https://formsort.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_formsort_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "powered-by",
+          "match_type": "regex",
+          "value": "^formsort$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "Formsort is a system that enables form design and data conversion within applications.",
+  "website": "https://formsort.com"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-a_blog_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "A_BLOG_CMS",
+  "taxonomy_name": "a-blog cms",
+  "vendor": "",
+  "product": "a-blog cms",
+  "source": {
+    "type": "wappalyzer",
+    "file": "A_BLOG_CMS.json",
+    "original_name": "a-blog cms"
+  },
+  "research": [
+    {
+      "url": "https://www.a-blogcms.jp",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_a_blog_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "a-blog cms",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.a-blogcms.jp"
+}

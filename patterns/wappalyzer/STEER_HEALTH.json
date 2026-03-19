@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-steer_health",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STEER_HEALTH",
+  "taxonomy_name": "Steer Health",
+  "vendor": "",
+  "product": "Steer Health",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STEER_HEALTH.json",
+    "original_name": "Steer Health"
+  },
+  "research": [
+    {
+      "url": "https://steerhealth.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_steer_health_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.steerhealth\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Steer Health is an AI healthcare platform designed to enhance revenue, reduce costs, and improve patient experience through automation.",
+  "website": "https://steerhealth.io"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquia_site_studio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIA_SITE_STUDIO",
+  "taxonomy_name": "Acquia Site Studio",
+  "vendor": "",
+  "product": "Acquia Site Studio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIA_SITE_STUDIO.json",
+    "original_name": "Acquia Site Studio"
+  },
+  "research": [
+    {
+      "url": "https://www.acquia.com/products/drupal-cloud/site-studio",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquia_site_studio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sites/\\w*/files/cohesion",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Acquia Cloud Platform"
+  ],
+  "categories": [
+    51
+  ],
+  "notes": "Site Studio (formerly Cohesion) is a low-code, Drupal add-on page builder.",
+  "website": "https://www.acquia.com/products/drupal-cloud/site-studio"
+}

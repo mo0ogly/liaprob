@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-waste_connections",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WASTE_CONNECTIONS",
+  "taxonomy_name": "Waste Connections",
+  "vendor": "",
+  "product": "Waste Connections",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WASTE_CONNECTIONS.json",
+    "original_name": "Waste Connections"
+  },
+  "research": [
+    {
+      "url": "https://www.wasteconnections.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_waste_connections_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.wasteconnections\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "Waste Connections is a provider of waste management solutions, offering trash collection, dumpster rental, and recycling services across the United States.",
+  "website": "https://www.wasteconnections.com"
+}

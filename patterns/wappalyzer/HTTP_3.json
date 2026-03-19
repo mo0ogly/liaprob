@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-http_3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HTTP_3",
+  "taxonomy_name": "HTTP/3",
+  "vendor": "",
+  "product": "HTTP/3",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HTTP_3.json",
+    "original_name": "HTTP/3"
+  },
+  "research": [
+    {
+      "url": "https://httpwg.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_http_3_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "alt-svc",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "h3"
+        },
+        {
+          "target": "header",
+          "field": "x-firefox-http3",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "h3"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.",
+  "website": "https://httpwg.org/"
+}

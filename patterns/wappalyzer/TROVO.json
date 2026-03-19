@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-trovo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TROVO",
+  "taxonomy_name": "Trovo",
+  "vendor": "",
+  "product": "Trovo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TROVO.json",
+    "original_name": "Trovo"
+  },
+  "research": [
+    {
+      "url": "https://trovo.live",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_trovo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tag\\.trovo-tag\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    103
+  ],
+  "notes": "Trovo is a platform for live streaming and connecting with others through gaming, music, and other interactive content.",
+  "website": "https://trovo.live"
+}

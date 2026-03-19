@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pico",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PICO",
+  "taxonomy_name": "Pico",
+  "vendor": "",
+  "product": "Pico",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PICO.json",
+    "original_name": "Pico"
+  },
+  "research": [
+    {
+      "url": "https://trypico.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pico_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.pico\\.tools",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "website": "https://trypico.com"
+}

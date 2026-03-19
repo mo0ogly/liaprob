@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-easichat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EASICHAT",
+  "taxonomy_name": "EasiChat",
+  "vendor": "",
+  "product": "EasiChat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EASICHAT.json",
+    "original_name": "EasiChat"
+  },
+  "research": [
+    {
+      "url": "https://easichat.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_easichat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.easichat\\.co\\.uk",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Easichat is an online customer service platform that uses AI to automate and manage customer interactions.",
+  "website": "https://easichat.co.uk"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-botsplash",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOTSPLASH",
+  "taxonomy_name": "Botsplash",
+  "vendor": "",
+  "product": "Botsplash",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOTSPLASH.json",
+    "original_name": "Botsplash"
+  },
+  "research": [
+    {
+      "url": "https://www.botsplash.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_botsplash_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "chatcdn\\.botsplash\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Botsplash is a communication platform that manages conversations across SMS, web chat, email, voice, and AI in real time from a single interface.",
+  "website": "https://www.botsplash.com"
+}

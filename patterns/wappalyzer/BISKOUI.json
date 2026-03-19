@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-biskoui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BISKOUI",
+  "taxonomy_name": "biskoui",
+  "vendor": "",
+  "product": "biskoui",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BISKOUI.json",
+    "original_name": "biskoui"
+  },
+  "research": [
+    {
+      "url": "https://biskoui.ch",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_biskoui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.biskoui\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "biskoui is a Swiss platform designed to manage digital consent across services and technologies beyond traditional cookie-based methods.",
+  "website": "https://biskoui.ch"
+}

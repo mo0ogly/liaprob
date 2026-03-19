@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sessionly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SESSIONLY",
+  "taxonomy_name": "Sessionly",
+  "vendor": "",
+  "product": "Sessionly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SESSIONLY.json",
+    "original_name": "Sessionly"
+  },
+  "research": [
+    {
+      "url": "https://sessionly.hubspotpagebuilder.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sessionly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//sessionly\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "Sessionly is a loyalty and referral program for Shopware and Shopify merchants, focusing on customer retention and acquisition through rewards and detailed analytics.",
+  "website": "https://sessionly.hubspotpagebuilder.com"
+}

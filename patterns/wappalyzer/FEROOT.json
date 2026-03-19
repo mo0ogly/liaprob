@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-feroot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FEROOT",
+  "taxonomy_name": "Feroot",
+  "vendor": "",
+  "product": "Feroot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FEROOT.json",
+    "original_name": "Feroot"
+  },
+  "research": [
+    {
+      "url": "https://www.feroot.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_feroot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "pg\\.feroot\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Feroot is a platform for creating PCI DSS 4.0.1–compliant payment pages that ensure safe handling of transaction and customer data.",
+  "website": "https://www.feroot.com"
+}

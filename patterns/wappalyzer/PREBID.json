@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-prebid",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PREBID",
+  "taxonomy_name": "Prebid",
+  "vendor": "",
+  "product": "Prebid",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PREBID.json",
+    "original_name": "Prebid"
+  },
+  "research": [
+    {
+      "url": "https://prebid.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_prebid_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/prebid\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "adnxs\\.com/[^\"]*(?:prebid|/pb\\.js)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Prebid is an open-source header bidding wrapper. It forms the core of our Nucleus ad platform, helping maximize revenue and performance for publishers.",
+  "website": "https://prebid.org"
+}

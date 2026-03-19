@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-eveve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EVEVE",
+  "taxonomy_name": "Eveve",
+  "vendor": "",
+  "product": "Eveve",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EVEVE.json",
+    "original_name": "Eveve"
+  },
+  "research": [
+    {
+      "url": "https://www.eveve.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_eveve_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<iframe[^>]*[\\w]+\\.eveve\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    5,
+    72
+  ],
+  "notes": "Eveve is a restaurant table booking widget.",
+  "website": "https://www.eveve.com"
+}

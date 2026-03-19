@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dancer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DANCER",
+  "taxonomy_name": "Dancer",
+  "vendor": "",
+  "product": "Dancer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DANCER.json",
+    "original_name": "Dancer"
+  },
+  "research": [
+    {
+      "url": "https://perldancer.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dancer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "perl dancer ([\\d.]+)",
+          "version_extract": "perl dancer ([\\d.]+)"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "perl dancer ([\\d.]+)",
+          "version_extract": "perl dancer ([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Perl"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Mono.net delivers the a Software-as-a-Service (SaaS) platform to build and sell websites and other digital products.",
+  "website": "https://perldancer.org"
+}

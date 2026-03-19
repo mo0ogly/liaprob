@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-integral_ad_science",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTEGRAL_AD_SCIENCE",
+  "taxonomy_name": "Integral Ad Science",
+  "vendor": "",
+  "product": "Integral Ad Science",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INTEGRAL_AD_SCIENCE.json",
+    "original_name": "Integral Ad Science"
+  },
+  "research": [
+    {
+      "url": "https://integralads.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_integral_ad_science_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.adsafeprotected\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Integral Ad Science is an American publicly owned technology company that analyses the value of digital advertising placements.",
+  "website": "https://integralads.com"
+}

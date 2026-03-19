@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lodgify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LODGIFY",
+  "taxonomy_name": "Lodgify",
+  "vendor": "",
+  "product": "Lodgify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LODGIFY.json",
+    "original_name": "Lodgify"
+  },
+  "research": [
+    {
+      "url": "https://www.lodgify.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lodgify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.lodgify\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Lodgify is a platform facilitating vacation rentals and bookings.",
+  "website": "https://www.lodgify.com"
+}

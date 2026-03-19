@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-next_total",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXT_TOTAL",
+  "taxonomy_name": "Next Total",
+  "vendor": "",
+  "product": "Next Total",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEXT_TOTAL.json",
+    "original_name": "Next Total"
+  },
+  "research": [
+    {
+      "url": "https://www.next.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_next_total_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.nextdirect\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Next is leveraging the expertise, infrastructure and software it has developed for its own online business to provide a third-party ecommerce outsourcing service named Total Platform.",
+  "website": "https://www.next.co.uk"
+}

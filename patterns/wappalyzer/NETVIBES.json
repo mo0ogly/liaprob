@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-netvibes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETVIBES",
+  "taxonomy_name": "Netvibes",
+  "vendor": "",
+  "product": "Netvibes",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NETVIBES.json",
+    "original_name": "Netvibes"
+  },
+  "research": [
+    {
+      "url": "https://www.netvibes.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_netvibes_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.netvibes\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Netvibes is a platform for social media monitoring, analytics, and real-time alerts.",
+  "website": "https://www.netvibes.com"
+}

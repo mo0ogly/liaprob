@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hestia",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HESTIA",
+  "taxonomy_name": "Hestia",
+  "vendor": "",
+  "product": "Hestia",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HESTIA.json",
+    "original_name": "Hestia"
+  },
+  "research": [
+    {
+      "url": "https://themeisle.com/themes/hestia/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hestia_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "themes/hestia.*\\.js(?:\\?ver=([0-9.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "themes/hestia.*\\.js(?:\\?ver=([0-9.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Hestia is a modern WordPress theme for professionals a multipurpose one-page design, widgetized footer, blog/news page, and a clean look.",
+  "website": "https://themeisle.com/themes/hestia/"
+}

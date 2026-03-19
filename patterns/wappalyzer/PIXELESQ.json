@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pixelesq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIXELESQ",
+  "taxonomy_name": "Pixelesq",
+  "vendor": "",
+  "product": "Pixelesq",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PIXELESQ.json",
+    "original_name": "Pixelesq"
+  },
+  "research": [
+    {
+      "url": "https://www.pixelesq.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pixelesq_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^pixelesq\\s-\\sai\\swebsite\\sbuilder$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Next.js",
+    "Tailwind CSS"
+  ],
+  "categories": [
+    51
+  ],
+  "notes": "Pixelesq is a no-code platform that uses AI tools to generate and manage websites with structured control over SEO, accessibility, performance, and branding standards.",
+  "website": "https://www.pixelesq.com"
+}

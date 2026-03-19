@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-google_analytics_enhanced_ecommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_ANALYTICS_ENHANCED_ECOMMERCE",
+  "taxonomy_name": "Google Analytics Enhanced eCommerce",
+  "vendor": "",
+  "product": "Google Analytics Enhanced eCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOOGLE_ANALYTICS_ENHANCED_ECOMMERCE.json",
+    "original_name": "Google Analytics Enhanced eCommerce"
+  },
+  "research": [
+    {
+      "url": "https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_google_analytics_enhanced_ecommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "google-analytics\\.com\\/plugins\\/ua\\/(?:ec|ecommerce)\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Cart Functionality",
+    "Google Analytics"
+  ],
+  "categories": [
+    10
+  ],
+  "notes": "Google analytics enhanced ecommerce is a plug-in which enables the measurement of user interactions with products on ecommerce websites.",
+  "website": "https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce"
+}

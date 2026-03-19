@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLIP",
+  "taxonomy_name": "Flip",
+  "vendor": "",
+  "product": "Flip",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLIP.json",
+    "original_name": "Flip"
+  },
+  "research": [
+    {
+      "url": "https://www.getflip.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flip_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "flip_sentry_dsn",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "apple-mobile-web-app-title",
+          "match_type": "regex",
+          "value": "^flip$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "Flip is an employee app combining top features from popular social media platforms. It enables communication between deskless workers and those with corporate devices, offering chat, newsfeed, shift planning, timesheets, and more.",
+  "website": "https://www.getflip.com"
+}

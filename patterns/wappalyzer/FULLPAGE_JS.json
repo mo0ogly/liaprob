@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fullpage_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FULLPAGE_JS",
+  "taxonomy_name": "fullPage.js",
+  "vendor": "",
+  "product": "fullPage.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FULLPAGE_JS.json",
+    "original_name": "fullPage.js"
+  },
+  "research": [
+    {
+      "url": "https://github.com/alvarotrigo/fullpage.js",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fullpage_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/fullpage\\.js(?:/([\\d\\.]+)/)?",
+          "confidence_delta": 0.5,
+          "version_extract": "/fullpage\\.js(?:/([\\d\\.]+)/)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "fullPage.js a jQuery and vanilla JavaScript plugin for fullscreen scrolling websites.",
+  "website": "https://github.com/alvarotrigo/fullpage.js"
+}

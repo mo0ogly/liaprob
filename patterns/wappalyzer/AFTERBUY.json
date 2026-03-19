@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-afterbuy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AFTERBUY",
+  "taxonomy_name": "AfterBuy",
+  "vendor": "",
+  "product": "AfterBuy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AFTERBUY.json",
+    "original_name": "AfterBuy"
+  },
+  "research": [
+    {
+      "url": "https://www.afterbuy.de",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_afterbuy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.afterbuy\\.de/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "AfterBuy is a software company that specialises in ecommerce software for small to enterprise level businesses.",
+  "website": "https://www.afterbuy.de"
+}

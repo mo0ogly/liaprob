@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-locomotive_scroll",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOCOMOTIVE_SCROLL",
+  "taxonomy_name": "Locomotive Scroll",
+  "vendor": "",
+  "product": "Locomotive Scroll",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOCOMOTIVE_SCROLL.json",
+    "original_name": "Locomotive Scroll"
+  },
+  "research": [
+    {
+      "url": "https://github.com/locomotivemtl/locomotive-scroll",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_locomotive_scroll_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "locomotive-scroll(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Lenis"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "Locomotive Scroll is an opinionated JavaScript library that provides smooth scrolling animations and advanced scroll interactions for web applications.",
+  "website": "https://github.com/locomotivemtl/locomotive-scroll"
+}

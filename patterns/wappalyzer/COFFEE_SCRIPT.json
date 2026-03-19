@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coffee_script",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COFFEE_SCRIPT",
+  "taxonomy_name": "Coffee Script",
+  "vendor": "",
+  "product": "Coffee Script",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COFFEE_SCRIPT.json",
+    "original_name": "Coffee Script"
+  },
+  "research": [
+    {
+      "url": "https://coffeescript.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coffee_script_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "coffee-?script(?:-lint)?(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "coffee-?script(?:-lint)?(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12,
+    59
+  ],
+  "notes": "CoffeeScript is a language that compiles into JavaScript.",
+  "website": "https://coffeescript.org/"
+}

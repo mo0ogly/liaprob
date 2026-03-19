@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jquery",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JQUERY",
+  "taxonomy_name": "jQuery",
+  "vendor": "",
+  "product": "jQuery",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JQUERY.json",
+    "original_name": "jQuery"
+  },
+  "research": [
+    {
+      "url": "https://jquery.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jquery_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/(\\d+\\.\\d+\\.\\d+)/jquery[/.-][^u]",
+          "confidence_delta": 0.5,
+          "version_extract": "/(\\d+\\.\\d+\\.\\d+)/jquery[/.-][^u]"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/jquery(?:-(\\d+\\.\\d+\\.\\d+))[/.-]",
+          "confidence_delta": 0.5,
+          "version_extract": "/jquery(?:-(\\d+\\.\\d+\\.\\d+))[/.-]"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jquery",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+  "categories": [
+    59
+  ],
+  "notes": "jQuery is a JavaScript library which is a free, open-source software designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.",
+  "website": "https://jquery.com"
+}

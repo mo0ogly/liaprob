@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zevi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEVI",
+  "taxonomy_name": "Zevi",
+  "vendor": "",
+  "product": "Zevi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZEVI.json",
+    "original_name": "Zevi"
+  },
+  "research": [
+    {
+      "url": "https://www.zevi.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zevi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "zevi-_zldt",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.zevi\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "Zevi is an AI-powered site search and discovery platform designed to enhance product discovery.",
+  "website": "https://www.zevi.ai"
+}

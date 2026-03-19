@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mylivechat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYLIVECHAT",
+  "taxonomy_name": "MyLiveChat",
+  "vendor": "",
+  "product": "MyLiveChat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MYLIVECHAT.json",
+    "original_name": "MyLiveChat"
+  },
+  "research": [
+    {
+      "url": "https://mylivechat.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mylivechat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mylivechat\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "MyLiveChat is a live chat developed by CuteSoft.",
+  "website": "https://mylivechat.com"
+}

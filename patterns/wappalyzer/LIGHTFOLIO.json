@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lightfolio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIGHTFOLIO",
+  "taxonomy_name": "Lightfolio",
+  "vendor": "",
+  "product": "Lightfolio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIGHTFOLIO.json",
+    "original_name": "Lightfolio"
+  },
+  "research": [
+    {
+      "url": "https://www.lightfolio.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lightfolio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "lfpublicstatic\\.lightfolio\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    7
+  ],
+  "notes": "Lightfolio is a platform that offers online photo galleries designed for easy sharing, downloading, and selling of images.",
+  "website": "https://www.lightfolio.com"
+}

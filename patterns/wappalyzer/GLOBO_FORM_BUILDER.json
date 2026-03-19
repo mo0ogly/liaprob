@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-globo_form_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLOBO_FORM_BUILDER",
+  "taxonomy_name": "Globo Form Builder",
+  "vendor": "",
+  "product": "Globo Form Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLOBO_FORM_BUILDER.json",
+    "original_name": "Globo Form Builder"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/form-builder-contact-form",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_globo_form_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/assets/globo\\.formbuilder\\.init\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100,
+    110
+  ],
+  "notes": "Form Builder is a Shopify form builder app for contact form built by Globo.",
+  "website": "https://apps.shopify.com/form-builder-contact-form"
+}

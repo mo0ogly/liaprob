@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-carecloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARECLOUD",
+  "taxonomy_name": "CareCloud",
+  "vendor": "",
+  "product": "CareCloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARECLOUD.json",
+    "original_name": "CareCloud"
+  },
+  "research": [
+    {
+      "url": "https://www.carecloud.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_carecloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "community\\.carecloud\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "CareCloud is a platform that provides healthcare providers with a set of tools designed to enhance clinical workflows, improve patient outcomes, and streamline daily business operations.",
+  "website": "https://www.carecloud.com/"
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-matomo_analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATOMO_ANALYTICS",
+  "taxonomy_name": "Matomo Analytics",
+  "vendor": "",
+  "product": "Matomo Analytics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MATOMO_ANALYTICS.json",
+    "original_name": "Matomo Analytics"
+  },
+  "research": [
+    {
+      "url": "https://matomo.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_matomo_analytics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "piwik_sessid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "apple-itunes-app",
+          "match_type": "regex",
+          "value": "app-id=737216887",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "(?:matomo|piwik) - open source web analytics",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "google-play-app",
+          "match_type": "regex",
+          "value": "app-id=org\\.piwik\\.mobile2",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "piwik\\.js|piwik\\.php",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:matomo:matomo:*:*:*:*:*:*:*:*",
+  "categories": [
+    10
+  ],
+  "notes": "Matomo Analytics is a free and open-source web analytics application, that runs on a PHP/MySQL web-server.",
+  "website": "https://matomo.org"
+}

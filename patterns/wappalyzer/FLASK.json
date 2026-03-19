@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flask",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLASK",
+  "taxonomy_name": "Flask",
+  "vendor": "",
+  "product": "Flask",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLASK.json",
+    "original_name": "Flask"
+  },
+  "research": [
+    {
+      "url": "https://github.com/pallets/flask/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flask_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "werkzeug/?([\\d\\.]+)?",
+          "version_extract": "werkzeug/?([\\d\\.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:palletsprojects:flask:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Python"
+  ],
+  "categories": [
+    18,
+    22
+  ],
+  "notes": "Flask is a Python micro web framework ideal for rapidly constructing web applications, offering minimalism, flexibility, and modularity.",
+  "website": "https://github.com/pallets/flask/"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vikreta",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIKRETA",
+  "taxonomy_name": "Vikreta",
+  "vendor": "",
+  "product": "Vikreta",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VIKRETA.json",
+    "original_name": "Vikreta"
+  },
+  "research": [
+    {
+      "url": "https://www.vikreta.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vikreta_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^vikreta$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Vikreta is a web storefront and POS platform built with React, Next.js, and Tailwind CSS, deployed on Vercel and designed for dynamic product and order management.",
+  "website": "https://www.vikreta.app"
+}

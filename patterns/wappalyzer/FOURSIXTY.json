@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-foursixty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOURSIXTY",
+  "taxonomy_name": "Foursixty",
+  "vendor": "",
+  "product": "Foursixty",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FOURSIXTY.json",
+    "original_name": "Foursixty"
+  },
+  "research": [
+    {
+      "url": "https://foursixty.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_foursixty_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "foursixty\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    96
+  ],
+  "notes": "Foursixty is a widget which turns Instagram content and user-generated content into shoppable galleries.",
+  "website": "https://foursixty.com/"
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sweetalert2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SWEETALERT2",
+  "taxonomy_name": "SweetAlert2",
+  "vendor": "",
+  "product": "SweetAlert2",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SWEETALERT2.json",
+    "original_name": "SweetAlert2"
+  },
+  "research": [
+    {
+      "url": "https://sweetalert2.github.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sweetalert2_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/npm/sweetalert2@([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "/npm/sweetalert2@([\\d.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "limonte-sweetalert2/([\\d.]+)/sweetalert2(?:\\.all)(?:\\.min)\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sweetalert2(?:\\.all)?(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sweetalert2@([\\d.]+)/dist/sweetalert2(?:\\.all)(?:\\.min)\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "SweetAlert2 is a JavaScript library that provides customisable, visually appealing, and responsive alert and modal dialog boxes for web applications.",
+  "website": "https://sweetalert2.github.io/"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-beaver_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEAVER_BUILDER",
+  "taxonomy_name": "Beaver Builder",
+  "vendor": "",
+  "product": "Beaver Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEAVER_BUILDER.json",
+    "original_name": "Beaver Builder"
+  },
+  "research": [
+    {
+      "url": "https://www.wpbeaverbuilder.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_beaver_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body[^>]+fl-builder",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress"
+  ],
+  "categories": [
+    51,
+    87
+  ],
+  "notes": "Beaver Builder is a drag and drop page builder for WordPress.",
+  "website": "https://www.wpbeaverbuilder.com/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tribus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRIBUS",
+  "taxonomy_name": "TRIBUS",
+  "vendor": "",
+  "product": "TRIBUS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRIBUS.json",
+    "original_name": "TRIBUS"
+  },
+  "research": [
+    {
+      "url": "https://tribus.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tribus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.mytribus\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "TRIBUS is a custom platform designed for real estate brokerages, offering tailored tools and features to support business operations and client management.",
+  "website": "https://tribus.com"
+}

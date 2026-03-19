@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sonetel_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SONETEL_CHAT",
+  "taxonomy_name": "Sonetel Chat",
+  "vendor": "",
+  "product": "Sonetel Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SONETEL_CHAT.json",
+    "original_name": "Sonetel Chat"
+  },
+  "research": [
+    {
+      "url": "https://sonetel.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sonetel_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.sonetel\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Sonetel is a website chat system that enables online communication between businesses and their website visitors.",
+  "website": "https://sonetel.com"
+}

@@ -1,0 +1,94 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-amazon_web_services",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMAZON_WEB_SERVICES",
+  "taxonomy_name": "Amazon Web Services",
+  "vendor": "",
+  "product": "Amazon Web Services",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AMAZON_WEB_SERVICES.json",
+    "original_name": "Amazon Web Services"
+  },
+  "research": [
+    {
+      "url": "https://aws.amazon.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_amazon_web_services_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-amz-delete-marker",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-amz-err-code",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-amz-err-message",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-amz-id-2",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-amz-req-time-micros",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-amz-request-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-amz-rid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-amz-version-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.",
+  "website": "https://aws.amazon.com/"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-metismenu",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METISMENU",
+  "taxonomy_name": "metisMenu",
+  "vendor": "",
+  "product": "metisMenu",
+  "source": {
+    "type": "wappalyzer",
+    "file": "METISMENU.json",
+    "original_name": "metisMenu"
+  },
+  "research": [
+    {
+      "url": "https://github.com/onokumus/metismenu",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_metismenu_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:/|\\.)metismenu(?:js)?(?:\\.min)?\\.js(?:\\?([\\d\\.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:/|\\.)metismenu(?:js)?(?:\\.min)?\\.js(?:\\?([\\d\\.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "metisMenu is a collapsible jQuery menu plugin.",
+  "website": "https://github.com/onokumus/metismenu"
+}

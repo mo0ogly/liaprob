@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-neoasist",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEOASIST",
+  "taxonomy_name": "NeoAsist",
+  "vendor": "",
+  "product": "NeoAsist",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEOASIST.json",
+    "original_name": "NeoAsist"
+  },
+  "research": [
+    {
+      "url": "https://neoassist.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_neoasist_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.neoassist\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "NeoAssist is an omnichannel customer service platform from Brazil focused on improving brand visibility across search engines and AI-driven platforms such as Google and GPT-based systems.",
+  "website": "https://neoassist.com"
+}

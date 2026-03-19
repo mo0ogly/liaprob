@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ezoic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EZOIC",
+  "taxonomy_name": "Ezoic",
+  "vendor": "",
+  "product": "Ezoic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EZOIC.json",
+    "original_name": "Ezoic"
+  },
+  "research": [
+    {
+      "url": "https://www.ezoic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ezoic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ezo(?:js|ic|dn)\\.(?:com|net)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    36
+  ],
+  "notes": "Ezoic is a website optimisation platform for digital publishers and website owners powered by machine learning.",
+  "website": "https://www.ezoic.com"
+}

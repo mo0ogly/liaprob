@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jquery_blockui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JQUERY_BLOCKUI",
+  "taxonomy_name": "jQuery BlockUI",
+  "vendor": "",
+  "product": "jQuery BlockUI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JQUERY_BLOCKUI.json",
+    "original_name": "jQuery BlockUI"
+  },
+  "research": [
+    {
+      "url": "https://jquery.malsup.com/block",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jquery_blockui_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/jquery\\.blockui\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "jQuery BlockUI is a plugin that simulates synchronous behavior in AJAX by temporarily blocking user interaction and adding DOM elements that visually indicate restricted activity until the block is removed.",
+  "website": "https://jquery.malsup.com/block"
+}

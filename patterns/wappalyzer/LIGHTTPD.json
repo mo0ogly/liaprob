@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lighttpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIGHTTPD",
+  "taxonomy_name": "lighttpd",
+  "vendor": "",
+  "product": "lighttpd",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIGHTTPD.json",
+    "original_name": "lighttpd"
+  },
+  "research": [
+    {
+      "url": "https://www.lighttpd.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lighttpd_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "(?:l|l)ight(?:y)?(?:tpd)?(?:/([\\d\\.]+))?",
+          "version_extract": "(?:l|l)ight(?:y)?(?:tpd)?(?:/([\\d\\.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    22
+  ],
+  "notes": "Lighttpd is an open-source web server optimised for speed-critical environment.",
+  "website": "https://www.lighttpd.net"
+}

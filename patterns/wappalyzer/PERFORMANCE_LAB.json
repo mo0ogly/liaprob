@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-performance_lab",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PERFORMANCE_LAB",
+  "taxonomy_name": "Performance Lab",
+  "vendor": "",
+  "product": "Performance Lab",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PERFORMANCE_LAB.json",
+    "original_name": "Performance Lab"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/performance-lab/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_performance_lab_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^(performance lab|performance-lab) ?([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^(performance lab|performance-lab) ?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "Performance plugin from the WordPress Performance Team, which is a collection of standalone performance modules.",
+  "website": "https://wordpress.org/plugins/performance-lab/"
+}

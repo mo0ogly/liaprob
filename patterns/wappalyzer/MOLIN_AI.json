@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-molin_ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOLIN_AI",
+  "taxonomy_name": "Molin AI",
+  "vendor": "",
+  "product": "Molin AI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOLIN_AI.json",
+    "original_name": "Molin AI"
+  },
+  "research": [
+    {
+      "url": "https://molin.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_molin_ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.molin\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Molin AI is a multilingual tool that reduces support volume by 70%, recommends relevant products to shoppers, and uses up-to-date information from client websites to enhance store revenue.",
+  "website": "https://molin.ai"
+}

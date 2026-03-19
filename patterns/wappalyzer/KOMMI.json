@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kommi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KOMMI",
+  "taxonomy_name": "Kommi",
+  "vendor": "",
+  "product": "Kommi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KOMMI.json",
+    "original_name": "Kommi"
+  },
+  "research": [
+    {
+      "url": "https://kommi.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kommi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tracker\\.kommi\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Kommi is a provider of digital marketing services.",
+  "website": "https://kommi.io"
+}

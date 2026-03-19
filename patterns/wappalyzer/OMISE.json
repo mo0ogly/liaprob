@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-omise",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OMISE",
+  "taxonomy_name": "Omise",
+  "vendor": "",
+  "product": "Omise",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OMISE.json",
+    "original_name": "Omise"
+  },
+  "research": [
+    {
+      "url": "https://www.omise.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_omise_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.omise\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Omise is a payment gateway for Thailand, Japan and Singapore. Providing both online and offline payment solutions to merchants.",
+  "website": "https://www.omise.co"
+}

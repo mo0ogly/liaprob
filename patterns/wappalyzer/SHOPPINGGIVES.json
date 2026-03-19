@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shoppinggives",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPPINGGIVES",
+  "taxonomy_name": "ShoppingGives",
+  "vendor": "",
+  "product": "ShoppingGives",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPPINGGIVES.json",
+    "original_name": "ShoppingGives"
+  },
+  "research": [
+    {
+      "url": "https://shoppinggives.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shoppinggives_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.shoppinggives\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "ShoppingGives is a B2B social ecommerce platform that allows companies of all sizes to make charitable donations through their customers' purchases.",
+  "website": "https://shoppinggives.com"
+}

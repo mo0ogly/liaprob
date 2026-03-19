@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dotpe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOTPE",
+  "taxonomy_name": "DotPe",
+  "vendor": "",
+  "product": "DotPe",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOTPE.json",
+    "original_name": "DotPe"
+  },
+  "research": [
+    {
+      "url": "https://dotpe.in",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dotpe_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.dotpe\\.in",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "DotPe is a platform for catalog and product discovery designed to support ecommerce operations.",
+  "website": "https://dotpe.in"
+}

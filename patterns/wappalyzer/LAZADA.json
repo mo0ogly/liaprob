@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lazada",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LAZADA",
+  "taxonomy_name": "Lazada",
+  "vendor": "",
+  "product": "Lazada",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LAZADA.json",
+    "original_name": "Lazada"
+  },
+  "research": [
+    {
+      "url": "https://www.lazada.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lazada_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "aplus-auto-exp",
+          "match_type": "regex",
+          "value": "lzdhome\\.desktop\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Lazada is a B2B2C marketplace model in which so-called merchants sell goods on their platform.",
+  "website": "https://www.lazada.com"
+}

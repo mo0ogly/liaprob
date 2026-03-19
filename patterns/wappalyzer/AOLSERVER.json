@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aolserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AOLSERVER",
+  "taxonomy_name": "AOLserver",
+  "vendor": "",
+  "product": "AOLserver",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AOLSERVER.json",
+    "original_name": "AOLserver"
+  },
+  "research": [
+    {
+      "url": "https://aolserver.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aolserver_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "aolserver/?([\\d.]+)?",
+          "version_extract": "aolserver/?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:aol:aolserver:*:*:*:*:*:*:*:*",
+  "categories": [
+    22
+  ],
+  "website": "https://aolserver.com"
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xonic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XONIC",
+  "taxonomy_name": "Xonic",
+  "vendor": "",
+  "product": "Xonic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XONIC.json",
+    "original_name": "Xonic"
+  },
+  "research": [
+    {
+      "url": "https://www.xonic-solutions.de",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xonic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=\"http://www\\.xonic-solutions\\.de/index\\.php\" target=\"_blank\">xonic-solutions shopsoftware</a>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "keywords",
+          "match_type": "regex",
+          "value": "xonic-solutions",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "core/jslib/jquery\\.xonic\\.js\\.php",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "website": "https://www.xonic-solutions.de"
+}

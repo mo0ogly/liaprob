@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-satu",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SATU",
+  "taxonomy_name": "Satu",
+  "vendor": "",
+  "product": "Satu",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SATU.json",
+    "original_name": "Satu"
+  },
+  "research": [
+    {
+      "url": "https://satu.kz",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_satu_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "my\\.satu\\.kz/.*/v([\\d\\.]+)/bare\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "my\\.satu\\.kz/.*/v([\\d\\.]+)/bare\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Satu is a marketplace offering consumer, industrial, and wholesale products for business, home, and leisure needs.",
+  "website": "https://satu.kz"
+}

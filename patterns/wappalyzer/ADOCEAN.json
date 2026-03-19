@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adocean",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADOCEAN",
+  "taxonomy_name": "AdOcean",
+  "vendor": "",
+  "product": "AdOcean",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADOCEAN.json",
+    "original_name": "AdOcean"
+  },
+  "research": [
+    {
+      "url": "https://adocean-global.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adocean_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "adocean\\.pl/files/js/ado\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "adocean\\.pl",
+          "confidence_delta": 0.8
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Gemius"
+  ],
+  "categories": [
+    36
+  ],
+  "website": "https://adocean-global.com"
+}

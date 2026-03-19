@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-booxi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOOXI",
+  "taxonomy_name": "Booxi",
+  "vendor": "",
+  "product": "Booxi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOOXI.json",
+    "original_name": "Booxi"
+  },
+  "research": [
+    {
+      "url": "https://www.booxi.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_booxi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/bxe_core\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Booxi is a cloud-based appointment management platform for small to midsize businesses.",
+  "website": "https://www.booxi.com"
+}

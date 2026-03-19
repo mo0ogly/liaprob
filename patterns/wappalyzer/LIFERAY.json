@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-liferay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIFERAY",
+  "taxonomy_name": "Liferay",
+  "vendor": "",
+  "product": "Liferay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIFERAY.json",
+    "original_name": "Liferay"
+  },
+  "research": [
+    {
+      "url": "https://www.liferay.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_liferay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "liferay-portal",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "[a-z\\s]+([\\d.]+)",
+          "version_extract": "[a-z\\s]+([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:liferay:liferay_portal:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Liferay is an open-source company that provides free documentation and paid professional service to users of its software.",
+  "website": "https://www.liferay.com/"
+}

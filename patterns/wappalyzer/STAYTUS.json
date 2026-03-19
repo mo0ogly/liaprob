@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-staytus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STAYTUS",
+  "taxonomy_name": "Staytus",
+  "vendor": "",
+  "product": "Staytus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STAYTUS.json",
+    "original_name": "Staytus"
+  },
+  "research": [
+    {
+      "url": "https://staytus.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_staytus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^staytus/([\\d\\.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^staytus/([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "Staytus is a free, open-source status site that you can install on your own servers.",
+  "website": "https://staytus.co"
+}

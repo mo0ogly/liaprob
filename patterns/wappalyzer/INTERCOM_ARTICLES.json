@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-intercom_articles",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTERCOM_ARTICLES",
+  "taxonomy_name": "Intercom Articles",
+  "vendor": "",
+  "product": "Intercom Articles",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INTERCOM_ARTICLES.json",
+    "original_name": "Intercom Articles"
+  },
+  "research": [
+    {
+      "url": "https://www.intercom.com/articles",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_intercom_articles_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a href=\"https://www.intercom.com/intercom-link[^\"]+solution=customer-support[^>]+>we run on intercom",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    4
+  ],
+  "notes": "Intercom Articles is a tool to create, organise and publish help articles.",
+  "website": "https://www.intercom.com/articles"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-deep_lawn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEEP_LAWN",
+  "taxonomy_name": "Deep Lawn",
+  "vendor": "",
+  "product": "Deep Lawn",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DEEP_LAWN.json",
+    "original_name": "Deep Lawn"
+  },
+  "research": [
+    {
+      "url": "https://deeplawn.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_deep_lawn_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.deeplawn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Deep Lawn is a sales tool designed for lawn care and pest control companies.",
+  "website": "https://deeplawn.com"
+}

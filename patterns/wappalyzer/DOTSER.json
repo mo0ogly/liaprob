@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dotser",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOTSER",
+  "taxonomy_name": "Dotser",
+  "vendor": "",
+  "product": "Dotser",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOTSER.json",
+    "original_name": "Dotser"
+  },
+  "research": [
+    {
+      "url": "https://www.dotser.ie",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dotser_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^dotser\\scommerce\\s((?:\\d+\\.)+\\d+)/",
+          "confidence_delta": 0.5,
+          "version_extract": "^dotser\\scommerce\\s((?:\\d+\\.)+\\d+)/"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Dotser is a web software development company specialising in ecommerce and cloud-based business solutions.",
+  "website": "https://www.dotser.ie"
+}

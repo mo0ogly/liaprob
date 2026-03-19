@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-iadvize",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IADVIZE",
+  "taxonomy_name": "iAdvize",
+  "vendor": "",
+  "product": "iAdvize",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IADVIZE.json",
+    "original_name": "iAdvize"
+  },
+  "research": [
+    {
+      "url": "https://www.iadvize.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_iadvize_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.iadvize\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "iAdvize is a conversational marketing platform that connects customers in need of advice with experts who are available 24/7 via messaging.",
+  "website": "https://www.iadvize.com"
+}

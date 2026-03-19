@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bold_upsell",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOLD_UPSELL",
+  "taxonomy_name": "Bold Upsell",
+  "vendor": "",
+  "product": "Bold Upsell",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOLD_UPSELL.json",
+    "original_name": "Bold Upsell"
+  },
+  "research": [
+    {
+      "url": "https://boldcommerce.com/upsell",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bold_upsell_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "upsells\\.boldapps\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Bold Commerce",
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Bold Upsell allows the substitution or attachment of products to the customers' carts.",
+  "website": "https://boldcommerce.com/upsell"
+}

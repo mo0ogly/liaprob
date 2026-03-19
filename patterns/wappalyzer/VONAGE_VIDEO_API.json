@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vonage_video_api",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VONAGE_VIDEO_API",
+  "taxonomy_name": "Vonage Video API",
+  "vendor": "",
+  "product": "Vonage Video API",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VONAGE_VIDEO_API.json",
+    "original_name": "Vonage Video API"
+  },
+  "research": [
+    {
+      "url": "https://www.vonage.com/communications-apis/video/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vonage_video_api_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.opentok\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    103
+  ],
+  "notes": "Vonage Video API platform makes it easy to embed real-time, high-quality interactive video, messaging, screen-sharing, and more into web and mobile apps.",
+  "website": "https://www.vonage.com/communications-apis/video/"
+}

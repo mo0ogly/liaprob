@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-contenido",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONTENIDO",
+  "taxonomy_name": "Contenido",
+  "vendor": "",
+  "product": "Contenido",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONTENIDO.json",
+    "original_name": "Contenido"
+  },
+  "research": [
+    {
+      "url": "https://contenido.org/en",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_contenido_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "contenido ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "contenido ([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:contenido:contendio:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://contenido.org/en"
+}

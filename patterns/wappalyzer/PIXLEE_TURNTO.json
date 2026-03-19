@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pixlee_turnto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIXLEE_TURNTO",
+  "taxonomy_name": "Pixlee TurnTo",
+  "vendor": "",
+  "product": "Pixlee TurnTo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PIXLEE_TURNTO.json",
+    "original_name": "Pixlee TurnTo"
+  },
+  "research": [
+    {
+      "url": "https://pixlee.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pixlee_turnto_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.pixlee\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    96
+  ],
+  "notes": "Pixlee TurnTo is a social UGC, ratings and reviews, and influencer marketing platform for community-driven brands.",
+  "website": "https://pixlee.com"
+}

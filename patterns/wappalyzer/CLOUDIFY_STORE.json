@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cloudify_store",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDIFY_STORE",
+  "taxonomy_name": "Cloudify.store",
+  "vendor": "",
+  "product": "Cloudify.store",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOUDIFY_STORE.json",
+    "original_name": "Cloudify.store"
+  },
+  "research": [
+    {
+      "url": "https://cloudify.store",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cloudify_store_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "cloudify_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "PHP",
+    "React"
+  ],
+  "categories": [
+    6,
+    93
+  ],
+  "notes": "Cloudify.store is a subscription-based platform that allows anyone to set up a hyperlocal quick commerce business.",
+  "website": "https://cloudify.store"
+}

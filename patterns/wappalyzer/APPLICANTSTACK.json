@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-applicantstack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLICANTSTACK",
+  "taxonomy_name": "ApplicantStack",
+  "vendor": "",
+  "product": "ApplicantStack",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APPLICANTSTACK.json",
+    "original_name": "ApplicantStack"
+  },
+  "research": [
+    {
+      "url": "https://www.applicantstack.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_applicantstack_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.applicantstack\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "ApplicantStack is a full-service applicant tracking system that automates and streamlines all stages of the hiring process.",
+  "website": "https://www.applicantstack.com"
+}

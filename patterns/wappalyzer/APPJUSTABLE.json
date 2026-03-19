@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-appjustable",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPJUSTABLE",
+  "taxonomy_name": "Appjustable",
+  "vendor": "",
+  "product": "Appjustable",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APPJUSTABLE.json",
+    "original_name": "Appjustable"
+  },
+  "research": [
+    {
+      "url": "https://appjustable.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_appjustable_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//appjustable\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Appjustable is a platform offering Weebly app solutions for creating websites, enabling users to design and manage their online presence through customizable tools and features tailored to individual or business needs.",
+  "website": "https://appjustable.com"
+}

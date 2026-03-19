@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-qbrick",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QBRICK",
+  "taxonomy_name": "Qbrick",
+  "vendor": "",
+  "product": "Qbrick",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QBRICK.json",
+    "original_name": "Qbrick"
+  },
+  "research": [
+    {
+      "url": "https://www.qbrick.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_qbrick_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.qbrick\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Qbrick is a video advertising system.",
+  "website": "https://www.qbrick.com"
+}

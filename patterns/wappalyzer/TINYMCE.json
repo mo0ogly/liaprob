@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tinymce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TINYMCE",
+  "taxonomy_name": "TinyMCE",
+  "vendor": "",
+  "product": "TinyMCE",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TINYMCE.json",
+    "original_name": "TinyMCE"
+  },
+  "research": [
+    {
+      "url": "https://www.tiny.cloud/tinymce/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tinymce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/tiny_?mce(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:tiny:tinymce:*:*:*:*:*:*:*:*",
+  "categories": [
+    24
+  ],
+  "notes": "TinyMCE is an online rich-text editor released as open-source software. TinyMCE is designed to integrate with JavaScript libraries, Vue.js, and AngularJS as well as content management systems such as Joomla!, and WordPress.",
+  "website": "https://www.tiny.cloud/tinymce/"
+}

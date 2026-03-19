@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bottle360",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOTTLE360",
+  "taxonomy_name": "Bottle360",
+  "vendor": "",
+  "product": "Bottle360",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOTTLE360.json",
+    "original_name": "Bottle360"
+  },
+  "research": [
+    {
+      "url": "https://bottlethreesixty.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bottle360_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "platform",
+          "match_type": "regex",
+          "value": "b360\\shttps?://www.bottlethreesixty.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Bottle360 is a winery ecommerce platform that provides branded storefronts and order management for direct-to-consumer wine sales.",
+  "website": "https://bottlethreesixty.com"
+}

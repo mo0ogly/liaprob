@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-soundcloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOUNDCLOUD",
+  "taxonomy_name": "SoundCloud",
+  "vendor": "",
+  "product": "SoundCloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SOUNDCLOUD.json",
+    "original_name": "SoundCloud"
+  },
+  "research": [
+    {
+      "url": "https://developers.soundcloud.com/docs/api/html5-widget",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_soundcloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sndcdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "SoundCloud widget gives you the ability to upload, manage and share tracks.",
+  "website": "https://developers.soundcloud.com/docs/api/html5-widget"
+}

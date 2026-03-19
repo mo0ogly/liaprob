@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-goaffpro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOAFFPRO",
+  "taxonomy_name": "GoAffPro",
+  "vendor": "",
+  "product": "GoAffPro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOAFFPRO.json",
+    "original_name": "GoAffPro"
+  },
+  "research": [
+    {
+      "url": "https://goaffpro.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_goaffpro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.goaffpro\\.com/loader\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Goaffpro is an affiliate marketing solution for ecommerce stores.",
+  "website": "https://goaffpro.com/"
+}

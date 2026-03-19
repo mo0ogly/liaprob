@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aegea",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AEGEA",
+  "taxonomy_name": "Aegea",
+  "vendor": "",
+  "product": "Aegea",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AEGEA.json",
+    "original_name": "Aegea"
+  },
+  "research": [
+    {
+      "url": "https://blogengine.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aegea_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^(?:e2\\s)?aegea\\s(?:v)?([\\d\\.]+)",
+          "version_extract": "^(?:e2\\s)?aegea\\s(?:v)?([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP",
+    "jQuery"
+  ],
+  "categories": [
+    11
+  ],
+  "notes": "Aegea is a blog engine created by Ilya Birman.",
+  "website": "https://blogengine.ru"
+}

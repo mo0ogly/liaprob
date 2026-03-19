@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-matajer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATAJER",
+  "taxonomy_name": "Matajer",
+  "vendor": "",
+  "product": "Matajer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MATAJER.json",
+    "original_name": "Matajer"
+  },
+  "research": [
+    {
+      "url": "https://mapp.sa",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_matajer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.mapp\\.sa/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Matajer is an ecommerce platform from Saudi Arabia.",
+  "website": "https://mapp.sa"
+}

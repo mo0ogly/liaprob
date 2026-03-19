@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-leadbyte",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEADBYTE",
+  "taxonomy_name": "LeadByte",
+  "vendor": "",
+  "product": "LeadByte",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEADBYTE.json",
+    "original_name": "LeadByte"
+  },
+  "research": [
+    {
+      "url": "https://www.leadbyte.co.uk",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_leadbyte_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.leadbyte\\.co\\.uk/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "LeadByte is a lead management platform that helps businesses capture, validate, and distribute leads in real time to optimize revenue conversion.",
+  "website": "https://www.leadbyte.co.uk"
+}

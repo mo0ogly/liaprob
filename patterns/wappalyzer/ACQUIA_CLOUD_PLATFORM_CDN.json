@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquia_cloud_platform_cdn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIA_CLOUD_PLATFORM_CDN",
+  "taxonomy_name": "Acquia Cloud Platform CDN",
+  "vendor": "",
+  "product": "Acquia Cloud Platform CDN",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIA_CLOUD_PLATFORM_CDN.json",
+    "original_name": "Acquia Cloud Platform CDN"
+  },
+  "research": [
+    {
+      "url": "https://docs.acquia.com/cloud-platform/platformcdn/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquia_cloud_platform_cdn_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "via",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "acquia platform cdn (.+)",
+          "version_extract": "acquia platform cdn (.+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Acquia Cloud Platform"
+  ],
+  "categories": [
+    31
+  ],
+  "website": "https://docs.acquia.com/cloud-platform/platformcdn/"
+}

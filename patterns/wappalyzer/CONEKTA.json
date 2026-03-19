@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-conekta",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONEKTA",
+  "taxonomy_name": "Conekta",
+  "vendor": "",
+  "product": "Conekta",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONEKTA.json",
+    "original_name": "Conekta"
+  },
+  "research": [
+    {
+      "url": "https://conekta.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_conekta_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.conekta\\.\\w+/js/(?:v([\\d.]+)|)",
+          "confidence_delta": 0.5,
+          "version_extract": "cdn\\.conekta\\.\\w+/js/(?:v([\\d.]+)|)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "conektaapi/v([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "conektaapi/v([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Conekta is a Mexican payment platform.",
+  "website": "https://conekta.com"
+}

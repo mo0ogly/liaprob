@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-foxpush",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOXPUSH",
+  "taxonomy_name": "FoxPush",
+  "vendor": "",
+  "product": "FoxPush",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FOXPUSH.json",
+    "original_name": "FoxPush"
+  },
+  "research": [
+    {
+      "url": "https://www.foxpush.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_foxpush_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.foxpush\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "FoxPush is a platform that supports pushing of notifications through the browser.",
+  "website": "https://www.foxpush.com"
+}

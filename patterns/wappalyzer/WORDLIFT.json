@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wordlift",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORDLIFT",
+  "taxonomy_name": "WordLift",
+  "vendor": "",
+  "product": "WordLift",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORDLIFT.json",
+    "original_name": "WordLift"
+  },
+  "research": [
+    {
+      "url": "https://wordlift.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wordlift_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cloud\\.wordlift\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    54
+  ],
+  "notes": "WordLift is an AI tool that analyzes content, identifies key business topics, and enables the insertion of semantic markup without needing technical skills.",
+  "website": "https://wordlift.io"
+}

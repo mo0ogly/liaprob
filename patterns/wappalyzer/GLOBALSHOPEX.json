@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-globalshopex",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLOBALSHOPEX",
+  "taxonomy_name": "GlobalShopex",
+  "vendor": "",
+  "product": "GlobalShopex",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLOBALSHOPEX.json",
+    "original_name": "GlobalShopex"
+  },
+  "research": [
+    {
+      "url": "https://www.globalshopex.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_globalshopex_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//globalshopex\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    106
+  ],
+  "notes": "GlobalShopex offers a logistics ecommerce solution easy to integrate, which helps online businesses to sell in over 200 countries.",
+  "website": "https://www.globalshopex.com"
+}

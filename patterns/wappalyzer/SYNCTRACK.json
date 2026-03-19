@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-synctrack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYNCTRACK",
+  "taxonomy_name": "Synctrack",
+  "vendor": "",
+  "product": "Synctrack",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SYNCTRACK.json",
+    "original_name": "Synctrack"
+  },
+  "research": [
+    {
+      "url": "https://synctrack.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_synctrack_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "apps\\.synctrack\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Synctrack is a platform that helps merchants improve the shopping experience and post-sale processes, including payment syncing and delivery tracking, to enhance revenue and customer loyalty.",
+  "website": "https://synctrack.io"
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-datadome",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATADOME",
+  "taxonomy_name": "DataDome",
+  "vendor": "",
+  "product": "DataDome",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DATADOME.json",
+    "original_name": "DataDome"
+  },
+  "research": [
+    {
+      "url": "https://datadome.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_datadome_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^datadome$"
+        },
+        {
+          "target": "header",
+          "field": "x-datadome",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-datadome-cid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "datadome",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "datadome-_zldp",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "datadome-_zldt",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https://ct\\.datadome\\.co/[a-z]\\.js$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "DataDome is a cybersecurity platform that specialises in bot protection and mitigation, offering advanced solutions to safeguard websites and mobile applications against malicious bot traffic, credential stuffing, scraping, and other automated threats.",
+  "website": "https://datadome.co"
+}

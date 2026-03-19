@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tessitura",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TESSITURA",
+  "taxonomy_name": "Tessitura",
+  "vendor": "",
+  "product": "Tessitura",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TESSITURA.json",
+    "original_name": "Tessitura"
+  },
+  "research": [
+    {
+      "url": "https://www.tessituranetwork.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tessitura_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]+tessitura version: (\\d*\\.\\d*\\.\\d*)?",
+          "confidence_delta": 0.5,
+          "version_extract": "<!--[^>]+tessitura version: (\\d*\\.\\d*\\.\\d*)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "IIS",
+    "Microsoft ASP.NET",
+    "Windows Server"
+  ],
+  "categories": [
+    53
+  ],
+  "website": "https://www.tessituranetwork.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-knocommerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KNOCOMMERCE",
+  "taxonomy_name": "KnoCommerce",
+  "vendor": "",
+  "product": "KnoCommerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KNOCOMMERCE.json",
+    "original_name": "KnoCommerce"
+  },
+  "research": [
+    {
+      "url": "https://knocommerce.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_knocommerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.knocdn\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "KnoCommerce is a post-purchase surveys system designed to collect customer feedback.",
+  "website": "https://knocommerce.com"
+}

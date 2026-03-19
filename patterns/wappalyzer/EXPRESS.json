@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-express",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EXPRESS",
+  "taxonomy_name": "Express",
+  "vendor": "",
+  "product": "Express",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EXPRESS.json",
+    "original_name": "Express"
+  },
+  "research": [
+    {
+      "url": "https://expressjs.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_express_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^express(?:$|,)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:expressjs:express:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    18,
+    22
+  ],
+  "notes": "Express is a web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs.",
+  "website": "https://expressjs.com"
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-seal_subscriptions",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEAL_SUBSCRIPTIONS",
+  "taxonomy_name": "Seal Subscriptions",
+  "vendor": "",
+  "product": "Seal Subscriptions",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEAL_SUBSCRIPTIONS.json",
+    "original_name": "Seal Subscriptions"
+  },
+  "research": [
+    {
+      "url": "https://www.sealsubscriptions.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_seal_subscriptions_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sealsubscriptions\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Seal Subscriptions is a Shopify subscriptions app, packed with lots of features, such as automated product swaps, interval changes, payment calendar, Quick Checkout Wizard, and more.",
+  "website": "https://www.sealsubscriptions.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-recooty_job_widget",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RECOOTY_JOB_WIDGET",
+  "taxonomy_name": "Recooty Job Widget",
+  "vendor": "",
+  "product": "Recooty Job Widget",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RECOOTY_JOB_WIDGET.json",
+    "original_name": "Recooty Job Widget"
+  },
+  "research": [
+    {
+      "url": "https://recooty.com/job-widget-tool",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_recooty_job_widget_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jobwidget\\.recooty\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "Recooty Job Widget is a web integration tool that allows businesses to embed live job listings directly onto their websites.",
+  "website": "https://recooty.com/job-widget-tool"
+}

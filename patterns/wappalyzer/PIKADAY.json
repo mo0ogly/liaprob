@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pikaday",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIKADAY",
+  "taxonomy_name": "Pikaday",
+  "vendor": "",
+  "product": "Pikaday",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PIKADAY.json",
+    "original_name": "Pikaday"
+  },
+  "research": [
+    {
+      "url": "https://github.com/dbushell/Pikaday",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pikaday_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "pikaday(?:-jquery)?(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "pikaday(?:-jquery)?(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A refreshing JavaScript Datepicker.",
+  "website": "https://github.com/dbushell/Pikaday"
+}

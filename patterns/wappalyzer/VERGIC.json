@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vergic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERGIC",
+  "taxonomy_name": "Vergic",
+  "vendor": "",
+  "product": "Vergic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VERGIC.json",
+    "original_name": "Vergic"
+  },
+  "research": [
+    {
+      "url": "https://www.vergic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vergic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "us-content\\.vergic\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Vergic is a platform facilitating real-time online engagement between site owners, customer service agents, and individual customers, prospects, or visitors.",
+  "website": "https://www.vergic.com"
+}

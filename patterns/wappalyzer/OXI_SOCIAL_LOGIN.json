@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oxi_social_login",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OXI_SOCIAL_LOGIN",
+  "taxonomy_name": "Oxi Social Login",
+  "vendor": "",
+  "product": "Oxi Social Login",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OXI_SOCIAL_LOGIN.json",
+    "original_name": "Oxi Social Login"
+  },
+  "research": [
+    {
+      "url": "https://www.oxiapps.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oxi_social_login_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "social-login\\.oxiapps\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "Oxi Social Login provides one click login with services like Facebook, Google and many more.",
+  "website": "https://www.oxiapps.com/"
+}

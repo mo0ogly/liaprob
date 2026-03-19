@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oracle_moat_measurement",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_MOAT_MEASUREMENT",
+  "taxonomy_name": "Oracle Moat Measurement",
+  "vendor": "",
+  "product": "Oracle Moat Measurement",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ORACLE_MOAT_MEASUREMENT.json",
+    "original_name": "Oracle Moat Measurement"
+  },
+  "research": [
+    {
+      "url": "https://www.oracle.com/cx/advertising/measurement/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oracle_moat_measurement_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "moatads\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Oracle Moat delivers solutions that are critical to measuring advertising effectiveness, including verification and attention, reach, and frequency as well as sales lift measurement.",
+  "website": "https://www.oracle.com/cx/advertising/measurement/"
+}

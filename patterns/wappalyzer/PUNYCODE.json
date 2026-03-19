@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-punycode",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUNYCODE",
+  "taxonomy_name": "punycode",
+  "vendor": "",
+  "product": "punycode",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUNYCODE.json",
+    "original_name": "punycode"
+  },
+  "research": [
+    {
+      "url": "https://github.com/mathiasbynens/punycode.js",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_punycode_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "punycode(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.){1,2}\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "punycode(?:\\.min)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.){1,2}\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A robust Punycode converter that fully complies to RFC 3492 and RFC 5891, and works on nearly all JavaScript platforms.",
+  "website": "https://github.com/mathiasbynens/punycode.js"
+}

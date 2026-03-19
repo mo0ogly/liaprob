@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-packlink_pro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PACKLINK_PRO",
+  "taxonomy_name": "Packlink PRO",
+  "vendor": "",
+  "product": "Packlink PRO",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PACKLINK_PRO.json",
+    "original_name": "Packlink PRO"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/packlink-pro",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_packlink_pro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "packlink-spf-pro\\.appspot\\.com/.+myshopify\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100,
+    99
+  ],
+  "notes": "Packlink PRO is a multicarrier shipping solutions for ecommerce and marketplaces.",
+  "website": "https://apps.shopify.com/packlink-pro"
+}

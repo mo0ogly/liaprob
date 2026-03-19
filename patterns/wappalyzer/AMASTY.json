@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-amasty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMASTY",
+  "taxonomy_name": "Amasty",
+  "vendor": "",
+  "product": "Amasty",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AMASTY.json",
+    "original_name": "Amasty"
+  },
+  "research": [
+    {
+      "url": "https://amasty.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_amasty_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "amasty\\.com"
+        },
+        {
+          "target": "header",
+          "field": "content-security-policy-report-only",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "amasty\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Amasty is a developer of modules for Magento platforms.",
+  "website": "https://amasty.com"
+}

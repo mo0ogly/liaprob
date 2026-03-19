@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fueled",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUELED",
+  "taxonomy_name": "Fueled",
+  "vendor": "",
+  "product": "Fueled",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FUELED.json",
+    "original_name": "Fueled"
+  },
+  "research": [
+    {
+      "url": "https://fueled.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fueled_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mb-cdn\\.fueled\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Fueled is a platform that manages and analyzes first-party data for ecommerce businesses to support insights and decision making.",
+  "website": "https://fueled.io"
+}

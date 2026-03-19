@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-crisp_live_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CRISP_LIVE_CHAT",
+  "taxonomy_name": "Crisp Live Chat",
+  "vendor": "",
+  "product": "Crisp Live Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CRISP_LIVE_CHAT.json",
+    "original_name": "Crisp Live Chat"
+  },
+  "research": [
+    {
+      "url": "https://crisp.chat/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_crisp_live_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "client\\.crisp\\.chat/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Crisp Live Chat is a live chat solution with free and paid options.",
+  "website": "https://crisp.chat/"
+}

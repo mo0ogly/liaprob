@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zoominfo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOOMINFO",
+  "taxonomy_name": "Zoominfo",
+  "vendor": "",
+  "product": "Zoominfo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZOOMINFO.json",
+    "original_name": "Zoominfo"
+  },
+  "research": [
+    {
+      "url": "https://www.zoominfo.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zoominfo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ws\\.zoominfo\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "ZoomInfo provides actionable B2B contact and company information for sales and marketing teams.",
+  "website": "https://www.zoominfo.com/"
+}

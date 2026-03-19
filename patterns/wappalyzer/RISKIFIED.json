@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-riskified",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RISKIFIED",
+  "taxonomy_name": "Riskified",
+  "vendor": "",
+  "product": "Riskified",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RISKIFIED.json",
+    "original_name": "Riskified"
+  },
+  "research": [
+    {
+      "url": "https://www.riskified.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_riskified_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "riskified server"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*beacon\\.riskified\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]*c\\.riskified\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    16
+  ],
+  "notes": "Riskified is a privately held company that provides SaaS fraud and chargeback prevention technology.",
+  "website": "https://www.riskified.com/"
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-roadiz_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROADIZ_CMS",
+  "taxonomy_name": "Roadiz CMS",
+  "vendor": "",
+  "product": "Roadiz CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ROADIZ_CMS.json",
+    "original_name": "Roadiz CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.roadiz.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_roadiz_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "roadiz cms"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^roadiz ?(?:master|develop)? v?([0-9\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "^roadiz ?(?:master|develop)? v?([0-9\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP",
+    "Symfony"
+  ],
+  "categories": [
+    1,
+    11
+  ],
+  "website": "https://www.roadiz.io"
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-orchard_core",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORCHARD_CORE",
+  "taxonomy_name": "Orchard Core",
+  "vendor": "",
+  "product": "Orchard Core",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ORCHARD_CORE.json",
+    "original_name": "Orchard Core"
+  },
+  "research": [
+    {
+      "url": "https://orchardcore.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_orchard_core_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-generator",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^orchard$"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "orchardcore"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "orchard",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/orchardcore\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:orchardcore:orchard_core:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Orchard Core is an open-source modular and multi-tenant application framework built with ASP.NET Core, and a content management system (CMS).",
+  "website": "https://orchardcore.net"
+}

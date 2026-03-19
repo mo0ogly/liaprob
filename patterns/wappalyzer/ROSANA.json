@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rosana",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROSANA",
+  "taxonomy_name": "Rosana",
+  "vendor": "",
+  "product": "Rosana",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ROSANA.json",
+    "original_name": "Rosana"
+  },
+  "research": [
+    {
+      "url": "https://rosana.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rosana_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.rosana\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Rosana is a platform that converts customer interactions into measurable business outcomes through automated conversation management.",
+  "website": "https://rosana.io"
+}

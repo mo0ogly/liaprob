@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wholesale_suite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WHOLESALE_SUITE",
+  "taxonomy_name": "Wholesale Suite",
+  "vendor": "",
+  "product": "Wholesale Suite",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WHOLESALE_SUITE.json",
+    "original_name": "Wholesale Suite"
+  },
+  "research": [
+    {
+      "url": "https://wholesalesuiteplugin.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wholesale_suite_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "wwp",
+          "match_type": "regex",
+          "value": "^yes$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Wholesale Suite is a plugin that enables businesses to manage and streamline wholesale operations online, supporting pricing, ordering, and workflow efficiency.",
+  "website": "https://wholesalesuiteplugin.com"
+}

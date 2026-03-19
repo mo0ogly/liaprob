@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vue_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VUE_JS",
+  "taxonomy_name": "Vue.js",
+  "vendor": "",
+  "product": "Vue.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VUE_JS.json",
+    "original_name": "Vue.js"
+  },
+  "research": [
+    {
+      "url": "https://vuejs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vue_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+\\sdata-v(?:ue)?-",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:/([\\d.]+))?/vue(?:\\.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:/([\\d.]+))?/vue(?:\\.min)?\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "vue[.-]([\\d.]*\\d)[^/]*\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "vue[.-]([\\d.]*\\d)[^/]*\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "Vue.js is an open-source model–view–viewmodel JavaScript framework for building user interfaces and single-page applications.",
+  "website": "https://vuejs.org"
+}

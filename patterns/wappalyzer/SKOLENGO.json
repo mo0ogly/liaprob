@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-skolengo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SKOLENGO",
+  "taxonomy_name": "Skolengo",
+  "vendor": "",
+  "product": "Skolengo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SKOLENGO.json",
+    "original_name": "Skolengo"
+  },
+  "research": [
+    {
+      "url": "https://www.skolengo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_skolengo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "skolengo",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "version",
+          "match_type": "regex",
+          "value": "^([\\d\\.]+)$",
+          "confidence_delta": 0.0,
+          "version_extract": "^([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Apache Tomcat",
+    "Java",
+    "MariaDB"
+  ],
+  "categories": [
+    1,
+    21
+  ],
+  "notes": "Skolengo is an Education Management Software developed by Kosmos Education.",
+  "website": "https://www.skolengo.com"
+}

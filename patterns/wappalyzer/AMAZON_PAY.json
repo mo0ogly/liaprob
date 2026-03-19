@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-amazon_pay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMAZON_PAY",
+  "taxonomy_name": "Amazon Pay",
+  "vendor": "",
+  "product": "Amazon Pay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AMAZON_PAY.json",
+    "original_name": "Amazon Pay"
+  },
+  "research": [
+    {
+      "url": "https://pay.amazon.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_amazon_pay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "id",
+          "match_type": "regex",
+          "value": "amazon-payments-metadata",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/amazonpayments(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.payments-amazon\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Amazon Pay is an online payments processing service that is owned by Amazon. It lets you use the payment methods associated with your Amazon account to make payments for goods and services.",
+  "website": "https://pay.amazon.com"
+}

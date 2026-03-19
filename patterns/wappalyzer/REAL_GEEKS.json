@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-real_geeks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REAL_GEEKS",
+  "taxonomy_name": "Real Geeks",
+  "vendor": "",
+  "product": "Real Geeks",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REAL_GEEKS.json",
+    "original_name": "Real Geeks"
+  },
+  "research": [
+    {
+      "url": "https://www.realgeeks.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_real_geeks_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "og:image",
+          "match_type": "regex",
+          "value": "\\.realgeeks\\.media/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.realgeeks\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51,
+    53
+  ],
+  "notes": "Real Geeks is a SaaS platform for real estate professionals that combines CRM, lead generation, and website building tools.",
+  "website": "https://www.realgeeks.com"
+}

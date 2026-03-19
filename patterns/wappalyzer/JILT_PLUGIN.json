@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jilt_plugin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JILT_PLUGIN",
+  "taxonomy_name": "Jilt plugin",
+  "vendor": "",
+  "product": "Jilt plugin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JILT_PLUGIN.json",
+    "original_name": "Jilt plugin"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/jilt-for-woocommerce",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jilt_plugin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.jilt\\.com/.+/jilt\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "\\.jilt\\.com/.+/jilt\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    98
+  ],
+  "notes": "Jilt plugin helps ecommerce store owners track and recover abandoned orders. Works seamlessly with Shopify and WooCommerce.",
+  "website": "https://wordpress.org/plugins/jilt-for-woocommerce"
+}

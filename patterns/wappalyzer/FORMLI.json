@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-formli",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORMLI",
+  "taxonomy_name": "Formli",
+  "vendor": "",
+  "product": "Formli",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORMLI.json",
+    "original_name": "Formli"
+  },
+  "research": [
+    {
+      "url": "https://formli.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_formli_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:app|cdn)\\.(?:formli|humanagency)\\.(?:com|org)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "Formli is a web-based form builder service that permits users to produce and personalise online forms for different purposes, including surveys, feedback forms, event registrations, and others.",
+  "website": "https://formli.com"
+}

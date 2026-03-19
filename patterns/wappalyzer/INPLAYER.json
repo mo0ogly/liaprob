@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-inplayer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INPLAYER",
+  "taxonomy_name": "Inplayer",
+  "vendor": "",
+  "product": "Inplayer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INPLAYER.json",
+    "original_name": "Inplayer"
+  },
+  "research": [
+    {
+      "url": "https://inplayer.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_inplayer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.inplayer\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    14
+  ],
+  "notes": "Inplayer is a platform that enables video streaming at scale, supports audience expansion across devices, and provides tools for content monetization.",
+  "website": "https://inplayer.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-juphy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUPHY",
+  "taxonomy_name": "Juphy",
+  "vendor": "",
+  "product": "Juphy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JUPHY.json",
+    "original_name": "Juphy"
+  },
+  "research": [
+    {
+      "url": "https://juphy.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_juphy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.juphy\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Juphy is an AI sales assistant designed for Shopify stores, enabling businesses to increase sales through automated customer engagement and support.",
+  "website": "https://juphy.com"
+}

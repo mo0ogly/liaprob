@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-etherpad",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ETHERPAD",
+  "taxonomy_name": "Etherpad",
+  "vendor": "",
+  "product": "Etherpad",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ETHERPAD.json",
+    "original_name": "Etherpad"
+  },
+  "research": [
+    {
+      "url": "https://etherpad.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_etherpad_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^etherpad"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/ep_etherpad-lite/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:etherpad:etherpad:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    24
+  ],
+  "notes": "Etherpad is an open-source, web-based collaborative real-time editor, allowing authors to simultaneously edit a text document, and see all of the participants' edits in real-time, with the ability to display each author's text in their own colour.",
+  "website": "https://etherpad.org"
+}

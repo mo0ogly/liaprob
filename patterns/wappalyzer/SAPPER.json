@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sapper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAPPER",
+  "taxonomy_name": "Sapper",
+  "vendor": "",
+  "product": "Sapper",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SAPPER.json",
+    "original_name": "Sapper"
+  },
+  "research": [
+    {
+      "url": "https://sapper.svelte.dev",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sapper_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<script[^>]*>__sapper__",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js",
+    "Svelte"
+  ],
+  "categories": [
+    18
+  ],
+  "website": "https://sapper.svelte.dev"
+}

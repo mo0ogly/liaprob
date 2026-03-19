@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-getchat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GETCHAT",
+  "taxonomy_name": "GetChat",
+  "vendor": "",
+  "product": "GetChat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GETCHAT.json",
+    "original_name": "GetChat"
+  },
+  "research": [
+    {
+      "url": "https://getchat.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_getchat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "getchat\\.app/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "GetChat is a platform enabling communication with website visitors via preferred messaging applications.",
+  "website": "https://getchat.app"
+}

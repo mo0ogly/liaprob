@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xtime",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XTIME",
+  "taxonomy_name": "Xtime",
+  "vendor": "",
+  "product": "Xtime",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XTIME.json",
+    "original_name": "Xtime"
+  },
+  "research": [
+    {
+      "url": "https://xtime.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xtime_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "access-control-allow-origin",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.xtime\\.net"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.xtime\\.com/scheduling",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Xtime is a company that provides automotive service scheduling and management solutions primarily for car dealerships and automotive service centers.",
+  "website": "https://xtime.com"
+}

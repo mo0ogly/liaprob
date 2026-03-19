@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-deta",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DETA",
+  "taxonomy_name": "Deta",
+  "vendor": "",
+  "product": "Deta",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DETA.json",
+    "original_name": "Deta"
+  },
+  "research": [
+    {
+      "url": "https://deta.sh",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_deta_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^deta$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "Deta is a cloud platform for building and deploying apps.",
+  "website": "https://deta.sh"
+}

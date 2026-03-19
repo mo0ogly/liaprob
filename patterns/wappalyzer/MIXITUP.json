@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mixitup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIXITUP",
+  "taxonomy_name": "Mixitup",
+  "vendor": "",
+  "product": "Mixitup",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MIXITUP.json",
+    "original_name": "Mixitup"
+  },
+  "research": [
+    {
+      "url": "https://www.kunkalabs.com/mixitup/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mixitup_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mixitup(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A CSS3 and jQuery Filter & Sort Plugin.",
+  "website": "https://www.kunkalabs.com/mixitup/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clikdata",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLIKDATA",
+  "taxonomy_name": "CLIKdata",
+  "vendor": "",
+  "product": "CLIKdata",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLIKDATA.json",
+    "original_name": "CLIKdata"
+  },
+  "research": [
+    {
+      "url": "https://clikdata.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clikdata_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "pixel\\.clikdata\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "CLIKdata is a provider of digital marketing and data services that support business growth by enhancing engagement and lead generation.",
+  "website": "https://clikdata.com"
+}

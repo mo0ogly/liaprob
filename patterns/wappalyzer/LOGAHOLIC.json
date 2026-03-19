@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-logaholic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOGAHOLIC",
+  "taxonomy_name": "Logaholic",
+  "vendor": "",
+  "product": "Logaholic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOGAHOLIC.json",
+    "original_name": "Logaholic"
+  },
+  "research": [
+    {
+      "url": "https://www.logaholic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_logaholic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "logaholic\\.hostpoint\\.ch/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Logaholic is a web analytics software that processes website traffic data to generate reports on visits, user behavior, and referrers.",
+  "website": "https://www.logaholic.com"
+}

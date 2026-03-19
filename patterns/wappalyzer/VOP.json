@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VOP",
+  "taxonomy_name": "Vop",
+  "vendor": "",
+  "product": "Vop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VOP.json",
+    "original_name": "Vop"
+  },
+  "research": [
+    {
+      "url": "https://getvop.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.getvop\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Vop is a service facilitating the integration of ecommerce into social content.",
+  "website": "https://getvop.com"
+}

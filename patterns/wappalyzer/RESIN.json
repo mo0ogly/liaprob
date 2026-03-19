@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-resin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RESIN",
+  "taxonomy_name": "Resin",
+  "vendor": "",
+  "product": "Resin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RESIN.json",
+    "original_name": "Resin"
+  },
+  "research": [
+    {
+      "url": "https://caucho.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_resin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^resin(?:/(\\s*))?",
+          "version_extract": "^resin(?:/(\\s*))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:caucho:resin:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    22
+  ],
+  "website": "https://caucho.com"
+}

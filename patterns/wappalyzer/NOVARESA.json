@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-novaresa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOVARESA",
+  "taxonomy_name": "Novaresa",
+  "vendor": "",
+  "product": "Novaresa",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NOVARESA.json",
+    "original_name": "Novaresa"
+  },
+  "research": [
+    {
+      "url": "https://www.novaresa.fr",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_novaresa_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.novaresa\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    9
+  ],
+  "notes": "Novaresa is a cloud-based platform designed to manage, operate, and promote hosting services through centralized tools for administration, service delivery, and customer engagement.",
+  "website": "https://www.novaresa.fr"
+}

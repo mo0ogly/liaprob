@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hashnode",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HASHNODE",
+  "taxonomy_name": "Hashnode",
+  "vendor": "",
+  "product": "Hashnode",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HASHNODE.json",
+    "original_name": "Hashnode"
+  },
+  "research": [
+    {
+      "url": "https://hashnode.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hashnode_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "hashnode\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    11
+  ],
+  "notes": "Hashnode is a free developer blogging platform that allows you to publish articles on your own domain and helps you stay connected with a global developer community.",
+  "website": "https://hashnode.com/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-navidium_shipping_protection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NAVIDIUM_SHIPPING_PROTECTION",
+  "taxonomy_name": "Navidium Shipping Protection",
+  "vendor": "",
+  "product": "Navidium Shipping Protection",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NAVIDIUM_SHIPPING_PROTECTION.json",
+    "original_name": "Navidium Shipping Protection"
+  },
+  "research": [
+    {
+      "url": "https://navidiumapp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_navidium_shipping_protection_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^.*/navidium-extension-checker\\.js$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Navidium is a shipping insurance company that covers packages that are lost, stolen, or damaged in transit. Navidium Shipping Protection is an optional shipping protection service where, in the event of an incident (the order is damaged, lost, or stolen during transit), we will immediately re-ship any damaged, lost, or stolen products.",
+  "website": "https://navidiumapp.com"
+}

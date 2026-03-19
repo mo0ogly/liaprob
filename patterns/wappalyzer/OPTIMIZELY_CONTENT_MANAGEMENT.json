@@ -1,0 +1,94 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-optimizely_content_management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPTIMIZELY_CONTENT_MANAGEMENT",
+  "taxonomy_name": "Optimizely Content Management",
+  "vendor": "",
+  "product": "Optimizely Content Management",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPTIMIZELY_CONTENT_MANAGEMENT.json",
+    "original_name": "Optimizely Content Management"
+  },
+  "research": [
+    {
+      "url": "https://www.optimizely.com/products/content/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_optimizely_content_management_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.episerver\\.net"
+        },
+        {
+          "target": "cookie",
+          "field": "epi:statemarker",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "episerver",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "episessionid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "epitrace",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "episerver",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.episerver.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:episerver:episerver:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Optimizely Content Management (formerly EPiServer) is digital content, ecommerce, and marketing management solution designed for editors and marketers.",
+  "website": "https://www.optimizely.com/products/content/"
+}

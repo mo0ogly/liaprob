@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-enalyzer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENALYZER",
+  "taxonomy_name": "Enalyzer",
+  "vendor": "",
+  "product": "Enalyzer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENALYZER.json",
+    "original_name": "Enalyzer"
+  },
+  "research": [
+    {
+      "url": "https://www.enalyzer.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_enalyzer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "surveys\\.enalyzer\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Enalyzer is an online survey creation platform.",
+  "website": "https://www.enalyzer.com"
+}

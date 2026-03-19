@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adobe_experience_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADOBE_EXPERIENCE_MANAGER",
+  "taxonomy_name": "Adobe Experience Manager",
+  "vendor": "",
+  "product": "Adobe Experience Manager",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADOBE_EXPERIENCE_MANAGER.json",
+    "original_name": "Adobe Experience Manager"
+  },
+  "research": [
+    {
+      "url": "https://www.adobe.com/marketing/experience-manager.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adobe_experience_manager_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"[^\"]*aem-grid",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"[^\"]*parbase",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+data-component-path=\"[^\"+]jcr:",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/etc/clientlibs/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/etc/designs/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/etc\\.clientlibs/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:adobe:experience_manager:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Adobe Experience Manager (AEM) is a content management solution for building websites, mobile apps and forms.",
+  "website": "https://www.adobe.com/marketing/experience-manager.html"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gentoo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GENTOO",
+  "taxonomy_name": "Gentoo",
+  "vendor": "",
+  "product": "Gentoo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GENTOO.json",
+    "original_name": "Gentoo"
+  },
+  "research": [
+    {
+      "url": "https://www.gentoo.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gentoo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "gentoo"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:o:gentoo:linux:*:*:*:*:*:*:*:*",
+  "categories": [
+    28
+  ],
+  "notes": "Gentoo is a free operating system based on Linux.",
+  "website": "https://www.gentoo.org"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-anyclip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANYCLIP",
+  "taxonomy_name": "AnyClip",
+  "vendor": "",
+  "product": "AnyClip",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ANYCLIP.json",
+    "original_name": "AnyClip"
+  },
+  "research": [
+    {
+      "url": "https://www.anyclip.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_anyclip_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.anyclip\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "AnyClip is a video engagement platform that uses an AI-driven content analysis engine to analyze and categorize video content in real-time to create personalised video feeds.",
+  "website": "https://www.anyclip.com"
+}

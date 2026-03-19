@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-teamunify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TEAMUNIFY",
+  "taxonomy_name": "TeamUnify",
+  "vendor": "",
+  "product": "TeamUnify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TEAMUNIFY.json",
+    "original_name": "TeamUnify"
+  },
+  "research": [
+    {
+      "url": "https://www.teamunify.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_teamunify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^teamunify$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "TeamUnify is an all-in-one swim platform that simplifies swim team management.",
+  "website": "https://www.teamunify.com"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sabeeapp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SABEEAPP",
+  "taxonomy_name": "SabeeApp",
+  "vendor": "",
+  "product": "SabeeApp",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SABEEAPP.json",
+    "original_name": "SabeeApp"
+  },
+  "research": [
+    {
+      "url": "https://www.sabeeapp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sabeeapp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ibe\\.sabeeapp\\.com/v(\\d+)/scripts",
+          "confidence_delta": 0.5,
+          "version_extract": "ibe\\.sabeeapp\\.com/v(\\d+)/scripts"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53,
+    72
+  ],
+  "notes": "SabeeApp is a property management system for hoteliers, managing reservations, controlling online distribution platforms, handling payments, and engaging with guests.",
+  "website": "https://www.sabeeapp.com"
+}

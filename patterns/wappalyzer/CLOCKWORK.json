@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clockwork",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOCKWORK",
+  "taxonomy_name": "Clockwork",
+  "vendor": "",
+  "product": "Clockwork",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOCKWORK.json",
+    "original_name": "Clockwork"
+  },
+  "research": [
+    {
+      "url": "https://github.com/underground-works/clockwork-app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clockwork_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-clockwork-version",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^([\\d\\.]+)$",
+          "version_extract": "^([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    47
+  ],
+  "notes": "Clockwork is a development tool for PHP available right in your browser.",
+  "website": "https://github.com/underground-works/clockwork-app"
+}

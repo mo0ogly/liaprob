@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-t1_pagos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "T1_PAGOS",
+  "taxonomy_name": "T1 Pagos",
+  "vendor": "",
+  "product": "T1 Pagos",
+  "source": {
+    "type": "wappalyzer",
+    "file": "T1_PAGOS.json",
+    "original_name": "T1 Pagos"
+  },
+  "research": [
+    {
+      "url": "https://www.t1pagos.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_t1_pagos_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^t1pagos$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "T1 Pagos is a payment processing platform.",
+  "website": "https://www.t1pagos.com"
+}

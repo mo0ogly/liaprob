@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jquery_devbridge_autocomplete",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JQUERY_DEVBRIDGE_AUTOCOMPLETE",
+  "taxonomy_name": "jQuery DevBridge Autocomplete",
+  "vendor": "",
+  "product": "jQuery DevBridge Autocomplete",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JQUERY_DEVBRIDGE_AUTOCOMPLETE.json",
+    "original_name": "jQuery DevBridge Autocomplete"
+  },
+  "research": [
+    {
+      "url": "https://www.devbridge.com/sourcery/components/jquery-autocomplete/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jquery_devbridge_autocomplete_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/devbridgeautocomplete(?:-min)?\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/jquery\\.devbridge-autocomplete/([0-9.]+)/jquery\\.autocomplete(?:.min)?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/jquery\\.devbridge-autocomplete/([0-9.]+)/jquery\\.autocomplete(?:.min)?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "Ajax Autocomplete for jQuery allows you to easily create autocomplete/autosuggest boxes for text input fields.",
+  "website": "https://www.devbridge.com/sourcery/components/jquery-autocomplete/"
+}

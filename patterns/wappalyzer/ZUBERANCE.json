@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zuberance",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZUBERANCE",
+  "taxonomy_name": "Zuberance",
+  "vendor": "",
+  "product": "Zuberance",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZUBERANCE.json",
+    "original_name": "Zuberance"
+  },
+  "research": [
+    {
+      "url": "https://zuberance.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zuberance_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.zuberance\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    94
+  ],
+  "notes": "Zuberance is a platform that transforms enthusiastic customers into a marketing force, driving recommendations and sales for leading B2B and B2C brands.",
+  "website": "https://zuberance.com"
+}

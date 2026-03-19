@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-centribal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CENTRIBAL",
+  "taxonomy_name": "Centribal",
+  "vendor": "",
+  "product": "Centribal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CENTRIBAL.json",
+    "original_name": "Centribal"
+  },
+  "research": [
+    {
+      "url": "https://centribal.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_centribal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.centribal\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Centribal is a conversational platform designed for creating, managing, and training chatbots.",
+  "website": "https://centribal.com"
+}

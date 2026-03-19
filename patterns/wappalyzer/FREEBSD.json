@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-freebsd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FREEBSD",
+  "taxonomy_name": "FreeBSD",
+  "vendor": "",
+  "product": "FreeBSD",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FREEBSD.json",
+    "original_name": "FreeBSD"
+  },
+  "research": [
+    {
+      "url": "https://freebsd.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_freebsd_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "freebsd(?: ([\\d.]+))?",
+          "version_extract": "freebsd(?: ([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:o:freebsd:freebsd:*:*:*:*:*:*:*:*",
+  "categories": [
+    28
+  ],
+  "notes": "FreeBSD is a free and open-source Unix-like operating system.",
+  "website": "https://freebsd.org"
+}

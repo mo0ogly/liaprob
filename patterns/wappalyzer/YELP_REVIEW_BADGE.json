@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yelp_review_badge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YELP_REVIEW_BADGE",
+  "taxonomy_name": "Yelp Review Badge",
+  "vendor": "",
+  "product": "Yelp Review Badge",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YELP_REVIEW_BADGE.json",
+    "original_name": "Yelp Review Badge"
+  },
+  "research": [
+    {
+      "url": "https://yelp.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yelp_review_badge_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "yelp\\.com/biz_badge_js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Yelp Review Badges showcase business reviews from Yelp on websites.",
+  "website": "https://yelp.com"
+}

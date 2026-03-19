@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ushahidi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "USHAHIDI",
+  "taxonomy_name": "Ushahidi",
+  "vendor": "",
+  "product": "Ushahidi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "USHAHIDI.json",
+    "original_name": "Ushahidi"
+  },
+  "research": [
+    {
+      "url": "https://www.ushahidi.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ushahidi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "ushahidi",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/js/ushahidi\\.js$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL",
+    "OpenLayers",
+    "PHP"
+  ],
+  "categories": [
+    1,
+    35
+  ],
+  "notes": "Ushahidi is a tool that collects crowdsourced data and targeted survey responses from multiple data sources.",
+  "website": "https://www.ushahidi.com"
+}

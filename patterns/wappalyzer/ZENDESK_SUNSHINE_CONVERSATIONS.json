@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zendesk_sunshine_conversations",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZENDESK_SUNSHINE_CONVERSATIONS",
+  "taxonomy_name": "Zendesk Sunshine Conversations",
+  "vendor": "",
+  "product": "Zendesk Sunshine Conversations",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZENDESK_SUNSHINE_CONVERSATIONS.json",
+    "original_name": "Zendesk Sunshine Conversations"
+  },
+  "research": [
+    {
+      "url": "https://www.zendesk.com/platform/conversations",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zendesk_sunshine_conversations_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.smooch\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Zendesk"
+  ],
+  "categories": [
+    52
+  ],
+  "notes": "Zendesk Sunshine Conversations lets you share a single, continuous conversation with every team in your business. With a unified API and native connectors to popular business applications like Zendesk and Slack, everyone in your organization can get access to a single view of the customer conversation.",
+  "website": "https://www.zendesk.com/platform/conversations"
+}

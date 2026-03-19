@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-deadline_funnel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEADLINE_FUNNEL",
+  "taxonomy_name": "Deadline Funnel",
+  "vendor": "",
+  "product": "Deadline Funnel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DEADLINE_FUNNEL.json",
+    "original_name": "Deadline Funnel"
+  },
+  "research": [
+    {
+      "url": "https://www.deadlinefunnel.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_deadline_funnel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "a\\.deadlinefunnel\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Deadline is a tool used to automate marketing funnels by managing time-based campaigns and creating urgency-driven conversion strategies.",
+  "website": "https://www.deadlinefunnel.com"
+}

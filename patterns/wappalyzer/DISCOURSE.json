@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-discourse",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DISCOURSE",
+  "taxonomy_name": "Discourse",
+  "vendor": "",
+  "product": "Discourse",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DISCOURSE.json",
+    "original_name": "Discourse"
+  },
+  "research": [
+    {
+      "url": "https://discourse.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_discourse_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "discourse(?: ?/?([\\d.]+\\d))?",
+          "confidence_delta": 0.5,
+          "version_extract": "discourse(?: ?/?([\\d.]+\\d))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Ruby on Rails"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "Discourse is an open-source internet forum and mailing list management software application.",
+  "website": "https://discourse.org"
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-w3counter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "W3COUNTER",
+  "taxonomy_name": "W3Counter",
+  "vendor": "",
+  "product": "W3Counter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "W3COUNTER.json",
+    "original_name": "W3Counter"
+  },
+  "research": [
+    {
+      "url": "https://www.w3counter.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_w3counter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "w3counter\\.com/tracker\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "website": "https://www.w3counter.com"
+}

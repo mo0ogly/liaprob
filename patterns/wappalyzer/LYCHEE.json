@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lychee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LYCHEE",
+  "taxonomy_name": "Lychee",
+  "vendor": "",
+  "product": "Lychee",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LYCHEE.json",
+    "original_name": "Lychee"
+  },
+  "research": [
+    {
+      "url": "https://lycheeorg.github.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lychee_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "lychee v([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "lychee v([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    7
+  ],
+  "notes": "Lychee is a photo-management tool designed to operate on your server or web-space.",
+  "website": "https://lycheeorg.github.io"
+}

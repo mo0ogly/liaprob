@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-optibase",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPTIBASE",
+  "taxonomy_name": "Optibase",
+  "vendor": "",
+  "product": "Optibase",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPTIBASE.json",
+    "original_name": "Optibase"
+  },
+  "research": [
+    {
+      "url": "https://www.optibase.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_optibase_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.optibase\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    74
+  ],
+  "notes": "Optibase is an A/B testing app for Webflow, enabling data-driven decisions by testing various elements such as copy, design, or entire pages, aimed at improving site conversions.",
+  "website": "https://www.optibase.io"
+}

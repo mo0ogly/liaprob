@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flutter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLUTTER",
+  "taxonomy_name": "Flutter",
+  "vendor": "",
+  "product": "Flutter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLUTTER.json",
+    "original_name": "Flutter"
+  },
+  "research": [
+    {
+      "url": "https://flutter.dev",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flutter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "id",
+          "match_type": "regex",
+          "value": "^flutterweb-theme$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Dart"
+  ],
+  "categories": [
+    66
+  ],
+  "notes": "Flutter is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.",
+  "website": "https://flutter.dev"
+}

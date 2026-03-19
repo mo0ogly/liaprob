@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-espocrm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ESPOCRM",
+  "taxonomy_name": "EspoCRM",
+  "vendor": "",
+  "product": "EspoCRM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ESPOCRM.json",
+    "original_name": "EspoCRM"
+  },
+  "research": [
+    {
+      "url": "https://www.espocrm.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_espocrm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "espo(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:espocrm:espocrm:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Backbone.js",
+    "Handlebars"
+  ],
+  "categories": [
+    53
+  ],
+  "notes": "EspoCRM is an open-source CRM software solution designed for businesses of all sizes.",
+  "website": "https://www.espocrm.com"
+}

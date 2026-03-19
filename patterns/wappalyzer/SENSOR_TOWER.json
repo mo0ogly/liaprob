@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sensor_tower",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SENSOR_TOWER",
+  "taxonomy_name": "Sensor Tower",
+  "vendor": "",
+  "product": "Sensor Tower",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SENSOR_TOWER.json",
+    "original_name": "Sensor Tower"
+  },
+  "research": [
+    {
+      "url": "https://sensortower.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sensor_tower_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//sensortower\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Sensor Tower is a mobile app store marketing intelligence platform that provides data and insights on app performance, user acquisition, and market trends.",
+  "website": "https://sensortower.com"
+}

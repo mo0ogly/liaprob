@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-linguana",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LINGUANA",
+  "taxonomy_name": "Linguana",
+  "vendor": "",
+  "product": "Linguana",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LINGUANA.json",
+    "original_name": "Linguana"
+  },
+  "research": [
+    {
+      "url": "https://www.linguana.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_linguana_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.linguana\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    54
+  ],
+  "notes": "Linguana is a tool that provides AI-driven multi-language support ensuring SEO performance with translations and translated slugs for seamless multilingual user experiences.",
+  "website": "https://www.linguana.io/"
+}

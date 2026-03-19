@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kiosked",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KIOSKED",
+  "taxonomy_name": "Kiosked",
+  "vendor": "",
+  "product": "Kiosked",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KIOSKED.json",
+    "original_name": "Kiosked"
+  },
+  "research": [
+    {
+      "url": "https://www.kiosked.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kiosked_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "scripts\\.kiosked\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Kiosked is a platform that converts online content, including images, videos, and applications, into interactive digital storefronts.",
+  "website": "https://www.kiosked.com"
+}

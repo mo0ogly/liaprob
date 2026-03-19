@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mailman",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAILMAN",
+  "taxonomy_name": "Mailman",
+  "vendor": "",
+  "product": "Mailman",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAILMAN.json",
+    "original_name": "Mailman"
+  },
+  "research": [
+    {
+      "url": "https://list.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mailman_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/mailman\\d+/static/.+\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/static/(?:hyperkitty|django-mailman3)/.+\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:gnu:mailman:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Python"
+  ],
+  "categories": [
+    75
+  ],
+  "notes": "Mailman is free software for managing electronic mail discussion and e-newsletter lists. Mailman is integrated with the web, making it easy for users to manage their accounts and for list owners to administer their lists. Mailman supports built-in archiving, automatic bounce processing, content filtering, digest delivery, spam filters, and more.",
+  "website": "https://list.org"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adobe_experience_manager_edge_delivery_services",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADOBE_EXPERIENCE_MANAGER_EDGE_DELIVERY_SERVICES",
+  "taxonomy_name": "Adobe Experience Manager Edge Delivery Services",
+  "vendor": "",
+  "product": "Adobe Experience Manager Edge Delivery Services",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADOBE_EXPERIENCE_MANAGER_EDGE_DELIVERY_SERVICES.json",
+    "original_name": "Adobe Experience Manager Edge Delivery Services"
+  },
+  "research": [
+    {
+      "url": "https://www.aem.live",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adobe_experience_manager_edge_delivery_services_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^.+/scripts/aem\\.js$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^.+/scripts/lib-franklin\\.js$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:adobe:experience_manager:*:*:*:*:*:*:*:*",
+  "categories": [
+    1
+  ],
+  "notes": "Edge Delivery Services in Adobe Experience Manager Sites as a Cloud Service, also know as Helix, Franklin, Next-Generation Composability is a fast and lightweight content management system from Adobe.",
+  "website": "https://www.aem.live"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-liana",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIANA",
+  "taxonomy_name": "Liana",
+  "vendor": "",
+  "product": "Liana",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIANA.json",
+    "original_name": "Liana"
+  },
+  "research": [
+    {
+      "url": "https://www.lianatech.com/solutions/websites-and-commerce/websites.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_liana_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.lianacms\\.com"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "sivuviidakko",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "website": "https://www.lianatech.com/solutions/websites-and-commerce/websites.html"
+}

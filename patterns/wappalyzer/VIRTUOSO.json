@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-virtuoso",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIRTUOSO",
+  "taxonomy_name": "Virtuoso",
+  "vendor": "",
+  "product": "Virtuoso",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VIRTUOSO.json",
+    "original_name": "Virtuoso"
+  },
+  "research": [
+    {
+      "url": "https://virtuoso.openlinksw.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_virtuoso_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "virtuoso/?([0-9.]+)?",
+          "version_extract": "virtuoso/?([0-9.]+)?"
+        },
+        {
+          "target": "meta",
+          "field": "copyright",
+          "match_type": "regex",
+          "value": "^copyright &copy; \\d{4} openlink software",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "keywords",
+          "match_type": "regex",
+          "value": "^openlink virtuoso sparql",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    34
+  ],
+  "website": "https://virtuoso.openlinksw.com/"
+}

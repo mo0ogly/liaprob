@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-funding_choices",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUNDING_CHOICES",
+  "taxonomy_name": "Funding Choices",
+  "vendor": "",
+  "product": "Funding Choices",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FUNDING_CHOICES.json",
+    "original_name": "Funding Choices"
+  },
+  "research": [
+    {
+      "url": "https://developers.google.com/funding-choices",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_funding_choices_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "fundingchoicesmessages\\.google\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "Funding Choices is a messaging tool that can help you comply with the EU General Data Protection Regulation (GDPR), and recover lost revenue from ad blocking users.",
+  "website": "https://developers.google.com/funding-choices"
+}

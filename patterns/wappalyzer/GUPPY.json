@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-guppy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GUPPY",
+  "taxonomy_name": "GuppY",
+  "vendor": "",
+  "product": "GuppY",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GUPPY.json",
+    "original_name": "GuppY"
+  },
+  "research": [
+    {
+      "url": "https://www.freeguppy.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_guppy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^guppy$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^guppy$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    57
+  ],
+  "notes": "Guppy is a platform for generating an interactive website using a database-free architecture.",
+  "website": "https://www.freeguppy.org"
+}

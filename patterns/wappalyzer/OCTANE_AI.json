@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-octane_ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OCTANE_AI",
+  "taxonomy_name": "Octane AI",
+  "vendor": "",
+  "product": "Octane AI",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OCTANE_AI.json",
+    "original_name": "Octane AI"
+  },
+  "research": [
+    {
+      "url": "https://www.octaneai.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_octane_ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.octaneai\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    52
+  ],
+  "notes": "Octane AI provides an all-in-one platform for engaging quizzes, data collection, and personalised Facebook Messenger and SMS automation.",
+  "website": "https://www.octaneai.com"
+}

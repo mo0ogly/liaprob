@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hypervisual_page_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HYPERVISUAL_PAGE_BUILDER",
+  "taxonomy_name": "Hypervisual Page Builder",
+  "vendor": "",
+  "product": "Hypervisual Page Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HYPERVISUAL_PAGE_BUILDER.json",
+    "original_name": "Hypervisual Page Builder"
+  },
+  "research": [
+    {
+      "url": "https://gethypervisual.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hypervisual_page_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.gethypervisual\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51,
+    100
+  ],
+  "notes": "Hypervisual Page Builder is a page builder for Shopify.",
+  "website": "https://gethypervisual.com"
+}

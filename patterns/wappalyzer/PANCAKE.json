@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pancake",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PANCAKE",
+  "taxonomy_name": "Pancake",
+  "vendor": "",
+  "product": "Pancake",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PANCAKE.json",
+    "original_name": "Pancake"
+  },
+  "research": [
+    {
+      "url": "https://pancake.vn",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pancake_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "analytics\\.pancake\\.vn",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Pancake is an omnichannel business messaging platform that centralizes customer communications across multiple channels into a single system for managing conversations, routing messages, and maintaining consistent engagement.",
+  "website": "https://pancake.vn"
+}

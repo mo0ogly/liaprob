@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webboss",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBBOSS",
+  "taxonomy_name": "WebBoss",
+  "vendor": "",
+  "product": "WebBoss",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBBOSS.json",
+    "original_name": "WebBoss"
+  },
+  "research": [
+    {
+      "url": "https://webboss.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webboss_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "webboss ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "webboss ([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "WebBoss is a website builder designed for professional designers and developers, offering tools for creating and managing custom websites.",
+  "website": "https://webboss.io"
+}

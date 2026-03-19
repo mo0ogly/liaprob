@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mercado_shops",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MERCADO_SHOPS",
+  "taxonomy_name": "Mercado Shops",
+  "vendor": "",
+  "product": "Mercado Shops",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MERCADO_SHOPS.json",
+    "original_name": "Mercado Shops"
+  },
+  "research": [
+    {
+      "url": "https://www.mercadoshops.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mercado_shops_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_mshops_ga",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_mshops_ga_cid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_mshops_ga_gid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "frontend-assets/mshops-web-home/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Mercado Shops is an all-in-one ecommerce platform.",
+  "website": "https://www.mercadoshops.com"
+}

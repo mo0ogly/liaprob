@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clipara",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLIPARA",
+  "taxonomy_name": "Clipara",
+  "vendor": "",
+  "product": "Clipara",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLIPARA.json",
+    "original_name": "Clipara"
+  },
+  "research": [
+    {
+      "url": "https://www.getclipara.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clipara_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getclipara\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    14
+  ],
+  "notes": "Clipara is a platform that helps businesses connect with customers using video by adding video content to websites, emails, and SMS without coding.",
+  "website": "https://www.getclipara.com"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ecwid",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ECWID",
+  "taxonomy_name": "Ecwid",
+  "vendor": "",
+  "product": "Ecwid",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ECWID.json",
+    "original_name": "Ecwid"
+  },
+  "research": [
+    {
+      "url": "https://www.ecwid.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ecwid_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "https://app\\.ecwid\\.com/script\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "https://app\\.multiscreenstore\\.com/script\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Ecwid is a shopping cart plugin that turns any existing website into an online store.",
+  "website": "https://www.ecwid.com/"
+}

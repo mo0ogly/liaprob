@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yclas",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YCLAS",
+  "taxonomy_name": "Yclas",
+  "vendor": "",
+  "product": "Yclas",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YCLAS.json",
+    "original_name": "Yclas"
+  },
+  "research": [
+    {
+      "url": "https://yclas.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yclas_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "open-classifieds\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "copyright",
+          "match_type": "regex",
+          "value": "(?:open classifieds|yclas)\\s([0-9.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:open classifieds|yclas)\\s([0-9.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:open-classifieds:open_classifieds:*:*:*:*:*:*:*:*",
+  "categories": [
+    6
+  ],
+  "notes": "Yclas is a platform that allows users to create and manage customizable online classified ads websites, available as both a hosted service and an open-source self-hosted solution​ .",
+  "website": "https://yclas.com"
+}

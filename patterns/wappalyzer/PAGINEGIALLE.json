@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-paginegialle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAGINEGIALLE",
+  "taxonomy_name": "PagineGialle",
+  "vendor": "",
+  "product": "PagineGialle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PAGINEGIALLE.json",
+    "original_name": "PagineGialle"
+  },
+  "research": [
+    {
+      "url": "https://www.paginegialle.it",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_paginegialle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ssc\\.paginegialle\\.it/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "PagineGialle is a business website builder by ItaliaOnline that enables Italian businesses to create and manage professional websites and establish an online presence.",
+  "website": "https://www.paginegialle.it"
+}

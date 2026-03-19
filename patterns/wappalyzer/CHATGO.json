@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chatgo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHATGO",
+  "taxonomy_name": "Chatgo",
+  "vendor": "",
+  "product": "Chatgo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHATGO.json",
+    "original_name": "Chatgo"
+  },
+  "research": [
+    {
+      "url": "https://www.chatgo.cz",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chatgo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.chatgo\\.cz",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Chatgo is a messenger widget designed for integration with websites and e-shops, enabling communication and engagement.",
+  "website": "https://www.chatgo.cz"
+}

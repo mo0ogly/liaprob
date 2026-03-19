@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xretail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XRETAIL",
+  "taxonomy_name": "Xretail",
+  "vendor": "",
+  "product": "Xretail",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XRETAIL.json",
+    "original_name": "Xretail"
+  },
+  "research": [
+    {
+      "url": "https://xretail.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xretail_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^xretail team$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Xretail is a subscription based product that enables the omni-channel ecommerce approach to its customers.",
+  "website": "https://xretail.com"
+}

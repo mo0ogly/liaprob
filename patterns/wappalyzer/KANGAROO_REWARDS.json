@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kangaroo_rewards",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KANGAROO_REWARDS",
+  "taxonomy_name": "Kangaroo Rewards",
+  "vendor": "",
+  "product": "Kangaroo Rewards",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KANGAROO_REWARDS.json",
+    "original_name": "Kangaroo Rewards"
+  },
+  "research": [
+    {
+      "url": "https://loyalty.kangaroorewards.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kangaroo_rewards_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.kangaroorewards\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "Kangaroo Rewards is a platform designed to help businesses grow by fostering customer loyalty and enhancing brand recognition.",
+  "website": "https://loyalty.kangaroorewards.com"
+}

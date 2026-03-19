@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-phoenix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHOENIX",
+  "taxonomy_name": "Phoenix",
+  "vendor": "",
+  "product": "Phoenix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PHOENIX.json",
+    "original_name": "Phoenix"
+  },
+  "research": [
+    {
+      "url": "https://github.com/Sazito/phoenix/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_phoenix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^phoenix",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js",
+    "React",
+    "Webpack"
+  ],
+  "categories": [
+    18
+  ],
+  "website": "https://github.com/Sazito/phoenix/"
+}

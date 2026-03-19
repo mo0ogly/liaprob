@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-asisteclick",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASISTECLICK",
+  "taxonomy_name": "AsisteClick",
+  "vendor": "",
+  "product": "AsisteClick",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ASISTECLICK.json",
+    "original_name": "AsisteClick"
+  },
+  "research": [
+    {
+      "url": "https://asisteclick.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_asisteclick_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.asisteclick\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "AsisteClick is a customer service solution that uses chatbots and an omnichannel platform to streamline support across multiple communication channels.",
+  "website": "https://asisteclick.com"
+}

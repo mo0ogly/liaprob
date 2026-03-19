@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-olvy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OLVY",
+  "taxonomy_name": "Olvy",
+  "vendor": "",
+  "product": "Olvy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OLVY.json",
+    "original_name": "Olvy"
+  },
+  "research": [
+    {
+      "url": "https://olvy.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_olvy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.olvy\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    85
+  ],
+  "notes": "Olvy is a feedback management platform that enables user-centric teams to analyze insights, streamline product development, and keep stakeholders informed.",
+  "website": "https://olvy.co"
+}

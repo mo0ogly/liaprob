@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-caddy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CADDY",
+  "taxonomy_name": "Caddy",
+  "vendor": "",
+  "product": "Caddy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CADDY.json",
+    "original_name": "Caddy"
+  },
+  "research": [
+    {
+      "url": "https://caddyserver.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_caddy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^caddy$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:caddyserver:caddy:*:*:*:*:*:*:*:*",
+  "categories": [
+    22
+  ],
+  "website": "https://caddyserver.com"
+}

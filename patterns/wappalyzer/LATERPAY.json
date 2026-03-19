@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-laterpay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LATERPAY",
+  "taxonomy_name": "Laterpay",
+  "vendor": "",
+  "product": "Laterpay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LATERPAY.json",
+    "original_name": "Laterpay"
+  },
+  "research": [
+    {
+      "url": "https://www.laterpay.net/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_laterpay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "laterpay:connector:callbacks:on_user_has_access",
+          "match_type": "regex",
+          "value": "deobfuscatetext",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "https?://connectormwi\\.laterpay\\.net/([0-9.]+)[a-za-z-]*/live/[\\w-]+\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "https?://connectormwi\\.laterpay\\.net/([0-9.]+)[a-za-z-]*/live/[\\w-]+\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41,
+    91
+  ],
+  "notes": "Laterpay is a service that simplifies payments on the Internet. In addition to the classic immediate purchase option, Laterpay also allows you to buy digital content such as articles or videos now and pay later.",
+  "website": "https://www.laterpay.net/"
+}

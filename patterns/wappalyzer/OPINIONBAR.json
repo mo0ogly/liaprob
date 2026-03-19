@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-opinionbar",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPINIONBAR",
+  "taxonomy_name": "OpinionBar",
+  "vendor": "",
+  "product": "OpinionBar",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPINIONBAR.json",
+    "original_name": "OpinionBar"
+  },
+  "research": [
+    {
+      "url": "https://www.opinionbar.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_opinionbar_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.opinionbar\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "OpinionBar is a platform offering feedback forms and surveys that provide cash payments.",
+  "website": "https://www.opinionbar.com"
+}

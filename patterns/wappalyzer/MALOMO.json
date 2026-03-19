@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-malomo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MALOMO",
+  "taxonomy_name": "Malomo",
+  "vendor": "",
+  "product": "Malomo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MALOMO.json",
+    "original_name": "Malomo"
+  },
+  "research": [
+    {
+      "url": "https://gomalomo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_malomo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.gomalomo\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    107
+  ],
+  "notes": "Malomo is a cloud-based shipment tracking solution that helps small to midsize eCommerce businesses provide customers with shipping updates via white-label package tracking pages.",
+  "website": "https://gomalomo.com"
+}

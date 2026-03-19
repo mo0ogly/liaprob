@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pdf_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PDF_JS",
+  "taxonomy_name": "PDF.js",
+  "vendor": "",
+  "product": "PDF.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PDF_JS.json",
+    "original_name": "PDF.js"
+  },
+  "research": [
+    {
+      "url": "https://mozilla.github.io/pdf.js/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pdf_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<\\/div>\\s*<!-- outercontainer -->\\s*<div\\s*id=\"printcontainer\"><\\/div>",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "website": "https://mozilla.github.io/pdf.js/"
+}

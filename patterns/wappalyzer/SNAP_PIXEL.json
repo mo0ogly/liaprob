@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-snap_pixel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SNAP_PIXEL",
+  "taxonomy_name": "Snap Pixel",
+  "vendor": "",
+  "product": "Snap Pixel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SNAP_PIXEL.json",
+    "original_name": "Snap Pixel"
+  },
+  "research": [
+    {
+      "url": "https://businesshelp.snapchat.com/s/article/snap-pixel-about",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_snap_pixel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "intg\\.snapchat\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Snap Pixel is a piece of JavaScript code that helps advertisers measure the cross-device impact of campaigns.",
+  "website": "https://businesshelp.snapchat.com/s/article/snap-pixel-about"
+}

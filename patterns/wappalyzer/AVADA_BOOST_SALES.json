@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-avada_boost_sales",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVADA_BOOST_SALES",
+  "taxonomy_name": "Avada Boost Sales",
+  "vendor": "",
+  "product": "Avada Boost Sales",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AVADA_BOOST_SALES.json",
+    "original_name": "Avada Boost Sales"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/avada-boost-sales",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_avada_boost_sales_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "boostsales\\.apps\\.avada\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100,
+    5
+  ],
+  "notes": "AVADA Boost Sales is a one-stop solution that is specially designed to increase your sales with countdown timer, trust badges, sales pop, sales boost and many more.",
+  "website": "https://apps.shopify.com/avada-boost-sales"
+}

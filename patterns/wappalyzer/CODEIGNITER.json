@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-codeigniter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CODEIGNITER",
+  "taxonomy_name": "CodeIgniter",
+  "vendor": "",
+  "product": "CodeIgniter",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CODEIGNITER.json",
+    "original_name": "CodeIgniter"
+  },
+  "research": [
+    {
+      "url": "https://codeigniter.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_codeigniter_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "ci_csrf_token",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^(.+)$"
+        },
+        {
+          "target": "cookie",
+          "field": "ci_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "exp_last_activity",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "exp_tracker",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+name=\"ci_csrf_token\"",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:codeigniter:codeigniter:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    18
+  ],
+  "website": "https://codeigniter.com"
+}

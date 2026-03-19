@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-livescale",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIVESCALE",
+  "taxonomy_name": "Livescale",
+  "vendor": "",
+  "product": "Livescale",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIVESCALE.json",
+    "original_name": "Livescale"
+  },
+  "research": [
+    {
+      "url": "https://www.livescale.tv",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_livescale_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.livescale\\.tv/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100,
+    103
+  ],
+  "notes": "Livescale is a video platform that enables teams to transform content and ecommerce into a live shopping experience that reaches engages and monetizes audiences with LiveShopping.",
+  "website": "https://www.livescale.tv"
+}

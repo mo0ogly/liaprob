@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-genesis_blocks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GENESIS_BLOCKS",
+  "taxonomy_name": "Genesis blocks",
+  "vendor": "",
+  "product": "Genesis blocks",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GENESIS_BLOCKS.json",
+    "original_name": "Genesis blocks"
+  },
+  "research": [
+    {
+      "url": "https://www.studiopress.com/genesis-blocks/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_genesis_blocks_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div[^>]+class=[\"']wp-block-atomic-blocks-*",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/genesis-blocks/lib/js/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87
+  ],
+  "notes": "Premium block library & block editor enhancements from StudioPress.",
+  "website": "https://www.studiopress.com/genesis-blocks/"
+}

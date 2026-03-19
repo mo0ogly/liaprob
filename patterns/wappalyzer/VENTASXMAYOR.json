@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ventasxmayor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VENTASXMAYOR",
+  "taxonomy_name": "VentasxMayor",
+  "vendor": "",
+  "product": "VentasxMayor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VENTASXMAYOR.json",
+    "original_name": "VentasxMayor"
+  },
+  "research": [
+    {
+      "url": "https://ventasxmayor.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ventasxmayor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "bunny-cdn\\.ventasxmayor\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "VentasxMayor is an ecommerce platform designed for wholesalers, brands, distributors, and importers to streamline and increase wholesale sales.",
+  "website": "https://ventasxmayor.com"
+}

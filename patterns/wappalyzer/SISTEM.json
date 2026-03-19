@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sistem",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SISTEM",
+  "taxonomy_name": "Sistem",
+  "vendor": "",
+  "product": "Sistem",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SISTEM.json",
+    "original_name": "Sistem"
+  },
+  "research": [
+    {
+      "url": "https://sistem.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sistem_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.sistem\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Sistem is a platform that develops customized artificial intelligence designed to understand and improve business operations.",
+  "website": "https://sistem.ai"
+}

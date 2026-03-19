@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-let_s_connect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LET_S_CONNECT",
+  "taxonomy_name": "Let's Connect",
+  "vendor": "",
+  "product": "Let's Connect",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LET_S_CONNECT.json",
+    "original_name": "Let's Connect"
+  },
+  "research": [
+    {
+      "url": "https://www.letsconnect.at",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_let_s_connect_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.letsconnect\\.at/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Let's Connect is a digital tool for businesses to manage customer interactions and communications.",
+  "website": "https://www.letsconnect.at"
+}

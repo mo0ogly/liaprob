@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-captch_me",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CAPTCH_ME",
+  "taxonomy_name": "Captch Me",
+  "vendor": "",
+  "product": "Captch Me",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CAPTCH_ME.json",
+    "original_name": "Captch Me"
+  },
+  "research": [
+    {
+      "url": "https://captchme.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_captch_me_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https?://api\\.captchme\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16,
+    36
+  ],
+  "website": "https://captchme.com"
+}

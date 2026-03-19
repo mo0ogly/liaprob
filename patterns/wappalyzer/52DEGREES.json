@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-52degrees",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "52DEGREES",
+  "taxonomy_name": "52Degrees",
+  "vendor": "",
+  "product": "52Degrees",
+  "source": {
+    "type": "wappalyzer",
+    "file": "52DEGREES.json",
+    "original_name": "52Degrees"
+  },
+  "research": [
+    {
+      "url": "https://51degrees.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_52degrees_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.handsetdetection\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "52Degrees is a data platform formerly known as Handset Detection, providing real-time device and data insights for digital businesses.",
+  "website": "https://51degrees.com"
+}

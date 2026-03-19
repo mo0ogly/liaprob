@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jquery_sparklines",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JQUERY_SPARKLINES",
+  "taxonomy_name": "jQuery Sparklines",
+  "vendor": "",
+  "product": "jQuery Sparklines",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JQUERY_SPARKLINES.json",
+    "original_name": "jQuery Sparklines"
+  },
+  "research": [
+    {
+      "url": "https://omnipotent.net/jquery.sparkline/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jquery_sparklines_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jquery\\.sparkline.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    25
+  ],
+  "notes": "jQuery Sparklines is a plugin that generates sparklines (small inline charts) directly in the browser using data supplied either inline in the HTML, or via javascript.",
+  "website": "https://omnipotent.net/jquery.sparkline/"
+}

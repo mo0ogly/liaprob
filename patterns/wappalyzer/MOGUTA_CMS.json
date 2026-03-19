@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-moguta_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOGUTA_CMS",
+  "taxonomy_name": "Moguta.CMS",
+  "vendor": "",
+  "product": "Moguta.CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOGUTA_CMS.json",
+    "original_name": "Moguta.CMS"
+  },
+  "research": [
+    {
+      "url": "https://moguta.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_moguta_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+href=[\"'][^\"]+mg-(?:core|plugins|templates)/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mg-(?:core|plugins|templates)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1,
+    6
+  ],
+  "website": "https://moguta.ru"
+}

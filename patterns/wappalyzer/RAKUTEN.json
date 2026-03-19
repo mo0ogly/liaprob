@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rakuten",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAKUTEN",
+  "taxonomy_name": "Rakuten",
+  "vendor": "",
+  "product": "Rakuten",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RAKUTEN.json",
+    "original_name": "Rakuten"
+  },
+  "research": [
+    {
+      "url": "https://www.rakuten.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rakuten_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "rakuten-source",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.linksynergy\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tag\\.rmp\\.rakuten\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Rakuten (formerly Ebates) allows you to earn cash-back rewards.",
+  "website": "https://www.rakuten.com/"
+}

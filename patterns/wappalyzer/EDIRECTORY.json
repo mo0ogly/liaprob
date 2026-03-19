@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-edirectory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EDIRECTORY",
+  "taxonomy_name": "eDirectory",
+  "vendor": "",
+  "product": "eDirectory",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EDIRECTORY.json",
+    "original_name": "eDirectory"
+  },
+  "research": [
+    {
+      "url": "https://www.edirectory.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_edirectory_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.edirectory\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "eDirectory is an online directory software platform that enables the creation, management, and monetization of searchable, category-based listings for businesses, services, or professionals.",
+  "website": "https://www.edirectory.com"
+}

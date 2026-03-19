@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pobuca",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POBUCA",
+  "taxonomy_name": "Pobuca",
+  "vendor": "",
+  "product": "Pobuca",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POBUCA.json",
+    "original_name": "Pobuca"
+  },
+  "research": [
+    {
+      "url": "https://pobuca.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pobuca_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.loyalty\\.pobuca\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "Pobuca is a cloud-based software platform for managing customer loyalty programs and engagement initiatives.",
+  "website": "https://pobuca.com"
+}

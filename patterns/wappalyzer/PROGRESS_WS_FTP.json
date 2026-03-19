@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-progress_ws_ftp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROGRESS_WS_FTP",
+  "taxonomy_name": "Progress WS_FTP",
+  "vendor": "",
+  "product": "Progress WS_FTP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROGRESS_WS_FTP.json",
+    "original_name": "Progress WS_FTP"
+  },
+  "research": [
+    {
+      "url": "https://www.progress.com/ws_ftp",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_progress_ws_ftp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/thinclient/(?:wtm|webresource)(?:\\.axd|/public)",
+          "confidence_delta": 0.6
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:progress:ws_ftp_server:*:*:*:*:*:*:*:*",
+  "categories": [
+    19
+  ],
+  "notes": "Progress WS_FTP is a file transfer client software developed by Progress Software Corporation, supporting FTP, FTPS, SFTP, and HTTPS protocols with features like drag-and-drop support, file synchronization, and encrypted data transmission.",
+  "website": "https://www.progress.com/ws_ftp"
+}

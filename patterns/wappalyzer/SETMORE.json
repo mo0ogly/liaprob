@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-setmore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SETMORE",
+  "taxonomy_name": "Setmore",
+  "vendor": "",
+  "product": "Setmore",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SETMORE.json",
+    "original_name": "Setmore"
+  },
+  "research": [
+    {
+      "url": "https://www.setmore.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_setmore_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/setmore-appointments/script/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "my\\.setmore\\.\\w+/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    72
+  ],
+  "notes": "Setmore is a cloud-based appointment scheduling solution.",
+  "website": "https://www.setmore.com"
+}

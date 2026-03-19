@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pixpa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIXPA",
+  "taxonomy_name": "Pixpa",
+  "vendor": "",
+  "product": "Pixpa",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PIXPA.json",
+    "original_name": "Pixpa"
+  },
+  "research": [
+    {
+      "url": "https://www.pixpa.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pixpa_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "themeassets\\.pixpa\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    7,
+    51
+  ],
+  "notes": "Pixpa is a software that enables photographers, artists and creative designers build and manage online presence by letting them create a professional portfolio website without the need of any coding skills.",
+  "website": "https://www.pixpa.com"
+}

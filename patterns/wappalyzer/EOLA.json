@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-eola",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EOLA",
+  "taxonomy_name": "eola",
+  "vendor": "",
+  "product": "eola",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EOLA.json",
+    "original_name": "eola"
+  },
+  "research": [
+    {
+      "url": "https://eola.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_eola_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_eola_session_eola",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "eola is a booking platform that enables users to manage reservations, schedules, and availability for services or events through a centralized online system.",
+  "website": "https://eola.co"
+}

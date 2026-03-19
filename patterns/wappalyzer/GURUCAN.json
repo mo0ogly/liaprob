@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gurucan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GURUCAN",
+  "taxonomy_name": "Gurucan",
+  "vendor": "",
+  "product": "Gurucan",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GURUCAN.json",
+    "original_name": "Gurucan"
+  },
+  "research": [
+    {
+      "url": "https://www.gurucan.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gurucan_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.gurucan\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Gurucan is a platform that enables users to create and sell online courses through a single interface.",
+  "website": "https://www.gurucan.com"
+}

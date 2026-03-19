@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jazzhr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JAZZHR",
+  "taxonomy_name": "JazzHR",
+  "vendor": "",
+  "product": "JazzHR",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JAZZHR.json",
+    "original_name": "JazzHR"
+  },
+  "research": [
+    {
+      "url": "https://www.jazzhr.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jazzhr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.jazz\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "JazzHR is SaaS recruiting software to source talent, conduct interviews and hires.",
+  "website": "https://www.jazzhr.com"
+}

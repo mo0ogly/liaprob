@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tallentor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TALLENTOR",
+  "taxonomy_name": "Tallentor",
+  "vendor": "",
+  "product": "Tallentor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TALLENTOR.json",
+    "original_name": "Tallentor"
+  },
+  "research": [
+    {
+      "url": "https://tallentor.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tallentor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tallentor\\.com/js/script_tracker\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Tallentor is a subscription-based software website analytics, heatmap, channel chat intergration.",
+  "website": "https://tallentor.com"
+}

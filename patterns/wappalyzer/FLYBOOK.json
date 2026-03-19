@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-flybook",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLYBOOK",
+  "taxonomy_name": "Flybook",
+  "vendor": "",
+  "product": "Flybook",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLYBOOK.json",
+    "original_name": "Flybook"
+  },
+  "research": [
+    {
+      "url": "https://www.theflybook.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_flybook_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "flybook-generated-session-guid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Flybook is specialized reservation software designed to manage bookings, availability, and operations for businesses in the adventure, tours, and rentals industry.",
+  "website": "https://www.theflybook.com"
+}

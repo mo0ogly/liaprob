@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-reactive",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REACTIVE",
+  "taxonomy_name": "Reactive",
+  "vendor": "",
+  "product": "Reactive",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REACTIVE.json",
+    "original_name": "Reactive"
+  },
+  "research": [
+    {
+      "url": "https://reactiveonline.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_reactive_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "reactive",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Ruby on Rails"
+  ],
+  "categories": [
+    1,
+    6
+  ],
+  "notes": "Reactive is a subscription-based software that allows you to set up an online store and website. It has a CMS and has been created to support retail, coffee bars, restaurants owners and accomodation properties such as hotels or villas. With Reactive one can sell products or accept reservations and online orders.",
+  "website": "https://reactiveonline.io"
+}

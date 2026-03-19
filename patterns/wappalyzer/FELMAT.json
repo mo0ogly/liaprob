@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-felmat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FELMAT",
+  "taxonomy_name": "Felmat",
+  "vendor": "",
+  "product": "Felmat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FELMAT.json",
+    "original_name": "Felmat"
+  },
+  "research": [
+    {
+      "url": "https://www.felmat.net/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_felmat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.felmat\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Felmat is an advertising network that connects advertisers with publishers to facilitate performance-based marketing across digital platforms.",
+  "website": "https://www.felmat.net/"
+}

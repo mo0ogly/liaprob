@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coinhive_captcha",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COINHIVE_CAPTCHA",
+  "taxonomy_name": "CoinHive Captcha",
+  "vendor": "",
+  "product": "CoinHive Captcha",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COINHIVE_CAPTCHA.json",
+    "original_name": "CoinHive Captcha"
+  },
+  "research": [
+    {
+      "url": "https://coinhive.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coinhive_captcha_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "https?://authedmine\\.com/(?:lib/captcha|captcha)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16,
+    56
+  ],
+  "notes": "Coinhive Captcha provides captcha service that is simple to integrate, where your users’ devices need to solve a number of hashes, adjustable by you, in order to login or post a comment to your site.",
+  "website": "https://coinhive.com"
+}

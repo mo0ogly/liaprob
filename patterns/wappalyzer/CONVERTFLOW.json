@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-convertflow",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONVERTFLOW",
+  "taxonomy_name": "ConvertFlow",
+  "vendor": "",
+  "product": "ConvertFlow",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONVERTFLOW.json",
+    "original_name": "ConvertFlow"
+  },
+  "research": [
+    {
+      "url": "https://www.convertflow.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_convertflow_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:app|js)\\.convertflow\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    74
+  ],
+  "notes": "ConvertFlow is the all-in-one conversion marketing platform.",
+  "website": "https://www.convertflow.com"
+}

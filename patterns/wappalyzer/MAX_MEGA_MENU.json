@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-max_mega_menu",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAX_MEGA_MENU",
+  "taxonomy_name": "Max Mega Menu",
+  "vendor": "",
+  "product": "Max Mega Menu",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAX_MEGA_MENU.json",
+    "original_name": "Max Mega Menu"
+  },
+  "research": [
+    {
+      "url": "https://www.megamenu.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_max_mega_menu_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:max)?megamenu(?:-pro)?(?:\\/assets)?(?:\\/public)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:max)?megamenu(?:-pro)?(?:\\/assets)?(?:\\/public)?\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    87
+  ],
+  "notes": "Max Mega Menu is a popular WordPress plugin that enhances the menu functionality on WordPress websites.",
+  "website": "https://www.megamenu.com/"
+}

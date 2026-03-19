@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-swiffy_slider",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SWIFFY_SLIDER",
+  "taxonomy_name": "Swiffy Slider",
+  "vendor": "",
+  "product": "Swiffy Slider",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SWIFFY_SLIDER.json",
+    "original_name": "Swiffy Slider"
+  },
+  "research": [
+    {
+      "url": "https://swiffyslider.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_swiffy_slider_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/npm/swiffy-slider@([\\d\\.]+)/",
+          "confidence_delta": 0.5,
+          "version_extract": "/npm/swiffy-slider@([\\d\\.]+)/"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Swiffy Slider is a wrapper defined in html with slides, navigation and indicators as its children.",
+  "website": "https://swiffyslider.com"
+}

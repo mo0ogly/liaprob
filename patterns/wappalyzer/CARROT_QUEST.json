@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-carrot_quest",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARROT_QUEST",
+  "taxonomy_name": "Carrot quest",
+  "vendor": "",
+  "product": "Carrot quest",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARROT_QUEST.json",
+    "original_name": "Carrot quest"
+  },
+  "research": [
+    {
+      "url": "https://www.carrotquest.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_carrot_quest_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.carrotquest\\.app"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    52
+  ],
+  "notes": "Carrot quest is a customer engagement and communication platform that aids businesses in improving interactions with users and customers through targeted messaging, in-app messaging, live chat, email campaigns, and user behavior tracking.",
+  "website": "https://www.carrotquest.io"
+}

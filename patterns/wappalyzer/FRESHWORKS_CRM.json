@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-freshworks_crm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRESHWORKS_CRM",
+  "taxonomy_name": "Freshworks CRM",
+  "vendor": "",
+  "product": "Freshworks CRM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRESHWORKS_CRM.json",
+    "original_name": "Freshworks CRM"
+  },
+  "research": [
+    {
+      "url": "https://www.freshworks.com/crm",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_freshworks_crm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.freshmarketer\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.zarget\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53,
+    32,
+    74
+  ],
+  "notes": "Freshworks CRM is a cloud-based customer relationship management (CRM) solution. Key features include one-click phone, sales lead tracking, sales management, event tracking and more.",
+  "website": "https://www.freshworks.com/crm"
+}

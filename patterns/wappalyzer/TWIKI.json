@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-twiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TWIKI",
+  "taxonomy_name": "TWiki",
+  "vendor": "",
+  "product": "TWiki",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TWIKI.json",
+    "original_name": "TWiki"
+  },
+  "research": [
+    {
+      "url": "https://twiki.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_twiki_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "twikisid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img [^>]*(?:title|alt)=\"this site is powered by the twiki collaboration platform",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:twikijavascripts|twikilib(?:\\.min)?\\.js)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Perl"
+  ],
+  "categories": [
+    8
+  ],
+  "notes": "TWiki is an open-source wiki and application platform.",
+  "website": "https://twiki.org"
+}

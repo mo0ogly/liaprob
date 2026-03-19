@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-storerocket",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STOREROCKET",
+  "taxonomy_name": "StoreRocket",
+  "vendor": "",
+  "product": "StoreRocket",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STOREROCKET.json",
+    "original_name": "StoreRocket"
+  },
+  "research": [
+    {
+      "url": "https://storerocket.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_storerocket_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.storerocket\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    79
+  ],
+  "notes": "StoreRocket is a fully customizable store locator for websites, requiring no coding skills.",
+  "website": "https://storerocket.io"
+}

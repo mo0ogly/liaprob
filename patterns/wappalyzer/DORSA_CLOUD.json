@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dorsa_cloud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DORSA_CLOUD",
+  "taxonomy_name": "Dorsa Cloud",
+  "vendor": "",
+  "product": "Dorsa Cloud",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DORSA_CLOUD.json",
+    "original_name": "Dorsa Cloud"
+  },
+  "research": [
+    {
+      "url": "https://dorsa.cloud",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dorsa_cloud_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^dorsa cloud$"
+        },
+        {
+          "target": "header",
+          "field": "x-cdn-provider",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^dorsa cloud"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^dorsa cloud"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31,
+    63
+  ],
+  "notes": "Dorsa Cloud is a cloud service provider offering scalable and flexible Infrastructure as a Service (IaaS) solutions for businesses.",
+  "website": "https://dorsa.cloud"
+}

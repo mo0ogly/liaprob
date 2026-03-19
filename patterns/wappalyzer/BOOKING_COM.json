@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-booking_com",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOOKING_COM",
+  "taxonomy_name": "Booking.com",
+  "vendor": "",
+  "product": "Booking.com",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOOKING_COM.json",
+    "original_name": "Booking.com"
+  },
+  "research": [
+    {
+      "url": "https://www.booking.com/affiliate-program/v2/selfmanaged.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_booking_com_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "aff\\.bstatic\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Booking.com is one of the largest ecommerce travel companies in the world. As an affiliate member, you can make up to 40% commission.",
+  "website": "https://www.booking.com/affiliate-program/v2/selfmanaged.html"
+}

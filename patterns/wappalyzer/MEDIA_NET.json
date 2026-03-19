@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-media_net",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEDIA_NET",
+  "taxonomy_name": "Media.net",
+  "vendor": "",
+  "product": "Media.net",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MEDIA_NET.json",
+    "original_name": "Media.net"
+  },
+  "research": [
+    {
+      "url": "https://www.media.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_media_net_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.media\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Media.net is an advertising company focused on providing monetization products to digital publishers.",
+  "website": "https://www.media.net"
+}

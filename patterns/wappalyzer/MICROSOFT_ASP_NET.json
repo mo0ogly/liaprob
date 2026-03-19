@@ -1,0 +1,87 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-microsoft_asp_net",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_ASP_NET",
+  "taxonomy_name": "Microsoft ASP.NET",
+  "vendor": "",
+  "product": "Microsoft ASP.NET",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MICROSOFT_ASP_NET.json",
+    "original_name": "Microsoft ASP.NET"
+  },
+  "research": [
+    {
+      "url": "https://www.asp.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_microsoft_asp_net_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "set-cookie",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.aspnetcore"
+        },
+        {
+          "target": "header",
+          "field": "x-aspnet-version",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "(.+)",
+          "version_extract": "(.+)"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^asp\\.net"
+        },
+        {
+          "target": "cookie",
+          "field": "asp.net_sessionid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "aspsession",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+name=\"__viewstate",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:asp.net:*:*:*:*:*:*:*:*",
+  "categories": [
+    18
+  ],
+  "notes": "ASP.NET is an open-source, server-side web-application framework designed for web development to produce dynamic web pages.",
+  "website": "https://www.asp.net"
+}

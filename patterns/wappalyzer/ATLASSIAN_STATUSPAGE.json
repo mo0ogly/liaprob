@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-atlassian_statuspage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATLASSIAN_STATUSPAGE",
+  "taxonomy_name": "Atlassian Statuspage",
+  "vendor": "",
+  "product": "Atlassian Statuspage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ATLASSIAN_STATUSPAGE.json",
+    "original_name": "Atlassian Statuspage"
+  },
+  "research": [
+    {
+      "url": "https://www.atlassian.com/software/statuspage",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_atlassian_statuspage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-statuspage-skip-logging",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-statuspage-version",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]*href=\"https?://(?:www\\.)?statuspage\\.io/powered-by[^>]+>",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13,
+    62
+  ],
+  "notes": "Statuspage is a status and incident communication tool.",
+  "website": "https://www.atlassian.com/software/statuspage"
+}

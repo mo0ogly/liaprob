@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-piperun",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIPERUN",
+  "taxonomy_name": "Piperun",
+  "vendor": "",
+  "product": "Piperun",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PIPERUN.json",
+    "original_name": "Piperun"
+  },
+  "research": [
+    {
+      "url": "https://crmpiperun.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_piperun_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.crmpiperun\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Piperun is a CRM designed to automate and enhance sales performance for companies managing complex sales processes and channel partnerships.",
+  "website": "https://crmpiperun.com"
+}

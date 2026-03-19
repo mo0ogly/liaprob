@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-comscore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMSCORE",
+  "taxonomy_name": "comScore",
+  "vendor": "",
+  "product": "comScore",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COMSCORE.json",
+    "original_name": "comScore"
+  },
+  "research": [
+    {
+      "url": "https://comscore.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_comscore_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.scorecardresearch\\.com/beacon\\.js|comscore\\.beacon",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "comScore is an American media measurement and analytics company providing marketing data and analytics to enterprises; media and advertising agencies; and publishers.",
+  "website": "https://comscore.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pabbly_form_builder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PABBLY_FORM_BUILDER",
+  "taxonomy_name": "Pabbly Form Builder",
+  "vendor": "",
+  "product": "Pabbly Form Builder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PABBLY_FORM_BUILDER.json",
+    "original_name": "Pabbly Form Builder"
+  },
+  "research": [
+    {
+      "url": "https://www.pabbly.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pabbly_form_builder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "forms\\.pabbly\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "Pabbly Form Builder is a no-code tool for creating professional business forms, offering customization options without requiring programming skills.",
+  "website": "https://www.pabbly.com"
+}

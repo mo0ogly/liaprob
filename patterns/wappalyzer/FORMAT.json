@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-format",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORMAT",
+  "taxonomy_name": "Format",
+  "vendor": "",
+  "product": "Format",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FORMAT.json",
+    "original_name": "Format"
+  },
+  "research": [
+    {
+      "url": "https://www.format.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_format_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-format-path",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Format is a portfolio CMS system designed for creating, managing, and showcasing digital portfolios.",
+  "website": "https://www.format.com"
+}

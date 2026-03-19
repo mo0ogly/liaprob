@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-poloriz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POLORIZ",
+  "taxonomy_name": "Poloriz",
+  "vendor": "",
+  "product": "Poloriz",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POLORIZ.json",
+    "original_name": "Poloriz"
+  },
+  "research": [
+    {
+      "url": "https://www.poloriz.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_poloriz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.poloriz\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Poloriz's technology automatically creates a personalised, full-screen, mobile-first, cross-selling user experience for shoppers.",
+  "website": "https://www.poloriz.com"
+}

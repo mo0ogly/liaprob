@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-muvi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MUVI",
+  "taxonomy_name": "Muvi",
+  "vendor": "",
+  "product": "Muvi",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MUVI.json",
+    "original_name": "Muvi"
+  },
+  "research": [
+    {
+      "url": "https://www.muvi.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_muvi_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "www\\.muvi\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "publisher",
+          "match_type": "regex",
+          "value": "www\\.muvi\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.muvi\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    38
+  ],
+  "notes": "Muvi is a SaaS-based provider of over-the-top (OTT) platform solutions for video streaming, offering end-to-end infrastructure for content delivery and monetization.",
+  "website": "https://www.muvi.com"
+}

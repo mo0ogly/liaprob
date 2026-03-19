@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-opinionlab",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPINIONLAB",
+  "taxonomy_name": "OpinionLab",
+  "vendor": "",
+  "product": "OpinionLab",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPINIONLAB.json",
+    "original_name": "OpinionLab"
+  },
+  "research": [
+    {
+      "url": "https://www.opinionlab.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_opinionlab_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.foresee\\.com/code/([\\d.]+)-oo/oo_engine\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "\\.foresee\\.com/code/([\\d.]+)-oo/oo_engine\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "OpinionLab is a omnichannel customer feedback solution provider.",
+  "website": "https://www.opinionlab.com"
+}

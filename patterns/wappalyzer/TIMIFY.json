@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-timify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TIMIFY",
+  "taxonomy_name": "Timify",
+  "vendor": "",
+  "product": "Timify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TIMIFY.json",
+    "original_name": "Timify"
+  },
+  "research": [
+    {
+      "url": "https://www.timify.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_timify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.timify\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Timify is an online scheduling and resource management software for small, medium and large businesses.",
+  "website": "https://www.timify.com"
+}

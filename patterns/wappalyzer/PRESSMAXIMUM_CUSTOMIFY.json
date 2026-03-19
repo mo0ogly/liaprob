@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pressmaximum_customify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRESSMAXIMUM_CUSTOMIFY",
+  "taxonomy_name": "PressMaximum Customify",
+  "vendor": "",
+  "product": "PressMaximum Customify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PRESSMAXIMUM_CUSTOMIFY.json",
+    "original_name": "PressMaximum Customify"
+  },
+  "research": [
+    {
+      "url": "https://pressmaximum.com/customify",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pressmaximum_customify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/customify/.+theme\\.min\\.js(?:.+ver=([\\d\\.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/themes/customify/.+theme\\.min\\.js(?:.+ver=([\\d\\.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "PressMaximum Customify is lightweight, responsive and flexible multipurpose WordPress theme.",
+  "website": "https://pressmaximum.com/customify"
+}

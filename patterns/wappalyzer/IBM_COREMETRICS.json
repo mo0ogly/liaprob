@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ibm_coremetrics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_COREMETRICS",
+  "taxonomy_name": "IBM Coremetrics",
+  "vendor": "",
+  "product": "IBM Coremetrics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IBM_COREMETRICS.json",
+    "original_name": "IBM Coremetrics"
+  },
+  "research": [
+    {
+      "url": "https://ibm.com/software/marketing-solutions/coremetrics",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ibm_coremetrics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cmdatatagutils\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "website": "https://ibm.com/software/marketing-solutions/coremetrics"
+}

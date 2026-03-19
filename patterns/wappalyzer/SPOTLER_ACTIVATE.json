@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spotler_activate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPOTLER_ACTIVATE",
+  "taxonomy_name": "Spotler Activate",
+  "vendor": "",
+  "product": "Spotler Activate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPOTLER_ACTIVATE.json",
+    "original_name": "Spotler Activate"
+  },
+  "research": [
+    {
+      "url": "https://spotleractivate.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spotler_activate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//squeezely\\.tech/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Spotler Activate is a customer data platform (CDP) that provides technical capabilities for data collection, segmentation, audience targeting, campaign orchestration, and analytics, empowering businesses to personalise customer experiences and optimise marketing efforts.",
+  "website": "https://spotleractivate.com"
+}

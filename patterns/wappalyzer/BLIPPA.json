@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blippa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLIPPA",
+  "taxonomy_name": "Blippa",
+  "vendor": "",
+  "product": "Blippa",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLIPPA.json",
+    "original_name": "Blippa"
+  },
+  "research": [
+    {
+      "url": "https://blippa.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blippa_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-servedby",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^blippa1$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    95
+  ],
+  "notes": "Blippa is a platform for digital product passports, enabling no-code product lifecycle management and integration with smart services and data.",
+  "website": "https://blippa.com"
+}

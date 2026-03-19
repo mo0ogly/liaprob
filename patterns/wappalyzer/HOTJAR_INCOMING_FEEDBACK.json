@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hotjar_incoming_feedback",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOTJAR_INCOMING_FEEDBACK",
+  "taxonomy_name": "Hotjar Incoming Feedback",
+  "vendor": "",
+  "product": "Hotjar Incoming Feedback",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HOTJAR_INCOMING_FEEDBACK.json",
+    "original_name": "Hotjar Incoming Feedback"
+  },
+  "research": [
+    {
+      "url": "https://www.hotjar.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hotjar_incoming_feedback_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.hotjar\\.com/preact-incoming-feedback",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Hotjar Incoming Feedback is a widget that sits at the edge of a page.",
+  "website": "https://www.hotjar.com"
+}

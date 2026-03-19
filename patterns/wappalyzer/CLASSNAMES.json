@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-classnames",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLASSNAMES",
+  "taxonomy_name": "Classnames",
+  "vendor": "",
+  "product": "Classnames",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLASSNAMES.json",
+    "original_name": "Classnames"
+  },
+  "research": [
+    {
+      "url": "https://jedwatson.github.io/classnames/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_classnames_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "classnames\\.?\\w{0,20}(?:\\.chunk)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Javascript utility for conditionally joining classNames together.",
+  "website": "https://jedwatson.github.io/classnames/"
+}

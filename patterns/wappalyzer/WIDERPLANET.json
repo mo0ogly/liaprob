@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-widerplanet",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WIDERPLANET",
+  "taxonomy_name": "WiderPlanet",
+  "vendor": "",
+  "product": "WiderPlanet",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WIDERPLANET.json",
+    "original_name": "WiderPlanet"
+  },
+  "research": [
+    {
+      "url": "https://widerplanet.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_widerplanet_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.widerplanet\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "WiderPlanet is a real-time advertising platform that utilises user behaviour data to deliver targeted advertisements.",
+  "website": "https://widerplanet.com"
+}

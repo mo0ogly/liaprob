@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-antee_ipo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANTEE_IPO",
+  "taxonomy_name": "Antee IPO",
+  "vendor": "",
+  "product": "Antee IPO",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ANTEE_IPO.json",
+    "original_name": "Antee IPO"
+  },
+  "research": [
+    {
+      "url": "https://ipo.antee.cz",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_antee_ipo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "antee\\ss\\.r\\.o\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Antee is a Czech company that will make a custom-made website for you, then you manage it in CMS IPO.",
+  "website": "https://ipo.antee.cz"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-openpay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENPAY",
+  "taxonomy_name": "OpenPay",
+  "vendor": "",
+  "product": "OpenPay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENPAY.json",
+    "original_name": "OpenPay"
+  },
+  "research": [
+    {
+      "url": "https://www.openpay.com.au/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_openpay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "openpay\\.com.\\au",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41,
+    91
+  ],
+  "notes": "Openpay is an innovative online and in-store payment solution enabling you to purchase now and pay later, with no interest.",
+  "website": "https://www.openpay.com.au/"
+}

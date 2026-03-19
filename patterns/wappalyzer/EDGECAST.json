@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-edgecast",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EDGECAST",
+  "taxonomy_name": "EdgeCast",
+  "vendor": "",
+  "product": "EdgeCast",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EDGECAST.json",
+    "original_name": "EdgeCast"
+  },
+  "research": [
+    {
+      "url": "https://www.edgecast.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_edgecast_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^ecd\\s\\(\\s+\\)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "EdgeCast is a content delivery network (CDN) that accelerated and delivers static content to users around the world.",
+  "website": "https://www.edgecast.com"
+}

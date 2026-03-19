@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-azure_front_door",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AZURE_FRONT_DOOR",
+  "taxonomy_name": "Azure Front Door",
+  "vendor": "",
+  "product": "Azure Front Door",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AZURE_FRONT_DOOR.json",
+    "original_name": "Azure Front Door"
+  },
+  "research": [
+    {
+      "url": "https://docs.microsoft.com/en-us/azure/frontdoor/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_azure_front_door_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-azure-ref",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "aslbsa",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "aslbsacors",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Azure"
+  ],
+  "categories": [
+    65
+  ],
+  "notes": "Azure Front Door is a scalable and secure entry point for fast delivery of your global web applications.",
+  "website": "https://docs.microsoft.com/en-us/azure/frontdoor/"
+}

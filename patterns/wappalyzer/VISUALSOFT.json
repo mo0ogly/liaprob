@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-visualsoft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VISUALSOFT",
+  "taxonomy_name": "Visualsoft",
+  "vendor": "",
+  "product": "Visualsoft",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VISUALSOFT.json",
+    "original_name": "Visualsoft"
+  },
+  "research": [
+    {
+      "url": "https://www.visualsoft.co.uk/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_visualsoft_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "vscommerce",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "vs_status_checker_version",
+          "match_type": "regex",
+          "value": "\\d+",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Visualsoft is an ecommerce agency that delivers web design, development and marketing services to online retailers.",
+  "website": "https://www.visualsoft.co.uk/"
+}

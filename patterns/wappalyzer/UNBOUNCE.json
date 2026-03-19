@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-unbounce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNBOUNCE",
+  "taxonomy_name": "Unbounce",
+  "vendor": "",
+  "product": "Unbounce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UNBOUNCE.json",
+    "original_name": "Unbounce"
+  },
+  "research": [
+    {
+      "url": "https://unbounce.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_unbounce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-unbounce-pageid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ubembed\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    20,
+    51
+  ],
+  "notes": "Unbounce is a tool to build landing pages.",
+  "website": "https://unbounce.com"
+}

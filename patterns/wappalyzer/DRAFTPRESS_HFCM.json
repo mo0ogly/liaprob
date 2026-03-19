@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-draftpress_hfcm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DRAFTPRESS_HFCM",
+  "taxonomy_name": "Draftpress HFCM",
+  "vendor": "",
+  "product": "Draftpress HFCM",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DRAFTPRESS_HFCM.json",
+    "original_name": "Draftpress HFCM"
+  },
+  "research": [
+    {
+      "url": "https://draftpress.com/products/header-footer-code-manager-pro/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_draftpress_hfcm_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]*hfcm\\sby\\s99\\srobots",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87
+  ],
+  "notes": "Header Footer Code Manager by Draftpress is a easy interface to add snippets to the header or footer or above or below the content of your page.",
+  "website": "https://draftpress.com/products/header-footer-code-manager-pro/"
+}

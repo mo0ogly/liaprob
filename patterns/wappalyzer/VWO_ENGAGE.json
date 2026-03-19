@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vwo_engage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VWO_ENGAGE",
+  "taxonomy_name": "VWO Engage",
+  "vendor": "",
+  "product": "VWO Engage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VWO_ENGAGE.json",
+    "original_name": "VWO Engage"
+  },
+  "research": [
+    {
+      "url": "https://vwo.com/engage",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vwo_engage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.pushcrew\\.\\w+",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "VWO Engage is a part of the VWO Platform, which is a web-based push notification platform used by SaaS and B2B marketers, online content publishers, and ecommerce store owners.",
+  "website": "https://vwo.com/engage"
+}

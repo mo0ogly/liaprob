@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-listrak",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LISTRAK",
+  "taxonomy_name": "Listrak",
+  "vendor": "",
+  "product": "Listrak",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LISTRAK.json",
+    "original_name": "Listrak"
+  },
+  "research": [
+    {
+      "url": "https://www.listrak.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_listrak_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:cdn|s1)\\.listrakbi\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "services\\.listrak\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    97
+  ],
+  "notes": "Listrak is a AI-based marketing automation and CRM solutions that unify, interpret and personalise data to engage customer across channels and devices.",
+  "website": "https://www.listrak.com"
+}

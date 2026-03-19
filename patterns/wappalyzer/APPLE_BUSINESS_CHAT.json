@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-apple_business_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_BUSINESS_CHAT",
+  "taxonomy_name": "Apple Business Chat",
+  "vendor": "",
+  "product": "Apple Business Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APPLE_BUSINESS_CHAT.json",
+    "original_name": "Apple Business Chat"
+  },
+  "research": [
+    {
+      "url": "https://developer.apple.com/documentation/businesschat",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_apple_business_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/apple_business_chat_commerce/.+/apple_message_button_v([\\d\\.]+)\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "/apple_business_chat_commerce/.+/apple_message_button_v([\\d\\.]+)\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Apple Business Chat is a service from Apple that allows your organization to directly chat with your customers using the Messages app.",
+  "website": "https://developer.apple.com/documentation/businesschat"
+}

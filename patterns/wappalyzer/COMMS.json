@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-comms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMMS",
+  "taxonomy_name": "Comms",
+  "vendor": "",
+  "product": "Comms",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COMMS.json",
+    "original_name": "Comms"
+  },
+  "research": [
+    {
+      "url": "https://comms.dev",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_comms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "comms\\.dev",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.startcomms\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Comms is an all-in-one ecommerce platform.",
+  "website": "https://comms.dev"
+}

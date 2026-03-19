@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fullstory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FULLSTORY",
+  "taxonomy_name": "FullStory",
+  "vendor": "",
+  "product": "FullStory",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FULLSTORY.json",
+    "original_name": "FullStory"
+  },
+  "research": [
+    {
+      "url": "https://www.fullstory.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fullstory_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.fullstory\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "FullStory is a web-based digital intelligence system that helps optimize the client experience.",
+  "website": "https://www.fullstory.com"
+}

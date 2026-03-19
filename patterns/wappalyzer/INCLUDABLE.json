@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-includable",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INCLUDABLE",
+  "taxonomy_name": "Includable",
+  "vendor": "",
+  "product": "Includable",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INCLUDABLE.json",
+    "original_name": "Includable"
+  },
+  "research": [
+    {
+      "url": "https://includable.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_includable_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-includable-version",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    18
+  ],
+  "website": "https://includable.com"
+}

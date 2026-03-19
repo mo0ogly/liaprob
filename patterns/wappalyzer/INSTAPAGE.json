@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-instapage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INSTAPAGE",
+  "taxonomy_name": "Instapage",
+  "vendor": "",
+  "product": "Instapage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INSTAPAGE.json",
+    "original_name": "Instapage"
+  },
+  "research": [
+    {
+      "url": "https://instapage.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_instapage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.instapagemetrics\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "heatmap-events-collector\\.instapage\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Lua",
+    "Node.js"
+  ],
+  "categories": [
+    51,
+    74,
+    10
+  ],
+  "notes": "Instapage is a cloud-based landing page platform designed for marketing teams and agencies.",
+  "website": "https://instapage.com"
+}

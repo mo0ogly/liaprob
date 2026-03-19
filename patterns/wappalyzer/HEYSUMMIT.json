@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-heysummit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HEYSUMMIT",
+  "taxonomy_name": "HeySummit",
+  "vendor": "",
+  "product": "HeySummit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HEYSUMMIT.json",
+    "original_name": "HeySummit"
+  },
+  "research": [
+    {
+      "url": "https://heysummit.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_heysummit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^heysummit$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    103
+  ],
+  "notes": "HeySummit is a platform facilitating the organization of virtual summits.",
+  "website": "https://heysummit.com"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cgit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CGIT",
+  "taxonomy_name": "cgit",
+  "vendor": "",
+  "product": "cgit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CGIT.json",
+    "original_name": "cgit"
+  },
+  "research": [
+    {
+      "url": "https://git.zx2c4.com/cgit",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cgit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^cgit v([\\d.a-z-]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^cgit v([\\d.a-z-]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "C",
+    "git"
+  ],
+  "categories": [
+    19
+  ],
+  "notes": "cgit is a web interface (cgi) for Git repositories, written in C. licensed under GPLv2.",
+  "website": "https://git.zx2c4.com/cgit"
+}

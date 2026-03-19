@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zoho_recruit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOHO_RECRUIT",
+  "taxonomy_name": "Zoho Recruit",
+  "vendor": "",
+  "product": "Zoho Recruit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZOHO_RECRUIT.json",
+    "original_name": "Zoho Recruit"
+  },
+  "research": [
+    {
+      "url": "https://www.zoho.com/recruit/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zoho_recruit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.zohocdn\\.com/recruit/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    101
+  ],
+  "notes": "Zoho Recruit is a recruitment platform that integrates an applicant tracking system (ATS) with customer relationship management (CRM) functionality.",
+  "website": "https://www.zoho.com/recruit/"
+}

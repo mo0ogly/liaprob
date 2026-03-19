@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-guest_suite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GUEST_SUITE",
+  "taxonomy_name": "Guest Suite",
+  "vendor": "",
+  "product": "Guest Suite",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GUEST_SUITE.json",
+    "original_name": "Guest Suite"
+  },
+  "research": [
+    {
+      "url": "https://guestapp.me",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_guest_suite_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.guestapp\\.me",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    73
+  ],
+  "notes": "Guest Suite is a tool that collects customer opinions during their stay, directly from the reception of the establishment.",
+  "website": "https://guestapp.me"
+}

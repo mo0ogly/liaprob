@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mintox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MINTOX",
+  "taxonomy_name": "Mintox",
+  "vendor": "",
+  "product": "Mintox",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MINTOX.json",
+    "original_name": "Mintox"
+  },
+  "research": [
+    {
+      "url": "https://www.mintox.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mintox_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^mintox",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Mintox is a business software designed to streamline operations and enhance efficiency.",
+  "website": "https://www.mintox.com"
+}

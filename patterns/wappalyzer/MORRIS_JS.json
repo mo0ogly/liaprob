@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-morris_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MORRIS_JS",
+  "taxonomy_name": "Morris.js",
+  "vendor": "",
+  "product": "Morris.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MORRIS_JS.json",
+    "original_name": "Morris.js"
+  },
+  "research": [
+    {
+      "url": "https://morrisjs.github.io/morris.js/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_morris_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "morris(?:\\/(?:area|bar|donut|grid|hover|line))?(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "morris(?:\\/(?:area|bar|donut|grid|hover|line))?(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A JavaScript library that simplifies the process of creating interactive and responsive data visualizations on the web.",
+  "website": "https://morrisjs.github.io/morris.js/"
+}

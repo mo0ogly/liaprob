@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kilatech",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KILATECH",
+  "taxonomy_name": "Kilatech",
+  "vendor": "",
+  "product": "Kilatech",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KILATECH.json",
+    "original_name": "Kilatech"
+  },
+  "research": [
+    {
+      "url": "https://web.kilatechapps.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kilatech_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.kilatechapps\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Kilatech is a Shopify ecommerce application builder.",
+  "website": "https://web.kilatechapps.com"
+}

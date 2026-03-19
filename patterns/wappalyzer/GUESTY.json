@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-guesty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GUESTY",
+  "taxonomy_name": "Guesty",
+  "vendor": "",
+  "product": "Guesty",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GUESTY.json",
+    "original_name": "Guesty"
+  },
+  "research": [
+    {
+      "url": "https://www.guesty.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_guesty_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "guesty-muid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "guesty-utms",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Guesty is a cloud-based platform, designed exclusively for Airbnb and vacation rental managers.",
+  "website": "https://www.guesty.com/"
+}

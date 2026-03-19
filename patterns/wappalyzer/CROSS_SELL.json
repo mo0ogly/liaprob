@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cross_sell",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CROSS_SELL",
+  "taxonomy_name": "Cross Sell",
+  "vendor": "",
+  "product": "Cross Sell",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CROSS_SELL.json",
+    "original_name": "Cross Sell"
+  },
+  "research": [
+    {
+      "url": "https://csell.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cross_sell_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "load\\.csell\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Cart Functionality",
+    "Shopify"
+  ],
+  "categories": [
+    76
+  ],
+  "notes": "Cross Sell provide recommendations solution for Shopify based sites.",
+  "website": "https://csell.io/"
+}

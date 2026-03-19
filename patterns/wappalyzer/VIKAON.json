@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-vikaon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIKAON",
+  "taxonomy_name": "VikaOn",
+  "vendor": "",
+  "product": "VikaOn",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VIKAON.json",
+    "original_name": "VikaOn"
+  },
+  "research": [
+    {
+      "url": "https://vikaon.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_vikaon_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-vikaon-version",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "(.+)",
+          "version_extract": "(.+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "VikaOn is a Turkish ecommerce platform that enables businesses and consumers to buy and sell products online through a centralized digital marketplace.",
+  "website": "https://vikaon.com"
+}

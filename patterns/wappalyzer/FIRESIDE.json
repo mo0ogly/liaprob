@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fireside",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FIRESIDE",
+  "taxonomy_name": "Fireside",
+  "vendor": "",
+  "product": "Fireside",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FIRESIDE.json",
+    "original_name": "Fireside"
+  },
+  "research": [
+    {
+      "url": "https://fireside.fm",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fireside_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^fireside\\.$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "fireside ([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "fireside ([\\d\\.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "a\\.fireside\\.fm/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    38
+  ],
+  "notes": "Fireside is a platform that provides podcast hosting and analytics services.",
+  "website": "https://fireside.fm"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-worldz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORLDZ",
+  "taxonomy_name": "Worldz",
+  "vendor": "",
+  "product": "Worldz",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WORLDZ.json",
+    "original_name": "Worldz"
+  },
+  "research": [
+    {
+      "url": "https://www.worldz-business.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_worldz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.worldztool\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    76
+  ],
+  "notes": "Worldz calculates the economic value of a user’s social popularity (qualitatively and quantitatively). In proportion to this value, it provides a personalised discount, which can be applied in exchange for a social sharing by the user on their Instagram or Facebook profile.",
+  "website": "https://www.worldz-business.net"
+}

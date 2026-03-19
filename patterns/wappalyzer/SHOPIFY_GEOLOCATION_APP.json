@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopify_geolocation_app",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPIFY_GEOLOCATION_APP",
+  "taxonomy_name": "Shopify Geolocation App",
+  "vendor": "",
+  "product": "Shopify Geolocation App",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPIFY_GEOLOCATION_APP.json",
+    "original_name": "Shopify Geolocation App"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/geolocation",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopify_geolocation_app_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "geolocation-recommendations\\.shopifycloud\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100,
+    79
+  ],
+  "notes": "Shopify Geolocation App makes language and country recommendations to your customers based on their geographic location and browser or device language.",
+  "website": "https://apps.shopify.com/geolocation"
+}

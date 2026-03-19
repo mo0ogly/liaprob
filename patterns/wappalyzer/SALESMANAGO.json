@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-salesmanago",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SALESMANAGO",
+  "taxonomy_name": "SALESmanago",
+  "vendor": "",
+  "product": "SALESmanago",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SALESMANAGO.json",
+    "original_name": "SALESmanago"
+  },
+  "research": [
+    {
+      "url": "https://www.salesmanago.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_salesmanago_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.salesmanago\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97,
+    32
+  ],
+  "notes": "SALESmanago is a no-code marketing automation and customer data platform designed for mid-sized buinesses and enterprises.",
+  "website": "https://www.salesmanago.com"
+}

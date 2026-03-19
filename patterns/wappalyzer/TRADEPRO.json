@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tradepro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRADEPRO",
+  "taxonomy_name": "TradePro",
+  "vendor": "",
+  "product": "TradePro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRADEPRO.json",
+    "original_name": "TradePro"
+  },
+  "research": [
+    {
+      "url": "https://www.itb-pim.com/software-products/tradepro",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tradepro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "sessiontradepro",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:https?:\\/\\/[^\"']+)?\\/tradepro\\/shop\\/appserv\\/.*",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "TradePro is a B2B ecommerce platform that enables businesses to connect, manage transactions, and streamline trade activities in a digital environment.",
+  "website": "https://www.itb-pim.com/software-products/tradepro"
+}

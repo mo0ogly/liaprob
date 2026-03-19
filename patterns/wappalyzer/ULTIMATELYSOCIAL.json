@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ultimatelysocial",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ULTIMATELYSOCIAL",
+  "taxonomy_name": "UltimatelySocial",
+  "vendor": "",
+  "product": "UltimatelySocial",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ULTIMATELYSOCIAL.json",
+    "original_name": "UltimatelySocial"
+  },
+  "research": [
+    {
+      "url": "https://www.ultimatelysocial.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ultimatelysocial_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/ultimate-social-media-icons/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87
+  ],
+  "notes": "Ultimately Social (Share Buttons & Sharing Icons) is a plugin that allows you to place fancy social media icons and buttons on your WordPress website.",
+  "website": "https://www.ultimatelysocial.com"
+}

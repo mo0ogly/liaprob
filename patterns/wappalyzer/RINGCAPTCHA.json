@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ringcaptcha",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RINGCAPTCHA",
+  "taxonomy_name": "RingCaptcha",
+  "vendor": "",
+  "product": "RingCaptcha",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RINGCAPTCHA.json",
+    "original_name": "RingCaptcha"
+  },
+  "research": [
+    {
+      "url": "https://ringcaptcha.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ringcaptcha_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.ringcaptcha\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "RingCaptcha is a full stack service that lets you onboard and verify users with SMS.",
+  "website": "https://ringcaptcha.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-enterprise_bot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENTERPRISE_BOT",
+  "taxonomy_name": "Enterprise Bot",
+  "vendor": "",
+  "product": "Enterprise Bot",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ENTERPRISE_BOT.json",
+    "original_name": "Enterprise Bot"
+  },
+  "research": [
+    {
+      "url": "https://www.enterprisebot.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_enterprise_bot_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.enterprisebot\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Enterprise Bot specializes in developing and deploying complex conversational AI systems tailored for enterprise settings, leveraging natural language processing, machine learning, and automation to improve customer interactions and streamline operations.",
+  "website": "https://www.enterprisebot.ai"
+}

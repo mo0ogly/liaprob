@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-5centscdn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "5CENTSCDN",
+  "taxonomy_name": "5centsCDN",
+  "vendor": "",
+  "product": "5centsCDN",
+  "source": {
+    "type": "wappalyzer",
+    "file": "5CENTSCDN.json",
+    "original_name": "5centsCDN"
+  },
+  "research": [
+    {
+      "url": "https://www.5centscdn.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_5centscdn_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-cdn",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^5centscdn$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.5centscdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "5centsCDN is a content delivery networks service provider.",
+  "website": "https://www.5centscdn.net"
+}

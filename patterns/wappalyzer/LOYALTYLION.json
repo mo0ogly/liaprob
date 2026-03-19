@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-loyaltylion",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOYALTYLION",
+  "taxonomy_name": "LoyaltyLion",
+  "vendor": "",
+  "product": "LoyaltyLion",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOYALTYLION.json",
+    "original_name": "LoyaltyLion"
+  },
+  "research": [
+    {
+      "url": "https://loyaltylion.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_loyaltylion_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdk\\.loyaltylion\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "LoyaltyLion is a data-driven ecommerce loyalty and engagement platform.",
+  "website": "https://loyaltylion.com"
+}

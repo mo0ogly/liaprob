@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-constructor_io",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONSTRUCTOR_IO",
+  "taxonomy_name": "Constructor.io",
+  "vendor": "",
+  "product": "Constructor.io",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONSTRUCTOR_IO.json",
+    "original_name": "Constructor.io"
+  },
+  "research": [
+    {
+      "url": "https://constructor.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_constructor_io_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cnstrc\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "Constructor.io is a site search and merchandising platform designed to help ecommerce.",
+  "website": "https://constructor.io/"
+}

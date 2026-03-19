@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-apache_traffic_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_TRAFFIC_SERVER",
+  "taxonomy_name": "Apache Traffic Server",
+  "vendor": "",
+  "product": "Apache Traffic Server",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APACHE_TRAFFIC_SERVER.json",
+    "original_name": "Apache Traffic Server"
+  },
+  "research": [
+    {
+      "url": "https://trafficserver.apache.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_apache_traffic_server_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "ats/?([\\d.]+)?",
+          "version_extract": "ats/?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:apache:traffic_server:*:*:*:*:*:*:*:*",
+  "categories": [
+    22
+  ],
+  "notes": "Apache Traffic Server is an open-source caching and proxying server that serves as an HTTP/1.1 and HTTP/2 reverse proxy with caching capabilities, load balancing, request routing, SSL termination, and support for advanced HTTP features.",
+  "website": "https://trafficserver.apache.org/"
+}

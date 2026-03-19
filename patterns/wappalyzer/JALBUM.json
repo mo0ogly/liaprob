@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jalbum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JALBUM",
+  "taxonomy_name": "JAlbum",
+  "vendor": "",
+  "product": "JAlbum",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JALBUM.json",
+    "original_name": "JAlbum"
+  },
+  "research": [
+    {
+      "url": "https://jalbum.net/en",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jalbum_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "jalbum( [\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "jalbum( [\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    7
+  ],
+  "notes": "jAlbum is across-platform photo website software for creating and uploading galleries from images and videos.",
+  "website": "https://jalbum.net/en"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-invenio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INVENIO",
+  "taxonomy_name": "Invenio",
+  "vendor": "",
+  "product": "Invenio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INVENIO.json",
+    "original_name": "Invenio"
+  },
+  "research": [
+    {
+      "url": "https://invenio-software.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_invenio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "inveniosession",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?:powered by|system)\\s+(?:cern )?<a (?:class=\"footer\" )?href=\"http://(?:cdsware\\.cern\\.ch(?:/invenio)?|invenio-software\\.org|cern\\.ch/invenio)(?:/)?\">(?:cds )?invenio</a>\\s*v?([\\d\\.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:powered by|system)\\s+(?:cern )?<a (?:class=\"footer\" )?href=\"http://(?:cdsware\\.cern\\.ch(?:/invenio)?|invenio-software\\.org|cern\\.ch/invenio)(?:/)?\">(?:cds )?invenio</a>\\s*v?([\\d\\.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    50
+  ],
+  "notes": "Invenio is an open-source software framework for large-scale digital repositories that provides the tools for management of digital assets in an institutional repository and research data management systems.",
+  "website": "https://invenio-software.org"
+}

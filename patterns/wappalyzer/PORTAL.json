@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-portal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PORTAL",
+  "taxonomy_name": "Portal",
+  "vendor": "",
+  "product": "Portal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PORTAL.json",
+    "original_name": "Portal"
+  },
+  "research": [
+    {
+      "url": "https://www.portal.ir",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_portal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^portal site builder",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Portal is a platform providing necessary tools for crafting professional websites or online stores, encompassing hosting, domain registration, an intuitive management panel for creating new pages, and ongoing support.",
+  "website": "https://www.portal.ir"
+}

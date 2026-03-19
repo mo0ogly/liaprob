@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sprinthub",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPRINTHUB",
+  "taxonomy_name": "SprintHub",
+  "vendor": "",
+  "product": "SprintHub",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPRINTHUB.json",
+    "original_name": "SprintHub"
+  },
+  "research": [
+    {
+      "url": "https://lp.sprinthub.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sprinthub_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sprinthub\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "SprintHub is an all-in-one marketing platform.",
+  "website": "https://lp.sprinthub.com"
+}

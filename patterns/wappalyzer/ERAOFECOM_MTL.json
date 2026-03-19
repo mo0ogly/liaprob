@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-eraofecom_mtl",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ERAOFECOM_MTL",
+  "taxonomy_name": "EraofEcom MTL",
+  "vendor": "",
+  "product": "EraofEcom MTL",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ERAOFECOM_MTL.json",
+    "original_name": "EraofEcom MTL"
+  },
+  "research": [
+    {
+      "url": "https://eraofecom.org/collections/tech/products/milk-the-leads",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_eraofecom_mtl_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mtl\\.eraofecom\\.org",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "EraofEcom MTL is a Shopify pop up app that enables you to catch your website visitors.",
+  "website": "https://eraofecom.org/collections/tech/products/milk-the-leads"
+}

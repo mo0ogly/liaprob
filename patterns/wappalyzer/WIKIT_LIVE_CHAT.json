@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wikit_live_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WIKIT_LIVE_CHAT",
+  "taxonomy_name": "Wikit Live Chat",
+  "vendor": "",
+  "product": "Wikit Live Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WIKIT_LIVE_CHAT.json",
+    "original_name": "Wikit Live Chat"
+  },
+  "research": [
+    {
+      "url": "https://www.wikit.ai/solution/livechat",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wikit_live_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "webchat\\.wikit\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Wikit Live Chat is a platform that enables the creation of intelligent chatbots, leveraging the capabilities of generative AI to enhance user interactions.",
+  "website": "https://www.wikit.ai/solution/livechat"
+}

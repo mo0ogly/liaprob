@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zola",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOLA",
+  "taxonomy_name": "Zola",
+  "vendor": "",
+  "product": "Zola",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZOLA.json",
+    "original_name": "Zola"
+  },
+  "research": [
+    {
+      "url": "https://www.getzola.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zola_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^zola(?:\\s[\\d\\.]+)?$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getzola\\.org",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    57
+  ],
+  "notes": "Zola is a static site engine that consolidates essential features in a single binary.",
+  "website": "https://www.getzola.org/"
+}

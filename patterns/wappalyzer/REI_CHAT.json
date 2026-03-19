@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rei_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REI_CHAT",
+  "taxonomy_name": "REI Chat",
+  "vendor": "",
+  "product": "REI Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REI_CHAT.json",
+    "original_name": "REI Chat"
+  },
+  "research": [
+    {
+      "url": "https://reichat.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rei_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "my\\.reichat\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "REI Chat is an AI-powered chatbot designed to understand and communicate within the real estate domain.",
+  "website": "https://reichat.ai"
+}

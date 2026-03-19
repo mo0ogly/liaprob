@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-preezie",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PREEZIE",
+  "taxonomy_name": "Preezie",
+  "vendor": "",
+  "product": "Preezie",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PREEZIE.json",
+    "original_name": "Preezie"
+  },
+  "research": [
+    {
+      "url": "https://preezie.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_preezie_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ui-widgets\\.preezie\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Preezie is a provider of tools and education that enables retailers to implement an online sales assistant through a guided conversion and product discovery platform.",
+  "website": "https://preezie.com"
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-application_request_routing",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLICATION_REQUEST_ROUTING",
+  "taxonomy_name": "Application Request Routing",
+  "vendor": "",
+  "product": "Application Request Routing",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APPLICATION_REQUEST_ROUTING.json",
+    "original_name": "Application Request Routing"
+  },
+  "research": [
+    {
+      "url": "https://www.iis.net/downloads/microsoft/application-request-routing",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_application_request_routing_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^arr/([\\d\\.]+)$",
+          "version_extract": "^arr/([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "IIS"
+  ],
+  "categories": [
+    65
+  ],
+  "notes": "Application Request Routing (ARR) is an extension to Internet Information Server (IIS), which enables an IIS server to function as a load balancer.",
+  "website": "https://www.iis.net/downloads/microsoft/application-request-routing"
+}

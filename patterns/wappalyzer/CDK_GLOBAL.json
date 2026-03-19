@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cdk_global",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CDK_GLOBAL",
+  "taxonomy_name": "CDK Global",
+  "vendor": "",
+  "product": "CDK Global",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CDK_GLOBAL.json",
+    "original_name": "CDK Global"
+  },
+  "research": [
+    {
+      "url": "https://www.cdkglobal.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cdk_global_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.connectcdk\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "CDK Global offered a range of software and digital marketing solutions designed to help automotive businesses manage their operations, improve customer engagement, and enhance their online presence. Their services included dealership management systems (DMS), customer relationship management (CRM) software, website and digital marketing services, and various other tools tailored to the automotive industry.",
+  "website": "https://www.cdkglobal.com"
+}

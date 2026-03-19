@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webrick",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBRICK",
+  "taxonomy_name": "WEBrick",
+  "vendor": "",
+  "product": "WEBrick",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBRICK.json",
+    "original_name": "WEBrick"
+  },
+  "research": [
+    {
+      "url": "https://docs.ruby-lang.org/en/2.4.0/WEBrick.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webrick_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^webrick/([\\d\\.]+)",
+          "version_extract": "^webrick/([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:ruby-lang:webrick:*:*:*:*:*:*:*:*",
+  "categories": [
+    22
+  ],
+  "notes": "WEBrick is a lightweight HTTP server library in Ruby, included in the standard library, primarily used for local development and testing of Ruby web applications.",
+  "website": "https://docs.ruby-lang.org/en/2.4.0/WEBrick.html"
+}

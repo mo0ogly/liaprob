@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sqwiz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQWIZ",
+  "taxonomy_name": "Sqwiz",
+  "vendor": "",
+  "product": "Sqwiz",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQWIZ.json",
+    "original_name": "Sqwiz"
+  },
+  "research": [
+    {
+      "url": "https://sqwiz.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sqwiz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//sqwiz\\.com/scripts/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Sqwiz is a tool that uses previously entered business information, such as name, contact details, and Facebook posts, to build a mobile-ready website.",
+  "website": "https://sqwiz.com"
+}

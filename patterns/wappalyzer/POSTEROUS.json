@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-posterous",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POSTEROUS",
+  "taxonomy_name": "Posterous",
+  "vendor": "",
+  "product": "Posterous",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POSTEROUS.json",
+    "original_name": "Posterous"
+  },
+  "research": [
+    {
+      "url": "https://posterous.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_posterous_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=\"posterous",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    11
+  ],
+  "website": "https://posterous.com"
+}

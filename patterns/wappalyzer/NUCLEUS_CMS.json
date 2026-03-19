@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nucleus_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NUCLEUS_CMS",
+  "taxonomy_name": "Nucleus CMS",
+  "vendor": "",
+  "product": "Nucleus CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NUCLEUS_CMS.json",
+    "original_name": "Nucleus CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.nucleus-cms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nucleus_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^nucleus(?: cms)?\\s+v?(\\d+\\.\\d+(?:\\.\\d+)?)",
+          "confidence_delta": 0.5,
+          "version_extract": "^nucleus(?: cms)?\\s+v?(\\d+\\.\\d+(?:\\.\\d+)?)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "nucleuscms\\.er\\.cz/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Nucleus CMS is a free, open-source web application framework and content management system.",
+  "website": "https://www.nucleus-cms.com"
+}

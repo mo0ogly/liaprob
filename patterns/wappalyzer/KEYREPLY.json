@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-keyreply",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KEYREPLY",
+  "taxonomy_name": "KeyReply",
+  "vendor": "",
+  "product": "KeyReply",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KEYREPLY.json",
+    "original_name": "KeyReply"
+  },
+  "research": [
+    {
+      "url": "https://www.keyreply.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_keyreply_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "keyreply\\.com/chat/widget\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "KeyReply is a mobile-friendly chat widget that enables websites to provide real-time messaging and user support across devices.",
+  "website": "https://www.keyreply.com"
+}

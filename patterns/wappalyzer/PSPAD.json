@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pspad",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PSPAD",
+  "taxonomy_name": "PSPad",
+  "vendor": "",
+  "product": "PSPad",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PSPAD.json",
+    "original_name": "PSPad"
+  },
+  "research": [
+    {
+      "url": "https://www.pspad.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pspad_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^pspad editor, www.pspad.com$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    24
+  ],
+  "notes": "PSPad is a feature-rich text editor designed for developers and professionals working with text, offering tools for coding, syntax highlighting, and project management.",
+  "website": "https://www.pspad.com"
+}

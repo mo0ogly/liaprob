@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-neo_omnichannel_commerce_platform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEO_OMNICHANNEL_COMMERCE_PLATFORM",
+  "taxonomy_name": "NEO - Omnichannel Commerce Platform",
+  "vendor": "",
+  "product": "NEO - Omnichannel Commerce Platform",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEO_OMNICHANNEL_COMMERCE_PLATFORM.json",
+    "original_name": "NEO - Omnichannel Commerce Platform"
+  },
+  "research": [
+    {
+      "url": "https://www.jetecommerce.com.br",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_neo_omnichannel_commerce_platform_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "powered",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "jet-neo"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "NEO is an ecommerce software that manages multiple online stores.",
+  "website": "https://www.jetecommerce.com.br"
+}

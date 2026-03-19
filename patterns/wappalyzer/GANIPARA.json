@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ganipara",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GANIPARA",
+  "taxonomy_name": "GaniPara",
+  "vendor": "",
+  "product": "GaniPara",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GANIPARA.json",
+    "original_name": "GaniPara"
+  },
+  "research": [
+    {
+      "url": "https://ganipara.com/planlar",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ganipara_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "apple-mobile-web-app-title",
+          "match_type": "regex",
+          "value": "^ganipara$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.ganipara\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "GaniPara is a hosted ecommerce solution based in Turkey, providing infrastructure for setting up and managing online stores.",
+  "website": "https://ganipara.com/planlar"
+}

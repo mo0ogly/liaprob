@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nextauth_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXTAUTH_JS",
+  "taxonomy_name": "NextAuth.js",
+  "vendor": "",
+  "product": "NextAuth.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEXTAUTH_JS.json",
+    "original_name": "NextAuth.js"
+  },
+  "research": [
+    {
+      "url": "https://next-auth.js.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nextauth_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "__host-next-auth.csrf-token",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "__secure-next-auth.callback-url",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "NextAuth.js is a complete open-source authentication solution for Next.js applications.",
+  "website": "https://next-auth.js.org"
+}

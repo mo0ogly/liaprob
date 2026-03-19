@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ihomefinder_idx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IHOMEFINDER_IDX",
+  "taxonomy_name": "iHomefinder IDX",
+  "vendor": "",
+  "product": "iHomefinder IDX",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IHOMEFINDER_IDX.json",
+    "original_name": "iHomefinder IDX"
+  },
+  "research": [
+    {
+      "url": "https://www.ihomefinder.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ihomefinder_idx_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.idxhome\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "iHomefinder provides IDX property search, built-in CRM, and marketing tools.",
+  "website": "https://www.ihomefinder.com"
+}

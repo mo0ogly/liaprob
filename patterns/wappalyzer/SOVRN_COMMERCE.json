@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sovrn_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOVRN_COMMERCE",
+  "taxonomy_name": "Sovrn//Commerce",
+  "vendor": "",
+  "product": "Sovrn//Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SOVRN_COMMERCE.json",
+    "original_name": "Sovrn//Commerce"
+  },
+  "research": [
+    {
+      "url": "https://www.sovrn.com/publishers/commerce/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sovrn_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:^[^/]*//[^/]*viglink\\.com/api/|vglnk\\.js)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Sovrn//Commerce is  a content monetization tool for publishers.",
+  "website": "https://www.sovrn.com/publishers/commerce/"
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-next_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXT_JS",
+  "taxonomy_name": "Next.js",
+  "vendor": "",
+  "product": "Next.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEXT_JS.json",
+    "original_name": "Next.js"
+  },
+  "research": [
+    {
+      "url": "https://nextjs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_next_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^next\\.js ?([0-9.]+)?",
+          "version_extract": "^next\\.js ?([0-9.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:zeit:next.js:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Node.js",
+    "React",
+    "Webpack"
+  ],
+  "categories": [
+    12,
+    18
+  ],
+  "notes": "Next.js is a React framework for developing single page Javascript applications.",
+  "website": "https://nextjs.org"
+}

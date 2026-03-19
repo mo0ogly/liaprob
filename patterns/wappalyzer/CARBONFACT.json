@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-carbonfact",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARBONFACT",
+  "taxonomy_name": "Carbonfact",
+  "vendor": "",
+  "product": "Carbonfact",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CARBONFACT.json",
+    "original_name": "Carbonfact"
+  },
+  "research": [
+    {
+      "url": "https://www.carbonfact.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_carbonfact_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.carbonfact\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Carbonfact is a platform for fashion brands to manage their carbon emissions. It enables the measurement, reporting, and reduction of emissions in the apparel, textile, leather, and luxury sectors.",
+  "website": "https://www.carbonfact.com"
+}

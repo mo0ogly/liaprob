@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zenchef",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZENCHEF",
+  "taxonomy_name": "Zenchef",
+  "vendor": "",
+  "product": "Zenchef",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZENCHEF.json",
+    "original_name": "Zenchef"
+  },
+  "research": [
+    {
+      "url": "https://www.zenchef.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zenchef_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdk\\.zenchef\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Zenchef is a restaurant management software solution that simplifies the customer restaurant experience.",
+  "website": "https://www.zenchef.com"
+}

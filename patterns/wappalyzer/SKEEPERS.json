@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-skeepers",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SKEEPERS",
+  "taxonomy_name": "Skeepers",
+  "vendor": "",
+  "product": "Skeepers",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SKEEPERS.json",
+    "original_name": "Skeepers"
+  },
+  "research": [
+    {
+      "url": "https://skeepers.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_skeepers_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdk\\.skeepers\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Skeepers is a platform designed to improve customer satisfaction and support business growth through enhanced engagement and feedback tools.",
+  "website": "https://skeepers.io"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-postano",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POSTANO",
+  "taxonomy_name": "Postano",
+  "vendor": "",
+  "product": "Postano",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POSTANO.json",
+    "original_name": "Postano"
+  },
+  "research": [
+    {
+      "url": "https://www.postano.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_postano_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.postano\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    96
+  ],
+  "notes": "Postano is a social content management platform that aggregates, curates, and displays user-generated content across digital channels.",
+  "website": "https://www.postano.com"
+}

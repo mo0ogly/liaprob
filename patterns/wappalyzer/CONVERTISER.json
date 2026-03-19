@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-convertiser",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONVERTISER",
+  "taxonomy_name": "Convertiser",
+  "vendor": "",
+  "product": "Convertiser",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONVERTISER.json",
+    "original_name": "Convertiser"
+  },
+  "research": [
+    {
+      "url": "https://convertiser.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_convertiser_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.convertiser\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Convertiser is a website monetization platform from Poland that helps publishers and advertisers optimize revenue through performance-based marketing solutions.",
+  "website": "https://convertiser.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-frill",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRILL",
+  "taxonomy_name": "Frill",
+  "vendor": "",
+  "product": "Frill",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRILL.json",
+    "original_name": "Frill"
+  },
+  "research": [
+    {
+      "url": "https://frill.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_frill_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.frill\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Frill is a platform that connects customers and businesses by enabling customers to provide feedback.",
+  "website": "https://frill.co"
+}

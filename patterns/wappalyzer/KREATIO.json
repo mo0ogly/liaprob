@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kreatio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KREATIO",
+  "taxonomy_name": "Kreatio",
+  "vendor": "",
+  "product": "Kreatio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KREATIO.json",
+    "original_name": "Kreatio"
+  },
+  "research": [
+    {
+      "url": "https://www.kreatio.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kreatio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "powered by",
+          "match_type": "regex",
+          "value": "^kreatio platform$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Kreatio is a content management system designed to enhance digital publishing efficiency and streamline content delivery.",
+  "website": "https://www.kreatio.com"
+}

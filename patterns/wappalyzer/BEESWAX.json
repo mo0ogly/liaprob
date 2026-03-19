@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-beeswax",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEESWAX",
+  "taxonomy_name": "Beeswax",
+  "vendor": "",
+  "product": "Beeswax",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEESWAX.json",
+    "original_name": "Beeswax"
+  },
+  "research": [
+    {
+      "url": "https://www.beeswax.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_beeswax_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "segment\\.prod\\.bidr\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Beeswax offers Bidder-as-a-Service solution.",
+  "website": "https://www.beeswax.com/"
+}

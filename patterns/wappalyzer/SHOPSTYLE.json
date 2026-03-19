@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopstyle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPSTYLE",
+  "taxonomy_name": "ShopStyle",
+  "vendor": "",
+  "product": "ShopStyle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPSTYLE.json",
+    "original_name": "ShopStyle"
+  },
+  "research": [
+    {
+      "url": "https://www.shopstyle.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopstyle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "ssc\\.shopstyle\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6,
+    29
+  ],
+  "notes": "Shopstyle is a fashion and lifestyle search engine and shopping platform that aggregates products from multiple retailers to enable discovery and comparison.",
+  "website": "https://www.shopstyle.com"
+}

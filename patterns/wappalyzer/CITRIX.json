@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-citrix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITRIX",
+  "taxonomy_name": "Citrix",
+  "vendor": "",
+  "product": "Citrix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CITRIX.json",
+    "original_name": "Citrix"
+  },
+  "research": [
+    {
+      "url": "https://www.citrix.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_citrix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/ctxs\\.core\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    46
+  ],
+  "notes": "Citrix is a people-centric solutions provider offering software that enables employees to work and collaborate remotely, irrespective of their device or network.",
+  "website": "https://www.citrix.com"
+}

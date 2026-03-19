@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-soplanning",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOPLANNING",
+  "taxonomy_name": "SOPlanning",
+  "vendor": "",
+  "product": "SOPlanning",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SOPLANNING.json",
+    "original_name": "SOPlanning"
+  },
+  "research": [
+    {
+      "url": "https://www.soplanning.org/en/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_soplanning_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "email",
+          "match_type": "regex",
+          "value": "^support@soplanning\\.org$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "SOPlanning is an online project management software that enhances team visibility and facilitates task coordination through a centralized platform.",
+  "website": "https://www.soplanning.org/en/"
+}

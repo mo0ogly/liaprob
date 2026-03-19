@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tailwind_css",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TAILWIND_CSS",
+  "taxonomy_name": "Tailwind CSS",
+  "vendor": "",
+  "product": "Tailwind CSS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TAILWIND_CSS.json",
+    "original_name": "Tailwind CSS"
+  },
+  "research": [
+    {
+      "url": "https://tailwindcss.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tailwind_css_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.tailwindcss(?:tailwind-config-cdn)?\\.(?:com|js)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    66
+  ],
+  "notes": "Tailwind is a utility-first CSS framework.",
+  "website": "https://tailwindcss.com/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-startest",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STARTEST",
+  "taxonomy_name": "StarTest",
+  "vendor": "",
+  "product": "StarTest",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STARTEST.json",
+    "original_name": "StarTest"
+  },
+  "research": [
+    {
+      "url": "https://startest.top",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_startest_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.startest\\.top",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "StarTest is a CAPTCHA provider that safeguards websites, mobile apps, and APIs from automated bot-driven attacks.",
+  "website": "https://startest.top"
+}

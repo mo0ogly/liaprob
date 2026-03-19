@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-replyco",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REPLYCO",
+  "taxonomy_name": "Replyco",
+  "vendor": "",
+  "product": "Replyco",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REPLYCO.json",
+    "original_name": "Replyco"
+  },
+  "research": [
+    {
+      "url": "https://replyco.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_replyco_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.replyco\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Replyco is a helpdesk software designed for ecommerce sellers to manage and centralise inbox messages across various marketplaces.",
+  "website": "https://replyco.com"
+}

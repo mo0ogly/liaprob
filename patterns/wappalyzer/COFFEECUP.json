@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coffeecup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COFFEECUP",
+  "taxonomy_name": "CoffeeCup",
+  "vendor": "",
+  "product": "CoffeeCup",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COFFEECUP.json",
+    "original_name": "CoffeeCup"
+  },
+  "research": [
+    {
+      "url": "https://www.coffeecup.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coffeecup_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^coffeecup visual site designer",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "CoffeeCup is a suite of web development tools for building sites, emails, and forms, with optional coding for added flexibility.",
+  "website": "https://www.coffeecup.com"
+}

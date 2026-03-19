@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ibexa_dxp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBEXA_DXP",
+  "taxonomy_name": "Ibexa DXP ",
+  "vendor": "",
+  "product": "Ibexa DXP ",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IBEXA_DXP.json",
+    "original_name": "Ibexa DXP "
+  },
+  "research": [
+    {
+      "url": "https://www.ibexa.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ibexa_dxp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^ibexa\\sexperience\\sv([\\d\\.]+)$",
+          "version_extract": "^ibexa\\sexperience\\sv([\\d\\.]+)$"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^ez platform",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP",
+    "Symfony"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Ibexa DXP is an open-source enterprise PHP content management system (CMS) and Digital Experience Platform (DXP) developed by the company Ibexa (known previously as eZ Systems).",
+  "website": "https://www.ibexa.co"
+}

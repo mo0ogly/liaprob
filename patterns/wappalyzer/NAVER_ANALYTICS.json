@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-naver_analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NAVER_ANALYTICS",
+  "taxonomy_name": "Naver Analytics",
+  "vendor": "",
+  "product": "Naver Analytics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NAVER_ANALYTICS.json",
+    "original_name": "Naver Analytics"
+  },
+  "research": [
+    {
+      "url": "https://analytics.naver.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_naver_analytics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "wcs\\.naver\\.net/wcslog\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Naver Analytics is a Korean based analytics service.",
+  "website": "https://analytics.naver.com"
+}

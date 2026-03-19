@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-frappe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRAPPE",
+  "taxonomy_name": "Frappe",
+  "vendor": "",
+  "product": "Frappe",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRAPPE.json",
+    "original_name": "Frappe"
+  },
+  "research": [
+    {
+      "url": "https://frappeframework.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_frappe_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^frappe$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MariaDB",
+    "Python"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Frappe is a full stack, batteries-included, web framework written in Python and Javascript.",
+  "website": "https://frappeframework.com"
+}

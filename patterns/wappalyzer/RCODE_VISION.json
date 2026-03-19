@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rcode_vision",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RCODE_VISION",
+  "taxonomy_name": "Rcode Vision",
+  "vendor": "",
+  "product": "Rcode Vision",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RCODE_VISION.json",
+    "original_name": "Rcode Vision"
+  },
+  "research": [
+    {
+      "url": "https://www.rcodevision.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rcode_vision_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^rcode vision$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "Rcode Vision is a platform that develops and delivers web applications.",
+  "website": "https://www.rcodevision.com"
+}

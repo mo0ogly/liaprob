@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-brainsins",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BRAINSINS",
+  "taxonomy_name": "BrainSINS",
+  "vendor": "",
+  "product": "BrainSINS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BRAINSINS.json",
+    "original_name": "BrainSINS"
+  },
+  "research": [
+    {
+      "url": "https://brainsins.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_brainsins_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cloudfront\\.net/brainsins(?:_v)?(\\d+)\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "cloudfront\\.net/brainsins(?:_v)?(\\d+)\\.js"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mw\\.brainsins\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "BrainSINS is a personalisation technology and ecommerce analytics services to online retailers.",
+  "website": "https://brainsins.com"
+}

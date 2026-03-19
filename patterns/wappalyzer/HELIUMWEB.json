@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-heliumweb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HELIUMWEB",
+  "taxonomy_name": "HeliumWeb",
+  "vendor": "",
+  "product": "HeliumWeb",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HELIUMWEB.json",
+    "original_name": "HeliumWeb"
+  },
+  "research": [
+    {
+      "url": "https://heliumweb.adrikikicp-development.ml",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_heliumweb_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "adrikikicp development"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "helium/src/helium.js/helium_web.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "http://maven.enriquitomcfh.ml/helium.js/helium_web.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "http://maven.enriquitomcfh.ml/helium.js/helium_web.min.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "HeliumWeb is a server-side (backend) web framework written in PHP & JavaScript",
+  "website": "https://heliumweb.adrikikicp-development.ml"
+}

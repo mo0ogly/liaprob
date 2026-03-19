@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rainloop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAINLOOP",
+  "taxonomy_name": "RainLoop",
+  "vendor": "",
+  "product": "RainLoop",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RAINLOOP.json",
+    "original_name": "RainLoop"
+  },
+  "research": [
+    {
+      "url": "https://www.rainloop.net/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rainloop_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^rainloop"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]href=\"rainloop/v/([0-9.]+)/static/apple-touch-icon\\.png/>",
+          "confidence_delta": 0.5,
+          "version_extract": "<link[^>]href=\"rainloop/v/([0-9.]+)/static/apple-touch-icon\\.png/>"
+        },
+        {
+          "target": "meta",
+          "field": "rlappversion",
+          "match_type": "regex",
+          "value": "^([0-9.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^([0-9.]+)$"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^rainloop/v/([0-9.]+)/",
+          "confidence_delta": 0.5,
+          "version_extract": "^rainloop/v/([0-9.]+)/"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    30
+  ],
+  "notes": "RainLoop is a web-based email client.",
+  "website": "https://www.rainloop.net/"
+}

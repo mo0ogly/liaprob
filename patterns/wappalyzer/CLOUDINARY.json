@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cloudinary",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDINARY",
+  "taxonomy_name": "Cloudinary",
+  "vendor": "",
+  "product": "Cloudinary",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOUDINARY.json",
+    "original_name": "Cloudinary"
+  },
+  "research": [
+    {
+      "url": "https://cloudinary.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cloudinary_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "player\\.cloudinary\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31,
+    95
+  ],
+  "notes": "Cloudinary is an end-to-end image- and video-management solution for websites and mobile apps, covering everything from image and video uploads, storage, manipulations, optimisations to delivery.",
+  "website": "https://cloudinary.com"
+}

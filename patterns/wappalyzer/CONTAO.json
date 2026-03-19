@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-contao",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONTAO",
+  "taxonomy_name": "Contao",
+  "vendor": "",
+  "product": "Contao",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONTAO.json",
+    "original_name": "Contao"
+  },
+  "research": [
+    {
+      "url": "https://contao.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_contao_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^contao open source cms$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:contao:contao_cms:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Contao is an open source CMS that allows you to create websites and scalable web applications.",
+  "website": "https://contao.org"
+}

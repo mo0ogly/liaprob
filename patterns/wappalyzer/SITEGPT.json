@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sitegpt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITEGPT",
+  "taxonomy_name": "SiteGPT",
+  "vendor": "",
+  "product": "SiteGPT",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITEGPT.json",
+    "original_name": "SiteGPT"
+  },
+  "research": [
+    {
+      "url": "https://sitegpt.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sitegpt_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//sitegpt\\.ai/widget/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "SiteGPT is an AI-powered chatbot that delivers personalized customer support by generating responses grounded in a site’s existing content.",
+  "website": "https://sitegpt.ai"
+}

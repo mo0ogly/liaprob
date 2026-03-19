@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-beam_outsell",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEAM_OUTSELL",
+  "taxonomy_name": "Beam OutSell",
+  "vendor": "",
+  "product": "Beam OutSell",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEAM_OUTSELL.json",
+    "original_name": "Beam OutSell"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/outsell",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_beam_outsell_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//outsellapp\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "OutSell is a Shopify app by Beam. Frequently Bought Together, Discounted Upsell, Also Bought.",
+  "website": "https://apps.shopify.com/outsell"
+}

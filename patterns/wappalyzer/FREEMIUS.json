@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-freemius",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FREEMIUS",
+  "taxonomy_name": "Freemius",
+  "vendor": "",
+  "product": "Freemius",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FREEMIUS.json",
+    "original_name": "Freemius"
+  },
+  "research": [
+    {
+      "url": "https://freemius.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_freemius_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "checkout\\.freemius\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Freemius is a managed ecommerce engine designed for selling WordPress plugins.",
+  "website": "https://freemius.com"
+}

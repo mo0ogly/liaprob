@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bowser",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOWSER",
+  "taxonomy_name": "bowser",
+  "vendor": "",
+  "product": "bowser",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOWSER.json",
+    "original_name": "bowser"
+  },
+  "research": [
+    {
+      "url": "https://opencollective.com/bowser",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bowser_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:((?:\\d+\\.)+\\d+)\\/)?bowser(?:\\.min)?(?:[-\\.][\\d\\w]{0,64})?\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "(?:((?:\\d+\\.)+\\d+)\\/)?bowser(?:\\.min)?(?:[-\\.][\\d\\w]{0,64})?\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "A small, fast and rich-API browser/platform/engine detector for both browser and node.",
+  "website": "https://opencollective.com/bowser"
+}

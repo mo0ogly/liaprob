@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clearbit_reveal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLEARBIT_REVEAL",
+  "taxonomy_name": "Clearbit Reveal",
+  "vendor": "",
+  "product": "Clearbit Reveal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLEARBIT_REVEAL.json",
+    "original_name": "Clearbit Reveal"
+  },
+  "research": [
+    {
+      "url": "https://clearbit.com/reveal",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clearbit_reveal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "reveal\\.clearbit\\.com/v[(0-9)]/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Clearbit Reveal identifies anonymous visitors to websites.",
+  "website": "https://clearbit.com/reveal"
+}

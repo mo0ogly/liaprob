@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sizeme",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIZEME",
+  "taxonomy_name": "SizeMe",
+  "vendor": "",
+  "product": "SizeMe",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SIZEME.json",
+    "original_name": "SizeMe"
+  },
+  "research": [
+    {
+      "url": "https://www.sizemeai.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sizeme_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.api\\.sizemeai\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "SizeMe is a platform that helps customers consistently find the correct size and fit for products.",
+  "website": "https://www.sizemeai.com"
+}

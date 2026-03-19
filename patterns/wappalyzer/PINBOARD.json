@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pinboard",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PINBOARD",
+  "taxonomy_name": "Pinboard",
+  "vendor": "",
+  "product": "Pinboard",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PINBOARD.json",
+    "original_name": "Pinboard"
+  },
+  "research": [
+    {
+      "url": "https://pinboard.in",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pinboard_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "feeds\\.pinboard\\.in",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Pinboard is a widget that displays bookmarks directly on a website for easy access and organization.",
+  "website": "https://pinboard.in"
+}

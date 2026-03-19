@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-neos_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEOS_CMS",
+  "taxonomy_name": "Neos CMS",
+  "vendor": "",
+  "product": "Neos CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEOS_CMS.json",
+    "original_name": "Neos CMS"
+  },
+  "research": [
+    {
+      "url": "https://neos.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_neos_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-flow-powered",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "neos/?(.+)?$",
+          "version_extract": "neos/?(.+)?$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Neos Flow"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://neos.io"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zurb_foundation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZURB_FOUNDATION",
+  "taxonomy_name": "ZURB Foundation",
+  "vendor": "",
+  "product": "ZURB Foundation",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZURB_FOUNDATION.json",
+    "original_name": "ZURB Foundation"
+  },
+  "research": [
+    {
+      "url": "https://foundation.zurb.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zurb_foundation_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*class=\"[^\"]*(?:small|medium|large)-\\d{1,2} columns",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+foundation[^>\"]+css",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    66
+  ],
+  "notes": "Zurb Foundation is used to prototype in the browser. Allows rapid creation of websites or applications while leveraging mobile and responsive technology. The front end framework is the collection of HTML, CSS, and Javascript containing design patterns.",
+  "website": "https://foundation.zurb.com"
+}

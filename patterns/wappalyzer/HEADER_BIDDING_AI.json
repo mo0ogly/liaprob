@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-header_bidding_ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HEADER_BIDDING_AI",
+  "taxonomy_name": "Header Bidding Ai",
+  "vendor": "",
+  "product": "Header Bidding Ai",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HEADER_BIDDING_AI.json",
+    "original_name": "Header Bidding Ai"
+  },
+  "research": [
+    {
+      "url": "https://headerbidding.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_header_bidding_ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.headerbidding\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    36
+  ],
+  "notes": "Header Bidding Ai is a provider of an automated and managed header bidding solution. Header bidding cutting-edge technique where publishers offer their ad inventory to many ad exchanges.",
+  "website": "https://headerbidding.ai"
+}

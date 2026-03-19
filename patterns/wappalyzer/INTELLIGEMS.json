@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-intelligems",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTELLIGEMS",
+  "taxonomy_name": "Intelligems",
+  "vendor": "",
+  "product": "Intelligems",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INTELLIGEMS.json",
+    "original_name": "Intelligems"
+  },
+  "research": [
+    {
+      "url": "https://www.intelligems.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_intelligems_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "ig-location",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.intelligems\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    74,
+    76,
+    100
+  ],
+  "notes": "Intelligems is an experimentation platform that helps developers build and run A/B tests on websites.",
+  "website": "https://www.intelligems.io/"
+}

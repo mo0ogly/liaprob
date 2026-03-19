@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mri_eagle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MRI_EAGLE",
+  "taxonomy_name": "MRI Eagle",
+  "vendor": "",
+  "product": "MRI Eagle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MRI_EAGLE.json",
+    "original_name": "MRI Eagle"
+  },
+  "research": [
+    {
+      "url": "https://www.mrisoftware.com/au/products/eagle",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mri_eagle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.eaglesoftware\\.com\\.au",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "MRI Eagle is a technology solution catering to real estate firms, offering efficiency and cost-saving benefits.",
+  "website": "https://www.mrisoftware.com/au/products/eagle"
+}

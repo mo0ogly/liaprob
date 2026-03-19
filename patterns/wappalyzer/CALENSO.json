@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-calenso",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CALENSO",
+  "taxonomy_name": "Calenso",
+  "vendor": "",
+  "product": "Calenso",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CALENSO.json",
+    "original_name": "Calenso"
+  },
+  "research": [
+    {
+      "url": "https://calenso.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_calenso_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.calenso\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Calenso is an online enterprise scheduling solution that helps companies in consulting-intensive industries organize appointments.",
+  "website": "https://calenso.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-user_accessibility",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "USER_ACCESSIBILITY",
+  "taxonomy_name": "User Accessibility",
+  "vendor": "",
+  "product": "User Accessibility",
+  "source": {
+    "type": "wappalyzer",
+    "file": "USER_ACCESSIBILITY.json",
+    "original_name": "User Accessibility"
+  },
+  "research": [
+    {
+      "url": "https://user-a.co.il",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_user_accessibility_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//system\\.user-a\\.co\\.il/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "User Accessibility is a solution incorporating automated site scanning and machine learning for future updates, while utilising JS to conform to WECAG standards for improved website and application accessibility.",
+  "website": "https://user-a.co.il"
+}

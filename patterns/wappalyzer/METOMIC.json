@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-metomic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METOMIC",
+  "taxonomy_name": "Metomic",
+  "vendor": "",
+  "product": "Metomic",
+  "source": {
+    "type": "wappalyzer",
+    "file": "METOMIC.json",
+    "original_name": "Metomic"
+  },
+  "research": [
+    {
+      "url": "https://metomic.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_metomic_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "metomic\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "website": "https://metomic.io"
+}

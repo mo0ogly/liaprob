@@ -1,0 +1,93 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-phpbb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPBB",
+  "taxonomy_name": "phpBB",
+  "vendor": "",
+  "product": "phpBB",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PHPBB.json",
+    "original_name": "phpBB"
+  },
+  "research": [
+    {
+      "url": "https://phpbb.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_phpbb_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "phpbb",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+styles/(?:sub|pro)silver/theme",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div class=phpbb_copyright>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+i_icon_mini",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<table class=\"[^\"]*forumline",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a[^>]+phpbb",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "copyright",
+          "match_type": "regex",
+          "value": "phpbb group",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:phpbb:phpbb:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "phpBB is a free open-source Internet forum package in the PHP scripting language.",
+  "website": "https://phpbb.com"
+}

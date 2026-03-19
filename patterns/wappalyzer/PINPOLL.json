@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pinpoll",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PINPOLL",
+  "taxonomy_name": "Pinpoll",
+  "vendor": "",
+  "product": "Pinpoll",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PINPOLL.json",
+    "original_name": "Pinpoll"
+  },
+  "research": [
+    {
+      "url": "https://www.pinpoll.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pinpoll_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.pinpoll\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    97
+  ],
+  "notes": "Pinpoll is a tool that collects contact data from users for analytics, marketing, or customer engagement purposes.",
+  "website": "https://www.pinpoll.com"
+}

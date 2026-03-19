@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adoric",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADORIC",
+  "taxonomy_name": "Adoric",
+  "vendor": "",
+  "product": "Adoric",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADORIC.json",
+    "original_name": "Adoric"
+  },
+  "research": [
+    {
+      "url": "https://adoric.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adoric_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.adoric-om\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Adoric is a lead generation tool for personalized website engagement and conversion optimisation (CRO) platform.",
+  "website": "https://adoric.com"
+}

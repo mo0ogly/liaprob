@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-provide_support",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROVIDE_SUPPORT",
+  "taxonomy_name": "Provide Support",
+  "vendor": "",
+  "product": "Provide Support",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROVIDE_SUPPORT.json",
+    "original_name": "Provide Support"
+  },
+  "research": [
+    {
+      "url": "https://www.providesupport.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_provide_support_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.providesupport\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Provide Support is a SaaS for customer service that includes live chat, real-time website monitoring, chat statistics.",
+  "website": "https://www.providesupport.com"
+}

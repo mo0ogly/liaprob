@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tomtom_maps",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOMTOM_MAPS",
+  "taxonomy_name": "TomTom Maps",
+  "vendor": "",
+  "product": "TomTom Maps",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TOMTOM_MAPS.json",
+    "original_name": "TomTom Maps"
+  },
+  "research": [
+    {
+      "url": "https://www.tomtom.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tomtom_maps_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.tomtom\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "TomTom Maps is a web mapping service.",
+  "website": "https://www.tomtom.com"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hyva_themes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HYVA_THEMES",
+  "taxonomy_name": "Hyva Themes",
+  "vendor": "",
+  "product": "Hyva Themes",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HYVA_THEMES.json",
+    "original_name": "Hyva Themes"
+  },
+  "research": [
+    {
+      "url": "https://www.hyva.io/hyva-theme-license.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hyva_themes_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-built-with",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^hyva themes$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Alpine.js",
+    "Magento\\;version:2",
+    "Tailwind CSS"
+  ],
+  "categories": [
+    6,
+    108
+  ],
+  "notes": "Hyva Themes is a performance-optimised theme for Magento 2 which eliminated the third-party libraries and having only two dependencies Alpine.js and Tailwind CSS.",
+  "website": "https://www.hyva.io/hyva-theme-license.html"
+}

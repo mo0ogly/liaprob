@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-authorized_by",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUTHORIZED_BY",
+  "taxonomy_name": "authorized.by",
+  "vendor": "",
+  "product": "authorized.by",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUTHORIZED_BY.json",
+    "original_name": "authorized.by"
+  },
+  "research": [
+    {
+      "url": "https://www.authorized.by",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_authorized_by_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.authorized\\.by",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "authorized.by is a service that enables shops to verify products and confirm their authenticity.",
+  "website": "https://www.authorized.by"
+}

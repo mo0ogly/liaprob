@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bonsai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BONSAI",
+  "taxonomy_name": "Bonsai",
+  "vendor": "",
+  "product": "Bonsai",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BONSAI.json",
+    "original_name": "Bonsai"
+  },
+  "research": [
+    {
+      "url": "https://www.hellobonsai.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bonsai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "apple-mobile-web-app-title",
+          "match_type": "regex",
+          "value": "^bonsai$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Bonsai is a platform that creates, sends, and tracks proposals online for streamlined client communication and project management.",
+  "website": "https://www.hellobonsai.com"
+}

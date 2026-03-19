@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-basin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BASIN",
+  "taxonomy_name": "Basin",
+  "vendor": "",
+  "product": "Basin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BASIN.json",
+    "original_name": "Basin"
+  },
+  "research": [
+    {
+      "url": "https://usebasin.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_basin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.usebasin\\.com/v([\\d\\.]+)\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "js\\.usebasin\\.com/v([\\d\\.]+)\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    110
+  ],
+  "notes": "Basin is a plug-and-play form backend for designers and developers, allowing users to collect submissions and track conversions without coding.",
+  "website": "https://usebasin.com"
+}

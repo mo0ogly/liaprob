@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ookla_speedtest_custom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OOKLA_SPEEDTEST_CUSTOM",
+  "taxonomy_name": "Ookla Speedtest Custom",
+  "vendor": "",
+  "product": "Ookla Speedtest Custom",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OOKLA_SPEEDTEST_CUSTOM.json",
+    "original_name": "Ookla Speedtest Custom"
+  },
+  "research": [
+    {
+      "url": "https://www.ookla.com/speedtest-custom",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ookla_speedtest_custom_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.speedtestcustom\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.speedtestcustom\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "Speedtest Custom is a robust and accurate testing solution that is HTML5-based, Flash-free and supports both mobile and desktop browsers built by Ookla.",
+  "website": "https://www.ookla.com/speedtest-custom"
+}

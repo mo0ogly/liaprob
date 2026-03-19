@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-brownie",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BROWNIE",
+  "taxonomy_name": "Brownie",
+  "vendor": "",
+  "product": "Brownie",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BROWNIE.json",
+    "original_name": "Brownie"
+  },
+  "research": [
+    {
+      "url": "https://www.browniesuite.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_brownie_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "brownie"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.youthsrl\\.com/brownie",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Amazon Web Services",
+    "Bootstrap",
+    "MySQL",
+    "PHP",
+    "jQuery"
+  ],
+  "categories": [
+    1,
+    6
+  ],
+  "notes": "Brownie is a framework, CMS, ecommerce and ERP omni-channel platform to manage your entire business in one cloud solution.",
+  "website": "https://www.browniesuite.com"
+}

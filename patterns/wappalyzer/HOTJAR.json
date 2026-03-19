@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hotjar",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOTJAR",
+  "taxonomy_name": "Hotjar",
+  "vendor": "",
+  "product": "Hotjar",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HOTJAR.json",
+    "original_name": "Hotjar"
+  },
+  "research": [
+    {
+      "url": "https://www.hotjar.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hotjar_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//static\\.hotjar\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Hotjar is a suite of analytic tools to assist in the gathering of qualitative data, providing feedback through tools such as heatmaps, session recordings, and surveys.",
+  "website": "https://www.hotjar.com"
+}

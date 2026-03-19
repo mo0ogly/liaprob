@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jquery_modal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JQUERY_MODAL",
+  "taxonomy_name": "jQuery Modal",
+  "vendor": "",
+  "product": "jQuery Modal",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JQUERY_MODAL.json",
+    "original_name": "jQuery Modal"
+  },
+  "research": [
+    {
+      "url": "https://jquerymodal.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jquery_modal_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "jquery-modal/([\\d\\.]+)/jquery\\.modal\\.min\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "jquery-modal/([\\d\\.]+)/jquery\\.modal\\.min\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "jQuery Modal is an overlay dialog box or in other words, a popup window that is made to display on the top or 'overlayed' on the current page.",
+  "website": "https://jquerymodal.com"
+}

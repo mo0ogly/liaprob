@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-eber",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EBER",
+  "taxonomy_name": "Eber",
+  "vendor": "",
+  "product": "Eber",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EBER.json",
+    "original_name": "Eber"
+  },
+  "research": [
+    {
+      "url": "https://eber.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_eber_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.eber\\.co/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "Eber is a consumer engagement management platform for retail, F&B, hotels, and more.",
+  "website": "https://eber.co"
+}

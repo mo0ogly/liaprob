@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zola_planner",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOLA_PLANNER",
+  "taxonomy_name": "Zola Planner",
+  "vendor": "",
+  "product": "Zola Planner",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZOLA_PLANNER.json",
+    "original_name": "Zola Planner"
+  },
+  "research": [
+    {
+      "url": "https://www.zola.com/wedding-registry",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zola_planner_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "www\\.zola\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Zola Planner is a wedding registry system that allows couples to manage gift selections, track contributions, and coordinate registry details in one centralized platform.",
+  "website": "https://www.zola.com/wedding-registry"
+}

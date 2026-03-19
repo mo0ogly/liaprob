@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nextsale",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEXTSALE",
+  "taxonomy_name": "Nextsale",
+  "vendor": "",
+  "product": "Nextsale",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEXTSALE.json",
+    "original_name": "Nextsale"
+  },
+  "research": [
+    {
+      "url": "https://nextsale.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nextsale_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:api|sdk)\\.nextsale\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    32
+  ],
+  "notes": "Nextsale is a conversion optimisation platform that provides social proof and urgency tools for ecommerce websites.",
+  "website": "https://nextsale.io"
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-plesk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLESK",
+  "taxonomy_name": "Plesk",
+  "vendor": "",
+  "product": "Plesk",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLESK.json",
+    "original_name": "Plesk"
+  },
+  "research": [
+    {
+      "url": "https://www.plesk.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_plesk_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^plesk(?:l|w)in"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by-plesk",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^plesk"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "common\\.js\\?plesk",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:parallels:parallels_plesk_panel:*:*:*:*:*:*:*:*",
+  "categories": [
+    9
+  ],
+  "notes": "Plesk is a web hosting and server data centre automation software with a control panel developed for Linux and Windows-based retail hosting service providers.",
+  "website": "https://www.plesk.com"
+}

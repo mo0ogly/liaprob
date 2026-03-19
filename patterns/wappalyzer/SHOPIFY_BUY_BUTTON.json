@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopify_buy_button",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPIFY_BUY_BUTTON",
+  "taxonomy_name": "Shopify Buy Button",
+  "vendor": "",
+  "product": "Shopify Buy Button",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPIFY_BUY_BUTTON.json",
+    "original_name": "Shopify Buy Button"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/buy-button",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopify_buy_button_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdks\\.shopifycdn\\.com/buy-button/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdks\\.shopifycdn\\.com/js-buy-sdk/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Shopify Buy Button is an app from Shopify which allows merchant to embed buy functionality for any product or collection into another website or blog.",
+  "website": "https://apps.shopify.com/buy-button"
+}

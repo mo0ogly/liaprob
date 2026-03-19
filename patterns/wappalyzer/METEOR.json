@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-meteor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METEOR",
+  "taxonomy_name": "Meteor",
+  "vendor": "",
+  "product": "Meteor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "METEOR.json",
+    "original_name": "Meteor"
+  },
+  "research": [
+    {
+      "url": "https://www.meteor.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_meteor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<link[^>]+__meteor-css__",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MongoDB",
+    "Node.js"
+  ],
+  "categories": [
+    12,
+    18
+  ],
+  "website": "https://www.meteor.com"
+}

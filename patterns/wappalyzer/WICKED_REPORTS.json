@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wicked_reports",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WICKED_REPORTS",
+  "taxonomy_name": "Wicked Reports",
+  "vendor": "",
+  "product": "Wicked Reports",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WICKED_REPORTS.json",
+    "original_name": "Wicked Reports"
+  },
+  "research": [
+    {
+      "url": "https://www.wickedreports.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wicked_reports_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.wickedreports\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Wicked Reports is a marketing analytics platform that provides subscription-based, actionable reports on marketing results at each stage of the customer's journey from first click to sale.",
+  "website": "https://www.wickedreports.com"
+}

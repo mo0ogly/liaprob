@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-smile_app",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SMILE_APP",
+  "taxonomy_name": "Smile App",
+  "vendor": "",
+  "product": "Smile App",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SMILE_APP.json",
+    "original_name": "Smile App"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/smile-io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_smile_app_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.smile\\.io/.+smile-shopify\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Smile"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Smile App offers a loyalty program for Shopify stores.",
+  "website": "https://apps.shopify.com/smile-io"
+}

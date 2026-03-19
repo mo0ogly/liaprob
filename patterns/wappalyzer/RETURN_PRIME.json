@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-return_prime",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RETURN_PRIME",
+  "taxonomy_name": "Return Prime",
+  "vendor": "",
+  "product": "Return Prime",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RETURN_PRIME.json",
+    "original_name": "Return Prime"
+  },
+  "research": [
+    {
+      "url": "https://www.returnprime.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_return_prime_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//return-prime-proxy-prod\\.s3[^ ]*\\.amazonaws\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100,
+    102
+  ],
+  "notes": "Return Prime is an application to manage returns for Shopify stores.",
+  "website": "https://www.returnprime.com/"
+}

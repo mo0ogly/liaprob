@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-super_socializer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUPER_SOCIALIZER",
+  "taxonomy_name": "Super Socializer",
+  "vendor": "",
+  "product": "Super Socializer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SUPER_SOCIALIZER.json",
+    "original_name": "Super Socializer"
+  },
+  "research": [
+    {
+      "url": "https://super-socializer-wordpress.heateor.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_super_socializer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "plugins/super-socializer/.+?ver=([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "plugins/super-socializer/.+?ver=([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69,
+    87
+  ],
+  "notes": "Super Socializer is a multipurpose social media plugin for WordPress.",
+  "website": "https://super-socializer-wordpress.heateor.com"
+}

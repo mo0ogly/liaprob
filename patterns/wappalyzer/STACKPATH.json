@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-stackpath",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STACKPATH",
+  "taxonomy_name": "StackPath",
+  "vendor": "",
+  "product": "StackPath",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STACKPATH.json",
+    "original_name": "StackPath"
+  },
+  "research": [
+    {
+      "url": "https://www.stackpath.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_stackpath_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-backend-server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "hosting\\.stackcp\\.net$"
+        },
+        {
+          "target": "header",
+          "field": "x-provided-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^stackcdn(?: ([\\d.]+))?",
+          "version_extract": "^stackcdn(?: ([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "StackPath is a cloud computing and services provider.",
+  "website": "https://www.stackpath.com"
+}

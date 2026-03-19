@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sails_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAILS_JS",
+  "taxonomy_name": "Sails.js",
+  "vendor": "",
+  "product": "Sails.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SAILS_JS.json",
+    "original_name": "Sails.js"
+  },
+  "research": [
+    {
+      "url": "https://sailsjs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sails_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^sails(?:$|[^a-z0-9])"
+        },
+        {
+          "target": "cookie",
+          "field": "sails.sid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Express"
+  ],
+  "categories": [
+    18
+  ],
+  "website": "https://sailsjs.org"
+}

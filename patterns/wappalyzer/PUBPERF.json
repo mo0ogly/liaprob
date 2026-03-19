@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pubperf",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUBPERF",
+  "taxonomy_name": "Pubperf",
+  "vendor": "",
+  "product": "Pubperf",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUBPERF.json",
+    "original_name": "Pubperf"
+  },
+  "research": [
+    {
+      "url": "https://www.pubperf.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pubperf_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "t\\.pubperf\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Pubperf is an analytics suite designed for digital publishers to measure, monitor, and optimize audience engagement, advertising performance, and content effectiveness across multiple platforms.",
+  "website": "https://www.pubperf.com"
+}

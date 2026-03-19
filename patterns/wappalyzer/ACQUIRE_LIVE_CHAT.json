@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquire_live_chat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIRE_LIVE_CHAT",
+  "taxonomy_name": "Acquire Live Chat",
+  "vendor": "",
+  "product": "Acquire Live Chat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIRE_LIVE_CHAT.json",
+    "original_name": "Acquire Live Chat"
+  },
+  "research": [
+    {
+      "url": "https://acquire.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquire_live_chat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.acquire\\.io/(?!cobrowse)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Acquire is a multi-channel customer support platform designed to provide real-time customer support to customers.",
+  "website": "https://acquire.io"
+}

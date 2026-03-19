@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-asknicely",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASKNICELY",
+  "taxonomy_name": "AskNicely",
+  "vendor": "",
+  "product": "AskNicely",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ASKNICELY.json",
+    "original_name": "AskNicely"
+  },
+  "research": [
+    {
+      "url": "https://www.asknicely.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_asknicely_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "static\\.asknice\\.ly/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "AskNicely is a platform that measures and improves customer happiness using the Net Promoter Score (NPS) framework.",
+  "website": "https://www.asknicely.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-elevio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELEVIO",
+  "taxonomy_name": "Elevio",
+  "vendor": "",
+  "product": "Elevio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ELEVIO.json",
+    "original_name": "Elevio"
+  },
+  "research": [
+    {
+      "url": "https://elev.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_elevio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.elev\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    58
+  ],
+  "notes": "Elevio is a self-service support platform for SaaS that delivers contextual knowledge to customers, support agents, and internal teams.",
+  "website": "https://elev.io"
+}

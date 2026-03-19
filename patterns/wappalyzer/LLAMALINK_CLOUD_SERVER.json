@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-llamalink_cloud_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LLAMALINK_CLOUD_SERVER",
+  "taxonomy_name": "LlamaLink Cloud Server",
+  "vendor": "",
+  "product": "LlamaLink Cloud Server",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LLAMALINK_CLOUD_SERVER.json",
+    "original_name": "LlamaLink Cloud Server"
+  },
+  "research": [
+    {
+      "url": "https://llamalink.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_llamalink_cloud_server_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^llamalink"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Nginx"
+  ],
+  "categories": [
+    22
+  ],
+  "notes": "LlamaLink Cloud Server is a custom dynamic web server based on Nginx Web server that load balance user traffic between hosting nodes and allows fast and cached experience to web and app users.",
+  "website": "https://llamalink.net"
+}

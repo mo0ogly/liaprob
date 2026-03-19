@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-black_crow",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLACK_CROW",
+  "taxonomy_name": "Black Crow",
+  "vendor": "",
+  "product": "Black Crow",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLACK_CROW.json",
+    "original_name": "Black Crow"
+  },
+  "research": [
+    {
+      "url": "https://www.blackcrow.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_black_crow_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.blackcrow\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Blackcrow is a platform that analyzes data to improve conversion funnels using AI-driven insights and automated actions.",
+  "website": "https://www.blackcrow.ai"
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fly_io",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLY_IO",
+  "taxonomy_name": "Fly.io",
+  "vendor": "",
+  "product": "Fly.io",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FLY_IO.json",
+    "original_name": "Fly.io"
+  },
+  "research": [
+    {
+      "url": "https://fly.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fly_io_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "fly-request-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^fly/[\\w]+\\s\\(.*\\)$"
+        },
+        {
+          "target": "header",
+          "field": "via",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^.*\\sfly\\.io$"
+        },
+        {
+          "target": "cookie",
+          "field": "_fly",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "Fly is a platform for running full stack apps and databases.",
+  "website": "https://fly.io"
+}

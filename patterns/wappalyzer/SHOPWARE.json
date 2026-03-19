@@ -1,0 +1,115 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shopware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPWARE",
+  "taxonomy_name": "Shopware",
+  "vendor": "",
+  "product": "Shopware",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPWARE.json",
+    "original_name": "Shopware"
+  },
+  "research": [
+    {
+      "url": "https://www.shopware.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shopware_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "sw-context-token",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^[\\w]{32}$",
+          "version_extract": "^[\\w]{32}$"
+        },
+        {
+          "target": "header",
+          "field": "sw-invalidation-states",
+          "confidence_delta": 0.5,
+          "match_type": "exists",
+          "version_extract": ""
+        },
+        {
+          "target": "header",
+          "field": "sw-language-id",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^[a-fa-f0-9]{32}$",
+          "version_extract": "^[a-fa-f0-9]{32}$"
+        },
+        {
+          "target": "header",
+          "field": "sw-version-id",
+          "confidence_delta": 0.5,
+          "match_type": "exists",
+          "version_extract": ""
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<title>shopware ([\\d\\.]+) [^<]+",
+          "confidence_delta": 0.5,
+          "version_extract": "<title>shopware ([\\d\\.]+) [^<]+"
+        },
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "shopware",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(?:(shopware)|/web/cache/[0-9]{10}_.+)\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/engine/shopware/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/jquery\\.shopware\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:shopware:shopware:*:*:*:*:*:*:*:*",
+  "implies": [
+    "MySQL",
+    "PHP",
+    "Symfony",
+    "jQuery"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "Shopware is an enterprise-level ecommerce platform.",
+  "website": "https://www.shopware.com"
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-the_com",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THE_COM",
+  "taxonomy_name": "The.com",
+  "vendor": "",
+  "product": "The.com",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THE_COM.json",
+    "original_name": "The.com"
+  },
+  "research": [
+    {
+      "url": "https://www.the.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_the_com_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "the-dotcom-public-cdn\\.s3\\.amazonaws\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Amazon S3",
+    "React"
+  ],
+  "categories": [
+    18,
+    51
+  ],
+  "notes": "The.com is a low-code website building platform with community-created components that you can share and own.",
+  "website": "https://www.the.com"
+}

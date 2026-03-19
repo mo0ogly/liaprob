@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gitlab_ci_cd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GITLAB_CI_CD",
+  "taxonomy_name": "GitLab CI/CD",
+  "vendor": "",
+  "product": "GitLab CI/CD",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GITLAB_CI_CD.json",
+    "original_name": "GitLab CI/CD"
+  },
+  "research": [
+    {
+      "url": "https://about.gitlab.com/gitlab-ci",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gitlab_ci_cd_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "description",
+          "match_type": "regex",
+          "value": "gitlab ci/cd is a tool built into gitlab for software development through continuous methodologies.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Ruby on Rails"
+  ],
+  "categories": [
+    44,
+    47
+  ],
+  "website": "https://about.gitlab.com/gitlab-ci"
+}

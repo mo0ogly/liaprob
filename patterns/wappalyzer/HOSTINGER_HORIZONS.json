@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hostinger_horizons",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOSTINGER_HORIZONS",
+  "taxonomy_name": "Hostinger Horizons",
+  "vendor": "",
+  "product": "Hostinger Horizons",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HOSTINGER_HORIZONS.json",
+    "original_name": "Hostinger Horizons"
+  },
+  "research": [
+    {
+      "url": "https://www.hostinger.com/horizons",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hostinger_horizons_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^hostinger horizons$"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^hostinger horizons$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Hostinger Horizons is a no-code web app builder designed to simplify web application creation without requiring programming knowledge.",
+  "website": "https://www.hostinger.com/horizons"
+}

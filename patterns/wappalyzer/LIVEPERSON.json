@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-liveperson",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIVEPERSON",
+  "taxonomy_name": "LivePerson",
+  "vendor": "",
+  "product": "LivePerson",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIVEPERSON.json",
+    "original_name": "LivePerson"
+  },
+  "research": [
+    {
+      "url": "https://www.liveperson.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_liveperson_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.(?:liveperson|contactatonce)?\\.(?:com|net|co\\.uk)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "LivePerson is a tool for conversational chatbots and messaging.",
+  "website": "https://www.liveperson.com"
+}

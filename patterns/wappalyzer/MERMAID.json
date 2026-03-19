@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mermaid",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MERMAID",
+  "taxonomy_name": "Mermaid",
+  "vendor": "",
+  "product": "Mermaid",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MERMAID.json",
+    "original_name": "Mermaid"
+  },
+  "research": [
+    {
+      "url": "https://mermaidjs.github.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mermaid_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<div [^>]*class=[\"']mermaid[\"']>",
+          "confidence_delta": 0.9
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/mermaid(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    25
+  ],
+  "website": "https://mermaidjs.github.io/"
+}

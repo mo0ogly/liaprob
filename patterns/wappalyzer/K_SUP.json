@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-k_sup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "K_SUP",
+  "taxonomy_name": "K-Sup",
+  "vendor": "",
+  "product": "K-Sup",
+  "source": {
+    "type": "wappalyzer",
+    "file": "K_SUP.json",
+    "original_name": "K-Sup"
+  },
+  "research": [
+    {
+      "url": "https://www.ksup.org/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_k_sup_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^k-sup \\(([\\d.r]+)\\)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^k-sup \\(([\\d.r]+)\\)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "K-Sup is an open-source CMS/portal solution dedicated to higher education and research created by Kosmos Education.",
+  "website": "https://www.ksup.org/"
+}

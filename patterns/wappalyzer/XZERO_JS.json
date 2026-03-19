@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-xzero_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XZERO_JS",
+  "taxonomy_name": "Xzero JS",
+  "vendor": "",
+  "product": "Xzero JS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "XZERO_JS.json",
+    "original_name": "Xzero JS"
+  },
+  "research": [
+    {
+      "url": "https://xzerojs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_xzero_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "xzero-js@([\\d.]+)/xzero\\.min\\.js.*",
+          "confidence_delta": 0.5,
+          "version_extract": "xzero-js@([\\d.]+)/xzero\\.min\\.js.*"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    25
+  ],
+  "notes": "Xzero JS is a JavaScript library (ES6 module) for displaying 3D models, scenes and 360° panoramas on the web.",
+  "website": "https://xzerojs.org"
+}

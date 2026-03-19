@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ciklik",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CIKLIK",
+  "taxonomy_name": "Ciklik",
+  "vendor": "",
+  "product": "Ciklik",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CIKLIK.json",
+    "original_name": "Ciklik"
+  },
+  "research": [
+    {
+      "url": "https://www.ciklik.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ciklik_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "ciklik_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6,
+    41
+  ],
+  "notes": "Ciklik is an ecommerce platform that empowers individuals to establish online stores and market their subscription-based products.",
+  "website": "https://www.ciklik.co"
+}

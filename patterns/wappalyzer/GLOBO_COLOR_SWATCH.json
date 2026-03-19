@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-globo_color_swatch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLOBO_COLOR_SWATCH",
+  "taxonomy_name": "Globo Color Swatch",
+  "vendor": "",
+  "product": "Globo Color Swatch",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GLOBO_COLOR_SWATCH.json",
+    "original_name": "Globo Color Swatch"
+  },
+  "research": [
+    {
+      "url": "https://apps.shopify.com/globo-related-products",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_globo_color_swatch_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets/globo\\.swatch\\.data\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Globo Color Swatch app gives you an easy-to-use tool to display product variants on both collection page, homepage and product page creatively as a means to enhance customers' experience and stimulate them to purchase.",
+  "website": "https://apps.shopify.com/globo-related-products"
+}

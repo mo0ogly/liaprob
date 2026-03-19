@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rawgit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAWGIT",
+  "taxonomy_name": "RawGit",
+  "vendor": "",
+  "product": "RawGit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RAWGIT.json",
+    "original_name": "RawGit"
+  },
+  "research": [
+    {
+      "url": "https://rawgit.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rawgit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.rawgit\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    31
+  ],
+  "notes": "RawGit is a service that delivers raw files directly from GitHub, Bitbucket, or GitLab with correct Content-Type headers.",
+  "website": "https://rawgit.com"
+}

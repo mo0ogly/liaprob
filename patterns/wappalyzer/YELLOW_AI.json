@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yellow_ai",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YELLOW_AI",
+  "taxonomy_name": "yellow.ai",
+  "vendor": "",
+  "product": "yellow.ai",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YELLOW_AI.json",
+    "original_name": "yellow.ai"
+  },
+  "research": [
+    {
+      "url": "https://yellow.ai/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yellow_ai_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.yellowmessenger\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "yellow.ai provides chatbot and automation services.",
+  "website": "https://yellow.ai/"
+}

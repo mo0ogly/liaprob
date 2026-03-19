@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zakeke_interactive_product_designer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZAKEKE_INTERACTIVE_PRODUCT_DESIGNER",
+  "taxonomy_name": "Zakeke Interactive Product Designer",
+  "vendor": "",
+  "product": "Zakeke Interactive Product Designer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZAKEKE_INTERACTIVE_PRODUCT_DESIGNER.json",
+    "original_name": "Zakeke Interactive Product Designer"
+  },
+  "research": [
+    {
+      "url": "https://www.zakeke.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zakeke_interactive_product_designer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/zakeke-interactive-product-designer/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/plugins/zakeke-interactive-product-designer/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Zakeke"
+  ],
+  "categories": [
+    87,
+    76
+  ],
+  "notes": "Zakeke Interactive Product Designer lets customers personalise any product and visualise how they’ll look before checking out.",
+  "website": "https://www.zakeke.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-intiaro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTIARO",
+  "taxonomy_name": "Intiaro",
+  "vendor": "",
+  "product": "Intiaro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INTIARO.json",
+    "original_name": "Intiaro"
+  },
+  "research": [
+    {
+      "url": "https://en.intiaro.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_intiaro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "libs\\.intiaro\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Intiaro is a provider of home decor and furniture products designed to support the creation of stylish living spaces.",
+  "website": "https://en.intiaro.com"
+}

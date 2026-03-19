@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-unbxd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNBXD",
+  "taxonomy_name": "Unbxd",
+  "vendor": "",
+  "product": "Unbxd",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UNBXD.json",
+    "original_name": "Unbxd"
+  },
+  "research": [
+    {
+      "url": "https://unbxd.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_unbxd_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.cloudfront\\.net/unbxdanalytics\\.js",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "unbxd\\.s\\d\\.amazonaws\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    29
+  ],
+  "notes": "Unbxd is an ecommerce product discovery platform that applies artificial intelligence and advanced data sciences to connect shoppers to the products they are most likely to buy.",
+  "website": "https://unbxd.com"
+}

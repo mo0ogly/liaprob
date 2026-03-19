@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-plate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLATE",
+  "taxonomy_name": "Plate",
+  "vendor": "",
+  "product": "Plate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLATE.json",
+    "original_name": "Plate"
+  },
+  "research": [
+    {
+      "url": "https://www.getplate.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_plate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^plate$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Plate is a multisite content management system designed to manage and publish digital content across multiple websites from a centralized platform.",
+  "website": "https://www.getplate.com"
+}

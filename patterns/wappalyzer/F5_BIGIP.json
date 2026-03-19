@@ -1,0 +1,102 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-f5_bigip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "F5_BIGIP",
+  "taxonomy_name": "F5 BigIP",
+  "vendor": "",
+  "product": "F5 BigIP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "F5_BIGIP.json",
+    "original_name": "F5 BigIP"
+  },
+  "research": [
+    {
+      "url": "https://www.f5.com/products/big-ip-services",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_f5_bigip_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^big-?ip$"
+        },
+        {
+          "target": "cookie",
+          "field": "f5_fullwt",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "f5_ht_shrinked",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "f5_st",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "lastmrh_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "mrhsequence",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "mrhsession",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "mrhshint",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "tin",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:f5:big-ip:*:*:*:*:*:*:*:*",
+  "categories": [
+    64
+  ],
+  "notes": "F5's BIG-IP is a family of products covering software and hardware designed around application availability, access control, and security solutions.",
+  "website": "https://www.f5.com/products/big-ip-services"
+}

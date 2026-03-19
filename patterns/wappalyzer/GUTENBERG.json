@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gutenberg",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GUTENBERG",
+  "taxonomy_name": "Gutenberg",
+  "vendor": "",
+  "product": "Gutenberg",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GUTENBERG.json",
+    "original_name": "Gutenberg"
+  },
+  "research": [
+    {
+      "url": "https://github.com/WordPress/gutenberg",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gutenberg_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/gutenberg/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "WordPress Block Editor"
+  ],
+  "categories": [
+    87
+  ],
+  "notes": "Gutenberg is the development plugin in which new features for the WordPress Block Editor are tested.",
+  "website": "https://github.com/WordPress/gutenberg"
+}

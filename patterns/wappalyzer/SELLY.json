@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-selly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SELLY",
+  "taxonomy_name": "Selly",
+  "vendor": "",
+  "product": "Selly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SELLY.json",
+    "original_name": "Selly"
+  },
+  "research": [
+    {
+      "url": "https://selly.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_selly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.selly\\.(?:gg|io)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Selly is an ecommerce platform for selling digital goods.",
+  "website": "https://selly.io/"
+}

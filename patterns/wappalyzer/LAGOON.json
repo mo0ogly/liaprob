@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-lagoon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LAGOON",
+  "taxonomy_name": "Lagoon",
+  "vendor": "",
+  "product": "Lagoon",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LAGOON.json",
+    "original_name": "Lagoon"
+  },
+  "research": [
+    {
+      "url": "https://lagoon.sh/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_lagoon_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-lagoon",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    62
+  ],
+  "notes": "The Open Source Application Delivery Platform for Kubernetes.",
+  "website": "https://lagoon.sh/"
+}

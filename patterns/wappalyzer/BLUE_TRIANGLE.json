@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-blue_triangle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLUE_TRIANGLE",
+  "taxonomy_name": "Blue Triangle",
+  "vendor": "",
+  "product": "Blue Triangle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BLUE_TRIANGLE.json",
+    "original_name": "Blue Triangle"
+  },
+  "research": [
+    {
+      "url": "https://bluetriangle.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_blue_triangle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.btttag\\.com/btt\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16,
+    78
+  ],
+  "notes": "Blue Triangle is a connected view of marketing, web performance, and third-party tag analytics while constantly monitoring website code for security vulnerabilities.",
+  "website": "https://bluetriangle.com"
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-web_vitals",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEB_VITALS",
+  "taxonomy_name": "web-vitals",
+  "vendor": "",
+  "product": "web-vitals",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEB_VITALS.json",
+    "original_name": "web-vitals"
+  },
+  "research": [
+    {
+      "url": "https://github.com/GoogleChrome/web-vitals",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_web_vitals_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "web-vitals@([\\d.]+)/dist/web-vitals.*\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "web-vitals@([\\d.]+)/dist/web-vitals.*\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59,
+    78
+  ],
+  "notes": "The web-vitals JavaScript is a tiny, modular library for measuring all the web vitals metrics on real users.",
+  "website": "https://github.com/GoogleChrome/web-vitals"
+}

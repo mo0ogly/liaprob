@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-autovitals",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUTOVITALS",
+  "taxonomy_name": "AutoVitals",
+  "vendor": "",
+  "product": "AutoVitals",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUTOVITALS.json",
+    "original_name": "AutoVitals"
+  },
+  "research": [
+    {
+      "url": "https://www.autovitals.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_autovitals_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "docs\\.autovitals\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "AutoVitals is a shop productivity, acquisition, and retention tool designed for the automotive industry.",
+  "website": "https://www.autovitals.com"
+}

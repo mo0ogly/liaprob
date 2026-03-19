@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bazaarvoice_reviews",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BAZAARVOICE_REVIEWS",
+  "taxonomy_name": "Bazaarvoice Reviews",
+  "vendor": "",
+  "product": "Bazaarvoice Reviews",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BAZAARVOICE_REVIEWS.json",
+    "original_name": "Bazaarvoice Reviews"
+  },
+  "research": [
+    {
+      "url": "https://www.bazaarvoice.com/products/ratings-and-reviews/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bazaarvoice_reviews_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "apps\\.bazaarvoice\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Bazaarvoice is a provider of user-generated content solutions like ratings and reviews and Q&A.",
+  "website": "https://www.bazaarvoice.com/products/ratings-and-reviews/"
+}

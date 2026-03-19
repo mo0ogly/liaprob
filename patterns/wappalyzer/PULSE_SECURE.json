@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pulse_secure",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PULSE_SECURE",
+  "taxonomy_name": "Pulse Secure",
+  "vendor": "",
+  "product": "Pulse Secure",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PULSE_SECURE.json",
+    "original_name": "Pulse Secure"
+  },
+  "research": [
+    {
+      "url": "https://www.pulsesecure.net/products/remote-access-overview/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pulse_secure_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "dssignin",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:pulsesecure:pulse_connect_secure:*:*:*:*:*:*:*:*",
+  "categories": [
+    46
+  ],
+  "notes": "Pulse Secure allows to deploy VPNs to securely to your internal resources.",
+  "website": "https://www.pulsesecure.net/products/remote-access-overview/"
+}

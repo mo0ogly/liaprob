@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-platinmarket",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLATINMARKET",
+  "taxonomy_name": "PlatinMarket",
+  "vendor": "",
+  "product": "PlatinMarket",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PLATINMARKET.json",
+    "original_name": "PlatinMarket"
+  },
+  "research": [
+    {
+      "url": "https://www.platinmarket.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_platinmarket_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//platincdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "PlatinMarket is an ecommerce platform that provides solutions for online businesses to create and manage their online stores.",
+  "website": "https://www.platinmarket.com"
+}

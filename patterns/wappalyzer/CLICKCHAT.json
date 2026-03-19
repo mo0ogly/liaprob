@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clickchat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLICKCHAT",
+  "taxonomy_name": "ClickChat",
+  "vendor": "",
+  "product": "ClickChat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLICKCHAT.json",
+    "original_name": "ClickChat"
+  },
+  "research": [
+    {
+      "url": "https://click-chat.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clickchat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "script\\.click-chat\\.ru",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Click Chat is a web-based solution that enables chat installation on any website, facilitating real-time communication and customer engagement.",
+  "website": "https://click-chat.ru"
+}

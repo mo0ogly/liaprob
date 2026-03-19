@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-faveo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FAVEO",
+  "taxonomy_name": "Faveo",
+  "vendor": "",
+  "product": "Faveo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FAVEO.json",
+    "original_name": "Faveo"
+  },
+  "research": [
+    {
+      "url": "https://faveohelpdesk.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_faveo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/lb-faveo/js/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "Faveo is an open source help desk system and ticket management tool that enables tracking, assignment, and resolution of support tickets.",
+  "website": "https://faveohelpdesk.com"
+}

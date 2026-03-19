@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-thinkific",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THINKIFIC",
+  "taxonomy_name": "Thinkific",
+  "vendor": "",
+  "product": "Thinkific",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THINKIFIC.json",
+    "original_name": "Thinkific"
+  },
+  "research": [
+    {
+      "url": "https://www.thinkific.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_thinkific_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_thinkific_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn(?:-themes)?\\.thinkific\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "Thinkific is a software platform that enables entrepreneurs to create, market, sell, and deliver their own online courses.",
+  "website": "https://www.thinkific.com"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-openlayers",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENLAYERS",
+  "taxonomy_name": "OpenLayers",
+  "vendor": "",
+  "product": "OpenLayers",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPENLAYERS.json",
+    "original_name": "OpenLayers"
+  },
+  "research": [
+    {
+      "url": "https://openlayers.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_openlayers_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "openlayers",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "OpenLayers is an open-source JavaScript library for displaying map data in web browser.",
+  "website": "https://openlayers.org"
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sitepark_infosite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITEPARK_INFOSITE",
+  "taxonomy_name": "Sitepark InfoSite",
+  "vendor": "",
+  "product": "Sitepark InfoSite",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITEPARK_INFOSITE.json",
+    "original_name": "Sitepark InfoSite"
+  },
+  "research": [
+    {
+      "url": "https://www.sitepark.com/mittelstand/content-management-system/index.php",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sitepark_infosite_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^infosite\\s([\\d\\.]+)\\s-\\ssitepark\\sinformation\\senterprise\\sserver$",
+          "confidence_delta": 0.5,
+          "version_extract": "^infosite\\s([\\d\\.]+)\\s-\\ssitepark\\sinformation\\senterprise\\sserver$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Sitepark IES"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Sitepark InfoSite is a content management system and complete application of Sitepark IES which written in PHP and paired with a MySQL database.",
+  "website": "https://www.sitepark.com/mittelstand/content-management-system/index.php"
+}

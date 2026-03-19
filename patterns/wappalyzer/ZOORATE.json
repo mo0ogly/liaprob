@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-zoorate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOORATE",
+  "taxonomy_name": "Zoorate",
+  "vendor": "",
+  "product": "Zoorate",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ZOORATE.json",
+    "original_name": "Zoorate"
+  },
+  "research": [
+    {
+      "url": "https://zoorate.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_zoorate_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.zoorate\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Zoorate is a user-generated content sharing service tailored for retailers, facilitating the exchange of customer experiences and feedback.",
+  "website": "https://zoorate.com"
+}

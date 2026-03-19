@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-leadssight",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEADSSIGHT",
+  "taxonomy_name": "LeadsSight",
+  "vendor": "",
+  "product": "LeadsSight",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LEADSSIGHT.json",
+    "original_name": "LeadsSight"
+  },
+  "research": [
+    {
+      "url": "https://leadssight.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_leadssight_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.leadssight\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "LeadsSight is a tool that converts lost visitors on your website into potential leads by tracking their behaviour.",
+  "website": "https://leadssight.com"
+}

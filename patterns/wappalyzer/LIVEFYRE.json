@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-livefyre",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIVEFYRE",
+  "taxonomy_name": "Livefyre",
+  "vendor": "",
+  "product": "Livefyre",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LIVEFYRE.json",
+    "original_name": "Livefyre"
+  },
+  "research": [
+    {
+      "url": "https://livefyre.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_livefyre_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<[^>]+(?:id|class)=\"livefyre",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "livefyre_init\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    15
+  ],
+  "notes": "Livefyre is a platform that integrates with the social web to boost social interaction.",
+  "website": "https://livefyre.com"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-apollo13themes_rife",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APOLLO13THEMES_RIFE",
+  "taxonomy_name": "Apollo13Themes Rife",
+  "vendor": "",
+  "product": "Apollo13Themes Rife",
+  "source": {
+    "type": "wappalyzer",
+    "file": "APOLLO13THEMES_RIFE.json",
+    "original_name": "Apollo13Themes Rife"
+  },
+  "research": [
+    {
+      "url": "https://apollo13themes.com/rife",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_apollo13themes_rife_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/themes/rife(?:-free)?/(?:.+script\\.min\\.js(?:\\?ver=([\\d\\.]+)))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/themes/rife(?:-free)?/(?:.+script\\.min\\.js(?:\\?ver=([\\d\\.]+)))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Apollo13Themes Rife is a great portfolio and photography WordPress theme with 7 ready-to-use demo layouts.",
+  "website": "https://apollo13themes.com/rife"
+}

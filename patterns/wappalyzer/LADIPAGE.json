@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ladipage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LADIPAGE",
+  "taxonomy_name": "Ladipage",
+  "vendor": "",
+  "product": "Ladipage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LADIPAGE.json",
+    "original_name": "Ladipage"
+  },
+  "research": [
+    {
+      "url": "https://ladipage.vn",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ladipage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "w\\.ladicdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Ladipage is a landing page designing platform that helps businesses to promote sales by advertising their products and services.",
+  "website": "https://ladipage.vn"
+}

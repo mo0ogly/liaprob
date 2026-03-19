@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sezzle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEZZLE",
+  "taxonomy_name": "Sezzle",
+  "vendor": "",
+  "product": "Sezzle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEZZLE.json",
+    "original_name": "Sezzle"
+  },
+  "research": [
+    {
+      "url": "https://sezzle.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sezzle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.sezzle\\.(?:in|com)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41,
+    91
+  ],
+  "notes": "Sezzle offers a buy-now-pay-later solution.",
+  "website": "https://sezzle.com/"
+}

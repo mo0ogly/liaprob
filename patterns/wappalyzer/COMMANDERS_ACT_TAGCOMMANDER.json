@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-commanders_act_tagcommander",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMMANDERS_ACT_TAGCOMMANDER",
+  "taxonomy_name": "Commanders Act TagCommander",
+  "vendor": "",
+  "product": "Commanders Act TagCommander",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COMMANDERS_ACT_TAGCOMMANDER.json",
+    "original_name": "Commanders Act TagCommander"
+  },
+  "research": [
+    {
+      "url": "https://www.commandersact.com/en/solutions/tagcommander/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_commanders_act_tagcommander_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.tagcommander\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    42
+  ],
+  "notes": "Commanders Act TagCommander is a European company providing a tag management product designed to handle website tags.",
+  "website": "https://www.commandersact.com/en/solutions/tagcommander/"
+}

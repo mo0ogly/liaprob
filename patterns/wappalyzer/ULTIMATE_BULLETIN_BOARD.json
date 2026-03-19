@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ultimate_bulletin_board",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ULTIMATE_BULLETIN_BOARD",
+  "taxonomy_name": "Ultimate Bulletin Board",
+  "vendor": "",
+  "product": "Ultimate Bulletin Board",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ULTIMATE_BULLETIN_BOARD.json",
+    "original_name": "Ultimate Bulletin Board"
+  },
+  "research": [
+    {
+      "url": "https://www.ubbcentral.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ultimate_bulletin_board_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^ubb\\.threads\\s([\\d\\.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^ubb\\.threads\\s([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "Ultimate Bulletin Board is an internet forum software designed for online communities, offering features such as user registration, thread organisation, moderation tools, search functionality, and customisable design options to facilitate discussions and community engagement.",
+  "website": "https://www.ubbcentral.com"
+}

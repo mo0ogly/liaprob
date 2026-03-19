@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shepherd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHEPHERD",
+  "taxonomy_name": "Shepherd",
+  "vendor": "",
+  "product": "Shepherd",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHEPHERD.json",
+    "original_name": "Shepherd"
+  },
+  "research": [
+    {
+      "url": "https://shepherdjs.dev/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shepherd_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "shepherd(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Shepherd is a JavaScript library which makes an use-friendly user-guide to any website.",
+  "website": "https://shepherdjs.dev/"
+}

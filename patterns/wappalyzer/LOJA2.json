@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-loja2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOJA2",
+  "taxonomy_name": "Loja2",
+  "vendor": "",
+  "product": "Loja2",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LOJA2.json",
+    "original_name": "Loja2"
+  },
+  "research": [
+    {
+      "url": "https://www.loja2.com.br",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_loja2_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "loja2\\.com\\.br",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Loja2 is an all-in-one ecommerce platform from Brazil.",
+  "website": "https://www.loja2.com.br"
+}

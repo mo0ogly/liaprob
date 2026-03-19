@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-chatwith_io",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHATWITH_IO",
+  "taxonomy_name": "ChatWith.io",
+  "vendor": "",
+  "product": "ChatWith.io",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CHATWITH_IO.json",
+    "original_name": "ChatWith.io"
+  },
+  "research": [
+    {
+      "url": "https://chatwith.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_chatwith_io_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.tochat\\.be/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "ChatWith.io is a versatile platform enabling WhatsApp link management, statistics tracking, and specialised services like WhatsApp Business Dating and widgets for efficient customer engagement.",
+  "website": "https://chatwith.io"
+}

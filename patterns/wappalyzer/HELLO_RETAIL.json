@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hello_retail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HELLO_RETAIL",
+  "taxonomy_name": "Hello Retail",
+  "vendor": "",
+  "product": "Hello Retail",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HELLO_RETAIL.json",
+    "original_name": "Hello Retail"
+  },
+  "research": [
+    {
+      "url": "https://helloretail.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hello_retail_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "//helloretailcdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Hello Retail is an AI-driven platform that delivers personalized product recommendations, intelligent search, and email solutions for ecommerce.",
+  "website": "https://helloretail.com"
+}

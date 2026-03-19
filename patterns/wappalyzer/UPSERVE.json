@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-upserve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UPSERVE",
+  "taxonomy_name": "Upserve",
+  "vendor": "",
+  "product": "Upserve",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UPSERVE.json",
+    "original_name": "Upserve"
+  },
+  "research": [
+    {
+      "url": "https://onlineordering.upserve.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_upserve_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.upserve\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Upserve is a restaurant management solution featuring an Android or iOS-based point-of-sale system, online ordering, contactless payments, automated inventory management, sales analytics, and more.",
+  "website": "https://onlineordering.upserve.com"
+}

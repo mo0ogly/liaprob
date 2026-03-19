@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-devrev",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEVREV",
+  "taxonomy_name": "DevRev",
+  "vendor": "",
+  "product": "DevRev",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DEVREV.json",
+    "original_name": "DevRev"
+  },
+  "research": [
+    {
+      "url": "https://devrev.ai/plug-observability",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_devrev_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "plug-platform\\.devrev\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52,
+    53
+  ],
+  "notes": "DevRev PLuG is a customer support platform offering live chat, help documentation, search functionality, an observability engine, and product announcements, all integrated within a widget similar to a support chat widget for website assistance.",
+  "website": "https://devrev.ai/plug-observability"
+}

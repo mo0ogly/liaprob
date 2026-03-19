@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-datanyze",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATANYZE",
+  "taxonomy_name": "Datanyze",
+  "vendor": "",
+  "product": "Datanyze",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DATANYZE.json",
+    "original_name": "Datanyze"
+  },
+  "research": [
+    {
+      "url": "https://www.datanyze.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_datanyze_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.datanyze\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Datanyze is a provider of visitor tracking script, offering sales intelligence and lead generation software solutions.",
+  "website": "https://www.datanyze.com"
+}

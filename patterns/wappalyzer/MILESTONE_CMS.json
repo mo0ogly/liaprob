@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-milestone_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MILESTONE_CMS",
+  "taxonomy_name": "Milestone CMS",
+  "vendor": "",
+  "product": "Milestone CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MILESTONE_CMS.json",
+    "original_name": "Milestone CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.milestoneinternet.com/products/milestone-cms",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_milestone_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^milestone\\scms\\s([\\d\\.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^milestone\\scms\\s([\\d\\.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Milestone CMS is a SEO-first CMS that offers built-in advanced schema markups and Core Web Vitals conformance for improved search performance.",
+  "website": "https://www.milestoneinternet.com/products/milestone-cms"
+}

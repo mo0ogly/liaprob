@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cool_popup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COOL_POPUP",
+  "taxonomy_name": "Cool Popup",
+  "vendor": "",
+  "product": "Cool Popup",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COOL_POPUP.json",
+    "original_name": "Cool Popup"
+  },
+  "research": [
+    {
+      "url": "https://www.coolpopup.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cool_popup_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "dash\\.coolpopup\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Cool Popup is a tool that helps convert website visitors into customers, subscribers, or leads by displaying visually designed popups that require no coding to set up.",
+  "website": "https://www.coolpopup.com"
+}

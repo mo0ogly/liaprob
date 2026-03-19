@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cloudera",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDERA",
+  "taxonomy_name": "Cloudera",
+  "vendor": "",
+  "product": "Cloudera",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLOUDERA.json",
+    "original_name": "Cloudera"
+  },
+  "research": [
+    {
+      "url": "https://www.cloudera.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cloudera_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "cloudera"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    34
+  ],
+  "notes": "Cloudera is a software platform for data engineering, data warehousing, machine learning and analytics that runs in the cloud or on-premises.",
+  "website": "https://www.cloudera.com"
+}

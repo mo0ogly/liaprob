@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coaster_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COASTER_CMS",
+  "taxonomy_name": "Coaster CMS",
+  "vendor": "",
+  "product": "Coaster CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COASTER_CMS.json",
+    "original_name": "Coaster CMS"
+  },
+  "research": [
+    {
+      "url": "https://www.coastercms.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coaster_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^coaster cms v([\\d.]+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^coaster cms v([\\d.]+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:web-feet:coaster_cms:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Laravel"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://www.coastercms.org"
+}

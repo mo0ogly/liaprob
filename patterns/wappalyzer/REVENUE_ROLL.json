@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-revenue_roll",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REVENUE_ROLL",
+  "taxonomy_name": "Revenue Roll",
+  "vendor": "",
+  "product": "Revenue Roll",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REVENUE_ROLL.json",
+    "original_name": "Revenue Roll"
+  },
+  "research": [
+    {
+      "url": "https://www.revenueroll.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_revenue_roll_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.revenueroll\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    77
+  ],
+  "notes": "Revenue Roll is an identification and retargeting service designed to recognize website visitors and deliver targeted advertising based on user behavior.",
+  "website": "https://www.revenueroll.com"
+}

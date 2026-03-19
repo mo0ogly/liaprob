@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cometd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMETD",
+  "taxonomy_name": "CometD",
+  "vendor": "",
+  "product": "CometD",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COMETD.json",
+    "original_name": "CometD"
+  },
+  "research": [
+    {
+      "url": "https://cometd.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cometd_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/cometd/jquery\\.cometd\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    2
+  ],
+  "notes": "CometD is a scalable clustered web messaging platform that provides a HTTP-based event routing bus using the Ajax Push technology pattern known as Comet.",
+  "website": "https://cometd.org"
+}

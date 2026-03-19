@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mediawiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEDIAWIKI",
+  "taxonomy_name": "MediaWiki",
+  "vendor": "",
+  "product": "MediaWiki",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MEDIAWIKI.json",
+    "original_name": "MediaWiki"
+  },
+  "research": [
+    {
+      "url": "https://www.mediawiki.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mediawiki_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<(?:a|img)[^>]+>powered by mediawiki</a>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<a[^>]+/special:whatlinkshere/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<body[^>]+class=\"mediawiki\"",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^mediawiki ?(.+)$",
+          "confidence_delta": 0.5,
+          "version_extract": "^mediawiki ?(.+)$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:mediawiki:mediawiki:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    8
+  ],
+  "notes": "MediaWiki is a free and open-source wiki engine.",
+  "website": "https://www.mediawiki.org"
+}

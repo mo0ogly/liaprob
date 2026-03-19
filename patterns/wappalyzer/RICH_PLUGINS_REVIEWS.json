@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rich_plugins_reviews",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RICH_PLUGINS_REVIEWS",
+  "taxonomy_name": "Rich Plugins Reviews",
+  "vendor": "",
+  "product": "Rich Plugins Reviews",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RICH_PLUGINS_REVIEWS.json",
+    "original_name": "Rich Plugins Reviews"
+  },
+  "research": [
+    {
+      "url": "https://richplugins.com/business-reviews-bundle-wordpress-plugin",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rich_plugins_reviews_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/widget-google-reviews/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    90
+  ],
+  "notes": "Rich Plugins Reviews is a WordPress plugin that integrates verified reviews from trusted sources such as Google and Facebook.",
+  "website": "https://richplugins.com/business-reviews-bundle-wordpress-plugin"
+}

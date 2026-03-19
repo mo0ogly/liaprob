@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-casaas",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CASAAS",
+  "taxonomy_name": "caSaaS",
+  "vendor": "",
+  "product": "caSaaS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CASAAS.json",
+    "original_name": "caSaaS"
+  },
+  "research": [
+    {
+      "url": "https://casaas.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_casaas_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "casaas ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "casaas ([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "caSaaS is a Content Management System that enables users to create, organize, and manage digital content.",
+  "website": "https://casaas.com"
+}

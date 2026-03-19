@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-oxid_eshop_enterprise_edition",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OXID_ESHOP_ENTERPRISE_EDITION",
+  "taxonomy_name": "OXID eShop Enterprise Edition",
+  "vendor": "",
+  "product": "OXID eShop Enterprise Edition",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OXID_ESHOP_ENTERPRISE_EDITION.json",
+    "original_name": "OXID eShop Enterprise Edition"
+  },
+  "research": [
+    {
+      "url": "https://www.oxid-esales.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_oxid_eshop_enterprise_edition_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^-]*oxid eshop enterprise edition, version (\\d+)",
+          "confidence_delta": 0.5,
+          "version_extract": "<!--[^-]*oxid eshop enterprise edition, version (\\d+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    6,
+    62
+  ],
+  "notes": "OXID eShop Enterprise Edition is a B2B or B2C ecommerce solution built using object oriented programming and PHP.",
+  "website": "https://www.oxid-esales.com"
+}

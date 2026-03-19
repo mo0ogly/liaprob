@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-abicart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ABICART",
+  "taxonomy_name": "Abicart",
+  "vendor": "",
+  "product": "Abicart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ABICART.json",
+    "original_name": "Abicart"
+  },
+  "research": [
+    {
+      "url": "https://abicart.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_abicart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "abicart",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "textalk webshop",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Abicart is an ecommerce platform developed by the Swedish company Abicart AB.",
+  "website": "https://abicart.com/"
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-squiz_matrix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUIZ_MATRIX",
+  "taxonomy_name": "Squiz Matrix",
+  "vendor": "",
+  "product": "Squiz Matrix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQUIZ_MATRIX.json",
+    "original_name": "Squiz Matrix"
+  },
+  "research": [
+    {
+      "url": "https://www.squiz.net/matrix",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_squiz_matrix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "squiz matrix"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--\\s+running (?:mysource|squiz) matrix",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "squiz matrix",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/__data/assets/(js_file_folder|git_bridge|js_file)/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:squiz:matrix:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "A flexible, low-code enterprise content management system designed to manage multiple sites with many editors.",
+  "website": "https://www.squiz.net/matrix"
+}

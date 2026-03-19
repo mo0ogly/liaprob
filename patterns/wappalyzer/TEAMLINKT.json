@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-teamlinkt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TEAMLINKT",
+  "taxonomy_name": "TeamLinkt",
+  "vendor": "",
+  "product": "TeamLinkt",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TEAMLINKT.json",
+    "original_name": "TeamLinkt"
+  },
+  "research": [
+    {
+      "url": "https://teamlinkt.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_teamlinkt_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^teamlinkt$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "Teamlinkt is a software facilitating team management, enabling users to track progress, assign tasks, and coordinate activities.",
+  "website": "https://teamlinkt.com"
+}

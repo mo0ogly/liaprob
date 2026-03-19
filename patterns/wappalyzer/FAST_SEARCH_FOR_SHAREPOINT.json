@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fast_search_for_sharepoint",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FAST_SEARCH_FOR_SHAREPOINT",
+  "taxonomy_name": "FAST Search for SharePoint",
+  "vendor": "",
+  "product": "FAST Search for SharePoint",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FAST_SEARCH_FOR_SHAREPOINT.json",
+    "original_name": "FAST Search for SharePoint"
+  },
+  "research": [
+    {
+      "url": "https://sharepoint.microsoft.com/en-us/product/capabilities/search/Pages/Fast-Search.aspx",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fast_search_for_sharepoint_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<input[^>]+ name=\"parametricsearch",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Microsoft ASP.NET",
+    "Microsoft SharePoint"
+  ],
+  "categories": [
+    29
+  ],
+  "notes": "FAST Search for SharePoint is the search engine for Microsoft's SharePoint collaboration platform. Its purpose is helping SharePoint users locate and retrieve stored enterprise content.",
+  "website": "https://sharepoint.microsoft.com/en-us/product/capabilities/search/Pages/Fast-Search.aspx"
+}

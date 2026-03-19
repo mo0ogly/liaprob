@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-estore_shopserve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ESTORE_SHOPSERVE",
+  "taxonomy_name": "Estore Shopserve",
+  "vendor": "",
+  "product": "Estore Shopserve",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ESTORE_SHOPSERVE.json",
+    "original_name": "Estore Shopserve"
+  },
+  "research": [
+    {
+      "url": "https://estore.co.jp/shopserve",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_estore_shopserve_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cart\\d+\\.shopserve\\.jp/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Estore Shopserve is an all-in-one payment processing and ecommerce solution.",
+  "website": "https://estore.co.jp/shopserve"
+}

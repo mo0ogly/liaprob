@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-smartpoint",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SMARTPOINT",
+  "taxonomy_name": "Smartpoint",
+  "vendor": "",
+  "product": "Smartpoint",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SMARTPOINT.json",
+    "original_name": "Smartpoint"
+  },
+  "research": [
+    {
+      "url": "https://smartpoint.pro",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_smartpoint_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "panel\\.smartpoint\\.pro/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Smartpoint is a car dealer conversion optimization system that improves lead capture and sales performance through data-driven tools and customer engagement features.",
+  "website": "https://smartpoint.pro"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sarka_spip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SARKA_SPIP",
+  "taxonomy_name": "Sarka-SPIP",
+  "vendor": "",
+  "product": "Sarka-SPIP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SARKA_SPIP.json",
+    "original_name": "Sarka-SPIP"
+  },
+  "research": [
+    {
+      "url": "https://sarka-spip.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sarka_spip_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "sarka-spip(?:\\s([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "sarka-spip(?:\\s([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "SPIP"
+  ],
+  "categories": [
+    1
+  ],
+  "website": "https://sarka-spip.net"
+}

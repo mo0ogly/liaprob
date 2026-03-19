@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-magiclabs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAGICLABS",
+  "taxonomy_name": "MagicLabs",
+  "vendor": "",
+  "product": "MagicLabs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAGICLABS.json",
+    "original_name": "MagicLabs"
+  },
+  "research": [
+    {
+      "url": "https://magic.link",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_magiclabs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.auth\\.magic\\.link",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    69
+  ],
+  "notes": "MagicLabs is a platform that simplifies creating and using Web3 wallets by eliminating the need for seed phrases or downloads, providing a way to build on-chain solutions.",
+  "website": "https://magic.link"
+}

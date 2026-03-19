@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-batman_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BATMAN_JS",
+  "taxonomy_name": "Batman.js",
+  "vendor": "",
+  "product": "Batman.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BATMAN_JS.json",
+    "original_name": "Batman.js"
+  },
+  "research": [
+    {
+      "url": "https://batmanjs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_batman_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "(^|/)(batman\\.js)(\\?|$)",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    12
+  ],
+  "notes": "Batman.js is a framework for building rich web applications using CoffeeScript or JavaScript.",
+  "website": "https://batmanjs.org"
+}

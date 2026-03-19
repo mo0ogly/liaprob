@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-session_rewind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SESSION_REWIND",
+  "taxonomy_name": "Session Rewind",
+  "vendor": "",
+  "product": "Session Rewind",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SESSION_REWIND.json",
+    "original_name": "Session Rewind"
+  },
+  "research": [
+    {
+      "url": "https://sessionrewind.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_session_rewind_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sessionrewind\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Session Rewind is a playback and monitoring service that records and tracks every session and issue.",
+  "website": "https://sessionrewind.com"
+}

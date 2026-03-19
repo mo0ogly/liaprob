@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-umijs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UMIJS",
+  "taxonomy_name": "UmiJs",
+  "vendor": "",
+  "product": "UmiJs",
+  "source": {
+    "type": "wappalyzer",
+    "file": "UMIJS.json",
+    "original_name": "UmiJs"
+  },
+  "research": [
+    {
+      "url": "https://umijs.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_umijs_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/umi(\\.[\\w\\d]{8})?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    12
+  ],
+  "notes": "UmiJs is a scalable, enterprise-class frontend application framework that supports both configuration and conventional routing while maintaining functional completeness, such as dynamic routing, nested routing, and permission routing.",
+  "website": "https://umijs.org"
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-memberstack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEMBERSTACK",
+  "taxonomy_name": "MemberStack",
+  "vendor": "",
+  "product": "MemberStack",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MEMBERSTACK.json",
+    "original_name": "MemberStack"
+  },
+  "research": [
+    {
+      "url": "https://www.memberstack.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_memberstack_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "memberstack",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "memberstack\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "MemberStack is a no-code membership platform for Webflow.",
+  "website": "https://www.memberstack.io"
+}

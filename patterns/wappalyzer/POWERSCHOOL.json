@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-powerschool",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWERSCHOOL",
+  "taxonomy_name": "PowerSchool",
+  "vendor": "",
+  "product": "PowerSchool",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POWERSCHOOL.json",
+    "original_name": "PowerSchool"
+  },
+  "research": [
+    {
+      "url": "https://www.powerschool.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_powerschool_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.powerschool\\.com"
+        },
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "^powerschool$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    21
+  ],
+  "notes": "PowerSchool is a widely used student information system (SIS) used by K-12 schools, districts, and other educational institutions to manage student data and information. The software is developed and marketed by PowerSchool Group LLC, which is based in California, USA.",
+  "website": "https://www.powerschool.com"
+}

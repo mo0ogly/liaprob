@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-thg_ingenuity",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THG_INGENUITY",
+  "taxonomy_name": "THG Ingenuity",
+  "vendor": "",
+  "product": "THG Ingenuity",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THG_INGENUITY.json",
+    "original_name": "THG Ingenuity"
+  },
+  "research": [
+    {
+      "url": "https://www.thgingenuity.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_thg_ingenuity_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "thehut-.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "THG Ingenuity is completely unique in that it's both a peer-to-peer ecommerce retailer and a service provider to global cross-border commerce operations.",
+  "website": "https://www.thgingenuity.com"
+}

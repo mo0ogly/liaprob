@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sendpulse",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SENDPULSE",
+  "taxonomy_name": "SendPulse",
+  "vendor": "",
+  "product": "SendPulse",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SENDPULSE.json",
+    "original_name": "SendPulse"
+  },
+  "research": [
+    {
+      "url": "https://sendpulse.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sendpulse_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sendpulse\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    75
+  ],
+  "notes": "SendPulse is an email marketing platform with additional channels: SMS, web push notifications, Facebook and WhatsApp chatbots.",
+  "website": "https://sendpulse.com"
+}

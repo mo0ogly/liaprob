@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-imperva",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IMPERVA",
+  "taxonomy_name": "Imperva",
+  "vendor": "",
+  "product": "Imperva",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IMPERVA.json",
+    "original_name": "Imperva"
+  },
+  "research": [
+    {
+      "url": "https://www.imperva.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_imperva_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-cdn",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^imperva"
+        },
+        {
+          "target": "header",
+          "field": "x-iinfo",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/_incapsula_resource",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16,
+    31
+  ],
+  "notes": "Imperva is a cyber security software and services company for networking, data, and application security.",
+  "website": "https://www.imperva.com/"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-systema",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYSTEMA",
+  "taxonomy_name": "Systema",
+  "vendor": "",
+  "product": "Systema",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SYSTEMA.json",
+    "original_name": "Systema"
+  },
+  "research": [
+    {
+      "url": "https://systema.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_systema_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.systema\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Systema is an anonymous personalization platform designed for retailers to deliver tailored experiences without using personal identifiers.",
+  "website": "https://systema.ai"
+}

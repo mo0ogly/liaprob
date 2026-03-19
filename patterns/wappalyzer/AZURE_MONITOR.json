@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-azure_monitor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AZURE_MONITOR",
+  "taxonomy_name": "Azure Monitor",
+  "vendor": "",
+  "product": "Azure Monitor",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AZURE_MONITOR.json",
+    "original_name": "Azure Monitor"
+  },
+  "research": [
+    {
+      "url": "https://azure.microsoft.com/en-us/services/monitor",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_azure_monitor_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "js\\.monitor\\.azure\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.monitor\\.azure\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Azure"
+  ],
+  "categories": [
+    10,
+    92
+  ],
+  "notes": "Azure Monitor collects monitoring telemetry from a variety of on-premises and Azure sources. Azure Monitor helps you maximise the availability and performance of your applications and services.",
+  "website": "https://azure.microsoft.com/en-us/services/monitor"
+}

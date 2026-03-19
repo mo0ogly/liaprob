@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-banshee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BANSHEE",
+  "taxonomy_name": "Banshee",
+  "vendor": "",
+  "product": "Banshee",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BANSHEE.json",
+    "original_name": "Banshee"
+  },
+  "research": [
+    {
+      "url": "https://www.banshee-php.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_banshee_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "banshee php framework v([\\d\\.]+)",
+          "version_extract": "banshee php framework v([\\d\\.]+)"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "banshee php",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1,
+    18
+  ],
+  "notes": "Banshee is a PHP website framework with a main focus on security. Banshee is protected against common attacks like SQL injection, cross-site scripting, cross-site request forgery and session hijacking.",
+  "website": "https://www.banshee-php.org"
+}

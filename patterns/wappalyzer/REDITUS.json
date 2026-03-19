@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-reditus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDITUS",
+  "taxonomy_name": "Reditus",
+  "vendor": "",
+  "product": "Reditus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "REDITUS.json",
+    "original_name": "Reditus"
+  },
+  "research": [
+    {
+      "url": "https://www.getreditus.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_reditus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.getreditus\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Reditus is a partner management tool for B2B SaaS companies.",
+  "website": "https://www.getreditus.com"
+}

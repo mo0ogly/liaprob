@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sardine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SARDINE",
+  "taxonomy_name": "Sardine",
+  "vendor": "",
+  "product": "Sardine",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SARDINE.json",
+    "original_name": "Sardine"
+  },
+  "research": [
+    {
+      "url": "https://www.sardine.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sardine_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.sardine\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Sardine is a system designed to stop fraud and increase revenue by enhancing transaction monitoring and risk management.",
+  "website": "https://www.sardine.ai"
+}

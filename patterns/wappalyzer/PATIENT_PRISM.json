@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-patient_prism",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PATIENT_PRISM",
+  "taxonomy_name": "Patient Prism",
+  "vendor": "",
+  "product": "Patient Prism",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PATIENT_PRISM.json",
+    "original_name": "Patient Prism"
+  },
+  "research": [
+    {
+      "url": "https://www.patientprism.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_patient_prism_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "next-api\\.patientprism\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Patient Prism is a call tracking and AI-powered coaching platform for dentists, designed to improve practice operations, patient engagement, and overall performance.",
+  "website": "https://www.patientprism.com"
+}

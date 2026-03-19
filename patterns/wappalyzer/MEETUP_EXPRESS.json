@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-meetup_express",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEETUP_EXPRESS",
+  "taxonomy_name": "Meetup Express",
+  "vendor": "",
+  "product": "Meetup Express",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MEETUP_EXPRESS.json",
+    "original_name": "Meetup Express"
+  },
+  "research": [
+    {
+      "url": "https://meetupexpress.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_meetup_express_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "meetup_express_quick_appointment_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    72
+  ],
+  "notes": "Meetup Express is an appointment scheduling system designed to simplify booking and managing meetings.",
+  "website": "https://meetupexpress.com"
+}

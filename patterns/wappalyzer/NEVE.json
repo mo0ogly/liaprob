@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-neve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEVE",
+  "taxonomy_name": "Neve",
+  "vendor": "",
+  "product": "Neve",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NEVE.json",
+    "original_name": "Neve"
+  },
+  "research": [
+    {
+      "url": "https://themeisle.com/themes/neve/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_neve_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "themes/neve\\s*\\.js(?:\\?ver=([0-9.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "themes/neve\\s*\\.js(?:\\?ver=([0-9.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Neve is a super-fast, easily customizable, multi-purpose theme that works perfectly with the WordPress Block Editor and the most popular page builders as well as WooCommerce",
+  "website": "https://themeisle.com/themes/neve/"
+}

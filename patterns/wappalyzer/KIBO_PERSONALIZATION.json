@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kibo_personalization",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KIBO_PERSONALIZATION",
+  "taxonomy_name": "Kibo Personalization",
+  "vendor": "",
+  "product": "Kibo Personalization",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KIBO_PERSONALIZATION.json",
+    "original_name": "Kibo Personalization"
+  },
+  "research": [
+    {
+      "url": "https://kibocommerce.com/personalization-software",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kibo_personalization_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.baynote\\.net",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.certona\\.net",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76,
+    74
+  ],
+  "notes": "Kibo Personalization is a omnichannel personalisation software powered by machine learning to deliver individualized customer experiences and powered by Monetate and Certona.",
+  "website": "https://kibocommerce.com/personalization-software"
+}

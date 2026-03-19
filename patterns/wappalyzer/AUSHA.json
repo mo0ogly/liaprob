@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ausha",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUSHA",
+  "taxonomy_name": "Ausha",
+  "vendor": "",
+  "product": "Ausha",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AUSHA.json",
+    "original_name": "Ausha"
+  },
+  "research": [
+    {
+      "url": "https://www.ausha.co",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ausha_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "widget\\.ausha\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    38
+  ],
+  "notes": "Ausha is an all-in-one platform for hosting, distributing, and monetizing podcasts.",
+  "website": "https://www.ausha.co"
+}

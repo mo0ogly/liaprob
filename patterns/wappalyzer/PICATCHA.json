@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-picatcha",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PICATCHA",
+  "taxonomy_name": "Picatcha",
+  "vendor": "",
+  "product": "Picatcha",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PICATCHA.json",
+    "original_name": "Picatcha"
+  },
+  "research": [
+    {
+      "url": "https://picatcha.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_picatcha_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.picatcha\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Picatcha is a CAPTCHA technology designed to provide a usable and secure way to verify human users and prevent automated access.",
+  "website": "https://picatcha.com"
+}

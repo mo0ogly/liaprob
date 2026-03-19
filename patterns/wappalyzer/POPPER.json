@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-popper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POPPER",
+  "taxonomy_name": "Popper",
+  "vendor": "",
+  "product": "Popper",
+  "source": {
+    "type": "wappalyzer",
+    "file": "POPPER.json",
+    "original_name": "Popper"
+  },
+  "research": [
+    {
+      "url": "https://popper.js.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_popper_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/popper(?:\\.min)?\\.js(?:/([0-9.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/popper(?:\\.min)?\\.js(?:/([0-9.]+))?"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "popperjs(?:/|-)core(?:@|-)([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "popperjs(?:/|-)core(?:@|-)([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "Popper is a positioning engine, its purpose is to calculate the position of an element to make it possible to position it near a given reference element.",
+  "website": "https://popper.js.org"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-centra",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CENTRA",
+  "taxonomy_name": "Centra",
+  "vendor": "",
+  "product": "Centra",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CENTRA.json",
+    "original_name": "Centra"
+  },
+  "research": [
+    {
+      "url": "https://centra.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_centra_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.centra(?:cdn)?\\.(?:com|net)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Centra is the headless ecommerce platform.",
+  "website": "https://centra.com"
+}

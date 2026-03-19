@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-iteras",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ITERAS",
+  "taxonomy_name": "Iteras",
+  "vendor": "",
+  "product": "Iteras",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ITERAS.json",
+    "original_name": "Iteras"
+  },
+  "research": [
+    {
+      "url": "https://www.iteras.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_iteras_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.iteras\\.dk",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Iteras is a subscriber management system that organizes user accounts, tracks subscription activity, and supports controlled access to digital services.",
+  "website": "https://www.iteras.com"
+}

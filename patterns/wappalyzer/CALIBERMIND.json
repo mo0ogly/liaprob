@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-calibermind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CALIBERMIND",
+  "taxonomy_name": "CaliberMind",
+  "vendor": "",
+  "product": "CaliberMind",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CALIBERMIND.json",
+    "original_name": "CaliberMind"
+  },
+  "research": [
+    {
+      "url": "https://calibermind.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_calibermind_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.calibermind\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "CaliberMind is a marketing analytics platform designed for B2B marketers to optimize strategies and improve decision-making through data insights.",
+  "website": "https://calibermind.com"
+}

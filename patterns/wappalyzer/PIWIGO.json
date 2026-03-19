@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-piwigo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIWIGO",
+  "taxonomy_name": "Piwigo",
+  "vendor": "",
+  "product": "Piwigo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PIWIGO.json",
+    "original_name": "Piwigo"
+  },
+  "research": [
+    {
+      "url": "https://piwigo.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_piwigo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^piwigo\\s",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "MySQL"
+  ],
+  "categories": [
+    7
+  ],
+  "notes": "Piwigo is an open-source photo management software designed for creating and managing online photo galleries.",
+  "website": "https://piwigo.com"
+}

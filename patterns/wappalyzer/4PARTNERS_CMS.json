@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-4partners_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "4PARTNERS_CMS",
+  "taxonomy_name": "4Partners CMS",
+  "vendor": "",
+  "product": "4Partners CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "4PARTNERS_CMS.json",
+    "original_name": "4Partners CMS"
+  },
+  "research": [
+    {
+      "url": "https://4partners.io/en/4p-cms",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_4partners_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "author",
+          "match_type": "regex",
+          "value": "^4cms$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "4Partners",
+    "Nginx",
+    "PHP"
+  ],
+  "categories": [
+    6
+  ],
+  "notes": "4Partners CMS is a cloud-based solution designed for ecommerce shops.",
+  "website": "https://4partners.io/en/4p-cms"
+}

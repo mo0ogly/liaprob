@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-square",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SQUARE",
+  "taxonomy_name": "Square",
+  "vendor": "",
+  "product": "Square",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SQUARE.json",
+    "original_name": "Square"
+  },
+  "research": [
+    {
+      "url": "https://squareup.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_square_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.squareup\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Square is a mobile payment company that offers business software, payment hardware products and small business services.",
+  "website": "https://squareup.com/"
+}

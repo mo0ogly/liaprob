@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ekonsilio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EKONSILIO",
+  "taxonomy_name": "eKonsilio",
+  "vendor": "",
+  "product": "eKonsilio",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EKONSILIO.json",
+    "original_name": "eKonsilio"
+  },
+  "research": [
+    {
+      "url": "https://www.ekonsilio.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ekonsilio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "script\\.ekonsilio\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "eKonsilio is a conversational management platform that enables organizations to design, deploy, and manage automated and human-assisted conversations across digital communication channels.",
+  "website": "https://www.ekonsilio.com"
+}

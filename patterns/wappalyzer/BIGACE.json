@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bigace",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BIGACE",
+  "taxonomy_name": "BIGACE",
+  "vendor": "",
+  "product": "BIGACE",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BIGACE.json",
+    "original_name": "BIGACE"
+  },
+  "research": [
+    {
+      "url": "https://github.com/bigace",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bigace_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "bigace ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "bigace ([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    1
+  ],
+  "notes": "Bigace is a free open-source content management developed in PHP and JavaScript that uses a MySQL or ADOdb environment.",
+  "website": "https://github.com/bigace"
+}

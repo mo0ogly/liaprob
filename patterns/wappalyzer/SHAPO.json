@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shapo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHAPO",
+  "taxonomy_name": "Shapo",
+  "vendor": "",
+  "product": "Shapo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHAPO.json",
+    "original_name": "Shapo"
+  },
+  "research": [
+    {
+      "url": "https://shapo.io/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shapo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.shapo\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    90
+  ],
+  "notes": "Shapo is a platform that simplifies the collection, management, and visualization of customer testimonials.",
+  "website": "https://shapo.io/"
+}

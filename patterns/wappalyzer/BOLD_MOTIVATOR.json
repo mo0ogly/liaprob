@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-bold_motivator",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOLD_MOTIVATOR",
+  "taxonomy_name": "Bold Motivator",
+  "vendor": "",
+  "product": "Bold Motivator",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BOLD_MOTIVATOR.json",
+    "original_name": "Bold Motivator"
+  },
+  "research": [
+    {
+      "url": "https://boldcommerce.com/motivator",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_bold_motivator_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "motivate\\.boldapps\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Bold Commerce",
+    "Shopify"
+  ],
+  "categories": [
+    100
+  ],
+  "notes": "Bold Motivator motivate customers to spend more on your store with free shipping and gifts using a customisable banner that counts down how much more they have to buy.",
+  "website": "https://boldcommerce.com/motivator"
+}

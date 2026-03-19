@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-goshly",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOSHLY",
+  "taxonomy_name": "Goshly",
+  "vendor": "",
+  "product": "Goshly",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GOSHLY.json",
+    "original_name": "Goshly"
+  },
+  "research": [
+    {
+      "url": "https://www.goshly.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_goshly_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.goshlyanalytics\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Goshly is a platform that builds responsive websites for both desktop and mobile, offering features like ecommerce integration and shopping cart functionality.",
+  "website": "https://www.goshly.com"
+}

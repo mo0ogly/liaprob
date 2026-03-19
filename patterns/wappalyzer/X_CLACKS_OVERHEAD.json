@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-x_clacks_overhead",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "X_CLACKS_OVERHEAD",
+  "taxonomy_name": "X-Clacks-Overhead",
+  "vendor": "",
+  "product": "X-Clacks-Overhead",
+  "source": {
+    "type": "wappalyzer",
+    "file": "X_CLACKS_OVERHEAD.json",
+    "original_name": "X-Clacks-Overhead"
+  },
+  "research": [
+    {
+      "url": "https://xclacksoverhead.org/home/about",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_x_clacks_overhead_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-clacks-overhead",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^gnu terry pratchett$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19
+  ],
+  "notes": "X-Clacks-Overhead is a non-standard HTTP header used to transmit tribute messages within server responses.",
+  "website": "https://xclacksoverhead.org/home/about"
+}

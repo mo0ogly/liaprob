@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clickx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLICKX",
+  "taxonomy_name": "Clickx",
+  "vendor": "",
+  "product": "Clickx",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLICKX.json",
+    "original_name": "Clickx"
+  },
+  "research": [
+    {
+      "url": "https://www.clickx.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clickx_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.clickx\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Clickx is a marketing analytics platform that lets users generate reports and gain insights into marketing campaigns, product pages, ROI, and more.",
+  "website": "https://www.clickx.io"
+}

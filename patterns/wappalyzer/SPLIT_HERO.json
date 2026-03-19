@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-split_hero",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPLIT_HERO",
+  "taxonomy_name": "Split Hero",
+  "vendor": "",
+  "product": "Split Hero",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPLIT_HERO.json",
+    "original_name": "Split Hero"
+  },
+  "research": [
+    {
+      "url": "https://splithero.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_split_hero_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.splithero\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    74
+  ],
+  "notes": "Split Hero is a WordPress tool for A/B split testing, enabling performance comparisons between different page variations to optimize user engagement and conversions.",
+  "website": "https://splithero.com"
+}

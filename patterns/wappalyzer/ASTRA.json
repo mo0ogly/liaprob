@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-astra",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASTRA",
+  "taxonomy_name": "Astra",
+  "vendor": "",
+  "product": "Astra",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ASTRA.json",
+    "original_name": "Astra"
+  },
+  "research": [
+    {
+      "url": "https://wpastra.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_astra_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "themes/astra\\s*\\.js(?:\\?ver=([0-9.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "themes/astra\\s*\\.js(?:\\?ver=([0-9.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    80
+  ],
+  "notes": "Astra is a fast, lightweight, and highly customizable WordPress Theme.",
+  "website": "https://wpastra.com/"
+}

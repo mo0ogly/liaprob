@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-6valley_ecommerce_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "6VALLEY_ECOMMERCE_CMS",
+  "taxonomy_name": "6Valley eCommerce CMS",
+  "vendor": "",
+  "product": "6Valley eCommerce CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "6VALLEY_ECOMMERCE_CMS.json",
+    "original_name": "6Valley eCommerce CMS"
+  },
+  "research": [
+    {
+      "url": "https://6valley.app",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_6valley_ecommerce_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "6valley_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1,
+    6
+  ],
+  "notes": "6Valley eCommerce CMS is a multi-vendor platform designed to facilitate business launches by providing tools for managing vendors, products, and transactions within an ecommerce ecosystem.",
+  "website": "https://6valley.app"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-briqpay",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BRIQPAY",
+  "taxonomy_name": "Briqpay",
+  "vendor": "",
+  "product": "Briqpay",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BRIQPAY.json",
+    "original_name": "Briqpay"
+  },
+  "research": [
+    {
+      "url": "https://briqpay.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_briqpay_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.briqpay\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    41
+  ],
+  "notes": "Briqpay is a payment optimization platform that streamlines business payment processes through its Payments Unleashed solution.",
+  "website": "https://briqpay.com"
+}

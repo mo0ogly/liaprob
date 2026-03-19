@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mappedin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAPPEDIN",
+  "taxonomy_name": "Mappedin",
+  "vendor": "",
+  "product": "Mappedin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MAPPEDIN.json",
+    "original_name": "Mappedin"
+  },
+  "research": [
+    {
+      "url": "https://www.mappedin.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mappedin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.mappedin\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    35
+  ],
+  "notes": "Mappedin is an all-in-one indoor mapping platform designed for scalability.",
+  "website": "https://www.mappedin.com"
+}

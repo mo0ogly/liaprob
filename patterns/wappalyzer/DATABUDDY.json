@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-databuddy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATABUDDY",
+  "taxonomy_name": "Databuddy",
+  "vendor": "",
+  "product": "Databuddy",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DATABUDDY.json",
+    "original_name": "Databuddy"
+  },
+  "research": [
+    {
+      "url": "https://www.databuddy.cc",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_databuddy_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "creator",
+          "match_type": "regex",
+          "value": "^databuddy$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "publisher",
+          "match_type": "regex",
+          "value": "^databuddy$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Databuddy is an analytics platform designed for developers.",
+  "website": "https://www.databuddy.cc"
+}

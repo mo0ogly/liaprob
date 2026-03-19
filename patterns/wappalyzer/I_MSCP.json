@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-i_mscp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "I_MSCP",
+  "taxonomy_name": "i-MSCP",
+  "vendor": "",
+  "product": "i-MSCP",
+  "source": {
+    "type": "wappalyzer",
+    "file": "I_MSCP.json",
+    "original_name": "i-MSCP"
+  },
+  "research": [
+    {
+      "url": "https://github.com/i-MSCP/imscp",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_i_mscp_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "^i-mscp$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    9
+  ],
+  "notes": "i-MSCP (internet Multi Server Control Panel) is a software for shared hosting environments management on Linux servers.",
+  "website": "https://github.com/i-MSCP/imscp"
+}

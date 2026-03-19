@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-very_good_security",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERY_GOOD_SECURITY",
+  "taxonomy_name": "Very Good Security",
+  "vendor": "",
+  "product": "Very Good Security",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VERY_GOOD_SECURITY.json",
+    "original_name": "Very Good Security"
+  },
+  "research": [
+    {
+      "url": "https://www.verygoodsecurity.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_very_good_security_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.verygoodvault\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.verygoodvault\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    16
+  ],
+  "notes": "Very Good Security (VGS) is a data security and compliance platform that enables developers to securely handle sensitive data by encrypting, tokenising, and transmitting it through an intermediary service.",
+  "website": "https://www.verygoodsecurity.com"
+}

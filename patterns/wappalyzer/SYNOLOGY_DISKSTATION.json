@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-synology_diskstation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYNOLOGY_DISKSTATION",
+  "taxonomy_name": "Synology DiskStation",
+  "vendor": "",
+  "product": "Synology DiskStation",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SYNOLOGY_DISKSTATION.json",
+    "original_name": "Synology DiskStation"
+  },
+  "research": [
+    {
+      "url": "https://synology.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_synology_diskstation_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<noscript><div class='syno-no-script'",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "application-name",
+          "match_type": "regex",
+          "value": "synology diskstation",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "description",
+          "match_type": "regex",
+          "value": "^diskstation provides a full-featured network attached storage",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "webapi/entry\\.cgi\\?api=syno\\.(?:core|filestation)\\.desktop\\.",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    48
+  ],
+  "notes": "DiskStation provides a full-featured network attached storage.",
+  "website": "https://synology.com"
+}

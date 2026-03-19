@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tactful",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TACTFUL",
+  "taxonomy_name": "Tactful",
+  "vendor": "",
+  "product": "Tactful",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TACTFUL.json",
+    "original_name": "Tactful"
+  },
+  "research": [
+    {
+      "url": "https://tactful.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tactful_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "webchat\\.tactful\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Tactful is an AI-driven platform that enables seamless customer service across multiple communication channels.",
+  "website": "https://tactful.ai"
+}

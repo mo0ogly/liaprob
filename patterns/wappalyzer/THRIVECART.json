@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-thrivecart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THRIVECART",
+  "taxonomy_name": "ThriveCart",
+  "vendor": "",
+  "product": "ThriveCart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "THRIVECART.json",
+    "original_name": "ThriveCart"
+  },
+  "research": [
+    {
+      "url": "https://thrivecart.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_thrivecart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "thrivecart\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "ThriveCart is a sales cart solution that lets you create checkout pages for your online products and services.",
+  "website": "https://thrivecart.com"
+}

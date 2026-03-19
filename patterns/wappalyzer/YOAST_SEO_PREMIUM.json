@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yoast_seo_premium",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOAST_SEO_PREMIUM",
+  "taxonomy_name": "Yoast SEO Premium",
+  "vendor": "",
+  "product": "Yoast SEO Premium",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOAST_SEO_PREMIUM.json",
+    "original_name": "Yoast SEO Premium"
+  },
+  "research": [
+    {
+      "url": "https://yoast.com/wordpress/plugins/seo/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yoast_seo_premium_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- this site is optimized with the yoast seo premium plugin v([^\\s]+) ",
+          "confidence_delta": 0.5,
+          "version_extract": "<!-- this site is optimized with the yoast seo premium plugin v([^\\s]+) "
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    54
+  ],
+  "notes": "Yoast SEO Premium is a search engine optimisation plugin for WordPress and other platforms.",
+  "website": "https://yoast.com/wordpress/plugins/seo/"
+}

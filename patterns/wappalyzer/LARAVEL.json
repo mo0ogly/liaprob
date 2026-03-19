@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-laravel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LARAVEL",
+  "taxonomy_name": "Laravel",
+  "vendor": "",
+  "product": "Laravel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "LARAVEL.json",
+    "original_name": "Laravel"
+  },
+  "research": [
+    {
+      "url": "https://laravel.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_laravel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "laravel_session",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:laravel:laravel:*:*:*:*:*:*:*:*",
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    18
+  ],
+  "notes": "Laravel is a free, open-source PHP web framework.",
+  "website": "https://laravel.com"
+}

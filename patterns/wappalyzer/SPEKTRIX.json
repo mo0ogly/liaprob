@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spektrix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPEKTRIX",
+  "taxonomy_name": "Spektrix",
+  "vendor": "",
+  "product": "Spektrix",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPEKTRIX.json",
+    "original_name": "Spektrix"
+  },
+  "research": [
+    {
+      "url": "https://www.spektrix.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spektrix_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.spektrix\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Spektrix is a cloud-based ticketing, marketing, and fundraising CRM system putting audience insight at your fingertips.",
+  "website": "https://www.spektrix.com"
+}

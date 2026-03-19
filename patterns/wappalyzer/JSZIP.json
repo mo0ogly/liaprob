@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jszip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JSZIP",
+  "taxonomy_name": "JSZip",
+  "vendor": "",
+  "product": "JSZip",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JSZIP.json",
+    "original_name": "JSZip"
+  },
+  "research": [
+    {
+      "url": "https://stuk.github.io/jszip/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jszip_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/jszip\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:jszip_project:jszip:*:*:*:*:*:*:*:*",
+  "categories": [
+    59
+  ],
+  "notes": "JSZip is a JavaScript library that enables the creation, reading, and manipulation of zip files in a browser environment.",
+  "website": "https://stuk.github.io/jszip/"
+}

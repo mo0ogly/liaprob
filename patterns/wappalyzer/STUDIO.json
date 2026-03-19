@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-studio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STUDIO",
+  "taxonomy_name": "STUDIO",
+  "vendor": "",
+  "product": "STUDIO",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STUDIO.json",
+    "original_name": "STUDIO"
+  },
+  "research": [
+    {
+      "url": "https://studio.design",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_studio_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^studio$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Firebase",
+    "Google Cloud",
+    "Google Tag Manager",
+    "Nuxt.js",
+    "Vue.js"
+  ],
+  "categories": [
+    51
+  ],
+  "notes": "STUDIO is a Japan-based company and SaaS application for designing and hosting websites. The service includes a visual editor with built-in CMS and analytics.",
+  "website": "https://studio.design"
+}

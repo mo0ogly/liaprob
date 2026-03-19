@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-salesforce_marketing_cloud_account_engagement",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SALESFORCE_MARKETING_CLOUD_ACCOUNT_ENGAGEMENT",
+  "taxonomy_name": "Salesforce Marketing Cloud Account Engagement",
+  "vendor": "",
+  "product": "Salesforce Marketing Cloud Account Engagement",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SALESFORCE_MARKETING_CLOUD_ACCOUNT_ENGAGEMENT.json",
+    "original_name": "Salesforce Marketing Cloud Account Engagement"
+  },
+  "research": [
+    {
+      "url": "https://www.salesforce.com/products/marketing-cloud/marketing-automation",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_salesforce_marketing_cloud_account_engagement_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-pardot-lb",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-pardot-route",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "header",
+          "field": "x-pardot-rsp",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Salesforce Marketing Cloud Account Engagement (formerly known as Pardot) is an application specifically designed for B2B marketing automation.",
+  "website": "https://www.salesforce.com/products/marketing-cloud/marketing-automation"
+}

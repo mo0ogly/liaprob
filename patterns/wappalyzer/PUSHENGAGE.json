@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-pushengage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUSHENGAGE",
+  "taxonomy_name": "PushEngage",
+  "vendor": "",
+  "product": "PushEngage",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PUSHENGAGE.json",
+    "original_name": "PushEngage"
+  },
+  "research": [
+    {
+      "url": "https://www.pushengage.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_pushengage_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "clientcdn\\.pushengage\\.\\w+/core",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "PushEngage is a browser push notification platform that helps content website managers engage visitors by automatically segmenting and sending web push messages.",
+  "website": "https://www.pushengage.com"
+}

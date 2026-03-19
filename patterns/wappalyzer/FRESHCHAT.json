@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-freshchat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRESHCHAT",
+  "taxonomy_name": "Freshchat",
+  "vendor": "",
+  "product": "Freshchat",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FRESHCHAT.json",
+    "original_name": "Freshchat"
+  },
+  "research": [
+    {
+      "url": "https://www.freshworks.com/live-chat-software/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_freshchat_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "wchat\\.freshchat\\.com/js/widget\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Freshchat is a cloud-hosted live messaging and engagement application.",
+  "website": "https://www.freshworks.com/live-chat-software/"
+}

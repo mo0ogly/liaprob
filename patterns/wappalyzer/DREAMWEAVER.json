@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dreamweaver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DREAMWEAVER",
+  "taxonomy_name": "DreamWeaver",
+  "vendor": "",
+  "product": "DreamWeaver",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DREAMWEAVER.json",
+    "original_name": "DreamWeaver"
+  },
+  "research": [
+    {
+      "url": "https://www.adobe.com/products/dreamweaver.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dreamweaver_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- #begintemplate\\s\"[\\d_\\w/]+\\.dwt",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!--[^>]*(?:instancebegineditable|dreamweaver([^>]+)target|dwlayoutdefaulttable)",
+          "confidence_delta": 0.5,
+          "version_extract": "<!--[^>]*(?:instancebegineditable|dreamweaver([^>]+)target|dwlayoutdefaulttable)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:adobe:dreamweaver:*:*:*:*:*:*:*:*",
+  "categories": [
+    20
+  ],
+  "notes": "Dreamweaver is a development tool for creating, publishing, and managing websites and mobile content.",
+  "website": "https://www.adobe.com/products/dreamweaver.html"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-cackle",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CACKLE",
+  "taxonomy_name": "Cackle",
+  "vendor": "",
+  "product": "Cackle",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CACKLE.json",
+    "original_name": "Cackle"
+  },
+  "research": [
+    {
+      "url": "https://cackle.me",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_cackle_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "k\\.cackle\\.me/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    15
+  ],
+  "notes": "Cackle is a cloud services platform for increasing conversion using comments, feedback collection, online consultant and surveys.",
+  "website": "https://cackle.me"
+}

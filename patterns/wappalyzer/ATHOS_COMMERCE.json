@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-athos_commerce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATHOS_COMMERCE",
+  "taxonomy_name": "Athos Commerce",
+  "vendor": "",
+  "product": "Athos Commerce",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ATHOS_COMMERCE.json",
+    "original_name": "Athos Commerce"
+  },
+  "research": [
+    {
+      "url": "https://athoscommerce.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_athos_commerce_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.searchspring\\.net",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.klevu\\.\\w+/klevu-js-v([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "js\\.klevu\\.\\w+/klevu-js-v([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    29
+  ],
+  "notes": "Athos Commerce is a site search and merchandising platform designed to help ecommerce.",
+  "website": "https://athoscommerce.com/"
+}

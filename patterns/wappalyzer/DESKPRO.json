@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-deskpro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DESKPRO",
+  "taxonomy_name": "DeskPro",
+  "vendor": "",
+  "product": "DeskPro",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DESKPRO.json",
+    "original_name": "DeskPro"
+  },
+  "research": [
+    {
+      "url": "https://www.deskpro.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_deskpro_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^deskpro.+$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:deskpro:deskpro:*:*:*:*:*:*:*:*",
+  "categories": [
+    1,
+    53
+  ],
+  "notes": "DeskPro is multi channel helpdesk software for managing customer and citizen requests via email, forms, chat, social and voice.",
+  "website": "https://www.deskpro.com"
+}

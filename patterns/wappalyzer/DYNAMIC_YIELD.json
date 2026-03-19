@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dynamic_yield",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DYNAMIC_YIELD",
+  "taxonomy_name": "Dynamic Yield",
+  "vendor": "",
+  "product": "Dynamic Yield",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DYNAMIC_YIELD.json",
+    "original_name": "Dynamic Yield"
+  },
+  "research": [
+    {
+      "url": "https://www.dynamicyield.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dynamic_yield_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "_dy_geo",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "_dy_ses_load_seq",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn(?:-eu)?\\.dynamicyield\\.\\w+/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    74,
+    76
+  ],
+  "notes": "Dynamic Yield is a provider of automated conversion optimisation tools for marketers and retailers.",
+  "website": "https://www.dynamicyield.com"
+}

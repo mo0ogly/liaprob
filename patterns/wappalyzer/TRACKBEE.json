@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-trackbee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRACKBEE",
+  "taxonomy_name": "Trackbee",
+  "vendor": "",
+  "product": "Trackbee",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TRACKBEE.json",
+    "original_name": "Trackbee"
+  },
+  "research": [
+    {
+      "url": "https://www.trackbee.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_trackbee_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "trackbee\\.min\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Trackbee is a data analytics tool that identifies missing conversion data to optimize revenue tracking and improve business insights.",
+  "website": "https://www.trackbee.io"
+}

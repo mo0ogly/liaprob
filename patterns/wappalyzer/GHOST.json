@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-ghost",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GHOST",
+  "taxonomy_name": "Ghost",
+  "vendor": "",
+  "product": "Ghost",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GHOST.json",
+    "original_name": "Ghost"
+  },
+  "research": [
+    {
+      "url": "https://ghost.org",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_ghost_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-ghost-cache-status",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "ghost(?:\\s([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "ghost(?:\\s([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    1,
+    11
+  ],
+  "notes": "Ghost is a powerful app for new-media creators to publish, share, and grow a business around their content.",
+  "website": "https://ghost.org"
+}

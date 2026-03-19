@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-aos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AOS",
+  "taxonomy_name": "AOS",
+  "vendor": "",
+  "product": "AOS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "AOS.json",
+    "original_name": "AOS"
+  },
+  "research": [
+    {
+      "url": "https://michalsnik.github.io/aos/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_aos_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/typo3conf/ext/udem_vendor/resources/public/aos-([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "/typo3conf/ext/udem_vendor/resources/public/aos-([\\d\\.]+)"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "unpkg\\.com/aos@([\\d\\.]+)/dist/aos\\.js",
+          "confidence_delta": 0.5,
+          "version_extract": "unpkg\\.com/aos@([\\d\\.]+)/dist/aos\\.js"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "JavaScript library to animate elements on your page as you scroll.",
+  "website": "https://michalsnik.github.io/aos/"
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-groovekart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GROOVEKART",
+  "taxonomy_name": "GrooveKart",
+  "vendor": "",
+  "product": "GrooveKart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GROOVEKART.json",
+    "original_name": "GrooveKart"
+  },
+  "research": [
+    {
+      "url": "https://groove.cm/store",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_groovekart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^groovekart$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "GrooveKart is an ecommerce platform for building and managing online stores, offering tools for product listing, payments, and marketing with no additional transaction fees.",
+  "website": "https://groove.cm/store"
+}

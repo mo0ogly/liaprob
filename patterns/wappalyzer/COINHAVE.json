@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-coinhave",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COINHAVE",
+  "taxonomy_name": "Coinhave",
+  "vendor": "",
+  "product": "Coinhave",
+  "source": {
+    "type": "wappalyzer",
+    "file": "COINHAVE.json",
+    "original_name": "Coinhave"
+  },
+  "research": [
+    {
+      "url": "https://coin-have.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_coinhave_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "https?://coin-have\\.com/c/[0-9a-za-z]{4}\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    56
+  ],
+  "notes": "CoinHave is a cryptocurrency mining service.",
+  "website": "https://coin-have.com/"
+}

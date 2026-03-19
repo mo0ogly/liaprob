@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-elromco",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELROMCO",
+  "taxonomy_name": "Elromco",
+  "vendor": "",
+  "product": "Elromco",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ELROMCO.json",
+    "original_name": "Elromco"
+  },
+  "research": [
+    {
+      "url": "https://www.elromco.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_elromco_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "embed\\.elromco\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    53
+  ],
+  "notes": "Elromco is a software platform that provides moving companies with a CRM and management solution.",
+  "website": "https://www.elromco.com"
+}

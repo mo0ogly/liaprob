@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hcl_domino",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HCL_DOMINO",
+  "taxonomy_name": "HCL Domino",
+  "vendor": "",
+  "product": "HCL Domino",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HCL_DOMINO.json",
+    "original_name": "HCL Domino"
+  },
+  "research": [
+    {
+      "url": "https://www.hcltechsw.com/domino",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hcl_domino_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "server",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^lotus-domino$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:ibm:lotus_domino:*:*:*:*:*:*:*:*",
+  "implies": [
+    "Java"
+  ],
+  "categories": [
+    22
+  ],
+  "notes": "HCL Domino, formerly called IBM Domino (1995) and Lotus Domino (1989), is an enterprise server application development platform.",
+  "website": "https://www.hcltechsw.com/domino"
+}

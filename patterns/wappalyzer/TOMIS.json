@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tomis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOMIS",
+  "taxonomy_name": "Tomis",
+  "vendor": "",
+  "product": "Tomis",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TOMIS.json",
+    "original_name": "Tomis"
+  },
+  "research": [
+    {
+      "url": "https://tomis.tech",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tomis_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "tomis-bot\\.firebaseapp\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Tomis is a digital marketing tour operator, specialising in promoting travel services through online channels.",
+  "website": "https://tomis.tech"
+}

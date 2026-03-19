@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-beam_impact",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEAM_IMPACT",
+  "taxonomy_name": "Beam Impact",
+  "vendor": "",
+  "product": "Beam Impact",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BEAM_IMPACT.json",
+    "original_name": "Beam Impact"
+  },
+  "research": [
+    {
+      "url": "https://www.beamimpact.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_beam_impact_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "sdk\\.beamimpact\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Beam Impact is a marketing platform that provides end-to-end solutions designed to support consumer-focused campaigns.",
+  "website": "https://www.beamimpact.com"
+}

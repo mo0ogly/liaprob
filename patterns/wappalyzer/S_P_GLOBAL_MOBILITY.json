@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-s_p_global_mobility",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "S_P_GLOBAL_MOBILITY",
+  "taxonomy_name": "S&P Global Mobility",
+  "vendor": "",
+  "product": "S&P Global Mobility",
+  "source": {
+    "type": "wappalyzer",
+    "file": "S_P_GLOBAL_MOBILITY.json",
+    "original_name": "S&P Global Mobility"
+  },
+  "research": [
+    {
+      "url": "https://www.spglobal.com/mobility/en/index.html",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_s_p_global_mobility_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "vcu\\.collserve\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "S&P Global Mobility, formerly Dataium is a platform that analyzes online automotive shopping behavior.",
+  "website": "https://www.spglobal.com/mobility/en/index.html"
+}

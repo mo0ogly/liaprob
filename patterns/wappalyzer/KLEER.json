@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-kleer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KLEER",
+  "taxonomy_name": "Kleer",
+  "vendor": "",
+  "product": "Kleer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "KLEER.json",
+    "original_name": "Kleer"
+  },
+  "research": [
+    {
+      "url": "https://www.kleer.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_kleer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "member\\.kleer\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Kleer is a cloud-based platform that allows dentists to design and manage their own membership plans, offering them directly to uninsured patients.",
+  "website": "https://www.kleer.com"
+}

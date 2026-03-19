@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-queue_it",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUEUE_IT",
+  "taxonomy_name": "Queue-it",
+  "vendor": "",
+  "product": "Queue-it",
+  "source": {
+    "type": "wappalyzer",
+    "file": "QUEUE_IT.json",
+    "original_name": "Queue-it"
+  },
+  "research": [
+    {
+      "url": "https://queue-it.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_queue_it_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.queue-it\\.net/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    92
+  ],
+  "notes": "Queue-it is a virtual waiting room platform designed to protect your website and mobile app from slowdowns or crashes during end-user peaks.",
+  "website": "https://queue-it.com"
+}

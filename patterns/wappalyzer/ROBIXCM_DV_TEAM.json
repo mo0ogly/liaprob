@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-robixcm_dv_team",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROBIXCM_DV_TEAM",
+  "taxonomy_name": "RobixCM DV Team",
+  "vendor": "",
+  "product": "RobixCM DV Team",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ROBIXCM_DV_TEAM.json",
+    "original_name": "RobixCM DV Team"
+  },
+  "research": [
+    {
+      "url": "https://robixcm.ir",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_robixcm_dv_team_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "robixcmteam",
+          "match_type": "regex",
+          "value": "robixcm",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    47
+  ],
+  "notes": "RobixCM DV Team is a provider of web design and management services, offering solutions for website creation, maintenance, and optimization.",
+  "website": "https://robixcm.ir"
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-rd_station",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RD_STATION",
+  "taxonomy_name": "RD Station",
+  "vendor": "",
+  "product": "RD Station",
+  "source": {
+    "type": "wappalyzer",
+    "file": "RD_STATION.json",
+    "original_name": "RD Station"
+  },
+  "research": [
+    {
+      "url": "https://rdstation.com.br",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_rd_station_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "d335luupugsy2\\.cloudfront\\.net/js/loader-scripts/.*-loader\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "RD Station is a platform that helps medium and small businesses manage and automate their Digital Marketing strategy.",
+  "website": "https://rdstation.com.br"
+}

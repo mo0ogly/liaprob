@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-braze",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BRAZE",
+  "taxonomy_name": "Braze",
+  "vendor": "",
+  "product": "Braze",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BRAZE.json",
+    "original_name": "Braze"
+  },
+  "research": [
+    {
+      "url": "https://www.braze.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_braze_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "js\\.appboycdn\\.com/web-sdk/([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "js\\.appboycdn\\.com/web-sdk/([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    10
+  ],
+  "notes": "Braze is a customer engagement platform that delivers messaging experiences across push, email, in-product, and more.",
+  "website": "https://www.braze.com"
+}

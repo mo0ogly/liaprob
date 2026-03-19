@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-acquire_cobrowse",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACQUIRE_COBROWSE",
+  "taxonomy_name": "Acquire Cobrowse",
+  "vendor": "",
+  "product": "Acquire Cobrowse",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ACQUIRE_COBROWSE.json",
+    "original_name": "Acquire Cobrowse"
+  },
+  "research": [
+    {
+      "url": "https://acquire.io/co-browsing",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_acquire_cobrowse_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.acquire\\.io/cobrowse/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    19,
+    103
+  ],
+  "notes": "Acquire Cobrowse is a safe and secure method of interacting with a customer's browser without downloading any additional software.",
+  "website": "https://acquire.io/co-browsing"
+}

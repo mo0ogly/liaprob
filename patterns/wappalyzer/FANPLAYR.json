@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-fanplayr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FANPLAYR",
+  "taxonomy_name": "Fanplayr",
+  "vendor": "",
+  "product": "Fanplayr",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FANPLAYR.json",
+    "original_name": "Fanplayr"
+  },
+  "research": [
+    {
+      "url": "https://fanplayr.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_fanplayr_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.fanplayr\\.com/.+/([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "cdn\\.fanplayr\\.com/.+/([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Fanplayr is a real-time insights platform that provides website optimisation and personalisation solutions for businesses.",
+  "website": "https://fanplayr.com"
+}

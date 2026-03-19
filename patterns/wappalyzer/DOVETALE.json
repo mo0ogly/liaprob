@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dovetale",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOVETALE",
+  "taxonomy_name": "Dovetale",
+  "vendor": "",
+  "product": "Dovetale",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DOVETALE.json",
+    "original_name": "Dovetale"
+  },
+  "research": [
+    {
+      "url": "https://dovetale.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dovetale_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "dttrk\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Dovetale (Acquired by Shopify) helps e-commerce stores recruit, manage, & grow their sales with communities of people who love their products.",
+  "website": "https://dovetale.com/"
+}

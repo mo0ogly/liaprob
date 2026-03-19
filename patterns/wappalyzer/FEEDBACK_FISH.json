@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-feedback_fish",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FEEDBACK_FISH",
+  "taxonomy_name": "Feedback Fish",
+  "vendor": "",
+  "product": "Feedback Fish",
+  "source": {
+    "type": "wappalyzer",
+    "file": "FEEDBACK_FISH.json",
+    "original_name": "Feedback Fish"
+  },
+  "research": [
+    {
+      "url": "https://feedback.fish",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_feedback_fish_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "^https://feedback\\.fish/ff\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    13
+  ],
+  "notes": "Feedback Fish is a widget for collecting website feedback from users.",
+  "website": "https://feedback.fish"
+}

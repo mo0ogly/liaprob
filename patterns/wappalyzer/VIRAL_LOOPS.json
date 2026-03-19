@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-viral_loops",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIRAL_LOOPS",
+  "taxonomy_name": "Viral Loops",
+  "vendor": "",
+  "product": "Viral Loops",
+  "source": {
+    "type": "wappalyzer",
+    "file": "VIRAL_LOOPS.json",
+    "original_name": "Viral Loops"
+  },
+  "research": [
+    {
+      "url": "https://viral-loops.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_viral_loops_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.viral-loops\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    94
+  ],
+  "notes": "Viral Loops is a viral and referral marketing platform to launch ranking competitions, sweepstakes, pre-launch and referral programs.",
+  "website": "https://viral-loops.com"
+}

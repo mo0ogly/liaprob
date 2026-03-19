@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-shoproller",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHOPROLLER",
+  "taxonomy_name": "Shoproller",
+  "vendor": "",
+  "product": "Shoproller",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHOPROLLER.json",
+    "original_name": "Shoproller"
+  },
+  "research": [
+    {
+      "url": "https://www.shoproller.ee",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_shoproller_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "shoproller\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Shoproller is a website builder that offers integrated ecommerce features, enabling users to create and manage online stores.",
+  "website": "https://www.shoproller.ee"
+}

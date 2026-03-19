@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yotpo_subscriptions",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOTPO_SUBSCRIPTIONS",
+  "taxonomy_name": "Yotpo Subscriptions",
+  "vendor": "",
+  "product": "Yotpo Subscriptions",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOTPO_SUBSCRIPTIONS.json",
+    "original_name": "Yotpo Subscriptions"
+  },
+  "research": [
+    {
+      "url": "https://www.yotpo.com/platform/subscriptions/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yotpo_subscriptions_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- begin app block: shopify://apps/yotpo-subscriptions/blocks/app-embed-block",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    100
+  ],
+  "notes": "Yotpo Subscriptions is a Shopify app designed for merchants to provide subscription services to customers.",
+  "website": "https://www.yotpo.com/platform/subscriptions/"
+}

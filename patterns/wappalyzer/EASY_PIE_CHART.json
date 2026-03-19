@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-easy_pie_chart",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EASY_PIE_CHART",
+  "taxonomy_name": "Easy Pie Chart",
+  "vendor": "",
+  "product": "Easy Pie Chart",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EASY_PIE_CHART.json",
+    "original_name": "Easy Pie Chart"
+  },
+  "research": [
+    {
+      "url": "https://rendro.github.io/easy-pie-chart/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_easy_pie_chart_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "[ee]asy-?[pp]ie-?[cc]hart(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    59
+  ],
+  "notes": "Lightweight jQuery plugin to render and animate nice pie charts with the HTML5 canvas element.",
+  "website": "https://rendro.github.io/easy-pie-chart/"
+}

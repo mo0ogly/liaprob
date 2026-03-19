@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-analyzz",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANALYZZ",
+  "taxonomy_name": "Analyzz",
+  "vendor": "",
+  "product": "Analyzz",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ANALYZZ.json",
+    "original_name": "Analyzz"
+  },
+  "research": [
+    {
+      "url": "https://analyzz.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_analyzz_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "app\\.analyzz\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10
+  ],
+  "notes": "Analyzz is a privacy-focused analytics platform that collects and reports website data while minimizing tracking of individual users.",
+  "website": "https://analyzz.com"
+}

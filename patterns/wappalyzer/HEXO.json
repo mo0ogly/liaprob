@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-hexo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HEXO",
+  "taxonomy_name": "Hexo",
+  "vendor": "",
+  "product": "Hexo",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HEXO.json",
+    "original_name": "Hexo"
+  },
+  "research": [
+    {
+      "url": "https://hexo.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_hexo_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "powered by <a href=\"https?://hexo\\.io/?\"[^>]*>hexo</",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "hexo(?: v?([\\d.]+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "hexo(?: v?([\\d.]+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Node.js"
+  ],
+  "categories": [
+    57
+  ],
+  "notes": "Hexo is a blog framework powered by Node.js.",
+  "website": "https://hexo.io"
+}

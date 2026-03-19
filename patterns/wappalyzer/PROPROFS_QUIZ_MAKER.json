@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-proprofs_quiz_maker",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROPROFS_QUIZ_MAKER",
+  "taxonomy_name": "ProProfs Quiz Maker",
+  "vendor": "",
+  "product": "ProProfs Quiz Maker",
+  "source": {
+    "type": "wappalyzer",
+    "file": "PROPROFS_QUIZ_MAKER.json",
+    "original_name": "ProProfs Quiz Maker"
+  },
+  "research": [
+    {
+      "url": "https://www.proprofs.com/quiz-school",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_proprofs_quiz_maker_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "pp_bot_kb_detail",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5
+  ],
+  "notes": "ProProfs Quiz Maker is a quiz-based widget builder that enables the creation of interactive quizzes for embedding on websites or digital platforms.",
+  "website": "https://www.proprofs.com/quiz-school"
+}

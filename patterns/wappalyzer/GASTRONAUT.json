@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-gastronaut",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GASTRONAUT",
+  "taxonomy_name": "Gastronaut",
+  "vendor": "",
+  "product": "Gastronaut",
+  "source": {
+    "type": "wappalyzer",
+    "file": "GASTRONAUT.json",
+    "original_name": "Gastronaut"
+  },
+  "research": [
+    {
+      "url": "https://get.gastronaut.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_gastronaut_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "api\\.gastronaut\\.ai/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    93
+  ],
+  "notes": "Gastronaut is a reservation system designed to automate the booking process, streamlining operations to enhance sales efficiency.",
+  "website": "https://get.gastronaut.ai"
+}

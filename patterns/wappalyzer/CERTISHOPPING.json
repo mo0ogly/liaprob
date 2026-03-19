@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-certishopping",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CERTISHOPPING",
+  "taxonomy_name": "Certishopping",
+  "vendor": "",
+  "product": "Certishopping",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CERTISHOPPING.json",
+    "original_name": "Certishopping"
+  },
+  "research": [
+    {
+      "url": "https://www.certishopping.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_certishopping_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "access-control-allow-origin",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "business\\.certishopping\\.com"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "Certishopping is an all-in-one marketing platform designed to accelerate business growth through integrated tools and automation.",
+  "website": "https://www.certishopping.com"
+}

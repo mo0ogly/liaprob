@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-wp_statistics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WP_STATISTICS",
+  "taxonomy_name": "WP-Statistics",
+  "vendor": "",
+  "product": "WP-Statistics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WP_STATISTICS.json",
+    "original_name": "WP-Statistics"
+  },
+  "research": [
+    {
+      "url": "https://wp-statistics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_wp_statistics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- analytics by wp-statistics v([\\d\\.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "<!-- analytics by wp-statistics v([\\d\\.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    87
+  ],
+  "notes": "WP-Statistics is a WordPress plugin which allows you to know your website statistics.",
+  "website": "https://wp-statistics.com"
+}

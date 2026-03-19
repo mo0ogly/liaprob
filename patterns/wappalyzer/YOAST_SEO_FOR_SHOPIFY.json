@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-yoast_seo_for_shopify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOAST_SEO_FOR_SHOPIFY",
+  "taxonomy_name": "Yoast SEO for Shopify",
+  "vendor": "",
+  "product": "Yoast SEO for Shopify",
+  "source": {
+    "type": "wappalyzer",
+    "file": "YOAST_SEO_FOR_SHOPIFY.json",
+    "original_name": "Yoast SEO for Shopify"
+  },
+  "research": [
+    {
+      "url": "https://yoast.com/shopify/apps/yoast-seo/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_yoast_seo_for_shopify_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<!-- this site is optimized with yoast seo for shopify -->",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    54,
+    100
+  ],
+  "notes": "Yoast SEO for Shopify optimizes Shopify shops.",
+  "website": "https://yoast.com/shopify/apps/yoast-seo/"
+}

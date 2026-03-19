@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adnymics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADNYMICS",
+  "taxonomy_name": "Adnymics",
+  "vendor": "",
+  "product": "Adnymics",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADNYMICS.json",
+    "original_name": "Adnymics"
+  },
+  "research": [
+    {
+      "url": "https://adnymics.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adnymics_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "trac\\.adnymics\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Adnymics is a platform that enables personalization in ecommerce by tailoring content, recommendations, and experiences to individual users based on their behavior and preferences.",
+  "website": "https://adnymics.com"
+}

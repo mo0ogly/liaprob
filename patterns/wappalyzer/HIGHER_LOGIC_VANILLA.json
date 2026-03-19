@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-higher_logic_vanilla",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HIGHER_LOGIC_VANILLA",
+  "taxonomy_name": "Higher Logic Vanilla",
+  "vendor": "",
+  "product": "Higher Logic Vanilla",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HIGHER_LOGIC_VANILLA.json",
+    "original_name": "Higher Logic Vanilla"
+  },
+  "research": [
+    {
+      "url": "https://vanilla.higherlogic.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_higher_logic_vanilla_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": " x-vanilla-version",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "([\\d\\.]+)",
+          "version_extract": "([\\d\\.]+)"
+        },
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "vanilla"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "PHP"
+  ],
+  "categories": [
+    2
+  ],
+  "notes": "Higher Logic Vanilla is a cloud-based customer community platform offering features like discussion forums, Q&A, ideation, gamification, and advanced analytics, enabling businesses to enhance customer engagement and support.",
+  "website": "https://vanilla.higherlogic.com"
+}

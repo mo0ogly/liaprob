@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-e37",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "E37",
+  "taxonomy_name": "E37",
+  "vendor": "",
+  "product": "E37",
+  "source": {
+    "type": "wappalyzer",
+    "file": "E37.json",
+    "original_name": "E37"
+  },
+  "research": [
+    {
+      "url": "https://www.e37.se",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_e37_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "e37 triton ([\\d.]+)",
+          "confidence_delta": 0.5,
+          "version_extract": "e37 triton ([\\d.]+)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "E37 is an enterprise ecommerce platform designed to support large-scale online retail operations.",
+  "website": "https://www.e37.se"
+}

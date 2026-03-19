@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-smile",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SMILE",
+  "taxonomy_name": "Smile",
+  "vendor": "",
+  "product": "Smile",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SMILE.json",
+    "original_name": "Smile"
+  },
+  "research": [
+    {
+      "url": "https://smile.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_smile_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.(?:smile|sweettooth)\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    84
+  ],
+  "notes": "Smile is a provider of ecommerce loyalty programs.",
+  "website": "https://smile.io"
+}

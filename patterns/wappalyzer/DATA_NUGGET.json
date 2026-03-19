@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-data_nugget",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATA_NUGGET",
+  "taxonomy_name": "data nugget",
+  "vendor": "",
+  "product": "data nugget",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DATA_NUGGET.json",
+    "original_name": "data nugget"
+  },
+  "research": [
+    {
+      "url": "https://datanugget.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_data_nugget_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "analytics\\.datanugget\\.io",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32
+  ],
+  "notes": "data nugget is a brand growth platform designed to help businesses analyze performance, identify opportunities, and manage strategies.",
+  "website": "https://datanugget.io"
+}

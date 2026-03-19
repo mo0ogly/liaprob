@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-harafunnel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HARAFUNNEL",
+  "taxonomy_name": "Harafunnel",
+  "vendor": "",
+  "product": "Harafunnel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HARAFUNNEL.json",
+    "original_name": "Harafunnel"
+  },
+  "research": [
+    {
+      "url": "https://en.harafunnel.com/pages/harafunnel",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_harafunnel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "assets\\.harafunnel\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    52
+  ],
+  "notes": "Harafunnel is a marketing automation tool that integrates with Facebook Messenger Bot to streamline customer engagement.",
+  "website": "https://en.harafunnel.com/pages/harafunnel"
+}

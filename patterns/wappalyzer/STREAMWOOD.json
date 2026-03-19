@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-streamwood",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STREAMWOOD",
+  "taxonomy_name": "Streamwood",
+  "vendor": "",
+  "product": "Streamwood",
+  "source": {
+    "type": "wappalyzer",
+    "file": "STREAMWOOD.json",
+    "original_name": "Streamwood"
+  },
+  "research": [
+    {
+      "url": "https://streamwood.ru",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_streamwood_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "clients\\.streamwood\\.ru/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    52
+  ],
+  "notes": "Streamwood is a call back and chat system designed to facilitate efficient communication.",
+  "website": "https://streamwood.ru"
+}

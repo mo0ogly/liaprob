@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-site_kit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SITE_KIT",
+  "taxonomy_name": "Site Kit",
+  "vendor": "",
+  "product": "Site Kit",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SITE_KIT.json",
+    "original_name": "Site Kit"
+  },
+  "research": [
+    {
+      "url": "https://sitekit.withgoogle.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_site_kit_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^site kit by google ?([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^site kit by google ?([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    87
+  ],
+  "notes": "Site Kit is a one-stop solution for WordPress users to use everything Google has to offer to make them successful on the web.",
+  "website": "https://sitekit.withgoogle.com/"
+}

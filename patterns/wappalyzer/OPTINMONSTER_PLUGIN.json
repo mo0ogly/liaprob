@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-optinmonster_plugin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPTINMONSTER_PLUGIN",
+  "taxonomy_name": "OptinMonster plugin",
+  "vendor": "",
+  "product": "OptinMonster plugin",
+  "source": {
+    "type": "wappalyzer",
+    "file": "OPTINMONSTER_PLUGIN.json",
+    "original_name": "OptinMonster plugin"
+  },
+  "research": [
+    {
+      "url": "https://optinmonster.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_optinmonster_plugin_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "/wp-content/plugins/optinmonster/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "/wp-content/plugins/optinmonster/.+\\.js(?:\\?ver=(\\d+(?:\\.\\d+)+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "OptinMonster"
+  ],
+  "categories": [
+    87
+  ],
+  "notes": "OptinMonster is a lead-generation plugin for WordPress.",
+  "website": "https://optinmonster.com"
+}

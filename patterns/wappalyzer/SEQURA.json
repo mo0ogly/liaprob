@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sequra",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEQURA",
+  "taxonomy_name": "SeQura",
+  "vendor": "",
+  "product": "SeQura",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SEQURA.json",
+    "original_name": "SeQura"
+  },
+  "research": [
+    {
+      "url": "https://www.sequra.es",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sequra_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "live\\.sequracdn\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    91
+  ],
+  "notes": "SeQura is a FinTech company based in Barcelona, providing digital flexible payment solutions, with a geographical focus on Southern Europe and Latin America.",
+  "website": "https://www.sequra.es"
+}

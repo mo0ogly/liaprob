@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-webcool_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBCOOL_CMS",
+  "taxonomy_name": "Webcool CMS",
+  "vendor": "",
+  "product": "Webcool CMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "WEBCOOL_CMS.json",
+    "original_name": "Webcool CMS"
+  },
+  "research": [
+    {
+      "url": "https://webcool.vn",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_webcool_cms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "x-powered-by",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "^webcool cms$"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Webcool CMS is a content management platform that automates workflows and enhances operational efficiency for organizations in the digital media and journalism industry.",
+  "website": "https://webcool.vn"
+}

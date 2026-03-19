@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-spurit_abandoned_cart_reminder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPURIT_ABANDONED_CART_REMINDER",
+  "taxonomy_name": "SpurIT Abandoned Cart Reminder",
+  "vendor": "",
+  "product": "SpurIT Abandoned Cart Reminder",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SPURIT_ABANDONED_CART_REMINDER.json",
+    "original_name": "SpurIT Abandoned Cart Reminder"
+  },
+  "research": [
+    {
+      "url": "https://spur-i-t.com/shopify-apps/abandoned-cart-reminder/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_spurit_abandoned_cart_reminder_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn-spurit\\.com/shopify-apps/abandoned-cart-reminder/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "Shopify"
+  ],
+  "categories": [
+    98,
+    100
+  ],
+  "notes": "SpurIT Abandoned Cart Reminder bring back your Shopify store visitors who moved to another tab by blinking your store tab.",
+  "website": "https://spur-i-t.com/shopify-apps/abandoned-cart-reminder/"
+}

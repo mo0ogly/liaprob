@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-consent_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONSENT_MANAGER",
+  "taxonomy_name": "Consent Manager",
+  "vendor": "",
+  "product": "Consent Manager",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CONSENT_MANAGER.json",
+    "original_name": "Consent Manager"
+  },
+  "research": [
+    {
+      "url": "https://www.consentmanager.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_consent_manager_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "cookie",
+          "field": "__cmpcccx274",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "__cmpconsentx274",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        },
+        {
+          "target": "cookie",
+          "field": "__cmpiuid",
+          "confidence_delta": 0.5,
+          "match_type": "exists"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    67
+  ],
+  "notes": "Consent Manager is a provider ensuring GDPR and CCPA compliance for websites.",
+  "website": "https://www.consentmanager.net"
+}

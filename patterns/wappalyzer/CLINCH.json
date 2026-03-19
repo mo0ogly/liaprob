@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-clinch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLINCH",
+  "taxonomy_name": "Clinch",
+  "vendor": "",
+  "product": "Clinch",
+  "source": {
+    "type": "wappalyzer",
+    "file": "CLINCH.json",
+    "original_name": "Clinch"
+  },
+  "research": [
+    {
+      "url": "https://clinch.co/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_clinch_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.clinch\\.co",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Clinch delivers hyper-personalized creative experiences and consumer intelligence across all channels.",
+  "website": "https://clinch.co/"
+}

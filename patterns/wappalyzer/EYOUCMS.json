@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-eyoucms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EYOUCMS",
+  "taxonomy_name": "EyouCMS",
+  "vendor": "",
+  "product": "EyouCMS",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EYOUCMS.json",
+    "original_name": "EyouCMS"
+  },
+  "research": [
+    {
+      "url": "https://www.eyoucms.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_eyoucms_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^eyoucms$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    1
+  ],
+  "notes": "Eyou CMS is a stable, open-source enterprise content management system built on the TP5.0 framework.",
+  "website": "https://www.eyoucms.com"
+}

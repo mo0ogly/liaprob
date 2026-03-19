@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-dynamic_conditions",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DYNAMIC_CONDITIONS",
+  "taxonomy_name": "Dynamic Conditions",
+  "vendor": "",
+  "product": "Dynamic Conditions",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DYNAMIC_CONDITIONS.json",
+    "original_name": "Dynamic Conditions"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/dynamicconditions",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_dynamic_conditions_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "dynamic-conditions-public\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "dynamic-conditions-public\\.js(?:\\?v(?:er)?=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    87
+  ],
+  "notes": "Dynamic Conditions of Widgets is a cutting-edge WordPress plugin that extends the functionality of your website using conditional logic.",
+  "website": "https://wordpress.org/plugins/dynamicconditions"
+}

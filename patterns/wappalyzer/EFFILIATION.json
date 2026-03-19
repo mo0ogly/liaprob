@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-effiliation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EFFILIATION",
+  "taxonomy_name": "Effiliation",
+  "vendor": "",
+  "product": "Effiliation",
+  "source": {
+    "type": "wappalyzer",
+    "file": "EFFILIATION.json",
+    "original_name": "Effiliation"
+  },
+  "research": [
+    {
+      "url": "https://www.effiliation.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_effiliation_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.effiliation\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    71
+  ],
+  "notes": "Effiliation is a performance marketing platform and affiliate network that facilitates partnerships between advertisers and publishers for commission-based promotion of products and services.",
+  "website": "https://www.effiliation.com"
+}

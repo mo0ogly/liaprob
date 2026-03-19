@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-headroom_js",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HEADROOM_JS",
+  "taxonomy_name": "Headroom.js",
+  "vendor": "",
+  "product": "Headroom.js",
+  "source": {
+    "type": "wappalyzer",
+    "file": "HEADROOM_JS.json",
+    "original_name": "Headroom.js"
+  },
+  "research": [
+    {
+      "url": "https://wicky.nillia.ms/headroom.js/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_headroom_js_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "headroom(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?",
+          "confidence_delta": 0.5,
+          "version_extract": "headroom(?:\\.min)?\\.js(?:\\?ver=((?:\\d+\\.)+\\d+))?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    5,
+    59
+  ],
+  "notes": "Headroom.js is a JS widget that allows you to react to the user's scroll. The header slides out of view when scrolling down and slides back in when scrolling up.",
+  "website": "https://wicky.nillia.ms/headroom.js/"
+}

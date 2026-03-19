@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-inmoment",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INMOMENT",
+  "taxonomy_name": "InMoment",
+  "vendor": "",
+  "product": "InMoment",
+  "source": {
+    "type": "wappalyzer",
+    "file": "INMOMENT.json",
+    "original_name": "InMoment"
+  },
+  "research": [
+    {
+      "url": "https://inmoment.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_inmoment_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "header",
+          "field": "content-security-policy",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.inmoment\\.com"
+        },
+        {
+          "target": "header",
+          "field": "content-security-policy-report-only",
+          "confidence_delta": 0.5,
+          "match_type": "regex",
+          "value": "\\.inmoment\\.com"
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.inmoment\\.com(?:\\.\\w+)?/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    73
+  ],
+  "notes": "InMoment provides SaaS based customer survey and enterprise feedback management solutions.",
+  "website": "https://inmoment.com"
+}

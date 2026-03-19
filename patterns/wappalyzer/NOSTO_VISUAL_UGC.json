@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-nosto_visual_ugc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOSTO_VISUAL_UGC",
+  "taxonomy_name": "Nosto Visual UGC",
+  "vendor": "",
+  "product": "Nosto Visual UGC",
+  "source": {
+    "type": "wappalyzer",
+    "file": "NOSTO_VISUAL_UGC.json",
+    "original_name": "Nosto Visual UGC"
+  },
+  "research": [
+    {
+      "url": "https://www.nosto.com/products/visual-ugc/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_nosto_visual_ugc_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.stackla\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    96
+  ],
+  "notes": "Nosto Visual UGC (Earlier known as Stackla) is a cloud-based content marketing platform that helps discover, curate, display and engage with user-generated content across all digital marketing platforms.",
+  "website": "https://www.nosto.com/products/visual-ugc/"
+}

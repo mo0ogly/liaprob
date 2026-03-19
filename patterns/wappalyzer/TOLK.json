@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-tolk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOLK",
+  "taxonomy_name": "Tolk",
+  "vendor": "",
+  "product": "Tolk",
+  "source": {
+    "type": "wappalyzer",
+    "file": "TOLK.json",
+    "original_name": "Tolk"
+  },
+  "research": [
+    {
+      "url": "https://www.tolk.ai",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_tolk_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "script\\.tolk\\.ai",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    52
+  ],
+  "notes": "Tolk is a platform that provides AI-powered live chat and chatbot solutions designed to enhance customer relations and support interactions.",
+  "website": "https://www.tolk.ai"
+}

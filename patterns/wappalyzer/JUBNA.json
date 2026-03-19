@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-jubna",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUBNA",
+  "taxonomy_name": "Jubna",
+  "vendor": "",
+  "product": "Jubna",
+  "source": {
+    "type": "wappalyzer",
+    "file": "JUBNA.json",
+    "original_name": "Jubna"
+  },
+  "research": [
+    {
+      "url": "https://www.jubna.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_jubna_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "cdn\\.jubna\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    76
+  ],
+  "notes": "Jubna is a content recommendation engine that delivers personalized suggestions by analyzing user behavior and preferences.",
+  "website": "https://www.jubna.com"
+}

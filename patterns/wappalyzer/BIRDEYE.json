@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-birdeye",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BIRDEYE",
+  "taxonomy_name": "Birdeye",
+  "vendor": "",
+  "product": "Birdeye",
+  "source": {
+    "type": "wappalyzer",
+    "file": "BIRDEYE.json",
+    "original_name": "Birdeye"
+  },
+  "research": [
+    {
+      "url": "https://birdeye.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_birdeye_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "birdeye\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "birdeye\\.com/embed",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    32,
+    5
+  ],
+  "notes": "Birdeye is an all-in-one customer experience platform.",
+  "website": "https://birdeye.com"
+}

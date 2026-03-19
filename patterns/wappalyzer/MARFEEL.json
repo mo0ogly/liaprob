@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-marfeel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MARFEEL",
+  "taxonomy_name": "Marfeel",
+  "vendor": "",
+  "product": "Marfeel",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MARFEEL.json",
+    "original_name": "Marfeel"
+  },
+  "research": [
+    {
+      "url": "https://www.marfeel.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_marfeel_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.marfeel\\.com/",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.mrf\\.io/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    36
+  ],
+  "notes": "Marfeel is a publisher platform that allows publishers to create, optimise and monetise their mobile websites.",
+  "website": "https://www.marfeel.com"
+}

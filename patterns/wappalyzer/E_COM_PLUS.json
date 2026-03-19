@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-e_com_plus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "E_COM_PLUS",
+  "taxonomy_name": "E-Com Plus",
+  "vendor": "",
+  "product": "E-Com Plus",
+  "source": {
+    "type": "wappalyzer",
+    "file": "E_COM_PLUS.json",
+    "original_name": "E-Com Plus"
+  },
+  "research": [
+    {
+      "url": "https://www.ecomplus.io",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_e_com_plus_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^e-com\\splus\\sstorefront$",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "implies": [
+    "TypeScript",
+    "Vue.js"
+  ],
+  "categories": [
+    108
+  ],
+  "notes": "E-Com Plus is an open fair-code ecommerce platform designed to be used with headless commerce APIs.",
+  "website": "https://www.ecomplus.io"
+}

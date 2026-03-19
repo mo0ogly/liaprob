@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-mollom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOLLOM",
+  "taxonomy_name": "Mollom",
+  "vendor": "",
+  "product": "Mollom",
+  "source": {
+    "type": "wappalyzer",
+    "file": "MOLLOM.json",
+    "original_name": "Mollom"
+  },
+  "research": [
+    {
+      "url": "https://mollom.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_mollom_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "<img[^>]+\\.mollom\\.com",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "mollom(?:\\.min)?\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:acquia:mollom:*:*:*:*:*:*:*:*",
+  "categories": [
+    16
+  ],
+  "website": "https://mollom.com"
+}

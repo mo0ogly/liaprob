@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-image_prioritizer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IMAGE_PRIORITIZER",
+  "taxonomy_name": "Image Prioritizer",
+  "vendor": "",
+  "product": "Image Prioritizer",
+  "source": {
+    "type": "wappalyzer",
+    "file": "IMAGE_PRIORITIZER.json",
+    "original_name": "Image Prioritizer"
+  },
+  "research": [
+    {
+      "url": "https://wordpress.org/plugins/image-prioritizer/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_image_prioritizer_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "meta",
+          "field": "generator",
+          "match_type": "regex",
+          "value": "^image-prioritizer ([\\d.]+)?",
+          "confidence_delta": 0.5,
+          "version_extract": "^image-prioritizer ([\\d.]+)?"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    87,
+    92
+  ],
+  "notes": "Performance plugin from the WordPress Performance Team, which optimizes the loading of images which are the LCP (Largest Contentful Paint) element, including both img elements and elements with CSS background images.",
+  "website": "https://wordpress.org/plugins/image-prioritizer/"
+}

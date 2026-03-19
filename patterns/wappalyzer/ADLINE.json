@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-adline",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADLINE",
+  "taxonomy_name": "Adline",
+  "vendor": "",
+  "product": "Adline",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ADLINE.json",
+    "original_name": "Adline"
+  },
+  "research": [
+    {
+      "url": "https://adline.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_adline_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "prod\\.api\\.adline\\.com",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    10,
+    36
+  ],
+  "notes": "Adline is an advertising & analytics software that helps launch multichannel ads with automatic ad optimization.",
+  "website": "https://adline.com"
+}

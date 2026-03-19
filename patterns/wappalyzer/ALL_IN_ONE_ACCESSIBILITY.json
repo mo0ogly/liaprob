@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-all_in_one_accessibility",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALL_IN_ONE_ACCESSIBILITY",
+  "taxonomy_name": "All in One Accessibility",
+  "vendor": "",
+  "product": "All in One Accessibility",
+  "source": {
+    "type": "wappalyzer",
+    "file": "ALL_IN_ONE_ACCESSIBILITY.json",
+    "original_name": "All in One Accessibility"
+  },
+  "research": [
+    {
+      "url": "https://www.skynettechnologies.com/all-in-one-accessibility",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_all_in_one_accessibility_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.skynettechnologies\\.com/accessibility/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    68
+  ],
+  "notes": "All in One Accessibility is a website accessibility widget developed by Skynet Technologies to enhance compliance with WCAG 2.0, 2.1, 2.2, and ADA accessibility standards.",
+  "website": "https://www.skynettechnologies.com/all-in-one-accessibility"
+}

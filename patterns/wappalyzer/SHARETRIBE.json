@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sharetribe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHARETRIBE",
+  "taxonomy_name": "Sharetribe",
+  "vendor": "",
+  "product": "Sharetribe",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SHARETRIBE.json",
+    "original_name": "Sharetribe"
+  },
+  "research": [
+    {
+      "url": "https://www.sharetribe.com",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sharetribe_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sharetribe\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    6
+  ],
+  "notes": "Sharetribe is cloud-based platform for small to medium businesses, which helps businesses to create and manage custom online marketplaces.",
+  "website": "https://www.sharetribe.com"
+}

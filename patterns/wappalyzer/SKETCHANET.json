@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-sketchanet",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SKETCHANET",
+  "taxonomy_name": "Sketchanet",
+  "vendor": "",
+  "product": "Sketchanet",
+  "source": {
+    "type": "wappalyzer",
+    "file": "SKETCHANET.json",
+    "original_name": "Sketchanet"
+  },
+  "research": [
+    {
+      "url": "https://www.sketchanet.com/",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_sketchanet_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "\\.sketchanet\\.com/",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "categories": [
+    51
+  ],
+  "notes": "Sketchanet is a code-free website creation system that enables users to design and publish websites without writing or managing source code.",
+  "website": "https://www.sketchanet.com/"
+}

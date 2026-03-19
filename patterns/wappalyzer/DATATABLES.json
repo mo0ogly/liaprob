@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "wappalyzer-datatables",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATATABLES",
+  "taxonomy_name": "DataTables",
+  "vendor": "",
+  "product": "DataTables",
+  "source": {
+    "type": "wappalyzer",
+    "file": "DATATABLES.json",
+    "original_name": "DataTables"
+  },
+  "research": [
+    {
+      "url": "https://datatables.net",
+      "type": "wappalyzer_database",
+      "evidence": "Converted from wappalyzergo fingerprints_data.json",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "wappalyzer_datatables_http",
+      "layer": "L7_HTTP",
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true,
+      "matchers": [
+        {
+          "target": "script_src",
+          "match_type": "regex",
+          "value": "datatables.*\\.js",
+          "confidence_delta": 0.5
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [],
+  "cpe23_template": "cpe:2.3:a:datatables:datatables.net:*:*:*:*:*:*:*:*",
+  "implies": [
+    "jQuery"
+  ],
+  "categories": [
+    59
+  ],
+  "notes": "DataTables is a plug-in for the jQuery Javascript library adding advanced features like pagination, instant search, themes, and more to any HTML table.",
+  "website": "https://datatables.net"
+}
