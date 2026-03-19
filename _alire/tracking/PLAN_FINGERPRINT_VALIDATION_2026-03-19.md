@@ -87,4 +87,5 @@ Services critiques manquants : Dropbear SSH, ProFTPD, Exim SMTP, ISC BIND DNS, D
 - Protocoles binaires (SNMP, RDP, Telnet, LDAP, SMB, PPTP) : patterns LIA manuels obligatoires
 
 ## Resultat
-En cours - Vagues 1 et 2 COMPLETES. Vagues 3-6 a faire.
+COMPLET - Vagues 1 et 2 COMPLETES. 20/20 services detects, 0 regression.
+RETEX genere : RETEX_FINGERPRINT_VALIDATION_WAVE_1_2.md + .json
