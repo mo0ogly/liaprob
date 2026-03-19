@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-solarwinds_serv_u_ftp_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOLARWINDS_SERV_U_FTP_SERVER",
+  "taxonomy_name": "SolarWinds Serv-U FTP Server",
+  "vendor": "SolarWinds",
+  "product": "Serv-U FTP Server",
+  "source": {
+    "type": "recog",
+    "file": "SOLARWINDS_SERV_U_FTP_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_solarwinds_serv_u_ftp_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Serv-U FTP Server v(15\\.\\S+) ready\\.\\.\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Serv-U FTP Server v(15\\.\\S+) ready\\.\\.\\.$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SolarWinds Serv-U with version"
+        }
+      ]
+    },
+    {
+      "id": "recog_solarwinds_serv_u_ftp_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Serv-U\\/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Serv-U\\/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Serv-U HTTP interface"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:solarwinds:serv-u_ftp_server:{version}",
+  "examples": [
+    "Serv-U FTP Server v15.1.3.25 ready...",
+    "Serv-U/15.1.6.31"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-serena_serena_collage_4_6_servlet_images_collage_app_ico",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERENA_SERENA_COLLAGE_4_6_SERVLET_IMAGES_COLLAGE_APP_ICO",
+  "taxonomy_name": "Serena Serena Collage (4.6, servlet/images/collage_app.ico)",
+  "vendor": "Serena",
+  "product": "Serena Collage (4.6, servlet/images/collage_app.ico)",
+  "source": {
+    "type": "recog",
+    "file": "SERENA_SERENA_COLLAGE_4_6_SERVLET_IMAGES_COLLAGE_APP_ICO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_serena_serena_collage_4_6_servlet_images_collage_app_ico_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^bd0f7466d35e8ba6cedd9c27110c5c41",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Serena Collage (4.6, servlet/images/collage_app.ico)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "bd0f7466d35e8ba6cedd9c27110c5c41"
+  ]
+}

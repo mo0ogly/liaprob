@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nlnet_labs_unbound",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NLNET_LABS_UNBOUND",
+  "taxonomy_name": "NLnet Labs unbound",
+  "vendor": "NLnet Labs",
+  "product": "unbound",
+  "source": {
+    "type": "recog",
+    "file": "NLNET_LABS_UNBOUND.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_nlnet_labs_unbound_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^unbound ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^unbound ([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "NLnet Labs Unbound"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "(?i)^unbound$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NLnet Labs Unbound no version string"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/a:nlnetlabs:unbound:{version}",
+  "examples": [
+    "unbound 1.4.22",
+    "unbound"
+  ]
+}

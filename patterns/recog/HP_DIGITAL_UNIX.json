@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_digital_unix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_DIGITAL_UNIX",
+  "taxonomy_name": "HP Digital Unix",
+  "vendor": "HP",
+  "product": "Digital Unix",
+  "source": {
+    "type": "recog",
+    "file": "HP_DIGITAL_UNIX.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_digital_unix_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) FTP server \\(Digital UNIX Version (\\S+)\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digital/Compaq/HP Tru64 Unix w/o branding"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Digital UNIX \\(([^)]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digital Unix"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_digital_unix_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) (.*?) Digital UNIX V(\\S+)\\s+\\(Rev\\. ([^\\)]+)\\).*TCP/IP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digital/Compaq/HP Tru64 Unix - Digital branding variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet",
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "example.com FTP server (Digital UNIX Version 5.60) ready.",
+    "example.com COMPAQ AlphaServer DS10 617 MHz Digital UNIX V4.0F (Rev. 1229); Wed May 22 13:55:58 CST 2002 TCP/IP",
+    "example.com COMPAQ Professional Workstation XP1000 Digital UNIX V4.0F  (Rev. 1229); Wed Jun 30 14:32:53 MET DST 2004 . TCP/IP",
+    "RGlnaXRhbCBVTklYIChqb3VybmFsKSAodHR5cDIpCgoKCmxvZ2luOiA="
+  ]
+}

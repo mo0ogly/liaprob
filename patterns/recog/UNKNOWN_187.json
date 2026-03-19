@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "(?i)^JSESSIONID(?:\\.[^=]+)?=[^;]+;",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ignore simple JSESSIONID and related cookies -- assert nothing"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "JSESSIONID=6ooov35i4l3n36qtaf8csvg0;Path=/",
+    "jsessionid=6nkp66iogcdc92720%2Dc6e4%2D4989%2Db7b2%2D5021624cfdff;Path=/;secure",
+    "JSESSIONID.c00a9623=v216643eijh19p9duve5srgf;Path=/;HttpOnly"
+  ]
+}

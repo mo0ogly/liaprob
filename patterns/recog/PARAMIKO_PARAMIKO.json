@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-paramiko_paramiko",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PARAMIKO_PARAMIKO",
+  "taxonomy_name": "Paramiko Paramiko",
+  "vendor": "Paramiko",
+  "product": "Paramiko",
+  "source": {
+    "type": "recog",
+    "file": "PARAMIKO_PARAMIKO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_paramiko_paramiko_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^paramiko_([\\d\\.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^paramiko_([\\d\\.]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Paramiko"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "cpe23_template": "cpe:/a:paramiko:paramiko:{version}",
+  "examples": [
+    "paramiko_2.1.3 501 command not implemented ERROR",
+    "paramiko_2.1.4"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bitwarden_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BITWARDEN_SERVER",
+  "taxonomy_name": "Bitwarden Server",
+  "vendor": "Bitwarden",
+  "product": "Server",
+  "source": {
+    "type": "recog",
+    "file": "BITWARDEN_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_bitwarden_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:b071172979419bb7d7b0591409b952dd|17a40681aad7097ac6e06002abf2e7ec|2f0df01346ace9afb440288feeb5d974)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bitwarden Server"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Bitwarden Web Vault$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bitwarden Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:bitwarden:server:-",
+  "examples": [
+    "b071172979419bb7d7b0591409b952dd",
+    "17a40681aad7097ac6e06002abf2e7ec",
+    "2f0df01346ace9afb440288feeb5d974",
+    "Bitwarden Web Vault"
+  ]
+}

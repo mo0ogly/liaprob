@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)Welcome to (\\S+Dome [^\\)]+) \\d+\\.\\d+.\\d+\\.\\d+ from",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bosch Dome IP Cameras"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "Welcome to AutoDome 800 HD 1.2.3.4 from 5.6.7.8",
+    "Welcome to FLEXIDOME NDC-455-P 1.2.3.4 from 5.6.7.8"
+  ]
+}

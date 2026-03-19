@@ -1,0 +1,95 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_ilom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_ILOM",
+  "taxonomy_name": "Oracle ILOM",
+  "vendor": "Oracle",
+  "product": "ILOM",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_ILOM.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_ilom_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^421e176ae0837bcc6b879ef55adbc897$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle(R) Integrated Lights Out Manager"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Oracle\\(R\\) )?Integrated Lights Out Manager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle iLOM"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle-ILOM-Web-Server/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Oracle-ILOM-Web-Server/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle(R) Integrated Lights Out Manager Web Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_oracle_ilom_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Oracle Integrated Lights Out Manager,O=Oracle America\\\\, Inc\\.,L=Redwood Shores,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle iLO"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:oracle:integrated_lights_out_manager_firmware:-",
+  "examples": [
+    "421e176ae0837bcc6b879ef55adbc897",
+    "Oracle(R) Integrated Lights Out Manager",
+    "Integrated Lights Out Manager",
+    "Oracle-ILOM-Web-Server/1.0",
+    "CN=Oracle Integrated Lights Out Manager,O=Oracle America\\, Inc.,L=Redwood Shores,ST=California,C=US"
+  ]
+}

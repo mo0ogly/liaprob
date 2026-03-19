@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zmailer_zmailer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZMAILER_ZMAILER",
+  "taxonomy_name": "ZMailer ZMailer",
+  "vendor": "ZMailer",
+  "product": "ZMailer",
+  "source": {
+    "type": "recog",
+    "file": "ZMAILER_ZMAILER.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_zmailer_zmailer_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ZMailer Server (\\d\\.[\\d.]+) #([^ ]+) ESMTP ready at (.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ZMailer Server (\\d\\.[\\d.]+) #([^ ]+) ESMTP ready at (.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "ZMailer http://www.zmailer.org/technical.html"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ZMailer Server (\\d\\.[\\d.]+) #([^ ]+) ESMTP\\+IDENT ready at (.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ZMailer Server (\\d\\.[\\d.]+) #([^ ]+) ESMTP\\+IDENT ready at (.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "ZMailer server that supports IDENT"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^241[ -]",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ZMailer versions earlier than 2.99.21 mistakenly return the status code 241 on some HELP response lines (instead of 214)."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*Yoyodyne Propulsion",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ZMailer has distinctive default HELP text in smtpserver.conf"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar ZMailer Server 2.99.57 #1 ESMTP ready at Thu, 16 Nov 2017 12:00:12 +0300",
+    "foo.bar ZMailer Server 2.99.55 #16 ESMTP+IDENT ready at Thu, 16 Nov 2017 06:51:42 -0300"
+  ]
+}

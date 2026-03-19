@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_sun_directory_proxy_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_SUN_DIRECTORY_PROXY_SERVER",
+  "taxonomy_name": "Sun Sun Directory Proxy Server",
+  "vendor": "Sun",
+  "product": "Sun Directory Proxy Server",
+  "source": {
+    "type": "recog",
+    "file": "SUN_SUN_DIRECTORY_PROXY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_sun_directory_proxy_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:vendorName1\\x17\\x04\\x15Sun Microsystems, Inc0.\\x04\\rvendorVersion1.\\x04.Directory Proxy Server ([\\w.]+)0.\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:vendorName1\\x17\\x04\\x15Sun Microsystems, Inc0.\\x04\\rvendorVersion1.\\x04.Directory Proxy Server ([\\w.]+)0.\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sun Directory Proxy Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "dmVuZG9yTmFtZTEXBBVTdW4gTWljcm9zeXN0ZW1zLCBJbmMwNAQNdmVuZG9yVmVyc2lvbjEjB\n      CFEaXJlY3RvcnkgUHJveHkgU2VydmVyIDExLjEuMS43LjEwRQQ="
+  ]
+}

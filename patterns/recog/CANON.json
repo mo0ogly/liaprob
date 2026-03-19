@@ -1,0 +1,193 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-canon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CANON",
+  "taxonomy_name": "Canon",
+  "vendor": "Canon",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "CANON.json",
+    "fingerprint_count": 13
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 13 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    80,
+    161,
+    443,
+    8080,
+    8443,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_canon_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Canon iR-ADV (C?\\d+ ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon imageRunner Printer"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Canon (D\\d+) Series$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon imageClass Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_canon_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(iR ?\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon iR multifunction device"
+        }
+      ]
+    },
+    {
+      "id": "recog_canon_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(ScanFront \\d.+)Web Menu$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon ScanFront"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_canon_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Canon (iR ?\\S+(?: [A-Z0-9]\\S+)?)(?: /P)?(?: EEPROM \\S+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon iR multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Canon (iPR ?\\S+(?: [A-Z0-9]\\S+)?)(?: /P)?(?: EEPROM \\S+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon iPR multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Canon LASER SHOT (\\S+)(?: /P)?(?: EEPROM \\S+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon Laser Shot multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Canon imageCLASS (\\S+)(?: /P)?(?: EEPROM \\S+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon imageCLASS multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Canon Inc\\., (\\S+) Printer(?: /P)?(?: EEPROM \\S+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon printer - Inc variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^Canon(?: Inc\\.)? (?:Color )?(?:Large Format )?(?:LASER CLASS )?(?:LASER SHOT )?(\\S+(?: [A-Z0-9]\\S+)?)(?: Series)?(?: \\([^\\)]+\\))?(?: /P)?(?: EEPROM \\S+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Canon Network Camera (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon Camera"
+        }
+      ]
+    },
+    {
+      "id": "recog_canon_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Canon (iR-[a-zA-Z0-9\\.\\-\\_]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon iR-ADV Printer with product info"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Canon Imaging Product$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Canon iR-ADV Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "pjl",
+    "tls",
+    "snmp",
+    "http"
+  ],
+  "examples": [
+    "Canon iR-ADV C5535 III",
+    "Canon iR-ADV C350",
+    "Canon iR-ADV 4545 III",
+    "Canon iR-ADV 525",
+    "Canon D1600 Series",
+    "iR 3180C EUR",
+    "iR C4080/C4580",
+    "iR1020/1024/1025",
+    "ScanFront 220Web Menu",
+    "Canon iR C3220-C1 /P"
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avaya",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVAYA",
+  "taxonomy_name": "Avaya",
+  "vendor": "Avaya",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "AVAYA.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    161,
+    1720
+  ],
+  "probes": [
+    {
+      "id": "recog_avaya_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^ccp\\.avaya\\.com$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya device"
+        }
+      ]
+    },
+    {
+      "id": "recog_avaya_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5004156\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5004156\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Avaya H.323 Server"
+        }
+      ]
+    },
+    {
+      "id": "recog_avaya_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Avaya (AP-\\d+|AP4\\-AP5\\-AP6|Wireless Outdoor Router|Wireless AP\\-3)\\s*[vV](\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya WAP"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Avaya (?:Inc\\.\\s*\\-\\s*)?([^,]+?)[\\s,]*SW version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Avaya Inc\\., (.* Media Gateway), SW Version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya Media Gateway"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "Avaya (\\S+) Telephony Media Gateway$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya Telephony Media Gateway"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(Ethernet Routing Switch.*)\\s+HW:.*SW:\\s*v?(\\S+).*Avaya Networks$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya Routing Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(ERS-\\S+) \\(([^\\)]+)\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya (Nortel) Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323",
+    "dhcp",
+    "snmp"
+  ],
+  "examples": [
+    "ccp.avaya.com",
+    "Avaya AP-3 v2.5.3(914) SN-02UT44560476 v2.0.10",
+    "Avaya AP-8 v2.6.0(914) SN-06UT27560151 v3.1.0",
+    "Avaya AP4-AP5-AP6 v2.2.4(534) SN-03AT33590076 v3.0.4",
+    "Avaya AP4-AP5-AP6 v2.4.5(758) SN-04AT07580112 v3.0.4",
+    "Avaya Wireless AP-3v2.2.4(534) SN-02UT21560880 v2.0.10",
+    "Avaya Wireless AP-3v2.4.5(758) SN-01UT47560491 v2.0.10",
+    "Avaya Wireless Outdoor Router V3.87 SN-00UT42270773 V3.70",
+    "Avaya Wireless Outdoor Router v4.15 SN-03UT28230440 V3.73",
+    "Avaya Inc. - C360 , SW version 4.3.12 , CS 1.1"
+  ]
+}

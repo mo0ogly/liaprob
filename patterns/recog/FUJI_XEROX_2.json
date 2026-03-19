@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fuji_xerox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUJI_XEROX",
+  "taxonomy_name": "Fuji Xerox",
+  "vendor": "Fuji Xerox",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "FUJI_XEROX.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_fuji_xerox_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^FUJI XEROX ((?:Document Centre|DocuCentre-\\S+) [^\\s;]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Document Centre Multi-function System - Fuji variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^FUJI XEROX (\\S+ [^\\s;]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FUJI Xerox default"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "FUJI XEROX Document Centre C360;ESS 1.131.11,IOT 6.6.5,IIT 12.7.0,IIT D12.0.0,ADF 10.3.0,FAX 11.20.50",
+    "FUJI XEROX Document Centre C400 v 2. 0. 6",
+    "FUJI XEROX Document Centre 405",
+    "FUJI XEROX DocuCentre-III C2200 ;ESS1.120.4,IOT 20.6.0,IIT 22.9.0,ADF 20.0.0,FAX 11.20.55,SJFI3.0.10,SSMI1.9.0",
+    "FUJI XEROX ApeosPort-II C4300 ;ESS 1.121.8,IOT 3.8.2,IIT 7.6.0,ADF 11.6.3,FAX 11.20.53"
+  ]
+}

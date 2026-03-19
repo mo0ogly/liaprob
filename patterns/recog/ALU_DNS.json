@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-alu_dns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALU_DNS",
+  "taxonomy_name": "ALU DNS",
+  "vendor": "ALU",
+  "product": "DNS",
+  "source": {
+    "type": "recog",
+    "file": "ALU_DNS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_alu_dns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^ALU DNS ([\\d\\.]+) Build (\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ALU DNS ([\\d\\.]+) Build (\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ALU (Alcatel Lucent?) DNS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "ALU DNS 6.2 Build 22",
+    "ALU DNS 6.2 Build 9"
+  ]
+}

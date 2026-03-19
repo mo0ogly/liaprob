@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_apic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_APIC",
+  "taxonomy_name": "Cisco APIC",
+  "vendor": "Cisco",
+  "product": "APIC",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_APIC.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_apic_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:af13b379bdb4ae7a5e68d9aa4419b2e4|cd844ad9671131f5464458a2ef58b7bc|c32e2dc4d7caedd5cefc9d44cc4f62ec)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco APIC"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_cisco_apic_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=VMM APIC,OU=VMM\\d+,O=Cisco,L=San Jose,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco APIC"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=APIC$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco APIC - bare CN"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:cisco:application_policy_infrastructure_controller:-",
+  "examples": [
+    "af13b379bdb4ae7a5e68d9aa4419b2e4",
+    "cd844ad9671131f5464458a2ef58b7bc",
+    "c32e2dc4d7caedd5cefc9d44cc4f62ec",
+    "CN=VMM APIC,OU=VMM15,O=Cisco,L=San Jose,ST=CA,C=US",
+    "CN=APIC"
+  ]
+}

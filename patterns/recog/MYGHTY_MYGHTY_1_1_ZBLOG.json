@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-myghty_myghty_1_1_zblog",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYGHTY_MYGHTY_1_1_ZBLOG",
+  "taxonomy_name": "myghty myghty (1.1) - zblog",
+  "vendor": "myghty",
+  "product": "myghty (1.1) - zblog",
+  "source": {
+    "type": "recog",
+    "file": "MYGHTY_MYGHTY_1_1_ZBLOG.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_myghty_myghty_1_1_zblog_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^68b329da9893e34099c7d8ad5cb9c940",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "myghty (1.1) - zblog"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "68b329da9893e34099c7d8ad5cb9c940"
+  ]
+}

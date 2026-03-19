@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_analytics_plus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_ANALYTICS_PLUS",
+  "taxonomy_name": "ManageEngine Analytics Plus",
+  "vendor": "ManageEngine",
+  "product": "Analytics Plus",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_ANALYTICS_PLUS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_analytics_plus_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^1b476eae7d17844198fa494251ba910a$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine Analytics Plus"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^ZROPJSESSIONID=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine Analytics Plus"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_analytics_plus:-",
+  "examples": [
+    "1b476eae7d17844198fa494251ba910a",
+    "ZROPJSESSIONID=FECE4724AC1990DBCC45DD3DA6CB3002; Path=/; Secure; HttpOnly"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_8_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_8_1",
+  "taxonomy_name": "Microsoft Windows 8.1",
+  "vendor": "Microsoft",
+  "product": "Windows 8.1",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_8_1.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_8_1_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: \\S+64.*Software: Windows Version 6.3 \\(Build 9600",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 8.1 on x86_64"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows Version 6.3 \\(Build 9600",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 8.1 on x86"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_8.1:-",
+  "examples": [
+    "Hardware: AMD64 Family 21 Model 0 Stepping 2 AT/AT COMPATIBLE - Software: Windows Version 6.3 (Build 9600 Multiprocessor Free)",
+    "Hardware: x86 Family 21 Model 0 Stepping 2 AT/AT COMPATIBLE - Software: Windows Version 6.3 (Build 9600 Multiprocessor Free)"
+  ]
+}

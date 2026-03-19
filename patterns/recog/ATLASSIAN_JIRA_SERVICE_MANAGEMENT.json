@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-atlassian_jira_service_management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATLASSIAN_JIRA_SERVICE_MANAGEMENT",
+  "taxonomy_name": "Atlassian Jira Service Management",
+  "vendor": "Atlassian",
+  "product": "Jira Service Management",
+  "source": {
+    "type": "recog",
+    "file": "ATLASSIAN_JIRA_SERVICE_MANAGEMENT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_atlassian_jira_service_management_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2fa69f2bc9174ffc21fc3c7925da6862$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Jira Service Management"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:atlassian:jira_service_management:-",
+  "examples": [
+    "2fa69f2bc9174ffc21fc3c7925da6862"
+  ]
+}

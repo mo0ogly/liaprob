@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rockliffe_mailsite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROCKLIFFE_MAILSITE",
+  "taxonomy_name": "Rockliffe MailSite",
+  "vendor": "Rockliffe",
+  "product": "MailSite",
+  "source": {
+    "type": "recog",
+    "file": "ROCKLIFFE_MAILSITE.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_rockliffe_mailsite_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}MailSite E?SMTP Receiver Version (\\d+\\.[\\d.]+) Ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}MailSite E?SMTP Receiver Version (\\d+\\.[\\d.]+) Ready *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Rockliffe MailSite - with version (http://www.rockliffe.com)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}MailSite E?SMTP Receiver Ready *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Rockliffe MailSite - without version (http://www.rockliffe.com)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ ?MailSite E?SMTP Receiver Version (\\d+\\.[\\d.]+) Ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ ?MailSite E?SMTP Receiver Version (\\d+\\.[\\d.]+) Ready *$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Rockliffe MailSite - without hostname (http://www.rockliffe.com)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar  MailSite ESMTP Receiver Version 3.4.6.0 Ready",
+    "foo.bar MailSite SMTP Receiver Version 2.1.7 Ready",
+    "foo.bar MailSite SMTP Receiver Ready",
+    "MailSite ESMTP Receiver Version 10.2.0.0 Ready"
+  ]
+}

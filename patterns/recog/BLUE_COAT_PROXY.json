@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-blue_coat_proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLUE_COAT_PROXY",
+  "taxonomy_name": "Blue Coat Proxy",
+  "vendor": "Blue Coat",
+  "product": "Proxy",
+  "source": {
+    "type": "recog",
+    "file": "BLUE_COAT_PROXY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_blue_coat_proxy_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Blue Coat FTP Service$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Blue Coat security appliances"
+        }
+      ]
+    },
+    {
+      "id": "recog_blue_coat_proxy_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(BCSI-CS-[0-9A-Za-z]+)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "BlueCoat Proxy"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "ftp"
+  ],
+  "examples": [
+    "Blue Coat FTP Service",
+    "BCSI-CS-2f6c78bdf64f3b32=2; Path=/"
+  ]
+}

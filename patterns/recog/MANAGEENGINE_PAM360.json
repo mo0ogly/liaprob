@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_pam360",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_PAM360",
+  "taxonomy_name": "ManageEngine PAM360",
+  "vendor": "ManageEngine",
+  "product": "PAM360",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_PAM360.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_pam360_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^895eea03838bb521717d632eec739e57$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine PAM360"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ManageEngine PAM360$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine PAM360"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^PAM360$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "ManageEngine PAM360"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_pam360:-",
+  "examples": [
+    "895eea03838bb521717d632eec739e57",
+    "ManageEngine PAM360",
+    "PAM360"
+  ]
+}

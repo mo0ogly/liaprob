@@ -1,0 +1,232 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-visionfs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VISIONFS",
+  "taxonomy_name": "VisionFS",
+  "vendor": "",
+  "product": "VisionFS",
+  "source": {
+    "type": "recog",
+    "file": "VISIONFS.json",
+    "fingerprint_count": 18
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 18 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_visionfs_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ai(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ai(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "AIX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)dg(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)dg(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "DG/UX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)dw(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)dw(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Darwin"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)dy(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)dy(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "DYNIX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)fb(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)fb(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "FreeBSD"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)hp(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)hp(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "HP-UX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ir(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ir(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IRIX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)li(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)li(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)mo(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)mo(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SVR"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)o1(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)o1(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OSF/1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ro(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ro(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "RISC OS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)sc(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)sc(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenServer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)so(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)so(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SunOS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)su(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)su(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Solaris"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)sx(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)sx(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SINIX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ul(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)ul(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Ultrix/1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)un(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)un(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "UnixWare"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)wi(\\d{4})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:ax|i3|m8|mp|pa|pp|rs|sp)wi(\\d{4})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Windows"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smb"
+  ],
+  "cpe23_template": "cpe:/o:ibm:aix:-",
+  "examples": [
+    "axai9876",
+    "i3dg9876",
+    "m8dw9876",
+    "m8dy9876",
+    "m8fb9876",
+    "m8hp9876",
+    "m8ir9876",
+    "m8li9876",
+    "m8mo9876",
+    "m8o19876"
+  ]
+}

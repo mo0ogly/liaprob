@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-qnap_qnap_turbonas_4_0_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QNAP_QNAP_TURBONAS_4_0_X",
+  "taxonomy_name": "QNAP QNAP TurboNAS 4.0.x",
+  "vendor": "QNAP",
+  "product": "QNAP TurboNAS 4.0.x",
+  "source": {
+    "type": "recog",
+    "file": "QNAP_QNAP_TURBONAS_4_0_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_qnap_qnap_turbonas_4_0_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^7ff45523a7ee9686d3d391a0a27a0b4f",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "QNAP TurboNAS 4.0.x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "7ff45523a7ee9686d3d391a0a27a0b4f"
+  ]
+}

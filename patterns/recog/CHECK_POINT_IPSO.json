@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-check_point_ipso",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHECK_POINT_IPSO",
+  "taxonomy_name": "Check Point IPSO",
+  "vendor": "Check Point",
+  "product": "IPSO",
+  "source": {
+    "type": "recog",
+    "file": "CHECK_POINT_IPSO.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_check_point_ipso_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:IP\\S+ rev\\s*[^,]*,\\s)?IPSO (\\S+) (\\S+)-(?:BUILD|GA|FCS)0?(\\S+) (?:releng|root) (\\S+).*i386$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Check Point IPSO firewall"
+        }
+      ]
+    },
+    {
+      "id": "recog_check_point_ipso_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^IPSO.* \\((.*)\\) \\(tty.*\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Checkpoint Firewall-1 running on a Nokia IPSO appliance"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet",
+    "snmp"
+  ],
+  "examples": [
+    "IPSO hostname 4.1-BUILD022 releng 1515  11.15.2006-180244 i386",
+    "IP300 rev A02, IPSO b7dc-cimip350-02 3.7.1-BUILD004 releng 1227 11.06.2003-010000 i386",
+    "IP650 rev AA729002-408, IPSO semalfw05 3.7.1-BUILD020 releng 1299 02.09.2005-020308 i386",
+    "SVBTTy9pMzg2IChCSi1JREMtRlcyKSAodHR5cDcpCgoKClRoaXMgc3lzdGVtIGlzIGZvciBhdXRob3Jpem\n     VkIHVzZSBvbmx5LgoKCgoKCgoKbG9naW46IA=="
+  ]
+}

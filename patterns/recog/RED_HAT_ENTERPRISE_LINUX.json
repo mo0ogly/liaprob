@@ -1,0 +1,123 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_enterprise_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_ENTERPRISE_LINUX",
+  "taxonomy_name": "Red Hat Enterprise Linux",
+  "vendor": "Red Hat",
+  "product": "Enterprise Linux",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_ENTERPRISE_LINUX.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_enterprise_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(RHEL\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Enterprise Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(Red Hat Enterprise (?:Linux)?\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache OS: Red Hat Enterprise Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Red Hat|RedHat|Red-Hat|RHEL)(?: Enterprise)?(?: Linux)?(?: [a-z]+)?\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Enterprise Linux"
+        }
+      ]
+    },
+    {
+      "id": "recog_red_hat_enterprise_linux_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.4\\.21-27.*EL(?:smp)?) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Enterprise Linux 3 Update 4"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.6\\.9-22\\.EL(?:smp)?) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Enterprise Linux 4 Update 2"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.6\\.9-34\\.EL(?:smp)?) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Enterprise Linux 4 Update 3"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.6\\.18-53.*el5) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Enterprise Linux 5"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.4\\.9-e\\.\\S+).* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Enterprise Linux 2.1"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:redhat:enterprise_linux:-",
+  "examples": [
+    "Apache/2.0.53 (RHEL)",
+    "Apache/2.4.6 (Red Hat Enterprise Linux) OpenSSL/1.0.2k-fips",
+    "Red Hat Enterprise Linux AS",
+    "Red Hat Enterprise Linux 5.11",
+    "RedHat 6.7",
+    "Red Hat Linux 7",
+    "RHEL 7.1",
+    "Linux hostname 2.4.21-27.0.2.ELsmp #1 SMP Wed Jan 12 23:35:44 EST 2005 i686",
+    "Linux hostname 2.6.9-22.ELsmp #1 SMP Mon Sep 19 18:32:14 EDT 2005 i686",
+    "Linux hostname 2.6.18-53.1.4.el5 #1 SMP Fri Nov 30 00:45:16 EST 2007 i686"
+  ]
+}

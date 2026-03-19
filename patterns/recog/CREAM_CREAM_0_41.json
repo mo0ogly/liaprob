@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cream_cream_0_41",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CREAM_CREAM_0_41",
+  "taxonomy_name": "cream cream (0.41)",
+  "vendor": "cream",
+  "product": "cream (0.41)",
+  "source": {
+    "type": "recog",
+    "file": "CREAM_CREAM_0_41.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cream_cream_0_41_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ddd76f1cfe31499ce3db6702991cbc45",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "cream (0.41)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ddd76f1cfe31499ce3db6702991cbc45"
+  ]
+}

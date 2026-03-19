@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-opnsense_opnsense",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPNSENSE_OPNSENSE",
+  "taxonomy_name": "OPNSense OPNSense",
+  "vendor": "OPNSense",
+  "product": "OPNSense",
+  "source": {
+    "type": "recog",
+    "file": "OPNSENSE_OPNSENSE.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_opnsense_opnsense_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^e4fd990b4b8a5d61bd5ddb98cdfc7190$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OPNsense Firewall"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Login \\| OPNsense$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OPNSense Firewall"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^OPNsense$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "OPNsense Firewall"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:opnsense:opnsense:-",
+  "examples": [
+    "e4fd990b4b8a5d61bd5ddb98cdfc7190",
+    "Login | OPNsense",
+    "OPNsense"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_domino_ldap_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_DOMINO_LDAP_SERVER",
+  "taxonomy_name": "IBM Domino LDAP Server",
+  "vendor": "IBM",
+  "product": "Domino LDAP Server",
+  "source": {
+    "type": "recog",
+    "file": "IBM_DOMINO_LDAP_SERVER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_domino_ldap_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:IBM Lotus Software0.\\x04\\rvendorversion1.\\x04.Release (\\d+\\.\\d+[\\w .]*)0.\\x04.dominomajminversion)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:IBM Lotus Software0.\\x04\\rvendorversion1.\\x04.Release (\\d+\\.\\d+[\\w .]*)0.\\x04.dominomajminversion)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM (Lotus) Domino LDAP Server - majminversion variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:IBM Lotus Software0.\\x04\\rvendorversion1.\\x04.Release (\\d+\\.\\d+[\\w .]*)0\\f)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:IBM Lotus Software0.\\x04\\rvendorversion1.\\x04.Release (\\d+\\.\\d+[\\w .]*)0\\f)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM (Lotus) Domino LDAP Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:IBM Lotus Software0.\\x04\\rvendorversion1.\\x04.Build (V[\\w .]*)0.\\x04.dominomajminversion)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:IBM Lotus Software0.\\x04\\rvendorversion1.\\x04.Build (V[\\w .]*)0.\\x04.dominomajminversion)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM (Lotus) Domino LDAP Server - build variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "SUJNIExvdHVzIFNvZnR3YXJlMCAEDXZlbmRvcnZlcnNpb24xDwQNUmVsZWFzZSA4LjUuMzAeB\n      BNkb21pbm9tYWptaW52ZXJzaW9uMQcE",
+    "SUJNIExvdHVzIFNvZnR3YXJlMCkEDXZlbmRvcnZlcnNpb24xGAQWUmVsZWFzZSA5LjAuMUZQN\n      iBIRjEzMDAeBBNkb21pbm9tYWptaW52ZXJzaW9uMQcE",
+    "dmVuZG9ybmFtZTEUBBJJQk0gTG90dXMgU29mdHdhcmUwKQQNdmVuZG9ydmVyc2lvbjEYBBZSZ\n      WxlYXNlIDkuMC4xRlA0IEhGNTIzMAwC",
+    "SUJNIExvdHVzIFNvZnR3YXJlMCYEDXZlbmRvcnZlcnNpb24xFQQTQnVpbGQgVjkwMl8xMjMwM\n      jAxMzAeBBNkb21pbm9tYWptaW52ZXJzaW9uMQcE"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-roxen_webserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROXEN_WEBSERVER",
+  "taxonomy_name": "Roxen WebServer",
+  "vendor": "Roxen",
+  "product": "WebServer",
+  "source": {
+    "type": "recog",
+    "file": "ROXEN_WEBSERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_roxen_webserver_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^RoxenUserID=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Roxen WebServer"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "RoxenUserID=c70fd536bc9e1342ce2a608b10547f88; expires=Wed, 19 Apr 2023 02:44:41 GMT; path=/"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pfsense_freebsd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PFSENSE_FREEBSD",
+  "taxonomy_name": "pfSense FreeBSD",
+  "vendor": "pfSense",
+  "product": "FreeBSD",
+  "source": {
+    "type": "recog",
+    "file": "PFSENSE_FREEBSD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_pfsense_freebsd_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=pfSense-[a-zA-Z0-9]+,O=pfSense webConfigurator Self-Signed Certificate",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "pfSense Firewall"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Common Name \\(eg\\\\, YOUR name\\),OU=Organizational Unit Name \\(eg\\\\, section\\),O=CompanyName,L=Somecity,ST=Somewhere,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "pfSense Firewall Default Certificate"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "CN=pfSense-58fb5b0b06777,O=pfSense webConfigurator Self-Signed Certificate,L=Locality,ST=State,C=US",
+    "CN=pfSense-5c76251e4d3e4,O=pfSense webConfigurator Self-Signed Certificate",
+    "CN=Common Name (eg\\, YOUR name),OU=Organizational Unit Name (eg\\, section),O=CompanyName,L=Somecity,ST=Somewhere,C=US"
+  ]
+}

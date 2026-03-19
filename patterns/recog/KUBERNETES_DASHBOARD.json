@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kubernetes_dashboard",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBERNETES_DASHBOARD",
+  "taxonomy_name": "Kubernetes Dashboard",
+  "vendor": "Kubernetes",
+  "product": "Dashboard",
+  "source": {
+    "type": "recog",
+    "file": "KUBERNETES_DASHBOARD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_kubernetes_dashboard_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ce849e0d986f73c97aa81290c2052164$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kubernetes Dashboard"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Kubernetes Dashboard$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kubernetes Dashboard"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ce849e0d986f73c97aa81290c2052164",
+    "Kubernetes Dashboard"
+  ]
+}

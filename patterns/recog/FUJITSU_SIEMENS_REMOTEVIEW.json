@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fujitsu_siemens_remoteview",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUJITSU_SIEMENS_REMOTEVIEW",
+  "taxonomy_name": "Fujitsu Siemens RemoteView",
+  "vendor": "Fujitsu Siemens",
+  "product": "RemoteView",
+  "source": {
+    "type": "recog",
+    "file": "FUJITSU_SIEMENS_REMOTEVIEW.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_fujitsu_siemens_remoteview_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"[iI]RMC(?:@(IRMC[0-9a-fA-F]{6}))?\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fujitsu Siemens Primergy with BMC RemoteView on an iRMC card"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Digest realm=\"iRMC@IRMCA0EC88\", qop=\"auth\", nonce=\"d569ace4-00029040\", opaque=\"29040\", stale=\"FALSE\""
+  ]
+}

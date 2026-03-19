@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netmrg_netmrg_0_20",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETMRG_NETMRG_0_20",
+  "taxonomy_name": "netmrg netmrg (0.20)",
+  "vendor": "netmrg",
+  "product": "netmrg (0.20)",
+  "source": {
+    "type": "recog",
+    "file": "NETMRG_NETMRG_0_20.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_netmrg_netmrg_0_20_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^868e7b460bba6fe29a37aa0ceff851ba",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "netmrg (0.20)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "868e7b460bba6fe29a37aa0ceff851ba"
+  ]
+}

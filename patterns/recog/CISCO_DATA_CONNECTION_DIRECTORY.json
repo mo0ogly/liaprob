@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_data_connection_directory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_DATA_CONNECTION_DIRECTORY",
+  "taxonomy_name": "Cisco Data Connection Directory",
+  "vendor": "Cisco",
+  "product": "Data Connection Directory",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_DATA_CONNECTION_DIRECTORY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_data_connection_directory_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:dsaVersion1.\\x04,DC Directory Server v(\\d+\\.\\d+[\\d.]* \\([\\w. ]+\\))0.\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:dsaVersion1.\\x04,DC Directory Server v(\\d+\\.\\d+[\\d.]* \\([\\w. ]+\\))0.\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Cisco Data Connection Directory"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "ZHNhVmVyc2lvbjEuBCxEQyBEaXJlY3RvcnkgU2VydmVyIHY4LjEuMDAgKGJ1aWxkIDIwMTUwM\n      zA1KTBeBAs="
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-d_j_bernstein_djbdns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "D_J_BERNSTEIN_DJBDNS",
+  "taxonomy_name": "D J Bernstein djbdns",
+  "vendor": "D J Bernstein",
+  "product": "djbdns",
+  "source": {
+    "type": "recog",
+    "file": "D_J_BERNSTEIN_DJBDNS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_d_j_bernstein_djbdns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "(?i)^djbdns[\\s-](\\d.\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^djbdns[\\s-](\\d.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "djbdns"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "(?i)^djbdns$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "djbdns: no version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "djbdns 1.05",
+    "djbdns-1.05",
+    "DjbDNS 1.05",
+    "DJBDNS",
+    "djbdns"
+  ]
+}

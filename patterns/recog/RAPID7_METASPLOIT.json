@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rapid7_metasploit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAPID7_METASPLOIT",
+  "taxonomy_name": "Rapid7 Metasploit",
+  "vendor": "Rapid7",
+  "product": "Metasploit",
+  "source": {
+    "type": "recog",
+    "file": "RAPID7_METASPLOIT.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_rapid7_metasploit_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^08ff173efec0750dd29ac7f44d972427$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Metasploit Pro"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Metasploit$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Metasploit Pro (and Community Edition Web UI)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_rapid7_metasploit_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^(?:07d14d16d21d21d00042d43d000000aa99ce74e2c6d013c745aa52b5cc042d|07d14d16d21d21d07c42d43d000000f50d155305214cf247147c43c0f1a823|07b08b09b21b21b07b07b08b07b21b23aeefb38b723c523befb314af6e95ac|07c08c09c21c21c07c07c08c07c21c23aeefb38b723c523befb314af6e95ac|07d14d16d21d21d00007d14d07d21d0ae59125bcd90b8876b50928af8f6cd4)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Metasploit listener"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:rapid7:metasploit:-",
+  "examples": [
+    "08ff173efec0750dd29ac7f44d972427",
+    "Metasploit",
+    "07b08b09b21b21b07b07b08b07b21b23aeefb38b723c523befb314af6e95ac",
+    "07c08c09c21c21c07c07c08c07c21c23aeefb38b723c523befb314af6e95ac",
+    "07d14d16d21d21d00007d14d07d21d0ae59125bcd90b8876b50928af8f6cd4",
+    "07d14d16d21d21d00042d43d000000aa99ce74e2c6d013c745aa52b5cc042d",
+    "07d14d16d21d21d07c42d43d000000f50d155305214cf247147c43c0f1a823"
+  ]
+}

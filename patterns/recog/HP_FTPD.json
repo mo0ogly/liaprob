@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_FTPD",
+  "taxonomy_name": "HP FTPD",
+  "vendor": "HP",
+  "product": "FTPD",
+  "source": {
+    "type": "recog",
+    "file": "HP_FTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_ftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +FTP +Server \\(Version ([^\\(]+)\\(PHNE_\\d+\\) [^\\)]+\\) ready.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +FTP +Server \\(Version ([^\\(]+)\\(PHNE_\\d+\\) [^\\)]+\\) ready.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "FTP on HPUX with a PHNE (HP Networking patch) installed"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:hp:hp-ux:-",
+  "examples": [
+    "example.com FTP server (Version 1.1.214.4(PHNE_38458) Mon Feb 15 06:03:12 GMT 2010) ready."
+  ]
+}

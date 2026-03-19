@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-feng_feng_office_2_3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FENG_FENG_OFFICE_2_3",
+  "taxonomy_name": "Feng Feng Office 2.3",
+  "vendor": "Feng",
+  "product": "Feng Office 2.3",
+  "source": {
+    "type": "recog",
+    "file": "FENG_FENG_OFFICE_2_3.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_feng_feng_office_2_3_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^51b916bdaf994ce73d3e5e6dfe2a46ee",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Feng Office 2.3"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "51b916bdaf994ce73d3e5e6dfe2a46ee"
+  ]
+}

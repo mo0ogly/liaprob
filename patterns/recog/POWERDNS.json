@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-powerdns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWERDNS",
+  "taxonomy_name": "PowerDNS",
+  "vendor": "PowerDNS",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "POWERDNS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_powerdns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Served by POWERDNS (\\d\\.[\\d.]+) \\$Id[^$]*\\$$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Served by POWERDNS (\\d\\.[\\d.]+) \\$Id[^$]*\\$$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS: Served by format with version"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Served by PowerDNS - https?:\\/\\/www.powerdns.com\\/?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PowerDNS: Served by format without version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "Served by POWERDNS 2.9.22 $Id: packethandler.cc 1321 2008-12-06 19:44:36Z ahu $",
+    "Served by PowerDNS - https://www.powerdns.com/",
+    "Served by PowerDNS - http://www.powerdns.com"
+  ]
+}

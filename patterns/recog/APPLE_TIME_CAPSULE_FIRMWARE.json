@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_time_capsule_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_TIME_CAPSULE_FIRMWARE",
+  "taxonomy_name": "Apple Time Capsule Firmware",
+  "vendor": "Apple",
+  "product": "Time Capsule Firmware",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_TIME_CAPSULE_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_time_capsule_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:AirPort6|TimeCapsule)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Time Capsule"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "model=AirPort6",
+    "model=AirPort6,106",
+    "model=TimeCapsule",
+    "model=TimeCapsule6",
+    "model=TimeCapsule6,109",
+    "model=TimeCapsule6,116"
+  ]
+}

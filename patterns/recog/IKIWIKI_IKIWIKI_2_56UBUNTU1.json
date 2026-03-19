@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ikiwiki_ikiwiki_2_56ubuntu1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IKIWIKI_IKIWIKI_2_56UBUNTU1",
+  "taxonomy_name": "ikiwiki ikiwiki (2.56ubuntu1)",
+  "vendor": "ikiwiki",
+  "product": "ikiwiki (2.56ubuntu1)",
+  "source": {
+    "type": "recog",
+    "file": "IKIWIKI_IKIWIKI_2_56UBUNTU1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ikiwiki_ikiwiki_2_56ubuntu1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^32bf63ac2d3cfe82425ce8836c9ce87c",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ikiwiki (2.56ubuntu1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "32bf63ac2d3cfe82425ce8836c9ce87c"
+  ]
+}

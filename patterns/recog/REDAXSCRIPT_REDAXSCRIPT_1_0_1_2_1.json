@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-redaxscript_redaxscript_1_0_1_2_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDAXSCRIPT_REDAXSCRIPT_1_0_1_2_1",
+  "taxonomy_name": "Redaxscript Redaxscript 1.0-1.2.1",
+  "vendor": "Redaxscript",
+  "product": "Redaxscript 1.0-1.2.1",
+  "source": {
+    "type": "recog",
+    "file": "REDAXSCRIPT_REDAXSCRIPT_1_0_1_2_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_redaxscript_redaxscript_1_0_1_2_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^368c15ac73f0096aa3daff8ff6f719f8",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Redaxscript 1.0-1.2.1"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "368c15ac73f0096aa3daff8ff6f719f8"
+  ]
+}

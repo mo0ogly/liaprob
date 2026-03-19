@@ -1,0 +1,139 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-postfix_postfix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POSTFIX_POSTFIX",
+  "taxonomy_name": "Postfix Postfix",
+  "vendor": "Postfix",
+  "product": "Postfix",
+  "source": {
+    "type": "recog",
+    "file": "POSTFIX_POSTFIX.json",
+    "fingerprint_count": 10
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 10 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_postfix_postfix_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Postfix \\(Postfix-([^ ]+)-([^ ]+)\\) \\(([^ ]+)\\) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) Postfix \\(Postfix-([^ ]+)-([^ ]+)\\) \\(([^ ]+)\\) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Postfix - version + build, followed by os"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Postfix \\(?([\\d.]+)\\)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Postfix \\(?([\\d.]+)\\)?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Postfix - Std semantic versioning, w/ optional parens"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Postfix \\((?:Postfix-)?([\\d.]+)-([^ ]+)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Postfix \\((?:Postfix-)?([\\d.]+)-([^ ]+)\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Postfix - version + build"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +E?SMTP Postfix \\(Ubuntu\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Postfix - Ubuntu"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512})(?: ESMTP)? Hi, I'm a Mail-in-a-Box \\(Ubuntu/Postfix; see https://mailinabox.email/\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Postfix - Ubuntu, Mail-in-a-Box package"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +E?SMTP Postfix \\(Debian/GNU\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Postfix - Debian"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP.* Postfix *\\(.+\\) *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Postfix - generic banner with amusing comments in parentheses"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^ ]{1,512}) {1,8}E?SMTP.* Postfix *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Postfix - generic banner"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ {0,512}ESMTP Postfix$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Postfix - banner without hostname or version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^ ]{1,512}) POSTFIX$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Postfix - generic w/o ESMTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:postfix:postfix:{version}",
+  "examples": [
+    "foo.bar ESMTP Postfix (3.1.4)",
+    "foo.bar ESMTP Postfix 2.7.1",
+    "foo.bar ESMTP Postfix (2.8-20100306)",
+    "foo.bar ESMTP Postfix (Ubuntu)",
+    "foo.bar ESMTP Hi, I'm a Mail-in-a-Box (Ubuntu/Postfix; see https://mailinabox.email/)",
+    "foo.bar Hi, I'm a Mail-in-a-Box (Ubuntu/Postfix; see https://mailinabox.email/)",
+    "foo.bar ESMTP Postfix (Debian/GNU)",
+    "foo.bar ESMTP Postfix (lol)",
+    "foo.bar ESMTP Postfix",
+    "foo.bar SMTP Postfix"
+  ]
+}

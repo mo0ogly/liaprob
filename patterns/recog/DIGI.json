@@ -1,0 +1,91 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-digi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DIGI",
+  "taxonomy_name": "Digi",
+  "vendor": "Digi",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "DIGI.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_digi_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:Digi )?(?: International)?((?:ConnectPort|Connect|PortServer|One) .*?) Version (\\S+) \\d+/\\d+\\/\\d+(?: \\S+)?(?: \\S+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digi Serial Port Servers"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Digi International (PortServer II) v(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digi Serial PortServer II"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Digi (Connect) Device, Version Unknown$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digi Connect Unknown"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Digi (TransPort \\S+) Ser#:\\S+ Software Build Ver([^\\.]+). .* MAC:(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digi TransPort"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(AnywhereUSB)/\\d+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digi AnywhereUSB"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "ConnectPort TS1 W RJ Version 82001772_B1 02/13/2008",
+    "Digi Connect ES serie 800 SB Version 82002147_A 02/09/2009",
+    "Digi One TS Version 82000747_N2 02/25/2005",
+    "Digi International PortServer II v3.1.12 Jan 21 2003",
+    "Digi Connect Device, Version Unknown",
+    "Digi TransPort VC74-00S2-DE5-XX Ser#:127485 Software Build Ver5099. Apr 16 2010 16:54:47 C6 ARM Bios Ver 5.85 v38 667MHz B511-M512-F80-O1,0 MAC:00042d01f1fd",
+    "Digi TransPort WR21-HX1B-DE1-XX Ser#:211555 Software Build Ver5142. Nov 28 2011 11:25:34 WW ARM Bios Ver 6.45 v43 454MHz B987-M995-F80-O1,0 MAC:00042d033a63",
+    "Digi TransPort WR41-CX00-DA1-XX(WR41v2) Ser#:178329 Software Build Ver5129. May 20 2011 10:51:03 MW ARM Bios Ver 6.02 v41 399MHz B256-M256-F80-O100000,0 MAC:00042d02b899",
+    "Digi TransPort WR41-CXS1-DE1-XX(WR41v2) Ser#:187037 Software Build Ver5141. Nov 02 2011 00:17:59 MW ARM Bios Ver 6.37 v41 399MHz B256-M256-F80-O140,0 MAC:00042d02da9d",
+    "Digi TransPort WR44-HXA3-DE1-XX Ser#:176625 Software Build Ver5142. Nov 28 2011 11:33:21 SW ARM Bios Ver 6.45 v39 400MHz B512-M512-F80-O1,0 MAC:00042d02b1f1"
+  ]
+}

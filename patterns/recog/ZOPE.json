@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zope",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZOPE",
+  "taxonomy_name": "Zope",
+  "vendor": "",
+  "product": "Zope",
+  "source": {
+    "type": "recog",
+    "file": "ZOPE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_zope_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^_ZopeId=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zope"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "_ZopeId=\"91304233A995SVLz3SI\"; Path=/"
+  ]
+}

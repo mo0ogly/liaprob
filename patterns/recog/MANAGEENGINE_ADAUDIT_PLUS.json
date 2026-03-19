@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_adaudit_plus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_ADAUDIT_PLUS",
+  "taxonomy_name": "ManageEngine ADAudit Plus",
+  "vendor": "ManageEngine",
+  "product": "ADAudit Plus",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_ADAUDIT_PLUS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_adaudit_plus_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:ee20526df4d69f7b02ee107458d8d679|661b80a4dde45fee1079113ce0323336|9d2025c356a2876990266689c6b6290b)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine ADAudit Plus"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ADAudit Plus$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine ADAudit Plus"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(JSESSIONIDADAP|adapcsrf)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine ADAudit Plus"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_adaudit_plus:-",
+  "examples": [
+    "ee20526df4d69f7b02ee107458d8d679",
+    "661b80a4dde45fee1079113ce0323336",
+    "9d2025c356a2876990266689c6b6290b",
+    "ADAudit Plus",
+    "JSESSIONIDADAP=BB472B7AD767571D913190056ED594CB; Path=/; HttpOnly",
+    "adapcsrf=97fcd4a1-078f-487b-bd73-ca492ef05121;path=/;priority=high"
+  ]
+}

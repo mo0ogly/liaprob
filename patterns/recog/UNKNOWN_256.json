@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(BCM\\d+) Broadband Router\\r\\nMaximum number of incorrect account entries exceeded.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OEM'd Broadcom Router - Max incorrect tries - variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(BCM\\d+) Broadband Router\\r\\nSorry, you need to wait for \\d+ second before next login attempt.(?:\\r|\\n)*",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OEM'd Broadcom Router - Max incorrect tries - variant 2"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "QkNNOTYzMjggQnJvYWRiYW5kIFJvdXRlcg0KTWF4aW11bSBudW1iZXIgb2YgaW5jb3JyZWN0I\n      GFjY291bnQgZW50cmllcyBleGNlZWRlZC4K",
+    "QkNNOTY4MTYgQnJvYWRiYW5kIFJvdXRlcg0KU29ycnksIHlvdSBuZWVkIHRvIHdhaXQgZm9yI\n      DExOSBzZWNvbmQgYmVmb3JlIG5leHQgbG9naW4gYXR0ZW1wdC4K"
+  ]
+}

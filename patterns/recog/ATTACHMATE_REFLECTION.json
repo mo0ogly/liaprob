@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-attachmate_reflection",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATTACHMATE_REFLECTION",
+  "taxonomy_name": "Attachmate Reflection",
+  "vendor": "Attachmate",
+  "product": "Reflection",
+  "source": {
+    "type": "recog",
+    "file": "ATTACHMATE_REFLECTION.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_attachmate_reflection_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{0,256})\\s{0,256}F-Secure SSH ",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{0,256})\\s{0,256}F-Secure SSH ",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Attachmate Reflection (formerly F-Secure SSH)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "examples": [
+    "3.2.3 F-Secure SSH Windows NT Server"
+  ]
+}

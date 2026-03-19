@@ -1,0 +1,188 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-siemens",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIEMENS",
+  "taxonomy_name": "Siemens",
+  "vendor": "Siemens",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SIEMENS.json",
+    "fingerprint_count": 13
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 13 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    1720,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_siemens_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0x04000082\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0x04000082\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Siemens AG H.323 Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5005243\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5005243\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Siemens Business Communication Systems H.323 Server"
+        }
+      ]
+    },
+    {
+      "id": "recog_siemens_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^CTI (25\\S+) Main Menu$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens 257x Ethernet Adapter (CTI Branded)"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(25\\S+) Ethernet TCP/IP Module$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens 257x Ethernet Adapter"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_siemens_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SCALANCE (W\\d\\d\\d-\\S\\S\\S)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens Scalance Industrial Wireless Access Point"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HiPath Wireless Access Controller - ([^,]+)\\s*, System Version ((?:V\\d+ )?\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens HiPath Wireless Access Point"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HiPath (optiPoint \\S+ \\S+) HFA$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens HiPath optiPoint"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^optiPoint (\\S+ \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens VoIP Phone"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens (\\S+)\\s+(.*?Router) \\(([^\\)]+)\\) v?(\\S+)\\s*",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens Router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens (\\S+)\\s+(.*?)\\s+\\(([^\\)]+)\\) Router .*?v(\\d+\\S+)\\s+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens Router - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Name:(ReliantUNIX)-. release:(\\S+) version:(\\S+) machine:(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens Reliant Unix (SINIX)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens Subscriber Networks (\\S+) \\((\\S+)\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens DSL Modems"
+        }
+      ]
+    },
+    {
+      "id": "recog_siemens_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=EN Software Production & Release,OU=Enterprise Networks,O=Siemens AG,L=Munich,ST=Germany,C=DE$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens EN Software"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323",
+    "http",
+    "tls",
+    "snmp"
+  ],
+  "examples": [
+    "CTI 2572-A Main Menu",
+    "2572-B Ethernet TCP/IP Module",
+    "SCALANCE W747-1RR",
+    "SCALANCE W788-1RR",
+    "HiPath Wireless Access Controller - C20 Office, System Version V6R1.10507.0",
+    "HiPath Wireless Access Controller - C2400 Enterprise, System Version 07.41.01.0192",
+    "HiPath Wireless Access Controller - C2400 Enterprise, System Version 07.41.03.0006",
+    "HiPath Wireless Access Controller - C25, System Version 07.41.02.0009",
+    "HiPath Wireless Access Controller - C25, System Version 08.01.01.0247",
+    "HiPath Wireless Access Controller - C25, System Version 08.01.02.0030"
+  ]
+}

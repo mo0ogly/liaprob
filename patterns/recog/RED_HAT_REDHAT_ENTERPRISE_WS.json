@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_redhat_enterprise_ws",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_REDHAT_ENTERPRISE_WS",
+  "taxonomy_name": "Red Hat RedHat Enterprise WS",
+  "vendor": "Red Hat",
+  "product": "RedHat Enterprise WS",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_REDHAT_ENTERPRISE_WS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_redhat_enterprise_ws_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^Red Hat Enterprise Linux WS release (.*) \\(.*\\).*Kernel (.*) on a[^ ]* ([^ ]*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "RedHat Enterprise Linux WS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "UmVkIEhhdCBFbnRlcnByaXNlIExpbnV4IFdTIHJlbGVhc2UgMi4xIChUYW1wY\n      SkgCktlcm5lbCAyLjQuOS1lLjQwc21wIG9uIGFuIGk2ODYgCmxvZ2luOiA="
+  ]
+}

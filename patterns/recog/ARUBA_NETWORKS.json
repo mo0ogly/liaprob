@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-aruba_networks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARUBA_NETWORKS",
+  "taxonomy_name": "Aruba Networks",
+  "vendor": "Aruba Networks",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "ARUBA_NETWORKS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_aruba_networks_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Aruba\\s(JL\\d+A)\\s(\\d+[A-Z]?)\\S+\\sSwitch(?:\\sdslforum.org)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Aruba Network Switch"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Aruba-Sensor(?:-([A-Z0-9]{6}))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Aruba UXI Sensor"
+        }
+      ]
+    },
+    {
+      "id": "recog_aruba_networks_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.11\\.2\\.3\\.7\\.11\\.181\\.21\\sAruba\\s(JL\\d+A)\\s(\\d+[A-Z]?)\\S+\\sSwitch.+ROM\\s([A-Z]+(?:\\.\\d+)+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Aruba Network Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "snmp"
+  ],
+  "examples": [
+    "Aruba JL075A 3810M-16SFP+-2-slot Switch",
+    "Aruba JL253A 2930F-24G-4SFP+ Switch dslforum.org",
+    "Aruba JL256A 2930F-48G-PoE+-4SFP+ Switch",
+    "Aruba JL258A 2930F-8G-PoE+-2SFP+ Switch",
+    "Aruba JL357A 2540-48G-PoE+-4SFP+ Switch",
+    "Aruba-Sensor-Q9X65A",
+    "Aruba-Sensor-R3R67A",
+    "Aruba-Sensor-R7H75A",
+    "Aruba-Sensor",
+    "1.3.6.1.4.1.11.2.3.7.11.181.21 Aruba JL256A 2930F-48G-PoE+-4SFP+ Switch, revision WC.16.11.0004, ROM WC.16.01.0010"
+  ]
+}

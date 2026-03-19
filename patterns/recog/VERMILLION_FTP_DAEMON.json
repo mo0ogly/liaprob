@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vermillion_ftp_daemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VERMILLION_FTP_DAEMON",
+  "taxonomy_name": "Vermillion FTP Daemon",
+  "vendor": "Vermillion",
+  "product": "FTP Daemon",
+  "source": {
+    "type": "recog",
+    "file": "VERMILLION_FTP_DAEMON.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_vermillion_ftp_daemon_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:(\\S{1,512}) )?FTP Server \\(vftpd ([\\d.]+)\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:(\\S{1,512}) )?FTP Server \\(vftpd ([\\d.]+)\\) ready\\.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Vermillion FTP Daemon"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "srv.name FTP Server (vftpd 1.23) ready.",
+    "FTP Server (vftpd 1.31) ready."
+  ]
+}

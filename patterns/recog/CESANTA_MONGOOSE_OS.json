@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cesanta_mongoose_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CESANTA_MONGOOSE_OS",
+  "taxonomy_name": "Cesanta Mongoose OS",
+  "vendor": "Cesanta",
+  "product": "Mongoose OS",
+  "source": {
+    "type": "recog",
+    "file": "CESANTA_MONGOOSE_OS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cesanta_mongoose_os_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Shelly Color Bulb$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Shelly Smart Bulb"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Shelly (Plug|Dimmer(?: 2)?|Switch)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Shelly Plug/Dimmer/Switch Devices"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Shelly[ ]?(RGBW2|1L)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Shelly Lighting Controller"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:cesanta:mongoose_os:-",
+  "examples": [
+    "Shelly Color Bulb",
+    "Shelly Plug",
+    "Shelly Dimmer",
+    "Shelly Dimmer 2",
+    "Shelly Switch",
+    "Shelly RGBW2",
+    "Shelly1L"
+  ]
+}

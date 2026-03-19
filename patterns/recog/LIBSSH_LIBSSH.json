@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-libssh_libssh",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIBSSH_LIBSSH",
+  "taxonomy_name": "libssh libssh",
+  "vendor": "libssh",
+  "product": "libssh",
+  "source": {
+    "type": "recog",
+    "file": "LIBSSH_LIBSSH.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_libssh_libssh_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^libssh[-_]([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^libssh[-_]([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SSH server utilising libssh"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "cpe23_template": "cpe:/a:libssh:libssh:{version}",
+  "examples": [
+    "libssh-0.6.0",
+    "libssh_0.8.0"
+  ]
+}

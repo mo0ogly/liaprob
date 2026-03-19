@@ -1,0 +1,222 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dell",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DELL",
+  "taxonomy_name": "Dell",
+  "vendor": "Dell",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "DELL.json",
+    "fingerprint_count": 16
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 16 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    67,
+    68,
+    80,
+    161,
+    443,
+    8080,
+    8443,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_dell_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Mfg=DELL;Typ=Printer;Mod=Dell ([A-Z]?\\d{4}dn)(?:\\sLaser Printer)?;Ser=([A-Z0-9]{7});$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Laser Printer"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Mfg=Dell;Typ=printer;Mod=Dell Color Printer (S\\d{4}cdn);Ser=([0-9]{6})$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Color Printer"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Dell Color MFP (S\\d{4}cdn)$$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Color Multifunction Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_dell_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(ET(\\S{1,32})) Dell (\\S+ Laser Printer) FTP Server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Laser Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Dell (?:Color Laser |Laser Printer )?|(?:Color Laser |Laser Printer ))(\\d+(?:n|cn|dn|cdn))(?: Color Laser| Laser Printer)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Laser Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Dell (\\d+(?:n|cn|dn|cdn)) MFP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Laser multifunction device"
+        }
+      ]
+    },
+    {
+      "id": "recog_dell_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^On Board Remote Management$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PowerVault 124T Tape Library"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(RMC Webserver|RAC_ONE_HTTP) (\\d\\.\\d)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^(RMC Webserver|RAC_ONE_HTTP) (\\d\\.\\d)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Dell Remote Access Controller"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_dell_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^DELL PowerVault (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell PowerVault Tape Library"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^PowerEdge (\\S+) Integrated Switch$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell PowerEdge Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Dell (\\d{4}[cd]?n) (?:Laser )?MFP",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell MFP Laser Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Dell(?:.*Laser.*)? (\\w*\\d{4}cn)(?:.*Net |; V)(\\S+)(?:,| )",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Color Laser Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Dell Laser Printer (\\S+) version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Laser Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Dell (\\S+)(?: Mono)? Laser Printer(?:;| version) \\S+;?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Laser Printer - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Dell (\\d{4}d?n) Series$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell Laser Printer - model only variant"
+        }
+      ]
+    },
+    {
+      "id": "recog_dell_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Dell_OpenManage.*,OU=PG,O=Dell Inc\\.,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell OpenManage"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "pjl",
+    "tls",
+    "snmp",
+    "http",
+    "ftp"
+  ],
+  "examples": [
+    "Mfg=DELL;Typ=Printer;Mod=Dell B2360dn Laser Printer;Ser=ABCDEF1;",
+    "Mfg=DELL;Typ=Printer;Mod=Dell 2330dn Laser Printer;Ser=123ABCD;",
+    "Mfg=DELL;Typ=Printer;Mod=Dell S2830dn;Ser=1A2BC34;",
+    "Mfg=Dell;Typ=printer;Mod=Dell Color Printer S3840cdn;Ser=123456",
+    "Dell Color MFP S2825cdn",
+    "ET0021B71A1111 Dell 2350dn Laser Printer FTP Server NR.APS.N449 ready.",
+    "Dell Laser Printer 1710n",
+    "Dell Color Laser 3110cn",
+    "Laser Printer 5100cn",
+    "Dell 2130cn Color Laser"
+  ]
+}

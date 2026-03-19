@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-filerun_filerun",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FILERUN_FILERUN",
+  "taxonomy_name": "FileRun FileRun",
+  "vendor": "FileRun",
+  "product": "FileRun",
+  "source": {
+    "type": "recog",
+    "file": "FILERUN_FILERUN.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_filerun_filerun_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:188caa0ab159a5ceaca86922c293f62f|fdfbcf58b378b0fba43ba86e41a824fe)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FileRun - self-hosted Google Drive alternative"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:FileRun :: (?:Login|Installation))|(?:(?:\\S)* :: Login \\(powered by FileRun\\))$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FileRun - self-hosted Google Drive alternative"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^FileRunSID=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FileRun - self-hosted Google Drive alternative"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:filerun:filerun:-",
+  "examples": [
+    "188caa0ab159a5ceaca86922c293f62f",
+    "fdfbcf58b378b0fba43ba86e41a824fe",
+    "FileRun :: Login",
+    "FileRun :: Installation",
+    "FileRun :: Login (powered by FileRun)",
+    "App Title :: Login (powered by FileRun)",
+    "FileRunSID=966e9a0441b5fea1a72af53b1a6adc8f; path=/; HttpOnly"
+  ]
+}

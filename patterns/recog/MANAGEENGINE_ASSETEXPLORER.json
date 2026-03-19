@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_assetexplorer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_ASSETEXPLORER",
+  "taxonomy_name": "ManageEngine AssetExplorer",
+  "vendor": "ManageEngine",
+  "product": "AssetExplorer",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_ASSETEXPLORER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_assetexplorer_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:a79bce1c22f081b0d1e38b142827a0e8|ae9449edb0067aa8c2c292acbe93da6a)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine AssetExplorer"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ManageEngine AssetExplorer$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine AssetExplorer"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_assetexplorer:-",
+  "examples": [
+    "a79bce1c22f081b0d1e38b142827a0e8",
+    "ae9449edb0067aa8c2c292acbe93da6a",
+    "ManageEngine AssetExplorer"
+  ]
+}

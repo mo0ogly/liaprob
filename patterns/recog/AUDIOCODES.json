@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-audiocodes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AUDIOCODES",
+  "taxonomy_name": "AudioCodes",
+  "vendor": "AudioCodes",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "AUDIOCODES.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    1720,
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_audiocodes_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5000028\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5000028\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "AudioCodes, Inc. H.323 Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Audiocodes-Sip-Gateway-)?(\\S{1,64}) FX[A-Z_]+/v.(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Audiocodes-Sip-Gateway"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "h323"
+  ],
+  "examples": [
+    "Audiocodes-Sip-Gateway-MP-124 FXS/v.6.00A.034.003",
+    "MP-124 FXS/v.6.60A.342.003",
+    "MP-114 FXS_FXO/v.6.60A.241.010"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oce_3165",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OCE_3165",
+  "taxonomy_name": "Oce 3165",
+  "vendor": "Oce",
+  "product": "3165",
+  "source": {
+    "type": "recog",
+    "file": "OCE_3165.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_oce_3165_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce digital 3165 (R\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce 3165 multifunction device - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce, 3165 ([^,]+), Controller \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce 3165 multifunction device - variant 2"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Oce digital 3165 R5.3",
+    "Oce, 3165 R8.2, Controller R10.2.8"
+  ]
+}

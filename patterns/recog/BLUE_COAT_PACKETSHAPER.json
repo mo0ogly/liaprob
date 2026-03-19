@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-blue_coat_packetshaper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLUE_COAT_PACKETSHAPER",
+  "taxonomy_name": "Blue Coat PacketShaper",
+  "vendor": "Blue Coat",
+  "product": "PacketShaper",
+  "source": {
+    "type": "recog",
+    "file": "BLUE_COAT_PACKETSHAPER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_blue_coat_packetshaper_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Blue Coat PacketShaper (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Blue Coat PacketShaper"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Blue Coat PacketShaper 8.4.1",
+    "Blue Coat PacketShaper 8.7.2_B174625_b65",
+    "Blue Coat PacketShaper 9.1.3"
+  ]
+}

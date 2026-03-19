@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-acme_thttpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACME_THTTPD",
+  "taxonomy_name": "ACME thttpd",
+  "vendor": "ACME",
+  "product": "thttpd",
+  "source": {
+    "type": "recog",
+    "file": "ACME_THTTPD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_acme_thttpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^thttpd/(\\d\\.[\\w.]+)-MX\\s*",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^thttpd/(\\d\\.[\\w.]+)-MX\\s*",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ACME thttpd with SSL support"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^thttpd(?:/(\\d\\.[\\w.]+)\\s*.*)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^thttpd(?:/(\\d\\.[\\w.]+)\\s*.*)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ACME thttpd"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:acme:thttpd:{version}",
+  "examples": [
+    "thttpd/2.19-MX Jan 24 2006",
+    "thttpd",
+    "thttpd/2.04 10aug98",
+    "thttpd/2.20b",
+    "thttpd/2.21b PHP/20030920",
+    "thttpd/2.23beta1 26may2002"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kace",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KACE",
+  "taxonomy_name": "KACE",
+  "vendor": "KACE",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "KACE.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_kace_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2d61bc736ebe98534728f160477374a9$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "KACE Appliance"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^KACE (?:Systems Management|Systems Deployment|Remote Site) Appliance",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "KACE Systems Management Appliances"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^K1000 Service Center$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell K1000 Systems Management Appliances (KACE)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "2d61bc736ebe98534728f160477374a9",
+    "KACE Systems Management Appliance Service Center",
+    "KACE Systems Management Appliance Administrator Console",
+    "KACE Systems Deployment Appliance",
+    "KACE Remote Site Appliance",
+    "K1000 Service Center"
+  ]
+}

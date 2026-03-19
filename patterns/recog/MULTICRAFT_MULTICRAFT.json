@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-multicraft_multicraft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MULTICRAFT_MULTICRAFT",
+  "taxonomy_name": "Multicraft Multicraft",
+  "vendor": "Multicraft",
+  "product": "Multicraft",
+  "source": {
+    "type": "recog",
+    "file": "MULTICRAFT_MULTICRAFT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_multicraft_multicraft_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Multicraft ([\\w.-]+) FTP server$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Multicraft ([\\w.-]+) FTP server$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Multicraft FTPD Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "Multicraft 2.0.2 FTP server",
+    "Multicraft 2.0.0-pre19 FTP server"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rapid7_insightvm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAPID7_INSIGHTVM",
+  "taxonomy_name": "Rapid7 InsightVM",
+  "vendor": "Rapid7",
+  "product": "InsightVM",
+  "source": {
+    "type": "recog",
+    "file": "RAPID7_INSIGHTVM.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_rapid7_insightvm_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f64ce96bbacc76d6db4d4eb0e78881da$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "InsightVM / Nexpose"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Insight)?VM Security Console :: Login$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Rapid7 InsightVM Console"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:rapid7:insightvm:-",
+  "examples": [
+    "f64ce96bbacc76d6db4d4eb0e78881da",
+    "InsightVM Security Console :: Login",
+    "VM Security Console :: Login"
+  ]
+}

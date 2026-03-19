@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-freepbx_freepbx_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FREEPBX_FREEPBX_X",
+  "taxonomy_name": "FreePBX FreePBX x",
+  "vendor": "FreePBX",
+  "product": "FreePBX x",
+  "source": {
+    "type": "recog",
+    "file": "FREEPBX_FREEPBX_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_freepbx_freepbx_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d134378a39c722e941ac25eed91ca93b",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FreePBX x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "d134378a39c722e941ac25eed91ca93b"
+  ]
+}

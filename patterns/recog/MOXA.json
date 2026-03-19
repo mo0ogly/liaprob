@@ -1,0 +1,87 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-moxa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOXA",
+  "taxonomy_name": "Moxa",
+  "vendor": "Moxa",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "MOXA.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_moxa_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Model name\\s+: NPort (IA-\\d+)(?:\\r|\\n|\\x00)+MAC address\\s+: ([\\w:]+)(?:\\r|\\n|\\x00)+Serial No.\\s+: (\\d+)(?:\\r|\\n|\\x00)+Firmware version : ([\\d.]+) Build (\\d+)(?:\\r|\\n|\\x00)+System uptime",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moxa NPort Device Server - IA Series"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n|\\x00|-)*Model name\\s+: NPort (5[\\w-]+)(?:\\r|\\n|\\x00)+MAC address\\s+: ([\\w:]+)(?:\\r|\\n|\\x00)+Serial No.\\s+: (\\d+)(?:\\r|\\n|\\x00)+Firmware version : ([\\d.]+) Build (\\d+)(?:\\r|\\n|\\x00)+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moxa NPort Device Server - 5xxx Series"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Model name\\s+: MGate (MB3[\\w-]+)(?:\\r|\\n|\\x00|)+MAC address\\s+: ([\\w:]+)(?:\\r|\\n|\\x00)+Serial No.\\s+: (\\d+)(?:\\r|\\n|\\x00)+Firmware version : ([\\d.]+) Build (\\d+)(?:\\r|\\n|\\x00)+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moxa MGate Modbus Gateway"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Model name\\s+: (NE[\\w-]+)(?:\\r|\\n|\\x00)+MAC address\\s+: ([\\w:]+)(?:\\r|\\n|\\x00)+Serial No.\\s+: (\\d+)(?:\\r|\\n|\\x00)+Firmware version\\s+: ([\\d.]+)(?: Build (\\d+)(?:\\r|\\n|\\x00)+)?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moxa NE Series Embedded device server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Model name\\s+: (MiiNePort [\\w-]+)(?:\\r|\\n|\\x00)+Serial No.\\s+: (\\d+)(?:\\r|\\n|\\x00)+Device name\\s+: [\\w:\\&-]+(?:\\r|\\n|\\x00)+Firmware version\\s+: ([\\d.]+) Build (\\d+)(?:\\r|\\n|\\x00)+Ethernet MAC address: ([\\w:]+)(?:\\r|\\n|\\x00)+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moxa MiiNePort Series Embedded device server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "TW9kZWwgbmFtZSAgICAgICA6IE5Qb3J0IElBLTUyNTANAApNQUMgYWRkcmVzcyAgICAgIDogM\n      DA6OTA6RTg6QUE6QUE6QUENAApTZXJpYWwgTm8uICAgICAgIDogMjgxDQAKRmlybXdhcmUgdm\n      Vyc2lvbiA6IDEuNiBCdWlsZCAxNzA2MDYxNg0AClN5c3RlbSB1cHRpbWUgICAgOiAzMSBkYXl\n      zLCAwNmg6MDNtOjQ1cw0ACg0AClBsZWFzZSBrZXlpbiB5b3VyIHBhc3N3b3JkOg==",
+    "TW9kZWwgbmFtZSAgICAgICA6IE5Qb3J0IDU2MTAtOC1EVA0ACk1BQyBhZGRyZXNzICAgICAgO\n      iAwMDo5MDpFODpBQTpBQTpBQQ0AClNlcmlhbCBOby4gICAgICAgOiA5NTIyDQAKRmlybXdhcm\n      UgdmVyc2lvbiA6IDIuMiBCdWlsZCAxMTA5MDYxMw0AClN5c3RlbSB1cHRpbWUgICAgOiA4IGR\n      heXMsIDAyaDoxMW06NDRzDQAKDQAKUGxlYXNlIGtleWluIHlvdXIgcGFzc3dvcmQ6",
+    "TW9kZWwgbmFtZSAgICAgICA6IE1HYXRlIE1CMzE4MA0ACk1BQyBhZGRyZXNzICAgICAgOiAwM\n      Do5MDpFODpBQTpBQTpBQQ0AClNlcmlhbCBOby4gICAgICAgOiA5NDc0DQAKRmlybXdhcmUgdm\n      Vyc2lvbiA6IDEuMiBCdWlsZCAwOTEwMTkxMw0AClN5c3RlbSB1cHRpbWUgICAgOiAxNSBkYXl\n      zLCAxNmg6MzdtOjQ4cw0ACg0AClBsZWFzZSBrZXlpbiB5b3VyIHBhc3N3b3JkOg==",
+    "TW9kZWwgbmFtZSAgICAgICA6IE5FLTQxMTBTDQAKTUFDIGFkZHJlc3MgICAgICA6IDAwOjkwO\n      kU4OkFBOkFBOkFBDQAKU2VyaWFsIE5vICAgICAgICA6IDM2MTYNAApGaXJtd2FyZSB2ZXJzaW\n      9uIDogNC4xIEJ1aWxkIDA3MDYxNTE3DQAKDQAKUGxlYXNlIGtleWluIHlvdXIgcGFzc3dvcmQ6",
+    "TW9kZWwgbmFtZSAgICAgICA6IE5FLTQxMTBTDQpNQUMgYWRkcmVzcyAgICAgIDogMDA6OTA6RTg6QUE6QUE6QUENClNlcmlhbCBObyAgICAgICAgOiAwMDANCkZpcm13YXJlIHZlcnNpb24gOiAxLjUuMg0KDQpQbGVhc2Uga2V5aW4geW91ciBwYXNzd29yZDoK",
+    "TW9kZWwgbmFtZSAgICAgICAgICA6IE1paU5lUG9ydCBFMg0KU2VyaWFsIE5vLiAgICAgICAgI\n      CA6IDk5OTkNCkRldmljZSBuYW1lICAgICAgICAgOiBNaWlOZVBvcnRfRTJfNDA2NA0KRmlybX\n      dhcmUgdmVyc2lvbiAgICA6IDEuMy4zNiBCdWlsZCAxNTAzMTYxNQ0KRXRoZXJuZXQgTUFDIGF\n      kZHJlc3M6IDAwOjkwOkU4OjVBOjkyOkZGDQoNClBsZWFzZSBrZXlpbiB5b3VyIHBhc3N3b3Jk\n      Ogo="
+  ]
+}

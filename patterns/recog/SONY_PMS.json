@@ -1,0 +1,113 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sony_pms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SONY_PMS",
+  "taxonomy_name": "Sony PMS",
+  "vendor": "Sony",
+  "product": "PMS",
+  "source": {
+    "type": "recog",
+    "file": "SONY_PMS.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sony_pms_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "PlayStation3 Media Server UPnP Server - linux"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Windows_XP-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Windows_XP-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "PlayStation3 Media Server UPnP Server - Windows XP"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Windows_7-x86-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Windows_7-x86-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "PlayStation3 Media Server UPnP Server - Windows 7 x86"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Windows_7-x86_64-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Windows_7-x86_64-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "PlayStation3 Media Server UPnP Server - Windows 7 x86_64"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Mac_OS_X-x86_64-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Mac_OS_X-x86_64-(\\S+), UPnP/[\\d\\.]+, PMS/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "PlayStation3 Media Server UPnP Server - macOS x86_64"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:linux:linux_kernel:{os.version}",
+  "examples": [
+    "Linux-amd64-2.6.18-238.9.1.el5, UPnP/1.0, PMS/1.52.1",
+    "Linux-i386-2.6.33.2, UPnP/1.0, PMS/1.21.1",
+    "Windows_XP-amd64-5.2, UPnP/1.0, PMS/1.54.0",
+    "Windows_XP-x86-5.1, UPnP/1.0, PMS/1.20.400",
+    "Windows_7-x86-6.1, UPnP/1.0, PMS/1.20",
+    "Windows_7-x86-6.1, UPnP/1.0, PMS/1.22.0",
+    "Windows_7-x86-6.1, UPnP/1.0, PMS/1.20.412",
+    "Windows_7-x86-6.1, UPnP/1.0, PMS/1.71.0",
+    "Windows_7-x86-6.1, UPnP/1.0, PMS/1.20.409",
+    "Windows_7-x86-6.1, UPnP/1.0, PMS/1.72.0"
+  ]
+}

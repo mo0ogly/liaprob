@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-novell_edirectory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOVELL_EDIRECTORY",
+  "taxonomy_name": "Novell eDirectory",
+  "vendor": "Novell",
+  "product": "eDirectory",
+  "source": {
+    "type": "recog",
+    "file": "NOVELL_EDIRECTORY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_novell_edirectory_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:vendorName1\\x0E\\x04\\fNovell, Inc.0/\\x04\\rvendorVersion1\\x1E\\x04\\x1CeDirectory v(\\d+\\.\\d+[\\d.]* [\\w ]*\\([\\d.]+\\))0.\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:vendorName1\\x0E\\x04\\fNovell, Inc.0/\\x04\\rvendorVersion1\\x1E\\x04\\x1CeDirectory v(\\d+\\.\\d+[\\d.]* [\\w ]*\\([\\d.]+\\))0.\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Novell eDirectory"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:novell:edirectory:{version}",
+  "examples": [
+    "dmVuZG9yTmFtZTEOBAxOb3ZlbGwsIEluYy4wLwQNdmVuZG9yVmVyc2lvbjEeBBxlRGlyZWN0b\n      3J5IHY4LjYuMiAoMTAzNTAuMTgpMCcE"
+  ]
+}

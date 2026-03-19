@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gene6_ftp_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GENE6_FTP_SERVER",
+  "taxonomy_name": "Gene6 FTP Server",
+  "vendor": "Gene6",
+  "product": "FTP Server",
+  "source": {
+    "type": "recog",
+    "file": "GENE6_FTP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_gene6_ftp_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Gene6 FTP Server v(\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}\\s{1,2}\\(Build \\d{1,2}\\)) ready\\.\\.\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Gene6 FTP Server v(\\d{1,2}\\.\\d{1,2}\\.\\d{1,2}\\s{1,2}\\(Build \\d{1,2}\\)) ready\\.\\.\\.$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Gene6 FTP Server on Windows"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "Gene6 FTP Server v3.10.0 (Build 2) ready...",
+    "Gene6 FTP Server v3.7.0  (Build 24) ready..."
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-horde_horde_groupware_webmail_1_0_1_mnemo_theme_2_1_2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HORDE_HORDE_GROUPWARE_WEBMAIL_1_0_1_MNEMO_THEME_2_1_2",
+  "taxonomy_name": "Horde Horde Groupware Webmail 1.0.1 (Mnemo Theme, 2.1.2)",
+  "vendor": "Horde",
+  "product": "Horde Groupware Webmail 1.0.1 (Mnemo Theme, 2.1.2)",
+  "source": {
+    "type": "recog",
+    "file": "HORDE_HORDE_GROUPWARE_WEBMAIL_1_0_1_MNEMO_THEME_2_1_2.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_horde_horde_groupware_webmail_1_0_1_mnemo_theme_2_1_2_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f5f2df7eec0d1c3c10b58960f3f8fb26",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Horde Groupware Webmail 1.0.1 (Mnemo Theme, 2.1.2)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "f5f2df7eec0d1c3c10b58960f3f8fb26"
+  ]
+}

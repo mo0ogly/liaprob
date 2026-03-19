@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unboundid_unboundid_directory_proxy_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNBOUNDID_UNBOUNDID_DIRECTORY_PROXY_SERVER",
+  "taxonomy_name": "UnboundID UnboundID Directory Proxy Server",
+  "vendor": "UnboundID",
+  "product": "UnboundID Directory Proxy Server",
+  "source": {
+    "type": "recog",
+    "file": "UNBOUNDID_UNBOUNDID_DIRECTORY_PROXY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_unboundid_unboundid_directory_proxy_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:vendorName1.\\x04.UnboundID Corp.0.\\x04\\rvendorVersion1.\\x04.UnboundID Directory Proxy Server ([\\d.]+)0\\f)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:vendorName1.\\x04.UnboundID Corp.0.\\x04\\rvendorVersion1.\\x04.UnboundID Directory Proxy Server ([\\d.]+)0\\f)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "UnboundID Directory Proxy Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "dmVuZG9yTmFtZTERBA9VbmJvdW5kSUQgQ29ycC4wOwQNdmVuZG9yVmVyc2lvbjEqBChVbmJvd\n      W5kSUQgRGlyZWN0b3J5IFByb3h5IFNlcnZlciA0LjcuMC43MAw="
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN",
+  "taxonomy_name": "Sun",
+  "vendor": "Sun",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SUN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^SUN StorEdge (\\S+) RAID FTP server ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun StorEdge disk array"
+        }
+      ]
+    },
+    {
+      "id": "recog_sun_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun StorEdge (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun StorEdge disk array"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "SUN StorEdge 3511 RAID FTP server ready.",
+    "Sun StorEdge 3511"
+  ]
+}

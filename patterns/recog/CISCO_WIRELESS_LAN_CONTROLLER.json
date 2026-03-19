@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_wireless_lan_controller",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_WIRELESS_LAN_CONTROLLER",
+  "taxonomy_name": "Cisco Wireless LAN Controller",
+  "vendor": "Cisco",
+  "product": "Wireless LAN Controller",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_WIRELESS_LAN_CONTROLLER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_wireless_lan_controller_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Cisco Systems Login$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco WLC"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_cisco_wireless_lan_controller_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^SERIALNUMBER=([a-zA-Z0-9]+),CN=DEVICE-vWLC,O=Cisco Virtual WLC$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco vWLC"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=[a-zA-Z0-9\\.\\-\\_]+,OU=DeviceSSL \\(WebAdmin\\),O=Cisco Systems Inc\\.,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco WLC"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:cisco:wireless_lan_controller_software:-",
+  "examples": [
+    "Cisco Systems Login",
+    "SERIALNUMBER=9C89M2088D1,CN=DEVICE-vWLC,O=Cisco Virtual WLC",
+    "CN=169.254.1.1,OU=DeviceSSL (WebAdmin),O=Cisco Systems Inc.,C=US"
+  ]
+}

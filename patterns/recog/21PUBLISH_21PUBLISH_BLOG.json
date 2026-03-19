@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-21publish_21publish_blog",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "21PUBLISH_21PUBLISH_BLOG",
+  "taxonomy_name": "21publish 21publish Blog",
+  "vendor": "21publish",
+  "product": "21publish Blog",
+  "source": {
+    "type": "recog",
+    "file": "21PUBLISH_21PUBLISH_BLOG.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_21publish_21publish_blog_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^e08333841cbe40d15b18f49045f26614",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "21publish Blog"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "e08333841cbe40d15b18f49045f26614"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-wrq_inc_reflectionx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WRQ_INC_REFLECTIONX",
+  "taxonomy_name": "WRQ, Inc. ReflectionX",
+  "vendor": "WRQ, Inc.",
+  "product": "ReflectionX",
+  "source": {
+    "type": "recog",
+    "file": "WRQ_INC_REFLECTIONX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    6000
+  ],
+  "probes": [
+    {
+      "id": "recog_wrq_inc_reflectionx_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^WRQ, Inc\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WRQ, Inc."
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "x11"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "WRQ, Inc."
+  ]
+}

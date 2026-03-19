@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-compact_compact_5020_voip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMPACT_COMPACT_5020_VOIP",
+  "taxonomy_name": "COMpact COMpact 5020 VoIP",
+  "vendor": "COMpact",
+  "product": "COMpact 5020 VoIP",
+  "source": {
+    "type": "recog",
+    "file": "COMPACT_COMPACT_5020_VOIP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_compact_compact_5020_voip_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ceb25c12c147093dc93ac8b2c18bebff",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "COMpact 5020 VoIP"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ceb25c12c147093dc93ac8b2c18bebff"
+  ]
+}

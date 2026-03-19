@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pragma_systems_fortressssh_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRAGMA_SYSTEMS_FORTRESSSSH_SERVER",
+  "taxonomy_name": "Pragma Systems FortressSSH Server",
+  "vendor": "Pragma Systems",
+  "product": "FortressSSH Server",
+  "source": {
+    "type": "recog",
+    "file": "PRAGMA_SYSTEMS_FORTRESSSSH_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_pragma_systems_fortressssh_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Pragma SecureShell\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Pragma SecureShell\\s*(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Pragma SecureShell"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Pragma FortressSSH\\s+([\\d.]+)(?:\\s+\\[([\\d.:]+)\\])?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Pragma FortressSSH\\s+([\\d.]+)(?:\\s+\\[([\\d.:]+)\\])?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Pragma FortressSSH"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "Pragma SecureShell 3.0",
+    "Pragma FortressSSH 5.0.9.2031",
+    "Pragma FortressSSH 5.0.9.2680 [10.10.10.10]"
+  ]
+}

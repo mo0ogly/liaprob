@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-palletsprojects_werkzeug",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PALLETSPROJECTS_WERKZEUG",
+  "taxonomy_name": "PalletsProjects Werkzeug",
+  "vendor": "PalletsProjects",
+  "product": "Werkzeug",
+  "source": {
+    "type": "recog",
+    "file": "PALLETSPROJECTS_WERKZEUG.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_palletsprojects_werkzeug_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Werkzeug/([\\d.]+) Python/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Werkzeug/([\\d.]+) Python/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PalletsProjects Werkzeug web server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:palletsprojects:werkzeug:{version}",
+  "examples": [
+    "Werkzeug/0.14.1 Python/3.6.9"
+  ]
+}

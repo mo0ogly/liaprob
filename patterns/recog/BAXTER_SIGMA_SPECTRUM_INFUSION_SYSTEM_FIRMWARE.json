@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-baxter_sigma_spectrum_infusion_system_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BAXTER_SIGMA_SPECTRUM_INFUSION_SYSTEM_FIRMWARE",
+  "taxonomy_name": "Baxter SIGMA Spectrum Infusion System Firmware",
+  "vendor": "Baxter",
+  "product": "SIGMA Spectrum Infusion System Firmware",
+  "source": {
+    "type": "recog",
+    "file": "BAXTER_SIGMA_SPECTRUM_INFUSION_SYSTEM_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_baxter_sigma_spectrum_infusion_system_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^Welcome to the SIGMA Spectrum Diagnostic Terminal(?:\\r|\\n)*Wireless Battery Module \\(802\\.11[abgn\\/]+\\)(?:\\r|\\n)*MAC Address: ((?:[0-9a-f]{2}-?){6}) SW: \\d+[\\sD]*\\d+\\s*(?:\\r|\\n)*Sigma Spectrum SN: (\\d+) SW: v([\\d.]+)(?:\\r|\\n)*Radio up since: [\\w\\s:]+(?:\\r|\\n)*login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Baxter SIGMA Spectrum Infusion System with Wireless Battery Module"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "cpe23_template": "cpe:/o:baxter:sigma_spectrum_infusion_system_firmware:{os.version}",
+  "examples": [
+    "V2VsY29tZSB0byB0aGUgU0lHTUEgU3BlY3RydW0gRGlhZ25vc3RpYyBUZXJtaW5hbA0KDQpXa\n      XJlbGVzcyBCYXR0ZXJ5IE1vZHVsZSAoODAyLjExYS9iL2cvbikNCk1BQyBBZGRyZXNzOiAwMC\n      00MC05ZC0xMi0zNC01NiBTVzogMjAgRDI5DQpTaWdtYSBTcGVjdHJ1bSBTTjogMTIzNDU2NyB\n      TVzogdjguMDAuMDENClJhZGlvIHVwIHNpbmNlOiBGcmkgTWFyICAxIDAzOjE0OjI0IDIwMTkN\n      Cg0KbG9naW46IA=="
+  ]
+}

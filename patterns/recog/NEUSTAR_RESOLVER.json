@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-neustar_resolver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEUSTAR_RESOLVER",
+  "taxonomy_name": "Neustar Resolver",
+  "vendor": "Neustar",
+  "product": "Resolver",
+  "source": {
+    "type": "recog",
+    "file": "NEUSTAR_RESOLVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_neustar_resolver_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^UltraDNS Resolver$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Neustar UltraDNS Resolver"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^UltraDNS TLD Platform - www\\.ultradns\\.com$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Neustar UltraDNS TLD Platform"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "UltraDNS Resolver",
+    "UltraDNS TLD Platform - www.ultradns.com"
+  ]
+}

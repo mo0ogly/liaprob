@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_mysql_proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_MYSQL_PROXY",
+  "taxonomy_name": "Oracle MySQL Proxy",
+  "vendor": "Oracle",
+  "product": "MySQL Proxy",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_MYSQL_PROXY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_mysql_proxy_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^#07000Proxy Warning - IP Forbidden$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Proxy - Error: Host not allowed to connect"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^\\(proxy\\) all backends are down$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Proxy - Error: Backends down"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "#07000Proxy Warning - IP Forbidden",
+    "(proxy) all backends are down"
+  ]
+}

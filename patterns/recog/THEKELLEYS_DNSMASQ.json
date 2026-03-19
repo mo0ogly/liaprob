@@ -1,0 +1,89 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-thekelleys_dnsmasq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THEKELLEYS_DNSMASQ",
+  "taxonomy_name": "Thekelleys Dnsmasq",
+  "vendor": "Thekelleys",
+  "product": "Dnsmasq",
+  "source": {
+    "type": "recog",
+    "file": "THEKELLEYS_DNSMASQ.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_thekelleys_dnsmasq_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^dnsmasq-(\\d.[\\w\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^dnsmasq-(\\d.[\\w\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "dnsmasq: simple"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^dnsmasq-(\\d.[\\w]+-\\d)-ubnt\\d$",
+          "confidence_delta": 0.4,
+          "version_extract": "^dnsmasq-(\\d.[\\w]+-\\d)-ubnt\\d$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "dnsmasq: Ubiquiti"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^dnsmasq-(\\d.[\\w]+)-OpenDNS-\\d$",
+          "confidence_delta": 0.4,
+          "version_extract": "^dnsmasq-(\\d.[\\w]+)-OpenDNS-\\d$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "dnsmasq: OpenDNS variant"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^dnsmasq-?(?:UNKNOWN)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "dnsmasq: no version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/a:thekelleys:dnsmasq:{version}",
+  "examples": [
+    "dnsmasq-2.40",
+    "dnsmasq-2.51.2",
+    "dnsmasq-2.63rc6",
+    "dnsmasq-2.76test8",
+    "dnsmasq-2.76-1-ubnt2",
+    "dnsmasq-2.15-OpenDNS-1",
+    "dnsmasq-UNKNOWN",
+    "dnsmasq-",
+    "dnsmasq"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ldap_account_manager_ldap_account_manager_2_3_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LDAP_ACCOUNT_MANAGER_LDAP_ACCOUNT_MANAGER_2_3_0",
+  "taxonomy_name": "ldap-account-manager ldap-account-manager (2.3.0)",
+  "vendor": "ldap-account-manager",
+  "product": "ldap-account-manager (2.3.0)",
+  "source": {
+    "type": "recog",
+    "file": "LDAP_ACCOUNT_MANAGER_LDAP_ACCOUNT_MANAGER_2_3_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ldap_account_manager_ldap_account_manager_2_3_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^663ee93a41000b8959d6145f0603f599",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ldap-account-manager (2.3.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "663ee93a41000b8959d6145f0603f599"
+  ]
+}

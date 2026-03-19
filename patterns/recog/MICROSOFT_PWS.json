@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_pws",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_PWS",
+  "taxonomy_name": "Microsoft PWS",
+  "vendor": "Microsoft",
+  "product": "PWS",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_PWS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_pws_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-PWS/(\\d\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Microsoft-PWS/(\\d\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft Personal Web Server runs on Windows 9x, ME, etc."
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-PWS-95/(\\d\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Microsoft-PWS-95/(\\d\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft Personal Web Server for Windows 95"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:personal_web_server:{version}",
+  "examples": [
+    "Microsoft-PWS/4.0",
+    "Microsoft-PWS-95/4.0"
+  ]
+}

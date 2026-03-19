@@ -1,0 +1,112 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sap_netweaver_application_server_java",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_NETWEAVER_APPLICATION_SERVER_JAVA",
+  "taxonomy_name": "SAP NetWeaver Application Server Java",
+  "vendor": "SAP",
+  "product": "NetWeaver Application Server Java",
+  "source": {
+    "type": "recog",
+    "file": "SAP_NETWEAVER_APPLICATION_SERVER_JAVA.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sap_netweaver_application_server_java_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^SAP J2EE Engine/(\\d+\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^SAP J2EE Engine/(\\d+\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SAP NetWeaver Application Server Java - short version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^SAP J2EE Engine$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "SAP NetWeaver Application Server Java - without version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^SAP NetWeaver Application Server ([\\d.]+) / AS Java ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^SAP NetWeaver Application Server ([\\d.]+) / AS Java ([\\d.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "SAP NetWeaver Application Server Java"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_sap_netweaver_application_server_java_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Telnet Administration (?:\\r|\\n)+   SAP J2EE Engine v([\\d.]+)(?:\\r|\\n)+",
+          "confidence_delta": 0.4,
+          "version_extract": "Telnet Administration (?:\\r|\\n)+   SAP J2EE Engine v([\\d.]+)(?:\\r|\\n)+",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SAP NetWeaver Application Server Java telnet service"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Telnet Administration (?:\\r|\\n)+   SAP Java EE Application Server v([\\d.]+)(?:\\r|\\n)+",
+          "confidence_delta": 0.4,
+          "version_extract": "Telnet Administration (?:\\r|\\n)+   SAP Java EE Application Server v([\\d.]+)(?:\\r|\\n)+",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SAP NetWeaver Application Server Java telnet service - newer variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "telnet"
+  ],
+  "cpe23_template": "cpe:/a:sap:netweaver_application_server_java:{version}",
+  "examples": [
+    "SAP J2EE Engine/7.01",
+    "SAP J2EE Engine",
+    "SAP NetWeaver Application Server 7.22 / AS Java 7.30",
+    "KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiogCiAgICoqKi\n      oqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiogCiAgICoqKiojIyMq\n      KioqKioqIyMjIyoqKioqIyMjIyMjIyoqKioqKioqKioqKioqIAogICAqKiMjKioqIyMqKioqIy\n      MqKiMjKioqKiMjKioqKiMjKioqKioqKioqKioqIAogICAqKiojIyoqKioqKiojIyoqKiojIyoq\n      KiMjKioqKiMjKioqKioqKioqKiAKICAgKioqKiojIyoqKioqIyMjIyMjIyMqKiojIyMjIyMqKi\n      oqKioqKioqKiAKICAgKioqKioqIyMqKioqIyMqKioqIyMqKiojIyoqKioqKioqKioqKiogCiAg\n      ICoqIyMqKiojIyoqIyMqKioqKiojIyoqIyMqKioqKioqKioqKiogCiAgICoqKiojIyMqKioqIy\n      MqKioqKiojIyoqIyMqKioqKioqKioqIAogICAqKioqKioqKioqKioqKioqKioqKioqKioqKioq\n      KioqKioqIAogICAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiAKCiAgIFRlbG5ldC\n      BBZG1pbmlzdHJhdGlvbiAKICAgU0FQIEoyRUUgRW5naW5lIHY3LjAwCgoKCkxvZ2luOgo=",
+    "KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiogCiAgICoqKi\n      oqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiogCiAgICoqKiojIyMq\n      KioqKioqIyMjIyoqKioqIyMjIyMjIyoqKioqKioqKioqKioqIAogICAqKiMjKioqIyMqKioqIy\n      MqKiMjKioqKiMjKioqKiMjKioqKioqKioqKioqIAogICAqKiojIyoqKioqKiojIyoqKiojIyoq\n      KiMjKioqKiMjKioqKioqKioqKiAKICAgKioqKiojIyoqKioqIyMjIyMjIyMqKiojIyMjIyMqKi\n      oqKioqKioqKiAKICAgKioqKioqIyMqKioqIyMqKioqIyMqKiojIyoqKioqKioqKioqKiogCiAg\n      ICoqIyMqKiojIyoqIyMqKioqKiojIyoqIyMqKioqKioqKioqKiogCiAgICoqKiojIyMqKioqIy\n      MqKioqKiojIyoqIyMqKioqKioqKioqIAogICAqKioqKioqKioqKioqKioqKioqKioqKioqKioq\n      KioqKioqIAogICAqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKiAKCiAgIFRlbG5ldC\n      BBZG1pbmlzdHJhdGlvbiAKICAgU0FQIEphdmEgRUUgQXBwbGljYXRpb24gU2VydmVyIHY3LjUw\n      CgoKVXNlciBuYW1lOgo="
+  ]
+}

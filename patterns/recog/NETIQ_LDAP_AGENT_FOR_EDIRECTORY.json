@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netiq_ldap_agent_for_edirectory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETIQ_LDAP_AGENT_FOR_EDIRECTORY",
+  "taxonomy_name": "NetIQ LDAP Agent for eDirectory",
+  "vendor": "NetIQ",
+  "product": "LDAP Agent for eDirectory",
+  "source": {
+    "type": "recog",
+    "file": "NETIQ_LDAP_AGENT_FOR_EDIRECTORY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_netiq_ldap_agent_for_edirectory_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:vendorName1\\x13\\x04\\x11NetIQ Corporation0.\\x04\\rvendorVersion.{4}LDAP Agent for NetIQ eDirectory (\\d+\\.\\d+[\\d.]* [\\w ]*\\([\\d.]+\\))0.\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:vendorName1\\x13\\x04\\x11NetIQ Corporation0.\\x04\\rvendorVersion.{4}LDAP Agent for NetIQ eDirectory (\\d+\\.\\d+[\\d.]* [\\w ]*\\([\\d.]+\\))0.\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "NetIQ LDAP Agent for eDirectory"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "eDA0CnZlbmRvck5hbWUxEwQRTmV0SVEgQ29ycG9yYXRpb24wRQQNdmVuZG9yVmVyc2lvbjE0B\n      DJMREFQIEFnZW50IGZvciBOZXRJUSBlRGlyZWN0b3J5IDguOCBTUDggKDIwODA4LjA2KTBJBA\n      =="
+  ]
+}

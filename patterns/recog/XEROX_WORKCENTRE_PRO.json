@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xerox_workcentre_pro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XEROX_WORKCENTRE_PRO",
+  "taxonomy_name": "Xerox WorkCentre Pro",
+  "vendor": "Xerox",
+  "product": "WorkCentre Pro",
+  "source": {
+    "type": "recog",
+    "file": "XEROX_WORKCENTRE_PRO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_xerox_workcentre_pro_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox WorkCentre Pro Multifunction System[,;]",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox WorkCentre Pro Laser Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Xerox WorkCentre Pro Multifunction System, ESS 0.C03.04.510.01, IOT 9.0.3, UI 0.1.4.509, Scanner 1.4.0",
+    "Xerox WorkCentre Pro Multifunction System, ESS 0.C03.04.510.01, IOT 9.0.3, UI 0.1.4.509, Finisher 3.8.0, Scanner 1.4.0",
+    "Xerox WorkCentre Pro Multifunction System; ESS 0.040.010.51172, IOT 50.0.0, UI 0.12.50.3, Finisher 3.20.0, Scanner 17.5.0"
+  ]
+}

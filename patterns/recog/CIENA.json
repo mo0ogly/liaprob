@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ciena",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CIENA",
+  "taxonomy_name": "Ciena",
+  "vendor": "Ciena",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "CIENA.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ciena_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(\\S{1,32}) OPTICAL SW:(\\S+) .* Ciena \\(R\\) Corporation$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ciena Optical - software version variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Ciena CN (\\S+) V(\\S+) \\(MIBs \\S+\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ciena CN"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "6500 OPTICAL SW:0810 BN:HD (c) Ciena (R) Corporation",
+    "Ciena CN 3106 V1.0.4(04) (MIBs V1.6.8)"
+  ]
+}

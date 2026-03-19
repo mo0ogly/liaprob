@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-3com_adsl_modem",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "3COM_ADSL_MODEM",
+  "taxonomy_name": "3Com ADSL Modem",
+  "vendor": "3Com",
+  "product": "ADSL Modem",
+  "source": {
+    "type": "recog",
+    "file": "3COM_ADSL_MODEM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_3com_adsl_modem_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com HomeConnect ADSL Modem V([^,]+),\\s+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM ADSL Modem"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "3Com HomeConnect ADSL Modem V1.1.8, Built on May 17 2000 at 18:24:32."
+  ]
+}

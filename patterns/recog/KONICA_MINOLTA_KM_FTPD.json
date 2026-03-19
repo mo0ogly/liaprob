@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-konica_minolta_km_ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KONICA_MINOLTA_KM_FTPD",
+  "taxonomy_name": "Konica Minolta KM FTPD",
+  "vendor": "Konica Minolta",
+  "product": "KM FTPD",
+  "source": {
+    "type": "recog",
+    "file": "KONICA_MINOLTA_KM_FTPD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_konica_minolta_km_ftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^KONICA MINOLTA FTP server ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Konica Minolta FTP Server - w/o version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(KM\\S+) FTP server \\(KM FTPD version (\\d*(?:\\.\\d*))\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(KM\\S+) FTP server \\(KM FTPD version (\\d*(?:\\.\\d*))\\) ready\\.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Konica Minolta FTP Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "KONICA MINOLTA FTP server ready.",
+    "KM23BC97 FTP server (KM FTPD version 1.00) ready.",
+    "KM23BF0A FTP server (KM FTPD version 1.00) ready.",
+    "KM23CBDB FTP server (KM FTPD version 1.00) ready.",
+    "KM23E608 FTP server (KM FTPD version 1.00) ready.",
+    "KM23E8A2 FTP server (KM FTPD version 1.00) ready.",
+    "KM25015E FTP server (KM FTPD version 1.00) ready.",
+    "KM250E38 FTP server (KM FTPD version 1.00) ready.",
+    "KM251A4C FTP server (KM FTPD version 1.00) ready."
+  ]
+}

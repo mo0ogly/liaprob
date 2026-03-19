@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-google_urchin_tracking_module",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_URCHIN_TRACKING_MODULE",
+  "taxonomy_name": "Google Urchin Tracking Module",
+  "vendor": "Google",
+  "product": "Urchin Tracking Module",
+  "source": {
+    "type": "recog",
+    "file": "GOOGLE_URCHIN_TRACKING_MODULE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_google_urchin_tracking_module_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(__utm[a-z])=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Urchin Tracking Module - http://www.google.com/support/urchin45/bin/answer.py?answer=28307&topic=7425"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "__utmp=2071164266.582676006.3393543082; path=/; domain=.foo.bar"
+  ]
+}

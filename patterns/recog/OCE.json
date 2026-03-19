@@ -1,0 +1,173 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OCE",
+  "taxonomy_name": "Oce",
+  "vendor": "Oce",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "OCE.json",
+    "fingerprint_count": 14
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 14 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_oce_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Oce (im\\d+) Ver (\\S+) FTP server\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OCE IM series Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Oce (Plotwave\\d+) FTP Service \\(Version (\\S+)\\)\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OCE Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Oce (fx[^\\s:]+):",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce FX series multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Oce (VL\\S+):",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce VarioLink multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^OceIGI MX-\\S+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce-acquired IGI printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Imagistics (im\\S+) (.+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce IM series multifunction device"
+        }
+      ]
+    },
+    {
+      "id": "recog_oce_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce (NC-\\d+h), Firmware Ver.(\\d+.\\d+)\\s+\\(\\d{1,2}.\\d{1,2}.\\d{1,2}\\),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce NC Series of Print Servers"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce (im\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce IM series multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce (cm\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce CM series multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce, (ColorWave\\S+) ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce ColorWave multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce, (VarioPrint \\S+) ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce VarioPrint multifunction device - detailed variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce (VarioPrint \\S+) (R\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce VarioPrint multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce (CS\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce CS Series"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce (\\d+\\S*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "Oce im4512 Ver 01.04.00.0c FTP server.",
+    "Oce im3512 Ver 01.04.00.0c FTP server.",
+    "Oce Plotwave300 FTP Service (Version 4.5.7).",
+    "Oce fx3000:8C5-B29:Ver.D:U0707161719:B0601271355",
+    "Oce VL3200:8C5-D92:Ver.B",
+    "OceIGI MX-NBX3 02-Jul-07 14:47",
+    "Imagistics im3510/4510 02-Aug-04 10:56",
+    "Oce NC-6800h, Firmware Ver.1.01  (10.01.08),MID 8C5-D92,FID 2",
+    "Oce NC-6400h, Firmware Ver.1.03  (07.02.27),MID 8C5-B29,FID 2",
+    "Oce im2330"
+  ]
+}

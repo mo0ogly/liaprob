@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ballerina_ballerina",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BALLERINA_BALLERINA",
+  "taxonomy_name": "Ballerina Ballerina",
+  "vendor": "Ballerina",
+  "product": "Ballerina",
+  "source": {
+    "type": "recog",
+    "file": "BALLERINA_BALLERINA.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ballerina_ballerina_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ballerina(?:\\/([\\d.]+(?:-[a-zA-Z0-9.-]+)?))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ballerina(?:\\/([\\d.]+(?:-[a-zA-Z0-9.-]+)?))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Ballerina - programming language HTTP module"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:ballerina:ballerina:{version}",
+  "examples": [
+    "ballerina",
+    "ballerina/0.991.0",
+    "ballerina/0.982.1-SNAPSHOT"
+  ]
+}

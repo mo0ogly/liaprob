@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-valcom_hw_product_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VALCOM_HW_PRODUCT_FIRMWARE",
+  "taxonomy_name": "Valcom {hw.product} Firmware",
+  "vendor": "Valcom",
+  "product": "{hw.product} Firmware",
+  "source": {
+    "type": "recog",
+    "file": "VALCOM_HW_PRODUCT_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_valcom_hw_product_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Valcom (VIP-\\w+) sw([\\d.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Valcom SIP device with version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Valcom VIP-204 sw1.50.28"
+  ]
+}

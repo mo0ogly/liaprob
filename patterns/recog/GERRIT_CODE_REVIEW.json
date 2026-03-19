@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gerrit_code_review",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GERRIT_CODE_REVIEW",
+  "taxonomy_name": "Gerrit Code Review",
+  "vendor": "Gerrit",
+  "product": "Code Review",
+  "source": {
+    "type": "recog",
+    "file": "GERRIT_CODE_REVIEW.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gerrit_code_review_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:9b67ee27ad29bd721c0c1f5e5a1a5211|801164802554cf799c6fc3851f93e0e1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gerrit Code Review"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "9b67ee27ad29bd721c0c1f5e5a1a5211",
+    "801164802554cf799c6fc3851f93e0e1"
+  ]
+}

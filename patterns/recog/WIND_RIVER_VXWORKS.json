@@ -1,0 +1,143 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-wind_river_vxworks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WIND_RIVER_VXWORKS",
+  "taxonomy_name": "Wind River VxWorks",
+  "vendor": "Wind River",
+  "product": "VxWorks",
+  "source": {
+    "type": "recog",
+    "file": "WIND_RIVER_VXWORKS.json",
+    "fingerprint_count": 10
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 10 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    22,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_wind_river_vxworks_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Tornado-)?VxWorks \\((?:VxWorks)?([^\\)]+)\\) FTP server(?: ready)?\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks with version information"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Tornado-vxWorks FTP server ready$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks without version information"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^[\\w\\-\\.]{0,128} FTP server \\((?:VxWorks\\s?)+([\\d\\.]+)\\) ready.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks 6 with version information"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^[\\w<>]{1,32}\\s{1,8}Tenor Multipath Switch FTP server \\(Version VxWorks([\\d\\.]+)\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks on Tenor MultiPath with version information"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^VxWorks FTP server \\(VxWorks ([\\d\\.]+) - Secure NetLinx version \\([\\d\\.]+\\)\\) ready.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks with Secure NetLinx"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"VxWorks(?:/TORNADO)?\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic VxWorks"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"arm-wrs-vxworks\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks ARM, cross-compiled on Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"i386-wrs-vxworks\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks x86, cross-compiled on Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "IPSSH[-_]([\\d\\.p]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks with version information"
+        }
+      ]
+    },
+    {
+      "id": "recog_wind_river_vxworks_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^VxWorks SNMPv1/v2c Agent",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VxWorks SNMP agent"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "ssh",
+    "ftp",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:windriver:vxworks:{os.version}",
+  "examples": [
+    "VxWorks (5.3.1) FTP server ready",
+    "VxWorks (VxWorks5.5.1) FTP server ready",
+    "Tornado-vxWorks (VxWorks5.5.1) FTP server",
+    "VxWorks (5.4.2) FTP server ready.",
+    "Tornado-vxWorks FTP server ready",
+    "NanoDAC FTP server (VxWorks VxWorks 6.6) ready.",
+    "BVS-MR-BSC2 FTP server (VxWorks 6.4) ready.",
+    "<38785ca0>  Tenor Multipath Switch FTP server (Version VxWorks5.4.2) ready.",
+    "VxWorks FTP server (VxWorks 5.3.1 - Secure NetLinx version (1.0)) ready.",
+    "system=\"VxWorks\", leap=0, stratum=8, rootdelay=63.74,\n      rootdispersion=151.29, peer=65508, refid=192.168.2.100,\n      reftime=0xd4747c5c.5851f000, poll=6, clock=0xd4747c6d.31206000,\n      phase=4.131, freq=18961.38, compliance=0"
+  ]
+}

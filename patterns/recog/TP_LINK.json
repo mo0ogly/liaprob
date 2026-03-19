@@ -1,0 +1,117 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tp_link",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TP_LINK",
+  "taxonomy_name": "TP-LINK",
+  "vendor": "TP-LINK",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "TP_LINK.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tp_link_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ipos/([\\d\\.]+) UPnP/[\\d\\.]+ (TL-\\w+)/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ipos/([\\d\\.]+) UPnP/[\\d\\.]+ (TL-\\w+)/(\\S+)$",
+          "version_group": 3,
+          "case_insensitive": true,
+          "note": "TP-Link WAP UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Router Webserver$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "TP-Link Router httpd - seen on Wireless N and portable 3G routers"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^TP-LINK HTTPD/1.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "TP-Link httpd"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_tp_link_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"(TD-[VW8][A-Z0-9]+)(?:| \\d+\\.\\d+)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TP-LINK SoHo Router - dash variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"(TD8[A-Z0-9]+)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TP-LINK SoHo Router"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"TP-LINK.*(?:Access Point|Extender|AP) ([A-Z0-9\\-\\+]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TP-LINK SoHo Router - verbose variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "examples": [
+    "ipos/7.0 UPnP/1.0 TL-WR841N/6.0/7.0",
+    "ipos/7.0 UPnP/1.0 TL-WR841N/8.0",
+    "ipos/7.0 UPnP/1.0 TL-WR740N/4.0",
+    "ipos/7.0 UPnP/1.0 TL-WR940N/1.0",
+    "ipos/7.0 UPnP/1.0 TL-WR741N/4.0",
+    "ipos/7.0 UPnP/1.0 TL-WR740N/1.0",
+    "ipos/7.0 UPnP/1.0 TL-WR741N/1.0/2.0",
+    "ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0",
+    "ipos/7.0 UPnP/1.0 TL-WR941N/2.0",
+    "Router Webserver"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) FTP server \\(Version \\S+ \\w+ \\w+ \\d{1,2} \\d{1,2}:\\d{1,2}:\\d{1,2} [A-Z]+ (?:1|2)\\d{3}\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic/unknown FTP Server found on HP-UX and AIX systems"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "host.example.com FTP server (Version 4.1 Sat Sep 7 14:31:53 CDT 2002) ready.",
+    "host.example.com FTP server (Version 5.3 Sat Jan 10 14:01:03 CDT 2012) ready"
+  ]
+}

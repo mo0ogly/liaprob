@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ubuntu_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UBUNTU_LINUX",
+  "taxonomy_name": "Ubuntu Linux",
+  "vendor": "Ubuntu",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "UBUNTU_LINUX.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ubuntu_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(Ubuntu\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubuntu"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu(?: Linux)?(?:\\s|-)(\\d+?(?:\\.\\d+?)*?)?\\s?(LTS)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubuntu Linux"
+        }
+      ]
+    },
+    {
+      "id": "recog_ubuntu_linux_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.6\\.20-16-\\S+).* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubuntu Linux 7.04"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:canonical:ubuntu_linux:-",
+  "examples": [
+    "Apache (Ubuntu)",
+    "Ubuntu 12.04.4 LTS",
+    "Ubuntu Linux 14.04",
+    "Ubuntu 16.04 LTS",
+    "Ubuntu-16.04 LTS",
+    "Linux hostname 2.6.20-16-server #2 SMP Thu Jun 7 20:26:23 UTC 2007 i686"
+  ]
+}

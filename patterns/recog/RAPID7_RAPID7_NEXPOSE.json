@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rapid7_rapid7_nexpose",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAPID7_RAPID7_NEXPOSE",
+  "taxonomy_name": "Rapid7 Rapid7 (NeXpose)",
+  "vendor": "Rapid7",
+  "product": "Rapid7 (NeXpose)",
+  "source": {
+    "type": "recog",
+    "file": "RAPID7_RAPID7_NEXPOSE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_rapid7_rapid7_nexpose_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^e19ffb2bc890f5bdca20f10bfddb288d",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Rapid7 (NeXpose)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "e19ffb2bc890f5bdca20f10bfddb288d"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-socialtext_socialtext",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOCIALTEXT_SOCIALTEXT",
+  "taxonomy_name": "SocialText SocialText",
+  "vendor": "SocialText",
+  "product": "SocialText",
+  "source": {
+    "type": "recog",
+    "file": "SOCIALTEXT_SOCIALTEXT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_socialtext_socialtext_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^506190fc55ceaa132f1bc305ed8472ca",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SocialText"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "506190fc55ceaa132f1bc305ed8472ca"
+  ]
+}

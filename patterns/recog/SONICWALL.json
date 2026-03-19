@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sonicwall",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SONICWALL",
+  "taxonomy_name": "SonicWall",
+  "vendor": "SonicWall",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SONICWALL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sonicwall_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=[0-9\\.]+,OU=SSL-VPN,O=SonicWALL\\\\, Inc\\.,L=Sunnyvale,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SonicWALL SSL-VPN"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:sonicwall:sonicos:-",
+  "examples": [
+    "CN=192.168.200.1,OU=SSL-VPN,O=SonicWALL\\, Inc.,L=Sunnyvale,ST=CA,C=US"
+  ]
+}

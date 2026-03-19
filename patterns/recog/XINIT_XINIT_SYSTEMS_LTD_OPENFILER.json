@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xinit_xinit_systems_ltd_openfiler",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XINIT_XINIT_SYSTEMS_LTD_OPENFILER",
+  "taxonomy_name": "Xinit Xinit Systems Ltd. Openfiler",
+  "vendor": "Xinit",
+  "product": "Xinit Systems Ltd. Openfiler",
+  "source": {
+    "type": "recog",
+    "file": "XINIT_XINIT_SYSTEMS_LTD_OPENFILER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_xinit_xinit_systems_ltd_openfiler_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^4f88ba9f1298701251180e6b6467d43e",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xinit Systems Ltd. Openfiler"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "4f88ba9f1298701251180e6b6467d43e"
+  ]
+}

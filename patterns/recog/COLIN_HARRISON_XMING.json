@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-colin_harrison_xming",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COLIN_HARRISON_XMING",
+  "taxonomy_name": "Colin Harrison Xming",
+  "vendor": "Colin Harrison",
+  "product": "Xming",
+  "source": {
+    "type": "recog",
+    "file": "COLIN_HARRISON_XMING.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    6000
+  ],
+  "probes": [
+    {
+      "id": "recog_colin_harrison_xming_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Colin Harrison$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Colin Harrison"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "x11"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "Colin Harrison"
+  ]
+}

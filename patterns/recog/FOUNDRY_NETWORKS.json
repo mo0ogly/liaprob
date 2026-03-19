@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-foundry_networks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOUNDRY_NETWORKS",
+  "taxonomy_name": "Foundry Networks",
+  "vendor": "Foundry Networks",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "FOUNDRY_NETWORKS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_foundry_networks_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Foundry Networks, Inc\\. ([^,]+), (?:IronWare|Iron Software) Version V?(\\S+) Compiled",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Foundry Networks IronWare Switches"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Foundry Networks (EdgeIron \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Foundry Edge Iron"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Foundry Networks, Inc. Backbone, IronWare Version 06.6.36T41 Compiled on Jul 20 2001 at 21:38:29 labeled as BIS06636",
+    "Foundry Networks, Inc. BigIron 15000 Router, IronWare Version 08.0.01vT53 Compiled on Feb 26 2010 at 20:07:21 labeled as B2P08001v",
+    "Foundry Networks, Inc. BigIron 4000 Router, IronWare Version 07.8.02fT53 Compiled on Jan 16 2007 at 19:51:36 labeled as B2R07802f",
+    "Foundry Networks, Inc. BigIron 8000 Router, IronWare Version 08.0.01tT53 Compiled on Mar 04 2009 at 22:12:06 labeled as B2R08001t",
+    "Foundry Networks, Inc. Switch, IronWare Version 11.0.00gTI2 Compiled on Feb 18 2011 at 17:14:50 labeled as WJM11000g",
+    "Foundry Networks EdgeIron 2402CF",
+    "Foundry Networks EdgeIron 24G",
+    "Foundry Networks EdgeIron 24G-A",
+    "Foundry Networks EdgeIron 4802CF",
+    "Foundry Networks EdgeIron 48G"
+  ]
+}

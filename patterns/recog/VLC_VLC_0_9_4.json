@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vlc_vlc_0_9_4",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VLC_VLC_0_9_4",
+  "taxonomy_name": "vlc vlc (0.9.4)",
+  "vendor": "vlc",
+  "product": "vlc (0.9.4)",
+  "source": {
+    "type": "recog",
+    "file": "VLC_VLC_0_9_4.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vlc_vlc_0_9_4_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6f7e92fe7e6a62661ac2b41528a78fc6",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "vlc (0.9.4)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6f7e92fe7e6a62661ac2b41528a78fc6"
+  ]
+}

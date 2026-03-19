@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-wowza_media_systems",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WOWZA_MEDIA_SYSTEMS",
+  "taxonomy_name": "Wowza Media Systems",
+  "vendor": "Wowza Media Systems",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "WOWZA_MEDIA_SYSTEMS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_wowza_media_systems_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Wowza (Streaming Engine|Media Server) ([\\d\\.]+) build(\\d*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Wowza (Streaming Engine|Media Server) ([\\d\\.]+) build(\\d*)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Wowza Media Systems Streaming Video Services"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Wowza Streaming Engine 4.7.7 build20181108145350",
+    "Wowza Media Server 3.6.4 build9641"
+  ]
+}

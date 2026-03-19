@@ -1,0 +1,100 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-extron",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EXTRON",
+  "taxonomy_name": "Extron",
+  "vendor": "Extron",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "EXTRON.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_extron_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^MLC ([^\\/]+)/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Extron MediaLink Controller HTTP Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_extron_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Controller,OU=FW,O=ExtronElectronics,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Extron MediaLink Controller"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=IPLP,OU=ControlSystems,O=ExtronElectronics,L=Anaheim,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Extron IPLP"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=TLP,OU=ControlSystems,O=ExtronElectronics,L=Anaheim,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Extron TLP"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=ShareLink-Pro-.*,OU=AVSystems,O=ExtronElectronics",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Extron ShareLink Pro"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "MLC 104 IP PLUS/1.03",
+    "CN=Controller,OU=FW,O=ExtronElectronics,ST=CA,C=US",
+    "CN=IPLP,OU=ControlSystems,O=ExtronElectronics,L=Anaheim,ST=CA,C=US",
+    "CN=TLP,OU=ControlSystems,O=ExtronElectronics,L=Anaheim,ST=CA,C=US",
+    "CN=ShareLink-Pro-18-99-99.local.com,OU=AVSystems,O=ExtronElectronics,L=Anaheim,ST=CA,C=US"
+  ]
+}

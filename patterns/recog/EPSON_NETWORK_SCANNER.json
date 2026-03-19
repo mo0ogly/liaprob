@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-epson_network_scanner",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EPSON_NETWORK_SCANNER",
+  "taxonomy_name": "Epson Network Scanner",
+  "vendor": "Epson",
+  "product": "Network Scanner",
+  "source": {
+    "type": "recog",
+    "file": "EPSON_NETWORK_SCANNER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_epson_network_scanner_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^EPSON (?:Internal .* Scanning Card|Network Image Express|Network Scanning Box)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Epson Network Scanner"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "EPSON Internal 10Base-T/100Base-TX Scanning Card",
+    "EPSON Network Image Express",
+    "EPSON Network Scanning Box"
+  ]
+}

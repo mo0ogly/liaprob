@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fuji_xerox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUJI_XEROX",
+  "taxonomy_name": "FUJI XEROX",
+  "vendor": "FUJI XEROX",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "FUJI_XEROX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_fuji_xerox_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FUJI XEROX DocuPrint (.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FUJI XEROX DocuPrint Series of Printers"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "FUJI XEROX DocuPrint 3055",
+    "FUJI XEROX DocuPrint C1190 FS",
+    "FUJI XEROX DocuPrint C2100"
+  ]
+}

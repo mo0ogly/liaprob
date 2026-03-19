@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-powerdns_authoritative_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWERDNS_AUTHORITATIVE_SERVER",
+  "taxonomy_name": "PowerDNS Authoritative Server",
+  "vendor": "PowerDNS",
+  "product": "Authoritative Server",
+  "source": {
+    "type": "recog",
+    "file": "POWERDNS_AUTHORITATIVE_SERVER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_powerdns_authoritative_server_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Authoritative Server (\\d\\.[\\d.]+(?:-rc\\d)?) \\(\\w+@[\\w.]+ built [\\d\\s]+\\w*@[\\w.-]*\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^PowerDNS Authoritative Server (\\d\\.[\\d.]+(?:-rc\\d)?) \\(\\w+@[\\w.]+ built [\\d\\s]+\\w*@[\\w.-]*\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS Authoritative Server"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Authoritative Server (\\d\\.[\\w.]+(?:-rc\\d)?(?:-alpha\\d)?(?:-beta\\d)?[^ ]*) \\(built [\\w\\s:]+ by [\\w]+\\@[\\w.:-]*\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^PowerDNS Authoritative Server (\\d\\.[\\w.]+(?:-rc\\d)?(?:-alpha\\d)?(?:-beta\\d)?[^ ]*) \\(built [\\w\\s:]+ by [\\w]+\\@[\\w.:-]*\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS Authoritative Server: format 2"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Authoritative Server (\\d\\.[\\d.]+(?:-\\w+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^PowerDNS Authoritative Server (\\d\\.[\\d.]+(?:-\\w+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS Authoritative Server: version only"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/a:powerdns:authoritative_server:{version}",
+  "examples": [
+    "PowerDNS Authoritative Server 3.4.19 (jenkins@autotest.powerdns.com built 20160102220341 root@)",
+    "PowerDNS Authoritative Server 3.4.10 (jenkins@autotest.powerdns.com built 20170306160718 root@foo-bar.foo.baz)",
+    "PowerDNS Authoritative Server 3.3 (jenkins@autotest.powerdns.com built 20150306160718 root@foo-bar.foo.baz)",
+    "PowerDNS Authoritative Server 3.3-rc2 (jenkins@autotest.powerdns.com built 20130627120406 root@foo-bar.foo.baz)",
+    "PowerDNS Authoritative Server 3.4.10 (jenkins@autotest.powerdns.com built  @)",
+    "PowerDNS Authoritative Server 4.0.4 (built Jul 26 2017 15:04:27 by root@FreeBSD:11:amd64-default-job-03)",
+    "PowerDNS Authoritative Server 4.0.0-rc2 (built Jul  4 2016 15:44:39 by root@foo-bar.baz)",
+    "PowerDNS Authoritative Server 4.0.0-alpha2 (built Feb 01 2016 00:12:05 by buildbot@baz)",
+    "PowerDNS Authoritative Server 4.0.0-beta1 (built Feb 01 2016 00:00:00 by buildbot@baz)",
+    "PowerDNS Authoritative Server 0.0.g56d692a (built Feb 25 2017 13:10:19 by root@foo-bar.baz)"
+  ]
+}

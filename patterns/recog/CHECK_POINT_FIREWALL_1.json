@@ -1,0 +1,116 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-check_point_firewall_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHECK_POINT_FIREWALL_1",
+  "taxonomy_name": "Check Point Firewall-1",
+  "vendor": "Check Point",
+  "product": "Firewall-1",
+  "source": {
+    "type": "recog",
+    "file": "CHECK_POINT_FIREWALL_1.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    25,
+    80,
+    443,
+    587,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_check_point_firewall_1_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Check Point FireWall-1 Secure FTP server running on (.+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Check Point FireWall-1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"FW-1.      Reason: no user      Server \"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Check Point FireWall-1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^CheckPoint FireWall-1 secure E?SMTP server *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CheckPoint FireWall-1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^220 OK",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CheckPoint FireWall-1 returns code 220 for NOOP command (instead of 250)"
+        }
+      ]
+    },
+    {
+      "id": "recog_check_point_firewall_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Check Point SVN foundation$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Check Point Firewall NG"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^CPWS$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Check Point Firewall NG - short version"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp",
+    "http",
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:checkpoint:firewall-1:-",
+  "examples": [
+    "Check Point FireWall-1 Secure FTP server running on host",
+    "Check Point SVN foundation",
+    "CPWS",
+    "Basic realm=\"FW-1.      Reason: no user      Server \"",
+    "CheckPoint FireWall-1 secure SMTP server",
+    "CheckPoint FireWall-1 secure ESMTP server"
+  ]
+}

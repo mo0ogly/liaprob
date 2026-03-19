@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-qnap_qnap_turbonas_3_8_x_admin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QNAP_QNAP_TURBONAS_3_8_X_ADMIN",
+  "taxonomy_name": "QNAP QNAP TurboNAS 3.8.x : Admin",
+  "vendor": "QNAP",
+  "product": "QNAP TurboNAS 3.8.x : Admin",
+  "source": {
+    "type": "recog",
+    "file": "QNAP_QNAP_TURBONAS_3_8_X_ADMIN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_qnap_qnap_turbonas_3_8_x_admin_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f682dbd4d0a18dd7699339b8adb28c0f",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "QNAP TurboNAS 3.8.x : Admin"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "f682dbd4d0a18dd7699339b8adb28c0f"
+  ]
+}

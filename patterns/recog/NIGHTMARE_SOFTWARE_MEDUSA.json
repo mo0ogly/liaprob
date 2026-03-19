@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nightmare_software_medusa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NIGHTMARE_SOFTWARE_MEDUSA",
+  "taxonomy_name": "Nightmare Software Medusa",
+  "vendor": "Nightmare Software",
+  "product": "Medusa",
+  "source": {
+    "type": "recog",
+    "file": "NIGHTMARE_SOFTWARE_MEDUSA.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_nightmare_software_medusa_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512})?\\s*FTP server \\(Medusa Async V(\\d+(?:\\.\\d+)*) \\[experimental\\]\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,512})?\\s*FTP server \\(Medusa Async V(\\d+(?:\\.\\d+)*) \\[experimental\\]\\) ready\\.$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Medusa - extensible Internet server framework for Python"
+        }
+      ]
+    },
+    {
+      "id": "recog_nightmare_software_medusa_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Medusa/(\\d+(?:\\.\\d+)*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Medusa/(\\d+(?:\\.\\d+)*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Medusa - extensible Internet server framework for Python"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "ftp"
+  ],
+  "examples": [
+    "foo.bar FTP server (Medusa Async V2.43 [experimental]) ready.",
+    "10.10.10.10 FTP server (Medusa Async V41297 [experimental]) ready.",
+    "FTP server (Medusa Async V24763 [experimental]) ready.",
+    "Medusa/3.41",
+    "Medusa/2118"
+  ]
+}

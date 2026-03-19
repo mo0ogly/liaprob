@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-darkhttpd_project_darkhttpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DARKHTTPD_PROJECT_DARKHTTPD",
+  "taxonomy_name": "darkhttpd Project darkhttpd",
+  "vendor": "darkhttpd Project",
+  "product": "darkhttpd",
+  "source": {
+    "type": "recog",
+    "file": "DARKHTTPD_PROJECT_DARKHTTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_darkhttpd_project_darkhttpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^darkhttpd/(\\d+(?:\\.\\d+)*)(?:\\.from\\.git)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^darkhttpd/(\\d+(?:\\.\\d+)*)(?:\\.from\\.git)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "darkhttpd - web server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:darkhttpd_project:darkhttpd:{version}",
+  "examples": [
+    "darkhttpd/1.12",
+    "darkhttpd/1.13.from.git"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fortinet_fortivoice",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORTINET_FORTIVOICE",
+  "taxonomy_name": "Fortinet FortiVoice",
+  "vendor": "Fortinet",
+  "product": "FortiVoice",
+  "source": {
+    "type": "recog",
+    "file": "FORTINET_FORTIVOICE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_fortinet_fortivoice_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FortiVoice-([\\w-]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fortinet FortiVoice"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FortiVoice/([\\w.-]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^FortiVoice/([\\w.-]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Fortinet FortiVoice"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:fortinet:fortivoice:-",
+  "examples": [
+    "FortiVoice-200D",
+    "FortiVoice-VM-Azure",
+    "FortiVoice-1000E",
+    "FortiVoice/7.31b00",
+    "FortiVoice/5.2.95-5"
+  ]
+}

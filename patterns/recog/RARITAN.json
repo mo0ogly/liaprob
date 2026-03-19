@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-raritan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RARITAN",
+  "taxonomy_name": "Raritan",
+  "vendor": "Raritan",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "RARITAN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_raritan_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Raritan Computer; (CommandCenter Secure Gateway); Version ([^;]+); (\\S+) HW\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Redback CommandCenter Secure Gateway"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Raritan (Dominion PX) - Firmware Version (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Raritan Dominion PX"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Raritan Computer; CommandCenter Secure Gateway; Version 3.1.1.5.2; CC-SG-G1 HW",
+    "Raritan Computer; CommandCenter Secure Gateway; Version 3.1.1.5.2; CC-SG-V1 HW",
+    "Raritan Computer; CommandCenter Secure Gateway; Version 3.2.1.5.1; CC-SG-E1 HW",
+    "Raritan Computer; CommandCenter Secure Gateway; Version 3.2.1.5.1; CC-SG-V1 HW",
+    "Raritan Computer; CommandCenter Secure Gateway; Version 4.3.0.5.13; CC-SG-V1-A HW",
+    "Raritan Computer; CommandCenter Secure Gateway; Version 5.3.0.5.8; CCSG128-VA HW",
+    "Raritan Dominion PX - Firmware Version 010200",
+    "Raritan Dominion PX - Firmware Version 010300",
+    "Raritan Dominion PX - Firmware Version 010502-10441",
+    "Raritan Dominion PX - Firmware Version 010505-10603"
+  ]
+}

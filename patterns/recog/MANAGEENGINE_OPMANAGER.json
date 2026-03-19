@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_opmanager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_OPMANAGER",
+  "taxonomy_name": "ManageEngine OpManager",
+  "vendor": "ManageEngine",
+  "product": "OpManager",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_OPMANAGER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_opmanager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ManageEngine OpManager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine OpManager"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_opmanager:-",
+  "examples": [
+    "ManageEngine OpManager"
+  ]
+}

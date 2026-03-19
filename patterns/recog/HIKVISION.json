@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hikvision",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HIKVISION",
+  "taxonomy_name": "Hikvision",
+  "vendor": "Hikvision",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "HIKVISION.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hikvision_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^192.0.0.64 login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Hikvision cameras and NVRs (multiple)"
+        }
+      ]
+    },
+    {
+      "id": "recog_hikvision_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=www.hikvision.com,OU=DVRNVR,O=HIKVISION,L=HangZhou,ST=ZheJiang,C=CN$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HIKVISION DVR"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet",
+    "tls"
+  ],
+  "examples": [
+    "192.0.0.64 login:",
+    "CN=www.hikvision.com,OU=DVRNVR,O=HIKVISION,L=HangZhou,ST=ZheJiang,C=CN"
+  ]
+}

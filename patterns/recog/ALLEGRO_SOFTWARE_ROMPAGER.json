@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-allegro_software_rompager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALLEGRO_SOFTWARE_ROMPAGER",
+  "taxonomy_name": "Allegro Software RomPager",
+  "vendor": "Allegro Software",
+  "product": "RomPager",
+  "source": {
+    "type": "recog",
+    "file": "ALLEGRO_SOFTWARE_ROMPAGER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_allegro_software_rompager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^RomPager Embedded Web Server Toolkit$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Embedded HTTP server used by many vendors and device\n      types, including APC, 3Com, Andover Controls, Cisco VoIP, D-Link,\n      Extreme Networks, Foundry Networks, Konica Minolta, Kronos\n      Timekeeper, McDATA, Netopia, Nortel Networks, Power Measurement Ltd,\n      and Xerox."
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:Allegro-Software-)?RomPager(?:-Digi)?/\\s*(\\S+)",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^(?:Allegro-Software-)?RomPager(?:-Digi)?/\\s*(\\S+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Embedded HTTP server used by many vendors and device\n      types, including APC, 3Com, Andover Controls, Cisco VoIP, D-Link,\n      Extreme Networks, Foundry Networks, Konica Minolta, Kronos\n      Timekeeper, McDATA, Netopia, Nortel Networks, Power Measurement Ltd,\n      and Xerox."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "RomPager Embedded Web Server Toolkit",
+    "Allegro-Software-RomPager/4.01",
+    "RomPager/4.07 UPnP/1.0",
+    "Allegro-Software-RomPager/4.30b3",
+    "Allegro-Software-RomPager/ 2.10",
+    "Allegro-Software-RomPager-Digi/4.01.1"
+  ]
+}

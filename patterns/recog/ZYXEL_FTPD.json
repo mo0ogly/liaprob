@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zyxel_ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZYXEL_FTPD",
+  "taxonomy_name": "Zyxel FTPD",
+  "vendor": "Zyxel",
+  "product": "FTPD",
+  "source": {
+    "type": "recog",
+    "file": "ZYXEL_FTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_zyxel_ftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FTP Server \\(ZyWALL (USG\\s?[\\w-]+)\\) \\[([a-f\\d:.]+)\\]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ZyXEL Unified Security Gateway"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "FTP Server (ZyWALL USG 20) [::ffff:192.168.0.2]",
+    "FTP Server (ZyWALL USG100-PLUS) [::ffff:192.168.5.101]",
+    "FTP Server (ZyWALL USG 20) [10.0.0.2]"
+  ]
+}

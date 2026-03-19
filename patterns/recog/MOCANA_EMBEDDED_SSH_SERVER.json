@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mocana_embedded_ssh_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOCANA_EMBEDDED_SSH_SERVER",
+  "taxonomy_name": "Mocana Embedded SSH Server",
+  "vendor": "Mocana",
+  "product": "Embedded SSH Server",
+  "source": {
+    "type": "recog",
+    "file": "MOCANA_EMBEDDED_SSH_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_mocana_embedded_ssh_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Mocana SSH\\s?(?:([\\d.]+))?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Mocana SSH\\s?(?:([\\d.]+))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Mocana Embedded SSH"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "examples": [
+    "Mocana SSH 5.3.1",
+    "Mocana SSH"
+  ]
+}

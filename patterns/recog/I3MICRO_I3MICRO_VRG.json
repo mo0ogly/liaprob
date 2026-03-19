@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-i3micro_i3micro_vrg",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "I3MICRO_I3MICRO_VRG",
+  "taxonomy_name": "i3micro i3micro VRG",
+  "vendor": "i3micro",
+  "product": "i3micro VRG",
+  "source": {
+    "type": "recog",
+    "file": "I3MICRO_I3MICRO_VRG.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_i3micro_i3micro_vrg_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^e4a509e78afca846cd0e6c0672797de5",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "i3micro VRG"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "e4a509e78afca846cd0e6c0672797de5"
+  ]
+}

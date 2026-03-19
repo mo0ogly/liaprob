@@ -1,0 +1,147 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-adtran",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ADTRAN",
+  "taxonomy_name": "ADTRAN",
+  "vendor": "ADTRAN",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "ADTRAN.json",
+    "fingerprint_count": 10
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 10 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_adtran_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Basic realm=\"(NetVanta [^\"]+)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN Netvanta Router"
+        }
+      ]
+    },
+    {
+      "id": "recog_adtran_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^ADTRAN (MX\\d+(?: \\S+)?(?: \\S+)?)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN Multiplexer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^ADTRAN (NetVanta\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN Netvanta Router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^ADTRAN (TA\\S+(?: \\S+)?(?: \\S+)?)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN TotalAccess"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Total Access ([^,\\s]+).*Version: ([^,]+), Date:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN TotalAccess - date variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Total Access (\\S+ SCU)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN TotalAccess SCU"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(TA\\d\\S+) (\\d\\S+ )?Total Access",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN TotalAccess - model first variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^ADTRAN (T3SU-\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN DSU/CSU"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^OPTI-MX (19 inch domestic shelf)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN OPTI-MX Shelf"
+        }
+      ]
+    },
+    {
+      "id": "recog_adtran_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=NetVanta,O=ADTRAN\\\\, Inc\\.,L=Huntsville,ST=AL,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ADTRAN Netvanta Router"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "tls",
+    "snmp"
+  ],
+  "examples": [
+    "Basic realm=\"NetVanta 1238 PoE\"",
+    "ADTRAN MX2820 Multiplexer",
+    "ADTRAN MX2800 DS3 Multiplexer",
+    "ADTRAN MX2800 STS-1",
+    "ADTRAN MX2800",
+    "ADTRAN NetVanta8044",
+    "ADTRAN NetVanta8044M",
+    "ADTRAN NetVanta814",
+    "ADTRAN NetVanta818",
+    "ADTRAN NetVanta832"
+  ]
+}

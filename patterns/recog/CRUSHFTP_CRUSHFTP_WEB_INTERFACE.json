@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-crushftp_crushftp_web_interface",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CRUSHFTP_CRUSHFTP_WEB_INTERFACE",
+  "taxonomy_name": "CrushFTP CrushFTP Web Interface",
+  "vendor": "CrushFTP",
+  "product": "CrushFTP Web Interface",
+  "source": {
+    "type": "recog",
+    "file": "CRUSHFTP_CRUSHFTP_WEB_INTERFACE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_crushftp_crushftp_web_interface_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^297a81069094d00a052733d3a0537d18$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CrushFTP Web"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^CrushFTP WebInterface$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CrushFTP Web"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:crushftp:crushftp:-",
+  "examples": [
+    "297a81069094d00a052733d3a0537d18",
+    "CrushFTP WebInterface"
+  ]
+}

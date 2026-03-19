@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xiph_icecast",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XIPH_ICECAST",
+  "taxonomy_name": "Xiph Icecast",
+  "vendor": "Xiph",
+  "product": "Icecast",
+  "source": {
+    "type": "recog",
+    "file": "XIPH_ICECAST.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_xiph_icecast_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Icecast (\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Icecast (\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Icecast Streaming Media server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:xiph:icecast:{version}",
+  "examples": [
+    "Icecast 2.4.3",
+    "Icecast 2.4.0-kh13"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_isee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_ISEE",
+  "taxonomy_name": "HP ISEE",
+  "vendor": "HP",
+  "product": "ISEE",
+  "source": {
+    "type": "recog",
+    "file": "HP_ISEE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_isee_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.{0,1000}(?:Basic|Digest) .*realm=\"HP ISEE @ ([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Instant Support Enterprise Edition with a hostname"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Basic realm=\"HP ISEE @ blah\""
+  ]
+}

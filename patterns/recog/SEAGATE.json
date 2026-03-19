@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-seagate",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEAGATE",
+  "taxonomy_name": "Seagate",
+  "vendor": "Seagate",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SEAGATE.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_seagate_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:afbc222b5f04fce3ec3e381d87ebfc55|7a7cf293daa5b528bd49941630684c00)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Seagate Storage"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_seagate_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Seagate Technology LLC,O=Seagate Technology LLC,L=Cupertino,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Seagate NAS"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=[\\d\\.]+,OU=Q-Series,O=Quantum,ST=CO,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Seagate Q-Series NAS (previously Quantum)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "afbc222b5f04fce3ec3e381d87ebfc55",
+    "7a7cf293daa5b528bd49941630684c00",
+    "CN=Seagate Technology LLC,O=Seagate Technology LLC,L=Cupertino,ST=California,C=US",
+    "CN=1.1.1.1,OU=Q-Series,O=Quantum,ST=CO,C=US"
+  ]
+}

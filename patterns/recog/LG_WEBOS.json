@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lg_webos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LG_WEBOS",
+  "taxonomy_name": "LG webOS",
+  "vendor": "LG",
+  "product": "webOS",
+  "source": {
+    "type": "recog",
+    "file": "LG_WEBOS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lg_webos_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^LG_\\d{2}[ULPS][A-Z]",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "LG Smart TV"
+        }
+      ]
+    },
+    {
+      "id": "recog_lg_webos_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^716417a84b643460167d84e251579491$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "LG Smart TV"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "dhcp"
+  ],
+  "cpe23_template": "cpe:/o:lg:webos:-",
+  "examples": [
+    "LG_65UH5F-HJ",
+    "LG_55UT672M0UC",
+    "LG_32LT662MBUC",
+    "LG_55SM5KE-BJ",
+    "LG_86UL3J-B",
+    "716417a84b643460167d84e251579491"
+  ]
+}

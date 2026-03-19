@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_java_system_web_proxy_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_JAVA_SYSTEM_WEB_PROXY_SERVER",
+  "taxonomy_name": "Sun Java System Web Proxy Server",
+  "vendor": "Sun",
+  "product": "Java System Web Proxy Server",
+  "source": {
+    "type": "recog",
+    "file": "SUN_JAVA_SYSTEM_WEB_PROXY_SERVER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_java_system_web_proxy_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^iPlanet-Web-Proxy-Server/(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^iPlanet-Web-Proxy-Server/(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "iPlanet WebProxy Server (subsequently Sun ONE WebProxy Server, presently Sun Java System Web Proxy Server)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Sun-ONE-Web-Proxy-Server/(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Sun-ONE-Web-Proxy-Server/(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sun ONE WebProxy Server (formerly iPlanet WebProxy Server, presently Sun Java System Web Proxy Server)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Sun-Java-System-Web-Proxy-Server/(\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Sun-Java-System-Web-Proxy-Server/(\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sun Java System Web Proxy Server (formerly iPlanet WebProxy Server, Sun ONE WebProxy Server)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:sun:java_system_web_proxy_server:{version}",
+  "examples": [
+    "iPlanet-Web-Proxy-Server/3.6",
+    "iPlanet-Web-Proxy-Server/3.6-SP5",
+    "Sun-ONE-Web-Proxy-Server/3.6-SP4",
+    "Sun-Java-System-Web-Proxy-Server/4.0.2",
+    "Sun-Java-System-Web-Proxy-Server/4.0"
+  ]
+}

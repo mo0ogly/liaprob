@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-citrix_xenserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITRIX_XENSERVER",
+  "taxonomy_name": "Citrix XenServer",
+  "vendor": "Citrix",
+  "product": "XenServer",
+  "source": {
+    "type": "recog",
+    "file": "CITRIX_XENSERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_citrix_xenserver_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Welcome to Citrix )?XenServer ([0-9\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:Welcome to Citrix )?XenServer ([0-9\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "XenServer"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to Citrix Hypervisor ([0-9\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Welcome to Citrix Hypervisor ([0-9\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "XenServer - Hypervisor variant"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:citrix:xenserver:{version}",
+  "examples": [
+    "Welcome to Citrix XenServer 7.2.0",
+    "XenServer 6.2.5",
+    "Welcome to Citrix Hypervisor 8.2.0"
+  ]
+}

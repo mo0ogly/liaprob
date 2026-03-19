@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-asianux_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASIANUX_LINUX",
+  "taxonomy_name": "Asianux Linux",
+  "vendor": "Asianux",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "ASIANUX_LINUX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_asianux_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(Asianux\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Asianux Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Apache/2.2.15 (Asianux)"
+  ]
+}

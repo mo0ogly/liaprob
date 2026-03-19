@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-juniper_ive_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUNIPER_IVE_OS",
+  "taxonomy_name": "Juniper IVE OS",
+  "vendor": "Juniper",
+  "product": "IVE OS",
+  "source": {
+    "type": "recog",
+    "file": "JUNIPER_IVE_OS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68
+  ],
+  "probes": [
+    {
+      "id": "recog_juniper_ive_os_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^JNPR\\.IVE$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper SSL VPN"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp"
+  ],
+  "cpe23_template": "cpe:/o:juniper:ive_os:-",
+  "examples": [
+    "JNPR.IVE"
+  ]
+}

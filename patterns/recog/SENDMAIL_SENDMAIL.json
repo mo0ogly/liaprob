@@ -1,0 +1,359 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sendmail_sendmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SENDMAIL_SENDMAIL",
+  "taxonomy_name": "Sendmail Sendmail",
+  "vendor": "Sendmail",
+  "product": "Sendmail",
+  "source": {
+    "type": "recog",
+    "file": "SENDMAIL_SENDMAIL.json",
+    "fingerprint_count": 31
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 31 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_sendmail_sendmail_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Sendmail ESMTP ready$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sendmail - short banner w/o hostname, version, platform, or date."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP +Sendmail +([^ ]+) \\(PHNE_([^ ]+)\\) */ *(.+); *(.+) \\(.+\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP +Sendmail +([^ ]+) \\(PHNE_([^ ]+)\\) */ *(.+); *(.+) \\(.+\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - HP-UX with a PHNE (HP Networking patch) installed"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) ESMTP Sendmail \\S+ version ([\\d\\.]+) - Revision \\S+ HP-UX([\\d\\.]+).*(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ \\w\\w\\w)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,512}) ESMTP Sendmail \\S+ version ([\\d\\.]+) - Revision \\S+ HP-UX([\\d\\.]+).*(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ \\w\\w\\w)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - HP-UX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}ESMTP +Sendmail +([^ ]+)/UW([^ ]+) ready at *(.+) \\(.+\\) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}ESMTP +Sendmail +([^ ]+)/UW([^ ]+) ready at *(.+) \\(.+\\) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Unixware"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail AIX([^/]+)/UCB ([^;]+); (.+) \\(.+\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail AIX([^/]+)/UCB ([^;]+); (.+) \\(.+\\)$",
+          "version_group": 3,
+          "case_insensitive": true,
+          "note": "Sendmail - AIX (UCB variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Sendmail AIX([^/]+)/UCB ([^/]+)/([^ ]+) ready at (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) Sendmail AIX([^/]+)/UCB ([^/]+)/([^ ]+) ready at (.+)$",
+          "version_group": 3,
+          "case_insensitive": true,
+          "note": "Sendmail - AIX (UCB/ready at variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail AIX([^/]+)/([^/]+)/([^;]+); (.+)(?: \\(.+\\))?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail AIX([^/]+)/([^/]+)/([^;]+); (.+)(?: \\(.+\\))?$",
+          "version_group": 3,
+          "case_insensitive": true,
+          "note": "Sendmail - AIX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/SuSE Linux ([^;]+); (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/SuSE Linux ([^;]+); (.+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - SuSE Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^ ]+)\\+Sun/([^ ]+); (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^ ]+)\\+Sun/([^ ]+); (.+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Solaris with date (no time offeset variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^ ]+)\\+Sun/([^ ]+) ready at (.+) \\(.+\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^ ]+)\\+Sun/([^ ]+) ready at (.+) \\(.+\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Solaris with date (ready variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP (?:Debian )?Sendmail ([^/]+)/([^/]+)/Debian ([^/]+); (.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP (?:Debian )?Sendmail ([^/]+)/([^/]+)/Debian ([^/]+); (.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+(?:wheezy|deb7u)\\d; (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+(?:wheezy|deb7u)\\d; (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian 7.x (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+deb8u\\d; (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+deb8u\\d; (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian 8.x (jessie)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+deb9u1; (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+deb9u1; (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian 9.1 (stretch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+lenny\\d; (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+lenny\\d; (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian 5.x (lenny)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+etch\\d; (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d\\+etch\\d; (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian 4.x (etch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\dsarge\\d; (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\dsarge\\d; (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian 3.1 (sarge)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d(?:\\.\\d)?(?:build\\d)?;+ (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/([^/]+)/Debian-\\d(?:\\.\\d)?(?:build\\d)?;+ (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Debian patch only"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/[^/]+/Debian-[\\d.]+ubuntu[^ ]*; (.+);",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^/]+)/[^/]+/Debian-[\\d.]+ubuntu[^ ]*; (.+);",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Ubuntu"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) (?:E?SMTP )?Sendmail SMI-([^/]+)/(SMI-SVR4) ready at (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) (?:E?SMTP )?Sendmail SMI-([^/]+)/(SMI-SVR4) ready at (.+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - Solaris (SMI variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Sendmail ([^ ]+)/(linuxconf); (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP Sendmail ([^ ]+)/(linuxconf); (.+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - unknown platform (linuxconf variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP .*Sendmail +([^/ ]+) */ *([^/ ]+); *((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?)(?: \\(.+\\))?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP .*Sendmail +([^/ ]+) */ *([^/ ]+); *((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?)(?: \\(.+\\))?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - optional timezone and timestamp, w/o OS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP .*Sendmail +([^/ ]+) */ *([^/ ]+); *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ \\w+)\\.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP .*Sendmail +([^/ ]+) */ *([^/ ]+); *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ \\w+)\\.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - with timezone and timestamp, w/o timezone offset or OS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP +Sendmail ([^ ]+) ready at *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)(?: \\(.+\\))$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP +Sendmail ([^ ]+) ready at *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)(?: \\(.+\\))$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - with version and date (optional timezone), w/o config version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP +Sendmail ([^ /]+) - \\([^\\)]+\\)/[^ ]+;? *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)(?: \\(.+\\)) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP +Sendmail ([^ /]+) - \\([^\\)]+\\)/[^ ]+;? *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)(?: \\(.+\\)) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - revision variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP +Sendmail +(?:[^ ]+) +version +([^ ]+) +- +(?:[^;]+); *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)(?: \\(.+\\)) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP +Sendmail +(?:[^ ]+) +version +([^ ]+) +- +(?:[^;]+); *(\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)(?: \\(.+\\)) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - revision variant 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^ ]{1,512}) {1,8}(?:ESMTP +)?Sendmail *(?: Ready.? ?)?(?:;|at)? ?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?)(?: \\(.+\\))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sendmail - with date, w/o version or platform, optional status string."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^\\s?ESMTP Sendmail +([^/ ]+) */ *([^/ ]+); (\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^\\s?ESMTP Sendmail +([^/ ]+) */ *([^/ ]+); (\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sendmail - with version and date, w/o hostname or platform (semicolon variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP +Sendmail ([^ /]+) \\([^\\)]+\\) *(.+) \\(.+\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP +Sendmail ([^ /]+) \\([^\\)]+\\) *(.+) \\(.+\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - unknown (date in version string variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Sendmail ([^;]+); ([^;\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) Sendmail ([^;]+); ([^;\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Sendmail - unknown platform, variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Sendmail ([^/]+)/([^/]+) ready on ([^ ]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Sendmail ([^/]+)/([^/]+) ready on ([^ ]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sendmail - basic with version and date"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:sendmail:sendmail:-",
+  "examples": [
+    "Sendmail ESMTP ready",
+    "foo.bar ESMTP Sendmail 8.8.6 (PHNE_14041)/8.7.1; Tue, 6 Feb 2001 10:04:32 -0300 (SAT)",
+    "foo.bar ESMTP Sendmail @(#)Sendmail version 8.13.3 - Revision 1.004:: HP-UX11.31 - 03rd February,2010/8.11.1; Wed, 20 May 2015 23:35:38 GMT",
+    "foo.bar ESMTP Sendmail 8.8.7/UW7.1.0 ready at Tue, 6 Feb 2001 16:39:30 -0300 (GMT-0300)",
+    "foo.bar ESMTP Sendmail AIX4.2/UCB 8.7; Sun, 29 Jul 2001 22:34:37 -0400 (EDT)",
+    "foo.bar Sendmail AIX 4.1/UCB 5.64/4.03 ready at Mon, 30 Jul 2001 00:42:21 -0500",
+    "foo.bar ESMTP Sendmail AIX4.2/8.7/8.8; Sun, 29 Jul 2001 22:34:37 -0400 (EDT)",
+    "foo.bar ESMTP Sendmail AIX5.1/8.11.6p2/8.11.0; Fri, 28 Aug 1970 19:42:05 -0800",
+    "foo.bar ESMTP Sendmail 8.9.3/8.9.3/SuSE Linux 8.9.3-0.1; Mon, 30 Jul 2001 04:48:54 +0200",
+    "foo.bar ESMTP Sendmail 8.9.3+Sun/8.9.1; Mon, 30 Jul 2001 02:50:22 GMT"
+  ]
+}

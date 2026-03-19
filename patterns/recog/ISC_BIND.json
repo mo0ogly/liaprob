@@ -1,0 +1,242 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-isc_bind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ISC_BIND",
+  "taxonomy_name": "ISC BIND",
+  "vendor": "ISC",
+  "product": "BIND",
+  "source": {
+    "type": "recog",
+    "file": "ISC_BIND.json",
+    "fingerprint_count": 19
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 19 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_isc_bind_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-rpz\\d?[+.]rl[\\d.]+)?(?:-[SP]\\d)?)-RedHat-[\\d.]+[-.][\\w.]+el([\\d]+)_?(\\d*)(?:.[\\w.]+)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-rpz\\d?[+.]rl[\\d.]+)?(?:-[SP]\\d)?)-RedHat-[\\d.]+[-.][\\w.]+el([\\d]+)_?(\\d*)(?:.[\\w.]+)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Red Hat Enterprise Linux"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-rl[.\\d]+)?(?:-[SP]\\d)?)-RedHat-[\\d.]+-[\\w.]+fc([\\d]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-rl[.\\d]+)?(?:-[SP]\\d)?)-RedHat-[\\d.]+-[\\w.]+fc([\\d]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Fedora"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)-RedHat-[\\w.-]+amzn1$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)-RedHat-[\\w.-]+amzn1$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Red Hat - Amazon hosted"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "(9.[^-]+(?:-[SP]\\d)?)-RedHat-[\\w.-]+alios([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "(9.[^-]+(?:-[SP]\\d)?)-RedHat-[\\w.-]+alios([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Red Hat - Alibaba Customized EL"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:rc\\d)?(?:-[SP]\\d)?)-RedHat-[\\d.-]+(?:[-\\.][SP]\\d)?(?:rc[\\d\\.]+)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:rc\\d)?(?:-[SP]\\d)?)-RedHat-[\\d.-]+(?:[-\\.][SP]\\d)?(?:rc[\\d\\.]+)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Red Hat nonspecific platform"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)-[\\d.]+ubuntu[\\d.]+-Ubuntu$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)-[\\d.]+ubuntu[\\d.]+-Ubuntu$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Ubuntu"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+-rpz\\d?[+.]rl[\\d.]+(?:-[SP]\\d)?)-Ubuntu-[\\d\\.:]+[\\w\\.]+(?:-[SP]\\d)?-\\d?ubuntu[\\d\\.]+$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+-rpz\\d?[+.]rl[\\d.]+(?:-[SP]\\d)?)-Ubuntu-[\\d\\.:]+[\\w\\.]+(?:-[SP]\\d)?-\\d?ubuntu[\\d\\.]+$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Ubuntu with Response Policy Zone and Request Limiting patches"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)(?:-[\\d\\.]+)?-Ubuntu$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)(?:-[\\d\\.]+)?-Ubuntu$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Ubuntu short"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[\\d\\.]+(?:[+-]rpz\\d?[+.]rl[\\d.]+)?(?:-[SP]\\d)?).*[+-]zentyal\\d*",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[\\d\\.]+(?:[+-]rpz\\d?[+.]rl[\\d.]+)?(?:-[SP]\\d)?).*[+-]zentyal\\d*",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Ubuntu Zentyal custom distribution"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)(?:-[\\d\\.]+)?\\+deb10[\\w~\\.]+-Debian$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)(?:-[\\d\\.]+)?\\+deb10[\\w~\\.]+-Debian$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Debian 10.0 (buster)"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)-9\\+deb8u[\\w~\\.]+-Debian$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)-9\\+deb8u[\\w~\\.]+-Debian$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Debian 8.0 (jessie)"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)-9wheezy\\w+-Debian$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)-9wheezy\\w+-Debian$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Debian 7.0 (wheezy)"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)-(?:[\\d\\.]+-)?Debian$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)-(?:[\\d\\.]+-)?Debian$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Debian no version simple"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9\\.\\d{1,2}\\.\\d{1,2}-rpz\\d?[+.]rl[\\d.]+(?:-[SPW]\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9\\.\\d{1,2}\\.\\d{1,2}-rpz\\d?[+.]rl[\\d.]+(?:-[SPW]\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Response Policy Zone and Request Limiting patches"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^DNS Server BIND (9\\.\\d{1,2}-ESV(?:-R\\d+)?(?:-[SPW]\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^DNS Server BIND (9\\.\\d{1,2}-ESV(?:-R\\d+)?(?:-[SPW]\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: ESV"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(?:BIND )?([89]\\.[\\d\\.]+(?:[ab]\\d+)?(?:-ESV(?:-R\\d+)?)?(?:-[SPW][\\d\\.]+)?(?:-REL)?(?:-[W]\\d+)?(?:rc\\d)?)(?:-NOESW)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:BIND )?([89]\\.[\\d\\.]+(?:[ab]\\d+)?(?:-ESV(?:-R\\d+)?)?(?:-[SPW][\\d\\.]+)?(?:-REL)?(?:-[W]\\d+)?(?:rc\\d)?)(?:-NOESW)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: bare release number - ESV REL NOESW"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(?:BIND )?(9.[^-]+(?:-[SP]\\d)?)(?:-[\\d\\.]+)?\\+deb10u\\d+-Raspbian$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:BIND )?(9.[^-]+(?:-[SP]\\d)?)(?:-[\\d\\.]+)?\\+deb10u\\d+-Raspbian$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Raspbian based on Debian Buster"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(?:BIND )?(9.[^-]+(?:-[SP]\\d)?)-9\\+deb8u\\d+-Raspbian$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:BIND )?(9.[^-]+(?:-[SP]\\d)?)-9\\+deb8u\\d+-Raspbian$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Raspbian based on Debian Jessie"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^(9.[^-]+(?:-[SP]\\d)?)-(?:\\d-)?Raspbian$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(9.[^-]+(?:-[SP]\\d)?)-(?:\\d-)?Raspbian$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ISC BIND: Raspbian based on Debian Jessie no version simple"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/a:isc:bind:{version}",
+  "examples": [
+    "9.8.2rc1-RedHat-9.8.2-0.62.rc1.el6_9.2",
+    "9.9.4-RedHat-9.9.4-38.el7_3.3",
+    "9.3.6-P1-RedHat-9.3.6-25.P1.el5_11.12",
+    "9.9.1-P3-RedHat-9.9.1.P3.el6",
+    "9.9.3-rpz2+rl.13208.13-P2-RedHat-9.9.3-4.P2.el6",
+    "9.7.3-P3-RedHat-9.7.3-2.el6_1.P3.3",
+    "9.8.2rc1-RedHat-9.8.2-0.47.rc1.el6",
+    "9.10.4-P8-RedHat-9.10.4-4.P8.fc25",
+    "9.9.3-rl.13207.22-P2-RedHat-9.9.3-5.P2.fc19",
+    "9.5.2-RedHat-9.5.2-1.fc10"
+  ]
+}

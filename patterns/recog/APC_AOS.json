@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apc_aos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APC_AOS",
+  "taxonomy_name": "APC AOS",
+  "vendor": "APC",
+  "product": "AOS",
+  "source": {
+    "type": "recog",
+    "file": "APC_AOS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_apc_aos_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,64}) Network Management Card AOS v(\\d+\\..+) FTP server ready\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,64}) Network Management Card AOS v(\\d+\\..+) FTP server ready\\.$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "APC power/cooling device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "AP7932 Network Management Card AOS v3.3.4 FTP server ready.",
+    "ACRC103 Network Management Card AOS v3.6.1 FTP server ready.",
+    "0G-9354-01 Network Management Card AOS v3.6.1 FTP server ready."
+  ]
+}

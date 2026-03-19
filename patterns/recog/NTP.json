@@ -1,0 +1,433 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ntp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NTP",
+  "taxonomy_name": "NTP",
+  "vendor": "",
+  "product": "NTP",
+  "source": {
+    "type": "recog",
+    "file": "NTP.json",
+    "fingerprint_count": 39
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 39 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_ntp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd (\\S+)[^\"]+\",.*system=\"Equallogic \\(R\\) storage array\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd (\\S+)[^\"]+\",.*system=\"Equallogic \\(R\\) storage array\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on an EqualLogic Storage Array that includes the NTP version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"Linux/(?:[^ ]+\\.ESX)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"Linux/(?:[^ ]+\\.ESX)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on VMware ESX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"Linux/?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"Linux/?([^ ]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?6\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?6\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.2/Jaguar"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?7\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?7\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.3/Panther"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?8\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?8\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.4/Tiger"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?9\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?9\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.5/Leopard"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?10\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?10\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.6/Snow Leopard"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?11\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?11\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.7/Lion"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?12\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?12\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.8/Mountain Lion"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?13\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?13\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.9/Mavericks"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?14\\.([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^\"]+)\",.*system=\"Darwin/?14\\.([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Mac OSX 10.10/Yosemite"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"FreeBSD/?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"FreeBSD/?([^ ]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on FreeBSD"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"NetBSD/?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"NetBSD/?([^ ]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on NetBSD"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.0\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.0\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 2.0 (SunOS/5.0)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.1\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.1\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 2.1 (SunOS/5.1)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.2\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.2\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 2.2 (SunOS/5.2)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.3\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.3\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 2.3 (SunOS/5.3)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.4\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.4\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 2.4 (SunOS/5.4)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.5\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.5\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 2.5 (SunOS/5.5)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.6\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.6\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 2.6 (SunOS/5.6)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.(1[1-9])\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.(1[1-9])\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 11 or above (SunOS/5.11 and above)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.([789]|10)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"SunOS/?5.([789]|10)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Solaris 7-Solaris 10 (SunOS/5.7 - SunOS/5.10)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"JUNOS/?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"JUNOS/?([^ ]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Juniper/Netscreen JunOS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"Windows/?([^ ]+)?\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"Windows/?([^ ]+)?\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Windows"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"HP-UX/?([^ ]+)?\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"HP-UX/?([^ ]+)?\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on HP-UX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=,.*system=\"HP-UX/\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=,.*system=\"HP-UX/\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on HP-UX with an empty processor"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"[^ ]+\",.*system=\"([^ ]+)-hp-hpux([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"[^ ]+\",.*system=\"([^ ]+)-hp-hpux([^ ]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on HP-UX, where the processor is in the 'system' variable"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"VMkernel/?([^ ]+)?\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"VMkernel/?([^ ]+)?\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on VMware ESXi"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"OSF1[/V]?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ntpd running on OSF/1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"Linux\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Linux with NTP enabled, no processor/version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"UNIX/Unixware([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SCO Unixware NTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",.*\\s*processor=\"([^ ]+)\",.*system=\"SecureOS/([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",.*\\s*processor=\"([^ ]+)\",.*system=\"SecureOS/([^ ]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "McAfee Network Firewall Enterprise NTP (SecureOS)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\".*system=\"Linux([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ntpd running on linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd (\\S+)[^\"]+\",.*\\s*processor=\"([^ ]+)\".*system=\"Isilon OneFS/v([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd (\\S+)[^\"]+\",.*\\s*processor=\"([^ ]+)\".*system=\"Isilon OneFS/v([^ ]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Isilon OneFS NTP Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"IPSO\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nokia IPSO NTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd version = ([^ ]+)\",\\s*processor=\"([A-Z0-9]+)\",\\s*system=\"OpenVMS/V([A-Z0-9.-]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd version = ([^ ]+)\",\\s*processor=\"([A-Z0-9]+)\",\\s*system=\"OpenVMS/V([A-Z0-9.-]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenVMS NTP Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd version = ([^ ]+)\",\\s*processor=\"unknown\",\\s*system=\"OpenVMS AXP\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd version = ([^ ]+)\",\\s*processor=\"unknown\",\\s*system=\"OpenVMS AXP\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenVMS AXP (Alpha) NTP Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",\\s*processor,\\s*system=\"/\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",\\s*processor,\\s*system=\"/\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "NTP on an unknown system"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:vmware:esx:-",
+  "examples": [
+    "version=\"ntpd 4.2.0-r Fri Feb  5 15:18:30 EST 2010 (1)\",\n      processor=\"Working\", system=\"EqualLogic (R) storage array\", leap=0,\n      stratum=3, precision=-7, rootdelay=102.894, rootdispersion=245.154,\n      peer=63940, refid=172.23.16.40, reftime=0xd22791f2.e4026bd4, poll=10,\n      clock=0xd2279937.d078b9f3, state=4, offset=8.644, frequency=39.586,\n      jitter=10.870, stability=0.795",
+    "version=\"ntpd 4.2.2p1@1.1570-o Thu Nov 26 11:34:34 UTC 2009 (1)\",\n      processor=\"x86_64\", system=\"Linux/2.6.18-194.ESX\"",
+    "version=\"ntpd 4.2.4p3@1.1502-o Wed Jul 18 11:45:01 UTC 2007 (1)\",\n      processor=\"i686\", system=\"Linux/2.4.29\", leap=00, stratum=3,",
+    "version=\"ntpd 4.1.1@1.786 Tue Nov 12 09:30:41 PST 2002 (1)\", processor=\"Power Macintosh\", system=\"Darwin6.8\",",
+    "version=\"ntpd 4.2.0@1.1161-r Fri Jan 13 11:36:23 PST 2006 (1)\",\n      processor=\"i386\", system=\"Darwin/8.11.1\", leap=11, stratum=16,",
+    "version=\"ntpd 4.2.2@1.1532-o Mon Sep 24 01:42:27 UTC 2007 (1)\",\n      processor=\"Power Macintosh\", system=\"Darwin/9.0.0\", leap=3, stratum=16,",
+    "version=\"ntpd 4.2.4p4@1.1520-o Mon May 18 19:38:25 UTC 2009 (1)\",\n      processor=\"i386\", system=\"Darwin/10.8.0\", leap=0, stratum=3,",
+    "version=\"ntpd 4.2.6@1.2089-o Fri May 28 01:20:53 UTC 2010 (1)\",\n      processor=\"x86_64\", system=\"Darwin/11.2.0\", leap=11, stratum=16,",
+    "version=\"ntpd 4.2.6@1.2089-o Fri May 28 01:20:53 UTC 2010 (1)\",\n      processor=\"x86_64\", system=\"Darwin/12.1.0\", leap=3, stratum=16,",
+    "version=\"ntpd 4.2.6@1.2089-o Fri May 28 01:20:53 UTC 2010 (1)\",\n      processor=\"x86_64\", system=\"Darwin/13.4.0\", leap=3, stratum=16,"
+  ]
+}

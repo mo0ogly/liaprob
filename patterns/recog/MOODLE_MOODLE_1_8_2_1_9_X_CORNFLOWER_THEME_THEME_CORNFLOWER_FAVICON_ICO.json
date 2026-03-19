@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-moodle_moodle_1_8_2_1_9_x_cornflower_theme_theme_cornflower_favicon_ico",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOODLE_MOODLE_1_8_2_1_9_X_CORNFLOWER_THEME_THEME_CORNFLOWER_FAVICON_ICO",
+  "taxonomy_name": "Moodle Moodle (1.8.2, 1.9.x, Cornflower Theme, /theme/cornflower/favicon.ico)",
+  "vendor": "Moodle",
+  "product": "Moodle (1.8.2, 1.9.x, Cornflower Theme, /theme/cornflower/favicon.ico)",
+  "source": {
+    "type": "recog",
+    "file": "MOODLE_MOODLE_1_8_2_1_9_X_CORNFLOWER_THEME_THEME_CORNFLOWER_FAVICON_ICO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_moodle_moodle_1_8_2_1_9_x_cornflower_theme_theme_cornflower_favicon_ico_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b6652d5d71f6f04a88a8443a8821510f",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moodle (1.8.2, 1.9.x, Cornflower Theme, /theme/cornflower/favicon.ico)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b6652d5d71f6f04a88a8443a8821510f"
+  ]
+}

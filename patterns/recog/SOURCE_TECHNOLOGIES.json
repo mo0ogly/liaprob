@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-source_technologies",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOURCE_TECHNOLOGIES",
+  "taxonomy_name": "Source Technologies",
+  "vendor": "Source Technologies",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SOURCE_TECHNOLOGIES.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_source_technologies_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ET(\\S{1,12}) Source Technologies (ST-96\\S+) FTP Server (\\S+) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Source Technologies ST9600 Series Secure Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Source Technologies (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Source Technologies Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_source_technologies_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Source Technologies (ST-9\\S+) version (\\S+) kernel \\S+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Source Technologies ST9600 Series Secure Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "ET0021B730F70E Source Technologies ST-9620 FTP Server NJ.APS.N254e ready.",
+    "ET0021B7549AF2 Source Technologies ST-9620 FTP Server NR.APS.N447b2 ready.",
+    "ET0021B7300F01 Source Technologies ST-9620 FTP Server NJ.APS.N254e ready.",
+    "Source Technologies ST-9620",
+    "Source Technologies ST-9620 version NJ.APS.N254e kernel 2.6.18.5 All-N-1",
+    "Source Technologies ST-9620 version NR.APS.N447b2 kernel 2.6.18.5 All-N-1",
+    "Source Technologies ST-9445 version 61.60.06 kernel 2.4.0-test6 All-N-1",
+    "Source Technologies ST-9512 version NM.NA.N099 kernel 2.6.10 All-N-1"
+  ]
+}

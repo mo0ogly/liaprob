@@ -1,0 +1,99 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cabletron",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CABLETRON",
+  "taxonomy_name": "Cabletron",
+  "vendor": "Cabletron",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "CABLETRON.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cabletron_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cabletron(?: Systems(?:, Inc\\.)?)? (\\S+) Rev (\\S+) .* ofc$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cabletron Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cabletron (\\S+) Version (\\S+) \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cabletron Switch - time variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cabletron (\\S+) (?:Rev\\.|SW:)(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cabletron Switch - software variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cabletron Smart Switch (\\S+ Chassis)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cabletron Smart Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(SSR \\S+) - Cabletron Systems, Inc. Firmware Version: (\\S+) PROM Version: \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cabletron Switch - firmware variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SmartSwitch Router (\\S+) v(\\S+) Copyright \\(c\\) 1996-1999 Cabletron Systems, Inc\\. All Rights Reserved$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cabletron Router"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Cabletron 2E42-27 Rev 04.09.08 08/25/99--02:09 ofc",
+    "Cabletron Systems HSIM-W6 Rev 02.01.09 IFO Based Switch 04/30/99--12:39 ofc",
+    "Cabletron Systems, Inc. 2E42-27R Rev 04.07.07 10/26/98--19:36 ofc",
+    "Cabletron Systems, Inc. 2H252-25R Rev 02.00.17 10/30/98--15:00 ofc",
+    "Cabletron Systems, Inc. 6H252-17 Rev 05.08.30 03/31/08--17:14 ofc",
+    "Cabletron ELS10-26 Version 1.01.02 06/09/98--12:51:12",
+    "Cabletron ELS10-26 Version 1.02.00 04/05/99--14:27:16",
+    "Cabletron ELS100-16TX Rev.1.02.00",
+    "Cabletron ELS100-24TXG SW:2.01.00",
+    "Cabletron ELS100-24TXG SW:2.2.0.1"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_vms_sftp_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_VMS_SFTP_SERVER",
+  "taxonomy_name": "HP VMS SFTP Server",
+  "vendor": "HP",
+  "product": "VMS SFTP Server",
+  "source": {
+    "type": "recog",
+    "file": "HP_VMS_SFTP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_vms_sftp_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d\\.\\d+\\.\\d+) SSH (?:Secure Shell )?OpenVMS V\\d\\.\\d VMS_sftp_version (\\d)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d\\.\\d+\\.\\d+) SSH (?:Secure Shell )?OpenVMS V\\d\\.\\d VMS_sftp_version (\\d)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "SSH for OpenVMS sftp"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "examples": [
+    "3.2.0 SSH Secure Shell OpenVMS V5.5 VMS_sftp_version 3",
+    "3.2.0 SSH OpenVMS V5.5 VMS_sftp_version 3"
+  ]
+}

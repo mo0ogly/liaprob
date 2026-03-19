@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_commerce_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_COMMERCE_SERVER",
+  "taxonomy_name": "Microsoft Commerce Server",
+  "vendor": "Microsoft",
+  "product": "Commerce Server",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_COMMERCE_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_commerce_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(MSCSAuth|MSCSProfile)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Commerce Server - http://msdn2.microsoft.com/en-us/library/ms953828.aspx"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:commerce_server:-",
+  "examples": [
+    "MSCSProfile=287001FD2674671C7869448243193407F294F4F921DD7D627A0F4EE0CC7F3FAC36B5E45588612D30B2A6C57F1D461CB5EE0887989EE7F09E4529B0795EF87BB095FFF1DE42BD5E8F00273BCAACB9DC80733367D09A4B6A48A6802C4DCD6EB029BF5B207BCE523E8BF2EE3EBCDF5776BAC6B6BCD4BF54EF9C178F9605E75D0DDA; path=/"
+  ]
+}

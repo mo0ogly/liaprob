@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_media_player",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_MEDIA_PLAYER",
+  "taxonomy_name": "Microsoft Windows Media Player",
+  "vendor": "Microsoft",
+  "product": "Windows Media Player",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_MEDIA_PLAYER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_media_player_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Windows Media Player Network Sharing Service \\(([A-Z-]{1,15})\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Media Player Network Sharing Service"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:windows_media_player:-",
+  "examples": [
+    "CN=Windows Media Player Network Sharing Service (LIVING-ROOM)"
+  ]
+}

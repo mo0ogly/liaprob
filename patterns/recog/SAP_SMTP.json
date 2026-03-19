@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sap_smtp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_SMTP",
+  "taxonomy_name": "SAP SMTP",
+  "vendor": "SAP",
+  "product": "SMTP",
+  "source": {
+    "type": "recog",
+    "file": "SAP_SMTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_sap_smtp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) SAP (\\S+) E?SMTP service ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,512}) SAP (\\S+) E?SMTP service ready$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "SAP SMTP Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar SAP 8.04(53) ESMTP service ready"
+  ]
+}

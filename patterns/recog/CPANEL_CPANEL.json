@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cpanel_cpanel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CPANEL_CPANEL",
+  "taxonomy_name": "cPanel cPanel",
+  "vendor": "cPanel",
+  "product": "cPanel",
+  "source": {
+    "type": "recog",
+    "file": "CPANEL_CPANEL.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cpanel_cpanel_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^827fd6c561d4b1f932f75e0f9a17f766$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "cPanel"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^cPanel Login$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "cPanel"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_cpanel_cpanel_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Basic|Digest).*realm=\"cpanel\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "cPanel"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:cpanel:cpanel:-",
+  "examples": [
+    "827fd6c561d4b1f932f75e0f9a17f766",
+    "cPanel Login",
+    "Basic realm=\"cPanel\""
+  ]
+}

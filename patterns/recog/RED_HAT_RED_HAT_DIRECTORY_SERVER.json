@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_red_hat_directory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_RED_HAT_DIRECTORY_SERVER",
+  "taxonomy_name": "Red Hat Red Hat Directory Server",
+  "vendor": "Red Hat",
+  "product": "Red Hat Directory Server",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_RED_HAT_DIRECTORY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_red_hat_directory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:vendorName1.\\x04.Red Hat(?:, Inc.)?0.\\x04\\rvendorVersion1.\\x04.Red Hat-Directory/(\\d\\.\\d[\\w.]* B\\d+\\.\\d+\\.\\d+).\\x04\\v)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:vendorName1.\\x04.Red Hat(?:, Inc.)?0.\\x04\\rvendorVersion1.\\x04.Red Hat-Directory/(\\d\\.\\d[\\w.]* B\\d+\\.\\d+\\.\\d+).\\x04\\v)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Red Hat Red Hat Directory Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:redhat:directory_server:{version}",
+  "examples": [
+    "dmVuZG9yTmFtZTEJBAdSZWQgSGF0MDgEDXZlbmRvclZlcnNpb24xJwQlUmVkIEhhdC1EaXJlY\n      3RvcnkvOC4yLjAgQjIwMTAuMjEwLjA1OTAgBAs="
+  ]
+}

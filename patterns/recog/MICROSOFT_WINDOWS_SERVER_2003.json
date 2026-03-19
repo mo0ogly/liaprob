@@ -1,0 +1,149 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_server_2003",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_SERVER_2003",
+  "taxonomy_name": "Microsoft Windows Server 2003",
+  "vendor": "Microsoft",
+  "product": "Windows Server 2003",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_SERVER_2003.json",
+    "fingerprint_count": 11
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 11 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_server_2003_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:domainControllerFunctionality1.{1,5}\\x04\\x012)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server Server 2003"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows \\.NET",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 Beta"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Server 2003 (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 with a build"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Server 2003$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 without a build"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Server 2003 (\\d+) (Service Pack \\d+)(?:, v\\.\\d+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 (SP)"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_windows_server_2003_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows Version 5\\.2",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 on x86"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: \\S+64.*Software: Windows Version 5\\.2",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 on x86_64"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Windows_NT Microsoft Windows Server 2003 5.2 3790 Service Pack 2, GenuineIntel \\S+64",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Rare Windows 2003 SP2 sysDescr, x64"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Windows_NT Microsoft Windows Server 2003 5.2 3790 Service Pack 2, GenuineIntel x86",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Rare Windows 2003 SP2 sysDescr, x86"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.311\\.1\\.1\\.3\\.1\\.2 Hardware: x86.*Software: Windows Version 5\\.2",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 on x86"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.311\\.1\\.1\\.3\\.1\\.2 Hardware: \\S+64.*Software: Windows Version 5\\.2",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 on x86_64"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smb",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_server_2003:-",
+  "examples": [
+    "MIQAAAAoBB1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBMjA=",
+    "Windows Server 2003 3790",
+    "Windows Server 2003",
+    "Windows Server 2003 3790 Service Pack 1, v.3309",
+    "Windows Server 2003 3790 Service Pack 2",
+    "Hardware: x86 Family 6 Model 15 Stepping 6 AT/AT COMPATIBLE - Software: Windows Version 5.2 (Build 3790 Multiprocessor Free)",
+    "Hardware: AMD64 Family 15 Model 4 Stepping 3 AT/AT COMPATIBLE - Software: Windows Version 5.2 (Build 3790 Multiprocessor Free)",
+    "Hardware: Intel64 Family 6 Model 15 Stepping 6 AT/AT COMPATIBLE - Software: Windows Version 5.2 (Build 3790 Multiprocessor Free)",
+    "Windows_NT Microsoft Windows Server 2003 5.2 3790 Service Pack 2, GenuineIntel EM64T Family 6 Model 23 Stepping 6",
+    "Windows_NT Microsoft Windows Server 2003 5.2 3790 Service Pack 2, GenuineIntel x86 Family 6 Model 23 Stepping 6"
+  ]
+}

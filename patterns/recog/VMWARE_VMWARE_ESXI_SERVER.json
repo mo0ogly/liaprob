@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vmware_vmware_esxi_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE_VMWARE_ESXI_SERVER",
+  "taxonomy_name": "VMware VMware ESXi Server",
+  "vendor": "VMware",
+  "product": "VMware ESXi Server",
+  "source": {
+    "type": "recog",
+    "file": "VMWARE_VMWARE_ESXI_SERVER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vmware_vmware_esxi_server_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^VMware ESXi (\\d\\.\\d+\\.\\d+) build-\\d+ VMware, Inc\\. (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware ESXi"
+        }
+      ]
+    },
+    {
+      "id": "recog_vmware_vmware_esxi_server_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^(?:21d14d00021d21d21c21d14d21d21d3e9a0dda94718e521eb7d1409c9e3601|2ad2ad0002ad2ad0002ad2ad2ad2ad755a2cec4b52fb1bce1ac7f1e48c8a7d)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware ESXi"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^O=VMware Installer$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware ESXi w/Installer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:vmware:esxi:{os.version}",
+  "examples": [
+    "VMware ESXi 5.1.0 build-1157734 VMware, Inc. x86_64",
+    "21d14d00021d21d21c21d14d21d21d3e9a0dda94718e521eb7d1409c9e3601",
+    "2ad2ad0002ad2ad0002ad2ad2ad2ad755a2cec4b52fb1bce1ac7f1e48c8a7d",
+    "O=VMware Installer"
+  ]
+}

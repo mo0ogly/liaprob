@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-beehive_beehive_forum_1_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEEHIVE_BEEHIVE_FORUM_1_X",
+  "taxonomy_name": "Beehive Beehive Forum 1.x",
+  "vendor": "Beehive",
+  "product": "Beehive Forum 1.x",
+  "source": {
+    "type": "recog",
+    "file": "BEEHIVE_BEEHIVE_FORUM_1_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_beehive_beehive_forum_1_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f51425ace97f807fe5840c4382580fd5",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Beehive Forum 1.x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "f51425ace97f807fe5840c4382580fd5"
+  ]
+}

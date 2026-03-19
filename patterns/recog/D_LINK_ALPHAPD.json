@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-d_link_alphapd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "D_LINK_ALPHAPD",
+  "taxonomy_name": "D-Link alphapd",
+  "vendor": "D-Link",
+  "product": "alphapd",
+  "source": {
+    "type": "recog",
+    "file": "D_LINK_ALPHAPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_d_link_alphapd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^alphapd/(\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^alphapd/(\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "D-Link alphapd - likely DCS series cameras"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "alphapd/2.1.8"
+  ]
+}

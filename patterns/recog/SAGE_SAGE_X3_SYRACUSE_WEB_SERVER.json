@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sage_sage_x3_syracuse_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAGE_SAGE_X3_SYRACUSE_WEB_SERVER",
+  "taxonomy_name": "Sage Sage X3 Syracuse Web Server",
+  "vendor": "Sage",
+  "product": "Sage X3 Syracuse Web Server",
+  "source": {
+    "type": "recog",
+    "file": "SAGE_SAGE_X3_SYRACUSE_WEB_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sage_sage_x3_syracuse_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Sage X3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sage X3 Syracuse Web Server"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(syracuse\\.sid\\.\\d+)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sage X3 Syracuse Web Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "Sage X3",
+    "syracuse.sid.8124=8b102bf7-327c-4962-9279-550e72afcaa9; path=/; HttpOnly"
+  ]
+}

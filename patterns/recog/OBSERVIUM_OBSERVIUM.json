@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-observium_observium",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OBSERVIUM_OBSERVIUM",
+  "taxonomy_name": "Observium Observium",
+  "vendor": "Observium",
+  "product": "Observium",
+  "source": {
+    "type": "recog",
+    "file": "OBSERVIUM_OBSERVIUM.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_observium_observium_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Observium",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Observium"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^OBSID=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Observium"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:observium:observium:-",
+  "examples": [
+    "Observium :  - Test infra",
+    "OBSID=gud74jg1slhskdo7idqgklkamm6g3908; expires=Tue, 20-Apr-2021 01:31:27 GMT; Max-Age=86400; path=/; HttpOnly"
+  ]
+}

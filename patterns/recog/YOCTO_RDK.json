@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-yocto_rdk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOCTO_RDK",
+  "taxonomy_name": "Yocto RDK",
+  "vendor": "Yocto",
+  "product": "RDK",
+  "source": {
+    "type": "recog",
+    "file": "YOCTO_RDK.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_yocto_rdk_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^RDK \\(A Yocto Project based Distro\\) ([^ ]+) (?:Docsis-Gateway|Business)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DOCSIS Cable Modem Running RDK"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "UkRLIChBIFlvY3RvIFByb2plY3QgYmFzZWQgRGlzdHJvKSAyLjAgRG9jc2lzLUdhdGV3YXkNC\n      g0NCg1Eb2NzaXMtR2F0ZXdheSBsb2dpbjo=",
+    "UkRLIChBIFlvY3RvIFByb2plY3QgYmFzZWQgRGlzdHJvKSAyLjAgQnVzaW5lc3MNCg0NCg1Cd\n      XNpbmVzcyBsb2dpbjoK"
+  ]
+}

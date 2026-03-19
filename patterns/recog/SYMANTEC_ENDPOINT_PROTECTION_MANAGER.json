@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-symantec_endpoint_protection_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYMANTEC_ENDPOINT_PROTECTION_MANAGER",
+  "taxonomy_name": "Symantec Endpoint Protection Manager",
+  "vendor": "Symantec",
+  "product": "Endpoint Protection Manager",
+  "source": {
+    "type": "recog",
+    "file": "SYMANTEC_ENDPOINT_PROTECTION_MANAGER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_symantec_endpoint_protection_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Symantec Endpoint Protection Manager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Symantec Endpoint Protection Manager"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^SEPM$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Symantec Endpoint Protection Manager"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Symantec Endpoint Protection Manager$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Symantec Endpoint Protection Manager - long variant"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:symantec:endpoint_protection_manager:-",
+  "examples": [
+    "Symantec Endpoint Protection Manager",
+    "SEPM"
+  ]
+}

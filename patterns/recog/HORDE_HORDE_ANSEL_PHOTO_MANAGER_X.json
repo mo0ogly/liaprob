@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-horde_horde_ansel_photo_manager_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HORDE_HORDE_ANSEL_PHOTO_MANAGER_X",
+  "taxonomy_name": "Horde Horde Ansel (Photo Manager) x",
+  "vendor": "Horde",
+  "product": "Horde Ansel (Photo Manager) x",
+  "source": {
+    "type": "recog",
+    "file": "HORDE_HORDE_ANSEL_PHOTO_MANAGER_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_horde_horde_ansel_photo_manager_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b64a1155b80e0b06272f8b842b83fa57",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Horde Ansel (Photo Manager) x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b64a1155b80e0b06272f8b842b83fa57"
+  ]
+}

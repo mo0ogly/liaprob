@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d11917dc7e651b21f0f75cd0dc309e8a$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gigamon GigaVUE Appliance"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^GigaVUE-OS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gigamon GigaVUE Appliance"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_unknown_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=.*,OU=Gigamon Network Visibility Systems,O=Gigamon Inc\\.,L=Santa Clara,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gigamon GigaVUE Appliance"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "d11917dc7e651b21f0f75cd0dc309e8a",
+    "GigaVUE-OS",
+    "CN=gvue01,OU=Gigamon Network Visibility Systems,O=Gigamon Inc.,L=Santa Clara,ST=California,C=US"
+  ]
+}

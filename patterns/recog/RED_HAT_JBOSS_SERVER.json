@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_jboss_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_JBOSS_SERVER",
+  "taxonomy_name": "Red Hat JBoss Server",
+  "vendor": "Red Hat",
+  "product": "JBoss Server",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_JBOSS_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_jboss_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:78ee71862e89db1b1870197b40d026e5|799f70b71314a7508326d1d2f68f7519)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat JBoss AS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "78ee71862e89db1b1870197b40d026e5",
+    "799f70b71314a7508326d1d2f68f7519"
+  ]
+}

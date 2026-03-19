@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_adselfservice_plus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_ADSELFSERVICE_PLUS",
+  "taxonomy_name": "ManageEngine ADSelfService Plus",
+  "vendor": "ManageEngine",
+  "product": "ADSelfService Plus",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_ADSELFSERVICE_PLUS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_adselfservice_plus_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(JSESSIONIDADSSP|adscsrf)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine ADSelfService Plus"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_adselfservice_plus:-",
+  "examples": [
+    "JSESSIONIDADSSP=A7FECBD71C67184E929AF80715C29C20; Path=/; Secure; HttpOnly",
+    "adscsrf=cffff6b5-bd68-4c35-92ef-e45127e68289;path=/;priority=high"
+  ]
+}

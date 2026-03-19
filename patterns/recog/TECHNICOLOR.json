@@ -1,0 +1,99 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-technicolor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TECHNICOLOR",
+  "taxonomy_name": "Technicolor",
+  "vendor": "Technicolor",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "TECHNICOLOR.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_technicolor_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Technicolor / VANT-6 / AGTOT_([\\d.]+) / AGTOT_[\\d.]+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Technicolor TG789vac Router"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Technicolor / VANT-6$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Technicolor TG789vac Router w/o version string"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Technicolor|MediaAccess) (TG[\\w]+) (?:v\\d )?Build (\\d+\\.[\\w.-]+)(?: CP\\w+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Technicolor TGxxx Router with build info"
+        }
+      ]
+    },
+    {
+      "id": "recog_technicolor_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^O=Technicolor,L=Edegem,ST=Antwerp,C=BE$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Technicolor Router - without model or version"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^O=Technicolor,L=Edegem,ST=Antwerp,C=BE$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Technicolor Router - without model or version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "tls"
+  ],
+  "examples": [
+    "Technicolor / VANT-6 / AGTOT_2.1.4 / AGTOT_2.1.4",
+    "Technicolor / VANT-6",
+    "Technicolor TG784n v3 Build 10.2.1.O",
+    "Technicolor TG789vn v3 Build 10.5.2.Z.EC",
+    "MediaAccess TG789vac v2 Build 10.5.8.Y.GX CP1916SAQHD",
+    "Technicolor TG799vn v2 Build 10.5.2.T.JF",
+    "MediaAccess TG788vn v2 Build 10.5.2.S.GD",
+    "MediaAccess TG799vac Build 17.2.0405-1021",
+    "MediaAccess TG389 Build 10.5.2.T.AQ",
+    "O=Technicolor,L=Edegem,ST=Antwerp,C=BE"
+  ]
+}

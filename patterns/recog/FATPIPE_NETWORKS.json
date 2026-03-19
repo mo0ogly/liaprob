@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fatpipe_networks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FATPIPE_NETWORKS",
+  "taxonomy_name": "FatPipe Networks",
+  "vendor": "FatPipe Networks",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "FATPIPE_NETWORKS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_fatpipe_networks_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:eddb2b697c8c3dab5a9572de564976d1|b0f000f8041a6f1d2c366972b1dbad69)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FatPipe Networks device web interface"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "eddb2b697c8c3dab5a9572de564976d1",
+    "b0f000f8041a6f1d2c366972b1dbad69"
+  ]
+}

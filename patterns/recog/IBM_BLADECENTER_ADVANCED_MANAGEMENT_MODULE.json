@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_bladecenter_advanced_management_module",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_BLADECENTER_ADVANCED_MANAGEMENT_MODULE",
+  "taxonomy_name": "IBM BladeCenter Advanced Management Module",
+  "vendor": "IBM",
+  "product": "BladeCenter Advanced Management Module",
+  "source": {
+    "type": "recog",
+    "file": "IBM_BLADECENTER_ADVANCED_MANAGEMENT_MODULE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_bladecenter_advanced_management_module_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^BladeCenter Advanced Management Module$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM BladeCenter Advanced Management Module"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "BladeCenter Advanced Management Module"
+  ]
+}

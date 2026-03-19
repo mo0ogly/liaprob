@@ -1,0 +1,220 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ntop_ntopng",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NTOP_NTOPNG",
+  "taxonomy_name": "ntop ntopng",
+  "vendor": "ntop",
+  "product": "ntopng",
+  "source": {
+    "type": "recog",
+    "file": "NTOP_NTOPNG.json",
+    "fingerprint_count": 15
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 15 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ntop_ntopng_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to ntopng$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ntopng Network Analysis Application"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[(?:FreeBSD |[\\w-]+-freebsd)(\\d+(?:\\.\\d+)*)(?:[a-z0-9-])* \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[(?:FreeBSD |[\\w-]+-freebsd)(\\d+(?:\\.\\d+)*)(?:[a-z0-9-])* \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on FreeBSD"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[(?:[\\w-]+-linux-gnu)? \\[(\\w+)\\]\\[CentOS (?:Linux )?release (\\d+(?:\\.\\d+)*)(?: \\((?:Core|Final)\\)\\s*)?\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[(?:[\\w-]+-linux-gnu)? \\[(\\w+)\\]\\[CentOS (?:Linux )?release (\\d+(?:\\.\\d+)*)(?: \\((?:Core|Final)\\)\\s*)?\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on CentOS"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[[\\w-]+-linux-gnu \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[[\\w-]+-linux-gnu \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Linux"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*)\\s+\\[[\\w-]+-linux-gnu \\((\\w+)\\)\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*)\\s+\\[[\\w-]+-linux-gnu \\((\\w+)\\)\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Linux (older ntopng)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian [\\w/]+ \\[(\\w+)\\]\\[Ubuntu (\\d+(?:\\.\\d+)*) LTS\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian [\\w/]+ \\[(\\w+)\\]\\[Ubuntu (\\d+(?:\\.\\d+)*) LTS\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Ubuntu"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian (\\d+(?:\\.\\d+)*) \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian (\\d+(?:\\.\\d+)*) \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Debian"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian bookworm/sid \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian bookworm/sid \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Debian 12.0 (bookworm)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian bullseye/sid \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian bullseye/sid \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Debian 11.0 (bullseye)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian buster/sid \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian buster/sid \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Debian 10.0 (buster)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian stretch/sid \\((\\w+)\\)\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian stretch/sid \\((\\w+)\\)\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Debian 9.0 (stretch)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian wheezy/sid \\((\\w+)\\)\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[Debian wheezy/sid \\((\\w+)\\)\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Debian 7.0 (wheezy)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[[\\w-]+openbsd(\\d+(?:\\.\\d+)*) \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[[\\w-]+openbsd(\\d+(?:\\.\\d+)*) \\[(\\w+)\\]\\[[^\\]]*\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on OpenBSD"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\[[^\\]]* \\[(\\w+)\\]\\[Windows\\]\\]$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\[[^\\]]* \\[(\\w+)\\]\\[Windows\\]\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on Windows"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ntopng (\\d+(?:\\.\\d+)*) \\((\\w+)\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ntopng (\\d+(?:\\.\\d+)*) \\((\\w+)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntopng - web-based network traffic monitoring on unknown OS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:ntop:ntopng:-",
+  "examples": [
+    "Welcome to ntopng",
+    "ntopng 5.0.220112 [FreeBSD 12.3 [amd64][FreeBSD 12.3]]",
+    "ntopng 3.8.201001 [amd64-unknown-freebsd11.3 [amd64][]]",
+    "ntopng 3.4.0 [armv7-unknown-freebsd12.2-gnueabihf [arm][]]",
+    "ntopng 3.2.171221 [x86_64-unknown-linux-gnu [x86_64][CentOS release 6.9 (Final)]]",
+    "ntopng 3.4.210629 [ [x86_64][CentOS Linux release 7.5.1804 (Core) ]]",
+    "ntopng 3.6.181022 [x86_64-unknown-linux-gnu [x86_64][CentOS Linux release 7.5.1804 (Core) ]]",
+    "ntopng 4.3.211226 [x86_64-unknown-linux-gnu [x86_64][CentOS Linux release 8.4.2105]]",
+    "ntopng 5.4.221110 [x86_64-unknown-linux-gnu [x86_64][CentOS Linux release 7.9.2009 (Core)]]",
+    "ntopng 4.2.201125 [x86_64-unknown-linux-gnu [x86_64][]]"
+  ]
+}

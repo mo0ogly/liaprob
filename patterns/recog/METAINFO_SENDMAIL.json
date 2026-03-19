@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-metainfo_sendmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METAINFO_SENDMAIL",
+  "taxonomy_name": "MetaInfo Sendmail",
+  "vendor": "MetaInfo",
+  "product": "Sendmail",
+  "source": {
+    "type": "recog",
+    "file": "METAINFO_SENDMAIL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_metainfo_sendmail_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP MetaInfo Sendmail ([^ ]+) Build ([^ ]+) \\(Berkeley ([^ ]+)\\)/([^;]+); (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP MetaInfo Sendmail ([^ ]+) Build ([^ ]+) \\(Berkeley ([^ ]+)\\)/([^;]+); (.+)$",
+          "version_group": 4,
+          "case_insensitive": true,
+          "note": "Sendmail - MetaInfo"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_nt:-",
+  "examples": [
+    "foo.bar ESMTP MetaInfo Sendmail 2.5 Build 2630 (Berkeley 8.8.6)/8.8.4; Mon, 30 Jul"
+  ]
+}

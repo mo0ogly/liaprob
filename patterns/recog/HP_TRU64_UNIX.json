@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_tru64_unix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_TRU64_UNIX",
+  "taxonomy_name": "HP Tru64 Unix",
+  "vendor": "HP",
+  "product": "Tru64 Unix",
+  "source": {
+    "type": "recog",
+    "file": "HP_TRU64_UNIX.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    22,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_tru64_unix_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) FTP server \\((?:HP|Compaq) Tru64 UNIX Version (\\S+)\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digital/Compaq/HP Tru64 Unix"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^\\S{1,16} SSH Secure Shell Tru64 UNIX$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digital/Compaq/HP Tru64 Unix"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_tru64_unix_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) (.*?) (?:HP|Compaq) Tru64 UNIX V(\\S+) \\(Rev\\. ([^\\)]+)\\).*TCP\\/IP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digital/Compaq/HP Tru64 Unix"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh",
+    "ftp",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:hp:tru64_unix:{os.version}",
+  "examples": [
+    "example.com FTP server (Compaq Tru64 UNIX Version 5.60) ready.",
+    "was1 AlphaServer DS10 466 MHz Compaq Tru64 UNIX V5.1B (Rev. 2650); Wed Feb 25 13:29:07 KST 2004 TCP/IP",
+    "3.2.0 SSH Secure Shell Tru64 UNIX"
+  ]
+}

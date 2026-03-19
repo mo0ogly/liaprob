@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vanguard_managed_solutions",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VANGUARD_MANAGED_SOLUTIONS",
+  "taxonomy_name": "Vanguard Managed Solutions",
+  "vendor": "Vanguard Managed Solutions",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "VANGUARD_MANAGED_SOLUTIONS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    1720
+  ],
+  "probes": [
+    {
+      "id": "recog_vanguard_managed_solutions_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5000022\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5000022\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Vanguard Managed Solutions H.323 Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323"
+  ]
+}

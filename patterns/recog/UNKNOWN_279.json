@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Polycom/[\\d\\.]+ )?Polycom(SoundPoint|VVX|SoundStation)\\S+_(\\d+)-UA/([\\d\\.]+)(?:_(.{12}))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Polycom SoundPoint, SountdStation, VVX VoIP phones"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "PolycomVVX-VVX_350-UA/5.8.0.13337",
+    "PolycomVVX-VVX_400-UA/4.1.4.7430_010203040506",
+    "Polycom/5.5.0.23866 PolycomVVX-VVX_501-UA/5.5.0.23866",
+    "PolycomSoundPointIP-SPIP_670-UA/4.0.7.2514",
+    "PolycomSoundStationIP-SSIP_7000-UA/4.0.8.1608"
+  ]
+}

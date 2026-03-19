@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mcafee_epolicy_orchestrator",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MCAFEE_EPOLICY_ORCHESTRATOR",
+  "taxonomy_name": "McAfee ePolicy Orchestrator",
+  "vendor": "McAfee",
+  "product": "ePolicy Orchestrator",
+  "source": {
+    "type": "recog",
+    "file": "MCAFEE_EPOLICY_ORCHESTRATOR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mcafee_epolicy_orchestrator_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Agent-ListenServer-HttpSvr/",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "McAfee ePolicy Orchestrator"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:mcafee:epolicy_orchestrator:-"
+}

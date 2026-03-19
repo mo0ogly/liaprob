@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-spyce_spyce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPYCE_SPYCE",
+  "taxonomy_name": "Spyce Spyce",
+  "vendor": "Spyce",
+  "product": "Spyce",
+  "source": {
+    "type": "recog",
+    "file": "SPYCE_SPYCE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_spyce_spyce_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^86e3bf076a018a23c12354e512af3b9c",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Spyce"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "86e3bf076a018a23c12354e512af3b9c"
+  ]
+}

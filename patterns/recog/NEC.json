@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nec",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEC",
+  "taxonomy_name": "NEC",
+  "vendor": "NEC",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "NEC.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    5060,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_nec_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NEC (Aspire [WU]X) ([\\d.]+)(?:/\\d\\.\\d)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NEC UNIVERGE Aspire WX or UX SIP Gateway"
+        }
+      ]
+    },
+    {
+      "id": "recog_nec_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=DT([^\\s]+) Series,O=NEC Corporation,ST=Tokyo,C=JP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NEC DT Series IP Phone"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "tls"
+  ],
+  "examples": [
+    "NEC Aspire WX 02.00.00",
+    "NEC Aspire UX 08.00.00/2.1",
+    "CN=DT800 Series,O=NEC Corporation,ST=Tokyo,C=JP"
+  ]
+}

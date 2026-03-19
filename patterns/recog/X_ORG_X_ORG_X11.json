@@ -1,0 +1,87 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-x_org_x_org_x11",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "X_ORG_X_ORG_X11",
+  "taxonomy_name": "X.Org X.Org X11",
+  "vendor": "X.Org",
+  "product": "X.Org X11",
+  "source": {
+    "type": "recog",
+    "file": "X_ORG_X_ORG_X11.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    6000
+  ],
+  "probes": [
+    {
+      "id": "recog_x_org_x_org_x11_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^CentOS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CentOS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Fedora Project$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fedora Project"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^freedesktop\\.org$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "freedesktop.org"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Red Hat, Inc\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat, Inc."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^The X\\.Org Foundation$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "The X.Org Foundation"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "x11"
+  ],
+  "cpe23_template": "cpe:/a:x.org:x11:-",
+  "examples": [
+    "CentOS",
+    "Fedora Project",
+    "freedesktop.org",
+    "Red Hat, Inc.",
+    "The X.Org Foundation"
+  ]
+}

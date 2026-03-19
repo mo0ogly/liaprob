@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_http_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_HTTP_SERVER",
+  "taxonomy_name": "IBM HTTP Server",
+  "vendor": "IBM",
+  "product": "HTTP Server",
+  "source": {
+    "type": "recog",
+    "file": "IBM_HTTP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_http_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^IBM HTTP Server/(V\\d+R\\d+M\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "IBM HTTP server running on AS/400"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:ibm:http_server:-",
+  "examples": [
+    "IBM HTTP Server/V5R3M0"
+  ]
+}

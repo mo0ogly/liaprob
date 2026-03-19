@@ -1,0 +1,1499 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_mysql",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_MYSQL",
+  "taxonomy_name": "Oracle MySQL",
+  "vendor": "Oracle",
+  "product": "MySQL",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_MYSQL.json",
+    "fingerprint_count": 165
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 165 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    3306
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_mysql_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}(?:[.-]\\d{1,2})?(?:[.-]\\d{1})?)(?:-m\\d{1,2})?(?:-rc)?(?:-alpha)?(?:-beta)?(?:-gamma)?(?:-?max)?(?:-rs)?(?:-modified)?(?:-debug)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}(?:[.-]\\d{1,2})?(?:[.-]\\d{1})?)(?:-m\\d{1,2})?(?:-rc)?(?:-alpha)?(?:-beta)?(?:-gamma)?(?:-?max)?(?:-rs)?(?:-modified)?(?:-debug)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL (common)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-m\\d)?(?:-rc)?(?:-alpha)?(?:-beta)?-community(?:-max)?(?:-debug)?(?:-log)?(?:-debug)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-m\\d)?(?:-rc)?(?:-alpha)?(?:-beta)?-community(?:-max)?(?:-debug)?(?:-log)?(?:-debug)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Community Edition"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-alpha)?(?:-beta)?(?:-rc)?-community(?:-max)?-nt(?:-log)?(?:-debug)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-alpha)?(?:-beta)?(?:-rc)?-community(?:-max)?-nt(?:-log)?(?:-debug)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Community Edition with Named Pipes (Windows)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-alpha)?(?:-beta)?(?:-rc)?(?:-gamma)?(?:-max)?-nt(?:-max)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-alpha)?(?:-beta)?(?:-rc)?(?:-gamma)?(?:-max)?-nt(?:-max)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL with Named Pipes (Windows)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-cll$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-cll$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL hosted on CPanel"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-community-cll$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-community-cll$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Community hosted on CPanel"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-cll-lve$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-cll-lve$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on CloudLinux in a Lightweight Virtual Environment (LVE)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-community-cll-lve$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-community-cll-lve$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Community on CloudLinux in a Lightweight Virtual Environment (LVE)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})-0ubuntu0.(\\d\\d\\.\\d\\d)[.\\d]*(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})-0ubuntu0.(\\d\\d\\.\\d\\d)[.\\d]*(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Ubuntu"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})-(?:Debian_)?\\dubuntu(\\d{1,2}\\.\\d\\d)[.\\d]*(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})-(?:Debian_)?\\dubuntu(\\d{1,2}\\.\\d\\d)[.\\d]*(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Ubuntu - Debian string variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})[-_](?:Ubuntu[_-])?(?:Debian[_-])?\\d{1,2}(?:~exp1)?ubuntu\\d{1,2}(?:\\.\\d)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})[-_](?:Ubuntu[_-])?(?:Debian[_-])?\\d{1,2}(?:~exp1)?ubuntu\\d{1,2}(?:\\.\\d)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Ubuntu where trailing digits aren't OS version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb\\.sury\\.org~precise\\+\\d(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb\\.sury\\.org~precise\\+\\d(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Ubuntu 12.04 (Precise Pangolin) packaged by deb.sury.org"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb\\.sury\\.org~trusty\\+\\d(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb\\.sury\\.org~trusty\\+\\d(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Ubuntu 14.04 (Trusty Tahr) packaged by deb.sury.org"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb8u1(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb8u1(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 8.1 (jessie)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+\\d?jessie\\d?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+\\d?jessie\\d?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 8.0 (jessie)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb7u2(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb7u2(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 7.2 (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb7u1(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+deb7u1(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 7.1 (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+(?:squeeze\\d|deb6u1)(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+(?:squeeze\\d|deb6u1)(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 6.0 (squeeze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+\\d?wheezy\\d?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+\\d?wheezy\\d?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 7.0 (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+lenny\\d*(?:\\+spu\\d)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[^+]+)\\+lenny\\d*(?:\\+spu\\d)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 5.0 (lenny)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d~bpo50",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d~bpo50",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Backport on Debian 5.0 (lenny)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}).*~?bpo40(?:\\+\\d)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}).*~?bpo40(?:\\+\\d)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Backport on Debian 4.0 (etch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Debian.*~?bpo31(?:\\+\\d)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Debian.*~?bpo31(?:\\+\\d)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Backport on Debian 3.1 (sarge)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Debian_\\d~?bpo\\.?\\d",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Debian_\\d~?bpo\\.?\\d",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Backport on Debian"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})-Debian_\\d?etch\\d*(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})-Debian_\\d?etch\\d*(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 4.0 (etch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})[_-]Debian[_-]\\d{1,2}sarge\\d*(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})[_-]Debian[_-]\\d{1,2}sarge\\d*(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 3.1 (sarge)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})[_-]Debian[_-]\\d{1,2}woody\\d*(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})[_-]Debian[_-]\\d{1,2}woody\\d*(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian 3.0 (woody)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:[_-]\\d{8})?[_-]Debian[_-]\\d{1,2}(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:[_-]\\d{8})?[_-]Debian[_-]\\d{1,2}(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian (Generic match)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})(?:-rc)?[_-]Debian[_-]\\d{1,2}~ppa\\d(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.\\d{1,2})(?:-rc)?[_-]Debian[_-]\\d{1,2}~ppa\\d(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on Debian (Generic match) using PPA"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-\\d{1,2})?(?:-Debian)?(?:-Dotdeb)?[-~_\\d\\.]+dotdeb\\.\\d(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-\\d{1,2})?(?:-Debian)?(?:-Dotdeb)?[-~_\\d\\.]+dotdeb\\.\\d(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL packaged by DotDeb.org"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-alpha)?(?:-beta)?(?:-gamma)?(?:-rc)?-standard(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-alpha)?(?:-beta)?(?:-gamma)?(?:-rc)?-standard(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Standard Edition"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-pro(?:-gpl)?-nt(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-pro(?:-gpl)?-nt(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Commercial Edition with Named Pipes (Windows)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-pro(?:-gpl)?(?:-cert)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-pro(?:-gpl)?(?:-cert)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Commercial Edition"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}sp1)",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}sp1)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Enterprise Edition"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-enterprise-nt",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-enterprise-nt",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Enterprise Edition with Named Pipes (Windows)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-rc)?-enterprise",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-rc)?-enterprise",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Enterprise Edition - variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}-ndb-\\d\\.\\d{1,2}\\.[a-f\\d]{1,3})",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}-ndb-\\d\\.\\d{1,2}\\.[a-f\\d]{1,3})",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Cluster Edition - nbd variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-CLUSTERS?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-CLUSTERS?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Cluster Edition"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-classic(?:-log)?",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-classic(?:-log)?",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Classic Edition"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-nmm",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-nmm",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL (nmm variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-nightly-\\d{8}(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-nightly-\\d{8}(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL nightly build"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-SERVER",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-SERVER",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL (SERVER variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-ISPrime",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-ISPrime",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL (ISPrime variant)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-rc-\\d\\.\\d{1,2}\\.[a-f\\d]{1,3}",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-rc-\\d\\.\\d{1,2}\\.[a-f\\d]{1,3}",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL possibly Debian specific"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-ius(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-ius(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL packaged for RHEL/CentOS by IUS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})[\\.-]d\\d{1,2}-ourdelta\\d{0,2}(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})[\\.-]d\\d{1,2}-ourdelta\\d{0,2}(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL tweaked and packaged by OurDelta"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Alibaba(?:-rds)?-\\d{6}(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Alibaba(?:-rds)?-\\d{6}(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL Alibaba build? distro? Aliyun.com hosted?"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-falcon-alpha-community-nt",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-falcon-alpha-community-nt",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL with defunct Falcon Storage Engine with Named Pipes (Windows)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-falcon-alpha(?:-community)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-falcon-alpha(?:-community)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL with defunct Falcon Storage Engine"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^^(\\d{1,2}\\.\\d{1,2}\\.[a-f\\d]{1,3})-Sphinx",
+          "confidence_delta": 0.4,
+          "version_extract": "^^(\\d{1,2}\\.\\d{1,2}\\.[a-f\\d]{1,3})-Sphinx",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL with the Sphinx full text search engine"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})?\\+tld\\d",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})(?:-\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})?\\+tld\\d",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL packaged by TLD Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Debian_\\d\\.infrant\\d$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Debian_\\d\\.infrant\\d$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL on a Netgear ReadyNAS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-beget(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-beget(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL at Ukrainian hoster BeGet(?)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-(?:Linuxtone.Org|LTOPS)(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-(?:Linuxtone.Org|LTOPS)(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL at Chinese hoster Linuxtone.org"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-xencdn.net(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-xencdn.net(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL at Chinese hoster Xencdn.net"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Comsenz(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-Comsenz(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL at Chinese hoster Comsenz"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-www\\.gamewave\\.net(?:-edition)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-www\\.gamewave\\.net(?:-edition)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL at Chinese game hoster Gamewave"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}(?:[.-]\\d{1,2})?(?:[.-]\\d{1})?)[-\\d]*-beget(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}(?:[.-]\\d{1,2})?(?:[.-]\\d{1})?)[-\\d]*-beget(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL at Russian hoster Beget"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})yes(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})yes(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL part of KB2 / Kimsboard (Korean site mgmt)?"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})\\.t\\d{1,2}(?:[\\.\\d]{3})?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})\\.t\\d{1,2}(?:[\\.\\d]{3})?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL audited/published by Twitter"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}) Hybrid Cluster MySQL Proxy to$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}) Hybrid Cluster MySQL Proxy to$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL by Hybrid Cluster (hosted?)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}) ScaleBase Data Traffic Manager [\\.\\d]+$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}) ScaleBase Data Traffic Manager [\\.\\d]+$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL behind ScaleBase Data Traffic Manager"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}) Complete MySQL by Server Logistics(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}) Complete MySQL by Server Logistics(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle MySQL packaged by Server Logistics, Mac specific"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Stroj '[^']+' nemá povoleno se k tomuto MySQL serveru připojit$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (cze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Værten '[^']+' kan ikke tilkoble denne MySQL-server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (dan)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Het is host '[^']+' is niet toegestaan verbinding te maken met deze MySQL server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (nla)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^^(?:#HY000)?Host '[^']+' is not allowed to connect to this MySQL server$$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (eng)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Masinal '[^']+' puudub ligipääs sellele MySQL serverile$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (est)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Le hôte '[^']+' n'est pas authorisé à se connecter à ce serveur MySQL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (fre)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Host '[^']+' hat keine Berechtigung, sich mit diesem MySQL-Server zu verbinden$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (ger)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Ο υπολογιστής '[^']+' δεν έχει δικαίωμα σύνδεσης με τον MySQL server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (greek)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^A '[^']+' host szamara nem engedelyezett a kapcsolodas ehhez a MySQL szerverhez$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (hun)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Al sistema '[^']+' non e` consentita la connessione a questo server MySQL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (ita)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ホスト '[^']+' からのこの MySQL server への接続は許可されていません。$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (jpn)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^'[^']+' 호스트는 이 MySQL서버에 접속할 허가를 받지 못했습니다.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (kor)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^'Host' '[^']+' não tem permissão para se conectar com este servidor MySQL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (por)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Host-ul '[^']+' nu este permis a se conecta la aceste server MySQL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (rum)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Хосту '[^']+' не разрешается подключаться к этому серверу MySQL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (rus)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Host-u '[^']+' nije dozvoljeno da se konektuje na ovaj MySQL server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (serbian)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Servidor '[^']+' no está permitido para conectar con este servidor MySQL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (spa)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Denna dator, '[^']+', har inte privileger att använda denna MySQL server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (swe)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Хосту '[^']+' не доволено зв'язуватись з цим сервером MySQL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_NOT_PRIVILEGED (ukr)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Stroj '[^']+' je zablokován kvůli mnoha chybám při připojování. Odblokujete použitím 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (cze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Værten '[^']+' er blokeret på grund af mange fejlforespørgsler. Lås op med 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (dan)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Host '[^']+' is geblokkeeerd vanwege te veel verbindings fouten. Deblokkeer met 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (nla)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Host '[^']+' is blocked because of many connection errors; unblock with 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (eng)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Masin '[^']+' on blokeeritud hulgaliste ühendusvigade tõttu. Blokeeringu saab tühistada 'mysqladmin flush-hosts' käsuga",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (est)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "L'hôte '[^']+' est bloqué à cause d'un trop grand nombre d'erreur de connexion. Débloquer le par 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (fre)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Host '[^']+' blockiert wegen zu vieler Verbindungsfehler. Aufheben der Blockierung mit 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (ger)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Ο υπολογιστής '[^']+' έχει αποκλεισθεί λόγω πολλαπλών λαθών σύνδεσης. Προσπαθήστε να διορώσετε με 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (greek)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "A '[^']+' host blokkolodott, tul sok kapcsolodasi hiba miatt. Hasznalja a 'mysqladmin flush-hosts' parancsot",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (hun)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Sistema '[^']+' bloccato a causa di troppi errori di connessione. Per sbloccarlo: 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (ita)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "接続エラーが多いため、ホスト '[^']+' は拒否されました。'mysqladmin flush-hosts' で解除できます。",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (jpn)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "너무 많은 연결오류로 인하여 호스트 '[^']+'는 블락되었습니다. 'mysqladmin flush-hosts'를 이용하여 블락을 해제하세요",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (kor)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "'Host' '[^']+' está bloqueado devido a muitos erros de conexão. Desbloqueie com 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (por)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Host-ul '[^']+' e blocat din cauza multelor erori de conectie. Poti deploca folosind 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (rum)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Хост '[^']+' заблокирован из-за слишком большого количества ошибок соединения. Разблокировать его можно с помощью 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (rus)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Host '[^']+' je blokiran zbog previše grešaka u konekciji.  Možete ga odblokirati pomoću komande 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (serbian)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Servidor '[^']+' está bloqueado por muchos errores de conexión.  Desbloquear con 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (spa)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Denna dator, '[^']+', är blockerad pga många felaktig paket. Gör 'mysqladmin flush-hosts' för att ta bort alla blockeringarna",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (swe)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Хост '[^']+' заблоковано з причини великої кількості помилок з'єднання. Для розблокування використовуйте 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_HOST_IS_BLOCKED (ukr)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Nemohu vytvořit nový thread \\(errno -?\\d+\\). Pokud je ještě nějaká volná paměť, podívejte se do manuálu na část o chybách specifických pro jednotlivé operační systémy",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (cze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan ikke danne en ny tråd \\(fejl nr. -?\\d+\\). Hvis computeren ikke er løbet tør for hukommelse, kan du se i brugervejledningen for en mulig operativ-system - afhængig fejl",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (dan)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan geen nieuwe thread aanmaken \\(Errcode: -?\\d+\\). Indien er geen tekort aan geheugen is kunt u de handleiding consulteren over een mogelijke OS afhankelijke fout",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (nla)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Can't create a new thread \\(errno -?\\d+\\); if you are not out of available memory, you can consult the manual for a possible OS-dependent bug",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (eng, pol, nor, norwegian-ny)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Ei suuda luua uut lõime \\(veakood -?\\d+\\). Kui mälu ei ole otsas, on tõenäoliselt tegemist operatsioonisüsteemispetsiifilise veaga",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (est)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Impossible de créer une nouvelle tâche \\(errno -?\\d+\\). S'il reste de la mémoire libre, consultez le manual pour trouver un éventuel bug dépendant de l'OS",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (fre)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kann keinen neuen Thread erzeugen \\(Fehler: -?\\d+\\). Sollte noch Speicher verfügbar sein, bitte im Handbuch wegen möglicher Fehler im Betriebssystem nachschlagen",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (ger)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Uj thread letrehozasa nem lehetseges \\(Hibakod: -?\\d+\\). Amenyiben van meg szabad memoria, olvassa el a kezikonyv operacios rendszerfuggo hibalehetosegekrol szolo reszet",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (hun)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Impossibile creare un nuovo thread \\(errno -?\\d+\\). Se non ci sono problemi di memoria disponibile puoi consultare il manuale per controllare possibili problemi dipendenti dal SO",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (ita)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "新規にスレッドを作成できません。\\(エラー番号 -?\\d+\\) もしも使用可能メモリーの不足でなければ、OS依存のバグである可能性があります。",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (jpn)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "새로운 쓰레드를 만들 수 없습니다.\\(에러번호 -?\\d+\\). 만약 여유메모리가 있다면 OS-dependent버그 의 메뉴얼 부분을 찾아보시오.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (kor)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Não pode criar uma nova 'thread' \\(erro no. -?\\d+\\). Se você não estiver sem memória disponível, você pode consultar o manual sobre um possível 'bug' dependente do sistema operacional",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (por)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Nu pot crea un thread nou \\(Eroare -?\\d+\\). Daca mai aveti memorie disponibila in sistem, puteti consulta manualul - ar putea exista un potential bug in legatura cu sistemul de operare",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (rum)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Невозможно создать новый поток \\(ошибка -?\\d+\\). Если это не ситуация, связанная с нехваткой памяти, то вам следует изучить документацию на предмет описания возможной ошибки работы в конкретной ОС",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (rus)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Ne mogu da kreiram novi thread \\(errno -?\\d+\\). Ako imate još slobodne memorije, trebali biste da pogledate u priručniku da li je ovo specifična greška vašeg operativnog sistema",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (serbian)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "No puedo crear un nuevo thread \\(errno -?\\d+\\). Si tu está con falta de memoria disponible, tu puedes consultar el Manual para posibles problemas con SO",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (spa)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan inte skapa en ny tråd \\(errno -?\\d+\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (swe)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Не можу створити нову гілку \\(помилка -?\\d+\\). Якщо ви не використали усю пам'ять, то прочитайте документацію до вашої ОС - можливо це помилка ОС",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CANT_CREATE_THREAD (ukr)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Příliš mnoho spojení",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (cze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "For mange forbindelser \\(connections\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (dan)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Te veel verbindingen",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (nla)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Too many connections",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (eng)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Liiga palju samaaegseid ühendusi",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (est)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Trop de connexions",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (fre)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Zu viele Verbindungen",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (ger)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Υπάρχουν πολλές συνδέσεις...",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (greek)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Tul sok kapcsolat",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (hun)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Troppe connessioni",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (ita)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "接続が多すぎます。",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (jpn)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "너무 많은 연결... max_connection을 증가 시키시오...",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (kor)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "For mange tilkoblinger \\(connections\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (nor)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "For mange tilkoplingar \\(connections\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (norwegian-ny)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Zbyt wiele poł\\?czeń",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (pol)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Excesso de conexões",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (por)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Prea multe conectiuni",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (rum)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Слишком много соединений",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (rus)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Previše konekcija",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (serbian)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Príliš mnoho spojení",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (slo)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Demasiadas conexiones",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (spa)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "För många anslutningar",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (swe)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Забагато з'єднань",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_CON_COUNT_ERROR (ukr)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Nemohu zjistit jméno stroje pro Vaši adresu",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (cze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan ikke få værtsnavn for din adresse",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (dan)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan de hostname niet krijgen van uw adres",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (nla)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Can't get hostname for your address",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (eng)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Ei suuda lahendada IP aadressi masina nimeks",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (est)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Ne peut obtenir de hostname pour votre adresse",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (fre)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kann Hostnamen für diese Adresse nicht erhalten",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (ger)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Δεν έγινε γνωστό το hostname για την address σας",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (greek)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "A gepnev nem allapithato meg a cimbol",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (hun)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Impossibile risalire al nome dell'host dall'indirizzo \\(risoluzione inversa\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (ita)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "IPアドレスからホスト名を解決できません。",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (jpn)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "당신의 컴퓨터의 호스트이름을 얻을 수 없읍니다.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (kor)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan ikke få tak i vertsnavn for din adresse",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (nor)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan ikkje få tak i vertsnavn for di adresse",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (norwegian-ny)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Nie można otrzymać nazwy hosta dla twojego adresu",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (pol)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Não pode obter nome do 'host' para seu endereço",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (por)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Nu pot sa obtin hostname-ul adresei tale",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (rum)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Невозможно получить имя хоста для вашего адреса",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (rus)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Ne mogu da dobijem ime host-a za vašu IP adresu",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (serbian)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Nemôžem zistiť meno hostiteľa pre vašu adresu",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (slo)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "No puedo obtener el nombre de maquina de tu direccion",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (spa)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Kan inte hitta 'hostname' för din adress",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (swe)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Не можу визначити ім'я хосту для вашої адреси",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle MySQL error ER_BAD_HOST_ERROR (ukr)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "mysql"
+  ],
+  "cpe23_template": "cpe:/a:oracle:mysql:{version}",
+  "examples": [
+    "4.1.20",
+    "5.5.23-55",
+    "5.5.30-1.1",
+    "5.5.18.1-log",
+    "5.7.4-m14",
+    "5.0.95-rs",
+    "5.1.65-log",
+    "5.4.1-beta-log",
+    "4.1.13-Max-log",
+    "5.1.33max-log"
+  ]
+}

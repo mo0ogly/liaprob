@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-phpwind_phpwind_forums_7",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPWIND_PHPWIND_FORUMS_7",
+  "taxonomy_name": "PHPWind PHPWind Forums 7",
+  "vendor": "PHPWind",
+  "product": "PHPWind Forums 7",
+  "source": {
+    "type": "recog",
+    "file": "PHPWIND_PHPWIND_FORUMS_7.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_phpwind_phpwind_forums_7_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^4cfbb29d0d83685ba99323bc0d4d3513",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PHPWind Forums 7"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "4cfbb29d0d83685ba99323bc0d4d3513"
+  ]
+}

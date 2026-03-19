@@ -1,0 +1,201 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ubiquiti",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UBIQUITI",
+  "taxonomy_name": "Ubiquiti",
+  "vendor": "Ubiquiti",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UBIQUITI.json",
+    "fingerprint_count": 16
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 16 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ubiquiti_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^airCube$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Ubiquiti airMAX airCube accessory"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_ubiquiti_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(UAP-[^\\s]+) ([0-9][.a-zA-Z0-9\\-]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Wireless UAP"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(EdgeSwitch [^,]+), ([0-9][.a-zA-Z0-9\\-]+), Linux ([0-9][.a-zA-Z0-9\\-]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti EdgeSwitch w/Version and Linux version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(USW GigaBit Ethernet Switch), firmware v?([0-9][.a-zA-Z0-9\\-]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti GigaBit Ethernet Switch w/Version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(US[W]?-[^\\s]+), ([0-9][.a-zA-Z0-9\\-]+), Linux ([0-9][.a-zA-Z0-9\\-]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Switch w/Version and Linux version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(USW-[^\\s,]+)(?:,)? ([0-9][.a-zA-Z0-9\\-]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Switch w/Version (no Linux version)"
+        }
+      ]
+    },
+    {
+      "id": "recog_ubiquiti_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^2ad2ad16d2ad2ad22c2ad2ad2ad2ad7e5e7dc6f569c9c16238278a408347ef$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti EdgeRouter"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=UBNT\\-([0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}:[0-9a-fA-F]{2}),OU=Technical Support,O=Ubiquiti Networks Inc.,L=San Jose,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Wireless AP"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=unifi$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Controller - unifi bare"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=UniFi,OU=UniFi,O=ubnt\\.com,L=San Jose,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Controller - unifi"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=unifivideo-app$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "UniFi Video App"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=camera\\.ubnt\\.dev,",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "UniFi Video Camera"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=UBNT,OU=Technical Support,O=Ubiquiti Networks Inc\\.,L=San Jose,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Controller"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=UBNT Router UI,O=Ubiquiti Networks,L=San Jose,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Router"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=UbiquitiRouterUI,O=Ubiquiti Inc.,L=New York,ST=New York,C=US",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Router UI"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=UniFi-Video Controller,OU=R&D,O=Ubiquiti Networks,L=New York,ST=NY,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti Video Controller"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls",
+    "snmp"
+  ],
+  "examples": [
+    "airCube",
+    "UAP-AC-Mesh-Pro 4.3.20.11298",
+    "EdgeSwitch 48-Port Lite, 1.8.1.5145168, Linux 3.6.5-1b505fb7, 1.1.0.5102011",
+    "USW GigaBit Ethernet Switch, firmware 5.34.0.12180",
+    "USW GigaBit Ethernet Switch, firmware v4.3.20.1129",
+    "USW-8P-60, 4.3.20.11298, Linux 3.6.5",
+    "US-24-500W, 5.43.36.12724, Linux 3.6.5",
+    "USW-5-Flex, 4.0.80.10875",
+    "USW-Flex 5.64.8.13083",
+    "2ad2ad16d2ad2ad22c2ad2ad2ad2ad7e5e7dc6f569c9c16238278a408347ef"
+  ]
+}

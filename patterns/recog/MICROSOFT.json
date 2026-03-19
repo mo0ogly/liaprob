@@ -1,0 +1,217 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT",
+  "taxonomy_name": "Microsoft",
+  "vendor": "Microsoft",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT.json",
+    "fingerprint_count": 16
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 16 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    80,
+    161,
+    443,
+    445,
+    1720,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^MSFT 5.0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Windows Device"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb500534c\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb500534c\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Microsoft H.323 Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?(Windows (?:[a-z]+\\s[a-z]+\\s|[a-z]+\\s)?Server (?:\\d{4} R2|\\d{4}))(?:,\\s|\\s)?([a-z]+)?(?: Evaluation)?(?: Edition)?(?:\\s|\\swith(?:out)? Hyper-V\\s)?(SP\\d|SP \\d|Service Pack \\d)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2003 and later"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?(Windows (?:XP|Vista|7|8|8.1|10))(?:\\s)?((?:[a-z]+|[a-z]+, )?(?:[a-z]+|[a-z]+\\s[a-z]+)?)?(?: Edition)?(?:\\s)?(SP\\d|SP \\d|Service Pack \\d)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Desktop XP and later"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?(Windows\\s?(?:95|98|98SE|98 SE|98 Second Edition|ME|Millenium Edition))$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 9x"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.Winsock RSHD/NT: Protocol negotiation error\\..+$|^.in\\.rlogind: Permission denied\\..+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows rlogind"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Windows NT \\d\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows NT"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Windows (?:95|98|ME))$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 95/98/ME"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Windows (?:7|8|8\\.1)(?:| RT)) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+) (Service Pack \\d+)(?:, v\\.\\d+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7/8 (SP + Edition)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Windows (?:7|8|8\\.1)(?:| RT)) (\\d+) (Service Pack \\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7/8 (SP)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Windows (?:7|8|8\\.1)(?:| RT)) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7/8 (Edition)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Windows (?:7|8|8\\.1)(?:| RT)) (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7/8"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft (Commerce Server\\s*(?:2002|2007)?, (?:Enterprise|Standard|Evaluation|Developer) Edition)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Microsoft Commerce Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_microsoft_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SIMATIC S7, ([^,]+), .*?FW: (?:Version )?V?\\.?([^,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens S7"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SIMATIC S7, ([^,]+), .*?, V\\.([^,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens S7 - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SIMATIC, (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens S7 - model only variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "generic",
+    "smb",
+    "snmp",
+    "h323",
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "MSFT 5.0",
+    "Windows Compute Cluster Server 2003",
+    "Windows Server 2003, Standard Edition",
+    "Windows Server 2012 R2 Standard Evaluation",
+    "Windows Server 2003 R2, Datacenter Edition",
+    "Windows Small Business Server 2003 R2",
+    "Windows Server 2008 Enterprise Edition",
+    "Windows Small Business Server 2008",
+    "Windows Storage Server 2012 R2",
+    "Windows Server 2008 Enterprise without Hyper-V Service Pack 2"
+  ]
+}

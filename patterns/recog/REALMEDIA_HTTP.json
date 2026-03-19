@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-realmedia_http",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REALMEDIA_HTTP",
+  "taxonomy_name": "RealMedia HTTP",
+  "vendor": "RealMedia",
+  "product": "HTTP",
+  "source": {
+    "type": "recog",
+    "file": "REALMEDIA_HTTP.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_realmedia_http_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Helix Server Version ([0-9.]*) \\(win32\\) \\(RealServer compatible\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Helix Server Version ([0-9.]*) \\(win32\\) \\(RealServer compatible\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "RealMedia Helix Server - Windows"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Helix Server Version ([0-9.]*) \\(linux-\\S+\\) \\(RealServer compatible\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Helix Server Version ([0-9.]*) \\(linux-\\S+\\) \\(RealServer compatible\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "RealMedia Helix Server - Linux"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "Helix Server Version 9.0.4.960 (win32) (RealServer compatible)",
+    "Helix Server Version 9.0.4.960 (linux-2.2-libc6-i586-server) (RealServer compatible)"
+  ]
+}

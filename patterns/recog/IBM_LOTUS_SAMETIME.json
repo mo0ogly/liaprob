@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_lotus_sametime",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_LOTUS_SAMETIME",
+  "taxonomy_name": "IBM Lotus Sametime",
+  "vendor": "IBM",
+  "product": "Lotus Sametime",
+  "source": {
+    "type": "recog",
+    "file": "IBM_LOTUS_SAMETIME.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_lotus_sametime_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^639b61409215d770a99667b446c80ea1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Lotus Sametime"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to IBM Lotus Sametime$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Lotus Sametime"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:ibm:lotus_sametime:-",
+  "examples": [
+    "639b61409215d770a99667b446c80ea1",
+    "Welcome to IBM Lotus Sametime"
+  ]
+}

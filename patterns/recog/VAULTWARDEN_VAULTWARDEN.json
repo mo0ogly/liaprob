@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vaultwarden_vaultwarden",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VAULTWARDEN_VAULTWARDEN",
+  "taxonomy_name": "Vaultwarden Vaultwarden",
+  "vendor": "Vaultwarden",
+  "product": "Vaultwarden",
+  "source": {
+    "type": "recog",
+    "file": "VAULTWARDEN_VAULTWARDEN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vaultwarden_vaultwarden_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:9e8ba456e7e39ea364cc538959813719|86157069c9574d4c75b907e614d6a521)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Vaultwarden - unofficial Bitwarden compatible server"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Vaultwarden Web Vault$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Vaultwarden - unofficial Bitwarden compatible server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "9e8ba456e7e39ea364cc538959813719",
+    "86157069c9574d4c75b907e614d6a521",
+    "Vaultwarden Web Vault"
+  ]
+}

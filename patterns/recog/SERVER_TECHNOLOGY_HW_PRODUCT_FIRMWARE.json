@@ -1,0 +1,113 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-server_technology_hw_product_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERVER_TECHNOLOGY_HW_PRODUCT_FIRMWARE",
+  "taxonomy_name": "Server Technology {hw.product} Firmware",
+  "vendor": "Server Technology",
+  "product": "{hw.product} Firmware",
+  "source": {
+    "type": "recog",
+    "file": "SERVER_TECHNOLOGY_HW_PRODUCT_FIRMWARE.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_server_technology_hw_product_firmware_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b56508cc967af50baddfd69596901dab$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Server Technology Sentry Switched CDU"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Sentry Switched CDU$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Server Technology Sentry Switched CDU"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_server_technology_hw_product_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Sentry Switched (?:PDU|CDU)) v(\\d+(?:\\.\\d+)*[a-z](?:-[a-z][0-9])*) FTP server ready\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Server Technology Sentry Switched Device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Basic realm=\"(Sentry Switched (?:CDU|(?:DC )*PDU))\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Server Technology Sentry Switched Device"
+        }
+      ]
+    },
+    {
+      "id": "recog_server_technology_hw_product_firmware_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(Sentry Switched (?:CDU|(?:DC )*PDU))$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Server Technology Sentry Switched Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http",
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "b56508cc967af50baddfd69596901dab",
+    "Sentry Switched PDU v8.0w FTP server ready.",
+    "Sentry Switched CDU v7.1e-d1 FTP server ready.",
+    "Sentry Switched CDU",
+    "Basic realm=\"Sentry Switched CDU\"",
+    "Basic realm=\"Sentry Switched PDU\"",
+    "Basic realm=\"Sentry Switched DC PDU\"",
+    "Sentry Switched PDU",
+    "Sentry Switched DC PDU"
+  ]
+}

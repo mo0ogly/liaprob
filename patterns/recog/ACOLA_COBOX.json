@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-acola_cobox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACOLA_COBOX",
+  "taxonomy_name": "aCola CoBox",
+  "vendor": "aCola",
+  "product": "CoBox",
+  "source": {
+    "type": "recog",
+    "file": "ACOLA_COBOX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_acola_cobox_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^ACOLA CoBox Snr \\S+ V?(\\S+)(?: \\(\\d+\\))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "aCola CoBox"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "ACOLA CoBox Snr 238-204 V3.40",
+    "ACOLA CoBox Snr 6818376 04.5b5 (010430)",
+    "ACOLA CoBox Snr 784-208 V3.6"
+  ]
+}

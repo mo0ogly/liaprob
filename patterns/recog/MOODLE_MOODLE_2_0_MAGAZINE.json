@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-moodle_moodle_2_0_magazine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOODLE_MOODLE_2_0_MAGAZINE",
+  "taxonomy_name": "Moodle Moodle 2.0 : Magazine",
+  "vendor": "Moodle",
+  "product": "Moodle 2.0 : Magazine",
+  "source": {
+    "type": "recog",
+    "file": "MOODLE_MOODLE_2_0_MAGAZINE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_moodle_moodle_2_0_magazine_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d4af3be33d952c1f98684d985019757c",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moodle 2.0 : Magazine"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "d4af3be33d952c1f98684d985019757c"
+  ]
+}

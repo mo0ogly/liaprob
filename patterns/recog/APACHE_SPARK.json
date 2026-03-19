@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apache_spark",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_SPARK",
+  "taxonomy_name": "Apache Spark",
+  "vendor": "Apache",
+  "product": "Spark",
+  "source": {
+    "type": "recog",
+    "file": "APACHE_SPARK.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apache_spark_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^165de54ff29d30a3773c53e7911227d3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache Spark"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Spark (?:Master|Worker) at (?:spark:\\/\\/)?(\\S{1,512}):\\d{1,5}$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache Spark"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:apache:spark:-",
+  "examples": [
+    "165de54ff29d30a3773c53e7911227d3",
+    "Spark Master at spark://spark-master-0.foo.bar:7077",
+    "Spark Master at spark://10.10.10.10:7077",
+    "Spark Worker at 10.10.10.10:45339"
+  ]
+}

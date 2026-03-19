@@ -1,0 +1,186 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-alt_n_mdaemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALT_N_MDAEMON",
+  "taxonomy_name": "Alt-N MDaemon",
+  "vendor": "Alt-N",
+  "product": "MDaemon",
+  "source": {
+    "type": "recog",
+    "file": "ALT_N_MDAEMON.json",
+    "fingerprint_count": 15
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 15 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_alt_n_mdaemon_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}ESMTP MDaemon ([^ ]+\\.[^ ]+\\.[^ ]+) UNREGISTERED; *(.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}ESMTP MDaemon ([^ ]+\\.[^ ]+\\.[^ ]+) UNREGISTERED; *(.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "MDaemon mail server - with timestamp, unregistered"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}ESMTP MDaemon ([^ ]+\\.[^ ]+\\.[^ ]+); *(.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}ESMTP MDaemon ([^ ]+\\.[^ ]+\\.[^ ]+); *(.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "MDaemon mail server - with timestamp"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}ESMTP MDaemon ([^ ]+\\.[^ ]+\\.[^ ]+) ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}ESMTP MDaemon ([^ ]+\\.[^ ]+\\.[^ ]+) ready *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "MDaemon mail server - without timestamp"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}ESMTP service ready \\[[0-9]+\\] (?:using )?MDaemon v(\\d+\\.[\\d.]+) ([^ ]+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}ESMTP service ready \\[[0-9]+\\] (?:using )?MDaemon v(\\d+\\.[\\d.]+) ([^ ]+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "MDaemon mail server - with version revision"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}ESMTP service ready \\[[0-9]+\\] (?:\\()?MDaemon v([\\d.]+) ([^ ]+) ([^ )]+)(?:\\))? *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}ESMTP service ready \\[[0-9]+\\] (?:\\()?MDaemon v([\\d.]+) ([^ ]+) ([^ )]+)(?:\\))? *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "MDaemon mail server - with service pack"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) {1,8}ESMTP service ready \\[[0-9]+\\] \\(MDaemon v([^ ]+\\.[^ ]+) ([^ ]+) ([^ ]+) ([^ ]+)\\) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) {1,8}ESMTP service ready \\[[0-9]+\\] \\(MDaemon v([^ ]+\\.[^ ]+) ([^ ]+) ([^ ]+) ([^ ]+)\\) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "MDaemon mail server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^500[ -]What\\? I don't understand that\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alt-N MDaemon SMTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^221[ -]See ya in cyberspace$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "221 See ya in cyberspace"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^502[ -]command is not active$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alt-N MDaemon - expn variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -]Help system currently inactive\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alt-N MDaemon - 214 Help system currently inactive."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^250[ -]Why is there an NOOP instruction\\?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alt-N MDaemon - noop variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^221[ -]See ya in cyberspace$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "221 See ya in cyberspace"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^250[ -]RSET\\?  Well, OK\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "500 What? I don't understand that."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^502[ -]Hey!  I don't let remote systems TURN on me\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "502 Hey!  I don't let remote systems TURN on me."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^502[ -]command is not active$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alt-N MDaemon - vrfy variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:altn:mdaemon:{version}",
+  "examples": [
+    "foo.bar ESMTP MDaemon 4.0.5 UNREGISTERED; Sat, 06 Oct 2001 09:10:56 +0400",
+    "foo.bar ESMTP MDaemon 4.0.2; Sat, 06 Oct 2001 01:46:44 -0500",
+    "foo.bar ESMTP MDaemon 3.5.7 ready",
+    "foo.bar ESMTP service ready [1] MDaemon v2.84 R",
+    "foo.bar ESMTP service ready [1] using MDaemon v3.0.3 R",
+    "foo.bar ESMTP service ready [1] MDaemon v2.8.7.0 R",
+    "foo.bar ESMTP service ready [1] MDaemon v2.7 SP5 R",
+    "foo.bar ESMTP service ready [1] (MDaemon v2.7 SP4 R)",
+    "foo.bar ESMTP service ready [1] (MDaemon v2.5 rB b1 32-T)",
+    "500 What? I don't understand that."
+  ]
+}

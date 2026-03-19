@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gdm_scm_manager_module",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GDM_SCM_MANAGER_MODULE",
+  "taxonomy_name": "GDM SCM Manager module",
+  "vendor": "GDM",
+  "product": "SCM Manager module",
+  "source": {
+    "type": "recog",
+    "file": "GDM_SCM_MANAGER_MODULE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_gdm_scm_manager_module_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SpectraComm Manager \\(SCM\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SpectraComm Manager Card"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "SpectraComm Manager (SCM)"
+  ]
+}

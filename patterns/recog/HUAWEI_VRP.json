@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-huawei_vrp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUAWEI_VRP",
+  "taxonomy_name": "Huawei VRP",
+  "vendor": "Huawei",
+  "product": "VRP",
+  "source": {
+    "type": "recog",
+    "file": "HUAWEI_VRP.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_huawei_vrp_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "VRP[^V]*Version ([\\d.]+) \\(([^\\s]+) (V\\d{3,3}R\\d{3,3}(?:C\\d{2,2})?(?:SPC\\d+|SPH\\d+|CP\\d+|HP\\d+)?)\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HUAWEI VRP"
+        }
+      ]
+    },
+    {
+      "id": "recog_huawei_vrp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^HUAWEI.VRP.([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^HUAWEI.VRP.([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Huawei Versatile Routing Platform (VRP)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh",
+    "snmp"
+  ],
+  "examples": [
+    "Huawei Versatile Routing Platform Software\n      VRP (R) software, Version 8.120 (CE6870EI V200R001C00SPC700) Copyright (C) 2012-2016 Huawei Technologies Co., Ltd.",
+    "Huawei Versatile Routing Platform Software\n      VRP (R) software, Version 5.120 (AR2200 V200R003C00) Copyright (C) 2011-2012 HUAWEI TECH CO., LTD",
+    "Huawei Versatile Routing Platform Software\n      VRP (R) software, Version 5.111 (5310EI V200R003) Copyright (C) 2011-2012 HUAWEI TECH CO., LTD",
+    "HUAWEI-VRP-3.10",
+    "HUAWEI_VRPV8.0"
+  ]
+}

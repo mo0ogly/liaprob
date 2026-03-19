@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rhino_software_serv_u",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RHINO_SOFTWARE_SERV_U",
+  "taxonomy_name": "Rhino Software Serv-U",
+  "vendor": "Rhino Software",
+  "product": "Serv-U",
+  "source": {
+    "type": "recog",
+    "file": "RHINO_SOFTWARE_SERV_U.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_rhino_software_serv_u_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Serv-U_([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Serv-U_([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Serv-U SSH"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "examples": [
+    "Serv-U_7.4.0.1"
+  ]
+}

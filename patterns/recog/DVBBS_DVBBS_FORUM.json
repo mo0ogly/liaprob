@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dvbbs_dvbbs_forum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DVBBS_DVBBS_FORUM",
+  "taxonomy_name": "Dvbbs Dvbbs Forum",
+  "vendor": "Dvbbs",
+  "product": "Dvbbs Forum",
+  "source": {
+    "type": "recog",
+    "file": "DVBBS_DVBBS_FORUM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_dvbbs_dvbbs_forum_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^9a9ee243bc8d08dac4448a5177882ea9",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dvbbs Forum"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "9a9ee243bc8d08dac4448a5177882ea9"
+  ]
+}

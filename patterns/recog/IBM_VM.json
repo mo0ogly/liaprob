@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_vm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_VM",
+  "taxonomy_name": "IBM VM",
+  "vendor": "IBM",
+  "product": "VM",
+  "source": {
+    "type": "recog",
+    "file": "IBM_VM.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_vm_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) (?:ESMTP )?running IBM VM SMTP (.+)(?:; | on )(.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) (?:ESMTP )?running IBM VM SMTP (.+)(?:; | on )(.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "IBM SMTP server for VM/ESA on IBM S/390 and IBM eserver z/Series 900."
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^501[ -]Syntax Error\\. Only ListId or Userid allowed as argument to this command *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM VM SMTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -]([^ ]+) is running the IBM VM operating system$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM VM"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar running IBM VM SMTP Level 640 on Thu, 30 Nov 2017 01:08:59 PDT",
+    "foo.bar running IBM VM SMTP Level 3A0 on Mon, 10 Sep 2001 07:21:54 EDT",
+    "foo.bar ESMTP running IBM VM SMTP V2R4; Mon, 10 Sep 2001 07:24:35 -0400 (EDT)"
+  ]
+}

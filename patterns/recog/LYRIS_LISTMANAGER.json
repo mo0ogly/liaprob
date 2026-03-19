@@ -1,0 +1,88 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lyris_listmanager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LYRIS_LISTMANAGER",
+  "taxonomy_name": "Lyris ListManager",
+  "vendor": "Lyris",
+  "product": "ListManager",
+  "source": {
+    "type": "recog",
+    "file": "LYRIS_LISTMANAGER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    80,
+    119,
+    443,
+    587,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lyris_listmanager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ListManagerWeb/(\\S+)",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ListManagerWeb/(\\S+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Lyris ListManager"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_lyris_listmanager_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) Lyris ListManager NNTP Service ready",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lyris Listmanager"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Lyris ListManager service ready$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lyris ListManager"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp",
+    "nntp",
+    "http"
+  ],
+  "examples": [
+    "ListManagerWeb/8.8a (based on Tcl-Webserver/3.4.2)",
+    "blah Lyris ListManager NNTP Service ready (posting ok).",
+    "foo.bar ESMTP Lyris ListManager service ready"
+  ]
+}

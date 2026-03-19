@@ -1,0 +1,133 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_solaris",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_SOLARIS",
+  "taxonomy_name": "Oracle Solaris",
+  "vendor": "Oracle",
+  "product": "Solaris",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_SOLARIS.json",
+    "fingerprint_count": 9
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 9 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_solaris_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) FTP Server \\(SunOS 5.(1[1-9])\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.(1[1-9])\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 11 and up with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Oracle|Sun)?\\s?Solaris\\s?(1[1-9]?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 11 and up"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Oracle|Sun)?\\s?SunOS\\s?5.(1[1-9])?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle/Solaris 5.11 and upwards"
+        }
+      ]
+    },
+    {
+      "id": "recog_oracle_solaris_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS (\\S+) 5\\.(1[1-9]) \\S+ (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle/Solaris 5.11 and upwards"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS 5\\.(1[1-9]) (\\S+) sparc SUNW,([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle/Solaris 5.11 and upwards - Call Manager variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS (\\S+) 5\\.(1[1-9]) \\S+ (\\S+) \\S+ SUNW,([^,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle/Solaris 5.11 and upwards - SUNW variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS 5\\.(1[1-9]) \\S+ (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle/Solaris 5.11 and upwards - generic version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS release:5\\.(1[1-9]) version:\\S+ machine:(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.11 and upwards"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "ftp",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:oracle:solaris:{os.version}",
+  "examples": [
+    "example.com FTP server (SunOS 5.11) ready.",
+    "processor=\"sun4m\", system=\"SunOS/5.11\"",
+    "processor=\"sun4m\", system=\"SunOS5.11\"",
+    "Solaris 11.3",
+    "Solaris 11",
+    "SunOS 5.11",
+    "SunOS sysname 5.11 Generic_118833-33 sun4u",
+    "SunOS 5.11 sun4u sparc SUNW,Sun-Fire-V210, Class 4 Call Manager",
+    "SunOS 5.12 sun4u sparc SUNW,Sun-Fire-V210, Class 4 Call Manager",
+    "SunOS integra01 5.11 Generic_127127-11 sun4v sparc SUNW,T5240"
+  ]
+}

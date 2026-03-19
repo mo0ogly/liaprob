@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-connectwise_r1soft_server_backup_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONNECTWISE_R1SOFT_SERVER_BACKUP_MANAGER",
+  "taxonomy_name": "ConnectWise R1Soft Server Backup Manager",
+  "vendor": "ConnectWise",
+  "product": "R1Soft Server Backup Manager",
+  "source": {
+    "type": "recog",
+    "file": "CONNECTWISE_R1SOFT_SERVER_BACKUP_MANAGER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_connectwise_r1soft_server_backup_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f46baa8367ecf994a9c50ce7fb89f483$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ConnectWise R1Soft Server Backup Manager (SBM)"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Server Backup Manager SE\\s*(?:- .{1,512})?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ConnectWise R1Soft Server Backup Manager (SBM)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "f46baa8367ecf994a9c50ce7fb89f483",
+    "Server Backup Manager SE",
+    "Server Backup Manager SE - foo.bar",
+    "Server Backup Manager SE - [1234] FooBar"
+  ]
+}

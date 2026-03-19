@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ntp_ntp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NTP_NTP",
+  "taxonomy_name": "NTP NTP",
+  "vendor": "NTP",
+  "product": "NTP",
+  "source": {
+    "type": "recog",
+    "file": "NTP_NTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_ntp_ntp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ p]+)(p[^ \"]+)?[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"FreeBSD/?(?:[^ ]+-NETSCALER-([^ ]+))\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ p]+)(p[^ \"]+)?[^\"]+\",.*processor=\"([^ ]+)\",.*system=\"FreeBSD/?(?:[^ ]+-NETSCALER-([^ ]+))\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ntpd running on Citrix Netscaler, which is based on FreeBSD"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:ntp:ntp:{version}",
+  "examples": [
+    "version=\"ntpd 4.2.6p2@1.2194 Wed Nov 24 15:54:11 UTC 2010 (1)\",\n      processor=\"i386\", system=\"FreeBSD/6.3-NETSCALER-9.3\", leap=00, stratum=3,",
+    "version=\"ntpd 4.2.6p3-a (1)\", processor=\"amd64\", system=\"FreeBSD/8.4-NETSCALER-10.5\",\n      leap=3, stratum=16, precision=-21, rootdelay=0.000, rootdisp=1264777.230,"
+  ]
+}

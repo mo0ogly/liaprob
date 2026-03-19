@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-check_point_dns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHECK_POINT_DNS",
+  "taxonomy_name": "Check Point DNS",
+  "vendor": "Check Point",
+  "product": "DNS",
+  "source": {
+    "type": "recog",
+    "file": "CHECK_POINT_DNS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_check_point_dns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Meta IP[\\s\\/]DNS (?:V[\\d\\.]+ )?- BIND V([\\d\\.]+(?:-REL)?) \\(Build (\\d+)\\s?\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Meta IP[\\s\\/]DNS (?:V[\\d\\.]+ )?- BIND V([\\d\\.]+(?:-REL)?) \\(Build (\\d+)\\s?\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Check Point Meta IP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "Meta IP DNS - BIND V8.2.7-REL (Build 31)",
+    "Meta IP/DNS V4.1 - BIND V8.1.2 (Build 4704 )"
+  ]
+}

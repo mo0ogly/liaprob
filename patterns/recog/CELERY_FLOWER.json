@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-celery_flower",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CELERY_FLOWER",
+  "taxonomy_name": "Celery Flower",
+  "vendor": "Celery",
+  "product": "Flower",
+  "source": {
+    "type": "recog",
+    "file": "CELERY_FLOWER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_celery_flower_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^fcb9ede4815b4949f75cbead02450a72$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Celery Flower"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Celery Flower|Flower)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Celery Flower Dashboard"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "fcb9ede4815b4949f75cbead02450a72",
+    "Celery Flower",
+    "Flower"
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-miniupnp_project_miniupnpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MINIUPNP_PROJECT_MINIUPNPD",
+  "taxonomy_name": "MiniUPnP Project MiniUPnPd",
+  "vendor": "MiniUPnP Project",
+  "product": "MiniUPnPd",
+  "source": {
+    "type": "recog",
+    "file": "MINIUPNP_PROJECT_MINIUPNPD.json",
+    "fingerprint_count": 31
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 31 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_miniupnp_project_miniupnpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Linux/(\\S+) UPnP/[\\d\\.]+ miniupnpd/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Linux/(\\S+) UPnP/[\\d\\.]+ miniupnpd/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Linux MiniUPnPd UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Tomato UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Tomato UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Tomato UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^UPnP/Tomato ([\\d\\.]+)?[\\w\\s\\.-]{1,30} UPnP/[\\d\\.]+ MiniUPnPd/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^UPnP/Tomato ([\\d\\.]+)?[\\w\\s\\.-]{1,30} UPnP/[\\d\\.]+ MiniUPnPd/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "TomatoUSB UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^(RT-\\w+) UPnP/\\S+ MiniUPnPd/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^(RT-\\w+) UPnP/\\S+ MiniUPnPd/([\\d.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Asus WAP UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^(AsusWRT)\\/(\\S+) UPnP/\\S+ MiniUPnPd/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^(AsusWRT)\\/(\\S+) UPnP/\\S+ MiniUPnPd/([\\d.]+)$",
+          "version_group": 3,
+          "case_insensitive": true,
+          "note": "AsusWRT Firmware"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^DrayTek/Vigor(\\S+) UPnP/\\S+ miniupnpd/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^DrayTek/Vigor(\\S+) UPnP/\\S+ miniupnpd/([\\d.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "DrayTek Vigor router UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^OpenWRT/kamikaze UPnP/\\S+ MiniUPnPd/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^OpenWRT/kamikaze UPnP/\\S+ MiniUPnPd/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenWRT Kamikaze WAP UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Netgear/\\S+ UPnP/\\S+ miniupnpd/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Netgear/\\S+ UPnP/\\S+ miniupnpd/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Netgear DG834G or WNDR3300 WAP UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Debian\\/(\\S+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Debian\\/(\\S+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "miniupnpd on a Debian variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Fedora(?:Core)?\\/(\\S+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Fedora(?:Core)?\\/(\\S+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "miniupnpd on a Fedora variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/([\\d\\.]+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/([\\d\\.]+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/bionic UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/bionic UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu bionic/18.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/yakkety UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/yakkety UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu yakkety/16.10"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/xenial UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/xenial UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu xenial/16.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/utopic UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/utopic UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu utopic/14.10"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/trusty UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/trusty UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu trusty/14.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/saucy UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/saucy UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu saucy/13.10"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/raring UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/raring UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu raring/13.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/quantal UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/quantal UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu quantal/12.10"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/precise UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/precise UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu precise/12.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/oneiric UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/oneiric UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu oneiric/11.10"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/natty UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/natty UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu natty/11.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/maverick UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/maverick UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu maverick/10.10"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/lucid UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/lucid UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu lucid/10.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/karmic UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/karmic UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu karmic/9.10"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/jaunty UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/jaunty UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu jaunty/9.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Ubuntu\\/hardy UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Ubuntu\\/hardy UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "miniupnpd on an Ubuntu hardy/8.04"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Linux Mips (\\S+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Linux Mips (\\S+) UPnP/\\S+ MiniUPnPd/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Linux MIPS UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^SmoothWall Express/(\\S+) UPnP/\\S+ miniupnpd/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^SmoothWall Express/(\\S+) UPnP/\\S+ miniupnpd/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Smoothwall Express UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^TBS/R2 UPnP/[\\d\\.]+ MiniUPnPd/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^TBS/R2 UPnP/[\\d\\.]+ MiniUPnPd/([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "D-Link generic"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Roku UPnP/\\S+ MiniUPnPd/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Roku UPnP/\\S+ MiniUPnPd/([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Roku without a version"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:miniupnp_project:miniupnpd:{version}",
+  "examples": [
+    "Linux/Cross_compiled UPnP/1.0 miniupnpd/1.0",
+    "Linux/2.6.29.6-217.2.3.fc11.i686.PAE UPnP/1.0 miniupnpd/1.0",
+    "Linux/2.4.21 UPnP/1.0 miniupnpd/1.0",
+    "Tomato UPnP/1.0 MiniUPnPd/1.2",
+    "UPnP/Tomato 1.28.9014 MIPSR2-RAF-v1.3g K26 UPnP/1.1 MiniUPnPd/1.8",
+    "UPnP/Tomato 1.28.0000 MIPSR2-132 K26 USB VPN UPnP/1.1 MiniUPnPd/1.9",
+    "UPnP/Tomato MIPSR2-140 K26 UPnP/1.1 MiniUPnPd/2.0",
+    "UPnP/Tomato MIPSR2Toastman-RT K26 UPnP/1.1 MiniUPnPd/2.0",
+    "RT-G32 UPnP/1.0 MiniUPnPd/1.2",
+    "AsusWRT/3.0.0.4 UPnP/1.1 MiniUPnPd/1.9"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hubitat_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUBITAT_LINUX",
+  "taxonomy_name": "Hubitat Linux",
+  "vendor": "Hubitat",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "HUBITAT_LINUX.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hubitat_linux_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^eab32ee5b399d2cd504d8342ccf51ec3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Hubitat Elevation"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_hubitat_linux_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Hubitat Elevation,OU=Hub,O=Hubitat\\\\, Inc\\.,L=Scottsdale,ST=Arizona,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Hubitat Device Hub"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "eab32ee5b399d2cd504d8342ccf51ec3",
+    "CN=Hubitat Elevation,OU=Hub,O=Hubitat\\, Inc.,L=Scottsdale,ST=Arizona,C=US"
+  ]
+}

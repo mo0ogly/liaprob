@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-chronicle_chronicle_2_9_theme_steve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHRONICLE_CHRONICLE_2_9_THEME_STEVE",
+  "taxonomy_name": "chronicle chronicle (2.9) theme-steve",
+  "vendor": "chronicle",
+  "product": "chronicle (2.9) theme-steve",
+  "source": {
+    "type": "recog",
+    "file": "CHRONICLE_CHRONICLE_2_9_THEME_STEVE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_chronicle_chronicle_2_9_theme_steve_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^23426658f03969934b758b7eb9e8f602",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "chronicle (2.9) theme-steve"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "23426658f03969934b758b7eb9e8f602"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cleo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLEO",
+  "taxonomy_name": "Cleo",
+  "vendor": "Cleo",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "CLEO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_cleo_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Cleo (\\S+)/(\\S+) SSH FTP server$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^Cleo (\\S+)/(\\S+) SSH FTP server$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Cleo networks Harmony, VLProxy, VLTrader, others"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "examples": [
+    "Cleo Harmony/5.5.0.3 SSH FTP server",
+    "Cleo VLProxy/3.2 SSH FTP server"
+  ]
+}

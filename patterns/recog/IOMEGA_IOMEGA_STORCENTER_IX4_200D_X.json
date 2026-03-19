@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-iomega_iomega_storcenter_ix4_200d_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IOMEGA_IOMEGA_STORCENTER_IX4_200D_X",
+  "taxonomy_name": "Iomega Iomega StorCenter ix4-200d x",
+  "vendor": "Iomega",
+  "product": "Iomega StorCenter ix4-200d x",
+  "source": {
+    "type": "recog",
+    "file": "IOMEGA_IOMEGA_STORCENTER_IX4_200D_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_iomega_iomega_storcenter_ix4_200d_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^37a99d2ddea8b49f701db457b9a8ffed",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Iomega StorCenter ix4-200d x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "37a99d2ddea8b49f701db457b9a8ffed"
+  ]
+}

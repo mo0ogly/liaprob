@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_ilo_2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_ILO_2",
+  "taxonomy_name": "HP iLO 2",
+  "vendor": "HP",
+  "product": "iLO 2",
+  "source": {
+    "type": "recog",
+    "file": "HP_ILO_2.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_ilo_2_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^HP Integrated Lights-Out 2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Integrated Lights-Out 2"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:hp:integrated_lights-out_2_firmware:-",
+  "examples": [
+    "HP Integrated Lights-Out 2"
+  ]
+}

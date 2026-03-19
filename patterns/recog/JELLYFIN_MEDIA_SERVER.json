@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-jellyfin_media_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JELLYFIN_MEDIA_SERVER",
+  "taxonomy_name": "Jellyfin Media Server",
+  "vendor": "Jellyfin",
+  "product": "Media Server",
+  "source": {
+    "type": "recog",
+    "file": "JELLYFIN_MEDIA_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_jellyfin_media_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d2cef6047a604012455f5c9a1cd4d960$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Jellyfin Media Server"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Jellyfin$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Jellyfin media server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "d2cef6047a604012455f5c9a1cd4d960",
+    "Jellyfin"
+  ]
+}

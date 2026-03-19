@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_ftp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_FTP",
+  "taxonomy_name": "Apple FTP",
+  "vendor": "Apple",
+  "product": "FTP",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_FTP.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_ftp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512})\\s{1,8}FTP Server \\(Version:\\s+Mac OS X Server\\s+([\\d\\.]+).*\\) ready\\.?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FTPD on Mac OS X Server with a version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512})\\s{1,8}FTP Server \\(Version:\\s+Mac OS X Server\\) ready\\.?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FTPD on Mac OS X Server without a version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:apple:mac_os_x_server:{os.version}",
+  "examples": [
+    "example.com FTP server (Version:  Mac OS X Server 10.3 - +GSSAPI) ready.",
+    "this is a banner.  change it.\r\nexample.com FTP server (Version:  Mac OS X Server 10.3 - +GSSAPI) ready.",
+    "example.com FTP server (Version:  Mac OS X Server) ready.",
+    "this is a banner.  change it.\r\nexample.com FTP server (Version:  Mac OS X Server) ready."
+  ]
+}

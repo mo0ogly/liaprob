@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gigamon_gigavue_hd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GIGAMON_GIGAVUE_HD",
+  "taxonomy_name": "Gigamon GigaVUE HD",
+  "vendor": "Gigamon",
+  "product": "GigaVUE HD",
+  "source": {
+    "type": "recog",
+    "file": "GIGAMON_GIGAVUE_HD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_gigamon_gigavue_hd_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) .*GigaVUE-H-Series ([\\d\\.]+) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gigamon GigaVUE HD"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Linux giga1-hd1-wax 2.6.34-GIGAMONuni-gvhd GigaVUE-H-Series 3.0.06 #1681 2013-11-06 07:42:52 ppc",
+    "Linux GigaVUE-HB1-2 2.6.34-GIGAMONuni-gvhb1 GigaVUE-H-Series 3.0.02 #13 2013-08-22 09:58:43 ppc"
+  ]
+}

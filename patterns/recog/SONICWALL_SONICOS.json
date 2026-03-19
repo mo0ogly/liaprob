@@ -1,0 +1,136 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sonicwall_sonicos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SONICWALL_SONICOS",
+  "taxonomy_name": "SonicWall SonicOS",
+  "vendor": "SonicWall",
+  "product": "SonicOS",
+  "source": {
+    "type": "recog",
+    "file": "SONICWALL_SONICOS.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sonicwall_sonicos_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^318ed14b5eedf8581f7e79439504e282$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell SonicWall"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)^(?:Dell )?Sonicwall - Authentication$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sonicwall firewalls"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_sonicwall_sonicos_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"DELL \\| SonicWALL SonicPoint",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SonicWall SonicPoint (non-specific)"
+        }
+      ]
+    },
+    {
+      "id": "recog_sonicwall_sonicos_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SonicWALL (\\S+)\\s*(\\d+).*?\\(SonicOS \\S+ (\\d[^\\)]+)\\)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SonicWall - SonicOS Enhanced variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SonicWALL (\\S+).*?\\(SonicOS \\S+ ((?:\\d\\.)+\\d+-\\d+[a-zA-Z]).*\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SonicWall - SonicOS Enhanced variant without hardware model"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SonicWALL (.*?)\\s+\\(([^\\)]+)\\)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SonicWall"
+        }
+      ]
+    },
+    {
+      "id": "recog_sonicwall_sonicos_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=[0-9\\.]+,OU=HTTPS Management Certificate for SonicWALL \\(self-signed\\),O=HTTPS Management Certificate for SonicWALL \\(self-signed\\),L=Sunnyvale,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SonicWALL Network Security Appliance firewall"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http",
+    "tls",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:sonicwall:sonicos:-",
+  "examples": [
+    "318ed14b5eedf8581f7e79439504e282",
+    "SonicWall - Authentication",
+    "Basic realm=\"DELL | SonicWALL SonicPoint ACe/ACi/N2\"",
+    "SonicWALL NSA 220 (SonicOS Enhanced 5.8.1.2-20o)",
+    "SonicWALL TZ 215 wireless-N (SonicOS Enhanced 5.8.1.2-6o)",
+    "SonicWALL TZ190 Enhanced (SonicOS Enhanced 3.6.0.4-30e)",
+    "SonicWALL SuperMassive 9200 (SonicOS Enhanced 6.2.5.3-35n)",
+    "SonicWALL SOHO (SonicOS Enhanced 5.9.1.4-4o)",
+    "SonicWALL SOHO wireless-N (SonicOS Enhanced 6.2.5.1-26n--HF175723-2n)",
+    "SonicWALL StrongARM / 233 Mhz (PRO 200)"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f6633e2c686cd53429f626cab6f15613$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sophos Appliance"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_unknown_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=SophosApplianceCertificate",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sophos Appliance"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "f6633e2c686cd53429f626cab6f15613",
+    "CN=SophosApplianceCertificate_C330AC22W713PAF,OU=OU,O=Green House Data,L=Cheyenne,ST=WY,C=US",
+    "CN=SophosApplianceCertificate_C22315405928-UU5JKO,OU=OU,O=(null),L=NA,ST=NA,C=PK",
+    "CN=SophosApplianceCertificate,OU=OU,O=Sophos,L=Abingdon,ST=Oxfordshire,C=GB"
+  ]
+}

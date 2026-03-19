@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gentoo_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GENTOO_LINUX",
+  "taxonomy_name": "Gentoo Linux",
+  "vendor": "Gentoo",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "GENTOO_LINUX.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_gentoo_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(Gentoo(?:/Linux)?\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gentoo Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Gentoo(?: Linux)\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gentoo Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:gentoo:linux:-",
+  "examples": [
+    "Apache/2.2.6 (Gentoo) DAV/2 mod_python/3.3.1",
+    "Gentoo Linux",
+    "Gentoo Linux 1.0"
+  ]
+}

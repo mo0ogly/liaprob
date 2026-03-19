@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_vpn_3000_concentrator",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_VPN_3000_CONCENTRATOR",
+  "taxonomy_name": "Cisco VPN 3000 Concentrator",
+  "vendor": "Cisco",
+  "product": "VPN 3000 Concentrator",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_VPN_3000_CONCENTRATOR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_vpn_3000_concentrator_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco Systems, Inc\\./VPN 3000 Concentrator(?: Series)? Version (\\S+) built",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco VPN 3000 Concentrator"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:cisco:vpn_3000_concentrator_series_software:{os.version}",
+  "examples": [
+    "Cisco Systems, Inc./VPN 3000 Concentrator Series Version 3.0.2.Rel built by vmurphy on Apr 05 2001 21:41:33",
+    "Cisco Systems, Inc./VPN 3000 Concentrator Version 4.1.3.Rel built by vmurphy on Apr 12 2004 04:06:15",
+    "Cisco Systems, Inc./VPN 3000 Concentrator Version 4.1.7.H built by vmurphy on Oct 03 2005 23:20:53"
+  ]
+}

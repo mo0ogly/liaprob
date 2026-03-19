@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_sun_java_system_directory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_SUN_JAVA_SYSTEM_DIRECTORY_SERVER",
+  "taxonomy_name": "Sun Sun Java System Directory Server",
+  "vendor": "Sun",
+  "product": "Sun Java System Directory Server",
+  "source": {
+    "type": "recog",
+    "file": "SUN_SUN_JAVA_SYSTEM_DIRECTORY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_sun_java_system_directory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i:vendorname1\\x18\\x04\\x16Sun Microsystems, Inc.0.+\\x04\\rvendorversion1.{1,2}\\x04.{1,2}Sun[- ]Java\\(tm\\)[- ]System[- ]Directory(?: Server)?/(\\d\\.\\d+[\\w.]*)0.{1,3}\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i:vendorname1\\x18\\x04\\x16Sun Microsystems, Inc.0.+\\x04\\rvendorversion1.{1,2}\\x04.{1,2}Sun[- ]Java\\(tm\\)[- ]System[- ]Directory(?: Server)?/(\\d\\.\\d+[\\w.]*)0.{1,3}\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sun Java(TM) System Directory Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "dmVuZG9yTmFtZTEYBBZTdW4gTWljcm9zeXN0ZW1zLCBJbmMuMEMEDXZlbmRvclZlcnNpb24xM\n      gQwU3VuIEphdmEoVE0pIFN5c3RlbSBEaXJlY3RvcnkgU2VydmVyLzUuMl9QYXRjaF82MC8E",
+    "dmVuZG9yTmFtZTEYBBZTdW4gTWljcm9zeXN0ZW1zLCBJbmMuMFYEDXZlbmRvclZlcnNpb24xR\n      QRDU3VuLUphdmEodG0pLVN5c3RlbS1EaXJlY3RvcnkvNi4yX1BSX0NVTVVMQVRJVkVfNl8yXz\n      Y1OTc1MjNfNjUyNzkwOTBNBA==",
+    "dmVuZG9yTmFtZTEYBBZTdW4gTWljcm9zeXN0ZW1zLCBJbmMuMDYEDXZlbmRvclZlcnNpb24xJ\n      QQjU3VuLUphdmEodG0pLVN5c3RlbS1EaXJlY3RvcnkvNi4zLjEwLwQ=",
+    "dmVuZG9yTmFtZTEYBBZTdW4gTWljcm9zeXN0ZW1zLCBJbmMuMDoEDXZlbmRvclZlcnNpb24xK\n      QQnU3VuLUphdmEodG0pLVN5c3RlbS1EaXJlY3RvcnkvNi4zLjEuMS4xMIGJBA=="
+  ]
+}

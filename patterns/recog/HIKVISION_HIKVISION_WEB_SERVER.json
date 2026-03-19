@@ -1,0 +1,85 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hikvision_hikvision_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HIKVISION_HIKVISION_WEB_SERVER",
+  "taxonomy_name": "Hikvision Hikvision Web Server",
+  "vendor": "Hikvision",
+  "product": "Hikvision Web Server",
+  "source": {
+    "type": "recog",
+    "file": "HIKVISION_HIKVISION_WEB_SERVER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hikvision_hikvision_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:89b932fcc47cf4ca3faadb0cfdef89cf|efca7d9aeaad122133c65cdf628ac574)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Hikvision DVR"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:Hikvision|DNVRS|DVRDVS)-Webs$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Web server found on DVR and webcam servers sourced from Hikvision"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_hikvision_hikvision_web_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Basic|Digest) realm=\"hikvision\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Web server found on DVR and webcam servers sourced from Hikvision"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "examples": [
+    "89b932fcc47cf4ca3faadb0cfdef89cf",
+    "efca7d9aeaad122133c65cdf628ac574",
+    "Hikvision-Webs",
+    "DVRDVS-Webs",
+    "DNVRS-Webs",
+    "Basic realm=\"hikvision\""
+  ]
+}

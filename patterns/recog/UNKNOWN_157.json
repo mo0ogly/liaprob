@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP (\\S+) Switch ([^,]+), revision ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Switch - extended model variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP J8692A Switch E3500yl-24G, revision K.15.05.0002, ROM K.15.13 (/sw/code/build/btm(K_15_05)) (Formerly ProCurve)",
+    "HP J8697A Switch E5406zl, revision K.15.06.0006, ROM K.15.19 (/sw/code/build/btm(K_15_06)) (Formerly ProCurve)",
+    "HP J8698A Switch E5412zl, revision K.15.08.0007, ROM K.15.28 (/ws/swbuildm/rel_galt_qaoff/code/build/btm(rel_galt_qaoff)) (Formerly ProCurve)",
+    "HP J9477A Switch E8206zl, revision K.15.07.0008, ROM K.15.28 (/ws/swbuildm/ec_rel_ftcollins_qaoff/code/build/btm(ec_rel_ftcollins_qaoff)) (Formerly ProCurve)"
+  ]
+}

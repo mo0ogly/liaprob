@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_sun_directory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_SUN_DIRECTORY_SERVER",
+  "taxonomy_name": "Oracle Sun Directory Server",
+  "vendor": "Oracle",
+  "product": "Sun Directory Server",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_SUN_DIRECTORY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_sun_directory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i:vendorname1\\x14\\x04\\x12Oracle Corporation0.\\x04\\rvendorversion1.\\x04.Sun-Directory-Server/([\\w.]+)[0 ].{1,3}\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i:vendorname1\\x14\\x04\\x12Oracle Corporation0.\\x04\\rvendorversion1.\\x04.Sun-Directory-Server/([\\w.]+)[0 ].{1,3}\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle Sun Directory Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "dmVuZG9yTmFtZTEUBBJPcmFjbGUgQ29ycG9yYXRpb24wMgQNdmVuZG9yVmVyc2lvbjEhBB9Td\n      W4tRGlyZWN0b3J5LVNlcnZlci8xMS4xLjEuNy4yMCAE",
+    "dmVuZG9yTmFtZTEUBBJPcmFjbGUgQ29ycG9yYXRpb24wRwQNdmVuZG9yVmVyc2lvbjE2BDRTd\n      W4tRGlyZWN0b3J5LVNlcnZlci8xMS4xLjEuNy4wX1BSXzE2Nzc2ODI2XzE2ODQxOTg1ME0E"
+  ]
+}

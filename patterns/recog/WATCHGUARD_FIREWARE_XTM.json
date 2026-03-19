@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-watchguard_fireware_xtm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WATCHGUARD_FIREWARE_XTM",
+  "taxonomy_name": "WatchGuard Fireware XTM",
+  "vendor": "WatchGuard",
+  "product": "Fireware XTM",
+  "source": {
+    "type": "recog",
+    "file": "WATCHGUARD_FIREWARE_XTM.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_watchguard_fireware_xtm_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^1ecd8df7909afd77188cee9c33042c55$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WatchGuard Fireware XTM web interface"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Fireware XTM User Authentication$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WatchGuard Fireware XTM login page"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_watchguard_fireware_xtm_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "(?i)^CN=Fireware web CA,OU=Fireware,O=WatchGuard(?: CA)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WatchGuard Fireware"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:watchguard:fireware_xtm:-",
+  "examples": [
+    "1ecd8df7909afd77188cee9c33042c55",
+    "Fireware XTM User Authentication",
+    "CN=Fireware web ca,OU=Fireware,O=WatchGuard",
+    "CN=Fireware web CA,OU=Fireware,O=Watchguard CA"
+  ]
+}

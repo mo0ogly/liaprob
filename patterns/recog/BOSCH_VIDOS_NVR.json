@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bosch_vidos_nvr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOSCH_VIDOS_NVR",
+  "taxonomy_name": "Bosch VIDOS-NVR",
+  "vendor": "Bosch",
+  "product": "VIDOS-NVR",
+  "source": {
+    "type": "recog",
+    "file": "BOSCH_VIDOS_NVR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_bosch_vidos_nvr_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^VCS-VIDOS-NVR$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Bosch VCS VIDOS-NVR network video recorder"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "VCS-VIDOS-NVR"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-moodle_moodle_1_8_2_1_9_x_multiple_default_themes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOODLE_MOODLE_1_8_2_1_9_X_MULTIPLE_DEFAULT_THEMES",
+  "taxonomy_name": "Moodle Moodle (1.8.2, 1.9.x, multiple default themes)",
+  "vendor": "Moodle",
+  "product": "Moodle (1.8.2, 1.9.x, multiple default themes)",
+  "source": {
+    "type": "recog",
+    "file": "MOODLE_MOODLE_1_8_2_1_9_X_MULTIPLE_DEFAULT_THEMES.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_moodle_moodle_1_8_2_1_9_x_multiple_default_themes_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^933a83c6e9e47bd1e38424f3789d121d",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moodle (1.8.2, 1.9.x, multiple default themes)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "933a83c6e9e47bd1e38424f3789d121d"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-siemens_hipath_3000",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SIEMENS_HIPATH_3000",
+  "taxonomy_name": "Siemens HiPath 3000",
+  "vendor": "Siemens",
+  "product": "HiPath 3000",
+  "source": {
+    "type": "recog",
+    "file": "SIEMENS_HIPATH_3000.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_siemens_hipath_3000_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SNMP agent for HiPath 3000.*V(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens HiPath 3000 VoIP system"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "SNMP agent for HiPath 3000 V3/V4",
+    "SNMP agent for HiPath 3000/5000 V5.x",
+    "SNMP agent for HiPath 3000 V3.x"
+  ]
+}

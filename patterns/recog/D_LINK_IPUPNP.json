@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-d_link_ipupnp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "D_LINK_IPUPNP",
+  "taxonomy_name": "D-Link ipUPnP",
+  "vendor": "D-Link",
+  "product": "ipUPnP",
+  "source": {
+    "type": "recog",
+    "file": "D_LINK_IPUPNP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_d_link_ipupnp_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ipOS/([\\d\\.]+) UPnP/[\\d\\.]+ ipUPnP/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ipOS/([\\d\\.]+) UPnP/[\\d\\.]+ ipUPnP/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "D-Link WAP Dynamic DNS UPnP Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ]
+}

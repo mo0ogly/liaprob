@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-carnegie_mellon_university_cyrus_imap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CARNEGIE_MELLON_UNIVERSITY_CYRUS_IMAP",
+  "taxonomy_name": "Carnegie Mellon University Cyrus IMAP",
+  "vendor": "Carnegie Mellon University",
+  "product": "Cyrus IMAP",
+  "source": {
+    "type": "recog",
+    "file": "CARNEGIE_MELLON_UNIVERSITY_CYRUS_IMAP.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    143,
+    993
+  ],
+  "probes": [
+    {
+      "id": "recog_carnegie_mellon_university_cyrus_imap_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?(\\S{1,512}) Cyrus IMAP4 v(\\d+\\.\\d+.*)-OS X(?: Server)? ([\\d\\.]+).* server ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?(\\S{1,512}) Cyrus IMAP4 v(\\d+\\.\\d+.*)-OS X(?: Server)? ([\\d\\.]+).* server ready$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "CMU Cyrus IMAP on Mac OS X"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?(\\S{1,512}) Cyrus IMAP4? (?:\\S+ )?v?(\\d+\\.\\d+.*) server ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?(\\S{1,512}) Cyrus IMAP4? (?:\\S+ )?v?(\\d+\\.\\d+.*) server ready$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "CMU Cyrus IMAP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "imap"
+  ],
+  "cpe23_template": "cpe:/a:cmu:cyrus_imap_server:{version}",
+  "examples": [
+    "example.com Cyrus IMAP4 v2.2.12-OS X 10.4.0 server ready",
+    "example.com Cyrus IMAP4 v2.3.8-OS X Server 10.5: 9A562 server ready",
+    "[CAPABILITY IMAP4 IMAP4rev1 LITERAL+ ID AUTH=PLAIN AUTH=LOGIN AUTH=CRAM-MD5] foo.bar Cyrus IMAP4 v2.3.8-OS X Server 10.5:\t9G7013y server ready",
+    "example.com Cyrus IMAP4 v2.3.7 server ready",
+    "example.com Cyrus IMAP Murder v2.4.8-Invoca-RPM-2.4.8-1 server ready",
+    "[CAPABILITY IMAP4 IMAP4rev1 LITERAL+ ID AUTH=PLAIN SASL-IR] foo.bar Cyrus IMAP4 v2.3.11-Fedora-RPM-2.3.11-1.fc9 server ready",
+    "[CAPABILITY IMAP4rev1 LITERAL+ ID ENABLE AUTH=PLAIN SASL-IR] foo.bar Cyrus IMAP 3.0.8-Debian-3.0.8-6+deb10u6 server ready"
+  ]
+}

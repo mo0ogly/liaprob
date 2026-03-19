@@ -1,0 +1,581 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_ios",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_IOS",
+  "taxonomy_name": "Apple iOS",
+  "vendor": "Apple",
+  "product": "iOS",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_IOS.json",
+    "fingerprint_count": 66
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 66 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_ios_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J42[01]AP|iPad8,11)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (12.9-inch, 4th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J41[78]AP|iPad8,10)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (11-inch, 2nd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J51[78]x?AP|iPad13,[4567])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (11-inch, 3rd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J32[01]x?AP|iPad8,5)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (12.9-inch, 3rd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J31[78]x?AP|iPad8,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (11-inch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J20[78]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (10.5-inch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J12[78]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (9.7-inch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J12[01]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (12.9-inch, 2nd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J9[89]aAP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Pro (12.9-inch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J18[12]AP|iPad12,[12])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad (9th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J17[12]aAP|iPad11,[67])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad (8th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J17[12]AP|iPad7,1[12])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad (7th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J7[12]bAP|iPad7,5)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad (6th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J71[ts]AP|iPad6,11)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad (5th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=P10[123]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad (4th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J30[78]AP|iPad13,[12])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Air (4th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J21[78]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Air (3rd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J8[12]AP|iPad5,3)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Air 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J7[123]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad Air"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J31[01]AP|iPad14,[12])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad mini (6th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J21[01]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad mini (5th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J9[67]AP|iPad5,2)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad mini 4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J8[567]mAP|iPad4,9)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad mini 3"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=J8[567]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad mini 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=P10[567]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPad mini"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D64AP|iPhone14,3)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 13 Pro Max"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D63AP|iPhone14,2)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 13 Pro"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D16AP|iPhone14,4)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 13 mini"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D17AP|iPhone14,5)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 13)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D79AP|iPhone12,8)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone SE (2nd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D54pAP|iPhone13,4)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 12 Pro Max"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D53pAP|iPhone13,3)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 12 Pro"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D53gAP|iPhone13,2)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 12"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D52g?AP|Phone13,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 12 Mini"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D431p?AP|iPhone12,5)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 11 Pro Max"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D421p?AP|iPhone12,3)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 11 Pro"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N104AP|iPhone12,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 11"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D331p?AP|iPhone11,[46])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone XS Max"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D321AP|iPhone11,2)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone XS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N841AP|iPhone11,8)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone XR"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D221?AP|iPhone10,[36])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone X"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D211?A?AP|iPhone10,[25])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 8 Plus"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D201?A?AP|iPhone10,[14])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 8"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D111?AP|iPhone9,[24])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 7 Plus"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:D101?AP$|iPhone9,3)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 7"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N69u?AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone SE (1st generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N66m?AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 6s Plus"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N71m?AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 6s"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N56AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 6 Plus"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N61AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 6"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N5[13]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 5s"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N4[89]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 5c"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N4[12]AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 5"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N94AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 4s"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N9[02]B?AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N88AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 3GS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N82AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone 3G"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=M68AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPhone (1st generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N112AP|iPod9,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPod Touch (7th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=N102AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPod Touch (6th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N78a?AP|iPod5,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPod Touch (5th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N81AP|iPod4,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPod Touch (4th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N18AP|iPod3,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPod Touch (3rd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N72AP|iPod2,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPod Touch (2nd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:N45AP|iPod1,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iPod Touch (1st generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?iOS\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple iOS for iPhone and iPad"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:apple:iphone_os:-",
+  "examples": [
+    "model=J420AP",
+    "model=J421AP",
+    "model=iPad8,11",
+    "model=J417AP",
+    "model=iPad8,10",
+    "model=J517AP",
+    "model=J517xAP",
+    "model=J518AP",
+    "model=J518xAP",
+    "model=iPad13,4"
+  ]
+}

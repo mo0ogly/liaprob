@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-startcom_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STARTCOM_LINUX",
+  "taxonomy_name": "StartCom Linux",
+  "vendor": "StartCom",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "STARTCOM_LINUX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_startcom_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(StartCom(?: Linux)?\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "StartCom Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Apache/2.2.3 (StartCom)",
+    "Apache/2.2.3 (StartCom) (Release 31.SEL5_4)",
+    "Apache/2.2.0 (StartCom Linux)"
+  ]
+}

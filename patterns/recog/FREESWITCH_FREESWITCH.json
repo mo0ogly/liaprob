@@ -1,0 +1,105 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-freeswitch_freeswitch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FREESWITCH_FREESWITCH",
+  "taxonomy_name": "FreeSWITCH FreeSWITCH",
+  "vendor": "FreeSWITCH",
+  "product": "FreeSWITCH",
+  "source": {
+    "type": "recog",
+    "file": "FREESWITCH_FREESWITCH.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_freeswitch_freeswitch_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Freeswitch ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Freeswitch ([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "FreeSWITCH FreeSWITCH"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FreeSWITCH$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FreeSWITCH FreeSWITCH without version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FreeSWITCH-mod_sofia/([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^FreeSWITCH-mod_sofia/([\\d.]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "FreeSWITCH FreeSWITCH with version, mod_sofia"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(TAU-\\d+[A-Z]*(?:\\.IP)?)/([\\d.]+) SN/(VI[0-9A-Z]+) (?:SHA/[0-9a-f]+ )?sofia-sip/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex TAU model VoIP gateway - with serial number and sofia version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(TAU-\\d{1,2}) (?:build |v)([\\d.]+) (?:with )?sofia-sip/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex TAU model VoIP gateway - build variant with sofia version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(RG-\\d[\\w-]+)/([\\d.]+) SN/(VI\\w+) (?:SHA/[0-9a-f]+ )?sofia-sip/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex - NTP / NTU model broadband router - with serial number and sofia version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:freeswitch:freeswitch:{version}",
+  "examples": [
+    "Freeswitch 2.0.0",
+    "FreeSWITCH",
+    "FreeSWITCH-mod_sofia/1.10.4-release+git~20200805T110119Z~133fc2c870~64bit",
+    "FreeSWITCH-mod_sofia/1.6.20~64bit",
+    "TAU-8.IP/2.3.0 SN/VI12345678 sofia-sip/1.12.10",
+    "TAU-8.IP/1.9.1 SN/VI12345678 SHA/7404bd4 sofia-sip/1.12.10",
+    "TAU-2M.IP/1.13.3.5 SN/VI12345678 sofia-sip/1.12.10",
+    "TAU-1M.IP/1.9.3 SN/VI3A012345 sofia-sip/1.12.10",
+    "TAU-72 build 2.18.0.35 sofia-sip/1.12.10",
+    "TAU-1 v1.2 with sofia-sip/1.12.10"
+  ]
+}

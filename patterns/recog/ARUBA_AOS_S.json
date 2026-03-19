@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-aruba_aos_s",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARUBA_AOS_S",
+  "taxonomy_name": "Aruba AOS-S",
+  "vendor": "Aruba",
+  "product": "AOS-S",
+  "source": {
+    "type": "recog",
+    "file": "ARUBA_AOS_S.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_aruba_aos_s_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Aruba.*revision\\s+(?:([^\\.]+)\\.)?([\\d\\.]+).*ROM.*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Aruba Network Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Aruba JL256A 2930F-48G-PoE+-4SFP+ Switch, revision WC.16.11.0004, ROM WC.16.01.0010",
+    "Aruba JL074A 3810M-48G-PoE+-1-slot Switch, revision KB.16.10.0002, ROM KB.16.01.0009",
+    "Aruba JL258A 2930F-8G-PoE+-2SFP+ Switch, revision WC.16.02.0014, ROM WC.16.01.0003",
+    "Aruba 3810M Switch Stack, revision KB.16.08.0012, ROM KB.16.08.0007"
+  ]
+}

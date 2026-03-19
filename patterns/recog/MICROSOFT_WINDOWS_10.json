@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_10",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_10",
+  "taxonomy_name": "Microsoft Windows 10",
+  "vendor": "Microsoft",
+  "product": "Windows 10",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_10.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_10_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows 10 (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) Insider Preview (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 10 Enterprise Insider Preview"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows 10 ((?:\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?: LTSB(?: Evaluation)?)?) (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 10"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_windows_10_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SINUMERIK, solution line ([^,]+),.*?FW:V([^,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens Sinumerik Solution Line"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smb",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_10:-",
+  "examples": [
+    "Windows 10 Enterprise Insider Preview 10130",
+    "Windows 10 Enterprise 10130",
+    "Windows 10 Mobile Enterprise 10130",
+    "Windows 10 Mobile 10130",
+    "Windows 10 Home 10130",
+    "Windows 10 Education 10130",
+    "Windows 10 Professional 10130",
+    "Windows 10 Enterprise N 2015 LTSB 10240",
+    "Windows 10 Enterprise 2016 LTSB Evaluation 14393",
+    "Siemens, SINUMERIK, solution line PCU50, , HW:1, FW:V00.00.00,"
+  ]
+}

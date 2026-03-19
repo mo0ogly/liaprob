@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bt_intrastore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BT_INTRASTORE",
+  "taxonomy_name": "BT IntraStore",
+  "vendor": "BT",
+  "product": "IntraStore",
+  "source": {
+    "type": "recog",
+    "file": "BT_INTRASTORE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_bt_intrastore_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) \\(IntraStore TurboSendmail\\) ESMTP Service ready *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Syntegra/CDC IntraStore TurboSendmail, part of the IntraStore server which runs on\n         the following platforms ONLY: Linux, HP-UX, Solaris, AIX, and Windows NT/2000\n         see http://www.cdc.com for more information"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "192.168.1.1 (IntraStore TurboSendmail) ESMTP Service ready"
+  ]
+}

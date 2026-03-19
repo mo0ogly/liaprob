@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_spa8800_8_port_ip_telephony_gateway_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_SPA8800_8_PORT_IP_TELEPHONY_GATEWAY_FIRMWARE",
+  "taxonomy_name": "Cisco SPA8800 8-Port IP Telephony Gateway Firmware",
+  "vendor": "Cisco",
+  "product": "SPA8800 8-Port IP Telephony Gateway Firmware",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_SPA8800_8_PORT_IP_TELEPHONY_GATEWAY_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_spa8800_8_port_ip_telephony_gateway_firmware_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^CISCO SPA8800$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco SPA8800 VoIP Gateway"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp"
+  ],
+  "cpe23_template": "cpe:/o:cisco:spa8800_8-port_ip_telephony_gateway_firmware:-",
+  "examples": [
+    "CISCO SPA8800"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_lightweight_directory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_LIGHTWEIGHT_DIRECTORY_SERVER",
+  "taxonomy_name": "Microsoft Lightweight Directory Server",
+  "vendor": "Microsoft",
+  "product": "Lightweight Directory Server",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_LIGHTWEIGHT_DIRECTORY_SERVER.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_lightweight_directory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.1851.*domainControllerFunctionality1.{1,5}\\x04\\x017)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft LDS on Windows Server Server 2016"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.1851.*domainControllerFunctionality1.{1,5}\\x04\\x016)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft LDS on Windows Server Server 2012 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.1851.*domainControllerFunctionality1.{1,5}\\x04\\x015)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft LDS on Windows Server 2012 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.1851.*domainControllerFunctionality1.{1,5}\\x04\\x014)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft LDS on Windows Server Server 2008 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.1851.*domainControllerFunctionality1.{1,5}\\x04\\x013)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft LDS on Windows Server 2008"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.1851.*domainControllerFunctionality1.{1,5}\\x04\\x012)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft LDS on Windows Server 2003"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:active_directory_lightweight_directory_service:-",
+  "examples": [
+    "aWVzMYQAAACvBBcxLjIuODQwLjExMzU1Ni4xLjQuMTg1MQQuZGF0YS5yZW1vdmVkLjCEAAAAK\n      AQdZG9tYWluQ29udHJvbGxlckZ1bmN0aW9uYWxpdHkxhAAAAAMEATc=",
+    "aWVzMYQAAACvBBcxLjIuODQwLjExMzU1Ni4xLjQuMTg1MQQuZGF0YS5yZW1vdmVkLoQAAAAoB\n      B1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBNjA=",
+    "ZXMxhAAAAK8EFzEuMi44NDAuMTEzNTU2LjEuNC4xODUxBC5kYXRhLnJlbW92ZWQuMIQAAAAoB\n      B1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBNTA=",
+    "aWVzMYQAAACvBBcxLjIuODQwLjExMzU1Ni4xLjQuMTg1MQQuZGF0YS5yZW1vdmVkLoQAAAAoB\n      B1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBNDA=",
+    "aWVzMYQAAACvBBcxLjIuODQwLjExMzU1Ni4xLjQuMTg1MQQuZGF0YS5yZW1vdmVkLjCEAAAAK\n      AQdZG9tYWluQ29udHJvbGxlckZ1bmN0aW9uYWxpdHkxhAAAAAMEATMw",
+    "aWVzMYQAAACvBBcxLjIuODQwLjExMzU1Ni4xLjQuMTg1MQQuZGF0YS5yZW1vdmVkLjCEAAAAK\n      AQdZG9tYWluQ29udHJvbGxlckZ1bmN0aW9uYWxpdHkxhAAAAAMEATIw"
+  ]
+}

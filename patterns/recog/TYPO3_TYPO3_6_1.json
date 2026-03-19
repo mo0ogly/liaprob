@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-typo3_typo3_6_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TYPO3_TYPO3_6_1",
+  "taxonomy_name": "Typo3 Typo3 6.1",
+  "vendor": "Typo3",
+  "product": "Typo3 6.1",
+  "source": {
+    "type": "recog",
+    "file": "TYPO3_TYPO3_6_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_typo3_typo3_6_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8718c2998236c796896b725f264092ee",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Typo3 6.1"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "8718c2998236c796896b725f264092ee"
+  ]
+}

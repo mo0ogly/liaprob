@@ -1,0 +1,120 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dovecot_dovecot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOVECOT_DOVECOT",
+  "taxonomy_name": "Dovecot Dovecot",
+  "vendor": "Dovecot",
+  "product": "Dovecot",
+  "source": {
+    "type": "recog",
+    "file": "DOVECOT_DOVECOT.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    110,
+    143,
+    993,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_dovecot_dovecot_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?[dD]ovecot (?:DA )?ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure IMAP Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?Dovecot \\(Ubuntu\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure IMAP Server - Ubuntu variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?Dovecot \\(Debian\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure IMAP Server - Debian variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\[CAPABILITY [^\\]]{1,645}\\] )?Dovecot \\(Raspbian\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure IMAP Server - Raspbian variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^[dD]ovecot (?:DA )?ready\\.(?: <.+@(.+)>)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure POP Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Dovecot \\(Ubuntu\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure POP Server - Ubuntu variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Dovecot \\(Debian\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure POP Server - Debian variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Dovecot \\(Raspbian\\) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dovecot Secure POP Server - Raspbian variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pop3",
+    "imap"
+  ],
+  "cpe23_template": "cpe:/a:dovecot:dovecot:-",
+  "examples": [
+    "Dovecot ready.",
+    "Dovecot DA ready.",
+    "[CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE NAMESPACE LITERAL+ AUTH=PLAIN AUTH=LOGIN] Dovecot ready.",
+    "Dovecot (Ubuntu) ready.",
+    "[CAPABILITY IMAP4rev1 LITERAL+ SASL-IR LOGIN-REFERRALS ID ENABLE IDLE AUTH=PLAIN AUTH=LOGIN] Dovecot (Ubuntu) ready.",
+    "Dovecot (Debian) ready.",
+    "[CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN AUTH=LOGIN] Dovecot (Debian) ready.",
+    "Dovecot (Raspbian) ready.",
+    "[CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN AUTH=LOGIN] Dovecot (Raspbian) ready.",
+    "Dovecot ready. <fea.13865d.5f06b0a4.DuIvzQI4DAGR9MurahIGJw==@foo.bar.baz>"
+  ]
+}

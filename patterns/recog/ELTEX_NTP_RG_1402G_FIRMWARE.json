@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-eltex_ntp_rg_1402g_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELTEX_NTP_RG_1402G_FIRMWARE",
+  "taxonomy_name": "Eltex NTP-RG-1402G Firmware",
+  "vendor": "Eltex",
+  "product": "NTP-RG-1402G Firmware",
+  "source": {
+    "type": "recog",
+    "file": "ELTEX_NTP_RG_1402G_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_eltex_ntp_rg_1402g_firmware_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Eltex - NTP-RG-1402G$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex - NTP-RG-1402G broadband router"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:eltex-co:ntp-rg-1402g_firmware:-",
+  "examples": [
+    "Eltex - NTP-RG-1402G"
+  ]
+}

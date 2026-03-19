@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(TD-\\w+) [\\d.]+ DSL Modem Router(?:\\r|\\n)+Authorization failed after trying \\d+ times!!!\\.(?:\\r|\\n)+Please login after \\d+ seconds!\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TP-LINK TD Family DSL Modem/Router"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "VEQtVzg5NjBOIDUuMCBEU0wgTW9kZW0gUm91dGVyDQpBdXRob3JpemF0aW9uIGZhaWxlZCBhZ\n      nRlciB0cnlpbmcgNSB0aW1lcyEhIS4NClBsZWFzZSBsb2dpbiBhZnRlciA0MTYgc2Vjb25kcy\n      E="
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-post_office",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POST_OFFICE",
+  "taxonomy_name": "Post.Office",
+  "vendor": "",
+  "product": "Post.Office",
+  "source": {
+    "type": "recog",
+    "file": "POST_OFFICE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_post_office_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP server \\([Pp]ost\\.[Oo]ffice v([^ ]+\\.[^ ]+)(?: release)? (.+) ID# ([^ ]+)\\) ready (.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP server \\([Pp]ost\\.[Oo]ffice v([^ ]+\\.[^ ]+)(?: release)? (.+) ID# ([^ ]+)\\) ready (.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Post.Office"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar ESMTP server (post.office v3.8.4 release 116 ID# 1001-65749U100L10S0V38) ready Thu, 30 Nov 2017 18:46:24 +0900",
+    "foo.bar ESMTP server (Post.Office v3.1 release PO205e ID# 0-42000U100L2S100) ready Tue, 6 Feb 2001 19:38:32 +0100"
+  ]
+}

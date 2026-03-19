@@ -1,0 +1,107 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-epson",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EPSON",
+  "taxonomy_name": "Epson",
+  "vendor": "Epson",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "EPSON.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_epson_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^EPSON ([A-Z]\\S+); Net ([^,]+),ESS (?:[^,]+),IOT (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Epson Printer - verbose variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^EPSON ([A-Z]\\S+) (\\d+\\.\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Epson Printer - model and version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^EPSON ([A-Z]\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Epson Printer - model only"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:EPSON|EpsonNet)(?: Built-in)? (.* Print Server)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Epson Print Server"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Epson ([A-Z][^;]+); ESS (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Epson Printer - ess variant"
+        }
+      ]
+    },
+    {
+      "id": "recog_epson_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Sorry, this system is engaged\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "an embedded print server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet",
+    "snmp"
+  ],
+  "examples": [
+    "EPSON AL-C1750N; Net 98.48,ESS 201103111031,IOT 02.17.00",
+    "EPSON AL-C2900; Net 96.51,ESS 201103101328,IOT 04.00.00",
+    "EPSON AL-CX29; Net 96.55,ESS 201106281159,IOT 04.00.00",
+    "EPSON LP-S620; Net 98.48,ESS 201103111031,IOT 02.17.02",
+    "EPSON AL-C2000 01.00",
+    "EPSON AL-C8500 01.00",
+    "EPSON EPL-N2050+ 01.00",
+    "EPSON EPL-N2700 01.00",
+    "EPSON EPL-N2750 01.00",
+    "EPSON EPL-N4000+ 01.00"
+  ]
+}

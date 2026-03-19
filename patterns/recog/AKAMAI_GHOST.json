@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-akamai_ghost",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AKAMAI_GHOST",
+  "taxonomy_name": "Akamai GHost",
+  "vendor": "Akamai",
+  "product": "GHost",
+  "source": {
+    "type": "recog",
+    "file": "AKAMAI_GHOST.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_akamai_ghost_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:Akamai)?GHost$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Akamai Global Host"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_akamai_ghost_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=.*\\.akamai\\.net,O=Akamai Technologies\\\\, Inc\\.,L=Cambridge,ST=Massachusetts,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Akamai Global Host"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:akamai:akamaighost:-",
+  "examples": [
+    "AkamaiGHost",
+    "GHost",
+    "CN=a248.e.akamai.net,O=Akamai Technologies\\, Inc.,L=Cambridge,ST=Massachusetts,C=US"
+  ]
+}

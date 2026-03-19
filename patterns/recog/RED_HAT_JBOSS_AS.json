@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_jboss_as",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_JBOSS_AS",
+  "taxonomy_name": "Red Hat JBoss AS",
+  "vendor": "Red Hat",
+  "product": "JBoss AS",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_JBOSS_AS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_jboss_as_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to JBoss Application Server ([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Welcome to JBoss Application Server ([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "JBoss Application Server w/ Version"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to JBoss(?: AS|.trade;)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "JBoss Application Server w/o Version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Servlet\\/[\\d\\.]+; JBossAS-(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Servlet\\/[\\d\\.]+; JBossAS-(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "JBoss AS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:redhat:jboss_wildfly_application_server:{version}",
+  "examples": [
+    "Welcome to JBoss Application Server 7",
+    "Welcome to JBoss AS",
+    "Welcome to JBoss&trade;",
+    "Servlet/3.0; JBossAS-6"
+  ]
+}

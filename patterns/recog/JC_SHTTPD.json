@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-jc_shttpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JC_SHTTPD",
+  "taxonomy_name": "JC-SHTTPD",
+  "vendor": "",
+  "product": "JC-SHTTPD",
+  "source": {
+    "type": "recog",
+    "file": "JC_SHTTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_jc_shttpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^JC-SHTTPD/((?:\\d+\\.)*\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^JC-SHTTPD/((?:\\d+\\.)*\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "An embedded web server."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "JC-SHTTPD/1.17.20",
+    "JC-SHTTPD/1"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-wftpserver_wing_ftp_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WFTPSERVER_WING_FTP_SERVER",
+  "taxonomy_name": "WFTPServer Wing FTP Server",
+  "vendor": "WFTPServer",
+  "product": "Wing FTP Server",
+  "source": {
+    "type": "recog",
+    "file": "WFTPSERVER_WING_FTP_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_wftpserver_wing_ftp_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Wing FTP Server/([\\d.]+)\\([^)]*\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Wing FTP Server/([\\d.]+)\\([^)]*\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Wing FTP HTTP interface - with version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Wing FTP Server\\([^)]*\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Wing FTP HTTP interface - no version"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:wftpserver:wing_ftp_server:{version}",
+  "examples": [
+    "Wing FTP Server/3.6.0(customer name here)",
+    "Wing FTP Server(customer name here)"
+  ]
+}

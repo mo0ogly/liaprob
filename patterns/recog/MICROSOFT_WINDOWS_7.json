@@ -1,0 +1,100 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_7",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_7",
+  "taxonomy_name": "Microsoft Windows 7",
+  "vendor": "Microsoft",
+  "product": "Windows 7",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_7.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_7_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows Version 6.1 \\(Build 7600",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7 on x86"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: \\S+64.*Software: Windows Version 6.1 \\(Build 7600",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7 on x86_64"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows Version 6.1 \\(Build 7601",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7 SP1 on x86"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: \\S+64.*Software: Windows Version 6.1 \\(Build 7601",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 7 SP1 on x86_64"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SIMATIC NET, ([^,]+),.*FW:\\s*(?:Version )?V?([^,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens NET - verbose variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SIMATIC NET (\\S+) FW V (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens NET"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_7:-",
+  "examples": [
+    "Hardware: x86 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.1 (Build 7600 Multiprocessor Free)",
+    "Hardware: AMD64 Family 16 Model 2 Stepping 3 AT/AT COMPATIBLE - Software: Windows Version 6.1 (Build 7600 Multiprocessor Free)",
+    "Hardware: Intel64 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.1 (Build 7600 Multiprocessor Free)",
+    "Hardware: x86 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.1 (Build 7601 Multiprocessor Free)",
+    "Hardware: AMD64 Family 16 Model 2 Stepping 3 AT/AT COMPATIBLE - Software: Windows Version 6.1 (Build 7601 Multiprocessor Free)",
+    "Hardware: Intel64 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.1 (Build 7601 Multiprocessor Free)",
+    "Siemens, SIMATIC NET, CP 343-1 Advanced, 6GK7 343-1GX30-0XE0, HW: Version 3, FW: Version V1.2.3, VPB9502953",
+    "Siemens, SIMATIC NET, CP 343-1 Lean, 6GK7 343-1CX10-0XE0, HW: Version 6, FW: Version V2.6.0, VPC3513639",
+    "Siemens, SIMATIC NET, CP 343-1, 6GK7 343-1EX30-0XE0, HW: Version 3, FW: Version V2.2.20, VPXN545808",
+    "Siemens, SIMATIC NET, SCALANCE X204-2, 6GK5 204-2BB10-2AA3, HW: 4, FW: V4.01"
+  ]
+}

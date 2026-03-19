@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Polycom ?HDX ?(\\d+)(?: ?HD)?(?:/| \\(Release - )([^\\)]+)\\)?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Polycom HDX Video Conferencing"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Polycom HDX 9006 (Release - 3.0.6-37004)",
+    "PolycomHDX4000/3.1.0",
+    "Polycom HDX 7000 HD (Release - 3.0.2.1-17007)",
+    "PolycomHDX8000HD/3.1.7"
+  ]
+}

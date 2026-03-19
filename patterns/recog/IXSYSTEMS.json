@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ixsystems",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IXSYSTEMS",
+  "taxonomy_name": "iXsystems",
+  "vendor": "iXsystems",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "IXSYSTEMS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ixsystems_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(TrueNAS|FreeNAS)-(\\S+) \\((?:\\S+)\\)\\. Hardware: (\\S+) ",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TrueNAS/FreeNAS Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "FreeNAS-11.3-U3.2 (1e9dd3b3e2). Hardware: amd64 Intel(R) Xeon(R) CPU E3-1230 v6 @ 3.50GHz running at 3504. Software: FreeBSD 11.3-RELEASE-p9 (revision 199506)",
+    "TrueNAS-12.0-U4.1 (fb0389beb0). Hardware: amd64 Intel(R) Xeon(R) CPU E5-1620 v3 @ 3.50GHz running at 3491 MHz. Software: FreeBSD 12.2-RELEASE-p6 (revision 199506)"
+  ]
+}

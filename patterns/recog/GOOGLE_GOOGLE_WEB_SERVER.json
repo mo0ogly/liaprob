@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-google_google_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_GOOGLE_WEB_SERVER",
+  "taxonomy_name": "Google Google web server",
+  "vendor": "Google",
+  "product": "Google web server",
+  "source": {
+    "type": "recog",
+    "file": "GOOGLE_GOOGLE_WEB_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_google_google_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^09b565a51e14b721a323f0ba44b2982a",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Google web server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "09b565a51e14b721a323f0ba44b2982a"
+  ]
+}

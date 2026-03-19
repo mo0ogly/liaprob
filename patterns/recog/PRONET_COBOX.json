@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pronet_cobox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRONET_COBOX",
+  "taxonomy_name": "Pronet CoBox",
+  "vendor": "Pronet",
+  "product": "CoBox",
+  "source": {
+    "type": "recog",
+    "file": "PRONET_COBOX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_pronet_cobox_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^CoBox for Recognition Systems, Snr\\s*\\S+ V?(\\S+)(?: \\(\\d+\\))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProNet CoBox for Recognition Systems"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "CoBox for Recognition Systems, Snr 0621630 05.6b1 (080305)",
+    "CoBox for Recognition Systems, Snr 0622033 05.6 (040825)",
+    "CoBox for Recognition Systems, Snr 220-146 V3.40",
+    "CoBox for Recognition Systems, Snr1039-191 3.8b4",
+    "CoBox for Recognition Systems, Snr  6925226 05.6 (040825)",
+    "CoBox for Recognition Systems, Snr  7107590 04.5 (011218)"
+  ]
+}

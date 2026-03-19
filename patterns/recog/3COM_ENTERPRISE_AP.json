@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-3com_enterprise_ap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "3COM_ENTERPRISE_AP",
+  "taxonomy_name": "3Com Enterprise AP",
+  "vendor": "3Com",
+  "product": "Enterprise AP",
+  "source": {
+    "type": "recog",
+    "file": "3COM_ENTERPRISE_AP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_3com_enterprise_ap_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com Enterprise AP:\\s*v(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Enterprise AP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "3Com Enterprise AP: v3.1.00 v3.0.8",
+    "3Com Enterprise AP: v3.2.0 v3.0.8"
+  ]
+}

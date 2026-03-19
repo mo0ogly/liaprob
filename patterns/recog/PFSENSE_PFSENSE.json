@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pfsense_pfsense",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PFSENSE_PFSENSE",
+  "taxonomy_name": "pfSense pfSense",
+  "vendor": "pfSense",
+  "product": "pfSense",
+  "source": {
+    "type": "recog",
+    "file": "PFSENSE_PFSENSE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_pfsense_pfsense_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:5567e9ce23e5549e0fcd7195f3882816|57f187c7a868faeac558007a8eb6cb2e)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "pfSense Firewall"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^pfSense - Login$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "pfSense Firewall"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:pfsense:pfsense:-",
+  "examples": [
+    "5567e9ce23e5549e0fcd7195f3882816",
+    "57f187c7a868faeac558007a8eb6cb2e",
+    "pfSense - Login"
+  ]
+}

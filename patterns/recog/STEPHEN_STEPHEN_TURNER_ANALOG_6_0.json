@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-stephen_stephen_turner_analog_6_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "STEPHEN_STEPHEN_TURNER_ANALOG_6_0",
+  "taxonomy_name": "Stephen Stephen Turner Analog (6.0)",
+  "vendor": "Stephen",
+  "product": "Stephen Turner Analog (6.0)",
+  "source": {
+    "type": "recog",
+    "file": "STEPHEN_STEPHEN_TURNER_ANALOG_6_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_stephen_stephen_turner_analog_6_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^31c16dd034e6985b4ba929e251200580",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Stephen Turner Analog (6.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "31c16dd034e6985b4ba929e251200580"
+  ]
+}

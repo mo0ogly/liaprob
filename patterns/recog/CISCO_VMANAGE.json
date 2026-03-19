@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_vmanage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_VMANAGE",
+  "taxonomy_name": "Cisco vManage",
+  "vendor": "Cisco",
+  "product": "vManage",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_VMANAGE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_vmanage_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f5a68db40594839cfc2696197608e2a3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco vManage SD-WAN"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Cisco vManage$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco vManage SD-WAN"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "f5a68db40594839cfc2696197608e2a3",
+    "Cisco vManage"
+  ]
+}

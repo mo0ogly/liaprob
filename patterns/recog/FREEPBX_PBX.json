@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-freepbx_pbx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FREEPBX_PBX",
+  "taxonomy_name": "FreePBX PBX",
+  "vendor": "FreePBX",
+  "product": "PBX",
+  "source": {
+    "type": "recog",
+    "file": "FREEPBX_PBX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_freepbx_pbx_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FPBX-(\\S+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^FPBX-(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "FreePBX"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip"
+  ],
+  "examples": [
+    "FPBX-12.0.70(11.20.0)",
+    "FPBX-2.11.0(11.20.0)"
+  ]
+}

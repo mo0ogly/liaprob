@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nortel_alteon_web_switch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NORTEL_ALTEON_WEB_SWITCH",
+  "taxonomy_name": "Nortel Alteon Web Switch",
+  "vendor": "Nortel",
+  "product": "Alteon Web Switch",
+  "source": {
+    "type": "recog",
+    "file": "NORTEL_ALTEON_WEB_SWITCH.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_nortel_alteon_web_switch_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^AlteonP=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Alteon Web Switch"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "AlteonP=c46736793e45929dbaeebabb; path="
+  ]
+}

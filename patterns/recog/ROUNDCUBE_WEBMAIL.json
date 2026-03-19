@@ -1,0 +1,95 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-roundcube_webmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROUNDCUBE_WEBMAIL",
+  "taxonomy_name": "Roundcube Webmail",
+  "vendor": "Roundcube",
+  "product": "Webmail",
+  "source": {
+    "type": "recog",
+    "file": "ROUNDCUBE_WEBMAIL.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_roundcube_webmail_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ef9c0362bf20a086bb7c2e8ea346b9f0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Roundcube Webmail"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^924a68d347c80d0e502157e83812bb23$",
+          "confidence_delta": 0.4,
+          "version_static": "1.5.0+",
+          "case_insensitive": true,
+          "note": "Roundcube Webmail (Version 1.5.0+)"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f1ac749564d5ba793550ec6bdc472e7c$",
+          "confidence_delta": 0.4,
+          "version_static": "1.4.13",
+          "case_insensitive": true,
+          "note": "Roundcube Webmail (Up to Version 1.4.13)"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Roundcube Webmail :: Welcome to Roundcube Webmail$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Roundcube Webmail"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^roundcube_sessid=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Roundcube Webmail"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:roundcube:webmail:-",
+  "examples": [
+    "ef9c0362bf20a086bb7c2e8ea346b9f0",
+    "924a68d347c80d0e502157e83812bb23",
+    "f1ac749564d5ba793550ec6bdc472e7c",
+    "Roundcube Webmail :: Welcome to Roundcube Webmail",
+    "roundcube_sessid=bdd66fb23fa3ce907a1e792475273145; path=/; HttpOnly"
+  ]
+}

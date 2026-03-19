@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE",
+  "taxonomy_name": "VMware",
+  "vendor": "VMware",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "VMWARE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vmware_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^\" \\+ ID_EESX_Welcome \\+ \"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware ESXi"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_vmware_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([a-zA-Z0-9\\.\\-\\_]+),OU=VMware ESX Server Default Certificate,O=VMware\\\\, Inc,L=Palo Alto,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware ESX"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:vmware:esxi:-",
+  "examples": [
+    "\" + ID_EESX_Welcome + \"",
+    "CN=server99.,OU=VMware ESX Server Default Certificate,O=VMware\\, Inc,L=Palo Alto,ST=California,C=US"
+  ]
+}

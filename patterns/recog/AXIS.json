@@ -1,0 +1,170 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-axis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AXIS",
+  "taxonomy_name": "AXIS",
+  "vendor": "AXIS",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "AXIS.json",
+    "fingerprint_count": 11
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 11 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    67,
+    68,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_axis_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AXIS,(?:PTZ Dome )?Network Camera,(.*),([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Network Camera"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AXIS,(?:Network Video Encoder|Video Server),(\\S+),([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Video Encoder"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AXIS,Network IO Audio Module,(\\S+),([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis IO Audio Module"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AXIS,Network$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Communications device"
+        }
+      ]
+    },
+    {
+      "id": "recog_axis_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^AXIS (\\S+) .* Camera(?:\\s+version)?\\s+(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Network Camera"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^AXIS (\\S+) (?:(?:Mk II )?Video) (?:Encoder(?: Blade)?|Module|Server|Decoder) (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Video encoders/servers"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^AXIS (\\S+) (?:(?:Mk II )?IO Audio) (?:Encoder|Encoder Blade|Module|Server|Decoder) (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Audio encoders/servers"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^AXIS (\\S+) Network Video Door Station$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Network Video Door stations, which have voice"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^AXIS (\\S+) Network (?:Audio Bridge|(?:Cabinet|Horn) Speaker)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Network audio devices"
+        }
+      ]
+    },
+    {
+      "id": "recog_axis_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^AXIS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Communications Web Cam"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_axis_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=axis-([a-fA-F0-9]{12}),O=Axis Communications AB$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Axis Communications Web Cam"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "generic",
+    "tls",
+    "http",
+    "ftp"
+  ],
+  "examples": [
+    "AXIS,Network Camera,P3343,5.20.3",
+    "AXIS,PTZ Dome Network Camera,M5014,5.50.3.7",
+    "AXIS,Network Camera,P3225-LV Mk II,9.70.1.5",
+    "AXIS,Network Video Encoder,M7011,5.90.1",
+    "AXIS,Network IO Audio Module,P8221,5.10.2",
+    "AXIS,Network",
+    "Axis 2100 Network Camera 2.43 Nov 04 2008 ready.",
+    "AXIS 216FD Network Fixed Dome Camera 4.47 (Mar 13 2008) ready.",
+    "AXIS 214 PTZ Network Camera 4.49 (Oct 05 2009) ready",
+    "AXIS 205 Network Camera version 4.05 (Sep 27 2004) ready."
+  ]
+}

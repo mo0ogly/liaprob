@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netwin_surgeftp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETWIN_SURGEFTP",
+  "taxonomy_name": "NetWin SurgeFTP",
+  "vendor": "NetWin",
+  "product": "SurgeFTP",
+  "source": {
+    "type": "recog",
+    "file": "NETWIN_SURGEFTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_netwin_surgeftp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^SurgeFTP ([\\S]+) \\(Version ([a-f\\d.]+)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^SurgeFTP ([\\S]+) \\(Version ([a-f\\d.]+)\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "NetWin SurgeFTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:netwin:surgeftp:{version}",
+  "examples": [
+    "SurgeFTP 192.168.0.0 (Version 2.3a12)",
+    "SurgeFTP foo.bar.baz (Version 2.2f9)"
+  ]
+}

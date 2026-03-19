@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_xbmc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_XBMC",
+  "taxonomy_name": "Microsoft XBMC",
+  "vendor": "Microsoft",
+  "product": "XBMC",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_XBMC.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_xbmc_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^UPnP/\\S+, DLNADOC/\\S+, Platinum/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^UPnP/\\S+, DLNADOC/\\S+, Platinum/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Xbox Media Center UPnP Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "UPnP/1.0, DLNADOC/1.50, Platinum/0.5.1",
+    "UPnP/1.0, DLNADOC/1.50, Platinum/0.6.6.0",
+    "UPnP/1.0, DLNADOC/1.50, Platinum/0.5.4.0",
+    "UPnP/1.0, DLNADOC/1.50, Platinum/0.5.3.0"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-powered_powered_by_reynolds_web_solutions_car_sales_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWERED_POWERED_BY_REYNOLDS_WEB_SOLUTIONS_CAR_SALES_CMS",
+  "taxonomy_name": "Powered Powered by Reynolds Web Solutions (Car sales CMS)",
+  "vendor": "Powered",
+  "product": "Powered by Reynolds Web Solutions (Car sales CMS)",
+  "source": {
+    "type": "recog",
+    "file": "POWERED_POWERED_BY_REYNOLDS_WEB_SOLUTIONS_CAR_SALES_CMS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_powered_powered_by_reynolds_web_solutions_car_sales_cms_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^edaaef7bbd3072a3a0c3fb3b29900bcb",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Powered by Reynolds Web Solutions (Car sales CMS)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "edaaef7bbd3072a3a0c3fb3b29900bcb"
+  ]
+}

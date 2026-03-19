@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pulse_secure_pulse_connect_secure",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PULSE_SECURE_PULSE_CONNECT_SECURE",
+  "taxonomy_name": "Pulse Secure Pulse Connect Secure",
+  "vendor": "Pulse Secure",
+  "product": "Pulse Connect Secure",
+  "source": {
+    "type": "recog",
+    "file": "PULSE_SECURE_PULSE_CONNECT_SECURE.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_pulse_secure_pulse_connect_secure_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Pulse Connect Secure - SSL",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Pulse Secure VPN"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^DSSignInURL=/",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Pulse Secure VPN"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_pulse_secure_pulse_connect_secure_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:Pulse Secure, LLC|Ivanti Connect Secure),.*,(\\d+\\.\\d+R\\d+(?:\\.\\d+)?) \\(build \\d+\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Pulse Secure, LLC, Ivanti Connect Secure"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/a:pulsesecure:pulse_connect_secure:-",
+  "examples": [
+    "Pulse Connect Secure - SSL",
+    "DSSignInURL=/; path=/; secure",
+    "Pulse Secure, LLC,Ivanti Connect Secure,ISA-V,22.3R1 (build 1647)",
+    "Pulse Secure, LLC,Ivanti Connect Secure,ISA-V,22.3R2.1245 (build 1647)",
+    "Pulse Secure, LLC,ISA-V,22.3R1 (build 1647)",
+    "Ivanti Connect Secure,ISA-V,22.3R2.1245 (build 1647)"
+  ]
+}

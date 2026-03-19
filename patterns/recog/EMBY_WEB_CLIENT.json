@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-emby_web_client",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMBY_WEB_CLIENT",
+  "taxonomy_name": "Emby Web Client",
+  "vendor": "Emby",
+  "product": "Web Client",
+  "source": {
+    "type": "recog",
+    "file": "EMBY_WEB_CLIENT.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_emby_web_client_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8df2318cae6c03a85179b744108645ba$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Emby Media Server"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Emby$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Emby Media Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "8df2318cae6c03a85179b744108645ba",
+    "Emby"
+  ]
+}

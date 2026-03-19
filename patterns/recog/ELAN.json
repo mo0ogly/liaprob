@@ -1,0 +1,108 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-elan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELAN",
+  "taxonomy_name": "ELAN",
+  "vendor": "ELAN",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "ELAN.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_elan_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^9dac0d6bad34f38552361f3a3b5bab16$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ELAN Network Camera"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ELAN Viewer Installation$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ELAN Smart Home Controller"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ELAN Controller$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "ELAN Smart Home Controller"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_elan_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^HomeLogic FTP Server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ELAN Smart Home Controller"
+        }
+      ]
+    },
+    {
+      "id": "recog_elan_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([^,]+),OU=Nortek,O=ELAN,L=StuddardMD,ST=[^,]+,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ELAN Web Cam"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "ftp",
+    "tls"
+  ],
+  "examples": [
+    "9dac0d6bad34f38552361f3a3b5bab16",
+    "HomeLogic FTP Server Please Give User Name",
+    "ELAN Viewer Installation",
+    "ELAN Controller",
+    "CN=ServerRoom,OU=Nortek,O=ELAN,L=StuddardMD,ST=10000,C=US"
+  ]
+}

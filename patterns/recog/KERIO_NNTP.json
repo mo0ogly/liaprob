@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kerio_nntp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KERIO_NNTP",
+  "taxonomy_name": "Kerio NNTP",
+  "vendor": "Kerio",
+  "product": "NNTP",
+  "source": {
+    "type": "recog",
+    "file": "KERIO_NNTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    119
+  ],
+  "probes": [
+    {
+      "id": "recog_kerio_nntp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Kerio (?:Connect|MailServer)\\s+(\\d\\.[\\d.]+)\\s+(?:(?:patch|RC) (\\d)\\s+)?NNTP server ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Kerio (?:Connect|MailServer)\\s+(\\d\\.[\\d.]+)\\s+(?:(?:patch|RC) (\\d)\\s+)?NNTP server ready$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Kerio Connect NNTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "nntp"
+  ],
+  "examples": [
+    "Kerio Connect 9.2.3 NNTP server ready",
+    "Kerio Connect 9.2.6 patch 2 NNTP server ready",
+    "Kerio MailServer 6.7.3 NNTP server ready"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vbulletin_vbulletin_forum",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VBULLETIN_VBULLETIN_FORUM",
+  "taxonomy_name": "vBulletin vBulletin forum",
+  "vendor": "vBulletin",
+  "product": "vBulletin forum",
+  "source": {
+    "type": "recog",
+    "file": "VBULLETIN_VBULLETIN_FORUM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vbulletin_vbulletin_forum_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:c1201c47c81081c7f0930503cae7f71a|f425342764f8c356479d05daa7013c2f|740af61c776a3cb98da3715bdf9d3fc1|d7ac014e83b5c4a2dea76c50eaeda662)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "vBulletin forum"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "c1201c47c81081c7f0930503cae7f71a",
+    "f425342764f8c356479d05daa7013c2f",
+    "740af61c776a3cb98da3715bdf9d3fc1",
+    "d7ac014e83b5c4a2dea76c50eaeda662"
+  ]
+}

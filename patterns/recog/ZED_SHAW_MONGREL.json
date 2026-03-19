@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zed_shaw_mongrel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZED_SHAW_MONGREL",
+  "taxonomy_name": "Zed Shaw Mongrel",
+  "vendor": "Zed Shaw",
+  "product": "Mongrel",
+  "source": {
+    "type": "recog",
+    "file": "ZED_SHAW_MONGREL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_zed_shaw_mongrel_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Mongrel ((?:\\d+\\.)*\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Mongrel ((?:\\d+\\.)*\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Ruby-based web server and HTTP library."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zed_shaw:mongrel:{version}",
+  "examples": [
+    "Mongrel 1.1.5",
+    "Mongrel 1"
+  ]
+}

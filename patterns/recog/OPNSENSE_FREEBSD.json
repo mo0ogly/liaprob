@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-opnsense_freebsd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPNSENSE_FREEBSD",
+  "taxonomy_name": "OPNsense FreeBSD",
+  "vendor": "OPNsense",
+  "product": "FreeBSD",
+  "source": {
+    "type": "recog",
+    "file": "OPNSENSE_FREEBSD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_opnsense_freebsd_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^O=OPNsense(?:[.]localdomain)?,L=Middelharnis,ST=Zuid-Holland,C=NL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OPNsense Firewall"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "O=OPNsense,L=Middelharnis,ST=Zuid-Holland,C=NL",
+    "O=OPNsense.localdomain,L=Middelharnis,ST=Zuid-Holland,C=NL"
+  ]
+}

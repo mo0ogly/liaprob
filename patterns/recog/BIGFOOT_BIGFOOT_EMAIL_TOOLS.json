@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bigfoot_bigfoot_email_tools",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BIGFOOT_BIGFOOT_EMAIL_TOOLS",
+  "taxonomy_name": "Bigfoot Bigfoot Email Tools",
+  "vendor": "Bigfoot",
+  "product": "Bigfoot Email Tools",
+  "source": {
+    "type": "recog",
+    "file": "BIGFOOT_BIGFOOT_EMAIL_TOOLS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    110,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_bigfoot_bigfoot_email_tools_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^POP3 Bigfoot v(\\d\\.\\d) server ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^POP3 Bigfoot v(\\d\\.\\d) server ready$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "POP3 Bigfoot server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pop3"
+  ],
+  "examples": [
+    "POP3 Bigfoot v1.0 server ready"
+  ]
+}

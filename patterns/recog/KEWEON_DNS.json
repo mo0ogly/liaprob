@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-keweon_dns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KEWEON_DNS",
+  "taxonomy_name": "Keweon DNS",
+  "vendor": "Keweon",
+  "product": "DNS",
+  "source": {
+    "type": "recog",
+    "file": "KEWEON_DNS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_keweon_dns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^keweonDNS v\\.(.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^keweonDNS v\\.(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Keweon DNS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "keweonDNS v.9.63.7201"
+  ]
+}

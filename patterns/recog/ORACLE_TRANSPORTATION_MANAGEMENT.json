@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_transportation_management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_TRANSPORTATION_MANAGEMENT",
+  "taxonomy_name": "Oracle Transportation Management",
+  "vendor": "Oracle",
+  "product": "Transportation Management",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_TRANSPORTATION_MANAGEMENT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_transportation_management_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^OTM - Oracle Transportation Management$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle Transportation Management"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:oracle:transportation_management:-",
+  "examples": [
+    "OTM - Oracle Transportation Management"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_ecos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_ECOS",
+  "taxonomy_name": "Red Hat eCos",
+  "vendor": "Red Hat",
+  "product": "eCos",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_ECOS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_ecos_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^ucd-snmp-.*/Red Hat eCos$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "eCos Embedded OS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "ucd-snmp-4.1.2/Red Hat eCos"
+  ]
+}

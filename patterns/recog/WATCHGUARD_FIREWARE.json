@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-watchguard_fireware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WATCHGUARD_FIREWARE",
+  "taxonomy_name": "WatchGuard Fireware",
+  "vendor": "WatchGuard",
+  "product": "Fireware",
+  "source": {
+    "type": "recog",
+    "file": "WATCHGUARD_FIREWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_watchguard_fireware_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Fireware web CA,OU=Fireware,O=WatchGuard$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WatchGuard Firewall"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:watchguard:fireware:-",
+  "examples": [
+    "CN=Fireware web CA,OU=Fireware,O=WatchGuard"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-darkstat_project_darkstat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DARKSTAT_PROJECT_DARKSTAT",
+  "taxonomy_name": "darkstat Project darkstat",
+  "vendor": "darkstat Project",
+  "product": "darkstat",
+  "source": {
+    "type": "recog",
+    "file": "DARKSTAT_PROJECT_DARKSTAT.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_darkstat_project_darkstat_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Graphs \\(darkstat [^)]+\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "darkstat - network statistics gatherer"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^darkstat/(\\d+(?:\\.\\d+)*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^darkstat/(\\d+(?:\\.\\d+)*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "darkstat - network statistics gatherer"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "Graphs (darkstat eth0)",
+    "Graphs (darkstat lagg0.4091, lagg0.21, lagg0.101, lagg0.102, lagg0.4001, lagg0.4081)",
+    "darkstat/3.0.719"
+  ]
+}

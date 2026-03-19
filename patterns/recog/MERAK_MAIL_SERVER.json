@@ -1,0 +1,92 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-merak_mail_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MERAK_MAIL_SERVER",
+  "taxonomy_name": "Merak Mail Server",
+  "vendor": "Merak",
+  "product": "Mail Server",
+  "source": {
+    "type": "recog",
+    "file": "MERAK_MAIL_SERVER.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_merak_mail_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^ ]{1,512}) +E?SMTP MERAK ([^ ]+\\.[^ ]+\\.[^ ]+); *(.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^([^ ]{1,512}) +E?SMTP MERAK ([^ ]+\\.[^ ]+\\.[^ ]+); *(.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Merak mail server - http://www.icewarp.com/merakmail/ (runs on 2000/NT/9x)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*This is MERAK ([^ ]+\\.[^ ]+\\.[^ ]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^214[ -].*This is MERAK ([^ ]+\\.[^ ]+\\.[^ ]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Merak mail server - http://www.icewarp.com/merakmail/ (runs on 2000/NT/9x)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*This is Merak ([^ ]+\\.[^ ]+\\.[^ ]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^214[ -].*This is Merak ([^ ]+\\.[^ ]+\\.[^ ]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Merak mail server - http://www.icewarp.com/merakmail/ (runs on 2000/NT/9x) - variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*bugs@merakmail\\.com",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Merak mail server - http://www.icewarp.com/merakmail/ (runs on 2000/NT/9x) - email variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*bugs@icewarp\\.com",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Merak mail server - http://www.icewarp.com/merakmail/ (runs on 2000/NT/9x) - icewarp variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar SMTP Merak 8.0.3; Thu, 30 Nov 2017 20:01:41 +1000",
+    "foo.bar ESMTP Merak 8.0.3; Thu, 30 Nov 2017 12:08:09 +0200",
+    "foo.bar ESMTP MERAK 2.10.284; Thu, 30 Nov 2017 17:55:10 +0800"
+  ]
+}

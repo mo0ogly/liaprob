@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_network_printer_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_NETWORK_PRINTER_MANAGER",
+  "taxonomy_name": "IBM Network Printer Manager",
+  "vendor": "IBM",
+  "product": "Network Printer Manager",
+  "source": {
+    "type": "recog",
+    "file": "IBM_NETWORK_PRINTER_MANAGER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_network_printer_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Ews/((?:\\d+\\.)*\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Ews/((?:\\d+\\.)*\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM Network Printer Manager."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "Ews/0.1",
+    "Ews/0"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-k3d_k3d_0_6_7_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "K3D_K3D_0_6_7_0",
+  "taxonomy_name": "k3d k3d (0.6.7.0)",
+  "vendor": "k3d",
+  "product": "k3d (0.6.7.0)",
+  "source": {
+    "type": "recog",
+    "file": "K3D_K3D_0_6_7_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_k3d_k3d_0_6_7_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6900fab05a50a99d284405f46e5bc7f6",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "k3d (0.6.7.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6900fab05a50a99d284405f46e5bc7f6"
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mgt_commerce_gmbh_cloudpanel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MGT_COMMERCE_GMBH_CLOUDPANEL",
+  "taxonomy_name": "MGT-COMMERCE GmbH CloudPanel",
+  "vendor": "MGT-COMMERCE GmbH",
+  "product": "CloudPanel",
+  "source": {
+    "type": "recog",
+    "file": "MGT_COMMERCE_GMBH_CLOUDPANEL.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mgt_commerce_gmbh_cloudpanel_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^dbe63c6d86ca97a4b20420e932c5b0bb$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CloudPanel - server control panel"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^CloudPanel \\| Log In$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CloudPanel - server control panel"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^cloudpanel=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CloudPanel - server control panel"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "dbe63c6d86ca97a4b20420e932c5b0bb",
+    "CloudPanel | Log In",
+    "cloudpanel=9rs2cohqs9bfq5fch54j2m5eje; path=/; secure; httponly; samesite=lax"
+  ]
+}

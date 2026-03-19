@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rabbitmq_management_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RABBITMQ_MANAGEMENT_SERVER",
+  "taxonomy_name": "RabbitMQ Management Server",
+  "vendor": "RabbitMQ",
+  "product": "Management Server",
+  "source": {
+    "type": "recog",
+    "file": "RABBITMQ_MANAGEMENT_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_rabbitmq_management_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:ddc75b0899dbf4f7b15290a77fbeb8ff|7f027d6d3eb672117ba63f246bc10f62|4aef220ab05308e3a3e8e4bec5984b2b)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "RabbitMQ"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^RabbitMQ Management$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "RabbitMQ Management"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ddc75b0899dbf4f7b15290a77fbeb8ff",
+    "7f027d6d3eb672117ba63f246bc10f62",
+    "4aef220ab05308e3a3e8e4bec5984b2b",
+    "RabbitMQ Management"
+  ]
+}

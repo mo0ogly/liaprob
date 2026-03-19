@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oce_digital_copier",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OCE_DIGITAL_COPIER",
+  "taxonomy_name": "Oce Digital Copier",
+  "vendor": "Oce",
+  "product": "Digital Copier",
+  "source": {
+    "type": "recog",
+    "file": "OCE_DIGITAL_COPIER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_oce_digital_copier_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Oce digital copier$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oce Copier"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Oce digital copier"
+  ]
+}

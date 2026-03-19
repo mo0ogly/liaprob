@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_10gb_blade_switch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_10GB_BLADE_SWITCH",
+  "taxonomy_name": "HP 10Gb Blade Switch",
+  "vendor": "HP",
+  "product": "10Gb Blade Switch",
+  "source": {
+    "type": "recog",
+    "file": "HP_10GB_BLADE_SWITCH.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_10gb_blade_switch_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP (?:1:)?10Gb Ethernet B[lL]\\S+ Switch$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP 10GbE Blade Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP 10Gb Ethernet BL-c Switch",
+    "HP 1:10Gb Ethernet Blade Switch"
+  ]
+}

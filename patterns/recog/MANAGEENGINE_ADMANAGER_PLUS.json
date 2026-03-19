@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_admanager_plus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_ADMANAGER_PLUS",
+  "taxonomy_name": "ManageEngine ADManager Plus",
+  "vendor": "ManageEngine",
+  "product": "ADManager Plus",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_ADMANAGER_PLUS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_admanager_plus_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6d14f0aa6a61fe4780b94b42eed19e83$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine ADManager Plus"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ManageEngine - ADManager Plus$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine ADManager Plus"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(JSESSIONIDADMP|admpcsrf)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine ADManager Plus"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_admanager_plus:-",
+  "examples": [
+    "6d14f0aa6a61fe4780b94b42eed19e83",
+    "ManageEngine - ADManager Plus",
+    "JSESSIONIDADMP=3A92A25349FECF56B7D7D6FF915545B5; Path=/; HttpOnly",
+    "admpcsrf=f5fe4a87-0365-4d04-a8e2-87b3c640092e;path=/;priority=high"
+  ]
+}

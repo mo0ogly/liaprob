@@ -1,0 +1,157 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-libupnp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIBUPNP",
+  "taxonomy_name": "libupnp",
+  "vendor": "",
+  "product": "libupnp",
+  "source": {
+    "type": "recog",
+    "file": "LIBUPNP.json",
+    "fingerprint_count": 9
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 9 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_libupnp_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+\\_eureka_1), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux/(\\S+\\_eureka_1), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Siqura Video Encoder"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+\\-Mozart-8G), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux/(\\S+\\-Mozart-8G), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Steinsvik Orbit IP Camera (Truen TCAM Rebrand)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+\\-ami), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux/(\\S+\\-ami), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "AMI MegaRAC LOM UPnP"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+\\-axis[^,]+), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux/(\\S+\\-axis[^,]+), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Axis Network Camera"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux/(\\S+), UPnP/[\\d\\.]+, Portable SDK for UPnP devices/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Portable SDK for UPnP Server - Linux"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+) UPnP/[\\d\\.]+ DLNADOC/[\\d\\.]+ Portable SDK for UPnP devices/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux/(\\S+) UPnP/[\\d\\.]+ DLNADOC/[\\d\\.]+ Portable SDK for UPnP devices/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "DLNADOC Portable SDK for UPnP Server - Linux DNLADOC variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+), UPnP/[\\d\\.]+, Intel SDK for UPnP devices ?/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux/(\\S+), UPnP/[\\d\\.]+, Intel SDK for UPnP devices ?/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Intel SDK for UPnP Server with verbose banner"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux, UPnP/[\\d\\.]+, Intel SDK for UPnP devices ?/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Linux, UPnP/[\\d\\.]+, Intel SDK for UPnP devices ?/(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Intel SDK for UPnP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Darwin/(\\S+), UPnP/\\S+, Portable SDK for UPnP devices/(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Darwin/(\\S+), UPnP/\\S+, Portable SDK for UPnP devices/(\\S+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Portable SDK for UPnP Server - macOS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:linux:linux_kernel:{os.version}",
+  "examples": [
+    "Linux/2.6.37_eureka_1, UPnP/1.0, Portable SDK for UPnP devices/1.6.6",
+    "Linux/2.6.28.9-Mozart-8G, UPnP/1.0, Portable SDK for UPnP devices/1.6.6",
+    "Linux/3.14.17-ami, UPnP/1.0, Portable SDK for UPnP devices/1.6.20",
+    "Linux/4.9.94-axis5, UPnP/1.0, Portable SDK for UPnP devices/1.6.22",
+    "Linux/2.4.20-46.7asp, UPnP/1.0, Portable SDK for UPnP devices/1.6.17",
+    "Linux/2.6.10-iop1-1, UPnP/1.0, Portable SDK for UPnP devices/1.4.1",
+    "Linux/2.6.12-5.1-brcmstb-dm800, UPnP/1.0, Portable SDK for UPnP devices/1.6.0",
+    "Linux/2.6.12.6-VENUS, UPnP/1.0, Portable SDK for UPnP devices/1.6.10",
+    "Linux/2.6.12.6-arm1-040, UPnP/1.0, Portable SDK for UPnP devices/1.6.5.2",
+    "Linux/2.6.13, UPnP/1.0, Portable SDK for UPnP devices/1.6.0"
+  ]
+}

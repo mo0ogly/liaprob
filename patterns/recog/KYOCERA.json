@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kyocera",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KYOCERA",
+  "taxonomy_name": "Kyocera",
+  "vendor": "Kyocera",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "KYOCERA.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_kyocera_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^220 ECOSYS ([^\\s]+) FTP server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kyocera Multifunction Device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^TASKalfa (\\d+c?i) FTP server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Taskalfa Series of Printers"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(FS-\\S+MFP\\S*?) FTP server\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kyocera Printer with version string"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(FS-\\S+(?:DN|D|N)) FTP server\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kyocera Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "220 ECOSYS P2135dn FTP server",
+    "TASKalfa 300ci FTP server",
+    "TASKalfa 520i FTP server",
+    "FS-C2126MFP FTP server",
+    "FS-C2026MFP+ FTP server",
+    "FS-1128MFP FTP server",
+    "FS-1370DN FTP server",
+    "FS-C5015N FTP server."
+  ]
+}

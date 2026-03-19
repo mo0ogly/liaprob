@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-at_t_laboratories_cambridge_xvnc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AT_T_LABORATORIES_CAMBRIDGE_XVNC",
+  "taxonomy_name": "AT&T Laboratories Cambridge Xvnc",
+  "vendor": "AT&T Laboratories Cambridge",
+  "product": "Xvnc",
+  "source": {
+    "type": "recog",
+    "file": "AT_T_LABORATORIES_CAMBRIDGE_XVNC.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    6000
+  ],
+  "probes": [
+    {
+      "id": "recog_at_t_laboratories_cambridge_xvnc_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^AT&T Laboratories Cambridge$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "AT&T Laboratories Cambridge"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "x11"
+  ],
+  "examples": [
+    "AT&T Laboratories Cambridge"
+  ]
+}

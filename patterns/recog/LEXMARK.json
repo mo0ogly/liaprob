@@ -1,0 +1,222 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lexmark",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEXMARK",
+  "taxonomy_name": "Lexmark",
+  "vendor": "Lexmark",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "LEXMARK.json",
+    "fingerprint_count": 19
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 19 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    67,
+    68,
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_lexmark_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Mfg=LEXMARK;Typ=(?:MFP|Printer);Mod=Lexmark (\\S+);Ser=([A-Z0-9]{13});$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_lexmark_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ET(\\S{12}) Lexmark (\\S+) FTP Server (\\S+) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark printer with MAC address"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Lexmark (\\S+) FTP Server (\\S+) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark printer with OS version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Lexmark (\\S+) FTP Server ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^EUFSALE MarkNet (\\S+) FTP Server (\\d+\\.\\d+\\.\\d+) ready.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Marknet Printers FTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ET(\\S{1,12}) (Pro\\d+) Series FTP Server ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark ProXXX Series of Printers"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ET(\\S{1,12}) Lexmark Forms Printer (\\d+) Ethernet FTP Server (\\S+) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Forms Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Lexmark Optra (\\S+) FTP Server (\\S+) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Optra Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^KM-(.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Konica Minolta printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Lexmark (.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark JetDirect printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_lexmark_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark (\\S+) version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Laser Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:Lexmark )?MarkNet (.*) Version (\\S+) Ethernet",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark MarkNet Printer Server"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark Optra (\\S+(?: \\S+)?(?: \\S+)?) +Version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Optra Laser Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark Forms Printer (\\S+(?: plus)?) +version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Forms Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark (\\S+) Series version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:Lexmark|LEXMARK) (\\S+) [vV]ersion (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Printer - no kernel variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark ([^;]+); Net.*ESS ([^,]+),IOT (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Printer - net variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark (\\S+(?: \\S+)?) Print Server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Printer - print server variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark (\\S+) Series$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark Printer - no software version variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "ftp",
+    "dhcp",
+    "snmp"
+  ],
+  "examples": [
+    "Mfg=LEXMARK;Typ=MFP;Mod=Lexmark MX410de;Ser=12345ABC6D7EF;",
+    "Mfg=LEXMARK;Typ=Printer;Mod=Lexmark MS310dn;Ser=123456AB7C8DE;",
+    "ET000400CEA560 Lexmark T640 FTP Server NS.NP.N219 ready.",
+    "ET0021718 Lexmark T654 FTP Server NR.APS.F368 ready.",
+    "Lexmark X500 FTP server ready",
+    "EUFSALE MarkNet X2011e FTP Server 4.20.21 ready.",
+    "ET0020007E4D2A Pro700 Series FTP Server ready.",
+    "ET0020004F54EE Lexmark Forms Printer 2590 Ethernet FTP Server LCL.CU.P012c ready.",
+    "lex142785470853 Lexmark Optra T612 FTP Server 3.20.30 ready.",
+    "oppr1.s02504.us Lexmark Optra T610 FTP Server 3.20.20 ready."
+  ]
+}

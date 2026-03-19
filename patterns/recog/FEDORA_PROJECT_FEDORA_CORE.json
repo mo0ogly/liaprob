@@ -1,0 +1,130 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fedora_project_fedora_core",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FEDORA_PROJECT_FEDORA_CORE",
+  "taxonomy_name": "Fedora Project Fedora Core",
+  "vendor": "Fedora Project",
+  "product": "Fedora Core",
+  "source": {
+    "type": "recog",
+    "file": "FEDORA_PROJECT_FEDORA_CORE.json",
+    "fingerprint_count": 9
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 9 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_fedora_project_fedora_core_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Apache\\/2\\.2\\.11.*\\(Fedora\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Fedora 11"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Apache\\/2\\.2\\.15.*\\(Fedora\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Fedora 13"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Apache\\/2\\.2\\.16.*\\(Fedora\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Fedora 14"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Apache\\/2\\.2\\.23.*\\(Fedora\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Fedora 17"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Apache\\/2\\.4\\.3.*\\(Fedora\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Fedora 18"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(Fedora\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat Fedora"
+        }
+      ]
+    },
+    {
+      "id": "recog_fedora_project_fedora_core_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\S+.FC4) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fedora Core Linux 4"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\S+.fc6) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fedora Core Linux 6"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\S+.fc7) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fedora Core Linux 7"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:fedoraproject:fedora_core:11",
+  "examples": [
+    "Apache/2.2.11 (Fedora)",
+    "Apache/2.2.15 (Fedora)",
+    "Apache/2.2.16 (Fedora)",
+    "Apache/2.2.23 (Fedora)",
+    "Apache/2.4.3 (Fedora) PHP/5.4.12",
+    "Apache (Fedora)",
+    "Linux hostname 2.6.11-1.1369_FC4 #1 Thu Jun 2 22:55:56 EDT 2005 i686",
+    "Linux hostname 2.6.20-1.2948.fc6 #1 SMP Fri Apr 27 19:48:40 EDT 2007 i686",
+    "Linux hostname 2.6.22.9-91.fc7 #1 SMP Thu Sep 27 23:10:59 EDT 2007 i686"
+  ]
+}

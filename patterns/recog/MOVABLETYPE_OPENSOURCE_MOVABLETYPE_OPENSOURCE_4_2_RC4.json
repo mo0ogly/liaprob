@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-movabletype_opensource_movabletype_opensource_4_2_rc4",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOVABLETYPE_OPENSOURCE_MOVABLETYPE_OPENSOURCE_4_2_RC4",
+  "taxonomy_name": "movabletype-opensource movabletype-opensource (4.2~rc4)",
+  "vendor": "movabletype-opensource",
+  "product": "movabletype-opensource (4.2~rc4)",
+  "source": {
+    "type": "recog",
+    "file": "MOVABLETYPE_OPENSOURCE_MOVABLETYPE_OPENSOURCE_4_2_RC4.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_movabletype_opensource_movabletype_opensource_4_2_rc4_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^06b60d90ccfb79c2574c7fdc3ac23f05",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "movabletype-opensource (4.2~rc4)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "06b60d90ccfb79c2574c7fdc3ac23f05"
+  ]
+}

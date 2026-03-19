@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mantis_mantis_bug_tracker_1_1_2_bugs_images_favicon_ico",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANTIS_MANTIS_BUG_TRACKER_1_1_2_BUGS_IMAGES_FAVICON_ICO",
+  "taxonomy_name": "Mantis Mantis Bug Tracker (1.1.2, /bugs/images/favicon.ico)",
+  "vendor": "Mantis",
+  "product": "Mantis Bug Tracker (1.1.2, /bugs/images/favicon.ico)",
+  "source": {
+    "type": "recog",
+    "file": "MANTIS_MANTIS_BUG_TRACKER_1_1_2_BUGS_IMAGES_FAVICON_ICO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mantis_mantis_bug_tracker_1_1_2_bugs_images_favicon_ico_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ebe293e1746858d2548bca99c43e4969",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mantis Bug Tracker (1.1.2, /bugs/images/favicon.ico)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ebe293e1746858d2548bca99c43e4969"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cloudflare_cloudflare_load_balancer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDFLARE_CLOUDFLARE_LOAD_BALANCER",
+  "taxonomy_name": "CloudFlare CloudFlare Load Balancer",
+  "vendor": "CloudFlare",
+  "product": "CloudFlare Load Balancer",
+  "source": {
+    "type": "recog",
+    "file": "CLOUDFLARE_CLOUDFLARE_LOAD_BALANCER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cloudflare_cloudflare_load_balancer_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^__cfd?uid=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CloudFlare web load balancer endpoint"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^cloudflare(?:-nginx)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "CloudFlare web load balancer endpoint"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:cloudflare:load_balancing:-",
+  "examples": [
+    "__cfuid=1337",
+    "__cfduid=dd450f2431e1e611a61a15f68974de9a41618794671; expires=Wed, 19-May-21 01:11:11 GMT; path=/; domain=.foo.bar; HttpOnly; SameSite=Lax",
+    "cloudflare-nginx",
+    "cloudflare"
+  ]
+}

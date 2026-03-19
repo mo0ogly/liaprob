@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ubiquiti_edgeos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UBIQUITI_EDGEOS",
+  "taxonomy_name": "Ubiquiti EdgeOS",
+  "vendor": "Ubiquiti",
+  "product": "EdgeOS",
+  "source": {
+    "type": "recog",
+    "file": "UBIQUITI_EDGEOS.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ubiquiti_edgeos_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^a64986177b51d32d8b828c1d5f3bce93$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti EdgeSwitch"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f98bced327f13a45ad681829905db891$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti EdgeOS Router/Switch"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Ubiquiti EdgeSwitch$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti EdgeSwitch"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^EdgeOS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti EdgeRouter/EdgeSwitch/etc"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:ui:edgeos:-",
+  "examples": [
+    "a64986177b51d32d8b828c1d5f3bce93",
+    "f98bced327f13a45ad681829905db891",
+    "Ubiquiti EdgeSwitch",
+    "EdgeOS"
+  ]
+}

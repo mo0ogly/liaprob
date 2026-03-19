@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-python_software_foundation_simplehttp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PYTHON_SOFTWARE_FOUNDATION_SIMPLEHTTP",
+  "taxonomy_name": "Python Software Foundation SimpleHTTP",
+  "vendor": "Python Software Foundation",
+  "product": "SimpleHTTP",
+  "source": {
+    "type": "recog",
+    "file": "PYTHON_SOFTWARE_FOUNDATION_SIMPLEHTTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_python_software_foundation_simplehttp_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^SimpleHTTP/((?:\\d+\\.)*\\d+)\\s*Python/((?:\\d+\\.)*\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^SimpleHTTP/((?:\\d+\\.)*\\d+)\\s*Python/((?:\\d+\\.)*\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SimpleHTTPRequestHandler Python class is a simple HTTP request handler."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "SimpleHTTP/0.6 Python/2.7.6",
+    "SimpleHTTP/0.6 Python/3.4.0"
+  ]
+}

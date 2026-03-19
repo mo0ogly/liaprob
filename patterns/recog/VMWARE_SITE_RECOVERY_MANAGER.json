@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vmware_site_recovery_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE_SITE_RECOVERY_MANAGER",
+  "taxonomy_name": "VMware Site Recovery Manager",
+  "vendor": "VMware",
+  "product": "Site Recovery Manager",
+  "source": {
+    "type": "recog",
+    "file": "VMWARE_SITE_RECOVERY_MANAGER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vmware_site_recovery_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to VMware Site Recovery Manager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware SRM"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_vmware_site_recovery_manager_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN.*,OU=SRM,O=VMware\\\\, Inc\\.,L=Palo Alto,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware SRM"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "Welcome to VMware Site Recovery Manager",
+    "CN=SRM01,OU=SRM,O=VMware\\, Inc.,L=Palo Alto,ST=California,C=US"
+  ]
+}

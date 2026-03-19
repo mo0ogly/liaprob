@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-plone_plone_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLONE_PLONE_CMS",
+  "taxonomy_name": "Plone Plone CMS",
+  "vendor": "Plone",
+  "product": "Plone CMS",
+  "source": {
+    "type": "recog",
+    "file": "PLONE_PLONE_CMS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_plone_plone_cms_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:4eb846f1286ab4e7a399c851d7d84cca|a47951fb41640e7a2f5862c296e6f218|10bd6ad7b318df92d9e9bd03104d9b80)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Plone CMS (3.1.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "4eb846f1286ab4e7a399c851d7d84cca",
+    "a47951fb41640e7a2f5862c296e6f218",
+    "10bd6ad7b318df92d9e9bd03104d9b80"
+  ]
+}

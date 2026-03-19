@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-slackware_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SLACKWARE_LINUX",
+  "taxonomy_name": "Slackware Linux",
+  "vendor": "Slackware",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "SLACKWARE_LINUX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_slackware_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Slackware(?: Linux)\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Slackware Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Slackware Linux 14.1"
+  ]
+}

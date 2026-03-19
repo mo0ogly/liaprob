@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tversity_tversity_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TVERSITY_TVERSITY_X",
+  "taxonomy_name": "TVersity TVersity x",
+  "vendor": "TVersity",
+  "product": "TVersity x",
+  "source": {
+    "type": "recog",
+    "file": "TVERSITY_TVERSITY_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tversity_tversity_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^300b5c3f134d7ec0bca862cf113149d8",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TVersity x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "300b5c3f134d7ec0bca862cf113149d8"
+  ]
+}

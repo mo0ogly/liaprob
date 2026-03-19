@@ -1,0 +1,213 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_aix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_AIX",
+  "taxonomy_name": "IBM AIX",
+  "vendor": "IBM",
+  "product": "AIX",
+  "source": {
+    "type": "recog",
+    "file": "IBM_AIX.json",
+    "fingerprint_count": 19
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 19 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_aix_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.rlogind: Acc.s refus.\\..+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "AIX rlogind"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.rexecd: [-\\d]+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "AIX rexecd"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^AIX Version\\W(\\d)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "System is IBM AIX v"
+        }
+      ]
+    },
+    {
+      "id": "recog_ibm_aix_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^IBM RISC System/6000 .* Base Operating System AIX [^:]+: 03\\.02\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 3.2 on RS/6000"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RISC System/6000 .* Base Operating System Runtime AIX [^:]+: 04\\.02\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 4.2 on RS/6000"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RISC System/6000 .* Base Operating System Runtime AIX [^:]+: 04\\.03\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 4.3 on RS/6000"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime AIX [^:]+: 04\\.02\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 4.2 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime AIX [^:]+: 04\\.03\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 4.3 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime AIX [^:]+: 05\\.01\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 5.1 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Operating System Software: AIX version: 5\\.1 Networking Software:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 5.1 on PowerPC - network software variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime AIX [^:]+: 05\\.02\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 5.2 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime AIX [^:]+: 05\\.03\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 5.3 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime AIX [^:]+: 06\\.01\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 6.1 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime AIX [^:]+: 07\\.01\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 7.1 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?UNIX System Machine Type: not available.*Base Operating System Runtime AIX [^:]+: 05\\.01\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 5.1 - unknown machine type variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?UNIX System Machine Type: not available.*Base Operating System Runtime AIX [^:]+: 05\\.02\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 5.2 - unknown machine type variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?UNIX System Machine Type: not available.*Base Operating System Runtime AIX [^:]+: 05\\.03\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 5.3 - unknown machine type variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?UNIX System Machine Type: not available.*Base Operating System Runtime AIX [^:]+: 06\\.01\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 6.1 - unknown machine type variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?UNIX System Machine Type: not available.*Base Operating System Runtime AIX [^:]+: 07\\.01\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM AIX 7.1 - unknown machine type variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:ibm:aix:-",
+  "examples": [
+    "xrlogind: Accxs refusx.",
+    "xrexecd: 0-1 The login is not correct.",
+    "IBM RISC System/6000 Machine Type: 0x0035 Processor id: 000018593500 The Base Operating System AIX version: 03.02.0000.0000 TCPIP Applications version: 03.02.0000.0000",
+    "IBM RISC System/6000 Machine Type: 0x0100 Processor id: 000125576600 The Base Operating System AIX version: 03.02.0000.0000 TCPIP Applications version: 03.02.0000.0000",
+    "RISC System/6000 Architecture Machine Type: 0x0800 Processor id: 000148364800 Base Operating System Runtime AIX version: 04.02.0001.0000 TCP/IP Client Support version: 04.02.0001.0000",
+    "RISC System/6000 Architecture Machine Type: 0x0400 Processor id: 000033407200 Base Operating System Runtime AIX version: 04.03.0003.0000 TCP/IP Client Support version: 04.03.0003.0000",
+    "RISC System/6000 Architecture Machine Type: 0x0400 Processor id: 000055848900 Base Operating System Runtime AIX version: 04.03.0003.0075 TCP/IP Client Support version: 04.03.0003.0075",
+    "RISC System/6000 Architecture Machine Type: 0x0400 Processor id: 000059987900 Base Operating System Runtime AIX version: 04.03.0003.0000 TCP/IP Client Support version: 04.03.0003.0000",
+    "RISC System/6000 Architecture Machine Type: 0x0401 Processor id: 000387955700 Base Operating System Runtime AIX version: 04.03.0003.0000 TCP/IP Client Support version: 04.03.0003.0000",
+    "RISC System/6000 Architecture Machine Type: 0x0800 Processor id: 00011724A000 Base Operating System Runtime AIX version: 04.03.0003.0075 TCP/IP Client Support version: 04.03.0003.0075"
+  ]
+}

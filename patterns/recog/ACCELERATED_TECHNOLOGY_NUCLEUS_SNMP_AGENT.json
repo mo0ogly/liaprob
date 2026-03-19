@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-accelerated_technology_nucleus_snmp_agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACCELERATED_TECHNOLOGY_NUCLEUS_SNMP_AGENT",
+  "taxonomy_name": "Accelerated Technology Nucleus SNMP Agent",
+  "vendor": "Accelerated Technology",
+  "product": "Nucleus SNMP Agent",
+  "source": {
+    "type": "recog",
+    "file": "ACCELERATED_TECHNOLOGY_NUCLEUS_SNMP_AGENT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_accelerated_technology_nucleus_snmp_agent_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Nucleus SNMP Agent$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nucleus SNMP Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Nucleus SNMP Agent"
+  ]
+}

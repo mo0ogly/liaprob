@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-eclipse_jetty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ECLIPSE_JETTY",
+  "taxonomy_name": "Eclipse Jetty",
+  "vendor": "Eclipse",
+  "product": "Jetty",
+  "source": {
+    "type": "recog",
+    "file": "ECLIPSE_JETTY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_eclipse_jetty_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Jetty\\((\\S+)\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Jetty\\((\\S+)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Eclipse Jetty"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:eclipse:jetty:{version}",
+  "examples": [
+    "Jetty(7.6.9.v20130131)",
+    "Jetty(8.1.10.v20130312)",
+    "Jetty(9.4.z-SNAPSHOT)"
+  ]
+}

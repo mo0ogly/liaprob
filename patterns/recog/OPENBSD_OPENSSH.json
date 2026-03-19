@@ -1,0 +1,1030 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-openbsd_openssh",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENBSD_OPENSSH",
+  "taxonomy_name": "OpenBSD OpenSSH",
+  "vendor": "OpenBSD",
+  "product": "OpenSSH",
+  "source": {
+    "type": "recog",
+    "file": "OPENBSD_OPENSSH.json",
+    "fingerprint_count": 98
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 98 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_openbsd_openssh_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(2\\.3\\.0) (green@FreeBSD.org 20010321)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(2\\.3\\.0) (green@FreeBSD.org 20010321)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.3"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(2\\.3\\.0) (FreeBSD localisations 20010713)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(2\\.3\\.0) (FreeBSD localisations 20010713)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(2\\.9) (FreeBSD localisations 20011202)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(2\\.9) (FreeBSD localisations 20011202)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.5"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.4p1) (FreeBSD 20020702)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.4p1) (FreeBSD 20020702)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.6.2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(2\\.9) (FreeBSD localisations 20020307)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(2\\.9) (FreeBSD localisations 20020307)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.6"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.4p1) (FreeBSD-20020702)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.4p1) (FreeBSD-20020702)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.7"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.5p1) (FreeBSD-20030201)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.5p1) (FreeBSD-20030201)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.8"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.5p1) (FreeBSD-20030924)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.5p1) (FreeBSD-20030924)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.9/4.10 (sometimes 4.11)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.5p1) (FreeBSD-20060930)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.5p1) (FreeBSD-20060930)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 4.11"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.5p1) (FreeBSD-20021029)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.5p1) (FreeBSD-20021029)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 5.0"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.6\\.1p1) (FreeBSD-20030423)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.6\\.1p1) (FreeBSD-20030423)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 5.1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.6\\.1p1) (FreeBSD-20030924)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.6\\.1p1) (FreeBSD-20030924)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 5.2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.8\\.1p1) (FreeBSD-20040419)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.8\\.1p1) (FreeBSD-20040419)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 5.3/5.4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.8\\.1p1) (FreeBSD-20060123)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.8\\.1p1) (FreeBSD-20060123)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 5.5"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.2p1) (FreeBSD-20050903)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.2p1) (FreeBSD-20050903)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 6.0/6.1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.5p1) (FreeBSD-20061110)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.5p1) (FreeBSD-20061110)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 6.2/6.3/6.4/7.0"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.1p1) (FreeBSD-20080901)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.1p1) (FreeBSD-20080901)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 7.1/7.2/7.3/7.4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.2p1) (FreeBSD-20090522)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.2p1) (FreeBSD-20090522)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 8.0"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.4p1) (FreeBSD-20100308)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.4p1) (FreeBSD-20100308)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 8.1/8.2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.4p1_hpn13v11) (FreeBSD-20100308)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.4p1_hpn13v11) (FreeBSD-20100308)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 8.3"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.1_hpn13v11) (FreeBSD-20120901)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.1_hpn13v11) (FreeBSD-20120901)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 8.4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.8p2_hpn13v11) (FreeBSD-20110503)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.8p2_hpn13v11) (FreeBSD-20110503)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 9.0/9.1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.2_hpn13v11) (FreeBSD-20130515)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.2_hpn13v11) (FreeBSD-20130515)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 9.2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.6\\.1_hpn13v11) (FreeBSD-20140420)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.6\\.1_hpn13v11) (FreeBSD-20140420)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 9.3/10.1/10.2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.4_hpn13v11) (FreeBSD-20131111)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.4_hpn13v11) (FreeBSD-20131111)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 10.0"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.2) (FreeBSD-20160310)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.2) (FreeBSD-20160310)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 10.3/11.0"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.3) (FreeBSD-20170902)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.3) (FreeBSD-20170902)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 10.4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.2) (FreeBSD-20161230)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.2) (FreeBSD-20161230)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 11.1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.5) (FreeBSD-20170903)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.5) (FreeBSD-20170903)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 11.2/11.3"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.8) (FreeBSD-20180909)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.8) (FreeBSD-20180909)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD 12.0/12.1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(FreeBSD[ -].*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(FreeBSD[ -].*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on FreeBSD"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(NetBSD(?:_Secure_Shell)?[ -].*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(NetBSD(?:_Secure_Shell)?[ -].*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on NetBSD"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.8\\.1p1) (Debian-11ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.8\\.1p1) (Debian-11ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 4.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(3\\.9p1) (Debian-1ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(3\\.9p1) (Debian-1ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 5.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.1p1) (Debian-7ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.1p1) (Debian-7ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 5.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.2p1) (Debian-7ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.2p1) (Debian-7ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 6.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.3p2) (Debian-8ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.3p2) (Debian-8ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 7.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.6p1) (Debian-5ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.6p1) (Debian-5ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 7.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.7p1) (Debian-8ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.7p1) (Debian-8ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 8.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.1p1) (Debian-3ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.1p1) (Debian-3ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 8.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.1p1) (Debian-5ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.1p1) (Debian-5ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 9.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.1p1) (Debian-6ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.1p1) (Debian-6ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 9.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.3p1) (Debian-3ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.3p1) (Debian-3ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 10.04 (lucid)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.5p1) (Debian-4ubuntu\\d+(?:\\.\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.5p1) (Debian-4ubuntu\\d+(?:\\.\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 10.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.8p1) (Debian-1ubuntu\\d(?:\\.\\d)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.8p1) (Debian-1ubuntu\\d(?:\\.\\d)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 11.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.8p1) (Debian-7ubuntu\\d(?:\\.\\d)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.8p1) (Debian-7ubuntu\\d(?:\\.\\d)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 11.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.9p1) (Debian-5ubuntu\\d(?:\\.\\d)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.9p1) (Debian-5ubuntu\\d(?:\\.\\d)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 12.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.0p1) (Debian-3ubuntu\\d(?:\\.\\d)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.0p1) (Debian-3ubuntu\\d(?:\\.\\d)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 12.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.1p1) (Debian-4)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.1p1) (Debian-4)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 13.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.2p2) (Ubuntu-6\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.2p2) (Ubuntu-6\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 13.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(\\d+\\.\\d+(?:\\.\\d+)?(?:p\\d+)?)[_|-](hpn\\d+v\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(\\d+\\.\\d+(?:\\.\\d+)?(?:p\\d+)?)[_|-](hpn\\d+v\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH with HPN patches"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.6(?:\\.1)?p1) (Ubuntu-2\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.6(?:\\.1)?p1) (Ubuntu-2\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 14.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.6\\.1p1) (Ubuntu-8)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.6\\.1p1) (Ubuntu-8)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 14.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.7p1) (Ubuntu-5\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.7p1) (Ubuntu-5\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 15.04 (vivid)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(6\\.9p1) (Ubuntu-2\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(6\\.9p1) (Ubuntu-2\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 15.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.2p2) (Ubuntu-4\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.2p2) (Ubuntu-4\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 16.04 (vivid)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.3p1) (Ubuntu-1)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.3p1) (Ubuntu-1)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 16.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.4p1) (Ubuntu-10)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.4p1) (Ubuntu-10)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 17.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.5p1) (Ubuntu-10\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.5p1) (Ubuntu-10\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 17.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.6p1) (Ubuntu-4\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.6p1) (Ubuntu-4\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 18.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.7p1) (Ubuntu-4\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.7p1) (Ubuntu-4\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 18.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.9p1) (Ubuntu-10)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.9p1) (Ubuntu-10)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 19.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(8\\.0p1) (Ubuntu-6build1)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(8\\.0p1) (Ubuntu-6build1)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 19.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(8\\.2p1) (Ubuntu-4\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(8\\.2p1) (Ubuntu-4\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 20.04"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(8\\.3p1) (Ubuntu-1\\S*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(8\\.3p1) (Ubuntu-1\\S*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu 20.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Ubuntu-\\d\\d?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Ubuntu-\\d\\d?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu (unknown release)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+((?:Debian|Ubuntu).+ubuntu.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+((?:Debian|Ubuntu).+ubuntu.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Ubuntu"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian.+woody.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian.+woody.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 3.0 (woody)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian.+sarge.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian.+sarge.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 3.1 (sarge)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(4\\.3p2) (Debian-9.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(4\\.3p2) (Debian-9.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 4.0 (etch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.1p1) (Debian-5)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.1p1) (Debian-5)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 5.0 (also 5.10)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d+[+~]squeeze.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d+[+~]squeeze.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 6.0 (squeeze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(5\\.5p1) (Debian-6)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(5\\.5p1) (Debian-6)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 6.0 (w/o squeeze in banner)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian-4\\+deb7u2)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian-4\\+deb7u2)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 7.8 (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian-4(?:\\+deb7u\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian-4(?:\\+deb7u\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 7.x (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d~bpo7\\d?\\+\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d~bpo7\\d?\\+\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH backport running on Debian 7.x (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian-5\\+deb8u\\d+.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian-5\\+deb8u\\d+.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 8.x (jessie)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d\\d?\\+deb9u\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d\\d?\\+deb9u\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 9.x (stretch)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.9p1) (Debian-10)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.9p1) (Debian-10)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 10.0 (buster)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.9p1) (Debian-10\\+deb10u1)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.9p1) (Debian-10\\+deb10u1)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 10.1 (buster)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.9p1) (Debian-10\\+deb10u2)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.9p1) (Debian-10\\+deb10u2)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 10.2 (buster)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.9p1) (Debian-10\\S+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.9p1) (Debian-10\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 10.x (buster catchall)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(8\\.1p1) (Debian-1|Debian-\\d\\d?\\+deb11u\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(8\\.1p1) (Debian-1|Debian-\\d\\d?\\+deb11u\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 11.x (bullseye)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(9\\.2p1) (Debian-\\d\\d?\\+deb12u\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(9\\.2p1) (Debian-\\d\\d?\\+deb12u\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian 12.x (bookworm)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d+(?:[~]?bpo[.]?\\d+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Debian-\\d+(?:[~]?bpo[.]?\\d+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Debian (unknown release)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Raspbian-5\\+deb8u\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Raspbian-5\\+deb8u\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Raspbian (Debian 8 \"Jessie\" based)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Raspbian-\\d\\d?\\+deb9u\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Raspbian-\\d\\d?\\+deb9u\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Raspbian (Debian 9 \"Stretch\" based)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(7\\.9p1)\\s+(Raspbian-(?:10|\\d\\d?\\+deb10u\\d+)(?:\\+rpt\\d)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(7\\.9p1)\\s+(Raspbian-(?:10|\\d\\d?\\+deb10u\\d+)(?:\\+rpt\\d)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Raspbian (Debian 10 \"Buster\" based)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(8\\.1p1)\\s+(Raspbian-(?:1|\\d\\d?\\+deb11u\\d+))$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(8\\.1p1)\\s+(Raspbian-(?:1|\\d\\d?\\+deb11u\\d+))$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Raspbian (Debian 11 \"Bullseye\" based)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_([^\\s]+)\\s+(Raspbian-\\d\\d?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_([^\\s]+)\\s+(Raspbian-\\d\\d?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Raspbian (Debian, unknown release)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(.*)\\+(CAN-[0-9]{4}-[0-9]{4})$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(.*)\\+(CAN-[0-9]{4}-[0-9]{4})$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH with CVE patch, as seen in Mac OS X"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(.*)_Mikrotik_v(.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(.*)_Mikrotik_v(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH on MikroTik"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(.*)-HipServ$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(.*)-HipServ$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH on HipServ"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_for_Windows_([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_for_Windows_([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH running on Windows"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(.*) in DesktopAuthority (?:.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(.*) in DesktopAuthority (?:.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "DesktopAuthority SSH"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(\\d+\\.\\d+(?:\\.\\d+)?(?:p\\d+)?) ((?:PKIX\\s+)?FIPS)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(\\d+\\.\\d+(?:\\.\\d+)?(?:p\\d+)?) ((?:PKIX\\s+)?FIPS)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH with a version and FIPS mode enabled"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH_(\\d+\\.\\d+(?:\\.\\d+)?(?:p\\d+)?) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSSH_(\\d+\\.\\d+(?:\\.\\d+)?(?:p\\d+)?) *$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSSH with just a version, no comment by vendor"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSSH$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenSSH w/o version or comment"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "cpe23_template": "cpe:/a:openbsd:openssh:{version}",
+  "examples": [
+    "OpenSSH_2.3.0 green@FreeBSD.org 20010321",
+    "OpenSSH_2.3.0 FreeBSD localisations 20010713",
+    "OpenSSH_2.9 FreeBSD localisations 20011202",
+    "OpenSSH_3.4p1 FreeBSD 20020702",
+    "OpenSSH_2.9 FreeBSD localisations 20020307",
+    "OpenSSH_3.4p1 FreeBSD-20020702",
+    "OpenSSH_3.5p1 FreeBSD-20030201",
+    "OpenSSH_3.5p1 FreeBSD-20030924",
+    "OpenSSH_3.5p1 FreeBSD-20060930",
+    "OpenSSH_3.5p1 FreeBSD-20021029"
+  ]
+}

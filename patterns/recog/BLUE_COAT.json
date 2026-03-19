@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-blue_coat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BLUE_COAT",
+  "taxonomy_name": "Blue Coat",
+  "vendor": "Blue Coat",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "BLUE_COAT.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_blue_coat_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Blue Coat (SG\\S+)(?: Series)?,.*\\s+SGOS ([^,]+), Release id:\\s*(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Blue Coat Proxy SG"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Blue Coat (AV\\S+)(?: Series)?, ProxyAV Version: ([^,]+). Release id:\\s*(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Blue Coat ProxyAV"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Blue Coat SG400 Series, Version: SGOS 5.2.4.8, Release id: 35838 Proxy Edition",
+    "Blue Coat SG800 Series, Security-Gateway Version: SGOS 2.1.6044, Release id: 19480 Service Pack 4",
+    "Blue Coat SG400, ProxySG Version: SGOS 4.1.1.1, Release id: 22695",
+    "Blue Coat SG8100 Series, ProxySG Version: SGOS 4.3.4.1, Release id: 52168",
+    "Blue Coat AV1200 Series, ProxyAV Version: 3.2.6.1, Release id: 51482"
+  ]
+}

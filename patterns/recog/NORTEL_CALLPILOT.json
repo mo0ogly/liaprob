@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nortel_callpilot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NORTEL_CALLPILOT",
+  "taxonomy_name": "Nortel CallPilot",
+  "vendor": "Nortel",
+  "product": "CallPilot",
+  "source": {
+    "type": "recog",
+    "file": "NORTEL_CALLPILOT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    143,
+    993
+  ],
+  "probes": [
+    {
+      "id": "recog_nortel_callpilot_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) CallPilot IMAP4rev1 v(\\S+) server ready\\.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,512}) CallPilot IMAP4rev1 v(\\S+) server ready\\.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Nortel CallPilot"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "imap"
+  ],
+  "cpe23_template": "cpe:/a:nortel:callpilot:{version}",
+  "examples": [
+    "nottest.localdomain CallPilot IMAP4rev1 v42.02.05.22 server ready.",
+    "test.localdomain CallPilot IMAP4rev1 v43.03.19.22 server ready."
+  ]
+}

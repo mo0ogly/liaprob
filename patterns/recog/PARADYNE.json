@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-paradyne",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PARADYNE",
+  "taxonomy_name": "Paradyne",
+  "vendor": "Paradyne",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "PARADYNE.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_paradyne_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^PARADYNE T1 DSU/CSU; model: ([^;]+); S/W Release: ([^;]+);",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Paradyne DSU/CSU"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^PARADYNE (BitStorm \\S+);.*S/W Release: ([^;]+);",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Paradyne BitStorm DSLAM"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^PARADYNE (GranDSLAM \\S+);.*S/W Release: ([^;]+);",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Paradyne GranDSLAM"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^PARADYNE SHDSL FrameSaver DSL; Model: ([^;]+); S/W Release: ([^;]+);",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Paradyne Frame Relay"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Paradyne (ATM (?:ReachDSL|ADSL) Unit); Model: ([^;]+);.*S/W Release: ([^;]+);",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Paradyne ATM DSL Unit"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Paradyne (?:Hot[wW]ire [^;]+); Model: ([^;]+);.*S/W Release: ([^;]+);",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Paradyne HotWire"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "PARADYNE T1 DSU/CSU; model: 3165-A4-210; S/W Release: 05.01.16; H/W CCA1: 3996-82C; Serial number: 5796841",
+    "PARADYNE BitStorm 2600; S/W Release: 02.05.07;",
+    "PARADYNE BitStorm 4800; S/W Release: 01.00.09;",
+    "PARADYNE GranDSLAM 4200; S/W Release: 02.05.23;",
+    "PARADYNE SHDSL FrameSaver DSL; Model: 9788; S/W Release: 02.00.06; NAM CCA number: 4814-80C; Serial number: 6658952",
+    "Paradyne ATM ADSL Unit; Model: 4223-A1-532; CCA: 868-5969-8200; S/W Release: 02.03.08; Hardware Revision: 5969-82A; Serial number: 6963727 ;",
+    "Paradyne ATM ReachDSL Unit; Model: 4211-A1-530; CCA: 868-5315-8200; S/W Release: 02.03.04; Hardware Revision: 5315-82G; Serial number: 6066448 ;",
+    "Paradyne Hotwire DSL4; Model: 8546-B1-000; Card: R4IP; S/W Release: 02.03.15; H/W Revision: 1004-80A; Serial number: 7HMOC",
+    "Paradyne HotWire MCC; Model: 8000-B1-000; Card: MC-M; S/W Release: 02.00.22; H/W Revision: 1010-80A; Serial number: 7HHJR"
+  ]
+}

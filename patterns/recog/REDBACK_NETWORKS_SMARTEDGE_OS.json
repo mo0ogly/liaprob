@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-redback_networks_smartedge_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDBACK_NETWORKS_SMARTEDGE_OS",
+  "taxonomy_name": "Redback Networks SmartEdge OS",
+  "vendor": "Redback Networks",
+  "product": "SmartEdge OS",
+  "source": {
+    "type": "recog",
+    "file": "REDBACK_NETWORKS_SMARTEDGE_OS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_redback_networks_smartedge_os_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Redback Networks SmartEdge OS Version SEOS-(.*?) Built by",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Redback SmartEdge"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Redback Networks SmartEdge OS Version SEOS-11.1.2.3p1-Release Built by sysbuild@SWB-node04 Fri Dec 23 11:47:30 PST 2011 Copyright (C) 1998-2011, Redback Networks Inc. All rights reserved.",
+    "Redback Networks SmartEdge OS Version SEOS-11.1.2.3p3-Release Built by sysbuild@SWB-node06 Thu Feb 16 16:39:21 PST 2012 Copyright (C) 1998-2012, Redback Networks Inc. All rights reserved.",
+    "Redback Networks SmartEdge OS Version SEOS-11.1.2.4-Release Built by sysbuild@SWB-node01 Sat Mar 3 16:15:16 PST 2012 Copyright (C) 1998-2012, Redback Networks Inc. All rights reserved.",
+    "Redback Networks SmartEdge OS Version SEOS-11.1.2.4-Release Built by sysbuild@SWB-node03 Sat Mar 3 16:15:16 PST 2012 Copyright (C) 1998-2012, Redback Networks Inc. All rights reserved.",
+    "Redback Networks SmartEdge OS Version SEOS-11.1.2.4p3-Release Built by sysbuild@SWB-node01 Sat Apr 28 07:58:16 PDT 2012 Copyright (C) 1998-2012, Redback Networks Inc. All rights reserved."
+  ]
+}

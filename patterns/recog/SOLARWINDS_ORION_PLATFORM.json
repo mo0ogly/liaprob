@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-solarwinds_orion_platform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOLARWINDS_ORION_PLATFORM",
+  "taxonomy_name": "SolarWinds Orion Platform",
+  "vendor": "SolarWinds",
+  "product": "Orion Platform",
+  "source": {
+    "type": "recog",
+    "file": "SOLARWINDS_ORION_PLATFORM.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_solarwinds_orion_platform_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^53317933c27890ae9218697ecc0e97d9$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SolarWinds Orion"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^SolarWinds Orion$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SolarWinds Orion"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:solarwinds:orion_platform:-",
+  "examples": [
+    "53317933c27890ae9218697ecc0e97d9",
+    "SolarWinds Orion"
+  ]
+}

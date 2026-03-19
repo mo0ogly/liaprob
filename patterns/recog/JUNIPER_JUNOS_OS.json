@@ -1,0 +1,91 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-juniper_junos_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUNIPER_JUNOS_OS",
+  "taxonomy_name": "Juniper Junos OS",
+  "vendor": "Juniper",
+  "product": "Junos OS",
+  "source": {
+    "type": "recog",
+    "file": "JUNIPER_JUNOS_OS.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_juniper_junos_os_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"JUNOS/?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper/Netscreen JunOS NTP without a version"
+        }
+      ]
+    },
+    {
+      "id": "recog_juniper_junos_os_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks, Inc\\. (?:(?:Dell|DELL) )?(\\S+) internet router, kernel JUNOS (\\S+?),? ",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Router - build path variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks, Inc\\. (\\S+) Ethernet Switch, kernel JUNOS (\\S+?),? ",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Ethernet Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper (\\S+) Ethernet Switch$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Ethernet Swtich"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:juniper:junos:{os.version}",
+  "examples": [
+    "processor=\"i386\", system=\"JUNOS7.0R2.7\", leap=0, stratum=3",
+    "processor=\"i386\", system=\"JUNOS6.4R1.6\", leap=3, stratum=16",
+    "processor=\"i386\", system=\"JUNOS5.5R2.3\", leap=0, stratum=3",
+    "Juniper Networks, Inc. DELL J-EX4200-24T internet router, kernel JUNOS 11.1R3.5 #0: 2011-06-25 01:18:46 UTC builder@briath.juniper.net:/volume/build/junos/11.1/release/11.1R3.5/obj-powerpc/bsd/kernels/JUNIPER-EX/kernel Build date: 2011-06-25 01:01:37",
+    "Juniper Networks, Inc. ex4200-48p internet router, kernel JUNOS 11.4R1.6 #0: 2011-11-15 11:14:01 UTC builder@evenath.juniper.net:/volume/build/junos/11.4/release/11.4R1.6/obj-powerpc/bsd/kernels/JUNIPER-EX/kernel Build date: 2011-11-15 10:35:08 UTC C",
+    "Juniper Networks, Inc. t640 internet router, kernel JUNOS 9.2R4.4 #0: 2009-05-27 07:54:10 UTC builder@amalath.juniper.net:/volume/build/junos/9.2/release/9.2R4.4/obj-i386/sys/compile/JUNIPER Build date: 2009-05-27 08:11:51 UTC Copyright (c) 1996-2009",
+    "Juniper Networks, Inc. srx3400 internet router, kernel JUNOS 12.3X48-D60.2, Build date: 2017-12-11 19:52:52 UTC Copyright (c) 1996-2017 Juniper Networks, Inc.",
+    "Juniper Networks, Inc. ex2300-c-12t Ethernet Switch, kernel JUNOS 15.1X53-D590.1, Build date: 2018-11-14 20:31:32 UTC Copyright (c) 1996-2018 Juniper Networks, Inc.",
+    "Juniper Networks, Inc. ex2200-c-12t-2g Ethernet Switch, kernel JUNOS 12.3R12-S15, Build date: 2020-02-13 14:27:08 UTC Copyright (c) 1996-2020 Juniper Networks, Inc.",
+    "Juniper Networks, Inc. qfx5110-48s-4c Ethernet Switch, kernel JUNOS 17.3R3-S1.5, Build date: 2018-08-31 19:06:08 UTC Copyright (c) 1996-2018 Juniper Networks, Inc."
+  ]
+}

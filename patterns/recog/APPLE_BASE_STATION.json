@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_base_station",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_BASE_STATION",
+  "taxonomy_name": "Apple Base Station",
+  "vendor": "Apple",
+  "product": "Base Station",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_BASE_STATION.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_base_station_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Apple Base Station V([^\\s]+) Compatible$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple Airport base station"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Apple Base Station V3.84 Compatible"
+  ]
+}

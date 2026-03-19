@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_nx_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_NX_OS",
+  "taxonomy_name": "Cisco NX-OS",
+  "vendor": "Cisco",
+  "product": "NX-OS",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_NX_OS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_nx_os_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^60f2a1b9feb617e1b8352f15532aedd8$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco UCS Manager"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Cisco (?:UCS KVM Direct|KVM)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco KVM"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Cisco UCS Manager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco UCS Manager"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:cisco:nx-os:-",
+  "examples": [
+    "60f2a1b9feb617e1b8352f15532aedd8",
+    "Cisco UCS KVM Direct",
+    "Cisco KVM",
+    "Cisco UCS Manager"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-google_android",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_ANDROID",
+  "taxonomy_name": "Google Android",
+  "vendor": "Google",
+  "product": "Android",
+  "source": {
+    "type": "recog",
+    "file": "GOOGLE_ANDROID.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_google_android_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^android-dhcp-([\\d\\.]*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Android Device"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^HUAWEI:android:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Huawei Android Device"
+        }
+      ]
+    },
+    {
+      "id": "recog_google_android_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Asus fugu Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ASUS Nexus Player (Android) with Google Cast"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Sony amai Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sony SmartTV (Android) with Google Cast"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Cast TV ICA \\(Vizio\\),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Vizio SmartTV (Android) with Google Cast"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=NVidia Shield Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NVIDIA SHIELD (Android) with Google Cast"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=NVidia Darcy NVidia Tegra K1-Denver Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NVIDIA SHIELD (Android) with Google Cast (Darcy)"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([a-zA-Z0-9]{5,12}) ([a-zA-Z0-9]{12}),OU=Cast TV \\(Vizio\\),O=Google Inc,L=Mountain View,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Vizio SmartTV (Android) with Google Cast"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:google:android:{os.version}",
+  "examples": [
+    "android-dhcp-7.1.1",
+    "HUAWEI:android:ABC",
+    "CN=Asus fugu Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US",
+    "CN=Sony amai Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US",
+    "CN=Cast TV ICA (Vizio),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=NVidia Shield Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US",
+    "CN=NVidia Darcy NVidia Tegra K1-Denver Cast ICA,OU=Widevine,O=Google Inc,L=Kirkland,ST=Washington,C=US",
+    "CN=9V039WC9 FA8FCA697898,OU=Cast TV (Vizio),O=Google Inc,L=Mountain View,ST=California,C=US"
+  ]
+}

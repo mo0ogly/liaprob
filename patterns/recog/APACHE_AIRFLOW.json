@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apache_airflow",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_AIRFLOW",
+  "taxonomy_name": "Apache Airflow",
+  "vendor": "Apache",
+  "product": "Airflow",
+  "source": {
+    "type": "recog",
+    "file": "APACHE_AIRFLOW.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apache_airflow_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:4f21edb50ae95a99bbd4aa0a956a179e|1531801cb9e3047e72034ed34da9d104)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache Airflow"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Airflow(?: - (?:Login|DAGs))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache Airflow"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:apache:airflow:-",
+  "examples": [
+    "4f21edb50ae95a99bbd4aa0a956a179e",
+    "1531801cb9e3047e72034ed34da9d104",
+    "Airflow",
+    "Airflow - DAGs",
+    "Airflow - Login"
+  ]
+}

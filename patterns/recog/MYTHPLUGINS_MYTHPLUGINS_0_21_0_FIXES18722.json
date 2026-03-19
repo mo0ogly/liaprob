@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mythplugins_mythplugins_0_21_0_fixes18722",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYTHPLUGINS_MYTHPLUGINS_0_21_0_FIXES18722",
+  "taxonomy_name": "mythplugins mythplugins (0.21.0+fixes18722)",
+  "vendor": "mythplugins",
+  "product": "mythplugins (0.21.0+fixes18722)",
+  "source": {
+    "type": "recog",
+    "file": "MYTHPLUGINS_MYTHPLUGINS_0_21_0_FIXES18722.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mythplugins_mythplugins_0_21_0_fixes18722_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^21d80d9730a56b26dc9d252ffabb2987",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "mythplugins (0.21.0+fixes18722)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "21d80d9730a56b26dc9d252ffabb2987"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bftpd_project_bftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BFTPD_PROJECT_BFTPD",
+  "taxonomy_name": "Bftpd Project Bftpd",
+  "vendor": "Bftpd Project",
+  "product": "Bftpd",
+  "source": {
+    "type": "recog",
+    "file": "BFTPD_PROJECT_BFTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_bftpd_project_bftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^bftpd ([\\d.]+) at ([a-f\\d.:]+) ready\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^bftpd ([\\d.]+) at ([a-f\\d.:]+) ready\\.$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Bftpd FTPD Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:bftpd_project:bftpd:{version}",
+  "examples": [
+    "bftpd 2.2.1 at 192.168.0.1 ready.",
+    "bftpd 2.2 at ::ffff:192.168.1.1 ready."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gunicorn_gunicorn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GUNICORN_GUNICORN",
+  "taxonomy_name": "Gunicorn Gunicorn",
+  "vendor": "Gunicorn",
+  "product": "Gunicorn",
+  "source": {
+    "type": "recog",
+    "file": "GUNICORN_GUNICORN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gunicorn_gunicorn_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^gunicorn\\/(\\d+(?:\\.\\d+)*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^gunicorn\\/(\\d+(?:\\.\\d+)*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Gunicorn with version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^gunicorn$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Gunicorn with no version"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:gunicorn:gunicorn:{version}",
+  "examples": [
+    "gunicorn/19.7.1",
+    "gunicorn"
+  ]
+}

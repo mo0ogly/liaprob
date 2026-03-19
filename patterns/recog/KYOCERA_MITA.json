@@ -1,0 +1,107 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kyocera_mita",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KYOCERA_MITA",
+  "taxonomy_name": "Kyocera Mita",
+  "vendor": "Kyocera Mita",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "KYOCERA_MITA.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_kyocera_mita_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(FS-\\S+MFP\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kyocera Mita Multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(FS-(?:C)?\\d+(?:D|DN))$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kyocera Mita Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(TASKalfa \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kyocera Mita TASKalfa multifunction device"
+        }
+      ]
+    },
+    {
+      "id": "recog_kyocera_mita_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^KYOCERA MITA Printing System$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "KYOCERA MITA printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^KYOCERA Printer I/F (IB-.*) Ver",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "KYOCERA MITA printer - version variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^KYOCERA Document Solutions Printing System$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "KYOCERA MITA Document Solutions printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "snmp"
+  ],
+  "examples": [
+    "FS-C2126MFP",
+    "FS-C2126MFP+",
+    "FS-1035MFP/DP",
+    "FS-C8500DN",
+    "FS-4100DN",
+    "FS-2020D",
+    "TASKalfa 300ci",
+    "TASKalfa 520i",
+    "TASKalfa 250ci",
+    "KYOCERA MITA Printing System"
+  ]
+}

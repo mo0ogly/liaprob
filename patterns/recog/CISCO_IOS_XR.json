@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_ios_xr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_IOS_XR",
+  "taxonomy_name": "Cisco IOS-XR",
+  "vendor": "Cisco",
+  "product": "IOS-XR",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_IOS_XR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_ios_xr_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco IOS XR Software.*Version ([\\w.]*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IOS XR Software"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Cisco IOS XR Software (Cisco IOS XRv Series),  Version 4.3.2[Default]",
+    "Cisco IOS XR Software (ASR9K), Version 7.4.1  Copyright (c) 2013-2021 by Cisco Systems, Inc."
+  ]
+}

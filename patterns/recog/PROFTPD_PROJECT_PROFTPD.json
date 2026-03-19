@@ -1,0 +1,180 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-proftpd_project_proftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROFTPD_PROJECT_PROFTPD",
+  "taxonomy_name": "ProFTPD Project ProFTPD",
+  "vendor": "ProFTPD Project",
+  "product": "ProFTPD",
+  "source": {
+    "type": "recog",
+    "file": "PROFTPD_PROJECT_PROFTPD.json",
+    "fingerprint_count": 14
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 14 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_proftpd_project_proftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (\\d+\\.[^\\s]+) Server \\(Debian\\) \\[(.+)\\]$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ProFTPD (\\d+\\.[^\\s]+) Server \\(Debian\\) \\[(.+)\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD on Debian Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (\\d+\\.[^\\s]+) Server \\(Linksys(W.+)\\) \\[(.+)\\]$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ProFTPD (\\d+\\.[^\\s]+) Server \\(Linksys(W.+)\\) \\[(.+)\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD on a Linksys Wireless Access Point/Router"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (\\d+\\.[^\\s]+) Server \\(NETGEAR ReadyNAS\\) \\[(.+)\\]$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ProFTPD (\\d+\\.[^\\s]+) Server \\(NETGEAR ReadyNAS\\) \\[(.+)\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD on a Netgear ReadyNAS with a version and IP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD Server \\(NETGEAR ReadyNAS\\) \\[(.+)\\]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProFTPD on a Netgear ReadyNAS with a hostname"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (\\d+\\.[^\\s]+) Server \\((.*)\\) \\[(.+)\\]$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ProFTPD (\\d+\\.[^\\s]+) Server \\((.*)\\) \\[(.+)\\]$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD with version info but no obvious OS info"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (\\d+\\.[^\\s]+) Server ready\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ProFTPD (\\d+\\.[^\\s]+) Server ready\\.$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD with only version info"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (?:FTP )?Server ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProFTPD with no version info"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD Server \\(.*\\) \\[([a-f\\d.:]+)\\]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProFTPD with no version info, parenthetical form"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD Server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProFTPD with no version info, short form"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProFTPD with no version info, super short form"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\d{4}\\-\\d\\d\\-\\d\\d \\d\\d:\\d\\d:\\d\\d,\\d\\d\\d )?(\\S{1,512}) proftpd\\[\\d+\\]: error: no valid servers configured",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProFTPD no valid servers configured"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (\\d+\\.[^\\s]+) Server \\((.*)\\) \\[[a-f\\d.:\\]]*$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ProFTPD (\\d+\\.[^\\s]+) Server \\((.*)\\) \\[[a-f\\d.:\\]]*$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD with version info - truncated"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ProFTPD (\\d+\\.[^\\s]+) Server ([\\w.-]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ProFTPD (\\d+\\.[^\\s]+) Server ([\\w.-]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD with version info but no obvious OS info, take 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NASFTPD Turbo station (?:2.x )?([\\w.]+) Server \\(ProFTPD\\)(?: \\[([a-f\\d.:]+)\\])?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^NASFTPD Turbo station (?:2.x )?([\\w.]+) Server \\(ProFTPD\\)(?: \\[([a-f\\d.:]+)\\])?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ProFTPD on QNAP Turbo Station NAS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:proftpd:proftpd:{version}",
+  "examples": [
+    "ProFTPD 1.3.0rc2 Server (Debian) [host]",
+    "ProFTPD 1.3.0rc2 Server (LinksysWRT350N) [host]",
+    "ProFTPD 1.3.3g Server (NETGEAR ReadyNAS) [192.168.1.10]",
+    "ProFTPD Server (NETGEAR ReadyNAS) [test]",
+    "ProFTPD 1.2.10 Server (Main FTP Server) [host]",
+    "ProFTPD 1.2.10 Server (ProFTPD) [host]",
+    "ProFTPD 1.2.10rc3 Server (ProFTPD Default Installation) [host]",
+    "ProFTPD 1.3.0rc2 Server ready.",
+    "ProFTPD FTP Server ready.",
+    "ProFTPD Server ready."
+  ]
+}

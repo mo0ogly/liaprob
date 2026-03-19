@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-symantec",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYMANTEC",
+  "taxonomy_name": "Symantec",
+  "vendor": "Symantec",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SYMANTEC.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_symantec_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Symantec (Gateway Security .*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Symantec Gateway Security firewall"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Symantec Gateway Security 360",
+    "Symantec Gateway Security 300 Series",
+    "Symantec Gateway Security 320",
+    "Symantec Gateway Security 420",
+    "Symantec Gateway Security 440",
+    "Symantec Gateway Security 460"
+  ]
+}

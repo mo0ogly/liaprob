@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-myghty_myghty_1_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MYGHTY_MYGHTY_1_1",
+  "taxonomy_name": "myghty myghty (1.1)",
+  "vendor": "myghty",
+  "product": "myghty (1.1)",
+  "source": {
+    "type": "recog",
+    "file": "MYGHTY_MYGHTY_1_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_myghty_myghty_1_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^275e2e37fc7be50c1f03661ef8b6ce4f",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "myghty (1.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "275e2e37fc7be50c1f03661ef8b6ce4f"
+  ]
+}

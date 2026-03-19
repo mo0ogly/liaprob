@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-suse_linux_enterprise_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUSE_LINUX_ENTERPRISE_SERVER",
+  "taxonomy_name": "SUSE Linux Enterprise Server",
+  "vendor": "SUSE",
+  "product": "Linux Enterprise Server",
+  "source": {
+    "type": "recog",
+    "file": "SUSE_LINUX_ENTERPRISE_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_suse_linux_enterprise_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^SUSE(?: SLES)?(?: Linux Enterprise Server)?\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SUSE Linux Enterprise Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^SLES(?: Linux Enterprise Server)?\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SLES Linux Enterprise Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:suse:linux_enterprise_server:{os.version}",
+  "examples": [
+    "SUSE SLES 11",
+    "SUSE Linux Enterprise Server 12",
+    "SLES 11",
+    "SLES Linux Enterprise Server 12"
+  ]
+}

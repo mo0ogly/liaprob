@@ -1,0 +1,91 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rockwell_automation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROCKWELL_AUTOMATION",
+  "taxonomy_name": "Rockwell Automation",
+  "vendor": "Rockwell Automation",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "ROCKWELL_AUTOMATION.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_rockwell_automation_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Allen-Bradley (\\S+ (?:PLC|SLC)\\S+) Series (\\S+) Revision (\\S+) \\S+ (\\S+) \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley PLC/SLC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Allen-Bradley (\\S+) ([^/]+)/(\\S+) MicroLogix1400 Series \\S+ Revision \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley MicroLogix PLC/SLC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Allen-Bradley (\\S+-ENET) Revision: (\\S+) \\S+ (\\S+) \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley PLC/SLC Ethernet Interface"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Allen-Bradley (\\S+-ENET) Ethernet Interface Series (\\S+) Revision (\\S+) \\S+ (\\S+) \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley PLC/SLC Ethernet Interface - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Rockwell Automation (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Rockwell Automation PLC"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Allen-Bradley 1747-L551/C SLC-5/05 Series C Revision 11 1747_slc 3.46 13-Jan-06",
+    "Allen-Bradley 1747-L552/C SLC-5/05 Series C Revision 9 1747_slc 3.33 16-Nov-04",
+    "Allen-Bradley 1785-L20E PLC5-20/E Series E Revision B.2 np520e 1.67 13-Jan-98",
+    "Allen-Bradley 1785-L40E PLC5-40/E Series E Revision F.2 1785_np540e 2.39 03-Jul-02",
+    "Allen-Bradley 1766-L32AWA A/5.00 MicroLogix1400 Series A Revision 5.0",
+    "Allen-Bradley 1766-L32AWAA A/3.00 MicroLogix1400 Series A Revision 3.0",
+    "Allen-Bradley 1766-L32BWA A/5.00 MicroLogix1400 Series A Revision 5.0",
+    "Allen-Bradley 1766-L32BWA B/10.00 MicroLogix1400 Series B Revision 10.0",
+    "Allen-Bradley 1766-L32BXB A/5.00 MicroLogix1400 Series A Revision 5.0",
+    "Allen-Bradley 1766-L32BXB B/10.00 MicroLogix1400 Series B Revision 10.0"
+  ]
+}

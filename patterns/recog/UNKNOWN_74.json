@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^SERIALNUMBER=PID:([^ ]+) SN:([^,]+),CN=(?:[a-zA-Z0-9\\-]+)-SEP([a-fA-F0-9]{12}),OU=[CV]TG,O=Cisco Systems Inc\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IP phone with serial number"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "SERIALNUMBER=PID:CP-8851 SN:FCH1924AHCA,CN=CP-8851-SEPB07D47D33A1C,OU=CTG,O=Cisco Systems Inc.",
+    "SERIALNUMBER=PID:CP-9951 SN:FCH15200000,CN=CP-9951-SEP64D989000000,OU=VTG,O=Cisco Systems Inc."
+  ]
+}

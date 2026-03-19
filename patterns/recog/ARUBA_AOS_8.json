@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-aruba_aos_8",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARUBA_AOS_8",
+  "taxonomy_name": "Aruba AOS-8",
+  "vendor": "Aruba",
+  "product": "AOS-8",
+  "source": {
+    "type": "recog",
+    "file": "ARUBA_AOS_8.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_aruba_aos_8_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "ArubaOS \\(MODEL: ([^\\)]+)\\), Version (8\\.[^\\s]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Aruba OS 8"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "ArubaOS (MODEL: ArubaMM-VA), Version 8.12.0.2 SSR (90468)"
+  ]
+}

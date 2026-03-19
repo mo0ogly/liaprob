@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-scalix_ldap_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCALIX_LDAP_SERVER",
+  "taxonomy_name": "Scalix LDAP Server",
+  "vendor": "Scalix",
+  "product": "LDAP Server",
+  "source": {
+    "type": "recog",
+    "file": "SCALIX_LDAP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_scalix_ldap_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:o=Scalix0.\\x04.subschemasubentry1.\\x04.cn=subSchema,o=Scalix0.\\x04.*\\x04.xserverversion1.\\x04.(\\d\\d\\.\\d+\\.[\\w.-]+)0.\\x02)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:o=Scalix0.\\x04.subschemasubentry1.\\x04.cn=subSchema,o=Scalix0.\\x04.*\\x04.xserverversion1.\\x04.(\\d\\d\\.\\d+\\.[\\w.-]+)0.\\x02)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Scalix LDAP Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "bz1NeUNvbnRhY3RzBAhvPVNjYWxpeDAsBBFzdWJzY2hlbWFzdWJlbnRyeTEXBBVjbj1zdWJTY\n      2hlbWEsbz1TY2FsaXgwDQQJYWx0c2VydmVyMQAwHgQUc3VwcG9ydGVkbGRhcHZlcnNpb24xBg\n      QBMgQBMzAgBA54c2VydmVydmVyc2lvbjEOBAwxMS40LjYuMTM2NzYwDAI="
+  ]
+}

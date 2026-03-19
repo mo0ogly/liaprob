@@ -1,0 +1,88 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vmware_horizon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE_HORIZON",
+  "taxonomy_name": "VMware Horizon",
+  "vendor": "VMware",
+  "product": "Horizon",
+  "source": {
+    "type": "recog",
+    "file": "VMWARE_HORIZON.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vmware_horizon_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:ec60d8d2f3b0ded27c5767189882685c|5856edf7bcbea0817312d9e535e5eb2a|f4f3cb900258441d5dbc9105b7ab9b44|c6acedaff906029fc5455d9ec52c7f42)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware Horizon"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^VMware(?: Horizon(?: View)?|.nbsp;Horizon| View Portal)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware Horizon"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_vmware_horizon_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([^,=]{1,256}),OU=VMware Horizon View default certificate,O=VMware\\\\, Inc.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware Horizon (formerly View)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:vmware:horizon:-",
+  "examples": [
+    "ec60d8d2f3b0ded27c5767189882685c",
+    "5856edf7bcbea0817312d9e535e5eb2a",
+    "f4f3cb900258441d5dbc9105b7ab9b44",
+    "c6acedaff906029fc5455d9ec52c7f42",
+    "VMware Horizon",
+    "VMware Horizon View",
+    "VMware&nbsp;Horizon",
+    "VMware View Portal",
+    "CN=horizon.foo.bar,OU=VMware Horizon View default certificate,O=VMware\\, Inc."
+  ]
+}

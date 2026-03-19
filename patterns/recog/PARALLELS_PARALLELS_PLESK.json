@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-parallels_parallels_plesk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PARALLELS_PARALLELS_PLESK",
+  "taxonomy_name": "Parallels Parallels Plesk",
+  "vendor": "Parallels",
+  "product": "Parallels Plesk",
+  "source": {
+    "type": "recog",
+    "file": "PARALLELS_PARALLELS_PLESK.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_parallels_parallels_plesk_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^dcea02a5797ce9e36f19b7590752563e",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Parallels Plesk"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "dcea02a5797ce9e36f19b7590752563e"
+  ]
+}

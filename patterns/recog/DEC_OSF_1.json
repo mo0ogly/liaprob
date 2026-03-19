@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dec_osf_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEC_OSF_1",
+  "taxonomy_name": "DEC OSF/1",
+  "vendor": "DEC",
+  "product": "OSF/1",
+  "source": {
+    "type": "recog",
+    "file": "DEC_OSF_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_dec_osf_1_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"UNIX/DECOSF1\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DEC OSF/1"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "system=\"UNIX/DECOSF1\", leap=0, stratum=3, rootdelay=18.14,"
+  ]
+}

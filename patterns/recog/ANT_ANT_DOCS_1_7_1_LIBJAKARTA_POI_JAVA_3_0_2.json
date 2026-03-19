@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ant_ant_docs_1_7_1_libjakarta_poi_java_3_0_2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANT_ANT_DOCS_1_7_1_LIBJAKARTA_POI_JAVA_3_0_2",
+  "taxonomy_name": "Ant Ant docs (1.7.1) / libjakarta-poi-java (3.0.2)",
+  "vendor": "Ant",
+  "product": "Ant docs (1.7.1) / libjakarta-poi-java (3.0.2)",
+  "source": {
+    "type": "recog",
+    "file": "ANT_ANT_DOCS_1_7_1_LIBJAKARTA_POI_JAVA_3_0_2.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ant_ant_docs_1_7_1_libjakarta_poi_java_3_0_2_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^032ecc47c22a91e7f3f1d28a45d7f7bc",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ant docs (1.7.1) / libjakarta-poi-java (3.0.2)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "032ecc47c22a91e7f3f1d28a45d7f7bc"
+  ]
+}

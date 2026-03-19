@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-weonlydo_weonlydo_ssh_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEONLYDO_WEONLYDO_SSH_SERVER",
+  "taxonomy_name": "WeOnlyDo WeOnlyDo SSH Server",
+  "vendor": "WeOnlyDo",
+  "product": "WeOnlyDo SSH Server",
+  "source": {
+    "type": "recog",
+    "file": "WEONLYDO_WEONLYDO_SSH_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_weonlydo_weonlydo_ssh_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^WeOnlyDo ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^WeOnlyDo ([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WeOnlyDo with version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^WeOnlyDo ([\\d.]+) \\(FIPS\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^WeOnlyDo ([\\d.]+) \\(FIPS\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WeOnlyDo with version with FIPS mode enabled"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "examples": [
+    "WeOnlyDo 1.2.7",
+    "WeOnlyDo 2.0.1",
+    "WeOnlyDo 2.5.4",
+    "WeOnlyDo 2.2.9 (FIPS)",
+    "WeOnlyDo 2.4.3 (FIPS)"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP(\\S+) ProCurve \\S+ Hub \\d+M+, ROM ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Hub"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HPJ3288A ProCurve 10/100 Hub 12M, ROM A.01.00, EEPROM A.01.00, HW A.02.00",
+    "HPJ3289A ProCurve 10/100 Hub 24M, ROM A.01.00, EEPROM A.01.00, HW A.02.00"
+  ]
+}

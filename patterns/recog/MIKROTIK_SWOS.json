@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mikrotik_swos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIKROTIK_SWOS",
+  "taxonomy_name": "MikroTik SwOS",
+  "vendor": "MikroTik",
+  "product": "SwOS",
+  "source": {
+    "type": "recog",
+    "file": "MIKROTIK_SWOS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mikrotik_swos_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^MikroTik SwOS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MikroTik SwOS switch configuration page"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_mikrotik_swos_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(CSS\\S+) SwOS v(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MikroTik Swtich"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "snmp"
+  ],
+  "examples": [
+    "MikroTik SwOS",
+    "CSS326-24G-2S+ SwOS v2.13"
+  ]
+}

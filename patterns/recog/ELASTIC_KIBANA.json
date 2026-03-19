@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-elastic_kibana",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELASTIC_KIBANA",
+  "taxonomy_name": "Elastic Kibana",
+  "vendor": "Elastic",
+  "product": "Kibana",
+  "source": {
+    "type": "recog",
+    "file": "ELASTIC_KIBANA.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_elastic_kibana_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:e43ad9b75957c46a5975ded0f85a95b4|2145225dd4406c274c317f8d80ccf584)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Elastic Kibana"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Elastic\\s+)?Kibana$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kibana Web Interface"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:elastic:kibana:-",
+  "examples": [
+    "e43ad9b75957c46a5975ded0f85a95b4",
+    "2145225dd4406c274c317f8d80ccf584",
+    "Kibana",
+    "Elastic Kibana"
+  ]
+}

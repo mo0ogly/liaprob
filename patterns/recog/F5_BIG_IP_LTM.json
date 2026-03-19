@@ -1,0 +1,113 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-f5_big_ip_ltm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "F5_BIG_IP_LTM",
+  "taxonomy_name": "F5 BIG-IP LTM",
+  "vendor": "F5",
+  "product": "BIG-IP LTM",
+  "source": {
+    "type": "recog",
+    "file": "F5_BIG_IP_LTM.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_f5_big_ip_ltm_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:04d9541338e525258daf47cc844d59f3|486373b021971d0a95af04c811799e21)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "F5 BIG-IP Load Balancer"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "(?i)^(BIGipServer([^=]+))=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "F5 BIG-IP LTM - Server variant"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(BigIPCookie[^=]*)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "F5 BIG-IP LTM"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:BigIP|BIG-IP)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "F5 BIG-IP"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_f5_big_ip_ltm_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.{0,1000}(?:Basic|Digest) .*realm=\"BIG-IP\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic F5 Big-IP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=\"ntpd ([^ ]+)[^\"]+\",\\s*processor=\"([^ ]+)\",\\s*system=\"BIG-IPBIG-IP\\s+([^\"]+)\"",
+          "confidence_delta": 0.4,
+          "version_extract": "version=\"ntpd ([^ ]+)[^\"]+\",\\s*processor=\"([^ ]+)\",\\s*system=\"BIG-IPBIG-IP\\s+([^\"]+)\"",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "F5 Big-IP Load Balancers NTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:f5:big-ip_local_traffic_manager:-",
+  "examples": [
+    "04d9541338e525258daf47cc844d59f3",
+    "486373b021971d0a95af04c811799e21",
+    "BigIpServerCustomerRP=5a; path=/; domain=.foo.bar; secure; HttpOnly",
+    "BigIPCookie=855248779.20480.0000; path=/; Httponly",
+    "BigIPCookie_foo_corp_prod=!tJHKH9zIwsUuJYJ38CCV0XSqmJXsZVQaOjj/m/SBSTQTg21/S+s2gmbsoGwwKXr5Tj9e0ijWZWItfA==; path=/; Httponly",
+    "Basic realm=\"BIG-IP\"",
+    "version=\"ntpd 4.1.1a@1.791 Fri Aug  8 04:08:19 PDT 2003 (1)\",\n      processor=\"i386\", system=\"BIG-IPBIG-IP 4.5PTF-0\", leap=3, stratum=16,\n      precision=-16, rootdelay=0.000, rootdispersion=103599.120, peer=0,\n      refid=0.0.0.0, reftime=0x00000000.00000000, poll=4,\n      clock=0xd20533b8.903aa79b, state=1, offset=0.000, frequency=0.000,\n      jitter=0.015, stability=0.000"
+  ]
+}

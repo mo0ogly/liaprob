@@ -1,0 +1,93 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-linksys",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LINKSYS",
+  "taxonomy_name": "Linksys",
+  "vendor": "Linksys",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "LINKSYS.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_linksys_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^aa4962b88d588ac5ea3b5d9b2fed5ef7$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Linksys Smart Wi-Fi"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Linksys Smart Wi-Fi$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Linksys Smart Wi-Fi"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Linksys",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Linksys Wireless Access Point"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_linksys_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"(WRT54G\\w*)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Linksys WRT54G wireless access point (dozen of variants of the product)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "examples": [
+    "aa4962b88d588ac5ea3b5d9b2fed5ef7",
+    "Linksys Smart Wi-Fi",
+    "Basic realm=\"WRT54G\"",
+    "Basic realm=\"WRT54GL\"",
+    "Basic realm=\"WRT54GSV4\"",
+    "Basic realm=\"WRT54GCv3\""
+  ]
+}

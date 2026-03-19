@@ -1,0 +1,277 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-3com",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "3COM",
+  "taxonomy_name": "3Com",
+  "vendor": "3Com",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "3COM.json",
+    "fingerprint_count": 27
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 27 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    1720
+  ],
+  "probes": [
+    {
+      "id": "recog_3com_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb500000b\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb500000b\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "3Com Corporation H.323 Server"
+        }
+      ]
+    },
+    {
+      "id": "recog_3com_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com IntelliJack (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3Com Intellijack switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (\\S+) Network Jack$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3Com Network Jack switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com-(\\S+) - 3CNJ2000 v(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3Com Intellijack switch - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3COM: (AP\\S+): .*11.*Access Point, Software v(\\S+), Bootrom v\\S+, Hardware \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM WAP - software and build variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^3Com (Link(?:Switch|Builder) [^,]+), SW version:(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM LinkBuilder/LinkSwitch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^3Com MCNS external (\\S+(?: \\S+)?) Cable Modem,.*SW_VER:\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Cable Modem - MCNS variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com OfficeConnect (Remote ADSL \\S+) V([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Cable Modem - build date variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (OfficeConnect-[^,]+), SW version:(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Cable Modem"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (OfficeConnect Remote \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3Com OfficeConnect Remote"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com Router Software V([^,]+), SNMP agent for (Router \\S+) with",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Router - processor variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (SuperStack\\s*II[^,]+),.*SW [vV]ersion:?\\s*(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM SuperStack II"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3COM (Superstack II Switch \\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM SuperStack II - product only variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3COM (VCX .*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM VCX Device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com 3Com (?:SuperStack 4 )?Switch (\\S+).*Software Version 3Com OS V(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM SuperStack 4 Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com Baseline Switch (\\S+ \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Baseline Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^3Com Baseline Switch (\\S+ Plus).* Software Version (\\d+\\.\\S+ release \\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Baseline Switch with software version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (CoreBuilder\\-\\S+).*s/w rev:\\s*(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM CoreBuilder Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com Corporation HiPer Access Router Card",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM HiPer Access Router Card"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (?:11 Mbps|11a/b/g) (Wireless .*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM WAP"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (Wireless.*Firewall Router)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM WAP - firewall variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (OfficeConnect Managed .*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM OfficeConnect Managed Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (Router \\S+) Software (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (S\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Switch - bare"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (.*Switch \\S+)(?: \\d+-port)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Superstack Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (.*Switch.*) \\d+-Port.*Software Version 3Com OS V(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Superstack Switch with port count and os version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com (.*Switch.*) \\d+-Port.*Software Version (\\d\\..*(?:Release|Feature).*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Switch with release info"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323",
+    "snmp"
+  ],
+  "examples": [
+    "3Com IntelliJack NJ220",
+    "3Com NJ200 Network Jack",
+    "3Com-NJ2000 - 3CNJ2000 v2.00.03",
+    "3Com-NJ2000 - 3CNJ2000 v2.00.04",
+    "3COM: AP8760: Dual Radio 11a/b/g Access Point, Software v2.1.13b05_sh, Bootrom v1.2.1, Hardware R02",
+    "3Com LinkBuilder FMS, SW version:3.11",
+    "3Com LinkSwitch 1000, SW Version:1.04",
+    "3Com MCNS external 2-way Cable Modem, HW_REV: 2.00 ,SW_VER: 01.03",
+    "3Com MCNS external 2-way Cable Modem, HW_REV: A01.3 ,SW_VER: 12.30",
+    "3Com MCNS external 2-way Cable Modem, HW_REV: A01.3 ,SW_VER: 2.09"
+  ]
+}

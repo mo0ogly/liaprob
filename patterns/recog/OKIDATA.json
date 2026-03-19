@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-okidata",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OKIDATA",
+  "taxonomy_name": "Okidata",
+  "vendor": "Okidata",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "OKIDATA.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_okidata_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OKI (C\\d+)\\S*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Okidata color printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OKI (MC\\d+)\\S*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Okidata multifunction device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl"
+  ],
+  "examples": [
+    "OKI C610",
+    "OKI C710",
+    "OKI C710dn",
+    "OKI MC860"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nulog_nulog_2_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NULOG_NULOG_2_0",
+  "taxonomy_name": "nulog nulog (2.0)",
+  "vendor": "nulog",
+  "product": "nulog (2.0)",
+  "source": {
+    "type": "recog",
+    "file": "NULOG_NULOG_2_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_nulog_nulog_2_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^c30bf7e6d4afe1f02969e0f523d7a251",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "nulog (2.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "c30bf7e6d4afe1f02969e0f523d7a251"
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-moinmoin_moinmoin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOINMOIN_MOINMOIN",
+  "taxonomy_name": "MoinMoin MoinMoin",
+  "vendor": "MoinMoin",
+  "product": "MoinMoin",
+  "source": {
+    "type": "recog",
+    "file": "MOINMOIN_MOINMOIN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_moinmoin_moinmoin_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b7f98dd27febe36b7275f22ad73c5e84",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MoinMoin"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^MoinMoinWiki",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Moinmoin wiki"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:moinmo:moinmoin:-",
+  "examples": [
+    "b7f98dd27febe36b7275f22ad73c5e84",
+    "MoinMoinWiki - MoinMoin"
+  ]
+}

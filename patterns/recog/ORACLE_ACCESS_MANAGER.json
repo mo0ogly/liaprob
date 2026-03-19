@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_access_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_ACCESS_MANAGER",
+  "taxonomy_name": "Oracle Access Manager",
+  "vendor": "Oracle",
+  "product": "Access Manager",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_ACCESS_MANAGER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_access_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Bad Oracle Access Manager Request$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle Access Manager - Bad Request"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Oracle Access Manager Operation Error$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle Access Manager - Operation Error"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:oracle:access_manager:-",
+  "examples": [
+    "Bad Oracle Access Manager Request",
+    "Oracle Access Manager Operation Error"
+  ]
+}

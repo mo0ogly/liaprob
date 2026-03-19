@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tokutek_mariadb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOKUTEK_MARIADB",
+  "taxonomy_name": "Tokutek MariaDB",
+  "vendor": "Tokutek",
+  "product": "MariaDB",
+  "source": {
+    "type": "recog",
+    "file": "TOKUTEK_MARIADB.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    3306
+  ],
+  "probes": [
+    {
+      "id": "recog_tokutek_mariadb_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-tokudb-\\d\\.\\d\\.\\d{1,2}(?:-\\d*)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-tokudb-\\d\\.\\d\\.\\d{1,2}(?:-\\d*)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Tokutek customized MySQL"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-tokudb-.*MariaDB(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-tokudb-.*MariaDB(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Tokutek customized MariaDB"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "mysql"
+  ],
+  "examples": [
+    "5.5.40-tokudb-7.5.3-log",
+    "5.5.21-tokudb-6.0.0-42634",
+    "5.5.25-tokudb-6.1.1-47477-MariaDB-log"
+  ]
+}

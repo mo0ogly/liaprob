@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zimbra_collaboration_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZIMBRA_COLLABORATION_SERVER",
+  "taxonomy_name": "Zimbra Collaboration Server",
+  "vendor": "Zimbra",
+  "product": "Collaboration Server",
+  "source": {
+    "type": "recog",
+    "file": "ZIMBRA_COLLABORATION_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_zimbra_collaboration_server_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=(\\S{1,512}),OU=Zimbra Collaboration Server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:zimbra:collaboration_server:-",
+  "examples": [
+    "CN=foo.bar,OU=Zimbra Collaboration Server"
+  ]
+}

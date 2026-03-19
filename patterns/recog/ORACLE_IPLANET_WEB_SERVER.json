@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_iplanet_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_IPLANET_WEB_SERVER",
+  "taxonomy_name": "Oracle iPlanet Web Server",
+  "vendor": "Oracle",
+  "product": "iPlanet Web Server",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_IPLANET_WEB_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_iplanet_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle-iPlanet-Web-Server/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Oracle-iPlanet-Web-Server/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle iPlanet Web Server (formerly known as Sun Java System Web Server, Sun ONE Web Server)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:oracle:iplanet_web_server:{version}",
+  "examples": [
+    "Oracle-iPlanet-Web-Server/7.0"
+  ]
+}

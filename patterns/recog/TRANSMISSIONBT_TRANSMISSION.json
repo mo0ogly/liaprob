@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-transmissionbt_transmission",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRANSMISSIONBT_TRANSMISSION",
+  "taxonomy_name": "TransmissionBT Transmission",
+  "vendor": "TransmissionBT",
+  "product": "Transmission",
+  "source": {
+    "type": "recog",
+    "file": "TRANSMISSIONBT_TRANSMISSION.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_transmissionbt_transmission_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Transmission Web Interface$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Transmission"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Transmission$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Transmission"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_transmissionbt_transmission_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"Transmission\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Transmission"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:transmissionbt:transmission:-",
+  "examples": [
+    "Transmission Web Interface",
+    "Transmission",
+    "Basic realm=\"Transmission\""
+  ]
+}

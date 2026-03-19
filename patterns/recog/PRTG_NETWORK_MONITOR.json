@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-prtg_network_monitor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PRTG_NETWORK_MONITOR",
+  "taxonomy_name": "PRTG Network Monitor",
+  "vendor": "PRTG",
+  "product": "Network Monitor",
+  "source": {
+    "type": "recog",
+    "file": "PRTG_NETWORK_MONITOR.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_prtg_network_monitor_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^36b3ef286fa4befbb797a0966b456479$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PRTG Network Monitor"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "PRTG Network Monitor",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PRTG Network Monitor (not anchored)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "36b3ef286fa4befbb797a0966b456479",
+    "PRTG Network Monitor (WIN-R4C1T8HRRAA)",
+    "BigCorp PRTG Network Monitor (PRTG2)"
+  ]
+}

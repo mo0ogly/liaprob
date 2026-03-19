@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:([^ ]{1,512}) )?E?SMTP(?: (?:Service )?Ready\\.?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Non-specific banner with optional hostname"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar ESMTP",
+    "foo.bar ESMTP Ready",
+    "foo.bar SMTP",
+    "foo.bar ESMTP Service ready",
+    "ESMTP ready",
+    "SMTP Ready",
+    "ESMTP READY"
+  ]
+}

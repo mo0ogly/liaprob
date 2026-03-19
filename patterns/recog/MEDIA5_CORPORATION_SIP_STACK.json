@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-media5_corporation_sip_stack",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEDIA5_CORPORATION_SIP_STACK",
+  "taxonomy_name": "Media5 Corporation SIP Stack",
+  "vendor": "Media5 Corporation",
+  "product": "SIP Stack",
+  "source": {
+    "type": "recog",
+    "file": "MEDIA5_CORPORATION_SIP_STACK.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_media5_corporation_sip_stack_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^M5T SIP(?: Stack|-UA SAFE)/v?([\\d\\.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^M5T SIP(?: Stack|-UA SAFE)/v?([\\d\\.]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Media5 Corporation SIP Stack"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip"
+  ],
+  "examples": [
+    "M5T SIP Stack/4.1.2.2",
+    "M5T SIP-UA SAFE/v3.6.4.8",
+    "M5T SIP Stack/4.1.2.2alliu"
+  ]
+}

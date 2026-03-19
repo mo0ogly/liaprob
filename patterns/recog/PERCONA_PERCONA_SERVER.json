@@ -1,0 +1,172 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-percona_percona_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PERCONA_PERCONA_SERVER",
+  "taxonomy_name": "Percona Percona Server",
+  "vendor": "Percona",
+  "product": "Percona Server",
+  "source": {
+    "type": "recog",
+    "file": "PERCONA_PERCONA_SERVER.json",
+    "fingerprint_count": 12
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 12 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    3306
+  ],
+  "probes": [
+    {
+      "id": "recog_percona_percona_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}-?rel\\d\\d\\.\\d)(?:-log)?",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3}-?rel\\d\\d\\.\\d)(?:-log)?",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) match w/ 'rel'"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d{1,2}-rel\\d\\d\\.\\d{1,2}(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d{1,2}-rel\\d\\d\\.\\d{1,2}(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) match w/ 'rel' variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-(?:rc)?percona",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-(?:rc)?percona",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) w/ percona in banner"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d{1,2}(?:-\\d\\d)?(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d{1,2}(?:-\\d\\d)?(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) (just version number match)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-rc\\d\\d\\.\\d(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-rc\\d\\d\\.\\d(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) match w/ 'rc'"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.trusty(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.trusty(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) on Ubuntu 14.04 (Trusty Tahr)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.saucy(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.saucy(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) on Ubuntu 13.10 (Saucy Salamander)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.quantal(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.quantal(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) on Ubuntu 12.10 (Quantal Quetzal)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.precise(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.precise(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) on Ubuntu 12.04 (Precise Pangolin)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.wheezy(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.wheezy(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) on Debian 7.0 (wheezy)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.squeeze(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d-\\d{3}\\.squeeze(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) on Debian 6.0 (squeeze)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d{1,2}-\\d\\.ctbanco\\d+(?:-log)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\d{1,2}\\.\\d{1,3}\\.[a-f\\d]{1,3})-\\d\\d\\.\\d{1,2}-\\d\\.ctbanco\\d+(?:-log)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Percona Server (MySQL fork) with 'ctbanco'"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "mysql"
+  ],
+  "cpe23_template": "cpe:/a:percona:percona_server:{version}",
+  "examples": [
+    "5.1.57-rel12.8",
+    "5.1.60rel13.1-log",
+    "5.1.67-rel14.3-log",
+    "5.6.17-65.0-rel65.0",
+    "5.1.50-percona",
+    "5.5.27-percona-sure1-log",
+    "5.5.7-rcPercona-Server-log",
+    "5.1.73-14.12",
+    "5.6.20-68.0-56",
+    "5.6.16-64.2-25-log"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tinygs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TINYGS",
+  "taxonomy_name": "TinyGS",
+  "vendor": "",
+  "product": "TinyGS",
+  "source": {
+    "type": "recog",
+    "file": "TINYGS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tinygs_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^TinyGS Configuration$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TinyGS LoRa Ground Station Software"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "TinyGS Configuration"
+  ]
+}

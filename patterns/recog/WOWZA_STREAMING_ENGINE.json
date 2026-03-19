@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-wowza_streaming_engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WOWZA_STREAMING_ENGINE",
+  "taxonomy_name": "Wowza Streaming Engine",
+  "vendor": "Wowza",
+  "product": "Streaming Engine",
+  "source": {
+    "type": "recog",
+    "file": "WOWZA_STREAMING_ENGINE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_wowza_streaming_engine_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Wowza Streaming Engine 4 (Subscription|Perpetual Pro) Edition (\\d\\.[\\w.]+) build(\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Wowza Streaming Engine 4 (Subscription|Perpetual Pro) Edition (\\d\\.[\\w.]+) build(\\d+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Wowza Streaming Engine"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^WowzaStreamingEngine/(\\d\\.[\\w.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^WowzaStreamingEngine/(\\d\\.[\\w.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Wowza Streaming Engine"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:wowza:streaming_engine:{version}",
+  "examples": [
+    "Wowza Streaming Engine 4 Subscription Edition 4.7.7.01 build20190222144406",
+    "Wowza Streaming Engine 4 Perpetual Pro Edition 4.8.8.01 build20201216140014",
+    "WowzaStreamingEngine/4.7.7",
+    "WowzaStreamingEngine/4.6.0.04x"
+  ]
+}

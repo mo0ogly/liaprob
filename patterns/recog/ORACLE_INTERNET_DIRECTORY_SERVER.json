@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_internet_directory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_INTERNET_DIRECTORY_SERVER",
+  "taxonomy_name": "Oracle Internet Directory Server",
+  "vendor": "Oracle",
+  "product": "Internet Directory Server",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_INTERNET_DIRECTORY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_internet_directory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:orcldirectoryversion1.{1,5}\\x04.OID ([\\d.]+)0.\\x00\\x00)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:orcldirectoryversion1.{1,5}\\x04.OID ([\\d.]+)0.\\x00\\x00)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle Internet Directory"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "b3JjbGRpcmVjdG9yeXZlcnNpb24xhAAAAA8EDU9JRCA5LjAuNC4wLjAwhAAAAA=="
+  ]
+}

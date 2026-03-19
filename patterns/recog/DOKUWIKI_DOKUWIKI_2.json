@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dokuwiki_dokuwiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOKUWIKI_DOKUWIKI",
+  "taxonomy_name": "Dokuwiki Dokuwiki",
+  "vendor": "Dokuwiki",
+  "product": "Dokuwiki",
+  "source": {
+    "type": "recog",
+    "file": "DOKUWIKI_DOKUWIKI.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_dokuwiki_dokuwiki_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^DokuWiki=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dokuwiki"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:dokuwiki:dokuwiki:-",
+  "examples": [
+    "DokuWiki=t8l1aev7703vbtejovp165pv01; path=/; secure"
+  ]
+}

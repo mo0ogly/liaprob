@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-phpsysinfo_phpsysinfo_3_0_8_3_0_12",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPSYSINFO_PHPSYSINFO_3_0_8_3_0_12",
+  "taxonomy_name": "phpSysInfo phpSysInfo 3.0.8-3.0.12",
+  "vendor": "phpSysInfo",
+  "product": "phpSysInfo 3.0.8-3.0.12",
+  "source": {
+    "type": "recog",
+    "file": "PHPSYSINFO_PHPSYSINFO_3_0_8_3_0_12.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_phpsysinfo_phpsysinfo_3_0_8_3_0_12_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6e0c5b7979e9950125c71341e0960f65",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "phpSysInfo 3.0.8-3.0.12"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6e0c5b7979e9950125c71341e0960f65"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-covenant",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COVENANT",
+  "taxonomy_name": "Covenant",
+  "vendor": "",
+  "product": "Covenant",
+  "source": {
+    "type": "recog",
+    "file": "COVENANT.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_covenant_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^dd80f14145f075264b3067801f511c2f$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Covenant .NET C2 framework"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Covenant - Login$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Covenant .NET C2 framework"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_covenant_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^21d14d00000000000021d14d21d21d16c46827964490e6024618c0a3d7d893$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Covenant .NET C2 framework"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "dd80f14145f075264b3067801f511c2f",
+    "Covenant - Login",
+    "21d14d00000000000021d14d21d21d16c46827964490e6024618c0a3d7d893"
+  ]
+}

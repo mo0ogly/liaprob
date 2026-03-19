@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Digest realm=\"Use 'live' as User Name",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bosch AutoDome IP Camera"
+        }
+      ]
+    },
+    {
+      "id": "recog_unknown_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "(?i)^CN=.{0,1000}myboschcam.net,O=Bosch Sicherheitssysteme",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bosch AutoDome IP Camera"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "tls"
+  ],
+  "examples": [
+    "Digest realm=\"Use 'live' as User Name\",nonce=\"18e62d241a5358a9650640fa72c1773c\",opaque=\"\",stale=FALSE,algorithm=MD5",
+    "Digest realm=\"Use 'live' as User Name in order to log in to the respective level\",nonce=\"2e6007092c2b28af7e2516b80b5b4f95\",opaque=\"\",stale=FALSE,algorithm=MD5,qop=\"auth\"",
+    "CN=local.myboschcam.net,O=Bosch Sicherheitssysteme GmbH,L=Grasbrunn,ST=Bayern,C=DE"
+  ]
+}

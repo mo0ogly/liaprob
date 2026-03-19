@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_application_server_web_cache",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_APPLICATION_SERVER_WEB_CACHE",
+  "taxonomy_name": "Oracle Application Server Web Cache",
+  "vendor": "Oracle",
+  "product": "Application Server Web Cache",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_APPLICATION_SERVER_WEB_CACHE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_application_server_web_cache_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^OracleAS-Web-Cache-10g/([\\d.]+)",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^OracleAS-Web-Cache-10g/([\\d.]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle Application Server Web Cache"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:oracle:application_server_web_cache:{version}",
+  "examples": [
+    "OracleAS-Web-Cache-10g/10.1.2.3.0"
+  ]
+}

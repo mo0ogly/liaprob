@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gosa_gosa_2_5_16_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOSA_GOSA_2_5_16_1",
+  "taxonomy_name": "gosa gosa (2.5.16.1)",
+  "vendor": "gosa",
+  "product": "gosa (2.5.16.1)",
+  "source": {
+    "type": "recog",
+    "file": "GOSA_GOSA_2_5_16_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gosa_gosa_2_5_16_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ecab73f909ddd28e482ababe810447c8",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "gosa (2.5.16.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ecab73f909ddd28e482ababe810447c8"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ubiquiti_ubiquiti_ubiquiti_m_series_airos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UBIQUITI_UBIQUITI_UBIQUITI_M_SERIES_AIROS",
+  "taxonomy_name": "Ubiquiti Ubiquiti Ubiquiti M Series / AirOS",
+  "vendor": "Ubiquiti",
+  "product": "Ubiquiti Ubiquiti M Series / AirOS",
+  "source": {
+    "type": "recog",
+    "file": "UBIQUITI_UBIQUITI_UBIQUITI_M_SERIES_AIROS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ubiquiti_ubiquiti_ubiquiti_m_series_airos_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:6dcab71e60f0242907940f0fcda69ea5|255b6fcbcb463e11ed763b2b892a2965|09a1e50dc3369e031b97f38abddd10c8)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti WAP (Vague)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6dcab71e60f0242907940f0fcda69ea5",
+    "09a1e50dc3369e031b97f38abddd10c8",
+    "255b6fcbcb463e11ed763b2b892a2965"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-osirx_pacs_or_medscan_platform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OSIRX_PACS_OR_MEDSCAN_PLATFORM",
+  "taxonomy_name": "OsirX PACS or MEDSCAN platform",
+  "vendor": "OsirX",
+  "product": "PACS or MEDSCAN platform",
+  "source": {
+    "type": "recog",
+    "file": "OSIRX_PACS_OR_MEDSCAN_PLATFORM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_osirx_pacs_or_medscan_platform_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^dc499a7d439351c325b953bd3ca01fe5",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OsiriX"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "dc499a7d439351c325b953bd3ca01fe5"
+  ]
+}

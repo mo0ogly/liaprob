@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-solarwinds_kiwi_syslog",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOLARWINDS_KIWI_SYSLOG",
+  "taxonomy_name": "SolarWinds Kiwi Syslog",
+  "vendor": "SolarWinds",
+  "product": "Kiwi Syslog",
+  "source": {
+    "type": "recog",
+    "file": "SOLARWINDS_KIWI_SYSLOG.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_solarwinds_kiwi_syslog_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d6421d60cb50188320da7082a93156d3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SolarWinds Kiwi Syslog"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Login Gateway|Session Error) - Kiwi Syslog Web Access$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kiwi Syslog Web Access"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "d6421d60cb50188320da7082a93156d3",
+    "Login Gateway - Kiwi Syslog Web Access",
+    "Session Error - Kiwi Syslog Web Access"
+  ]
+}

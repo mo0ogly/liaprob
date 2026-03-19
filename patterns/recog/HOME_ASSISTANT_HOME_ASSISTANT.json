@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-home_assistant_home_assistant",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HOME_ASSISTANT_HOME_ASSISTANT",
+  "taxonomy_name": "Home-Assistant Home-Assistant",
+  "vendor": "Home-Assistant",
+  "product": "Home-Assistant",
+  "source": {
+    "type": "recog",
+    "file": "HOME_ASSISTANT_HOME_ASSISTANT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_home_assistant_home_assistant_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ff66cb4b6922631e08d1538b361a2d2b$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Home Assistant - open-source home automation"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:home-assistant:home-assistant:-",
+  "examples": [
+    "ff66cb4b6922631e08d1538b361a2d2b"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-viavideo_polycom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VIAVIDEO_POLYCOM",
+  "taxonomy_name": "ViaVideo/PolyCom",
+  "vendor": "ViaVideo/PolyCom",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "VIAVIDEO_POLYCOM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    1720
+  ],
+  "probes": [
+    {
+      "id": "recog_viavideo_polycom_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5002331\\:(.*)\\:Release\\s[\\s-]*(\\d+\\.+\\d+\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5002331\\:(.*)\\:Release\\s[\\s-]*(\\d+\\.+\\d+\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "ViaVideo/PolyCom H.323 Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323"
+  ],
+  "examples": [
+    "0xb5002331:ViewStation 7.0:Release 7.5.4 - 04 Mar 2005"
+  ]
+}

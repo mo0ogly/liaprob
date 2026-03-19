@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-boa_boa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOA_BOA",
+  "taxonomy_name": "Boa Boa",
+  "vendor": "Boa",
+  "product": "Boa",
+  "source": {
+    "type": "recog",
+    "file": "BOA_BOA.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_boa_boa_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Boa/([\\d\\.]+\\S*)",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Boa/([\\d\\.]+\\S*)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Boa web server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:boa:boa:{version}",
+  "examples": [
+    "Boa/0.94.14rc21",
+    "Boa/0.94.14rc18-ipcam",
+    "Boa/0.93.15 (with Intersil Extensions)",
+    "Boa/0.92p OS-9 Version",
+    "Boa/0.93.15"
+  ]
+}

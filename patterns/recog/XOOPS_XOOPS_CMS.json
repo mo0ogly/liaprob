@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xoops_xoops_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XOOPS_XOOPS_CMS",
+  "taxonomy_name": "XOOPS XOOPS cms",
+  "vendor": "XOOPS",
+  "product": "XOOPS cms",
+  "source": {
+    "type": "recog",
+    "file": "XOOPS_XOOPS_CMS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_xoops_xoops_cms_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^389a8816c5b87685de7d8d5fec96c85b",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "XOOPS cms"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "389a8816c5b87685de7d8d5fec96c85b"
+  ]
+}

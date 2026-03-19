@@ -1,0 +1,96 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM",
+  "taxonomy_name": "IBM",
+  "vendor": "IBM",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "IBM.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    1720,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5004242\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5004242\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "IBM H.323 Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:IBM )?Infoprint(?: Color)? (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Infoprint Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:IBM\\s?)?(AIX|MVS|OS/(?:\\d{1,3})|VM/CMS|VM/ESA|z/OS)\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM OSes"
+        }
+      ]
+    },
+    {
+      "id": "recog_ibm_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^IBM Network Printer (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Network Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "h323",
+    "pjl",
+    "snmp"
+  ],
+  "examples": [
+    "AIX",
+    "IBM MVS",
+    "IBM OS/2",
+    "IBM OS/390",
+    "OS/400",
+    "IBM VM/CMS",
+    "IBM VM/ESA",
+    "IBM z/OS",
+    "IBM z/OS 1.0",
+    "IBM Network Printer 12"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_2000",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_2000",
+  "taxonomy_name": "Microsoft Windows 2000",
+  "vendor": "Microsoft",
+  "product": "Windows 2000",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_2000.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161,
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_2000_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?Windows 2000(?:\\s)?([a-z]+|[a-z]+\\s[a-z]+)?(?:\\s)?(SP\\d|SP \\d|Service Pack \\d)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 2000"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows 5\\.0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 2000"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^Telnet Server Build (5\\.[.\\d]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 2000"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_windows_2000_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^MAS 1\\.0 \\(Intel X86\\) Copyright.*Huawei Technologies Co\\., Ltd on Windows NT 5\\.0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Huawei device on Windows 2000"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows 2000 Version 5\\.0",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows 2000 on x86"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet",
+    "smb",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_2000:{os.version}",
+  "examples": [
+    "Windows 2000 Professional",
+    "Windows 2000 Professional Service Pack 1",
+    "Windows 2000 Advanced Server",
+    "Windows 5.0",
+    "MAS 1.0 (Intel X86) Copyright (c) 1998-2006 Huawei Technologies Co., Ltd on Windows NT 5.0",
+    "Hardware: x86 Family 15 Model 4 Stepping 8 AT/AT COMPATIBLE - Software: Windows 2000 Version 5.0 (Build 2195 Uniprocessor Free)",
+    "TWljcm9zb2Z0IChSKSBXaW5kb3dzIE5UIChUTSkgVmVyc2lvbiA0LjAwIChCdWlsZCAxMzgxKQpXZWxj\n      b21lIHRvIE1pY3Jvc29mdCBUZWxuZXQgU2VydmljZSAKVGVsbmV0IFNlcnZlciBCdWlsZCA1LjAwLjk5MDM0LjEKCmxvZ2luOiA="
+  ]
+}

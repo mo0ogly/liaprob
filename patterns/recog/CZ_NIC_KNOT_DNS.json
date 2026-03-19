@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cz_nic_knot_dns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CZ_NIC_KNOT_DNS",
+  "taxonomy_name": "cz.nic Knot DNS",
+  "vendor": "cz.nic",
+  "product": "Knot DNS",
+  "source": {
+    "type": "recog",
+    "file": "CZ_NIC_KNOT_DNS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_cz_nic_knot_dns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Knot DNS ([\\d.]+(?:-dev)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Knot DNS ([\\d.]+(?:-dev)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Knot DNS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/a:knot-dns:knot_dns:{version}",
+  "examples": [
+    "Knot DNS 1.6.0",
+    "Knot DNS 2.5.0-dev"
+  ]
+}

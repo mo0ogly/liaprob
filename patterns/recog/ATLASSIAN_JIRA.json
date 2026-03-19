@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-atlassian_jira",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATLASSIAN_JIRA",
+  "taxonomy_name": "Atlassian Jira",
+  "vendor": "Atlassian",
+  "product": "Jira",
+  "source": {
+    "type": "recog",
+    "file": "ATLASSIAN_JIRA.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_atlassian_jira_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:1391664373e72311a656c4a5504682af|88717398db158e3330ce94fc1784e4a7|04d89d5b7a290334f5ce37c7e8b6a349|08aa365c2d0863df2735d386f77c22c2|eadf13e6cac2efef4f0565e171f90953|6c1452e18a09070c0b3ed85ce7cb3917)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Jira"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^System Dashboard - ",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Jira"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:atlassian:jira:-",
+  "examples": [
+    "1391664373e72311a656c4a5504682af",
+    "88717398db158e3330ce94fc1784e4a7",
+    "04d89d5b7a290334f5ce37c7e8b6a349",
+    "08aa365c2d0863df2735d386f77c22c2",
+    "eadf13e6cac2efef4f0565e171f90953",
+    "6c1452e18a09070c0b3ed85ce7cb3917",
+    "System Dashboard - Jira",
+    "System Dashboard - [Dev Test JIRA]"
+  ]
+}

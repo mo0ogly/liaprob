@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_ntp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_NTP",
+  "taxonomy_name": "Cisco NTP",
+  "vendor": "Cisco",
+  "product": "NTP",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_NTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_ntp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"cisco\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IOS with NTP enabled"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:cisco:ios:-",
+  "examples": [
+    "system=\"cisco\", leap=00, stratum=2, rootdelay=39.900,"
+  ]
+}

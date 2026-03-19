@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pips_pips_technology_atz_executive_automatic_licence_plate_recognition_alpr_system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PIPS_PIPS_TECHNOLOGY_ATZ_EXECUTIVE_AUTOMATIC_LICENCE_PLATE_RECOGNITION_ALPR_SYSTEM",
+  "taxonomy_name": "PIPS PIPS Technology ATZ Executive / Automatic Licence Plate Recognition (ALPR) System",
+  "vendor": "PIPS",
+  "product": "PIPS Technology ATZ Executive / Automatic Licence Plate Recognition (ALPR) System",
+  "source": {
+    "type": "recog",
+    "file": "PIPS_PIPS_TECHNOLOGY_ATZ_EXECUTIVE_AUTOMATIC_LICENCE_PLATE_RECOGNITION_ALPR_SYSTEM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_pips_pips_technology_atz_executive_automatic_licence_plate_recognition_alpr_system_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2df6edffca360b7a0fadc3bdf2191857",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PIPS Technology ATZ Executive / Automatic Licence Plate Recognition (ALPR) System"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "2df6edffca360b7a0fadc3bdf2191857"
+  ]
+}

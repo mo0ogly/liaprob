@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6211ad748f77d07a0bccc40cf227ec4e$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alpha Technologies Novus UPS"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Alpha Technologies$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alpha Technologies Novus UPS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Novus Telnet Interface \\(v(\\S+)\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alpha Technologies Novus UPS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "telnet"
+  ],
+  "examples": [
+    "6211ad748f77d07a0bccc40cf227ec4e",
+    "Alpha Technologies",
+    "Novus Telnet Interface (v2.00.01)"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mantis_mantis_bug_tracker_1_2_9_1_2_15",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANTIS_MANTIS_BUG_TRACKER_1_2_9_1_2_15",
+  "taxonomy_name": "Mantis Mantis Bug Tracker 1.2.9-1.2.15",
+  "vendor": "Mantis",
+  "product": "Mantis Bug Tracker 1.2.9-1.2.15",
+  "source": {
+    "type": "recog",
+    "file": "MANTIS_MANTIS_BUG_TRACKER_1_2_9_1_2_15.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mantis_mantis_bug_tracker_1_2_9_1_2_15_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^701bb703b31f99da18251ca2e557edf0",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mantis Bug Tracker 1.2.9-1.2.15"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "701bb703b31f99da18251ca2e557edf0"
+  ]
+}

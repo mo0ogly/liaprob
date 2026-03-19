@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fujifilm_synapse_medical_platform",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUJIFILM_SYNAPSE_MEDICAL_PLATFORM",
+  "taxonomy_name": "Fujifilm SYNAPSE Medical Platform",
+  "vendor": "Fujifilm",
+  "product": "SYNAPSE Medical Platform",
+  "source": {
+    "type": "recog",
+    "file": "FUJIFILM_SYNAPSE_MEDICAL_PLATFORM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_fujifilm_synapse_medical_platform_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^5107de66fbe7255a56248c5c15be5a8d",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Synapse"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "5107de66fbe7255a56248c5c15be5a8d"
+  ]
+}

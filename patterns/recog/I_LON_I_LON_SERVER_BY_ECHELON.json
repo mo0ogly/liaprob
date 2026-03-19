@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-i_lon_i_lon_server_by_echelon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "I_LON_I_LON_SERVER_BY_ECHELON",
+  "taxonomy_name": "i.LON i.LON server by Echelon",
+  "vendor": "i.LON",
+  "product": "i.LON server by Echelon",
+  "source": {
+    "type": "recog",
+    "file": "I_LON_I_LON_SERVER_BY_ECHELON.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_i_lon_i_lon_server_by_echelon_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^be6fb62815509bd707e69ee8dad874a1",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "i.LON server by Echelon"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "be6fb62815509bd707e69ee8dad874a1"
+  ]
+}

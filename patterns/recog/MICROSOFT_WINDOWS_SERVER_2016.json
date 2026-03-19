@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_server_2016",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_SERVER_2016",
+  "taxonomy_name": "Microsoft Windows Server 2016",
+  "vendor": "Microsoft",
+  "product": "Windows Server 2016",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_SERVER_2016.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_server_2016_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:domainControllerFunctionality1.{1,5}\\x04\\x017)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server Server 2016"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Server 2016(?: Technical Preview \\d+)? (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+)(?: Evaluation)? (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2016 with a build, without service pack"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Storage Server 2016 (?:\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2016 Storage"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Hyper-V Server 2016 (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2016 Hyper-V"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smb"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_server_2016:-",
+  "examples": [
+    "MIQAAAAoBB1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBNw==",
+    "Windows Server 2016 Datacenter 14393",
+    "Windows Server 2016 Standard Evaluation 14393",
+    "Windows Server 2016 Technical Preview 4 Essentials 10586",
+    "Windows Storage Server 2016 Standard 14393",
+    "Hyper-V Server 2016 14393"
+  ]
+}

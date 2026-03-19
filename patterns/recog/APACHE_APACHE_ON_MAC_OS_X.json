@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apache_apache_on_mac_os_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_APACHE_ON_MAC_OS_X",
+  "taxonomy_name": "Apache Apache on Mac OS X",
+  "vendor": "Apache",
+  "product": "Apache on Mac OS X",
+  "source": {
+    "type": "recog",
+    "file": "APACHE_APACHE_ON_MAC_OS_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apache_apache_on_mac_os_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^73778a17b0d22ffbb7d6c445a7947b92",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache on Mac OS X"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "73778a17b0d22ffbb7d6c445a7947b92"
+  ]
+}

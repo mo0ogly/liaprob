@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netscout_netscout_ngenius",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETSCOUT_NETSCOUT_NGENIUS",
+  "taxonomy_name": "NetScout NetScout NGenius",
+  "vendor": "NetScout",
+  "product": "NetScout NGenius",
+  "source": {
+    "type": "recog",
+    "file": "NETSCOUT_NETSCOUT_NGENIUS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_netscout_netscout_ngenius_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^a46bc7fc42979e9b343335bdd86d1c3e",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NetScout NGenius"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "a46bc7fc42979e9b343335bdd86d1c3e"
+  ]
+}

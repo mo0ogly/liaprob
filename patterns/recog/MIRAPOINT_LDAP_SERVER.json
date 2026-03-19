@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mirapoint_ldap_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIRAPOINT_LDAP_SERVER",
+  "taxonomy_name": "Mirapoint LDAP Server",
+  "vendor": "Mirapoint",
+  "product": "LDAP Server",
+  "source": {
+    "type": "recog",
+    "file": "MIRAPOINT_LDAP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_mirapoint_ldap_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:vendorName1.\\x00\\x00\\x00\\v\\x04\\tMirapoint0.\\x00\\x00\\x00.\\x04\\rvendorVersion1.\\x00\\x00\\x00.\\x04.([\\d.]+)0.\\x00)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:vendorName1.\\x00\\x00\\x00\\v\\x04\\tMirapoint0.\\x00\\x00\\x00.\\x04\\rvendorVersion1.\\x00\\x00\\x00.\\x04.([\\d.]+)0.\\x00)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Mirapoint LDAP Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "dmVuZG9yTmFtZTGEAAAACwQJTWlyYXBvaW50MIQAAAAaBA12ZW5kb3JWZXJzaW9uMYQAAAAFB\n      AMzLjIwhAA="
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_ios",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_IOS",
+  "taxonomy_name": "Cisco IOS",
+  "vendor": "Cisco",
+  "product": "IOS",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_IOS.json",
+    "fingerprint_count": 11
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 11 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    80,
+    161,
+    443,
+    5060,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_ios_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^cisco-IOS$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Cisco IOS"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^cisco-IOS/([^\\s]+) HTTP-server/",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Cisco IOS with version information"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_cisco_ios_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"access\"$",
+          "confidence_delta": 0.4,
+          "version_static": "11",
+          "case_insensitive": true,
+          "note": "Cisco IOS 11.x"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"level[ _]15[ _]or[ _]view[ _]access\"$",
+          "confidence_delta": 0.4,
+          "version_static": "12",
+          "case_insensitive": true,
+          "note": "Cisco IOS 12.x - view access variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"level[ _]\\d\\d?[ _]access\"$",
+          "confidence_delta": 0.4,
+          "version_static": "12",
+          "case_insensitive": true,
+          "note": "Cisco IOS 12.x"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Cisco-SIPGateway/IOS-(\\S+)\\.x$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IOS SIP Gateway w/ Vague Version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Cisco-SIPGateway/IOS-(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IOS SIP Gateway w/ Full Version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Cisco-SIPGateway/IOS-([\\d\\.x]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco SIPGateway"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^% Username:  timeout expired!",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Some kind of Cisco device"
+        }
+      ]
+    },
+    {
+      "id": "recog_cisco_ios_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco (?:Internetwork Operating System|IOS) Software,? (?:\\r|\\n|.)+Version\\s+([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IOS"
+        }
+      ]
+    },
+    {
+      "id": "recog_cisco_ios_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=IOS-Self-Signed-Certificate-",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IOS Default Certificate"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "generic",
+    "telnet",
+    "tls",
+    "snmp",
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:cisco:ios:-",
+  "examples": [
+    "cisco-IOS",
+    "cisco-IOS/12.1 HTTP-server/1.0(1)",
+    "Basic realm=\"access\"",
+    "Basic realm=\"level_15 or view_access\"",
+    "Basic realm=\"level_15_or_view_access\"",
+    "Basic realm=\"level_15_access\"",
+    "Basic realm=\"level 15 access\"",
+    "Cisco-SIPGateway/IOS-12.x",
+    "Cisco-SIPGateway/IOS-15.2.4.M3",
+    "Cisco-SIPGateway/IOS-15.2.2.T1"
+  ]
+}

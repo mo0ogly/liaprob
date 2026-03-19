@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_appleshare_ip_mail_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_APPLESHARE_IP_MAIL_SERVER",
+  "taxonomy_name": "Apple AppleShare IP Mail Server",
+  "vendor": "Apple",
+  "product": "AppleShare IP Mail Server",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_APPLESHARE_IP_MAIL_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_appleshare_ip_mail_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +AppleShare IP Mail Server ([^ ]+\\.[\\d.]+) SMTP Server Ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +AppleShare IP Mail Server ([^ ]+\\.[\\d.]+) SMTP Server Ready *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "AppleShare IP Mail Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar AppleShare IP Mail Server 6.2.1 SMTP Server Ready",
+    "foo.bar AppleShare IP Mail Server 6.2 SMTP Server Ready"
+  ]
+}

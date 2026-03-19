@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-serenityos_webserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERENITYOS_WEBSERVER",
+  "taxonomy_name": "SerenityOS WebServer",
+  "vendor": "SerenityOS",
+  "product": "WebServer",
+  "source": {
+    "type": "recog",
+    "file": "SERENITYOS_WEBSERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_serenityos_webserver_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^WebServer \\(SerenityOS\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "SerenityOS Web Server - https://github.com/SerenityOS/serenity"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:serenityos:serenityos:-",
+  "examples": [
+    "WebServer (SerenityOS)"
+  ]
+}

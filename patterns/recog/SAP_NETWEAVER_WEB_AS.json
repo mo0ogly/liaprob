@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sap_netweaver_web_as",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_NETWEAVER_WEB_AS",
+  "taxonomy_name": "SAP NetWeaver Web AS",
+  "vendor": "SAP",
+  "product": "NetWeaver Web AS",
+  "source": {
+    "type": "recog",
+    "file": "SAP_NETWEAVER_WEB_AS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sap_netweaver_web_as_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b2bd2546ba77fec1f47425679e05f212$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SAP NetWeaver"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:SAP NetWeaver Application Server Java|SAP&#x20;NetWeaver&#x20;Portal|Loading Portal\\.\\.\\.)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SAP NetWeaver Portal"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b2bd2546ba77fec1f47425679e05f212",
+    "SAP NetWeaver Application Server Java",
+    "SAP&#x20;NetWeaver&#x20;Portal",
+    "Loading Portal..."
+  ]
+}

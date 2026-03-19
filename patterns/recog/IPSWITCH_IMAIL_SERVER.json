@@ -1,0 +1,122 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ipswitch_imail_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IPSWITCH_IMAIL_SERVER",
+  "taxonomy_name": "Ipswitch IMail Server",
+  "vendor": "Ipswitch",
+  "product": "IMail Server",
+  "source": {
+    "type": "recog",
+    "file": "IPSWITCH_IMAIL_SERVER.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    80,
+    443,
+    587,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ipswitch_imail_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Ipswitch-IMail/(\\d\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Ipswitch-IMail/(\\d\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Ipswitch IMail Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_ipswitch_imail_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^X1 NT-ESMTP Server ([^ ]+) \\(IMail (\\d+\\.[^ ]+) EVAL \\d+-\\d+\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^X1 NT-ESMTP Server ([^ ]+) \\(IMail (\\d+\\.[^ ]+) EVAL \\d+-\\d+\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "IMail - EVAL version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^X1 NT-ESMTP Server ([^ ]+) \\(IMail (\\d+\\.[^ ]+) \\d+-\\d+\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^X1 NT-ESMTP Server ([^ ]+) \\(IMail (\\d+\\.[^ ]+) \\d+-\\d+\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "IMail - non-EVAL version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) \\(IMail (\\d+\\.[^ ]+) \\d+-\\d+\\) NT-ESMTP Server X1$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) \\(IMail (\\d+\\.[^ ]+) \\d+-\\d+\\) NT-ESMTP Server X1$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "IMail - non-EVAL version, NT-ESMTP at end"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^550[ -]lists are confidential *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ipswitch IMail Server - expn variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "550[ -]not local host .*, not a gateway *",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "550 not local host foo.bar, not a gateway"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp",
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:ipswitch:imail_server:{version}",
+  "examples": [
+    "Ipswitch-IMail/5.08",
+    "Ipswitch-IMail/7.07",
+    "Ipswitch-IMail/8.05",
+    "X1 NT-ESMTP Server foo.bar (IMail 6.06 EVAL 11347-1)",
+    "X1 NT-ESMTP Server foo.bar (IMail 6.06 899085-1)",
+    "foo.bar (IMail 12.4.2.27 21349-1) NT-ESMTP Server X1",
+    "550 lists are confidential"
+  ]
+}

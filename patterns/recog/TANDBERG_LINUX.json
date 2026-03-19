@@ -1,0 +1,137 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tandberg_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TANDBERG_LINUX",
+  "taxonomy_name": "Tandberg Linux",
+  "vendor": "Tandberg",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "TANDBERG_LINUX.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    5060,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tandberg_linux_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^a2e9caf81f500f73fc18dc9a049f9f68$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence/ Tandberg"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_tandberg_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(TANDBERG\\/(\\d+)) \\(((?:[abd-zA-WZ]|XC)*\\d+\\S*).*\\) ?(?:Cisco-)?(.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco/Tandberg TelePresence"
+        }
+      ]
+    },
+    {
+      "id": "recog_tandberg_linux_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:Cisco|TANDBERG) Codec SoftW:\\s+(\\S+).*\\s+MCU:\\s+(?:Cisco TelePresence|TANDBERG)\\s+(.*)\\s+Date:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence - verbose variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco TelePresence ((?:HD )?MCU(?: MSE)? \\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence w/Model"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco TelePresence (?:Conductor|Supervisor)\\s+((?:MCU )?(?:MSE )?\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence Conductor/Supervisor w/Model"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco TelePresence (?:Conductor|Supervisor)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence Conductor/Supervisor w/o Model"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^TANDBERG Codec$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Tandberg Codec videoconferencing device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^TANDBERG (MPS-MCU)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Tandberg MPS-MCU"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "http",
+    "snmp"
+  ],
+  "examples": [
+    "a2e9caf81f500f73fc18dc9a049f9f68",
+    "TANDBERG/519 (TC7.0.2.aecf2d9)",
+    "TANDBERG/516 (TC5.1.4.295090)",
+    "TANDBERG/517 (TCNC5.1.4.295090)",
+    "TANDBERG/517 (TE4.2.0.259927)",
+    "TANDBERG/517 (F9.1)",
+    "TANDBERG/517 (2.3(1.31)) Cisco-RoomKit",
+    "TANDBERG/517 (6.0(.5)(6))",
+    "TANDBERG/517 (2.3.1.31) RoomKit",
+    "TANDBERG/4353 (XC2.2.1-b2bua-1.0)"
+  ]
+}

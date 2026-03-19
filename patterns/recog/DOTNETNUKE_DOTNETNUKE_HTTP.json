@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dotnetnuke_dotnetnuke_http",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOTNETNUKE_DOTNETNUKE_HTTP",
+  "taxonomy_name": "DotNetNuke DotNetNuke (http",
+  "vendor": "DotNetNuke",
+  "product": "DotNetNuke (http",
+  "source": {
+    "type": "recog",
+    "file": "DOTNETNUKE_DOTNETNUKE_HTTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_dotnetnuke_dotnetnuke_http_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^5b0e3b33aa166c88cee57f83de1d4e55",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DotNetNuke (http"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "5b0e3b33aa166c88cee57f83de1d4e55"
+  ]
+}

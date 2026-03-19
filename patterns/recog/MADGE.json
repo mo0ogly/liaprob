@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-madge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MADGE",
+  "taxonomy_name": "Madge",
+  "vendor": "Madge",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "MADGE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    1720
+  ],
+  "probes": [
+    {
+      "id": "recog_madge_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb4004d00\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb4004d00\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Madge Networks H.323 Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_10_or_windows_server_2016",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_10_OR_WINDOWS_SERVER_2016",
+  "taxonomy_name": "Microsoft Windows 10 or Windows Server 2016",
+  "vendor": "Microsoft",
+  "product": "Windows 10 or Windows Server 2016",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_10_OR_WINDOWS_SERVER_2016.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_10_or_windows_server_2016_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?Windows(?:\\sNT)? 10.0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows version 10.0 (Windows 10 or Windows Server 2016)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Windows 10.0"
+  ]
+}

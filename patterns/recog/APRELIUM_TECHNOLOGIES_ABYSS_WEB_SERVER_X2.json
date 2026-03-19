@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-aprelium_technologies_abyss_web_server_x2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APRELIUM_TECHNOLOGIES_ABYSS_WEB_SERVER_X2",
+  "taxonomy_name": "Aprelium Technologies Abyss Web Server X2",
+  "vendor": "Aprelium Technologies",
+  "product": "Abyss Web Server X2",
+  "source": {
+    "type": "recog",
+    "file": "APRELIUM_TECHNOLOGIES_ABYSS_WEB_SERVER_X2.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_aprelium_technologies_abyss_web_server_x2_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Abyss/(\\d\\.[\\d.]+)-X2-Win32 AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Abyss/(\\d\\.[\\d.]+)-X2-Win32 AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Aprelium Technologies Abyss Web Server X2 (licensed professional edition) on Windows"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Abyss/(\\d\\.[\\d.]+)-X2-Linux AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Abyss/(\\d\\.[\\d.]+)-X2-Linux AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Aprelium Technologies Abyss Web Server X2 (licensed professional edition) on Linux"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Abyss/(\\d\\.[\\d.]+)-X2-macOS AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Abyss/(\\d\\.[\\d.]+)-X2-macOS AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Aprelium Technologies Abyss Web Server X2 (licensed professional edition) on macOS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "Abyss/2.14.2-X2-Win32 AbyssLib/2.14",
+    "Abyss/2.14.2-X2-Linux AbyssLib/2.14",
+    "Abyss/2.14.2-X2-macOS AbyssLib/2.14"
+  ]
+}

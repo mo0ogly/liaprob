@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-3cx_3cx_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "3CX_3CX_WEB_SERVER",
+  "taxonomy_name": "3CX 3CX Web Server",
+  "vendor": "3CX",
+  "product": "3CX Web Server",
+  "source": {
+    "type": "recog",
+    "file": "3CX_3CX_WEB_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_3cx_3cx_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^619e4452da00dad6c3d7b5fd99b9390e$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3CX Phone System Management Console"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^3CX Phone System Management Console$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3CX Phone System Management Console"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:3cx:3cx_web_server:-",
+  "examples": [
+    "619e4452da00dad6c3d7b5fd99b9390e",
+    "3CX Phone System Management Console"
+  ]
+}

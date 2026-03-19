@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-novell_ldap_agent_for_edirectory",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOVELL_LDAP_AGENT_FOR_EDIRECTORY",
+  "taxonomy_name": "Novell LDAP Agent for eDirectory",
+  "vendor": "Novell",
+  "product": "LDAP Agent for eDirectory",
+  "source": {
+    "type": "recog",
+    "file": "NOVELL_LDAP_AGENT_FOR_EDIRECTORY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_novell_ldap_agent_for_edirectory_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:vendorName1\\x0E\\x04\\fNovell, Inc.0.\\x04\\rvendorVersion.{4}LDAP Agent for Novell eDirectory (\\d+\\.\\d+[\\d.]* [\\w ]*\\([\\d.]+\\))0.\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:vendorName1\\x0E\\x04\\fNovell, Inc.0.\\x04\\rvendorVersion.{4}LDAP Agent for Novell eDirectory (\\d+\\.\\d+[\\d.]* [\\w ]*\\([\\d.]+\\))0.\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Novell LDAP Agent for eDirectory"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "dmVuZG9yTmFtZTEOBAxOb3ZlbGwsIEluYy4wRgQNdmVuZG9yVmVyc2lvbjE1BDNMREFQIEFnZ\n      W50IGZvciBOb3ZlbGwgZURpcmVjdG9yeSA4LjcuMy44ICgxMDU1NC45OSkwKQQ=",
+    "dmVuZG9yTmFtZTEOBAxOb3ZlbGwsIEluYy4wRgQNdmVuZG9yVmVyc2lvbjE1BDNMREFQIEFnZ\n      W50IGZvciBOb3ZlbGwgZURpcmVjdG9yeSA4LjggU1A0ICgyMDIxNy4wNSkwHQQ="
+  ]
+}

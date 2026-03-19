@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dropbear_ssh_project_dropbear_ssh",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DROPBEAR_SSH_PROJECT_DROPBEAR_SSH",
+  "taxonomy_name": "Dropbear SSH Project Dropbear SSH",
+  "vendor": "Dropbear SSH Project",
+  "product": "Dropbear SSH",
+  "source": {
+    "type": "recog",
+    "file": "DROPBEAR_SSH_PROJECT_DROPBEAR_SSH.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_dropbear_ssh_project_dropbear_ssh_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^dropbear$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dropbear w/o version - http://matt.ucc.asn.au/dropbear/dropbear.html"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^dropbear_(.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^dropbear_(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Dropbear - http://matt.ucc.asn.au/dropbear/dropbear.html"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "cpe23_template": "cpe:/a:dropbear_ssh_project:dropbear_ssh:-",
+  "examples": [
+    "dropbear",
+    "dropbear_2015.67",
+    "dropbear_0.49"
+  ]
+}

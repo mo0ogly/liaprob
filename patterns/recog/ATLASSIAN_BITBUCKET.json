@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-atlassian_bitbucket",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATLASSIAN_BITBUCKET",
+  "taxonomy_name": "Atlassian Bitbucket",
+  "vendor": "Atlassian",
+  "product": "Bitbucket",
+  "source": {
+    "type": "recog",
+    "file": "ATLASSIAN_BITBUCKET.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_atlassian_bitbucket_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d9edf2a6f791120dea5f27ae4faf1212$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Bitbucket"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Log in - Bitbucket$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Bitbucket"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^BITBUCKETSESSIONID=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Bitbucket"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:atlassian:bitbucket:-",
+  "examples": [
+    "d9edf2a6f791120dea5f27ae4faf1212",
+    "Log in - Bitbucket",
+    "BITBUCKETSESSIONID=49D9B4A9C574CFA312E671F3453CEAC5; Max-Age=1209600; Expires=Tue, 04-Oct-2022 22:16:45 GMT; Path=/; HttpOnly"
+  ]
+}

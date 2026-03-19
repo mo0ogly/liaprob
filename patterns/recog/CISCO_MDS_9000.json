@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_mds_9000",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_MDS_9000",
+  "taxonomy_name": "Cisco MDS 9000",
+  "vendor": "Cisco",
+  "product": "MDS 9000",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_MDS_9000.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_mds_9000_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Cisco MDS 9000(?: and Nexus 5000)? Management Modules (\\d+\\.\\d+\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco MDS 9000/Nexus 5000"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:cisco:mds_9000_san-os:{os.version}",
+  "examples": [
+    "Cisco MDS 9000 and Nexus 5000 Management Modules 7.3(1)D1(1)",
+    "Cisco MDS 9000 and Nexus 5000 Management Modules 6.2(13a)",
+    "Cisco MDS 9000 Management Modules 3.3(2)"
+  ]
+}

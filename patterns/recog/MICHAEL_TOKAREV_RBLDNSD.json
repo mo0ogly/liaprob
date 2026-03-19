@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-michael_tokarev_rbldnsd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICHAEL_TOKAREV_RBLDNSD",
+  "taxonomy_name": "Michael Tokarev rbldnsd",
+  "vendor": "Michael Tokarev",
+  "product": "rbldnsd",
+  "source": {
+    "type": "recog",
+    "file": "MICHAEL_TOKAREV_RBLDNSD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_michael_tokarev_rbldnsd_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^rbldnsd (\\d[\\.\\w\\/-]+) \\(\\d\\d \\w\\w\\w \\d\\d\\d\\d\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^rbldnsd (\\d[\\.\\w\\/-]+) \\(\\d\\d \\w\\w\\w \\d\\d\\d\\d\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "rbldnsd"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "rbldnsd 0.997a (23 Jul 2013)",
+    "rbldnsd 0.996a-0.1 (01 Apr 2008)",
+    "rbldnsd 0.998/WGC (31 Dec 2015)"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dan_kaminsky_ozymandns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DAN_KAMINSKY_OZYMANDNS",
+  "taxonomy_name": "Dan Kaminsky OzymanDNS",
+  "vendor": "Dan Kaminsky",
+  "product": "OzymanDNS",
+  "source": {
+    "type": "recog",
+    "file": "DAN_KAMINSKY_OZYMANDNS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_dan_kaminsky_ozymandns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Hi: [\\w\\.: =]+\\d{4}$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OzymanDNS DNS tunnel"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "Hi:  Thu Aug 17 23:29:10 2017",
+    "Hi: Lookup=VERSION.BIND Date=Thu Aug 17 23:53:10 UTC 2017"
+  ]
+}

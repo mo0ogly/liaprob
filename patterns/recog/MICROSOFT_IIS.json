@@ -1,0 +1,329 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_iis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_IIS",
+  "taxonomy_name": "Microsoft IIS",
+  "vendor": "Microsoft",
+  "product": "IIS",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_IIS.json",
+    "fingerprint_count": 27
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 27 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    25,
+    80,
+    119,
+    443,
+    587,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_iis_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Microsoft FTP Service \\(Version ([1234]\\.\\d+)\\)\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) Microsoft FTP Service \\(Version ([1234]\\.\\d+)\\)\\.$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Microsoft FTP Server on Windows NT"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Microsoft FTP Service \\(Version 5.0\\)\\.$",
+          "confidence_delta": 0.4,
+          "version_static": "5.0",
+          "case_insensitive": true,
+          "note": "Microsoft FTP Server on Windows 2000"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Microsoft FTP Service \\(Version 5.1\\)\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft FTP Server on Windows XP, 2003 or later versions of 2000"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Microsoft FTP Service$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft FTP Server on Windows XP, 2003 or later without version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Microsoft FTP Service$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft FTP Server on Windows XP, 2003 or later without version or hostname"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NNTP Service (?:.*) Version: (5.0.2195.[0-9]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^NNTP Service (?:.*) Version: (5.0.2195.[0-9]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft IIS NNTP Server on Windows 2000"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NNTP Service (?:.*) Version: (6.0.3790.[0-9]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^NNTP Service (?:.*) Version: (6.0.3790.[0-9]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft IIS NNTP Server on Windows Server 2003"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512})? ?Microsoft ESMTP MAIL Service, Version: +(10\\.0\\.14393\\.[\\d.]+) +ready +(?:at +)?(.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512})? ?Microsoft ESMTP MAIL Service, Version: +(10\\.0\\.14393\\.[\\d.]+) +ready +(?:at +)?(.+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Microsoft IIS builtin SMTP service - Windows Server 2016"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512})? ?Microsoft ESMTP MAIL Service, Version: +(10\\.0\\.17763\\.[\\d.]+) +ready +(?:at +)?(.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512})? ?Microsoft ESMTP MAIL Service, Version: +(10\\.0\\.17763\\.[\\d.]+) +ready +(?:at +)?(.+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Microsoft IIS builtin SMTP service - Windows Server 2019"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Microsoft SMTP MAIL ready at (.+) Version: +(\\d+\\.\\d+\\.\\d+\\.\\d+\\.\\d+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) Microsoft SMTP MAIL ready at (.+) Version: +(\\d+\\.\\d+\\.\\d+\\.\\d+\\.\\d+) *$",
+          "version_group": 3,
+          "case_insensitive": true,
+          "note": "Microsoft IIS builtin SMTP service, or Microsoft Exchange Server (they are differentiated from each other in smtp-iis.clp)  - variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512})? ?Microsoft ESMTP MAIL Service, Version: +(\\d+\\.\\d+\\.\\d+\\.\\d+)(?: +ready)?(?: +(?:at +)?(\\w\\w\\w, \\d.+))?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512})? ?Microsoft ESMTP MAIL Service, Version: +(\\d+\\.\\d+\\.\\d+\\.\\d+)(?: +ready)?(?: +(?:at +)?(\\w\\w\\w, \\d.+))?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Microsoft IIS builtin SMTP service, or Microsoft Exchange Server (they are differentiated from each other in smtp-iis.clp) - variant 2"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_iis_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^IIS7$",
+          "confidence_delta": 0.4,
+          "version_static": "7",
+          "case_insensitive": true,
+          "note": "Default IIS 7"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Microsoft Internet Information Services 8",
+          "confidence_delta": 0.4,
+          "version_static": "8",
+          "case_insensitive": true,
+          "note": "Default IIS 8"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^IIS (\\d\\.\\d) Detailed Error",
+          "confidence_delta": 0.4,
+          "version_extract": "^IIS (\\d\\.\\d) Detailed Error",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IIS Detailed Error"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^IIS Windows(?: Server)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Default IIS"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(ASPSESSIONID[A-Z]+|ASP\\.NET_SessionId|\\.ASPXANONYMOUS)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft IIS (ASP.NET)\n      http://msdn2.microsoft.com/en-us/library/ms953828.aspx\n      http://msdn2.microsoft.com/en-us/library/91ka2e6a.aspx"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/([1234]\\.0)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Microsoft-IIS/([1234]\\.0)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft IIS 1.0 - 4.0 runs on Windows NT 4.0"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/5.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "5.0",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 5.0 runs on Windows 2000"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/5.1$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "5.1",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 5.1 runs on Windows XP"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/6.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "6.0",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 6.0 runs on Windows Server 2003 (and Windows XP x64)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/7.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "7.0",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 7.0 runs on Windows Server 2008 (and Windows Vista)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/7.5$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "7.5",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 7.5 runs on Windows Server 2008 R2 (and Windows 7)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/8.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "8.0",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 8.0 runs on Windows Server 2012 (and Windows 8)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/8.5$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "8.5",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 8.5 runs on Windows Server 2012 R2 (and Windows 8.1)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/10.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_static": "10.0",
+          "case_insensitive": true,
+          "note": "Microsoft IIS 10.0 runs on Windows Server 2016 and 2019"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Microsoft-IIS/([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft IIS new, unknown Windows version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-IIS$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Microsoft IIS, no version information"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp",
+    "nntp",
+    "http",
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:iis:{version}",
+  "examples": [
+    "foo.bar Microsoft FTP Service (Version 3.0).",
+    "foo.bar Microsoft FTP Service (Version 5.0).",
+    "foo.bar Microsoft FTP Service (Version 5.1).",
+    "foo.bar Microsoft FTP Service",
+    "Microsoft FTP Service",
+    "IIS7",
+    "Microsoft Internet Information Services 8",
+    "IIS 7.0 Detailed Error - 401.2 - Unauthorized",
+    "IIS 8.0 Detailed Error - 403.14 - Forbidden",
+    "IIS 8.5 Detailed Error - 403.14 - Forbidden"
+  ]
+}

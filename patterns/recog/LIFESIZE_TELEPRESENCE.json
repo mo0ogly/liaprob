@@ -1,0 +1,101 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lifesize_telepresence",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIFESIZE_TELEPRESENCE",
+  "taxonomy_name": "Lifesize TelePresence",
+  "vendor": "Lifesize",
+  "product": "TelePresence",
+  "source": {
+    "type": "recog",
+    "file": "LIFESIZE_TELEPRESENCE.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lifesize_telepresence_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:ed61e4c9e9a176e82734aa42c6a00ce4|0dc6bff9bdabf1184c157d75ac73c22a)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lifesize TelePresence"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "Lifesize&reg;$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lifesize TelePresence"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_lifesize_telepresence_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=lifesize.com,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lifesize TelePresence"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=a_lifesize_system,OU=lifesize,O=lifesize,L=Austin,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lifesize TelePresence (a_lifesize variant 1)"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=A_LifeSize_System,OU=IT,O=LifeSize Communications\\\\, Inc\\.,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lifesize TelePresence (a_lifesize variant 2)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "ed61e4c9e9a176e82734aa42c6a00ce4",
+    "0dc6bff9bdabf1184c157d75ac73c22a",
+    "Lifesize&reg;",
+    "400 - Bad Request  Lifesize&reg;",
+    "CN=lifesize.com,C=US",
+    "CN=a_lifesize_system,OU=lifesize,O=lifesize,L=Austin,ST=Texas,C=US",
+    "CN=A_LifeSize_System,OU=IT,O=LifeSize Communications\\, Inc.,ST=Texas,C=US"
+  ]
+}

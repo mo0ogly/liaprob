@@ -1,0 +1,102 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_os_400",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_OS_400",
+  "taxonomy_name": "IBM OS/400",
+  "vendor": "IBM",
+  "product": "OS/400",
+  "source": {
+    "type": "recog",
+    "file": "IBM_OS_400.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    23,
+    443,
+    445,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_os_400_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(iSeries\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM i5/OS iSeries (OS/400)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^QTCP at ([a-zA-Z0-9\\.\\_\\-]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM iSeries FTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OS/?400 \\D(\\d+)\\D(\\d+)\\D(\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS/400"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Application Required. No Installation Default",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "probably IBM AS/400 running TN3270 or 5250 emulation server"
+        }
+      ]
+    },
+    {
+      "id": "recog_ibm_os_400_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=www\\.ibm\\.com,OU=IBM i Service,L=Rochester,ST=Minnesota,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM iSeries Service Console"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet",
+    "tls",
+    "smb",
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:ibm:os_400:-",
+  "examples": [
+    "Apache/2.0.52 (iSeries)",
+    "QTCP at core.bank.local.",
+    "OS/400 V4R5M0",
+    "OS400 V5R4M5",
+    "QXBwbGljYXRpb24gUmVxdWlyZWQuIE5vIEluc3RhbGxhdGlvbiBEZWZhdWx0ICAgICAgICA\n     gICAgICAgICAgICAgICAgICAgICAgICAgIApFbnRlciBBcHBsaWNhdGlvbiBOYW1lOg==",
+    "CN=www.ibm.com,OU=IBM i Service,L=Rochester,ST=Minnesota,C=US"
+  ]
+}

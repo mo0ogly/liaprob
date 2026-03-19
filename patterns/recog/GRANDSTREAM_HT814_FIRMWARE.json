@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-grandstream_ht814_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRANDSTREAM_HT814_FIRMWARE",
+  "taxonomy_name": "Grandstream HT814 Firmware",
+  "vendor": "Grandstream",
+  "product": "HT814 Firmware",
+  "source": {
+    "type": "recog",
+    "file": "GRANDSTREAM_HT814_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_grandstream_ht814_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Grandstream HT814 ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Grandstream Handy Tone HT814"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:grandstream:ht814_firmware:{os.version}",
+  "examples": [
+    "Grandstream HT814 1.0.9.3"
+  ]
+}

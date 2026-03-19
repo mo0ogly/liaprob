@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cherokee_project_cherokee",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHEROKEE_PROJECT_CHEROKEE",
+  "taxonomy_name": "Cherokee Project Cherokee",
+  "vendor": "Cherokee Project",
+  "product": "Cherokee",
+  "source": {
+    "type": "recog",
+    "file": "CHEROKEE_PROJECT_CHEROKEE.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cherokee_project_cherokee_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Cherokee/([\\d.]+) \\(Debian\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Cherokee/([\\d.]+) \\(Debian\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Cherokee Web Server - Debian variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Cherokee/([\\d.]+) \\(Ubuntu\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Cherokee/([\\d.]+) \\(Ubuntu\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Cherokee Web Server - Ubuntu variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Cherokee/([\\d.]+) \\(Gentoo Linux\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Cherokee/([\\d.]+) \\(Gentoo Linux\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Cherokee Web Server - Gentoo variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Cherokee(?:/([\\d.]+))?(?: \\(UNIX\\))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Cherokee(?:/([\\d.]+))?(?: \\(UNIX\\))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Cherokee Web Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:cherokee-project:cherokee:{version}",
+  "examples": [
+    "Cherokee/1.2.104 (Debian)",
+    "Cherokee/1.2.104 (Ubuntu)",
+    "Cherokee/1.2.104 (Gentoo Linux)",
+    "Cherokee",
+    "Cherokee/0.2.7",
+    "Cherokee/1.2.101 (UNIX)"
+  ]
+}

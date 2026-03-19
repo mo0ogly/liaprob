@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kyocera_mita_x3e_31c_m",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KYOCERA_MITA_X3E_31C_M",
+  "taxonomy_name": "Kyocera Mita X3e 31C-M",
+  "vendor": "Kyocera Mita",
+  "product": "X3e 31C-M",
+  "source": {
+    "type": "recog",
+    "file": "KYOCERA_MITA_X3E_31C_M.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_kyocera_mita_x3e_31c_m_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Fiery X3e 31C-M$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fiery X3e 31C-M embedded print controller"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Fiery X3e 31C-M"
+  ]
+}

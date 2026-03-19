@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-server_technology_advanced_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SERVER_TECHNOLOGY_ADVANCED_WEB_SERVER",
+  "taxonomy_name": "Server Technology Advanced Web Server",
+  "vendor": "Server Technology",
+  "product": "Advanced Web Server",
+  "source": {
+    "type": "recog",
+    "file": "SERVER_TECHNOLOGY_ADVANCED_WEB_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_server_technology_advanced_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ServerTech-AWS/v(\\d+(?:\\.\\d+)*[a-z](?:-[a-z][0-9])*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^ServerTech-AWS/v(\\d+(?:\\.\\d+)*[a-z](?:-[a-z][0-9])*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Server Technology Advanced Web Server (AWS)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ServerTech-AWS/v7.1g-b1",
+    "ServerTech-AWS/v8.0x"
+  ]
+}

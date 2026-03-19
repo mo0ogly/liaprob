@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-filezilla_project_filezilla_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FILEZILLA_PROJECT_FILEZILLA_SERVER",
+  "taxonomy_name": "Filezilla-Project FileZilla Server",
+  "vendor": "Filezilla-Project",
+  "product": "FileZilla Server",
+  "source": {
+    "type": "recog",
+    "file": "FILEZILLA_PROJECT_FILEZILLA_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_filezilla_project_filezilla_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FileZilla Server(?: version)? (?:v)?(\\d\\.[\\w.]+(?: beta)?)",
+          "confidence_delta": 0.4,
+          "version_extract": "^FileZilla Server(?: version)? (?:v)?(\\d\\.[\\w.]+(?: beta)?)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "FileZilla FTP Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:filezilla-project:filezilla_server:{version}",
+  "examples": [
+    "FileZilla Server version 0.9.2 beta",
+    "FileZilla Server version 0.9.13a beta",
+    "FileZilla Server 0.9.54 beta",
+    "FileZilla Server v0.9.33 beta"
+  ]
+}

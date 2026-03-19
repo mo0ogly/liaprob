@@ -1,0 +1,130 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-juniper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUNIPER",
+  "taxonomy_name": "Juniper",
+  "vendor": "Juniper",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "JUNIPER.json",
+    "fingerprint_count": 9
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 9 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_juniper_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Juniper\\s?)?(Junos|Junos OS|ScreenOS)\\s?(\\d+(?:\\.\\d+?)*(?:X\\d{2})?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper"
+        }
+      ]
+    },
+    {
+      "id": "recog_juniper_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper (\\S+) : (\\d+\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks,Inc,([^,]+),([^,]+) \\(build (\\d+)\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Router - build variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper (SRX\\S*(?: \\S+)?)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper SRX"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks, Inc\\. (\\S+) Edge Routing Switch SW Version : \\((\\S+) (\\S+) \\[BuildId (\\d+)\\]\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Edge Routing Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks (\\S+(?: \\S+)?) Switch, SW Version (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks, Inc\\. (\\S+) Edge Switch Router SW Version : \\((\\S+) (\\S+) \\[BuildId (\\d+)\\]\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Edge Routing Switch - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks, Inc (MX-\\d+) (\\S+) REL$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper WLC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Juniper Networks, Inc. SRC-PE (C\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Juniper Edge Routing Switch - SRC-PE"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "snmp"
+  ],
+  "examples": [
+    "Junos",
+    "Junos 4.4",
+    "Junos 12.1X44",
+    "ScreenOS",
+    "Juniper WXC-1800 : 5.6.4.0",
+    "Juniper WXC-1800 : 5.7.7.0",
+    "Juniper WXC-250 : 5.7.7.0",
+    "Juniper WXC-3400 : 5.6.4.0",
+    "Juniper WXC-500 : 5.5.2.0",
+    "Juniper WXC-500 : 5.7.5.0"
+  ]
+}

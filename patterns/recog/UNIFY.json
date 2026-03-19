@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNIFY",
+  "taxonomy_name": "Unify",
+  "vendor": "Unify",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNIFY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_unify_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Desk_Phone_IP_(CP\\d+[EXT]?)_(V\\d \\S+) ",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Unify OpenStage VoIP Phone 2"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip"
+  ],
+  "examples": [
+    "Desk_Phone_IP_CP200_V1 R6.14.0      SIP  190802",
+    "Desk_Phone_IP_CP400_V1 R6.14.0      SIP  190802",
+    "Desk_Phone_IP_CP600_V1 R6.14.0      SIP  190802"
+  ]
+}

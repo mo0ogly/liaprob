@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_exchange_2007_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_EXCHANGE_2007_SERVER",
+  "taxonomy_name": "Microsoft Exchange 2007 Server",
+  "vendor": "Microsoft",
+  "product": "Exchange 2007 Server",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_EXCHANGE_2007_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    110,
+    143,
+    993,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_exchange_2007_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Microsoft Exchange Server 2007 IMAP4 service ready$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange Server 2007"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Microsoft Exchange Server 2007 POP3 service ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange Server 2007"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pop3",
+    "imap"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:exchange_server:-",
+  "examples": [
+    "Microsoft Exchange Server 2007 IMAP4 service ready",
+    "Microsoft Exchange Server 2007 POP3 service ready"
+  ]
+}

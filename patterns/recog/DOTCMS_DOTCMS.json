@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dotcms_dotcms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOTCMS_DOTCMS",
+  "taxonomy_name": "dotCMS dotCMS",
+  "vendor": "dotCMS",
+  "product": "dotCMS",
+  "source": {
+    "type": "recog",
+    "file": "DOTCMS_DOTCMS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_dotcms_dotcms_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:e174f317b4491295c63e5bc9d9b6115b|cd2461f62d76fbbc905fa15160c0788f|37fdaeebc861719280205e7107b78d52)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "dotCMS Content Management Platform"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^dotCMS Content Management Platform$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "dotCMS Content Management Platform"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(dmid|opvc|sitevisitscookie)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "dotCMS Content Management Platform"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:dotcms:dotcms:-",
+  "examples": [
+    "e174f317b4491295c63e5bc9d9b6115b",
+    "cd2461f62d76fbbc905fa15160c0788f",
+    "37fdaeebc861719280205e7107b78d52",
+    "dotCMS Content Management Platform",
+    "dmid=dcd46b93-54ab-4a43-a023-99154f879c3e; Max-Age=153792000; Expires=Thu, 18-Mar-2027 21:28:37 GMT; Path=/; HttpOnly; SameSite=Strict",
+    "opvc=9e6302af-896a-40ae-a330-22655ee22c5f; Path=/; HttpOnly; SameSite=Strict",
+    "sitevisitscookie=1; Max-Age=153792000; Expires=Thu, 18-Mar-2027 21:28:37 GMT; Path=/; HttpOnly; SameSite=Strict"
+  ]
+}

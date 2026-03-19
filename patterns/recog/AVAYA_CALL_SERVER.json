@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avaya_call_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVAYA_CALL_SERVER",
+  "taxonomy_name": "Avaya Call Server",
+  "vendor": "Avaya",
+  "product": "Call Server",
+  "source": {
+    "type": "recog",
+    "file": "AVAYA_CALL_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_avaya_call_server_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^PR:CS 1000.*BN:(\\S+).*Avaya Inc\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya Call Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "PR:CS 1000 SW:MGC BN:MGCCCD01 HW:MGC (c) Avaya Inc.",
+    "PR:CS 1000 SW:NRS+SS_EM, Backup Server BN:7.50.17-00 HW:Avaya CPPMv1 (c) Avaya Inc.",
+    "PR:CS 1000 SW:NRS+SS_EM, Backup Server BN:7.50.17-00 HW:HP DL360G7 (c) Avaya Inc.",
+    "PR:CS 1000 SW:NRS+SS_EM_SubM, Primary Security Server BN:7.50.17-00 HW:Avaya CPPMv1 (c) Avaya Inc.",
+    "PR:CS 1000 SW:NRS+SS_EM_SubM, Primary Security Server BN:7.50.17-00 HW:HP DL360G7 (c) Avaya Inc.",
+    "PR:CS 1000 SW:NRS+SS_EM_SubM, Primary Security Server BN:7.50.17-00 HW:IBM X3350 (c) Avaya Inc.",
+    "PR:CS 1000, 2010 E SW:Call Server, Sys 4021 BN:7.50Q HW:CP-PM (c) Avaya Inc."
+  ]
+}

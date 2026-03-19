@@ -1,0 +1,172 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_ilo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_ILO",
+  "taxonomy_name": "HP iLO",
+  "vendor": "HP",
+  "product": "iLO",
+  "source": {
+    "type": "recog",
+    "file": "HP_ILO.json",
+    "fingerprint_count": 11
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 11 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22,
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_ilo_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:ad93b3973782b03ea62a43bd6602ba8b|d521487f45fa7657450edfd6c16e4a63)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Integrated Lights-Out"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^HP Integrated Lights-Out$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Integrated Lights-Out"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^HP-iLO-Server/(?:[\\S]+)",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HP Integrated Lights Out Manager (iLO).  Version in the Server header (found on in iLO4) is the firmware version and is not currently used."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_hp_ilo_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Integrated Lights-Out (\\d) \\d+\\.\\d+ [A-Za-z]{3} \\d{1,2} \\d{4}$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Integrated Lights-Out (iLO) with firmware version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Integrated Lights-Out (\\d) \\(iLO \\d\\) for Integrity$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Integrated Lights-Out (iLO) without firmware version"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_ilo_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^mpSSH_([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^mpSSH_([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "HP Integrated Lights Out (iLO) usually bundled with HP servers"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_ilo_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Default Issuer \\(Do not trust\\),OU=ISS,O=Hewlett Packard Enterprise,L=Houston,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP iLO"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([A-Za-z0-9\\_\\-\\.]+),OU=ISS,O=Hewlett-Packard Company,L=Houston,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP iLO"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=HP Service Processor,OU=UDU Service Tools,O=Hewlett-Packard Development Company\\\\, L\\.P\\.\\\\ ,L=Fremont,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP iLO - HP Service Processor"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=OA\\-([a-fA-F0-9]+),OU=Onboard Administrator,",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP iLO (Onboard Administrator)"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([A-Za-z0-9\\_\\-\\.]+),OU=Hewlett Packard Enterprise Network Management Software \\(SMH\\),O=Hewlett Packard Enterprise,L=Houston,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP iLO - Enterprise Mgmt variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh",
+    "http",
+    "tls",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:hp:integrated_lights-out_firmware:-",
+  "examples": [
+    "ad93b3973782b03ea62a43bd6602ba8b",
+    "d521487f45fa7657450edfd6c16e4a63",
+    "HP Integrated Lights-Out",
+    "HP-iLO-Server/1.30",
+    "Integrated Lights-Out 4 2.02 Aug 18 2014",
+    "Integrated Lights-Out 2 (iLO 2) for Integrity",
+    "mpSSH_0.0.1",
+    "CN=Default Issuer (Do not trust),OU=ISS,O=Hewlett Packard Enterprise,L=Houston,ST=Texas,C=US",
+    "CN=SERVER-1231,OU=ISS,O=Hewlett-Packard Company,L=Houston,ST=Texas,C=US",
+    "CN=HP Service Processor,OU=UDU Service Tools,O=Hewlett-Packard Development Company\\, L.P.\\ ,L=Fremont,ST=California,C=US"
+  ]
+}

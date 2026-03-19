@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sgi_irix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SGI_IRIX",
+  "taxonomy_name": "SGI IRIX",
+  "vendor": "SGI",
+  "product": "IRIX",
+  "source": {
+    "type": "recog",
+    "file": "SGI_IRIX.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_sgi_irix_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^.{0,256} IRIX (?:version )?(\\d+\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SGI IRIX"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^.{0,256} IRIX64 (?:version )?(\\d+\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SGI IRIX64"
+        }
+      ]
+    },
+    {
+      "id": "recog_sgi_irix_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^IRIX\\W\\((.*)\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SGI IRIX"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:sgi:irix:{os.version}",
+  "examples": [
+    "Silicon Graphics IRIS Indigo2  running IRIX version 6.5",
+    "Silicon Graphics IRIS Indigo2 Elan running IRIX 5.3",
+    "Silicon Graphics IRIS Indigo2 running IRIX 5.3",
+    "Silicon Graphics IRIS O2 CRM running IRIX 6.3",
+    "Silicon Graphics Challenge/1 running IRIX64 6.5",
+    "Silicon Graphics Fuel running IRIX64 version 6.5",
+    "Silicon Graphics IRIS Octane running IRIX64 version 6.5",
+    "Silicon Graphics Octane2 running IRIX64 version 6.5",
+    "Silicon Graphics Onyx2 running IRIX64 version 6.5",
+    "Silicon Graphics Origin 200 running IRIX64 version 6.5"
+  ]
+}

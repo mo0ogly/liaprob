@@ -1,0 +1,130 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_ce",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_CE",
+  "taxonomy_name": "Microsoft Windows CE",
+  "vendor": "Microsoft",
+  "product": "Windows CE",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_CE.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_ce_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Windows CE$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows CE"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_microsoft_windows_ce_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Microsoft Windows CE Version ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows CE"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SIMATIC HMI, ([^,]+),.*FW:\\s*V([^,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens HMI - firmware variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Siemens, SIMATIC HMI, ([^,]+),.*SW:\\s*V\\s*(\\d+ \\d+ \\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Siemens HMI"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^Microsoft Windows CE Version ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows CE"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_windows_ce_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Welcome to the Windows CE Telnet Service on (WEBBOX[\\w.-]+)(?:\\r|\\n)+login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sunny WebBox Windows CE"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Welcome to the Windows CE Telnet Service on ([\\w.-]+)(?:\\r|\\n)+login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows CE"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "telnet",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_ce:-",
+  "examples": [
+    "Windows CE",
+    "Microsoft Windows CE Version 4.20 (Build 0)",
+    "Microsoft Windows CE Version 4.20 (Build 1088)",
+    "Siemens, SIMATIC HMI, KTP1000 Basic PN, 6AV6 647-0AF11-3AX0, HW: 1, FW: V01.06.00, Revision: 1",
+    "Siemens, SIMATIC HMI, KTP600 Basic Mono PN, 6AV6647-0AB11-3AX0, HW:1, FW:V01.06.00",
+    "Siemens, SIMATIC HMI, KTP600 Basic color PN, 6AV6 647-0AD11-3AX0, HW:1, FW:V11.00.02.00",
+    "Siemens, SIMATIC HMI, MP177, 6AV6 642-0EA01-3AX0, HW: 0, SW: V 1 0 0",
+    "Siemens, SIMATIC HMI, TP177B, 6AV6 642-0BD01-3AX0, HW: 0, SW: V 1 0 2",
+    "Siemens, SIMATIC HMI, XP277, 6AV6 643-0CB01-1AX0, HW: 0, SW: V 1 1 2",
+    "Siemens, SIMATIC HMI, unknown, 6AV2 124-0GC01-0AX0, HW: 0, SW: V 11 0 2"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Polycom/[\\d\\.]+ )?Polycom(?:RealPresenceTrio)-Trio_(\\S+)-UA/([\\d\\.]+)(?:_(.{12}))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Polycom RealPresence Trio Phones"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "PolycomRealPresenceTrio-Trio_8800-UA/5.4.0.12197",
+    "PolycomRealPresenceTrio-Trio_Visual+-UA/5.7.2.3123",
+    "Polycom/5.4.3.2389 PolycomRealPresenceTrio-Trio_8800-UA/5.4.3.2389",
+    "Polycom/5.4.3.2389 PolycomRealPresenceTrio-Trio_8800-UA/5.4.3.2389_DEADBEEF0000"
+  ]
+}

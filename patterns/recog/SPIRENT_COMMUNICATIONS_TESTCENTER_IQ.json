@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-spirent_communications_testcenter_iq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPIRENT_COMMUNICATIONS_TESTCENTER_IQ",
+  "taxonomy_name": "Spirent Communications TestCenter IQ",
+  "vendor": "Spirent Communications",
+  "product": "TestCenter IQ",
+  "source": {
+    "type": "recog",
+    "file": "SPIRENT_COMMUNICATIONS_TESTCENTER_IQ.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_spirent_communications_testcenter_iq_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^5c9f3938754b459fb3590a00e5947fed$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Spirent TestCenter IQ"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Spirent TestCenter IQ(?: - (?:Free )?Preview)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Spirent TestCenter IQ"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "5c9f3938754b459fb3590a00e5947fed",
+    "Spirent TestCenter IQ",
+    "Spirent TestCenter IQ - Free Preview",
+    "Spirent TestCenter IQ - Preview"
+  ]
+}

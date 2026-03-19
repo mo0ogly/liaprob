@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nortel_4050",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NORTEL_4050",
+  "taxonomy_name": "Nortel 4050",
+  "vendor": "Nortel",
+  "product": "4050",
+  "source": {
+    "type": "recog",
+    "file": "NORTEL_4050.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_nortel_4050_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Alteon iSD NSNAS HW:4050 SW:(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Secure Network Access Switch 4050"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Alteon iSD NSNAS HW:4050 SW:1.6.1.3"
+  ]
+}

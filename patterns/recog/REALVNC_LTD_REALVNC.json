@@ -1,0 +1,94 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-realvnc_ltd_realvnc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REALVNC_LTD_REALVNC",
+  "taxonomy_name": "RealVNC Ltd. RealVNC",
+  "vendor": "RealVNC Ltd.",
+  "product": "RealVNC",
+  "source": {
+    "type": "recog",
+    "file": "REALVNC_LTD_REALVNC.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_realvnc_ltd_realvnc_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^VNC Viewer for Java$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "RealVNC built-in webserver"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^VNC Server (Enterprise|Personal) Edition/(?:E|P)([\\d.]+) \\(r([\\d.]+)\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^VNC Server (Enterprise|Personal) Edition/(?:E|P)([\\d.]+) \\(r([\\d.]+)\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "RealVNC built-in webserver - Enterprise edition"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^RealVNC/E([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^RealVNC/E([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "RealVNC built-in webserver - Enterprise edition, short variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^RealVNC/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^RealVNC/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "RealVNC built-in webserver"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:realvnc:realvnc:-",
+  "examples": [
+    "VNC Viewer for Java",
+    "VNC Server Enterprise Edition/E4.5.1 (r27892)",
+    "VNC Server Personal Edition/P4.5.3 (r39012)",
+    "RealVNC/E4",
+    "RealVNC/4.0"
+  ]
+}

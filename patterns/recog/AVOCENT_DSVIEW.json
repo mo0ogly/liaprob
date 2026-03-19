@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avocent_dsview",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVOCENT_DSVIEW",
+  "taxonomy_name": "Avocent DSView",
+  "vendor": "Avocent",
+  "product": "DSView",
+  "source": {
+    "type": "recog",
+    "file": "AVOCENT_DSVIEW.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_avocent_dsview_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Avocent DSView \\d+/((?:\\d+\\.)*\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Avocent DSView \\d+/((?:\\d+\\.)*\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Web server interface for controlling data centers."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:avocent:dsview:{version}",
+  "examples": [
+    "Avocent DSView 3/3.7.0.71",
+    "Avocent DSView 3/3"
+  ]
+}

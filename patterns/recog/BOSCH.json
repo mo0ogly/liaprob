@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bosch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BOSCH",
+  "taxonomy_name": "Bosch",
+  "vendor": "Bosch",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "BOSCH.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_bosch_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^B426$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bosch Security Systems Ethernet Module (Alarm Panel)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_bosch_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "(?i)^SERIALNUMBER=(\\d+),CN=(\\S+),OU=ST-VS,O=Bosch Sicherheitssysteme GmbH,L=Grasbrunn,C=DE",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bosch Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "B426",
+    "SERIALNUMBER=111111111111111111,CN=00-07-5f-11-11-11,OU=ST-VS,O=Bosch Sicherheitssysteme GmbH,L=Grasbrunn,C=DE"
+  ]
+}

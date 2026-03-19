@@ -1,0 +1,93 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_tvos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_TVOS",
+  "taxonomy_name": "Apple tvOS",
+  "vendor": "Apple",
+  "product": "tvOS",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_TVOS.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_tvos_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J305AP|AppleTV11,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple TV 4K (2nd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J105aAP|AppleTV6,2)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple TV 4K"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J42dAP|AppleTV5,3)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple TV (4th generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J33[Ii]?AP|AppleTV3,[21])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple TV (3rd generation)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:K66AP|AppleTV2,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple TV (2nd generation)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:apple:tvos:-",
+  "examples": [
+    "model=J305AP",
+    "model=AppleTV11,1",
+    "model=J105aAP",
+    "model=AppleTV6,2",
+    "model=J42dAP",
+    "model=AppleTV5,3",
+    "model=J33IAP",
+    "model=J33iAP",
+    "model=J33AP",
+    "model=AppleTV3,2"
+  ]
+}

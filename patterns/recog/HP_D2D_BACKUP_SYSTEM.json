@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_d2d_backup_system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_D2D_BACKUP_SYSTEM",
+  "taxonomy_name": "HP D2D Backup System",
+  "vendor": "HP",
+  "product": "D2D Backup System",
+  "source": {
+    "type": "recog",
+    "file": "HP_D2D_BACKUP_SYSTEM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_d2d_backup_system_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP StorageWorks D2D Backup System \\S+ \\S+ \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP StorageWorks D2D Backup System"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP StorageWorks D2D Backup System CZC8522Q1V VTL-EELW-ARIA 482301-B21",
+    "HP StorageWorks D2D Backup System CZJ117049B HP-CZJ117049B 596142-B21",
+    "HP StorageWorks D2D Backup System MXQ144043K HP-MXQ144043K 595882-B21"
+  ]
+}

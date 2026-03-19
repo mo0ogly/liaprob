@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_vios",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_VIOS",
+  "taxonomy_name": "IBM VIOS",
+  "vendor": "IBM",
+  "product": "VIOS",
+  "source": {
+    "type": "recog",
+    "file": "IBM_VIOS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_vios_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime VIOS [^:]+: 05\\.03\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM VIOS 5.3 on PowerPC"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:\\S{1,1000} )?(?:Motorola PowerPC|IBM PowerPC|\\S+ \\S+ PowerPC IBM).*Base Operating System Runtime VIOS [^:]+: 06\\.01\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM VIOS 6.1 on PowerPC"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 00018C4AD400 Base Operating System Runtime VIOS version: 05.03.0008.0000 TCP/IP Client Support version: 05.03.0008.0000",
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 0002EBDAD700 Base Operating System Runtime VIOS version: 05.03.0008.0000 TCP/IP Client Support version: 05.03.0008.0001",
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 0005EEE5D600 Base Operating System Runtime VIOS version: 05.03.0008.0000 TCP/IP Client Support version: 05.03.0008.0001",
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 00C2E6F44C00 Base Operating System Runtime VIOS version: 05.03.0008.0000 TCP/IP Client Support version: 05.03.0008.0010",
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 00C3A6044C00 Base Operating System Runtime VIOS version: 05.03.0008.0000 TCP/IP Client Support version: 05.03.0008.0006",
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 00C3A6144C00 Base Operating System Runtime VIOS version: 05.03.0008.0000 TCP/IP Client Support version: 05.03.0008.0006",
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 00C5AE104C00 Base Operating System Runtime VIOS version: 05.03.0008.0000 TCP/IP Client Support version: 05.03.0008.0001",
+    "IBM PowerPC CHRP Computer Machine Type: 0x0800004c Processor id: 00055539D600 Base Operating System Runtime VIOS version: 06.01.0007.0000 TCP/IP Client Support version: 06.01.0005.0000"
+  ]
+}

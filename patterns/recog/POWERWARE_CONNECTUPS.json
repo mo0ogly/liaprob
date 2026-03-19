@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-powerware_connectups",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWERWARE_CONNECTUPS",
+  "taxonomy_name": "PowerWare ConnectUPS",
+  "vendor": "PowerWare",
+  "product": "ConnectUPS",
+  "source": {
+    "type": "recog",
+    "file": "POWERWARE_CONNECTUPS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_powerware_connectups_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^.*ConnectUPS",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PowerWare ConnectUPS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "Kz09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0\n      9PT09PT09PT09PT09PT0rCnwgICAgICAgICAgICBbIENvbm5lY3RVUFMgV2ViL1NOTVAgQ2FyZCBDb25maW\n      d1cmF0aW9uIFV0aWxpdHkgXSAgICAgICAgICAgICAgfAorPT09PT09PT09PT09PT09PT09PT09PT09PT09P\n      T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PSsKCkVudGVyIFBhc3N3\n      b3JkOiA="
+  ]
+}

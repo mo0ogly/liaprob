@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_nt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_NT",
+  "taxonomy_name": "Microsoft NT",
+  "vendor": "Microsoft",
+  "product": "NT",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_NT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_nt_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?Windows NT (\\d.\\d{1,2})?(?:\\s)?([a-z]+|[a-z]+\\s[a-z]+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows NT"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_nt:{os.version}",
+  "examples": [
+    "Windows NT 3.51 Server",
+    "Windows NT Workstation",
+    "Windows NT 4.0 Workstation",
+    "Windows NT Advanced Server"
+  ]
+}

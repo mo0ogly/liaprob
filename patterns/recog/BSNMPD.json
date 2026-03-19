@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bsnmpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BSNMPD",
+  "taxonomy_name": "bsnmpd",
+  "vendor": "",
+  "product": "bsnmpd",
+  "source": {
+    "type": "recog",
+    "file": "BSNMPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_bsnmpd_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^pfSense\\s(\\S+)\\s(\\d+\\.\\d+(?:\\.\\d+)?)-RELEASE.*(FreeBSD)\\s([\\d\\.]+-(?:STABLE|RELEASE)(?:-p\\d+)?).*\\s(\\w+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "pfSense"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "pfSense pfSense.localdomain 2.3.4-RELEASE pfSense FreeBSD 10.3-RELEASE-p19 amd64",
+    "pfSense example.com 2.1-RELEASE nanobsd FreeBSD 8.3-RELEASE-p11 i386"
+  ]
+}

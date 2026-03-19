@@ -1,0 +1,97 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVM",
+  "taxonomy_name": "AVM",
+  "vendor": "AVM",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "AVM.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_avm_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^(.{0,256}) UPnP/[\\d\\.]+\\s+AVM FRITZ!(.*) ([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "AVM FRITZ! devices of various types"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_avm_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:AVM )?(FRITZ!Box .*) +(\\d+\\.\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "AVM FritzBox"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:AVM )?(FRITZ!Fon .*) +(\\d+\\.\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "AVM FritzFon"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:AVM )?(Multibox .*) +(\\d+\\.\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "AVM Multibox - Generic"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "examples": [
+    "some thing UPnP/1.0 AVM FRITZ!WLAN Repeater 1750E 134.07.01",
+    "AVM FRITZ!Box Fon 06.03.13",
+    "AVM FRITZ!Box Fon 06.03.65 (Jun  7 2005)",
+    "AVM FRITZ!Box Fon 5010 Annex A (ITA) 48.04.46 (Sep 14 2007)",
+    "AVM FRITZ!Box Fon 5012 (UI) 25.03.90 (3.01.03 tested by accredited T-Com test lab) (Oct 28 2005)",
+    "AVM FRITZ!Box Fon 5113 Annex A 83.04.69 (Dec  2 2008)",
+    "AVM FRITZ!Box Fon 5124 56.04.77 (Feb 14 2014)",
+    "AVM FRITZ!Box Fon 7170 Annex A.B ML Speedport W701V 58.04.67 (Dec 18 2008)",
+    "AVM FRITZ!Box 3272 126.05.50 (Feb 27 2013)",
+    "AVM FRITZ!Box 7170 Annex A 58.04.85 (Apr  4 2011)"
+  ]
+}

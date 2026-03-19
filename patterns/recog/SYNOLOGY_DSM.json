@@ -1,0 +1,121 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-synology_dsm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYNOLOGY_DSM",
+  "taxonomy_name": "Synology DSM",
+  "vendor": "Synology",
+  "product": "DSM",
+  "source": {
+    "type": "recog",
+    "file": "SYNOLOGY_DSM.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_synology_dsm_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:c60ea375c39d1ab273c4d1bee717287a|9052ab290483b0bd75c05b857c182bba|3acbef1d83ac34f19a2631d6c1a4ac57)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Synology DSM"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(.{0,512}).nbsp;-.nbsp;Synology.nbsp;DiskStation$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Synology DiskStation"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Synology/DSM/(\\d+\\.\\d+\\.\\d+\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Synology DiskStation NAS with IP"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_synology_dsm_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^(?:2ad2ad0002ad2ad0002ad2ad2ad2ada9e96d3ba9f7903758a731e0fa01453d|29d29d15d29d29d21c29d29d29d29d10d7a07cb776562eccb97246005feba5|2ad2ad0002ad2ad0002ad2ad2ad2ad5bf44aec534289dfa8e33148b66cd6c3|29d29d15d29d29d21c29d29d29d29de857600fcd9f89735d87c3704c4e141b)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Synology NAS DSM 6"
+        },
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^(?:00000000000000000042d42d0000009535d5979f591ae8e547c5e5743e5b64|29d29d15d29d29d00042d42d00000068f5dc63852f94da932cd6b61b1cd9e3|29d29d15d29d29d21c42d42d000000bf85d79ff39d9f5079675604a74fc04b|29d29d15d29d29d00042d42d000000038eaaf490bec8dc33757f165ce01762|29d29d15d29d29d21c42d42d000000790cb01ea78cc2a73fe8428d61afc0c8)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Synology NAS DSM 7"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=synology.com,O=Synology Inc.,L=Taipei,C=TW$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Synology"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=synology\\.com.*,O=Synology Inc\\.,L=Taipei.*,C=TW$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Synology NAS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "c60ea375c39d1ab273c4d1bee717287a",
+    "9052ab290483b0bd75c05b857c182bba",
+    "3acbef1d83ac34f19a2631d6c1a4ac57",
+    "DiskStation&nbsp;-&nbsp;Synology&nbsp;DiskStation",
+    "DS218&nbsp;-&nbsp;Synology&nbsp;DiskStation",
+    "Synology/DSM/192.168.1.100",
+    "29d29d15d29d29d21c29d29d29d29d10d7a07cb776562eccb97246005feba5",
+    "29d29d15d29d29d21c29d29d29d29de857600fcd9f89735d87c3704c4e141b",
+    "2ad2ad0002ad2ad0002ad2ad2ad2ad5bf44aec534289dfa8e33148b66cd6c3",
+    "2ad2ad0002ad2ad0002ad2ad2ad2ada9e96d3ba9f7903758a731e0fa01453d"
+  ]
+}

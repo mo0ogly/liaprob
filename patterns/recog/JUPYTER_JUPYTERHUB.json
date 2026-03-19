@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-jupyter_jupyterhub",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUPYTER_JUPYTERHUB",
+  "taxonomy_name": "Jupyter JupyterHub",
+  "vendor": "Jupyter",
+  "product": "JupyterHub",
+  "source": {
+    "type": "recog",
+    "file": "JUPYTER_JUPYTERHUB.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_jupyter_jupyterhub_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^JupyterHub$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "JupyterHub - Multi-user server for Jupyter notebooks"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:jupyter:jupyterhub:-",
+  "examples": [
+    "JupyterHub"
+  ]
+}

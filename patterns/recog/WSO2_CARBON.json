@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-wso2_carbon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WSO2_CARBON",
+  "taxonomy_name": "WSO2 Carbon",
+  "vendor": "WSO2",
+  "product": "Carbon",
+  "source": {
+    "type": "recog",
+    "file": "WSO2_CARBON.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_wso2_carbon_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^20197040d99f50747a953d163fef982e$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WSO2 Carbon - service-oriented platform for WSO2 products"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^WSO2 Carbon Server$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "WSO2 Carbon - service-oriented platform for WSO2 products"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:wso2:carbon:-",
+  "examples": [
+    "20197040d99f50747a953d163fef982e",
+    "WSO2 Carbon Server"
+  ]
+}

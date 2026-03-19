@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-eaton",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EATON",
+  "taxonomy_name": "Eaton",
+  "vendor": "Eaton",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "EATON.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_eaton_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(Evolution(?: S )?(?:\\s*\\d+)?)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eaton Evolution UPS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Evolution 1100",
+    "Evolution 1500",
+    "Evolution 1550",
+    "Evolution 2200",
+    "Evolution 3000",
+    "Evolution 650",
+    "Evolution 800",
+    "Evolution 850",
+    "Evolution S 1750",
+    "Evolution S 2500"
+  ]
+}

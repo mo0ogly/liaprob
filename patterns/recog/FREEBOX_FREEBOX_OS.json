@@ -1,0 +1,117 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-freebox_freebox_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FREEBOX_FREEBOX_OS",
+  "taxonomy_name": "Freebox Freebox OS",
+  "vendor": "Freebox",
+  "product": "Freebox OS",
+  "source": {
+    "type": "recog",
+    "file": "FREEBOX_FREEBOX_OS.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_freebox_freebox_os_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^c9ab649457b4e9affe91ff0ce488d15f$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Freebox OS on Freebox Set-top Box Devices"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Freebox OS",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Freebox OS on Freebox Set-top Box Devices"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^FbxWSD/1[.]0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Freebox Device"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_freebox_freebox_os_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^fbxrtspd/([0-9.]+) Freebox RTSP server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Freebox OS on Freebox Set-top Box Devices"
+        }
+      ]
+    },
+    {
+      "id": "recog_freebox_freebox_os_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Freebox Intermediate CA,O=Freebox,ST=France,C=FR$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Freebox Device - Intermediate CA"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=[0-9a-z]+[.]fbxos[.]fr,C=FR$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Freebox Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "c9ab649457b4e9affe91ff0ce488d15f",
+    "Freebox OS :: Identification",
+    "Freebox OS",
+    "FbxWSD/1.0",
+    "fbxrtspd/1.2 Freebox RTSP server",
+    "CN=Freebox Intermediate CA,O=Freebox,ST=France,C=FR",
+    "CN=d36ob5re.fbxos.fr,C=FR"
+  ]
+}

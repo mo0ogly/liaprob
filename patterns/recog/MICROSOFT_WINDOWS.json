@@ -1,0 +1,132 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS",
+  "taxonomy_name": "Microsoft Windows",
+  "vendor": "Microsoft",
+  "product": "Windows",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(Win32\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Windows"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?Windows.*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows catch-all"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Welcome to Microsoft Telnet Service \\r\\n\\n\\rlogin:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Windows"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Pragma Systems",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MS Windows running Pragma TelnetD server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^This copy of the Ataman TCP Remote Logon Services",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows NT/2k/2k3 running Ataman telnet server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Welcome to MKS Telnet Server Version",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows running MKS Telnet Server"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_windows_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-HTTPAPI/(?:[0-9\\.]*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Generic Microsoft HTTP service"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^ASP.NET$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Something written in ASP.NET"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http",
+    "telnet"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "Apache/2.2.25 (Win32)",
+    "Microsoft-HTTPAPI/2.0",
+    "ASP.NET",
+    "Windows for Workgroups 3.11",
+    "Microsoft Windows",
+    "V2VsY29tZSB0byBNaWNyb3NvZnQgVGVsbmV0IFNlcnZpY2UgDQoKDWxvZ2luOgo=",
+    "V2VsY29tZSB0byBHZW1hZGVwdCBMb2dpc3RpY3MgUkYgU2VydmVyCihDKSBDb3B5cmlnaHQgMTk5NC0yMDEyIFB\n      yYWdtYSBTeXN0ZW1zLCBJbmMuCgpsb2dpbiBuYW1lOiA=",
+    "VGhpcyBjb3B5IG9mIHRoZSBBdGFtYW4gVENQIFJlbW90ZSBMb2dvbiBTZXJ2aWNlcyBpcyByZWdpc3RlcmVkIG\n      FzIGxpY2Vuc2VkIHRvOgoJRUNJMi9ERE1TCgpBY2NvdW50IE5hbWU6IA==",
+    "V2VsY29tZSB0byBNS1MgVGVsbmV0IFNlcnZlciBWZXJzaW9uIDQuNzAuMDAwMC4KbG9naW46IA=="
+  ]
+}

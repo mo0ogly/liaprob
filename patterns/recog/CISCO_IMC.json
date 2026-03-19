@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_imc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_IMC",
+  "taxonomy_name": "Cisco IMC",
+  "vendor": "Cisco",
+  "product": "IMC",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_IMC.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_imc_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Cisco (?:IMC Login|Integrated Management Controller)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Integrated Management Controller"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_cisco_imc_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=C-series CIMC,OU=PID:([^ ]+) SERIAL:([^,]+),O=Cisco",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Integrated Management Controller"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=C220-(FCH[^,]+),OU=null,O=Cisco Systems Inc",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Integrated Management Controller C220"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "Cisco Integrated Management Controller",
+    "Cisco Integrated Management Controller Login",
+    "Cisco Integrated Management Controller WebUI",
+    "Cisco IMC Login Page",
+    "CN=C-series CIMC,OU=PID:UCSC-C220-M3S SERIAL:FCH18999AAA,O=Cisco Self Signed,L=San Jose,ST=California,C=US",
+    "CN=C220-FCH17999AAA,OU=null,O=Cisco Systems Inc.,L=San Jose,ST=California,C=US"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-znc_znc_0_058_webadmin_skins_default",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZNC_ZNC_0_058_WEBADMIN_SKINS_DEFAULT",
+  "taxonomy_name": "znc znc (0.058, webadmin/skins/default)",
+  "vendor": "znc",
+  "product": "znc (0.058, webadmin/skins/default)",
+  "source": {
+    "type": "recog",
+    "file": "ZNC_ZNC_0_058_WEBADMIN_SKINS_DEFAULT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_znc_znc_0_058_webadmin_skins_default_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6434232d43f27ef5462ba5ba345e03df",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "znc (0.058, webadmin/skins/default)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6434232d43f27ef5462ba5ba345e03df"
+  ]
+}

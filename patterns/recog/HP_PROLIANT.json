@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_proliant",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_PROLIANT",
+  "taxonomy_name": "HP ProLiant",
+  "vendor": "HP",
+  "product": "ProLiant",
+  "source": {
+    "type": "recog",
+    "file": "HP_PROLIANT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_proliant_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^HP ProLiant.*v(\\d+.\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sytem is HP ProLiant server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "SFAgUHJvTGlhbnQgQkwgZS1DbGFzcyBJbnRlZ3JhdGVkIEFkbWluaXN0cmF0b3IgdjIuMDAKICAgICAgI\n      CAgQ29weXJpZ2h0IDIwMDUgSGV3bGV0dC1QYWNrYXJkIERldmVsb3BtZW50IEdyb3VwLCBMLlAuCgogIC\n      AgICAgICAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0\n      tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQogICAgICAgICBXQVJOSU5HOiBUaGlzIGlzIGEgcHJpdmF0ZSBz\n      eXN0ZW0uICBEbyBub3QgYXR0ZW1wdCB0byBsb2dpbiB1bmxlc3MgeW91IGFyZSBhbgogICAgICAgICBhd\n      XRob3JpemVkIHVzZXIuICBBbnkgYXV0aG9yaXplZCBvciB1bmF1dGhvcml6ZWQgYWNjZXNzIGFuZCB1c2\n      UgbWF5IGJlIG1vbmktCiAgICAgICAgIHRvcmVkIGFuZCBjYW4gcmVzdWx0IGluIGNyaW1pbmFsIG9yIGN\n      pdmlsIHByb3NlY3V0aW9uIHVuZGVyIGFwcGxpY2FibGUgbGF3LgogICAgICAgICAtLS0tLS0tLS0tLS0t\n      LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL\n      S0tLQoKCiAgICAgICAgIElBLTAwNTA4QkVCQUE1OSBsb2dpbjo="
+  ]
+}

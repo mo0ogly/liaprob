@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mikrotik",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIKROTIK",
+  "taxonomy_name": "MikroTik",
+  "vendor": "MikroTik",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "MIKROTIK.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_mikrotik_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RouterOS (RB.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Miktorik RouterOS - model variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RouterOS\\s*(?: x86)?\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Miktorik RouterOS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "RouterOS RB Crossroads",
+    "RouterOS RB Groove A-5Hn",
+    "RouterOS RB MetaROUTER",
+    "RouterOS RB Metal 5SHPn",
+    "RouterOS RB OmniTIK UPA-5HnD",
+    "RouterOS RB SXT-5D",
+    "RouterOS RB miniROUTER",
+    "RouterOS RB1100",
+    "RouterOS RB1100AHx2",
+    "RouterOS RB112"
+  ]
+}

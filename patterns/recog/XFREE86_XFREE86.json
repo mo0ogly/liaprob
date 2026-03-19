@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xfree86_xfree86",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XFREE86_XFREE86",
+  "taxonomy_name": "XFree86 XFree86",
+  "vendor": "XFree86",
+  "product": "XFree86",
+  "source": {
+    "type": "recog",
+    "file": "XFREE86_XFREE86.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    6000
+  ],
+  "probes": [
+    {
+      "id": "recog_xfree86_xfree86_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^The XFree86 Project, Inc$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "The XFree86 Project, Inc"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "x11"
+  ],
+  "cpe23_template": "cpe:/a:xfree86:xfree86:-",
+  "examples": [
+    "The XFree86 Project, Inc"
+  ]
+}

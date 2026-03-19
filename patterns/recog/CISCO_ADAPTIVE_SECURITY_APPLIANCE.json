@@ -1,0 +1,99 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_adaptive_security_appliance",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_ADAPTIVE_SECURITY_APPLIANCE",
+  "taxonomy_name": "Cisco Adaptive Security Appliance",
+  "vendor": "Cisco",
+  "product": "Adaptive Security Appliance",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_ADAPTIVE_SECURITY_APPLIANCE.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_adaptive_security_appliance_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^0d835213afc36cc098b080784bc223a0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco ASA (and other appliances)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_cisco_adaptive_security_appliance_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco Adaptive Security Appliance Version (\\d+\\.\\d+\\(\\d+\\)\\d*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Adaptive Security Appliance"
+        }
+      ]
+    },
+    {
+      "id": "recog_cisco_adaptive_security_appliance_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=ASA Temporary Self Signed Certificate$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco ASA Temp Cert"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=ASA Temporary Self Signed Certificate$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco ASA Temp Cert"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls",
+    "snmp"
+  ],
+  "examples": [
+    "0d835213afc36cc098b080784bc223a0",
+    "Cisco Adaptive Security Appliance Version 8.0(2)",
+    "Cisco Adaptive Security Appliance Version 7.2(1)4",
+    "Cisco Adaptive Security Appliance Version 7.2(4)17",
+    "CN=ASA Temporary Self Signed Certificate"
+  ]
+}

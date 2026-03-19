@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tridium_niagara_ax",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRIDIUM_NIAGARA_AX",
+  "taxonomy_name": "Tridium Niagara AX",
+  "vendor": "Tridium",
+  "product": "Niagara AX",
+  "source": {
+    "type": "recog",
+    "file": "TRIDIUM_NIAGARA_AX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tridium_niagara_ax_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Niagara Web Server\\/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Niagara Web Server\\/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Tridium Niagara AX Framework"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:tridium:niagara_ax:{version}",
+  "examples": [
+    "Niagara Web Server/3.8.111"
+  ]
+}

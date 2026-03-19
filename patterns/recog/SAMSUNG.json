@@ -1,0 +1,133 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-samsung",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAMSUNG",
+  "taxonomy_name": "Samsung",
+  "vendor": "Samsung",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SAMSUNG.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    161,
+    443,
+    8443,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_samsung_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^SAMSUNG Network Printer$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samsung Network Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_samsung_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Samsung ((?:SCX|CLX)-\\S+) Series$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samsung multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Samsung ((?:ML|CLP)-\\S+) Series$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samsung printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_samsung_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Samsung(?: Samsung)? ([^;\\s]+)(?: \\d\\S+)?(?: Series)?(?: Series)?;?\\s*(?:OS )?V?([^\\;\\s]+)\\s?.*?;.*Engine",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samsung Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Samsung (CLX-\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samsung Printer - model only variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Samsung (CLP-705) Series; ; S/N",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samsung Printer - serial number variant"
+        }
+      ]
+    },
+    {
+      "id": "recog_samsung_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=(iPX\\d+),OU=I Project,O=Samsung Electronics,L=Suwon,ST=Gyeonggi-do,C=KR$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samsung Communication Manager"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "tls",
+    "dhcp",
+    "snmp"
+  ],
+  "examples": [
+    "SAMSUNG Network Printer",
+    "Samsung SCX-5835_5935 Series",
+    "Samsung CLX-4195 Series",
+    "Samsung CLP-680 Series",
+    "Samsung ML-5012_5512 Series",
+    "Samsung CLP-300; CLP300N_V1.01.02.01 11-15-2006;Engine 1.01.57;NIC V4.01.06(CLP-300) 11-03-2006;S/N XXXXXXXXXXXXXXXX",
+    "Samsung Samsung SCX-470x Series; V3.00.01.04 SEP-16-2011;Engine V1.02.05 09-02-2011;NIC V6.01.00;S/N XXXXXXXXXXXXXXXX",
+    "Samsung CLX-7285",
+    "Samsung CLX-7355",
+    "Samsung CLX-7455"
+  ]
+}

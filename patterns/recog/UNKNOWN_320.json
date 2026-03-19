@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d29a1ef8a3d0011504f5d076600ce16d$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Silver Peak Appliance"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "vxoaSessionID=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Silver Peak Appliance"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_unknown_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=silver-peak,OU=Networking Appliance",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Silver Peak Appliance"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "d29a1ef8a3d0011504f5d076600ce16d",
+    "vxoaSessionID=s%3A2650cfe1df092fc617d229d6d6b5dbfc.70yKRpb371czAWFkZWXdNfCSNexQvtiVr%2B3Z51YXbIw; Path=/; HttpOnly; Secure",
+    "vxoaSessionID=s%3A65e39ce7ae15193cb4bb0f812d20105b.qgHrgV4MtPKWeKwBrfynmxZmn5iaegh%2FRP0nV5ntaE8; Path=/; HttpOnly; Secure",
+    "vxoaSessionID=s%3A7e17300953b68c4713990a01bd00aa2b.5mg3edagZCkddCmWqMXbp4AOEzTVby6K2z2jfhal7Uw; Path=/; HttpOnly; Secure",
+    "CN=silver-peak,OU=Networking Appliance,O=Silver Peak Systems Inc,L=Mountain View,ST=California,C=--"
+  ]
+}

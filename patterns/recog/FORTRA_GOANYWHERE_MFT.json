@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fortra_goanywhere_mft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FORTRA_GOANYWHERE_MFT",
+  "taxonomy_name": "Fortra GoAnywhere MFT",
+  "vendor": "Fortra",
+  "product": "GoAnywhere MFT",
+  "source": {
+    "type": "recog",
+    "file": "FORTRA_GOANYWHERE_MFT.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_fortra_goanywhere_mft_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:fa73151a3a3b610eaca4a7a5a78cc775|16d472e9624492b9398e7645c46d1f25)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Fortra GoAnywhere MFT - managed file transfer"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:GoAnywhere (\\d+(?:\\.\\d+)*)(?: - \\S{1,512})?|GoAnywhere Web Client - Login)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:GoAnywhere (\\d+(?:\\.\\d+)*)(?: - \\S{1,512})?|GoAnywhere Web Client - Login)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Fortra GoAnywhere MFT - managed file transfer"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:helpsystems:goanywhere_managed_file_transfer:-",
+  "examples": [
+    "fa73151a3a3b610eaca4a7a5a78cc775",
+    "16d472e9624492b9398e7645c46d1f25",
+    "GoAnywhere 7.0.3",
+    "GoAnywhere 6.8.6 - Production",
+    "GoAnywhere Web Client - Login"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-allen_bradley",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALLEN_BRADLEY",
+  "taxonomy_name": "Allen-Bradley",
+  "vendor": "Allen-Bradley",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "ALLEN_BRADLEY.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_allen_bradley_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(1794-\\S+) FLEX Ethernet Adapter$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley 1794-AENTR FLEX Ethernet Adapter"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(1747-\\S+) Home Page$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley 1747-LXXX SLC 5/05 Controller"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(1766-\\S+) (B/\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley 1766-L32BXB PLC"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(1761-NET-\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley Ethernet Module"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(1785-\\S+) Ethernet Base Page$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Allen-Bradley 1785 Ethernet Module"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "1794-AENTR FLEX Ethernet Adapter",
+    "1747-L551 Home Page",
+    "1747-L551/C Home Page",
+    "1747-L552/C Home Page",
+    "1766-L32BXB B/11.00",
+    "1761-NET-EN",
+    "1761-NET-ENIW",
+    "1785-ENET Ethernet Base Page"
+  ]
+}

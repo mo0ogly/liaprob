@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-emc_isilon_onefs_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMC_ISILON_ONEFS_OS",
+  "taxonomy_name": "EMC Isilon OneFS OS",
+  "vendor": "EMC",
+  "product": "Isilon OneFS OS",
+  "source": {
+    "type": "recog",
+    "file": "EMC_ISILON_ONEFS_OS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_emc_isilon_onefs_os_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^a770611888d3bd309404eae57676f9e4$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "EMC Isilon OneFS Storage"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^OneFS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "EMC Isilon OneFS"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Isilon InsightIQ$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "EMC Isilon InsightIQ"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "a770611888d3bd309404eae57676f9e4",
+    "OneFS",
+    "Isilon InsightIQ"
+  ]
+}

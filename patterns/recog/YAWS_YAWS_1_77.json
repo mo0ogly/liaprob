@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-yaws_yaws_1_77",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YAWS_YAWS_1_77",
+  "taxonomy_name": "yaws yaws (1.77)",
+  "vendor": "yaws",
+  "product": "yaws (1.77)",
+  "source": {
+    "type": "recog",
+    "file": "YAWS_YAWS_1_77.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_yaws_yaws_1_77_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^81feac35654318fb16d1a567b8b941e7",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "yaws (1.77)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "81feac35654318fb16d1a567b8b941e7"
+  ]
+}

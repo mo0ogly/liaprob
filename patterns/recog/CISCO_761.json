@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_761",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_761",
+  "taxonomy_name": "Cisco 761",
+  "vendor": "Cisco",
+  "product": "761",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_761.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_761_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco 761 Software Version (.*) -",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco 761"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Cisco 761 Software Version c760-i.b.NET3 4.2(3) - Aug 21 1998 17:05:41 ISDN Stack Revision NET3 2.10"
+  ]
+}

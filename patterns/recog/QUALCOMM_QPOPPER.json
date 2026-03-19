@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-qualcomm_qpopper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QUALCOMM_QPOPPER",
+  "taxonomy_name": "Qualcomm Qpopper",
+  "vendor": "Qualcomm",
+  "product": "Qpopper",
+  "source": {
+    "type": "recog",
+    "file": "QUALCOMM_QPOPPER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    110,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_qualcomm_qpopper_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Qpopper \\(version (\\d+\\.\\d+\\.\\d+)-mysql-(.+)\\) at (.+) starting\\.",
+          "confidence_delta": 0.4,
+          "version_extract": "^Qpopper \\(version (\\d+\\.\\d+\\.\\d+)-mysql-(.+)\\) at (.+) starting\\.",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Qpopper with MySQL auth module"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Qpop(?:per)? \\(version ([\\d\\.]+)\\) at (\\S{1,512})(?: starting\\.)?",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^Qpop(?:per)? \\(version ([\\d\\.]+)\\) at (\\S{1,512})(?: starting\\.)?",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Qpopper missing version info"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^QPOP \\(version (.*)\\) at (.+) starting\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Qpopper with missing version info"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pop3"
+  ],
+  "examples": [
+    "Qpopper (version 4.0.3-mysql-0.13) at domain starting.  <xxx@domain>",
+    "Qpopper (version 4.0.16) at foo.example.com",
+    "QPOP (version 2.53) at domain starting.  <xxx@domain>",
+    "Qpopper (version 4.0.3) at domain starting.  <xxx@domain>",
+    "QPOP (version ?) at domain starting.  <xxx@domain>"
+  ]
+}

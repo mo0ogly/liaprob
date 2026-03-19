@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_z_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_Z_OS",
+  "taxonomy_name": "IBM z/OS",
+  "vendor": "IBM",
+  "product": "z/OS",
+  "source": {
+    "type": "recog",
+    "file": "IBM_Z_OS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_z_os_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SNMPv3 agent version 1\\.0 with DPI version 2\\.0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM z/OS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:ibm:z%2fos:-",
+  "examples": [
+    "SNMPv3 agent version 1.0 with DPI version 2.0"
+  ]
+}

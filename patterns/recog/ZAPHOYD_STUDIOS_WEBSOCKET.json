@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zaphoyd_studios_websocket",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZAPHOYD_STUDIOS_WEBSOCKET",
+  "taxonomy_name": "Zaphoyd Studios WebSocket++",
+  "vendor": "Zaphoyd Studios",
+  "product": "WebSocket++",
+  "source": {
+    "type": "recog",
+    "file": "ZAPHOYD_STUDIOS_WEBSOCKET.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_zaphoyd_studios_websocket_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^WebSocket\\+\\+/([\\d.-]+(?:-dev)?)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^WebSocket\\+\\+/([\\d.-]+(?:-dev)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WebSocket++ web server - https://github.com/zaphoyd/websocketpp"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zaphoyd:websocketpp:{version}",
+  "examples": [
+    "WebSocket++/0.8.1",
+    "WebSocket++/0.8.2",
+    "WebSocket++/0.4.0",
+    "WebSocket++/0.8.0-dev",
+    "WebSocket++/2011-09-25"
+  ]
+}

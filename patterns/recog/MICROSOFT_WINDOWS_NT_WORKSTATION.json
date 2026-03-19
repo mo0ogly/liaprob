@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_nt_workstation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_NT_WORKSTATION",
+  "taxonomy_name": "Microsoft Windows NT Workstation",
+  "vendor": "Microsoft",
+  "product": "Windows NT Workstation",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_NT_WORKSTATION.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_nt_workstation_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows NT Version 4\\.0",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows NT 4 on x86"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Hardware: x86 Family 6 Model 8 Stepping 3 AT/AT COMPATIBLE  - Software: Windows NT Version 4.0  (Build Number: 1381 Uniprocessor Free )"
+  ]
+}

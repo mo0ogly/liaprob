@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nokia_timos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOKIA_TIMOS",
+  "taxonomy_name": "Nokia TimOS",
+  "vendor": "Nokia",
+  "product": "TimOS",
+  "source": {
+    "type": "recog",
+    "file": "NOKIA_TIMOS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_nokia_timos_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^TiMOS-[CB]-([\\S]+) (?:both|cpm)\\/([\\w]+) Nokia ([\\S]+ [SRX]+) Copyright.*Login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nokia Service Router running TiMOS"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^TiMOS-[CB]-([\\S]+) (?:both|cpm)\\/([\\w]+) Nokia (SAS[+\\w\\s-]+) Copyright.*Login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nokia Service Access Switch running TiMOS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "VGlNT1MtQy0xNC4wLlI1IGNwbS9ob3BzNjQgTm9raWEgNzc1MCBTUiBDb3B5cmlnaHQgKGMpI\n      DIwMDAtMjAxNiBOb2tpYS4NDQpCYW5uZXIgU2hvcnRlbmVkIEZvciANDQpCcmV2aXR5DQpMb2\n      dpbjoK",
+    "VGlNT1MtQy0xNC4wLlIxMCBjcG0vaG9wczY0IE5va2lhIDc5NTAgWFJTIENvcHlyaWdodCAoY\n      ykgMjAwMC0yMDE3IE5va2lhLg0NCkJhbm5lciBTaG9ydGVuZWQgRm9yIA0NCkJyZXZpdHkNCk\n      xvZ2luOgo=",
+    "VGlNT1MtQi04LjAuUjEyIGJvdGgvaG9wcyBOb2tpYSBTQVMtTXhwIDIyRjJDIDRTRlArIDcyM\n      TAgQ29weXJpZ2h0IChjKSAyMDAwLTIwMTcgTm9raWEuDQ0KQmFubmVyIFNob3J0ZW5lZCBGb3\n      IgDQ0KQnJldml0eQ0KTG9naW46Cg==",
+    "VGlNT1MtQi05LjAuUjkgYm90aC9tcGMgTm9raWEgU0FTLU0gMjRGIDJYRlAgNzIxMCBDb3B5c\n      mlnaHQgKGMpIDIwMDAtMjAxNyBOb2tpYS4NDQpCYW5uZXIgU2hvcnRlbmVkIEZvciANDQpCcm\n      V2aXR5DQpMb2dpbjoK"
+  ]
+}

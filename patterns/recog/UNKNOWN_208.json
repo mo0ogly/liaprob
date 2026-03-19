@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)\\*\\*\\* Lantronix ([\\S]+) Device Server \\*\\*\\*(?:\\r|\\n)+MAC address ([a-fA-F0-9]{12})(?:\\r|\\n)+Software version V(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix device server - w/o Serial"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "KioqIExhbnRyb25peCBVRFMxMTAwLUlBUCBEZXZpY2UgU2VydmVyICoqKgpN\n      QUMgYWRkcmVzcyAwMDgwQTNCRDAwMDAKClNvZnR3YXJlIHZlcnNpb24gVjYu\n      MTEuMC4wICgxNTA1MTQpIFVEUzExMDAKCgpQcmVzcyBFbnRlciBmb3IgU2V0\n      dXAgTW9kZQo="
+  ]
+}

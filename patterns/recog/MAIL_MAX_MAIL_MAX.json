@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mail_max_mail_max",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MAIL_MAX_MAIL_MAX",
+  "taxonomy_name": "Mail-Max Mail-Max",
+  "vendor": "Mail-Max",
+  "product": "Mail-Max",
+  "source": {
+    "type": "recog",
+    "file": "MAIL_MAX_MAIL_MAX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_mail_max_mail_max_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) \\(Mail-Max Version (\\d+\\.[\\d\\.]+), (.+, .+)\\) ESMTP Mail Server Ready. *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) \\(Mail-Max Version (\\d+\\.[\\d\\.]+), (.+, .+)\\) ESMTP Mail Server Ready. *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Mail Max"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar (Mail-Max Version 4.2.4.7, Wed, 31 Jan 2001 03:44:35 +0100 WST) ESMTP Mail Server Ready.",
+    "foo.bar (Mail-Max Version 3.073, Thu, 30 Nov 2017 17:24:59 +0800 ) ESMTP Mail Server Ready."
+  ]
+}

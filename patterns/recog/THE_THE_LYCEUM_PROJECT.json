@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-the_the_lyceum_project",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THE_THE_LYCEUM_PROJECT",
+  "taxonomy_name": "The The Lyceum Project",
+  "vendor": "The",
+  "product": "The Lyceum Project",
+  "source": {
+    "type": "recog",
+    "file": "THE_THE_LYCEUM_PROJECT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_the_the_lyceum_project_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^63740175dae089e479a70c5e6591946c",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "The Lyceum Project"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "63740175dae089e479a70c5e6591946c"
+  ]
+}

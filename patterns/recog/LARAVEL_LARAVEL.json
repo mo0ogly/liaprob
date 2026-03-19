@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-laravel_laravel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LARAVEL_LARAVEL",
+  "taxonomy_name": "Laravel Laravel",
+  "vendor": "Laravel",
+  "product": "Laravel",
+  "source": {
+    "type": "recog",
+    "file": "LARAVEL_LARAVEL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_laravel_laravel_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^laravel_session=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Laravel PHP web application framework"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:laravel:laravel:-",
+  "examples": [
+    "laravel_session=eyJpdiI6IjZmcXM4SXZqNVQxY2U2UDVEb1V0SFE9PSIsInZhbHVlIjoiQlRUYXk2WEsxUkZmVU5lRXpBTlZkUURkUnphR0RGMTdaRDkxWHFLVGhtaUZwM0plaWR2aVMyeVQ5MmFzNlVFczVQUExpeDdhUUZveVlCOVUxMVA4dHp6ZUQrK0t3KzBUaVlxb2o4WUxleE1rb29GTlozZWF6cXpUUTRnNFpJTHUiLCJtYWMiOiI3ZGNhNzhmOGRmMWFmZmE5ZjFiYjQ5ODBlNGEwMjgzZWNiZGI2ZTI4ZjFmYWJkMmIxZTgwYzM2NjA1OThlNGNlIn0%3D; expires=Mon, 13-Mar-2023 18:21:13 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+  ]
+}

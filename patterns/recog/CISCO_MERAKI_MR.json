@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_meraki_mr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_MERAKI_MR",
+  "taxonomy_name": "Cisco Meraki MR",
+  "vendor": "Cisco",
+  "product": "Meraki MR",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_MERAKI_MR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_meraki_mr_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Meraki (MR[A-Z0-9]{2,10})",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Meraki MR Cloud-Managed Wi-Fi Access Points"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Meraki MR46E Cloud Managed AP",
+    "Meraki MR90 Cloud Managed AP"
+  ]
+}

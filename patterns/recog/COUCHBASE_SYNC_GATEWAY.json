@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-couchbase_sync_gateway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COUCHBASE_SYNC_GATEWAY",
+  "taxonomy_name": "Couchbase Sync Gateway",
+  "vendor": "Couchbase",
+  "product": "Sync Gateway",
+  "source": {
+    "type": "recog",
+    "file": "COUCHBASE_SYNC_GATEWAY.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_couchbase_sync_gateway_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Couchbase Sync Gateway/([\\d.]+) CE$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Couchbase Sync Gateway/([\\d.]+) CE$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Couchbase Sync Gateway Community Edition"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Couchbase Sync Gateway/([\\d.]+) EE$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Couchbase Sync Gateway/([\\d.]+) EE$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Couchbase Sync Gateway Enterprise Edition"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Couchbase Sync Gateway/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Couchbase Sync Gateway/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Couchbase Sync Gateway"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:couchbase:sync_gateway:{version}",
+  "examples": [
+    "Couchbase Sync Gateway/2.5.0 CE",
+    "Couchbase Sync Gateway/2.7.1 EE",
+    "Couchbase Sync Gateway/1.3.0"
+  ]
+}

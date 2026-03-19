@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vdr_plugin_live_vdr_plugin_live_0_2_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VDR_PLUGIN_LIVE_VDR_PLUGIN_LIVE_0_2_0",
+  "taxonomy_name": "vdr-plugin-live vdr-plugin-live (0.2.0)",
+  "vendor": "vdr-plugin-live",
+  "product": "vdr-plugin-live (0.2.0)",
+  "source": {
+    "type": "recog",
+    "file": "VDR_PLUGIN_LIVE_VDR_PLUGIN_LIVE_0_2_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vdr_plugin_live_vdr_plugin_live_0_2_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2b52c1344164d29dd8fb758db16aadb6",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "vdr-plugin-live (0.2.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "2b52c1344164d29dd8fb758db16aadb6"
+  ]
+}

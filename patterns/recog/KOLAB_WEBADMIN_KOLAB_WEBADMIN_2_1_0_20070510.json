@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kolab_webadmin_kolab_webadmin_2_1_0_20070510",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KOLAB_WEBADMIN_KOLAB_WEBADMIN_2_1_0_20070510",
+  "taxonomy_name": "kolab-webadmin kolab-webadmin (2.1.0-20070510)",
+  "vendor": "kolab-webadmin",
+  "product": "kolab-webadmin (2.1.0-20070510)",
+  "source": {
+    "type": "recog",
+    "file": "KOLAB_WEBADMIN_KOLAB_WEBADMIN_2_1_0_20070510.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_kolab_webadmin_kolab_webadmin_2_1_0_20070510_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^54667bea91124121e98da49e55244935",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "kolab-webadmin (2.1.0-20070510)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "54667bea91124121e98da49e55244935"
+  ]
+}

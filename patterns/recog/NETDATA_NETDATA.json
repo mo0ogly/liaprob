@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netdata_netdata",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETDATA_NETDATA",
+  "taxonomy_name": "NetData NetData",
+  "vendor": "NetData",
+  "product": "NetData",
+  "source": {
+    "type": "recog",
+    "file": "NETDATA_NETDATA.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_netdata_netdata_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^NetData Embedded HTTP Server v([a-zA-Z0-9\\-\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^NetData Embedded HTTP Server v([a-zA-Z0-9\\-\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "NetData Embedded HTTP Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:netdata:netdata:{version}",
+  "examples": [
+    "NetData Embedded HTTP Server v1.16.1-146-g2f5e36ef"
+  ]
+}

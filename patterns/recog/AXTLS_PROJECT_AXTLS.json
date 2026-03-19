@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-axtls_project_axtls",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AXTLS_PROJECT_AXTLS",
+  "taxonomy_name": "axTLS Project axTLS",
+  "vendor": "axTLS Project",
+  "product": "axTLS",
+  "source": {
+    "type": "recog",
+    "file": "AXTLS_PROJECT_AXTLS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_axtls_project_axtls_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^axhttpd/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^axhttpd/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "axTLS Project axTLS web server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:axtls_project:axtls:{version}",
+  "examples": [
+    "axhttpd/1.5.3"
+  ]
+}

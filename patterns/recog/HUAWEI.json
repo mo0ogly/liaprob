@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-huawei",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUAWEI",
+  "taxonomy_name": "Huawei",
+  "vendor": "Huawei",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "HUAWEI.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_huawei_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"(?:SmartAX )?(MT\\d+[^ ]*)(?: ADSL Router)?\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Huawei xDSL routers"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Basic realm=\"SmartAX MT882\""
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_6400_matrix_printer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_6400_MATRIX_PRINTER",
+  "taxonomy_name": "IBM 6400 Matrix Printer",
+  "vendor": "IBM",
+  "product": "6400 Matrix Printer",
+  "source": {
+    "type": "recog",
+    "file": "IBM_6400_MATRIX_PRINTER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_6400_matrix_printer_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^IBM 6400 Version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM 6400 Matrix Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "IBM 6400 Version 1.1.41 3-3-3",
+    "IBM 6400 Version 1.1.38.11 3-3-3",
+    "IBM 6400 Version 1.1.5",
+    "IBM 6400 Version 7.0.9.6",
+    "IBM 6400 Version 7.1"
+  ]
+}

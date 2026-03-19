@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gitea_gitea",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GITEA_GITEA",
+  "taxonomy_name": "Gitea Gitea",
+  "vendor": "Gitea",
+  "product": "Gitea",
+  "source": {
+    "type": "recog",
+    "file": "GITEA_GITEA.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gitea_gitea_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^23671ccca2849ae58d1b04c218013382$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gitea"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Gitea: .*|LocalRepo|TurnKey Gitea)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gitea"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^i_like_gitea=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gitea"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:gitea:gitea:-",
+  "examples": [
+    "23671ccca2849ae58d1b04c218013382",
+    "Gitea: Git with a cup of tea",
+    "TurnKey Gitea",
+    "LocalRepo",
+    "i_like_gitea=fc39d4645b1d5c7c; Path=/"
+  ]
+}

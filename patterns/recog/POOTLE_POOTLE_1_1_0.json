@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pootle_pootle_1_1_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POOTLE_POOTLE_1_1_0",
+  "taxonomy_name": "pootle pootle (1.1.0)",
+  "vendor": "pootle",
+  "product": "pootle (1.1.0)",
+  "source": {
+    "type": "recog",
+    "file": "POOTLE_POOTLE_1_1_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_pootle_pootle_1_1_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8190ead2eb45952151ab5065d0e56381",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "pootle (1.1.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "8190ead2eb45952151ab5065d0e56381"
+  ]
+}

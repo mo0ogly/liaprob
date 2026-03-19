@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ricoh_nrg_printer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RICOH_NRG_PRINTER",
+  "taxonomy_name": "Ricoh NRG Printer",
+  "vendor": "Ricoh",
+  "product": "NRG Printer",
+  "source": {
+    "type": "recog",
+    "file": "RICOH_NRG_PRINTER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_ricoh_nrg_printer_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NRG Maintenance Shell",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "a Ricoh NRG device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "TlJHIE1haW50ZW5hbmNlIFNoZWxsLiAgIAoKVXNlciBhY2Nlc3MgdmVyaWZpY2F0aW9uLgoKbG9naW46"
+  ]
+}

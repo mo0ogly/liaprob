@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-grandstream_ucm6208_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRANDSTREAM_UCM6208_FIRMWARE",
+  "taxonomy_name": "Grandstream UCM6208 Firmware",
+  "vendor": "Grandstream",
+  "product": "UCM6208 Firmware",
+  "source": {
+    "type": "recog",
+    "file": "GRANDSTREAM_UCM6208_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_grandstream_ucm6208_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Grandstream UCM6208V(\\d\\.\\d\\w) ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Grandstream UCM 6208"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip"
+  ],
+  "cpe23_template": "cpe:/o:grandstream:ucm6208_firmware:{os.version}",
+  "examples": [
+    "Grandstream UCM6208V1.4A 1.0.16.20"
+  ]
+}

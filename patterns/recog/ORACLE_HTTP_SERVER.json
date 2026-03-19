@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_http_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_HTTP_SERVER",
+  "taxonomy_name": "Oracle HTTP Server",
+  "vendor": "Oracle",
+  "product": "HTTP Server",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_HTTP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_http_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle-HTTP-Server(?:(?:-(?:\\d{2}[cg]\\/?)?([\\d.]+)?(?:\\/[\\d.]+)?)?(?:.{0,512}\\([TF]?[HSUGMN]?(?:;max-age=\\d+(?:\\+\\d+)?)?(?:;age=\\d+)?;ecid=[^)]+\\))?)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Oracle-HTTP-Server(?:(?:-(?:\\d{2}[cg]\\/?)?([\\d.]+)?(?:\\/[\\d.]+)?)?(?:.{0,512}\\([TF]?[HSUGMN]?(?:;max-age=\\d+(?:\\+\\d+)?)?(?:;age=\\d+)?;ecid=[^)]+\\))?)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle HTTP Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:oracle:http_server:{version}",
+  "examples": [
+    "Oracle-HTTP-Server",
+    "Oracle-HTTP-Server-11g",
+    "Oracle-HTTP-Server-12c",
+    "Oracle-HTTP-Server-12c/12.1.3.0.0",
+    "Oracle-HTTP-Server-12.2.1.4.0/2.4.39",
+    "Oracle-HTTP-Server-11g Oracle-Web-Cache-11g/11.1.1.9.0 (H;max-age=214748356+0;age=61086;ecid=32073608106620,0:1)"
+  ]
+}

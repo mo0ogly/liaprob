@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_mpe_xl",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_MPE_XL",
+  "taxonomy_name": "HP MPE XL",
+  "vendor": "HP",
+  "product": "MPE XL",
+  "source": {
+    "type": "recog",
+    "file": "HP_MPE_XL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_mpe_xl_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP3000 SERIES ([^,]+), MPE XL version (\\S+) NS Transport",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP3000 MPEi/X"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP3000 SERIES 918RX, MPE XL version C.75.00 NS Transport version B.07.05",
+    "HP3000 SERIES 928RX, MPE XL version C.60.00 NS Transport version B.06.00",
+    "HP3000 SERIES 939, MPE XL version C.70.02 NS Transport version B.07.00",
+    "HP3000 SERIES 969-200, MPE XL version C.75.00 NS Transport version B.07.05",
+    "HP3000 SERIES 969-220, MPE XL version C.70.00 NS Transport version B.07.00",
+    "HP3000 SERIES 969-400, MPE XL version C.75.04 NS Transport version B.07.05",
+    "HP3000 SERIES 977SX, MPE XL version C.55.00 NS Transport version B.05.09",
+    "HP3000 SERIES 979-400, MPE XL version C.75.00 NS Transport version B.07.05",
+    "HP3000 SERIES 988RX, MPE XL version C.55.00 NS Transport version B.05.09",
+    "HP3000 SERIES 989-400, MPE XL version C.75.00 NS Transport version B.07.05"
+  ]
+}

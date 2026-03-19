@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-enterasys",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENTERASYS",
+  "taxonomy_name": "Enterasys",
+  "vendor": "Enterasys",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "ENTERASYS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_enterasys_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Enterasys Networks, Inc\\. (.*?) Rev (\\S+) .* ofc$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Enterasys Switch - date variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Enterasys Networks, Inc\\. (\\S+) Rev (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Enterasys Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Enterasys Networks, Inc. 1H582-51 Rev 03.05.09.1 07/28/2005--17:47 ofc",
+    "Enterasys Networks, Inc. Matrix N3 Platinum Rev 05.42.04 06/07/2007--17:19 ofc",
+    "Enterasys Networks, Inc. NSA Chassis Rev 07.41.03.0009 01/05/2012--10:33 ofc",
+    "Enterasys Networks, Inc. B3G124-24 Rev 01.02.01.0004"
+  ]
+}

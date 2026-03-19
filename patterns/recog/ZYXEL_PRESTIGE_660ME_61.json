@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zyxel_prestige_660me_61",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZYXEL_PRESTIGE_660ME_61",
+  "taxonomy_name": "Zyxel Prestige 660ME-61",
+  "vendor": "Zyxel",
+  "product": "Prestige 660ME-61",
+  "source": {
+    "type": "recog",
+    "file": "ZYXEL_PRESTIGE_660ME_61.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_zyxel_prestige_660me_61_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Prestige 660HW-T3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ZxXEL Prestige 660HW-T3 WAP/ADSL router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Prestige 660ME-61$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ZxXEL Prestige 660ME-61 ADSL router"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Prestige 660HW-T3",
+    "Prestige 660ME-61"
+  ]
+}

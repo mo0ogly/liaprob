@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-foundry_networks_enterprise_wap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FOUNDRY_NETWORKS_ENTERPRISE_WAP",
+  "taxonomy_name": "Foundry Networks Enterprise WAP",
+  "vendor": "Foundry Networks",
+  "product": "Enterprise WAP",
+  "source": {
+    "type": "recog",
+    "file": "FOUNDRY_NETWORKS_ENTERPRISE_WAP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_foundry_networks_enterprise_wap_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Foundry Enterprise Wireless AP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Foundry Networks Enterprise AP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Foundry Enterprise Wireless AP"
+  ]
+}

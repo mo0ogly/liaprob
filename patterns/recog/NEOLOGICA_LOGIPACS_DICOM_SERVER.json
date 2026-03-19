@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-neologica_logipacs_dicom_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NEOLOGICA_LOGIPACS_DICOM_SERVER",
+  "taxonomy_name": "Neologica Logipacs Dicom server",
+  "vendor": "Neologica",
+  "product": "Logipacs Dicom server",
+  "source": {
+    "type": "recog",
+    "file": "NEOLOGICA_LOGIPACS_DICOM_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_neologica_logipacs_dicom_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b5ee418c61dc2b511fbc20b99a982b8d",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Logipacs"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b5ee418c61dc2b511fbc20b99a982b8d"
+  ]
+}

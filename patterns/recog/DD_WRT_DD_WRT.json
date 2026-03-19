@@ -1,0 +1,94 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dd_wrt_dd_wrt",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DD_WRT_DD_WRT",
+  "taxonomy_name": "DD-WRT DD-WRT",
+  "vendor": "DD-WRT",
+  "product": "DD-WRT",
+  "source": {
+    "type": "recog",
+    "file": "DD_WRT_DD_WRT.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_dd_wrt_dd_wrt_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) \\(build (\\S+)\\) - Info$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DD-WRT"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_dd_wrt_dd_wrt_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*DD-WRT v([\\d.]+)(?:-(\\w+))? ([\\w-]+) \\(c\\) \\d{4} NewMedia-NET GmbH(?:\\r|\\n)+Release: \\d+\\/\\d+\\/\\d+ \\(SVN revision: ([:\\w]+)\\)(?:\\r|\\n)+.* login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DD-WRT - 24 family"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*DD-WRT v(3.\\d)-(r([\\w]+)) ([\\w-]+) \\(c\\) \\d{4} NewMedia-NET GmbH(?:\\r|\\n)+Release: \\d+\\/\\d+\\/\\d+(?:\\r|\\n)+.* login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DD-WRT - 3.0 family"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*DD-WRT v(3.\\d)-(r([\\w]+)) ([\\w-]+) \\(c\\) \\d{4} NewMedia-NET GmbH(?:\\r|\\n)+Release: \\d+\\/\\d+\\/\\d+(?:\\r|\\n)+Board: (\\S+) ([^\\n\\r]+)(?:\\r|\\n)+.* login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DD-WRT - 3.0 family - with hardward product"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "telnet"
+  ],
+  "cpe23_template": "cpe:/o:dd-wrt:dd-wrt:{os.version}",
+  "examples": [
+    "SubTerraVia-NUC (build 36104) - Info",
+    "DD-WRT (build 35030M) - Info",
+    "REQtV1JUIHYyNC1zcDIgbWluaSAoYykgMjAxMyBOZXdNZWRpYS1ORVQgR21iSA0KUmVsZWFzZ\n      TogMDUvMjcvMTMgKFNWTiByZXZpc2lvbjogMjE2NzYpDQoNCkRELVdSVCBsb2dpbjoK",
+    "REQtV1JUIHYyNCBtaWNybyAoYykgMjAxMCBOZXdNZWRpYS1ORVQgR21iSA0KUmVsZWFzZTogM\n      DgvMDcvMTAgKFNWTiByZXZpc2lvbjogMTQ4OTYpDQoNClByb2xpYW50IERMOTgwUjA3IFg2NT\n      UwIDgtY29yZSA0UCBTQVMgbG9naW46Cg==",
+    "REQtV1JUIHYzLjAtcjM0ODg2TSBzdGQgKGMpIDIwMTggTmV3TWVkaWEtTkVUIEdtYkgNClJlb\n      GVhc2U6IDAyLzEwLzE4DQoNCndpYnJhdGUgbG9naW46Cg==",
+    "REQtV1JUIHYzLjAtcjQwNTU5IHN0ZCAoYykgMjAxOSBOZXdNZWRpYS1ORVQgR21iSA0KUmVsZ\n      WFzZTogMDgvMDYvMTkNCkJvYXJkOiBMaW5rc3lzIFdSVDMyMDBBQ00NCg0KREQtV1JUIGxvZ2\n      luOgo="
+  ]
+}

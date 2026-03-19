@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-buffalo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BUFFALO",
+  "taxonomy_name": "Buffalo",
+  "vendor": "Buffalo",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "BUFFALO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_buffalo_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^.*Welcome to MELCO Print Server.*Server Name *: *([^ ]*)\\W.*Server Model *: *([^ ]*).*F \\/ W Version *: *([^ ]*).*MAC Address *: *(.. .. .. .. .. ..)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "System is a Buffalo/MELCO Embedded Print Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "KioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKipcbiogV2VsY29tZSB0byBNRUxDTyBQc\n      mludCBTZXJ2ZXIgKlxuKiBUZWxuZXQgQ29uc29sZSAqXG4qKioqKioqKioqKioqKioqKioqKioqKi\n      oqKioqKioqKioqKlxuIFxuU2VydmVyIE5hbWU6IFBTLUIwNEU4RVxuU2VydmVyIE1vZGVsOiBMUFY\n      gMiAtIFRYIDFcbkYgLyBXIFZlcnNpb246IDIuMDAgSiBcbk1BQyBBZGRyZXNzOiBBRSAzMiBFQSAy\n      MSBCQiBFM1xuVXB0aW1lOiAwIGRheXMsIDAwOiAwMDogMTJcbiBcblBsZWFzZSBFbnRlciBQYXNzd\n      29yZDoi"
+  ]
+}

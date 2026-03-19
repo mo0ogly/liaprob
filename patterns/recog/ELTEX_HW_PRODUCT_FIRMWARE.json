@@ -1,0 +1,126 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-eltex_hw_product_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELTEX_HW_PRODUCT_FIRMWARE",
+  "taxonomy_name": "Eltex {hw.product} Firmware",
+  "vendor": "Eltex",
+  "product": "{hw.product} Firmware",
+  "source": {
+    "type": "recog",
+    "file": "ELTEX_HW_PRODUCT_FIRMWARE.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    80,
+    443,
+    5060,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_eltex_hw_product_firmware_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Eltex (TAU-\\d+[A-Z]*(?:\\.IP)?)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Eltex TAU model VoIP gateway"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(SMG-?\\d+[A-Z]?)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Eltex SMG model VoIP gateway"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_eltex_hw_product_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Eltex (ESR-\\d\\w{1,4})$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex ESR model service gateway"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(TAU-\\d+[A-Z]*(?:\\.IP)?)/([\\d.]+) SN/(VI[0-9A-Z]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex TAU model VoIP gateway - with serial number"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(TAU-\\d+[A-Z]*(?:\\.IP)?) login:$$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex TAU model VoIP gateway"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^\\**(?:\\r|\\n)*\\**\\s*Welcome to (SMG-?\\d+[A-Z]?)\\s*\\**(?:\\r|\\n)*\\**(?:\\r|\\n)+(\\S+) login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex SMG model VoIP gateway - banner with model number"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^eltex-nv(\\d+) login:$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Eltex - NV model IPTV set top box"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "generic",
+    "http",
+    "telnet"
+  ],
+  "examples": [
+    "Eltex TAU-72",
+    "Eltex TAU-1.IP",
+    "SMG2",
+    "SMG1016M",
+    "SMG-1016M",
+    "SMG3016",
+    "Eltex ESR-12V",
+    "TAU-8.IP/2.6.3 SN/VI12345678",
+    "TAU-4M.IP/2.0.0.229 SN/VI4D012345",
+    "TAU-2M.IP/2.3.1.11 SN/VI12345678"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gitlab_gitlab",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GITLAB_GITLAB",
+  "taxonomy_name": "GitLab GitLab",
+  "vendor": "GitLab",
+  "product": "GitLab",
+  "source": {
+    "type": "recog",
+    "file": "GITLAB_GITLAB.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gitlab_gitlab_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:f7e3d97f404e71d302b3239eef48d5f2|bfac77149bf662238eb92d9b65c88a2a|85c754581e1d4b628be5b7712c042224)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GitLab"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Sign in . GitLab|GitLab|GitLab is not responding)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GitLab"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^_gitlab_session=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GitLab"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:gitlab:gitlab:-",
+  "examples": [
+    "f7e3d97f404e71d302b3239eef48d5f2",
+    "bfac77149bf662238eb92d9b65c88a2a",
+    "85c754581e1d4b628be5b7712c042224",
+    "Sign in · GitLab",
+    "GitLab is not responding",
+    "GitLab",
+    "Sign in | GitLab",
+    "_gitlab_session=032d024e9c2445b595e68255da9e6835; path=/; expires=Mon, 26 Apr 2021 03:09:57 -0000; HttpOnly"
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-freshtomato_freshtomato",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRESHTOMATO_FRESHTOMATO",
+  "taxonomy_name": "FreshTomato FreshTomato",
+  "vendor": "FreshTomato",
+  "product": "FreshTomato",
+  "source": {
+    "type": "recog",
+    "file": "FRESHTOMATO_FRESHTOMATO.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_freshtomato_freshtomato_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Basic realm=\"FreshTomato\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FreshTomato Router Firmware"
+        }
+      ]
+    },
+    {
+      "id": "recog_freshtomato_freshtomato_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "(?i)^CN=\\S+,OU=FreshTomato Team,O=FreshTomato,L=Columbus,ST=Ohio,C=US(?:.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FreshTomato Router Firmware"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:freshtomato:freshtomato:-",
+  "examples": [
+    "Basic realm=\"FreshTomato\"",
+    "CN=192.168.1.1,OU=FreshTomato Team,O=FreshTomato,L=Columbus,ST=Ohio,C=US"
+  ]
+}

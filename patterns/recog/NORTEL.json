@@ -1,0 +1,151 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nortel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NORTEL",
+  "taxonomy_name": "Nortel",
+  "vendor": "Nortel",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "NORTEL.json",
+    "fingerprint_count": 11
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 11 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161,
+    1720
+  ],
+  "probes": [
+    {
+      "id": "recog_nortel_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5004e54\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5004e54\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Nortel Networks H.323 Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Nortel.*Passport ([^ ]*) .*Software Release ([^ ]*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Passport"
+        }
+      ]
+    },
+    {
+      "id": "recog_nortel_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^BayStack (\\S+).*SW:[vV](\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel BayStack switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Ethernet Switch (\\S+).*SW:v([\\d.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel BayStack switch - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Bay Networks, Inc\\. BayStack (\\S+) Ethernet Switch Rev: (.+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel BayStack switch - variant 2"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^BayStack (\\S+), version (\\S+) \\(.*\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel BayStack switch - variant 3"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Accelar-(\\S+) \\(([^\\)]+)\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Accelar switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Nortel Application Switch (\\S+)(?:\\s+\\S+|)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Application switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Ethernet Routing Switch (\\S+)\\s+(?:\\(Stack Enabled\\)\\s+)?HW:.*FW:.*SW:(\\S+).*\\(c\\) Nortel Networks$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Ethernet switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Nortel SR ([^,\\s]+).*Software Version = ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Secure Router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Nortel (Layer2-3 GbE Switch Module)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Switch Module"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323",
+    "telnet",
+    "snmp"
+  ],
+  "examples": [
+    "BayStack 420     HW:#02      FW:3.0.0.3   SW:v3.0.0.46",
+    "BayStack 450-24T HW:RevB  FW:V1.02 SW:V1.0.0.8",
+    "BayStack 350-24T HW:RevD  FW:V1.44 SW:v2.0.0.28",
+    "BayStack 450-24T HW:RevL  FW:V1.47 SW:v3.1.0.22  ISVN:1",
+    "Ethernet Switch 470-48T      HW:#05      FW:3.6.0.6   SW:v3.6.2.04 BN:4 ISVN:2 (c) Nortel Networks",
+    "Bay Networks, Inc. BayStack 303 Ethernet Switch Rev: 2.2.32.19-2.1.4.16",
+    "BayStack 301, version 1.0.0 (96120629)",
+    "Accelar-8106 (3.0.1)",
+    "Nortel Application Switch 2424",
+    "Ethernet Routing Switch 5520-48T-PWR  HW:32       FW:5.0.0.3   SW:v5.0.4.011 BN:00 (c) Nortel Networks"
+  ]
+}

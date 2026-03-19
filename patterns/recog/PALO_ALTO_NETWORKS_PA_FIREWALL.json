@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-palo_alto_networks_pa_firewall",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PALO_ALTO_NETWORKS_PA_FIREWALL",
+  "taxonomy_name": "Palo Alto Networks PA Firewall",
+  "vendor": "Palo Alto Networks",
+  "product": "PA Firewall",
+  "source": {
+    "type": "recog",
+    "file": "PALO_ALTO_NETWORKS_PA_FIREWALL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_palo_alto_networks_pa_firewall_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^PanWeb Server/ -",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HTTP and HTTPS server found on Palo Alto Networks devices"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:paloaltonetworks:pan-os:-",
+  "examples": [
+    "PanWeb Server/ -"
+  ]
+}

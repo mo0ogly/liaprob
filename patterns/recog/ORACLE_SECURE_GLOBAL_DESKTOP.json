@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_secure_global_desktop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_SECURE_GLOBAL_DESKTOP",
+  "taxonomy_name": "Oracle Secure Global Desktop",
+  "vendor": "Oracle",
+  "product": "Secure Global Desktop",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_SECURE_GLOBAL_DESKTOP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_secure_global_desktop_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Oracle Secure Global Desktop(?: Redirect Page)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Oracle Secure Global Desktop"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:oracle:secure_global_desktop:-",
+  "examples": [
+    "Oracle Secure Global Desktop",
+    "Oracle Secure Global Desktop Redirect Page"
+  ]
+}

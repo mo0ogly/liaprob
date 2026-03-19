@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-datamax_print_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DATAMAX_PRINT_SERVER",
+  "taxonomy_name": "Datamax Print Server",
+  "vendor": "Datamax",
+  "product": "Print Server",
+  "source": {
+    "type": "recog",
+    "file": "DATAMAX_PRINT_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_datamax_print_server_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Datamax (?:Printer|.*Print Server)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Datamax printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Datamax DMXrfNet Print Server compatible with an HP JETDIRECT EX",
+    "Datamax Printer"
+  ]
+}

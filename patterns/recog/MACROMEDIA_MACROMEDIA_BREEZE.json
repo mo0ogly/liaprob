@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-macromedia_macromedia_breeze",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MACROMEDIA_MACROMEDIA_BREEZE",
+  "taxonomy_name": "Macromedia Macromedia Breeze",
+  "vendor": "Macromedia",
+  "product": "Macromedia Breeze",
+  "source": {
+    "type": "recog",
+    "file": "MACROMEDIA_MACROMEDIA_BREEZE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_macromedia_macromedia_breeze_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^80656aabfafe0f3559f71bb0524c4bb3",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Macromedia Breeze"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "80656aabfafe0f3559f71bb0524c4bb3"
+  ]
+}

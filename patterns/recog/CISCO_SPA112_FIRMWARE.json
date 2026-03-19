@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_spa112_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_SPA112_FIRMWARE",
+  "taxonomy_name": "Cisco SPA112 Firmware",
+  "vendor": "Cisco",
+  "product": "SPA112 Firmware",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_SPA112_FIRMWARE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_spa112_firmware_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^CISCO SPA112$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco SPA112"
+        }
+      ]
+    },
+    {
+      "id": "recog_cisco_spa112_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Cisco/SPA112-([\\d.SR]+)\\(\\w+\\)[\\w-]*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco SPA112"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "dhcp"
+  ],
+  "cpe23_template": "cpe:/o:cisco:spa112_firmware:-",
+  "examples": [
+    "CISCO SPA112",
+    "Cisco/SPA112-1.4.1SR1(002)d-hisec"
+  ]
+}

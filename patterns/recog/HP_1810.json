@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_1810",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_1810",
+  "taxonomy_name": "HP 1810",
+  "vendor": "HP",
+  "product": "1810",
+  "source": {
+    "type": "recog",
+    "file": "HP_1810.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_1810_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP V1810\\S+ ([A-Z]{1,2}\\.[^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Procurve 1810 Series Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP V1810-48G, PK.1.4, eCos-2.0, CFE-3.8"
+  ]
+}

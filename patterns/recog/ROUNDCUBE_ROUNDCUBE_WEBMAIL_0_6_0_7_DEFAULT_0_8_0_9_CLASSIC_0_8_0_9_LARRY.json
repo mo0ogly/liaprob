@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-roundcube_roundcube_webmail_0_6_0_7_default_0_8_0_9_classic_0_8_0_9_larry",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ROUNDCUBE_ROUNDCUBE_WEBMAIL_0_6_0_7_DEFAULT_0_8_0_9_CLASSIC_0_8_0_9_LARRY",
+  "taxonomy_name": "Roundcube Roundcube Webmail 0.6-0.7 : Default, 0.8-0.9 : Classic, 0.8-0.9 : Larry",
+  "vendor": "Roundcube",
+  "product": "Roundcube Webmail 0.6-0.7 : Default, 0.8-0.9 : Classic, 0.8-0.9 : Larry",
+  "source": {
+    "type": "recog",
+    "file": "ROUNDCUBE_ROUNDCUBE_WEBMAIL_0_6_0_7_DEFAULT_0_8_0_9_CLASSIC_0_8_0_9_LARRY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_roundcube_roundcube_webmail_0_6_0_7_default_0_8_0_9_classic_0_8_0_9_larry_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^228ba3f6d946af4298b080e5c934487c",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Roundcube Webmail 0.6-0.7 : Default, 0.8-0.9 : Classic, 0.8-0.9 : Larry"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "228ba3f6d946af4298b080e5c934487c"
+  ]
+}

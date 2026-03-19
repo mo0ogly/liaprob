@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-libswarmcache_java_libswarmcache_java_1_0rc2_cvs20071027",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIBSWARMCACHE_JAVA_LIBSWARMCACHE_JAVA_1_0RC2_CVS20071027",
+  "taxonomy_name": "libswarmcache-java libswarmcache-java (1.0RC2+cvs20071027)",
+  "vendor": "libswarmcache-java",
+  "product": "libswarmcache-java (1.0RC2+cvs20071027)",
+  "source": {
+    "type": "recog",
+    "file": "LIBSWARMCACHE_JAVA_LIBSWARMCACHE_JAVA_1_0RC2_CVS20071027.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_libswarmcache_java_libswarmcache_java_1_0rc2_cvs20071027_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^20e208bb83f3eeed7c1aa8a6d9d3229d",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "libswarmcache-java (1.0RC2+cvs20071027)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "20e208bb83f3eeed7c1aa8a6d9d3229d"
+  ]
+}

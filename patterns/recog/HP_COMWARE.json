@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_comware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_COMWARE",
+  "taxonomy_name": "HP Comware",
+  "vendor": "HP",
+  "product": "Comware",
+  "source": {
+    "type": "recog",
+    "file": "HP_COMWARE.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_comware_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP Comware Platform Software Comware Software Version ([^\\s,]+)[,\\s]\\s*(?:Release|Alpha|Beta)\\s*(\\S+) HP (\\S+) Router",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Comware"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP Series Router (\\S+) HP Comware Platform Software Comware Software Version ([^\\s,]+)[,\\s]\\s*Release ([^,\\s]+)?[,\\s].*Copyright",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Comware - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP Series Router (\\S+) HP Comware Platform Software Comware Software Version ([^,]+), (\\S+) Copyright",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Comware - variant 2"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP Comware Platform Software, Software Version ([^\\s,]+)[,\\s]\\s*(?:Release|Alpha|Beta)\\s*(\\S+) HP (\\S+) (?:SI|EI|Switch|Copyright|v\\d)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Comware - variant 3"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP Comware Platform Software Comware Software Version 5.20,Release 2603P08 HP A6602 Router Copyright(c) 2010-2011 Hewlett-Packard Development Company, L.P.",
+    "HP Comware Platform Software Comware Software Version 5.20,Release 2603P08 HP A6608 Router Copyright(c) 2010-2011 Hewlett-Packard Development Company, L.P.",
+    "HP Series Router A-MSR20-40 HP Comware Platform Software Comware Software Version 5.20, Release 2209P15, Standard Copyright(c) 2010-2012 Hewlett-Packard Development Company, L.P.",
+    "HP Series Router A-MSR30-20 HP Comware Platform Software Comware Software Version 5.20, Release 2207P41, Standard Copyright(c) 2010 Hewlett-Packard Development Company, L.P.",
+    "HP Series Router A-MSR900 HP Comware Platform Software Comware Software Version 5.20, Release 2207P41 Copyright(c) 2010 Hewlett-Packard Development Company, L.P.",
+    "HP Series Router A-MSR20-40 HP Comware Platform Software Comware Software Version 5.20, T2207L16 Copyright(c) 2010-2011 Hewlett-Packard Development Company, L.P.",
+    "HP Comware Platform Software, Software Version 5.20 Release 2208 HP A5500-24G SI Switch with 2 Interface Slots Copyright (c) 2010-2011 Hewlett-Packard Development Company, L.P.",
+    "HP Comware Platform Software, Software Version 5.20 Release 2208 HP A5500-48G EI Switch with 2 Interface Slots Copyright (c) 2010-2011 Hewlett-Packard Development Company, L.P.",
+    "HP Comware Platform Software, Software Version 5.20 Release 2208P01 HP A5500-24G EI Switch with 2 Interface Slots Copyright (c) 2010-2011 Hewlett-Packard Development Company, L.P.",
+    "HP Comware Platform Software, Software Version 5.20 Release 2210 HP A5500-48G SI Switch with 2 Interface Slots Copyright (c) 2010-2011 Hewlett-Packard Development Company, L.P."
+  ]
+}

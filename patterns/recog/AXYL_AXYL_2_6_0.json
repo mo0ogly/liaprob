@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-axyl_axyl_2_6_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AXYL_AXYL_2_6_0",
+  "taxonomy_name": "axyl axyl (2.6.0)",
+  "vendor": "axyl",
+  "product": "axyl (2.6.0)",
+  "source": {
+    "type": "recog",
+    "file": "AXYL_AXYL_2_6_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_axyl_axyl_2_6_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^7513f4cf4802f546518f26ab5cfa1cad",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "axyl (2.6.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "7513f4cf4802f546518f26ab5cfa1cad"
+  ]
+}

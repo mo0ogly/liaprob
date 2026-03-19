@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:9c845f917bb1720d80df603f26878d42|9baf402c0fccb225c134eb9bdf9678c7|5e760a3842c5c2a0278545c2ad5d88b0|bf5c71bad91e3bb1fb0029ff1bf6ea06)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mersive SolsticePod"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "9c845f917bb1720d80df603f26878d42",
+    "9baf402c0fccb225c134eb9bdf9678c7",
+    "5e760a3842c5c2a0278545c2ad5d88b0",
+    "bf5c71bad91e3bb1fb0029ff1bf6ea06"
+  ]
+}

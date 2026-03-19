@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ucftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UCFTPD",
+  "taxonomy_name": "ucftpd",
+  "vendor": "",
+  "product": "ucftpd",
+  "source": {
+    "type": "recog",
+    "file": "UCFTPD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_ucftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ucftpd\\((\\w{3}\\s+\\d{1,2} \\d{4}-\\d\\d:\\d\\d:\\d\\d)\\) FTP server ready\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ucftpd\\((\\w{3}\\s+\\d{1,2} \\d{4}-\\d\\d:\\d\\d:\\d\\d)\\) FTP server ready\\.$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ucftpd with version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ucftpd FTP server ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ucftpd without version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "ucftpd(Jul  2 2012-22:13:49) FTP server ready.",
+    "ucftpd(Sep 10 2010-17:23:34) FTP server ready.",
+    "ucftpd FTP server ready."
+  ]
+}

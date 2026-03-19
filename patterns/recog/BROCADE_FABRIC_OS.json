@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-brocade_fabric_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BROCADE_FABRIC_OS",
+  "taxonomy_name": "Brocade Fabric OS",
+  "vendor": "Brocade",
+  "product": "Fabric OS",
+  "source": {
+    "type": "recog",
+    "file": "BROCADE_FABRIC_OS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_brocade_fabric_os_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Fibre Channel Switch\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brocade FabricOS switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:brocade:fabric_operating_system:-",
+  "examples": [
+    "Fibre Channel Switch.",
+    "Fibre Channel Switch"
+  ]
+}

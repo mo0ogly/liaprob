@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hplip_hplip_2_8_7_installer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HPLIP_HPLIP_2_8_7_INSTALLER",
+  "taxonomy_name": "hplip hplip (2.8.7) - installer",
+  "vendor": "hplip",
+  "product": "hplip (2.8.7) - installer",
+  "source": {
+    "type": "recog",
+    "file": "HPLIP_HPLIP_2_8_7_INSTALLER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hplip_hplip_2_8_7_installer_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^5e99522b02f6ecadbb3665202357d775",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "hplip (2.8.7) - installer"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "5e99522b02f6ecadbb3665202357d775"
+  ]
+}

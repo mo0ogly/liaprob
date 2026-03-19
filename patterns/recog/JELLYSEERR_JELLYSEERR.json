@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-jellyseerr_jellyseerr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JELLYSEERR_JELLYSEERR",
+  "taxonomy_name": "Jellyseerr Jellyseerr",
+  "vendor": "Jellyseerr",
+  "product": "Jellyseerr",
+  "source": {
+    "type": "recog",
+    "file": "JELLYSEERR_JELLYSEERR.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_jellyseerr_jellyseerr_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:cc21dae362a981ea9ce93138cb855e66|372be2fa33d5836cdcf8c1867e6900c2|54bb0b4a353b89c42e63b8e8bd6ea504)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Jellyseerr"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Sign In - )?Jellyseerr$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Jellyseerr"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "cc21dae362a981ea9ce93138cb855e66",
+    "372be2fa33d5836cdcf8c1867e6900c2",
+    "54bb0b4a353b89c42e63b8e8bd6ea504",
+    "Jellyseerr",
+    "Sign In - Jellyseerr"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-swagger_swagger_ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SWAGGER_SWAGGER_UI",
+  "taxonomy_name": "Swagger Swagger UI",
+  "vendor": "Swagger",
+  "product": "Swagger UI",
+  "source": {
+    "type": "recog",
+    "file": "SWAGGER_SWAGGER_UI.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_swagger_swagger_ui_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f983f318b0f0dff7a9303973f36ec45a$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Swagger UI"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Swagger (?:UI|Editor)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Swagger UI"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:smartbear:swagger_ui:-",
+  "examples": [
+    "f983f318b0f0dff7a9303973f36ec45a",
+    "Swagger UI",
+    "Swagger Editor"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-phpgroupware_phpgroupware_0_9_16_012",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPGROUPWARE_PHPGROUPWARE_0_9_16_012",
+  "taxonomy_name": "phpgroupware phpgroupware (0.9.16.012)",
+  "vendor": "phpgroupware",
+  "product": "phpgroupware (0.9.16.012)",
+  "source": {
+    "type": "recog",
+    "file": "PHPGROUPWARE_PHPGROUPWARE_0_9_16_012.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_phpgroupware_phpgroupware_0_9_16_012_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^90c244c893a963e3bb193d6043a347bd",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "phpgroupware (0.9.16.012)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "90c244c893a963e3bb193d6043a347bd"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-civicplus_civicplus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CIVICPLUS_CIVICPLUS",
+  "taxonomy_name": "CivicPlus CivicPlus",
+  "vendor": "CivicPlus",
+  "product": "CivicPlus",
+  "source": {
+    "type": "recog",
+    "file": "CIVICPLUS_CIVICPLUS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_civicplus_civicplus_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^a1c686eb6e771878cf6040574a175933",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CivicPlus"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "a1c686eb6e771878cf6040574a175933"
+  ]
+}

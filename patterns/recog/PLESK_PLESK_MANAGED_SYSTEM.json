@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-plesk_plesk_managed_system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLESK_PLESK_MANAGED_SYSTEM",
+  "taxonomy_name": "Plesk Plesk managed system",
+  "vendor": "Plesk",
+  "product": "Plesk managed system",
+  "source": {
+    "type": "recog",
+    "file": "PLESK_PLESK_MANAGED_SYSTEM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_plesk_plesk_managed_system_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^9ceae7a3c88fc451d59e24d8d5f6f166",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Plesk managed system"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "9ceae7a3c88fc451d59e24d8d5f6f166"
+  ]
+}

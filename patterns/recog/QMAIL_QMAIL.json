@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-qmail_qmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "QMAIL_QMAIL",
+  "taxonomy_name": "qmail qmail",
+  "vendor": "qmail",
+  "product": "qmail",
+  "source": {
+    "type": "recog",
+    "file": "QMAIL_QMAIL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_qmail_qmail_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -]qmail home page: http://pobox.com/~djb/qmail.html *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "QMail - help variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "214 qmail home page: http://pobox.com/~djb/qmail.html"
+  ]
+}

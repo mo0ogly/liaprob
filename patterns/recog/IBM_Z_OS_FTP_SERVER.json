@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_z_os_ftp_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_Z_OS_FTP_SERVER",
+  "taxonomy_name": "IBM z/OS FTP Server",
+  "vendor": "IBM",
+  "product": "z/OS FTP Server",
+  "source": {
+    "type": "recog",
+    "file": "IBM_Z_OS_FTP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_z_os_ftp_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^[^ ]{1,512} IBM FTP CS (V1R\\d+) at ([^,]*),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM z/OS FTP Service"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:ibm:z%2fos:{os.version}",
+  "examples": [
+    "SFTPD1 IBM FTP CS V1R4 at x.y.z, 21:02:19 on 2007-12-15."
+  ]
+}

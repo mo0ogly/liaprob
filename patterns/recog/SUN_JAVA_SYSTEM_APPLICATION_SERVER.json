@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_java_system_application_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_JAVA_SYSTEM_APPLICATION_SERVER",
+  "taxonomy_name": "Sun Java System Application Server",
+  "vendor": "Sun",
+  "product": "Java System Application Server",
+  "source": {
+    "type": "recog",
+    "file": "SUN_JAVA_SYSTEM_APPLICATION_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_java_system_application_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(GX_SESSION_ID|JROUTE)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun Java System Application Server (formerly iPlanet Application Server, Sun ONE Application Server)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Sun[ -]Java[ -]System[ /]Application[ -]Server(?:\\s+(\\d\\.[\\d_]+))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Sun[ -]Java[ -]System[ /]Application[ -]Server(?:\\s+(\\d\\.[\\d_]+))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sun Java System Application Server (formerly iPlanet Application Server, Sun ONE Application Server)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:sun:java_system_application_server:-",
+  "examples": [
+    "GX_SESSION_ID=ji7vouPhPt5CAtGF%2BWPMXBrhjjxWZAD9HRNeEEITGCA%3D",
+    "JROUTE=KbDs; Path=/",
+    "Sun Java System Application Server 9.1_02",
+    "Sun-Java-System/Application-Server"
+  ]
+}

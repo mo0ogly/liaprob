@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avery_dennison",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVERY_DENNISON",
+  "taxonomy_name": "Avery Dennison",
+  "vendor": "Avery Dennison",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "AVERY_DENNISON.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_avery_dennison_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Monarch (?:M\\d+ FW Ver \\d+\\.\\d / )?(\\d+) (?:Print|Network) Adapter",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avery Dennison Monarch barcode printers"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Monarch 7411 Print Adapter",
+    "Monarch 7410 Print Adapter compatible with an HP JETDIRECT EX",
+    "Monarch M09855 FW Ver 6.2 / 7411 Network Adapter FW Ver CAMO-7.60, 802.11b-g WiFi FW Ver",
+    "Monarch M09855 FW Ver 6.2 / 7411 Network Adapter FW Ver CAMO-7.60, 802.11b-g WiFi FW Ver / Verifier"
+  ]
+}

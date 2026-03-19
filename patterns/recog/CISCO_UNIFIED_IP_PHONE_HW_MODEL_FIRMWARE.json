@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_unified_ip_phone_hw_model_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_UNIFIED_IP_PHONE_HW_MODEL_FIRMWARE",
+  "taxonomy_name": "Cisco Unified IP Phone {hw.model} Firmware",
+  "vendor": "Cisco",
+  "product": "Unified IP Phone {hw.model} Firmware",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_UNIFIED_IP_PHONE_HW_MODEL_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_unified_ip_phone_hw_model_firmware_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Cisco Systems, Inc\\. IP Phone CP-(\\d{4}(?:G|G-GE|NR)?)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IP Phone"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp"
+  ],
+  "examples": [
+    "Cisco Systems, Inc. IP Phone CP-6921",
+    "Cisco Systems, Inc. IP Phone CP-7911G",
+    "Cisco Systems, Inc. IP Phone CP-7941G-GE",
+    "Cisco Systems, Inc. IP Phone CP-8865NR"
+  ]
+}

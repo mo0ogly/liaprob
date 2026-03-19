@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-seattle_labs_slmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SEATTLE_LABS_SLMAIL",
+  "taxonomy_name": "Seattle Labs SLMail",
+  "vendor": "Seattle Labs",
+  "product": "SLMail",
+  "source": {
+    "type": "recog",
+    "file": "SEATTLE_LABS_SLMAIL.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_seattle_labs_slmail_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^ ]{1,512}) SMTP Server SLMail v?(\\d\\.[\\d.]+) Ready ESMTP spoken here *$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^([^ ]{1,512}) SMTP Server SLMail v?(\\d\\.[\\d.]+) Ready ESMTP spoken here *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Seattle Labs SLMail server for Windows NT/2k (v2.7 runs on Win9x)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^550[ -]Unable to find list '.*'\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Seattle Labs SLMail"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar Smtp Server SLMail v2.7 Ready ESMTP spoken here",
+    "foo.bar SMTP Server SLmail 3.2.3113 Ready ESMTP spoken here",
+    "foo.bar SMTP Server SLmail 5.5.0.4433 Ready ESMTP spoken here",
+    "550 Unable to find list 'list'."
+  ]
+}

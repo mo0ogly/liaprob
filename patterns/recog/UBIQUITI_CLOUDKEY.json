@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ubiquiti_cloudkey",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UBIQUITI_CLOUDKEY",
+  "taxonomy_name": "Ubiquiti CloudKey",
+  "vendor": "Ubiquiti",
+  "product": "CloudKey",
+  "source": {
+    "type": "recog",
+    "file": "UBIQUITI_CLOUDKEY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ubiquiti_cloudkey_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=CloudKey,O=Ubiquiti Networks,L=San Jose,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubiquiti CloudKey Controller"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "CN=CloudKey,O=Ubiquiti Networks,L=San Jose,ST=CA,C=US"
+  ]
+}

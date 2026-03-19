@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-polatis",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POLATIS",
+  "taxonomy_name": "Polatis",
+  "vendor": "Polatis",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "POLATIS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_polatis_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([a-zA-Z0-9\\.\\-\\_]+),OU=Polatis Switch ([a-zA-Z0-9]+),O=Polatis Inc\\.,ST=N/A,C=UK$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Polatis Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "CN=192.168.0.1,OU=Polatis Switch 1591,O=Polatis Inc.,ST=N/A,C=UK",
+    "CN=central-01,OU=Polatis Switch 1590,O=Polatis Inc.,ST=N/A,C=UK"
+  ]
+}

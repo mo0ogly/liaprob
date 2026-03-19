@@ -1,0 +1,99 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-brocade",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BROCADE",
+  "taxonomy_name": "Brocade",
+  "vendor": "Brocade",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "BROCADE.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_brocade_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Brocade ((?:\\S+ )?SAN Switch) Module for IBM eServer BladeCenter$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brocade SAN switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Brocade (?:Communications? Systems, Inc\\. )?([^,\\(]+)(?: \\([^\\)]+\\))?,(?: Extended route scalability,)? IronWare Version V?(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brocade IronWare"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Brocade (?:Communications? Systems, Inc\\. )?([^,\\(]+)(?: \\([^\\)]+\\))?,(?: Extended route scalability,)? TrafficWork Version V?(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brocade TrafficWare"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Brocade VDX Switch, BR-(\\S+), Network Operating System Software Version (\\S+)\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brocade VDX Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^([^,]{1,512}), (VDX\\S+), Network Operating System Software Version (\\S+)\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brocade VDX Switch w/Hostname"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^([^,]{1,512}), BR-(\\S+), Network Operating System Software Version (\\S+)\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brocade VDX Switch w/Hostname and BR prefix"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Brocade 4Gb SAN Switch Module for IBM eServer BladeCenter",
+    "Brocade 8Gb SAN Switch Module for IBM eServer BladeCenter",
+    "Brocade SAN Switch Module for IBM eServer BladeCenter",
+    "Brocade Communications Systems, Inc. BigIron RX, IronWare Version V2.7.3aT143 Compiled on Jan 07 2011 at 19:37:41 labeled as V2.7.03a",
+    "Brocade Communications Systems, Inc. FESX424-PREM, IronWare Version 07.0.01bT3e3 Compiled on Mar 17 2010 at 23:02:11 labeled as SXR07001b",
+    "Brocade NetIron CER, IronWare Version V5.2.0dT183 Compiled on Mar 02 2012 at 19:15:05 labeled as V5.2.00d",
+    "Brocade Backbone (System Mode: MLX), IronWare Version V5.1.0dT163 Compiled on Aug 19 2011 at 19:00:39 labeled as V5.1.00d",
+    "Brocade Communications Systems, Inc. ServerIron ADX 1008-1-PREM, TrafficWork Version 12.4.00T401",
+    "Brocade Communications Systems, Inc. ServerIron ADX 1008F-1, TrafficWork Version 12.3.03T401",
+    "Brocade Communications Systems, Inc. ServerIron ADX 4000, TrafficWork Version 12.3.01T403"
+  ]
+}

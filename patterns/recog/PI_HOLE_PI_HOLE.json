@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pi_hole_pi_hole",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PI_HOLE_PI_HOLE",
+  "taxonomy_name": "Pi-hole Pi-hole",
+  "vendor": "Pi-hole",
+  "product": "Pi-hole",
+  "source": {
+    "type": "recog",
+    "file": "PI_HOLE_PI_HOLE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_pi_hole_pi_hole_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^dnsmasq-pi-hole-(.*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^dnsmasq-pi-hole-(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "dnsmasq: pi-hole"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/a:pi-hole:pi-hole:{version}",
+  "examples": [
+    "dnsmasq-pi-hole-2.80"
+  ]
+}

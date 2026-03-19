@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tightvnc_desktop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TIGHTVNC_DESKTOP",
+  "taxonomy_name": "TightVNC Desktop",
+  "vendor": "TightVNC",
+  "product": "Desktop",
+  "source": {
+    "type": "recog",
+    "file": "TIGHTVNC_DESKTOP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tightvnc_desktop_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^TightVNC desktop \\[(.*)\\]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TightVNC Web Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:tightvnc:tightvnc:-",
+  "examples": [
+    "TightVNC desktop [teller01]"
+  ]
+}

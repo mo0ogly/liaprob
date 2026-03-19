@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ecelerity_ecelerity_mail_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ECELERITY_ECELERITY_MAIL_SERVER",
+  "taxonomy_name": "Ecelerity Ecelerity Mail Server",
+  "vendor": "Ecelerity",
+  "product": "Ecelerity Mail Server",
+  "source": {
+    "type": "recog",
+    "file": "ECELERITY_ECELERITY_MAIL_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_ecelerity_ecelerity_mail_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:2.0.0 )?([^ ]{1,512}) ESMTP ecelerity (\\d\\.[\\d.]+) r\\(([^)]+)\\) (\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:2.0.0 )?([^ ]{1,512}) ESMTP ecelerity (\\d\\.[\\d.]+) r\\(([^)]+)\\) (\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Ecelerity"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "2.0.0 foo.bar ESMTP ecelerity 4.0.0.43760 r(Platform:4.0.0.1) Thu, 30 Nov 2017 05:11:00 -0500",
+    "foo.bar ESMTP ecelerity 3.3.1.44388 r(44388) Thu, 30 Nov 2017 03:10:11 -0700",
+    "foo.bar ESMTP ecelerity 3.6.25.56547 r(Core:3.6.25.0) Thu, 30 Nov 2017 03:17:07 -0600",
+    "foo.bar ESMTP ecelerity 4.2.37.61980 r(:) Thu, 30 Nov 2017 09:58:54 +0000"
+  ]
+}

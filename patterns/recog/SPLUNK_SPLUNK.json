@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-splunk_splunk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPLUNK_SPLUNK",
+  "taxonomy_name": "Splunk Splunk",
+  "vendor": "Splunk",
+  "product": "Splunk",
+  "source": {
+    "type": "recog",
+    "file": "SPLUNK_SPLUNK.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_splunk_splunk_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f7728520c81b7a303d8e54d282e13a16$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Splunkd"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^splunkd$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Splunk HTTP server used in the web interface, forwarders, indexers and more"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:splunk:splunk:-",
+  "examples": [
+    "f7728520c81b7a303d8e54d282e13a16",
+    "splunkd"
+  ]
+}

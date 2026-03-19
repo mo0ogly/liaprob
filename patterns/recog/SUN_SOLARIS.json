@@ -1,0 +1,351 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_solaris",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_SOLARIS",
+  "taxonomy_name": "Sun Solaris",
+  "vendor": "Sun",
+  "product": "Solaris",
+  "source": {
+    "type": "recog",
+    "file": "SUN_SOLARIS.json",
+    "fingerprint_count": 36
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 36 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_solaris_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) FTP Server \\(SunOS 5.([789]|10)\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.7-5.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) FTP Server \\(SunOS 5.6\\) ready\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS 5.6 (Solaris 2.6)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.0\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 2.0 (SunOS/5.0) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.1\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 2.1 (SunOS/5.1) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.2\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 2.2 (SunOS/5.2) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.3\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 2.3 (SunOS/5.3) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.4\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 2.4 (SunOS/5.4) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.5\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 2.5 (SunOS/5.5) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.6\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 2.6 (SunOS/5.6) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"SunOS/?5.([789]|10)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 7-10 (SunOS/5.7 - SunOS/5.10) with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"UNIX/SunOS ([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS with no ntp version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Oracle|Sun)?\\s?OpenSolaris\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenSolaris"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Oracle|Sun)?\\s?Solaris\\s?((?:[789]|10)+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris 7-10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Oracle|Sun)?\\s?SunOS\\s?5.([789]|10)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.7-5.10"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.permission denied\\..+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris rlogind"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "UNIX\\(r\\) System V Release (\\d*.\\d*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS (Solaris)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Solaris (.*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris"
+        }
+      ]
+    },
+    {
+      "id": "recog_sun_solaris_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS (\\S+) 5\\.([789]|10) \\S+ (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.7-5.10 - hostname variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS (\\S+) (\\S+) \\S+ (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Sun-Blade-100$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on a Blade 100. Indicates Solaris 8 or higher"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, UltraAX-i2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an UltraAX-i2"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Ultra-5_10$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an Ultra 5 or Ultra 10"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Ultra-1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an Ultra 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Ultra-Enterprise$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an Ultra-Enterprise"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Sun-Fire-V240$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on a Sun-Fire-V240"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Netra-T12$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on a  Netra-T12"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Ultra-25$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an Ultra-25"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Ultra-80$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an Ultra-80"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, Ultra-60$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an Ultra-60"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, UltraAX-MP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an UltraAX-MP"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent, UltraSPARC-IIi-cEngine$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on an UltraSPARC-IIi-cEngine"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Sun SNMP Agent,",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun SNMP agent on unknown Sun hardware"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS 5\\.([789]|10) (\\S+) sparc SUNW,([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.7-5.10 - Call Manager variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS (\\S+) 5\\.([789]|10) \\S+ (\\S+) \\S+ SUNW,([^,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.7-5.10 - SUNW variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS 5\\.([789]|10) \\S+ (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.7-5.10 - generic version"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SunOS release:5\\.([789]|10) version:\\S+ machine:(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SunOS/Solaris 5.7-5.10"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet",
+    "ftp",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:sun:solaris:{os.version}",
+  "examples": [
+    "example.com FTP server (SunOS 5.7) ready.",
+    "example.com FTP server (SunOS 5.10) ready.",
+    "example.com FTP Server (SunOS 5.6) ready.",
+    "processor=\"sun4m\", system=\"SunOS/5.0\"",
+    "processor=\"sun4m\", system=\"SunOS5.0\"",
+    "processor=\"sun4m\", system=\"SunOS/5.1\"",
+    "processor=\"sun4u\", system=\"SunOS5.1\"",
+    "processor=\"sun4m\", system=\"SunOS/5.2\"",
+    "processor=\"sun4u\", system=\"SunOS5.2\"",
+    "processor=\"sun4m\", system=\"SunOS/5.3\""
+  ]
+}

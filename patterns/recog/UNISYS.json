@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unisys",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNISYS",
+  "taxonomy_name": "Unisys",
+  "vendor": "Unisys",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNISYS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_unisys_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Unisys (\\S+) version (\\S+) kernel",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Unisys printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Unisys UDS544 version NS.NP.N219 kernel 2.6.6 All-N-1"
+  ]
+}

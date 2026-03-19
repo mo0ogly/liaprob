@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mathomatic_mathomatic_14_0_6",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MATHOMATIC_MATHOMATIC_14_0_6",
+  "taxonomy_name": "mathomatic mathomatic (14.0.6)",
+  "vendor": "mathomatic",
+  "product": "mathomatic (14.0.6)",
+  "source": {
+    "type": "recog",
+    "file": "MATHOMATIC_MATHOMATIC_14_0_6.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mathomatic_mathomatic_14_0_6_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^0d42576d625920bcd121261fc5a6230b",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "mathomatic (14.0.6)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "0d42576d625920bcd121261fc5a6230b"
+  ]
+}

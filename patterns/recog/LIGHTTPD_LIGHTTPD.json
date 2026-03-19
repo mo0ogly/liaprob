@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lighttpd_lighttpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LIGHTTPD_LIGHTTPD",
+  "taxonomy_name": "lighttpd lighttpd",
+  "vendor": "lighttpd",
+  "product": "lighttpd",
+  "source": {
+    "type": "recog",
+    "file": "LIGHTTPD_LIGHTTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lighttpd_lighttpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^lighttpd(?:/(\\d[\\d.]+))?",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^lighttpd(?:/(\\d[\\d.]+))?",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Lighttpd"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:lighttpd:lighttpd:{version}",
+  "examples": [
+    "lighttpd",
+    "Lighttpd",
+    "lighttpd/1.4.16",
+    "lighttpd/1.3.7 (Mar 23 2007/16:00:15)"
+  ]
+}

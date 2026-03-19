@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-huawei_3com_wbr204g",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HUAWEI_3COM_WBR204G",
+  "taxonomy_name": "Huawei-3com WBR204G",
+  "vendor": "Huawei-3com",
+  "product": "WBR204G",
+  "source": {
+    "type": "recog",
+    "file": "HUAWEI_3COM_WBR204G.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_huawei_3com_wbr204g_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HUAWEI-3COM WBR-204g$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HUAWEI-3COM WBR-204g WAP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HUAWEI-3COM WBR-204g"
+  ]
+}

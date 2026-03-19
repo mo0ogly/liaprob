@@ -1,0 +1,92 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APC",
+  "taxonomy_name": "APC",
+  "vendor": "APC",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "APC.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_apc_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^APC$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "APC device"
+        }
+      ]
+    },
+    {
+      "id": "recog_apc_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^APC - (\\d+-port IP KVM) - version: V_(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "APC KVM over IP"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^APC Embedded PowerNet SNMP Agent \\(.*SW v([^,]+),.*M[oO][dD]:\\s*([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "APC Embedded PowerNet"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^APC (?:Environmental (?:Management System|Manager|Monitoring Unit)|InfraStruXure Manager|.* Rack PDU|NetBotz Rack Access|Web/SNMP Management Card).*AF1:\\s*v?(\\S+).*MN:\\s*(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "APC UPS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "snmp"
+  ],
+  "examples": [
+    "APC",
+    "APC - 16-port IP KVM - version: V_2.0.0-2 (Oct/17/06)",
+    "APC Embedded PowerNet SNMP Agent (FW v3.0.2 SW v2.2.4.a, HW ged~, MOD: AP9605, Mfg: 06/24/1998, SN: X)",
+    "APC Embedded PowerNet SNMP Agent (SW v2.0.3, HW v2.0B, Mod: AP9206, Mfg 06/22/94, SN: A94063028359)",
+    "APC Environmental Management System (MB:v3.6.9 PF:v2.6.4 PN:apc_hw02_aos_264.bin AF1:v2.6.7 AN1:apc_hw02_ems_267.bin MN:AP9320 HR:4 SN: ZA0747015277 MD:11/25/2007)",
+    "APC Environmental Manager (MB:v3.8.0 PF:v3.0.3 PN:apc_hw03_aos_303.bin AF1:v3.0.4 AN1:apc_hw03_mem_304.bin MN:AP9340 HR:05 SN: ZA0739002849 MD:09/25/2007)",
+    "APC Environmental Monitoring Unit (MB:v3.6.3 PF:v2.2.2 PN:apc_hw02_aos_222.bin AF1:v2.2.2 AN1:apc_hw02_ems_222.bin MN:AP9319 HR:3 SN:WA0339160711 MD:09/30/2003)",
+    "APC Web/SNMP Management Card (MB:v3.6.8 PF:v2.6.4 PN:apc_hw02_aos_264.bin AF1:v2.6.1 AN1:apc_hw02_sy_261.bin MN:AP9619 HR:A10 SN: ZA0624022354 MD:06/09/2006) (Embedded PowerNet SNMP Agent SW v2.2 compatible)",
+    "APC Web/SNMP Management Card (MB:v3.6.4 PF:v2.5.0 PN:apc_hw02_aos_250.bin AF1:v2.5.1 AN1:apc_hw02_sy_251.bin MN:AP9619 HR:A10 SN: ZA0435001769 MD:08/30/2004) (Embedded PowerNet SNMP Agent SW v2.2 compatible)",
+    "APC NetBotz Rack Access PX-HID (MB:v3.8.6 PF:v3.5.4 PN:apc_hw02_aos_354.bin AF1:v3.5.3 AN1:apc_hw02_pxhid_353.bin MN:AP9361 HR:04 SN: 5A0726V01013 MD:07/11/2007)"
+  ]
+}

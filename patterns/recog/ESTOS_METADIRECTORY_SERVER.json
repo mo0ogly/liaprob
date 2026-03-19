@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-estos_metadirectory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ESTOS_METADIRECTORY_SERVER",
+  "taxonomy_name": "estos MetaDirectory Server",
+  "vendor": "estos",
+  "product": "MetaDirectory Server",
+  "source": {
+    "type": "recog",
+    "file": "ESTOS_METADIRECTORY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_estos_metadirectory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:metaProductID.*\\x04\\vmetaVersion1\\r\\x04.([\\d.]+)0.\\x04)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?im:metaProductID.*\\x04\\vmetaVersion1\\r\\x04.([\\d.]+)0.\\x04)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "estos MetaDirectory"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "BA1tZXRhUHJvZHVjdElEMQYEBDExMDIwHAQLbWV0YVZlcnNpb24xDQQLMy41LjIyLjQyOTEwF\n      gQ="
+  ]
+}

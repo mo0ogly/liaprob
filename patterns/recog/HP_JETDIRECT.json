@@ -1,0 +1,130 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_jetdirect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_JETDIRECT",
+  "taxonomy_name": "HP JetDirect",
+  "vendor": "HP",
+  "product": "JetDirect",
+  "source": {
+    "type": "recog",
+    "file": "HP_JETDIRECT.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    23,
+    80,
+    443,
+    8080,
+    8443,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_jetdirect_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^JD FTP Server Ready",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP JetDirect printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)laserjet (.*)(?: series)?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP JetDirect Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)(designjet \\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Designjet printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*HP JetDirect(?:\\r|\\n)+",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Printer - Jet Direct"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_jetdirect_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^HP-Chai(?:Server|SOE)/(\\d+\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^HP-Chai(?:Server|SOE)/(\\d+\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "HP Printer running the Chai embedded web server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^HP HTTP Server; (?:Hewlett-Packard )?HP ((\\S+) \\S+)[^;]+; Serial Number: ([^;]+);",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HP Printer"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Old HP printers identify themselves as \"HTTP/1.0\""
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "http",
+    "telnet",
+    "ftp"
+  ],
+  "examples": [
+    "JD FTP Server Ready",
+    "JD FTP Server Ready.",
+    "HP LaserJet 4100 Series",
+    "HP LaserJet 2200",
+    "LASERJET 4050",
+    "LASERJET 4 PLUS",
+    "HP LaserJet Professional P1606dn",
+    "hp designjet 110plus",
+    "DESIGNJET 1050C",
+    "DESIGNJET 1055CM"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_cobalt_raq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_COBALT_RAQ",
+  "taxonomy_name": "Sun Cobalt RaQ",
+  "vendor": "Sun",
+  "product": "Cobalt RaQ",
+  "source": {
+    "type": "recog",
+    "file": "SUN_COBALT_RAQ.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_cobalt_raq_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": ".{0,512}(?:Sun )?Cobalt \\(Unix\\)?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun Cobalt RaQ (Red Hat based Linux)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(BlueQuartz\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Blue Quartz is created by a Cobalt RaQ UG"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Apache/1.3.3 Cobalt (Unix) (Red Hat/Linux)",
+    "Apache/2.0.52 (BlueQuartz)"
+  ]
+}

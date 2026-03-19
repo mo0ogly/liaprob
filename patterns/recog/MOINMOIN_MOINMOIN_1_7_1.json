@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-moinmoin_moinmoin_1_7_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MOINMOIN_MOINMOIN_1_7_1",
+  "taxonomy_name": "MoinMoin MoinMoin (1.7.1)",
+  "vendor": "MoinMoin",
+  "product": "MoinMoin (1.7.1)",
+  "source": {
+    "type": "recog",
+    "file": "MOINMOIN_MOINMOIN_1_7_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_moinmoin_moinmoin_1_7_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^e551b7017a9bd490fc5b76e833d689bf",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MoinMoin (1.7.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "e551b7017a9bd490fc5b76e833d689bf"
+  ]
+}

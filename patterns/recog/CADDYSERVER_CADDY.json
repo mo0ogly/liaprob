@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-caddyserver_caddy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CADDYSERVER_CADDY",
+  "taxonomy_name": "CaddyServer Caddy",
+  "vendor": "CaddyServer",
+  "product": "Caddy",
+  "source": {
+    "type": "recog",
+    "file": "CADDYSERVER_CADDY.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_caddyserver_caddy_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Caddy$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "CaddyServer Caddy - golang based httpd"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_caddyserver_caddy_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^O=Caddy Self-Signed$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CaddyServer Caddy - golang based httpd"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^O=Caddy Self-Signed$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CaddyServer Caddy - golang based httpd"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:caddyserver:caddy:-",
+  "examples": [
+    "Caddy",
+    "O=Caddy Self-Signed"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-joom_fish",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JOOM_FISH",
+  "taxonomy_name": "Joom!Fish",
+  "vendor": "",
+  "product": "Joom!Fish",
+  "source": {
+    "type": "recog",
+    "file": "JOOM_FISH.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_joom_fish_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(mbfcookie(?:\\[lang\\])?)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Joom!Fish http://www.joomfish.net/"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "mbfcookie=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/",
+    "mbfcookie[lang]=pt_BR; expires=Tue, 20-Apr-2021 03:30:47 GMT; path=/"
+  ]
+}

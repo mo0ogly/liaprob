@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-novell_groupwise",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOVELL_GROUPWISE",
+  "taxonomy_name": "Novell GroupWise",
+  "vendor": "Novell",
+  "product": "GroupWise",
+  "source": {
+    "type": "recog",
+    "file": "NOVELL_GROUPWISE.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_novell_groupwise_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) GroupWise Internet Agent ([^ ]+\\.[^ ]+\\.[^ ]+) Ready \\(C\\).* Novell, Inc\\. *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) GroupWise Internet Agent ([^ ]+\\.[^ ]+\\.[^ ]+) Ready \\(C\\).* Novell, Inc\\. *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Novell GroupWise Internet Agent - versions 5 and higher"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) GroupWise Internet Agent (\\d+\\.[\\d.]+)  Copyright .*\\d{4}-\\d{4} Novell, Inc..* All rights reserved. Ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) GroupWise Internet Agent (\\d+\\.[\\d.]+)  Copyright .*\\d{4}-\\d{4} Novell, Inc..* All rights reserved. Ready *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Novell GroupWise Internet Agent - versions 5 and higher, second variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) GroupWise SMTP/MIME Daemon ([^ ]+\\.[^ ]+) v([^ ]+) Ready \\(C\\).* Novell, Inc\\. *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) GroupWise SMTP/MIME Daemon ([^ ]+\\.[^ ]+) v([^ ]+) Ready \\(C\\).* Novell, Inc\\. *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Novell GroupWise - versions below 5"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:novell:groupwise:{version}",
+  "examples": [
+    "foo.bar GroupWise Internet Agent 5.5.1 Ready (C)1993, 1998 Novell, Inc.",
+    "foo.bar GroupWise Internet Agent 8.0.3  Copyright (c) 1993-2012 Novell, Inc.  All rights reserved. Ready",
+    "foo.bar GroupWise Internet Agent 14.2.1  Copyright 1993-2016 Novell, Inc., a Micro Focus Company. All rights reserved. Ready",
+    "foo.bar GroupWise SMTP/MIME Daemon 4.1 v3 Ready (C)1993, 1996 Novell, Inc."
+  ]
+}

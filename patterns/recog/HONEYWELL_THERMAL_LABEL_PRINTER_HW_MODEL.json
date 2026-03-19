@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-honeywell_thermal_label_printer_hw_model",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HONEYWELL_THERMAL_LABEL_PRINTER_HW_MODEL",
+  "taxonomy_name": "Honeywell Thermal Label Printer {hw.model}",
+  "vendor": "Honeywell",
+  "product": "Thermal Label Printer {hw.model}",
+  "source": {
+    "type": "recog",
+    "file": "HONEYWELL_THERMAL_LABEL_PRINTER_HW_MODEL.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_honeywell_thermal_label_printer_hw_model_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Welcome to Honeywell Printer (PM\\d+)\\S+?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Honeywell Thermal Label Printer (Previously Intermec)"
+        }
+      ]
+    },
+    {
+      "id": "recog_honeywell_thermal_label_printer_hw_model_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Honeywell (PM\\d+);P([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Honeywell Thermal Label Printer (Previously Intermec)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "Welcome to Honeywell Printer PM43c",
+    "Honeywell PM43;P10.14.014620"
+  ]
+}

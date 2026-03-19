@@ -1,0 +1,97 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-communigate_communigate_pro",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COMMUNIGATE_COMMUNIGATE_PRO",
+  "taxonomy_name": "Communigate Communigate Pro",
+  "vendor": "Communigate",
+  "product": "Communigate Pro",
+  "source": {
+    "type": "recog",
+    "file": "COMMUNIGATE_COMMUNIGATE_PRO.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    80,
+    443,
+    587,
+    5060,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_communigate_communigate_pro_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^CommuniGatePro/(\\d\\.[\\w.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^CommuniGatePro/(\\d\\.[\\w.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Communigate Communigate Pro"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_communigate_communigate_pro_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^CommuniGatePro/(\\d\\.[\\w.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^CommuniGatePro/(\\d\\.[\\w.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Communigate Pro"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP CommuniGate Pro (\\d\\.[\\w.]+)(?:. It is you again :-\\()?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP CommuniGate Pro (\\d\\.[\\w.]+)(?:. It is you again :-\\()?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Communigate Pro"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "smtp",
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:communigate:communigate_pro:{version}",
+  "examples": [
+    "CommuniGatePro/5.2.20",
+    "CommuniGatePro/6.2.16v",
+    "CommuniGatePro/6.2.14",
+    "CommuniGatePro/6.3c1m",
+    "foo.bar ESMTP CommuniGate Pro 5.3.1",
+    "foo.bar ESMTP CommuniGate Pro 6.2c3",
+    "foo.bar ESMTP CommuniGate Pro 4.3.12. It is you again :-("
+  ]
+}

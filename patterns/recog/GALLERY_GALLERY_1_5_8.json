@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gallery_gallery_1_5_8",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GALLERY_GALLERY_1_5_8",
+  "taxonomy_name": "gallery gallery (1.5.8)",
+  "vendor": "gallery",
+  "product": "gallery (1.5.8)",
+  "source": {
+    "type": "recog",
+    "file": "GALLERY_GALLERY_1_5_8.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gallery_gallery_1_5_8_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^56753c5386a70edba6190d49252f00bb",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "gallery (1.5.8)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "56753c5386a70edba6190d49252f00bb"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-envoy_proxy_envoy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ENVOY_PROXY_ENVOY",
+  "taxonomy_name": "Envoy Proxy Envoy",
+  "vendor": "Envoy Proxy",
+  "product": "Envoy",
+  "source": {
+    "type": "recog",
+    "file": "ENVOY_PROXY_ENVOY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_envoy_proxy_envoy_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^envoy$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Envoy Proxy Envoy"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:envoyproxy:envoy:-",
+  "examples": [
+    "envoy"
+  ]
+}

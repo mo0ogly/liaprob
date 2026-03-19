@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OKI",
+  "taxonomy_name": "Oki",
+  "vendor": "Oki",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "OKI.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_oki_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^OKI (\\S+(?: \\S+)?(?: \\S+)?) Rev\\. \\S+ .*Print\\s*Server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OKI Print Server - rev space variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^OKI (\\S+(?: \\S+)?(?: \\S+)?) Rev\\.(\\S+) .*Print\\s*Server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OKI Print Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "OKI OkiLAN 6400e Rev. 10/100BASE Ethernet PrintServer: Attached to B6250 Rev.8.1: (C)2005 OKI DATA CORP",
+    "OKI OkiLAN 6400e Rev. 10/100BASE Ethernet PrintServer: Attached to B6500 Rev.2.19 C1: (C)2005 OKI DATA CORP",
+    "OKI OkiLAN 6400e Rev. 10/100BASE Ethernet PrintServer: Attached to B720n Rev.7.1b1: (C)2005 OKI DATA CORP",
+    "OKI OkiLAN 6400e Rev. 10/100BASE Ethernet PrintServer: Attached to B930 Rev.3.6: (C)2005 OKI DATA CORP",
+    "OKI FastEther8450e Rev.01.08 10/100BASE Ethernet PrintServer: Attached to B430 Rev.C2.00 : Copyright (c) 2008 Oki Data Corporation. All rights reserved.",
+    "OKI FastEther8450e Rev.08.01 10/100BASE Ethernet PrintServer: Attached to C5650 Rev.M1.02 : Copyright (c) 2007 Oki Data Corporation. All rights reserved."
+  ]
+}

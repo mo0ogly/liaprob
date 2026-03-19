@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netscape_directory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETSCAPE_DIRECTORY_SERVER",
+  "taxonomy_name": "Netscape Directory Server",
+  "vendor": "Netscape",
+  "product": "Directory Server",
+  "source": {
+    "type": "recog",
+    "file": "NETSCAPE_DIRECTORY_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_netscape_directory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i:vendorname1.\\x04.Netscape Communications Corp.0.\\x04\\rvendorversion1.\\x04.Netscape-Directory/(\\d\\.\\d[\\d.]* B\\d+\\.\\d+\\.\\d+).\\x04\\v)",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i:vendorname1.\\x04.Netscape Communications Corp.0.\\x04\\rvendorversion1.\\x04.Netscape-Directory/(\\d\\.\\d[\\d.]* B\\d+\\.\\d+\\.\\d+).\\x04\\v)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Netscape Directory Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:netscape:directory_server:{version}",
+  "examples": [
+    "dmVuZG9yTmFtZTEfBB1OZXRzY2FwZSBDb21tdW5pY2F0aW9ucyBDb3JwLjA5BA12ZW5kb3JWZ\n      XJzaW9uMSgEJk5ldHNjYXBlLURpcmVjdG9yeS82LjExIEIyMDAyLjI4MS4wODUzMC8ECw==",
+    "dmVuZG9ybmFtZTEfBB1OZXRzY2FwZSBDb21tdW5pY2F0aW9ucyBDb3JwLjA5BA12ZW5kb3J2Z\n      XJzaW9uMSgEJk5ldHNjYXBlLURpcmVjdG9yeS82LjExIEIyMDAyLjI4MS4wODUzMC8ECw=="
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-samba_active_directory_controller",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAMBA_ACTIVE_DIRECTORY_CONTROLLER",
+  "taxonomy_name": "Samba Active Directory Controller",
+  "vendor": "Samba",
+  "product": "Active Directory Controller",
+  "source": {
+    "type": "recog",
+    "file": "SAMBA_ACTIVE_DIRECTORY_CONTROLLER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_samba_active_directory_controller_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m:vendorName1.\\x04.Samba.*domainControllerFunctionality1.{1,5}\\x04\\x014)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samba Active Directory Controller"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m:vendorName1.\\x04.Samba.*domainFunctionality1.\\x04\\x0100.\\x04\\x13forestFunctionality1\\x03\\x04\\x0100)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samba Active Directory Controller emulating Windows 2000"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "dmVuZG9yTmFtZTEfBB1TYW1iYSBUZWFtIChodHRwOi8vc2FtYmEub3JnKS5kYXRhLnJlbW92Z\n      WQuBB1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTEDBAE0MB4=",
+    "dmVuZG9yTmFtZTEfBB1TYW1iYSBUZWFtIChodHRwOi8vc2FtYmEub3JnKS5kYXRhLnJlbW92Z\n      WQuZG9tYWluRnVuY3Rpb25hbGl0eTEDBAEwMBoEE2ZvcmVzdEZ1bmN0aW9uYWxpdHkxAwQBMD\n      AeBBQ="
+  ]
+}

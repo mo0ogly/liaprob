@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_ntp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_NTP",
+  "taxonomy_name": "Sun NTP",
+  "vendor": "Sun",
+  "product": "NTP",
+  "source": {
+    "type": "recog",
+    "file": "SUN_NTP.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_ntp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"SunOS\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Solaris with NTP enabled, no processor/version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"UNIX/Solaris\\s[^ ]+\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sun Solaris NTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:sun:solaris:-",
+  "examples": [
+    "system=\"SunOS\", leap=00, stratum=1, rootdelay=0.000,",
+    "system=\"UNIX/Solaris 2.x\", leap=3, stratum=16, rootdelay=0.00,\n      rootdispersion=0.00, peer=0, refid=0.0.0.0, reftime=0x00000000.00000000,\n      poll=4, clock=0xd23e08ab.ecd7f000, phase=0.000, freq=11392.00,\n      error=0.00",
+    "system=\"UNIX/Solaris 2.x\", leap=3, stratum=16, rootdelay=0.00,\n      rootdispersion=0.00, peer=0, refid=0.0.0.0, reftime=0x00000000.00000000,\n      poll=4, clock=0xd2353ae7.7bca8000, phase=0.000, freq=11392.00,\n      error=0.00"
+  ]
+}

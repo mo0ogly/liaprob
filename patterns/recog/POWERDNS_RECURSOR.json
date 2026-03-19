@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-powerdns_recursor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POWERDNS_RECURSOR",
+  "taxonomy_name": "PowerDNS Recursor",
+  "vendor": "PowerDNS",
+  "product": "Recursor",
+  "source": {
+    "type": "recog",
+    "file": "POWERDNS_RECURSOR.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_powerdns_recursor_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Recursor (\\d\\.[\\d.]+(?:-\\w+)?) \\(\\w+@[\\w.]+ built \\d+ \\w+@[\\w.-]*\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^PowerDNS Recursor (\\d\\.[\\d.]+(?:-\\w+)?) \\(\\w+@[\\w.]+ built \\d+ \\w+@[\\w.-]*\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS Recursor"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Recursor (\\d\\.[\\d.]+) \\(built [\\w\\s:]+ by [\\w]+\\@[\\w.-]*\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^PowerDNS Recursor (\\d\\.[\\d.]+) \\(built [\\w\\s:]+ by [\\w]+\\@[\\w.-]*\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS Recursor: format 2"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Recursor (\\d\\.[\\d.]+(?:-\\w+)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^PowerDNS Recursor (\\d\\.[\\d.]+(?:-\\w+)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS Recursor: version only"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Recursor (\\d\\.[\\d.]+) \\$Id[^$]*\\$$",
+          "confidence_delta": 0.4,
+          "version_extract": "^PowerDNS Recursor (\\d\\.[\\d.]+) \\$Id[^$]*\\$$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PowerDNS Recursor: ID format"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^PowerDNS Recursor$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PowerDNS Recursor: no version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/a:powerdns:recursor:{version}",
+  "examples": [
+    "PowerDNS Recursor 3.6.2 (jenkins@autotest.powerdns.com built 20141031140810 mockbuild@)",
+    "PowerDNS Recursor 3.7.4-rc1 (jenkins@autotest.powerdns.com built 20170120211656 root@foo-bar.foo.baz)",
+    "PowerDNS Recursor 4.0.4 (built Apr 13 2017 09:59:06 by root@oof-e.baz.foo.bar)",
+    "PowerDNS Recursor 4.0.4",
+    "PowerDNS Recursor 4.0.0-alpha2",
+    "PowerDNS Recursor 3.5.3 $Id$",
+    "PowerDNS Recursor 3.2 $Id: pdns_recursor.cc 1538 2010-03-06 11:39:03Z ahu $",
+    "PowerDNS Recursor"
+  ]
+}

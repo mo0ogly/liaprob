@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xubuntu_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XUBUNTU_LINUX",
+  "taxonomy_name": "Xubuntu Linux",
+  "vendor": "Xubuntu",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "XUBUNTU_LINUX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_xubuntu_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Xubuntu(?: Linux)?\\s(\\d+?(?:\\.\\d+?)*?)?\\s?(LTS)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xubuntu Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Xubuntu 12.04.4 LTS",
+    "Xubuntu Linux 14.04",
+    "Xubuntu 16.04 LTS"
+  ]
+}

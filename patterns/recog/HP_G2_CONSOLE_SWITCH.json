@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_g2_console_switch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_G2_CONSOLE_SWITCH",
+  "taxonomy_name": "HP G2 Console Switch",
+  "vendor": "HP",
+  "product": "G2 Console Switch",
+  "source": {
+    "type": "recog",
+    "file": "HP_G2_CONSOLE_SWITCH.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_g2_console_switch_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP IP Console Switch G2 \\S+ - (AF\\d+) \\d+\\.\\d+\\.\\d+\\.\\d+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Console Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP IP Console Switch G2 4x1Ex32 - AF622 1.20.19.23386",
+    "HP IP Console Switch G2 2x1Ex16 - AF621 1.20.0.22575"
+  ]
+}

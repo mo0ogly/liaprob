@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-traefik_labs_traefik_proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRAEFIK_LABS_TRAEFIK_PROXY",
+  "taxonomy_name": "Traefik Labs Traefik Proxy",
+  "vendor": "Traefik Labs",
+  "product": "Traefik Proxy",
+  "source": {
+    "type": "recog",
+    "file": "TRAEFIK_LABS_TRAEFIK_PROXY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_traefik_labs_traefik_proxy_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=TRAEFIK DEFAULT CERT$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Traefik Proxy default certificate"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=TRAEFIK DEFAULT CERT$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Traefik Proxy default certificate"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:traefik:traefik:-",
+  "examples": [
+    "CN=TRAEFIK DEFAULT CERT"
+  ]
+}

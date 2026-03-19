@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tinyproxy_project_tinyproxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TINYPROXY_PROJECT_TINYPROXY",
+  "taxonomy_name": "Tinyproxy Project Tinyproxy",
+  "vendor": "Tinyproxy Project",
+  "product": "Tinyproxy",
+  "source": {
+    "type": "recog",
+    "file": "TINYPROXY_PROJECT_TINYPROXY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tinyproxy_project_tinyproxy_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^tinyproxy/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^tinyproxy/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "TinyProxy Project tinyproxy"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:tinyproxy_project:tinyproxy:{version}",
+  "examples": [
+    "tinyproxy/1.8.2"
+  ]
+}

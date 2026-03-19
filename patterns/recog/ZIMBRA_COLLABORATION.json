@@ -1,0 +1,130 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zimbra_collaboration",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZIMBRA_COLLABORATION",
+  "taxonomy_name": "Zimbra Collaboration",
+  "vendor": "Zimbra",
+  "product": "Collaboration",
+  "source": {
+    "type": "recog",
+    "file": "ZIMBRA_COLLABORATION.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    110,
+    143,
+    443,
+    993,
+    995,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_zimbra_collaboration_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8c7d1c14e4b9c42f07bd6b800d93b806$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Zimbra (?:Web Client Sign In|Administration)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(ZM_(?:TEST|LOGIN_CSRF)|ZA_(?:SKIN|TEST))=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_zimbra_collaboration_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) Zimbra IMAP4rev1 server ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration IMAP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) Zimbra (\\S+) IMAP4rev1 server ready\\.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,512}) Zimbra (\\S+) IMAP4rev1 server ready\\.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration IMAP with service version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) Zimbra POP3 server ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration POP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) Zimbra (\\S+) POP3 server ready\\.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,512}) Zimbra (\\S+) POP3 server ready\\.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Zimbra Collaboration POP with version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pop3",
+    "http",
+    "imap"
+  ],
+  "cpe23_template": "cpe:/a:zimbra:collaboration:-",
+  "examples": [
+    "8c7d1c14e4b9c42f07bd6b800d93b806",
+    "Zimbra Web Client Sign In",
+    "Zimbra Administration",
+    "ZM_TEST=true; Secure",
+    "ZM_LOGIN_CSRF=38ef0bea-a4c3-4f41-9ac3-73d7622f3131; Secure; HttpOnly",
+    "ZA_SKIN=serenity",
+    "ZA_TEST=true; Secure",
+    "foo.bar Zimbra IMAP4rev1 server ready",
+    "foo.bar Zimbra 7.0.0_GA_3079 IMAP4rev1 server ready",
+    "foo.bar Zimbra POP3 server ready"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rpath_rpath_appliance_agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RPATH_RPATH_APPLIANCE_AGENT",
+  "taxonomy_name": "rPath rPath Appliance Agent",
+  "vendor": "rPath",
+  "product": "rPath Appliance Agent",
+  "source": {
+    "type": "recog",
+    "file": "RPATH_RPATH_APPLIANCE_AGENT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_rpath_rpath_appliance_agent_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^4c3373870496151fd02a6f1185b0bb68",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "rPath Appliance Agent"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "4c3373870496151fd02a6f1185b0bb68"
+  ]
+}

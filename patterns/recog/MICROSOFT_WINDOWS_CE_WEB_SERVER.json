@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_ce_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_CE_WEB_SERVER",
+  "taxonomy_name": "Microsoft Windows CE Web Server",
+  "vendor": "Microsoft",
+  "product": "Windows CE Web Server",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_CE_WEB_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_ce_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Microsoft-WinCE/(\\d\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Microsoft-WinCE/(\\d\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Windows CE embedded devices, including HP iPAQ, Palm Treo, Motorola phones, and many more"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_ce:{os.version}",
+  "examples": [
+    "Microsoft-WinCE/4.10",
+    "Microsoft-WinCE/4.20",
+    "Microsoft-WinCE/5.0"
+  ]
+}

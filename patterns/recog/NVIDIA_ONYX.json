@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nvidia_onyx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NVIDIA_ONYX",
+  "taxonomy_name": "NVIDIA Onyx",
+  "vendor": "NVIDIA",
+  "product": "Onyx",
+  "source": {
+    "type": "recog",
+    "file": "NVIDIA_ONYX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_nvidia_onyx_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Onyx,(MSN\\S+),SWv(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NVIDIA MSN Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Onyx,MSN2700,SWv3.9.3202"
+  ]
+}

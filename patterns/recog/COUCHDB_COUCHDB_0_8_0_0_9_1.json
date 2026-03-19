@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-couchdb_couchdb_0_8_0_0_9_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "COUCHDB_COUCHDB_0_8_0_0_9_1",
+  "taxonomy_name": "couchdb couchdb (0.8.0-0.9.1)",
+  "vendor": "couchdb",
+  "product": "couchdb (0.8.0-0.9.1)",
+  "source": {
+    "type": "recog",
+    "file": "COUCHDB_COUCHDB_0_8_0_0_9_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_couchdb_couchdb_0_8_0_0_9_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2ab2aae806e8393b70970b2eaace82e0",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "couchdb (0.8.0-0.9.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "2ab2aae806e8393b70970b2eaace82e0"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-innovaphone_ipva",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INNOVAPHONE_IPVA",
+  "taxonomy_name": "innovaphone IPVA",
+  "vendor": "innovaphone",
+  "product": "IPVA",
+  "source": {
+    "type": "recog",
+    "file": "INNOVAPHONE_IPVA.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_innovaphone_ipva_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:namingContexts1.\\x04.cn=.?pbx.*\\x04.ldapServiceName1.\\x04.IPVA-\\w+-)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "innovaphone VoIP Gateway Virtual Appliance"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Dm5hbWluZ0NvbnRleHRzMQoECGNuPUtQQlgwMCIED2xkYXBTZXJ2aWNlTmFtZTEPBA1JUFZBL\n      TNmLTAwLTBjMAwC"
+  ]
+}

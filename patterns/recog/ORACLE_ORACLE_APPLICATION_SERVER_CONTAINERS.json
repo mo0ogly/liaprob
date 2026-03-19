@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_oracle_application_server_containers",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_ORACLE_APPLICATION_SERVER_CONTAINERS",
+  "taxonomy_name": "Oracle Oracle Application Server Containers",
+  "vendor": "Oracle",
+  "product": "Oracle Application Server Containers",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_ORACLE_APPLICATION_SERVER_CONTAINERS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_oracle_application_server_containers_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle Application Server Containers for J2EE 10g \\(([\\d.]+)\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Oracle Application Server Containers for J2EE 10g \\(([\\d.]+)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle Application Server Containers for J2EE 10g"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle Containers for J2EE$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Oracle Application Server Containers for J2EE"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "Oracle Application Server Containers for J2EE 10g (9.0.4.0.0)",
+    "Oracle Containers for J2EE"
+  ]
+}

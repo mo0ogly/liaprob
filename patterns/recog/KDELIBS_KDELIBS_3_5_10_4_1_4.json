@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kdelibs_kdelibs_3_5_10_4_1_4",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KDELIBS_KDELIBS_3_5_10_4_1_4",
+  "taxonomy_name": "kdelibs kdelibs (3.5.10-4.1.4)",
+  "vendor": "kdelibs",
+  "product": "kdelibs (3.5.10-4.1.4)",
+  "source": {
+    "type": "recog",
+    "file": "KDELIBS_KDELIBS_3_5_10_4_1_4.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_kdelibs_kdelibs_3_5_10_4_1_4_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^24d1e355c00e79dc13b84d5455534fe7",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "kdelibs (3.5.10-4.1.4)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "24d1e355c00e79dc13b84d5455534fe7"
+  ]
+}

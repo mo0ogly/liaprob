@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tenable_security_center",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TENABLE_SECURITY_CENTER",
+  "taxonomy_name": "Tenable Security Center",
+  "vendor": "Tenable",
+  "product": "Security Center",
+  "source": {
+    "type": "recog",
+    "file": "TENABLE_SECURITY_CENTER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tenable_security_center_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8570daa3ff0b3aa33157a433e2dea887$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Tenable Security Center"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "8570daa3ff0b3aa33157a433e2dea887"
+  ]
+}

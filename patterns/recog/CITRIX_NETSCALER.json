@@ -1,0 +1,125 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-citrix_netscaler",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITRIX_NETSCALER",
+  "taxonomy_name": "Citrix NetScaler",
+  "vendor": "Citrix",
+  "product": "NetScaler",
+  "source": {
+    "type": "recog",
+    "file": "CITRIX_NETSCALER.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_citrix_netscaler_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^871eb7d317524611af4f05c6ba878df8$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix NetScaler"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^4eaaa139063e6706d1b5d0eee833d47b$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix NetScaler Gateway"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:953e0d0190e50d247f4ece5620569ef1|52794c5e8a69a8b03ba891e24c39da65)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix NetScaler SDX Gateway"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Citrix Login$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix NetScaler"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^NSC_(?:AAAC|BASEURL|CERT|DLGE|EPAC|TASS|TEMP|TMA[APS]|PERS|USER)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix NetScaler"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^NS_(\\d\\.\\d)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^NS_(\\d\\.\\d)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Citrix NetScaler"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_citrix_netscaler_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^NetScaler NS([^:]+): Build ([^,]+), Date:",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Netscaler Appliance"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/a:citrix:netscaler:-",
+  "examples": [
+    "871eb7d317524611af4f05c6ba878df8",
+    "4eaaa139063e6706d1b5d0eee833d47b",
+    "953e0d0190e50d247f4ece5620569ef1",
+    "52794c5e8a69a8b03ba891e24c39da65",
+    "Citrix Login",
+    "NSC_AAAC=xyz;",
+    "NSC_TEMP=xyz;",
+    "NS_6.1",
+    "NetScaler NS10.0: Build 54.6.nc, Date: Apr 6 2012, 08:00:41",
+    "NetScaler NS9.3: Build 57.5.nc, Date: Jun 27 2012, 19:37:56"
+  ]
+}

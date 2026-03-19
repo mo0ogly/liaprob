@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netgear_netgear_infrant_readynas_nv",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETGEAR_NETGEAR_INFRANT_READYNAS_NV",
+  "taxonomy_name": "Netgear Netgear (Infrant) ReadyNAS NV+",
+  "vendor": "Netgear",
+  "product": "Netgear (Infrant) ReadyNAS NV+",
+  "source": {
+    "type": "recog",
+    "file": "NETGEAR_NETGEAR_INFRANT_READYNAS_NV.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_netgear_netgear_infrant_readynas_nv_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^7b0d4bc0ca1659d54469e5013a08d240$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ReadyNAS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "7b0d4bc0ca1659d54469e5013a08d240"
+  ]
+}

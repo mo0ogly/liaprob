@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-manageengine_access_manager_plus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MANAGEENGINE_ACCESS_MANAGER_PLUS",
+  "taxonomy_name": "ManageEngine Access Manager Plus",
+  "vendor": "ManageEngine",
+  "product": "Access Manager Plus",
+  "source": {
+    "type": "recog",
+    "file": "MANAGEENGINE_ACCESS_MANAGER_PLUS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_manageengine_access_manager_plus_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^9db18be9073f41227b4fb0c1715ce82d$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine Access Manager Plus"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ManageEngine Access Manager Plus$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ManageEngine Access Manager Plus"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:zohocorp:manageengine_access_manager_plus:-",
+  "examples": [
+    "9db18be9073f41227b4fb0c1715ce82d",
+    "ManageEngine Access Manager Plus"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tor_project_tor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOR_PROJECT_TOR",
+  "taxonomy_name": "Tor Project Tor",
+  "vendor": "Tor Project",
+  "product": "Tor",
+  "source": {
+    "type": "recog",
+    "file": "TOR_PROJECT_TOR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tor_project_tor_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^(?:2ad2ad16d2ad2ad00042d42d000000332dc9cd7d90589195193c8bb05d84fa|2ad2ad16d2ad2ad22c2ad2ad2ad2adce2e4c8c53174ecbf5529ce7584d5518|2ad2ad16d2ad2ad22c42d42d000000d342d5966a57139eeaff9f8bc4841b25)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Tor relay"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:torproject:tor:-",
+  "examples": [
+    "2ad2ad16d2ad2ad00042d42d000000332dc9cd7d90589195193c8bb05d84fa",
+    "2ad2ad16d2ad2ad22c2ad2ad2ad2adce2e4c8c53174ecbf5529ce7584d5518",
+    "2ad2ad16d2ad2ad22c42d42d000000d342d5966a57139eeaff9f8bc4841b25"
+  ]
+}

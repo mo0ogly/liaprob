@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gsoap_gsoap_2_7_9l",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GSOAP_GSOAP_2_7_9L",
+  "taxonomy_name": "gsoap gsoap (2.7.9l)",
+  "vendor": "gsoap",
+  "product": "gsoap (2.7.9l)",
+  "source": {
+    "type": "recog",
+    "file": "GSOAP_GSOAP_2_7_9L.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gsoap_gsoap_2_7_9l_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^63d5627fc659adfdd5b902ecafe9100f",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "gsoap (2.7.9l)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "63d5627fc659adfdd5b902ecafe9100f"
+  ]
+}

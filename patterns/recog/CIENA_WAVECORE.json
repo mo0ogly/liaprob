@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ciena_wavecore",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CIENA_WAVECORE",
+  "taxonomy_name": "Ciena WaveCore",
+  "vendor": "Ciena",
+  "product": "WaveCore",
+  "source": {
+    "type": "recog",
+    "file": "CIENA_WAVECORE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ciena_wavecore_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Ciena Distributed Node Product Line WaveCore \\(tm\\) OS Release (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ciena WaveCorel"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Ciena Distributed Node Product Line WaveCore (tm) OS Release 07000102.002"
+  ]
+}

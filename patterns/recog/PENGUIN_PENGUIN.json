@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-penguin_penguin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PENGUIN_PENGUIN",
+  "taxonomy_name": "penguin penguin",
+  "vendor": "penguin",
+  "product": "penguin",
+  "source": {
+    "type": "recog",
+    "file": "PENGUIN_PENGUIN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_penguin_penguin_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6399cc480d494bf1fcd7d16c42b1c11b",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "penguin"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6399cc480d494bf1fcd7d16c42b1c11b"
+  ]
+}

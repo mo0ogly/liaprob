@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netopia",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETOPIA",
+  "taxonomy_name": "Netopia",
+  "vendor": "Netopia",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "NETOPIA.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_netopia_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Netopia (\\d{4}(?:W|NWG|NWG-ENT)) v(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Netopia Wireless ADSL Router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Netopia (\\S+) v(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Netopia Router"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Netopia 3347NWG v7.5.1r8",
+    "Netopia 3347NWG v7.7.4r0",
+    "Netopia 3347NWG-ENT v8.5",
+    "Netopia 3347NWG-ENT v8.6.1r4",
+    "Netopia 3347W v8.4r2",
+    "Netopia 2241N-VGx v7.7.0b4",
+    "Netopia 2241N-VGx v7.7.0r1",
+    "Netopia R9100 v4.8.2"
+  ]
+}

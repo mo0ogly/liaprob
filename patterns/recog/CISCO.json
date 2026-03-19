@@ -1,0 +1,244 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO",
+  "taxonomy_name": "Cisco",
+  "vendor": "Cisco",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "CISCO.json",
+    "fingerprint_count": 21
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 21 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    67,
+    68,
+    161,
+    1720,
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Cisco Systems, Inc\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco device"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Cisco (AP80[123])$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco 800 Series Integrated Access Point"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Cisco AIR-CTVM-K9$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Virtual Wireless Controller"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Cisco (AIR-CT55\\d{2}-K9)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco 5500 Series Wireless Controller"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Cisco Telepresence Peripheral$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence Peripheral"
+        }
+      ]
+    },
+    {
+      "id": "recog_cisco_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0xb5000012\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0xb5000012\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Cisco H.323 Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Cisco\\s?)?(ASA|Adaptive Security Appliance|IOS|IOS-XE|IOS-XR|NX-OS|PIX-OS|SAN-OS)\\s?(?:Version (\\d+(?:\\.\\d+)*(?:\\(\\d+(?:\\.\\d+)*\\))?))?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Cisco-CP-?(\\d+G?)(?:-\\S+)?/([\\d\\.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco CP VoIP Phone"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?:Cisco|Linksys)/(SPA\\d+[DG]?\\d?)-([\\d\\.a-zA-Z]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco/Linksys SPA VoIP Phone"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?:Cisco|Linksys)(?: |/)(PAP2T?)(?:-|/)(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco/Linksys VoIP / Internet Phone adapter"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Cisco/(SRP\\d+)-([\\d\\.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Services Ready Platforms (SRP) Router"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?:Cisco|Linksys)/(WRP\\d+)-(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco/Linksys WRP Wireless Router"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*User Access Verification(?:\\r|\\n)+(?:Username|Password):\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco switch or router - user access variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*Password required, but none set(?:\\r|\\n)*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco switch or router - password not set variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*(?:% Password expiration warning.\\r\\n)?-+\\r\\nCisco Configuration Professional \\(Cisco CP\\) is installed on this device. \\r\\nThis feature requires the one-time use of the username",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco router - Cisco Configuration Pro  variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^(?:\\r|\\n)*Catalyst 1900 Management Console(?:\\r|\\n)+.*Ethernet Address:\\s+([\\w-]+)(?:\\r|\\n)+.*Model Number:\\s+([\\w-]+)(?:\\r|\\n)+System Serial Number:\\s+(\\w+)(?:\\r|\\n)+Power Supply",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Catalyst 1900"
+        }
+      ]
+    },
+    {
+      "id": "recog_cisco_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware:(\\S+),.*Software:UCOS (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco UCOS"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco (VG2\\S+) version (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco VG200 series analog voice gateway"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(WLSE(?: \\d+)?) Release (\\S+) .* \\(C\\) Copyright .*Cisco Systems Inc.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Wireless LAN Solution Engine"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco (NX-OS|SAN-OS)\\(tm\\) ([^,]+), Software \\([^\\)]+\\), Version ([^\\,]+), .* Cisco Systems",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco NX-OS/SAN-OS"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux, Cisco(?: Small Business)? (RV[0-9]+(?:[A-Z]+)?(?:-[A-Z]+[0-9]+)?).+Version (\\d+(?:\\.\\d+)+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Small Business RV Series Routers"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "dhcp",
+    "generic",
+    "telnet",
+    "snmp",
+    "h323"
+  ],
+  "cpe23_template": "cpe:/o:cisco:ios:-",
+  "examples": [
+    "Cisco Systems, Inc.",
+    "Cisco AP801",
+    "Cisco AP802",
+    "Cisco AP803",
+    "Cisco AIR-CTVM-K9",
+    "Cisco AIR-CT5508-K9",
+    "Cisco Telepresence Peripheral",
+    "Cisco ASA",
+    "Cisco IOS",
+    "Cisco ASA Version 7.0(1)"
+  ]
+}

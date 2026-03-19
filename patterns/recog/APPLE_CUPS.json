@@ -1,0 +1,120 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_cups",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_CUPS",
+  "taxonomy_name": "Apple CUPS",
+  "vendor": "Apple",
+  "product": "CUPS",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_CUPS.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_cups_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^74120b5bbc7be340887466ff6cfe66c6$",
+          "confidence_delta": 0.4,
+          "version_static": "1.3.7",
+          "case_insensitive": true,
+          "note": "Apple CUPS 1.3.7"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2c2bd163799c49e25bc7ac0fe97f2449$",
+          "confidence_delta": 0.4,
+          "version_static": "1.x",
+          "case_insensitive": true,
+          "note": "Apple CUPS 1.x"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:448fa67ece2a35d57e8d19808d350e9b|0c9183bd23ed47288c733499fce4498c|c4302a71aae96e158c3057c66184abbd)$",
+          "confidence_delta": 0.4,
+          "version_static": "2.x",
+          "case_insensitive": true,
+          "note": "Apple CUPS 2.x"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Home - CUPS ([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Home - CUPS ([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apple CUPS"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^CUPS\\/((?:\\d\\.)+\\d+)(?:\\s*IPP\\/\\d+\\.\\d+)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^CUPS\\/((?:\\d\\.)+\\d+)(?:\\s*IPP\\/\\d+\\.\\d+)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Server for the CUPS web interface."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_apple_cups_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^21d14d00021d21d21c42d43d00041d320c989d4ed06a7e9d3133ba36bb2752$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple CUPS - web interface"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:apple:cups:1.3.7",
+  "examples": [
+    "74120b5bbc7be340887466ff6cfe66c6",
+    "2c2bd163799c49e25bc7ac0fe97f2449",
+    "448fa67ece2a35d57e8d19808d350e9b",
+    "0c9183bd23ed47288c733499fce4498c",
+    "c4302a71aae96e158c3057c66184abbd",
+    "Home - CUPS 2.3.1",
+    "CUPS/1.1",
+    "CUPS/1.7 IPP/2.1",
+    "21d14d00021d21d21c42d43d00041d320c989d4ed06a7e9d3133ba36bb2752"
+  ]
+}

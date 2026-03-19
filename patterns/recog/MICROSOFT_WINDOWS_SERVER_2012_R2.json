@@ -1,0 +1,90 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_server_2012_r2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_SERVER_2012_R2",
+  "taxonomy_name": "Microsoft Windows Server 2012 R2",
+  "vendor": "Microsoft",
+  "product": "Windows Server 2012 R2",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_SERVER_2012_R2.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_server_2012_r2_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:domainControllerFunctionality1.{1,5}\\x04\\x016)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server Server 2012 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Server 2012 R2 (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+) (Service Pack \\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2012 R2 (SP)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Server 2012 R2 (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2012 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Storage Server 2012 R2 (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2012 R2 Storage"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Hyper-V Server 2012 R2 (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Server 2012 R2 Hyper-V"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smb"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_server_2012:-",
+  "examples": [
+    "MIQAAAAoBB1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBNjA=",
+    "Windows Server 2012 R2 Standard 9600 Service Pack 1",
+    "Windows Server 2012 R2 Standard 9600",
+    "Windows Storage Server 2012 R2 Standard 9600",
+    "Windows Storage Server 2012 R2 Workgroup 9600",
+    "Windows Storage Server 2012 R2 Essentials 9600",
+    "Hyper-V Server 2012 R2 9600"
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ricoh",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RICOH",
+  "taxonomy_name": "Ricoh",
+  "vendor": "Ricoh",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "RICOH.json",
+    "fingerprint_count": 22
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 22 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    23,
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_ricoh_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^RICOH Aficio ((?:[MS]P )?\\S+) FTP server \\(([0-9\\.a-zA-Z]+)\\) ready.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ricoh Aficio multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NRG ((?:[MS]P )?\\S+) FTP server \\(([0-9\\.a-zA-Z]+)\\) ready.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ricoh NRG multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^LXKE\\S+ IBM Infoprint (\\d+) FTP Server (\\d+\\.\\d+\\.\\d+) ready.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Infoprint FTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Gestetner \\S+(?: \\S+)?) FTP server \\((.*)\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gestetner Printer FTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(Gestetner \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gestetner Printer FTP - short banner"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^RICOH ((?:Aficio|MP|SP) .*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ricoh Aficio Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^NRG ([MS]P \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ricoh NRG printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Gestetner (MP\\S+/DSc\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ricoh Gestetner multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^RICOH Maintenance Shell",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "a Ricoh device"
+        }
+      ]
+    },
+    {
+      "id": "recog_ricoh_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^NRG ((?:MP|SP )?\\S+|DSm\\d+) (?:V|v)?\\.?(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ricoh NRG network multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH Aficio ((?:[MS]P )?\\S+) ([0-9\\.a-zA-Z]+) ",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ricoh Aficio multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH Aficio (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic Ricoh Aficio multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH Aficio (\\S+ \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic Ricoh Aficio multifunction device - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH Aficio (\\S+) /",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic Ricoh Aficio multifunction device - variant 2"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH imagio (\\S+ \\S+|\\S+) (\\d+\\S+) /",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic Ricoh Imagio multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH IPS[Ii]O (\\S+) (\\S+) /",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic Ricoh IPSIO multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH IPS[Ii]O (\\S+ \\S+) (?:Ver )?[Vv]?(\\S+) /",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic Ricoh IPSIO multifunction device - variant 1"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^RICOH Pro (\\S+) (\\S+) /",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic Ricoh Pro multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Gestetner (\\S+) (\\S+) / Gestetner Network Printer",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gestetner Network Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^(?:IBM )?InfoPrint(?: Color)? (\\S+)(?: MFP)? Version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Infoprint Printer - verbose variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:IBM )InfoPrint (\\d+)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Infoprint Printer - simple variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:IBM )?InfoPrint (?:\\(v\\d+\\) )?(\\d+\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Infoprint Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "telnet",
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "RICOH Aficio 2045e FTP server (4.12) ready.",
+    "RICOH Aficio SP 4210N FTP server (8.63) ready.",
+    "RICOH Aficio MP C3000 FTP server (5.11) ready.",
+    "NRG MP C2800 FTP server (8.25) ready.",
+    "NRG MP 3350 FTP server (7.05) ready.",
+    "NRG MP C3500 FTP server (5.17) ready.",
+    "NRG MP 171 FTP server (9.02.1) ready.",
+    "NRG MP C2550 FTP server (8.25) ready.",
+    "NRG MP C3500 FTP server (5.19) ready.",
+    "NRG MP C4000 FTP server (8.30) ready."
+  ]
+}

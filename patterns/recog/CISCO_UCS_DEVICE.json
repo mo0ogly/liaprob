@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_ucs_device",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_UCS_DEVICE",
+  "taxonomy_name": "Cisco UCS Device",
+  "vendor": "Cisco",
+  "product": "UCS Device",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_UCS_DEVICE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_ucs_device_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^CIMC Debug Firmware Utility Shell\\W([^\\s]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "System is Cisco UCS Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "Q0lNQyBEZWJ1ZyBGaXJtd2FyZSBVdGlsaXR5IFNoZWxsCmZha2UtdWNzLWRldmljZS0zLTEtcCBsb2dpbjogCg=="
+  ]
+}

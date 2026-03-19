@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_tms_zl_module",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_TMS_ZL_MODULE",
+  "taxonomy_name": "HP TMS zl Module",
+  "vendor": "HP",
+  "product": "TMS zl Module",
+  "source": {
+    "type": "recog",
+    "file": "HP_TMS_ZL_MODULE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_tms_zl_module_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^ProCurve Threat Management Services zl Module$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ProCurve Threat Management Services"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "ProCurve Threat Management Services zl Module"
+  ]
+}

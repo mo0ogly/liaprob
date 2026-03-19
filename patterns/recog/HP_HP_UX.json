@@ -1,0 +1,107 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_hp_ux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_HP_UX",
+  "taxonomy_name": "HP HP-UX",
+  "vendor": "HP",
+  "product": "HP-UX",
+  "source": {
+    "type": "recog",
+    "file": "HP_HP_UX.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_hp_ux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "HP-UX_Apache-based_Web_Server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP HP-UX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"UNIX/HPUX\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generic HPUX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.rexecd: Login incorrect\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP-UX rexecd"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.remshd: (?:getservbyname.+|Kerberos Authentication not enabled\\..+|Error! Kerberos authentication failed)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP-UX rshd"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "HP-UX ([^ ]+) [A-Z]\\.([^ ]+) ([^ ]+) ([^ ]+)\\s([^ ]+\\))",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "System HP-UX"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_hp_ux_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP-UX (\\S+) (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP-UX"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:hp:hp-ux:-",
+  "examples": [
+    "Apache/2.0.58 HP-UX_Apache-based_Web_Server",
+    "system=\"UNIX/HPUX\", leap=0, stratum=3, rootdelay=1.16,\n      rootdispersion=1.89, peer=52828, refid=A.B.C.D,\n      reftime=0xd2ec64af.5cca1000, poll=10, clock=0xd2ec6545.46514000,\n      phase=-1.080, freq=-2231.51, error=0.40",
+    "xrexecd: Login incorrect.",
+    "xremshd: getservbyname",
+    "xremshd: Kerberos Authentication not enabled.",
+    "xremshd: Error! Kerberos authentication failed",
+    "HP-UX hostname B.10.20 A 9000/820 2006447661",
+    "SFAtVVggY3RvdXQgQi4xMS4xMSBVIDkwMDAvODAwICh0YykKCmxvZ2luOiA="
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mediatomb_mediatomb_0_11_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MEDIATOMB_MEDIATOMB_0_11_0",
+  "taxonomy_name": "mediatomb mediatomb (0.11.0)",
+  "vendor": "mediatomb",
+  "product": "mediatomb (0.11.0)",
+  "source": {
+    "type": "recog",
+    "file": "MEDIATOMB_MEDIATOMB_0_11_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mediatomb_mediatomb_0_11_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f972c37bf444fb1925a2c97812e2c1eb",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "mediatomb (0.11.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "f972c37bf444fb1925a2c97812e2c1eb"
+  ]
+}

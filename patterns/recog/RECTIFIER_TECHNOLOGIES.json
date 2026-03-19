@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rectifier_technologies",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RECTIFIER_TECHNOLOGIES",
+  "taxonomy_name": "Rectifier Technologies",
+  "vendor": "Rectifier Technologies",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "RECTIFIER_TECHNOLOGIES.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_rectifier_technologies_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Rectifier Technologies Pacific (WebCSU \\S+) V(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Rectifier Technologies Pacific WebCSU - version variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Rectifier Technologies Pacific WebCSU 169-412 V1.15",
+    "Rectifier Technologies Pacific WebCSU 169-412 V1.28",
+    "Rectifier Technologies Pacific WebCSU 169-412 V1.30"
+  ]
+}

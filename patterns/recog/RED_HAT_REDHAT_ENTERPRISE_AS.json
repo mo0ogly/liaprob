@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_redhat_enterprise_as",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_REDHAT_ENTERPRISE_AS",
+  "taxonomy_name": "Red Hat RedHat Enterprise AS",
+  "vendor": "Red Hat",
+  "product": "RedHat Enterprise AS",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_REDHAT_ENTERPRISE_AS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_redhat_enterprise_as_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^Red Hat Enterprise Linux AS release (.*) \\(.*\\).*Kernel (.*) on a[^ ]* ([^ ]*\\d)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "RedHat Enterprise Linux AS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "UmVkIEhhdCBFbnRlcnByaXNlIExpbnV4IEFTIHJlbGVhc2UgNS44IChUaWthbmdhKQpLZXJuZWwgM\n      i42LjE4LTMwOC4xMS4xLmVsNSBvbiBhbiB4ODZfNjQKbG9naW46"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kerio_esmtp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KERIO_ESMTP",
+  "taxonomy_name": "Kerio ESMTP",
+  "vendor": "Kerio",
+  "product": "ESMTP",
+  "source": {
+    "type": "recog",
+    "file": "KERIO_ESMTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_kerio_esmtp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Kerio Connect (\\d\\.[\\d.]+) (?:patch (\\d) )?ESMTP ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) Kerio Connect (\\d\\.[\\d.]+) (?:patch (\\d) )?ESMTP ready$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Kerio Connect ESMTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar Kerio Connect 8.0.2 ESMTP ready",
+    "foo.bar Kerio Connect 9.2.5 patch 3 ESMTP ready"
+  ]
+}

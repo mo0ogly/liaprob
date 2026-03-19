@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-novell_netware_enterprise_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOVELL_NETWARE_ENTERPRISE_WEB_SERVER",
+  "taxonomy_name": "Novell NetWare Enterprise Web Server",
+  "vendor": "Novell",
+  "product": "NetWare Enterprise Web Server",
+  "source": {
+    "type": "recog",
+    "file": "NOVELL_NETWARE_ENTERPRISE_WEB_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_novell_netware_enterprise_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^NetWare-Enterprise-Web-Server/(\\d+\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^NetWare-Enterprise-Web-Server/(\\d+\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "NetWare Enterprise Web Server (runs on NetWare 5.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:novell:netware_enterprise_web_server:{version}",
+  "examples": [
+    "NetWare-Enterprise-Web-Server/5.1"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zebra_hw_product_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEBRA_HW_PRODUCT_FIRMWARE",
+  "taxonomy_name": "Zebra {hw.product} Firmware",
+  "vendor": "Zebra",
+  "product": "{hw.product} Firmware",
+  "source": {
+    "type": "recog",
+    "file": "ZEBRA_HW_PRODUCT_FIRMWARE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    67,
+    68
+  ],
+  "probes": [
+    {
+      "id": "recog_zebra_hw_product_firmware_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Zebra Technologies ZTC (Z[T|D|Q]\\d{3})-\\d{3}dpi\\s(?:ZPL|CPCL)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zebra Label Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_zebra_hw_product_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(ZBR-\\d+) Version (\\S+) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zebra ZebraNet Print Server FTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp",
+    "dhcp"
+  ],
+  "examples": [
+    "Zebra Technologies ZTC ZD410-203dpi ZPL",
+    "Zebra Technologies ZTC ZQ620-203dpi ZPL",
+    "Zebra Technologies ZTC ZT230-203dpi ZPL",
+    "Zebra Technologies ZTC ZQ630-203dpi CPCL",
+    "ZBR-46686 Version 7.02 ready.",
+    "ZBR-79071 Version V56.17.5Z ready.",
+    "ZBR-46687 Version 7.02 ready."
+  ]
+}

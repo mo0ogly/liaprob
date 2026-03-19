@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-global_technology_associates_gnat_box",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GLOBAL_TECHNOLOGY_ASSOCIATES_GNAT_BOX",
+  "taxonomy_name": "Global Technology Associates GNAT Box",
+  "vendor": "Global Technology Associates",
+  "product": "GNAT Box",
+  "source": {
+    "type": "recog",
+    "file": "GLOBAL_TECHNOLOGY_ASSOCIATES_GNAT_BOX.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_global_technology_associates_gnat_box_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^500[ -]Don't you wish! *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GNAT box SMTP"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "501[ -]System error\\. *",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GNAT Box SMTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-argosoft_mail_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARGOSOFT_MAIL_SERVER",
+  "taxonomy_name": "ArGoSoft Mail Server",
+  "vendor": "ArGoSoft",
+  "product": "Mail Server",
+  "source": {
+    "type": "recog",
+    "file": "ARGOSOFT_MAIL_SERVER.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_argosoft_mail_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ArGoSoft Mail Server, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ArGoSoft Mail Server, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ArGoSoft Mail Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:(\\S{1,512}) {1,8})?ArGoSoft Mail Server Freeware, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:(\\S{1,512}) {1,8})?ArGoSoft Mail Server Freeware, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "ArGoSoft Mail Server - freeware version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:(\\S{1,512}) {1,8})?ArGoSoft Mail Server Pro for WinNT\\/2000(?:\\/XP)?, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:(\\S{1,512}) {1,8})?ArGoSoft Mail Server Pro for WinNT\\/2000(?:\\/XP)?, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "ArGoSoft Mail Server - Pro version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -]This is ArGoSoft Mail Server, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^214[ -]This is ArGoSoft Mail Server, Version [^ ]+ \\(([^ ]+\\.[^ ]+\\.[^ ]+\\.[^ ]+)\\) *$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ArgoSoft mail server HELP response with version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*support@argosoft\\.com *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ArgoSoft mail server HELP response"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:argosoft:mail_server:{version}",
+  "examples": [
+    "ArGoSoft Mail Server, Version 1.4 (1.4.0.7)",
+    "foo.bar ArGoSoft Mail Server Freeware, Version 1.8 (1.8.8.8)",
+    "ArGoSoft Mail Server Freeware, Version 1.8 (1.8.8.8)",
+    "ArGoSoft Mail Server Pro for WinNT/2000, Version 1.61 (1.6.1.8)",
+    "ArGoSoft Mail Server Pro for WinNT/2000/XP, Version 1.8 (1.8.9.5)",
+    "foo.bar ArGoSoft Mail Server Pro for WinNT/2000/XP, Version 1.8 (1.8.9.5)",
+    "214-This is ArGoSoft Mail Server, Version 1.4 (1.4.0.3)",
+    "214-To report bug, send mail to support@argosoft.com"
+  ]
+}

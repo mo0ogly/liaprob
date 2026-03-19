@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-alcatel_timos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALCATEL_TIMOS",
+  "taxonomy_name": "ALCATEL TimOS",
+  "vendor": "ALCATEL",
+  "product": "TimOS",
+  "source": {
+    "type": "recog",
+    "file": "ALCATEL_TIMOS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_alcatel_timos_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^TiMOS-[CB]-([\\S]+) (?:both|cpm)/([\\w]+) ALCATEL (SR [\\S]+) Copyright.*Login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ALCATEL Service Router running TiMOS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "VGlNT1MtQy0xMi4wLlIxMiBjcG0vaG9wczY0IEFMQ0FURUwgU1IgNzc1MCBDb3B5cmlnaHQgK\n      GMpIDIwMDAtMjAxNSBBbGNhdGVsLUx1Y2VudC4NDQpCYW5uZXIgU2hvcnRlbmVkIEZvciANDQ\n      pCcmV2aXR5DQpMb2dpbjoK"
+  ]
+}

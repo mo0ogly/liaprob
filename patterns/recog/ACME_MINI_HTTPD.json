@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-acme_mini_httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ACME_MINI_HTTPD",
+  "taxonomy_name": "ACME mini_httpd",
+  "vendor": "ACME",
+  "product": "mini_httpd",
+  "source": {
+    "type": "recog",
+    "file": "ACME_MINI_HTTPD.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_acme_mini_httpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^mini_httpd$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "ACME mini_httpd"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^mini_httpd/((?:\\d+\\.)*\\d+) \\S*$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^mini_httpd/((?:\\d+\\.)*\\d+) \\S*$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "ACME mini_httpd with version and date"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^[a-f\\d]{7,8}-[a-f\\d]{3,4}-[a-f\\d]{3,4}-[a-f\\d]{3,4}-[a-f\\d]{10,12}$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "ACME mini_httpd with randomized Server header"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:acme:mini_httpd:-",
+  "examples": [
+    "mini_httpd",
+    "mini_httpd/1.14 23jun2000",
+    "mini_httpd/1 23jun2000",
+    "a74b7cd4-4a4e-4115-7a48-1c7ebb4ae45b",
+    "f09f73f0-cac6-422-3660-32ac658c5ae7",
+    "f24ddd9c-e2a6-23c-ec95-4563173bbe"
+  ]
+}

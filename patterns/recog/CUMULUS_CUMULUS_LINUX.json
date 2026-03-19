@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cumulus_cumulus_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CUMULUS_CUMULUS_LINUX",
+  "taxonomy_name": "Cumulus Cumulus Linux",
+  "vendor": "Cumulus",
+  "product": "Cumulus Linux",
+  "source": {
+    "type": "recog",
+    "file": "CUMULUS_CUMULUS_LINUX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cumulus_cumulus_linux_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cumulus Linux (\\S+) \\(Linux Kernel ([^\\)]+)\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cumulus Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:cumulusnetworks:cumulus_linux:{os.version}",
+  "examples": [
+    "Cumulus Linux 3.7.2 (Linux Kernel 4.1.33-1+cl3u17)"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netscape_messaging_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETSCAPE_MESSAGING_SERVER",
+  "taxonomy_name": "Netscape Messaging Server",
+  "vendor": "Netscape",
+  "product": "Messaging Server",
+  "source": {
+    "type": "recog",
+    "file": "NETSCAPE_MESSAGING_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_netscape_messaging_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP service \\(Netscape Messaging Server ([^ ]+\\.[^ ]+) Patch ([^ ]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP service \\(Netscape Messaging Server ([^ ]+\\.[^ ]+) Patch ([^ ]+)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Netscape Messaging Server - with patch number"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP server \\(Netscape Messaging Server - Version ([\\d.]+)\\) ready (\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP server \\(Netscape Messaging Server - Version ([\\d.]+)\\) ready (\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Netscape Messaging Server - w/o patch number"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:netscape:messaging_server:{version}",
+  "examples": [
+    "foo.bar ESMTP service (Netscape Messaging Server 4.15 Patch 7 (built Sep 12 2001))",
+    "foo.bar ESMTP server (Netscape Messaging Server - Version 3.6) ready Thu, 30 Nov 2017 04:19:10 -0500"
+  ]
+}

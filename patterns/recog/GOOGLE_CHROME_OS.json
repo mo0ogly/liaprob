@@ -1,0 +1,110 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-google_chrome_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GOOGLE_CHROME_OS",
+  "taxonomy_name": "Google Chrome OS",
+  "vendor": "Google",
+  "product": "Chrome OS",
+  "source": {
+    "type": "recog",
+    "file": "GOOGLE_CHROME_OS.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_google_chrome_os_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^chromeos$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Device running ChromeOS"
+        }
+      ]
+    },
+    {
+      "id": "recog_google_chrome_os_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^21d3fd00021d21d21c21d3fd21d21d89188428dae58757cf803176e9701156$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Chromecast"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Eureka Gen1 ICA,OU=Google TV,O=Google Inc,L=Mountain View,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Google Chromecast Gen 1"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Chromecast ICA (\\d+)\\s*\\(?([^,\\)]*)\\)?,OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Google Chromecast"
+        },
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=atvremote/[a-z_]+/([a-z]+)/Chromecast/",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Google Chromecast - mDNS"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([a-zA-Z0-9]{5,12}) ([a-zA-Z0-9]{12}),OU=(?:Cast|Google TV),O=Google Inc,L=Mountain View,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Google Chromecast"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/o:google:chrome_os:-",
+  "examples": [
+    "chromeos",
+    "21d3fd00021d21d21c21d3fd21d21d89188428dae58757cf803176e9701156",
+    "CN=Eureka Gen1 ICA,OU=Google TV,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=Chromecast ICA 3,OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=Chromecast ICA 4 (Audio),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=Chromecast ICA 5 (4K),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=Chromecast ICA 6 (Audio Assist),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=Chromecast ICA 7 (Audio Assist 2),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=Chromecast ICA 9 (Audio Assist),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US",
+    "CN=Chromecast ICA 11 (Video Assist),OU=Cast,O=Google Inc,L=Mountain View,ST=California,C=US"
+  ]
+}

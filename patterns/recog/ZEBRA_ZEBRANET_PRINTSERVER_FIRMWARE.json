@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zebra_zebranet_printserver_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZEBRA_ZEBRANET_PRINTSERVER_FIRMWARE",
+  "taxonomy_name": "Zebra ZebraNet PrintServer Firmware",
+  "vendor": "Zebra",
+  "product": "ZebraNet PrintServer Firmware",
+  "source": {
+    "type": "recog",
+    "file": "ZEBRA_ZEBRANET_PRINTSERVER_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_zebra_zebranet_printserver_firmware_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^ZebraNet PrintServer$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Zebra ZebraNet PrintServer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "ZebraNet PrintServer"
+  ]
+}

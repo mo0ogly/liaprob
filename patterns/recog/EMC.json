@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-emc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMC",
+  "taxonomy_name": "EMC",
+  "vendor": "EMC",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "EMC.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_emc_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:Connectrix )?(DS[-_]\\d\\d\\d\\d\\S)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "EMC Connectrix SAN switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(CX\\S+) - Flare (\\d\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "EMC Clariion NAS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Connectrix DS_4100B",
+    "Connectrix DS_5000B",
+    "DS_4100B",
+    "DS-5000B",
+    "CX3-10c - Flare 3.26.0.10.5.032",
+    "CX300 - Flare 2.16.0.300.5.012",
+    "CX400 - Flare 2.19.0.400.5.040",
+    "CX500 - Flare 2.07.0.500.5.020",
+    "CX700 - Flare 2.24.0.700.5.022"
+  ]
+}

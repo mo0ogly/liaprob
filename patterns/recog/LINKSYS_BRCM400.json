@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-linksys_brcm400",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LINKSYS_BRCM400",
+  "taxonomy_name": "Linksys BRCM400",
+  "vendor": "Linksys",
+  "product": "BRCM400",
+  "source": {
+    "type": "recog",
+    "file": "LINKSYS_BRCM400.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_linksys_brcm400_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^LINUX/([\\d\\.]+) UPnP/[\\d\\.]+ BRCM400/([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^LINUX/([\\d\\.]+) UPnP/[\\d\\.]+ BRCM400/([\\d\\.]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Belkin/Linksys BRCM400 Wireless Router UPnP Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "LINUX/2.4 UPnP/1.0 BRCM400/1.0"
+  ]
+}

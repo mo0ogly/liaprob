@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gordano_ntmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GORDANO_NTMAIL",
+  "taxonomy_name": "Gordano NTMail",
+  "vendor": "Gordano",
+  "product": "NTMail",
+  "source": {
+    "type": "recog",
+    "file": "GORDANO_NTMAIL.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_gordano_ntmail_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) NTMail \\(v(\\d+\\.\\d+\\.\\d+)/([^ ]+)\\) ready for ESMTP transfer *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) NTMail \\(v(\\d+\\.\\d+\\.\\d+)/([^ ]+)\\) ready for ESMTP transfer *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "NTMail (http://www.gordano.com)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) WindowsNT SMTP Server v([^ ]+\\.[^ ]+\\.[^ ]+)/([^ ]+)/SP ESMTP ready at (.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) WindowsNT SMTP Server v([^ ]+\\.[^ ]+\\.[^ ]+)/([^ ]+)/SP ESMTP ready at (.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "NTMail - versions 3.x and earlier (it was called Internet Shopper's something or other)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^557[ -]5\\.5\\.2 String does not match anything\\. *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Gordano NTMail - seen this on NTMail 4.30.0012, NTMail 5.06.0016"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar NTMail (v7.02.3037/NU1319.01.5b000000) ready for ESMTP transfer",
+    "foo.bar WindowsNT SMTP Server v3.03.0018/7.aavn/SP ESMTP ready at Thu, 30 Nov 2017 10:15:31 +0100"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sphera_qpopper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPHERA_QPOPPER",
+  "taxonomy_name": "Sphera Qpopper",
+  "vendor": "Sphera",
+  "product": "Qpopper",
+  "source": {
+    "type": "recog",
+    "file": "SPHERA_QPOPPER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    110,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_sphera_qpopper_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Qpopper \\(version (\\d+\\.\\d+\\.\\d+), modified by Sphera Technologies\\) at (.+) starting\\.",
+          "confidence_delta": 0.4,
+          "version_extract": "^Qpopper \\(version (\\d+\\.\\d+\\.\\d+), modified by Sphera Technologies\\) at (.+) starting\\.",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Qpopper with Sphera mods"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pop3"
+  ],
+  "examples": [
+    "Qpopper (version 4.0.3, modified by Sphera Technologies) at domain starting.  <xxx@domain>"
+  ]
+}

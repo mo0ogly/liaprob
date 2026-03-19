@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-emweb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMWEB",
+  "taxonomy_name": "EmWeb",
+  "vendor": "",
+  "product": "EmWeb",
+  "source": {
+    "type": "recog",
+    "file": "EMWEB.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_emweb_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(Agranat|Conexant|(?:Globespan)?Virata)-EmWeb/(R[\\d_]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(Agranat|Conexant|(?:Globespan)?Virata)-EmWeb/(R[\\d_]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "EmWeb variants"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "Agranat-EmWeb/R4_01",
+    "Agranat-EmWeb/R5_1_2",
+    "Agranat-EmWeb/R5_2_4",
+    "Agranat-EmWeb/R5_2_6",
+    "Conexant-EmWeb/R6_1_0",
+    "ISOS/9.0 UPnP/1.0 Conexant-EmWeb/R6_1_0",
+    "Nucleus/4.3 UPnP/1.0 Virata-EmWeb/R6_2_0",
+    "Unknown/0.0 UPnP/1.0 Conexant-EmWeb/R6_1_0",
+    "Unknown/0.0 UPnP/1.0 GlobespanVirata-EmWeb/R6_1_0",
+    "Unknown/0.0 UPnP/1.0 Virata-EmWeb/R6_1_0"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-gfi_kerio_connect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GFI_KERIO_CONNECT",
+  "taxonomy_name": "GFI Kerio Connect",
+  "vendor": "GFI",
+  "product": "Kerio Connect",
+  "source": {
+    "type": "recog",
+    "file": "GFI_KERIO_CONNECT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_gfi_kerio_connect_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Kerio Connect ([\\d.]+)(?: patch (\\d))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Kerio Connect ([\\d.]+)(?: patch (\\d))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "GFI Kerio Connect"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "Kerio Connect 8.2.2",
+    "Kerio Connect 9.2.12 patch 1"
+  ]
+}

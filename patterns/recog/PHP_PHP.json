@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-php_php",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHP_PHP",
+  "taxonomy_name": "PHP PHP",
+  "vendor": "PHP",
+  "product": "PHP",
+  "source": {
+    "type": "recog",
+    "file": "PHP_PHP.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_php_php_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(PHPSESSI(?:D|ON))=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PHP - http://www.php.net/ref.session"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^PHP/([0-9.]+)$",
+          "confidence_delta": 0.4,
+          "field": "x-powered-by",
+          "version_extract": "^PHP/([0-9.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "PHP"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:php:php:-",
+  "examples": [
+    "PHPSESSID=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; Max-Age=0; path=/",
+    "PHPSESSION=vt2ag6n7t6ngvlg8adk4860h46; path=/",
+    "PHP/8.2.14"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bitvise_winsshd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BITVISE_WINSSHD",
+  "taxonomy_name": "Bitvise WinSSHD",
+  "vendor": "Bitvise",
+  "product": "WinSSHD",
+  "source": {
+    "type": "recog",
+    "file": "BITVISE_WINSSHD.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_bitvise_winsshd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([\\d.]{1,8}) sshlib: WinSSHD ([\\w.-]*)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([\\d.]{1,8}) sshlib: WinSSHD ([\\w.-]*)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Bitvise WinSSHD (which uses Bitvise sshlib)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([\\d.]{1,8}) FlowSsh: (?:Bitvise SSH Server \\(WinSSHD\\)|WinSSHD) ([\\d\\.]+):?",
+          "confidence_delta": 0.4,
+          "version_extract": "^([\\d.]{1,8}) FlowSsh: (?:Bitvise SSH Server \\(WinSSHD\\)|WinSSHD) ([\\d\\.]+):?",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Bitvise WinSSHD (which uses Bitvise flowssh) with version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([\\d.]{1,8}) FlowSsh: (?:Bitvise SSH Server \\(WinSSHD\\)|WinSSHD)(?: :.*)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Bitvise WinSSHD (which uses Bitvise flowssh) without version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "1.78 sshlib: WinSSHD 4.15a",
+    "1.03 FlowSsh: WinSSHD 5.09",
+    "1.07 FlowSsh: WinSSHD 5.20: free only for personal non-commercial use",
+    "5.21 FlowSsh: Bitvise SSH Server (WinSSHD) 6.03: free only for personal non-commercial use",
+    "9.99 FlowSsh: Bitvise SSH Server (WinSSHD)",
+    "9.99 FlowSsh: Bitvise SSH Server (WinSSHD) : free only for personal non-commercial use"
+  ]
+}

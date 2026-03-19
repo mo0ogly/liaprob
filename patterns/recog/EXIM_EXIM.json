@@ -1,0 +1,182 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-exim_exim",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EXIM_EXIM",
+  "taxonomy_name": "exim exim",
+  "vendor": "exim",
+  "product": "exim",
+  "source": {
+    "type": "recog",
+    "file": "EXIM_EXIM.json",
+    "fingerprint_count": 15
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 15 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_exim_exim_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ESMTP Exim ?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d{3,4})?)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - without version string or hostname - timestamp optional"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^ ?([^, ]{1,512}),? +ESMTP \\(?Exim +(\\d+\\.[\\d_.bdRC-]+)\\)?(?: +#\\d+)? ?.?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d{3,4})?) *(?:We do not authorize the use of this system to transport unsolicited, and\\/or bulk e-mail.)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^ ?([^, ]{1,512}),? +ESMTP \\(?Exim +(\\d+\\.[\\d_.bdRC-]+)\\)?(?: +#\\d+)? ?.?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d{3,4})?) *(?:We do not authorize the use of this system to transport unsolicited, and\\/or bulk e-mail.)?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Exim - with version string and optional timestamp"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^, ]{1,512}),? ESMTP Exim +(\\d+) ((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^([^, ]{1,512}),? ESMTP Exim +(\\d+) ((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Exim - with digit only version string and optional timestamp"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^, ]{1,512}),? ESMTP Exim +(\\d+\\.[\\d_.]+)(?: +#\\d)? Ubuntu ((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^([^, ]{1,512}),? ESMTP Exim +(\\d+\\.[\\d_.]+)(?: +#\\d)? Ubuntu ((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Exim - with version string and optional timestamp (Ubuntu)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^([^, ]{1,512}),? ESMTP Exim(?: +#\\d)? *((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?) *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - without version string and with optional timestamp"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^ ?ESMTP Exim (\\d+\\.[\\d_.]+)(?: +#\\d)? ?.?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i)^ ?ESMTP Exim (\\d+\\.[\\d_.]+)(?: +#\\d)? ?.?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?) *$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Exim - without hostname"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ ?([^, ]{1,512}) Exim ESMTP Service ready$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - with hostname"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^500 No way!$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^550[ -]EXPN not available to \\(.+\\) \\[.+\\] *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - expn variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^550[ -]EXPN not available to [^ ]+ \\(.+\\) \\[.+\\] *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - expn variant 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "250 .* is syntactically correct *",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "exim"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^550[ -]EXPN not available *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - expn not available variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^252[ -]VRFY not available *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - vrfy not available variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^250[ -]<.+> is deliverable *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - vrfy variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^550[ -]<.+> is not deliverable *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Exim - not deliverable variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:exim:exim:-",
+  "examples": [
+    "ESMTP Exim",
+    "ESMTP Exim Thu, 29 Apr 2021 06:46:16 +0200",
+    "foo.bar  ESMTP Exim 4.91 Thu, 29 Apr 2021 05:41:36 +400",
+    "foo.bar ESMTP Exim 4.89 \"",
+    "foo.bar, ESMTP EXIM 4.83",
+    "foo.bar ESMTP Exim 4.84_2",
+    "foo.bar ESMTP Exim 4.90_RC3 Thu, 30 Nov 2017 03:52:16 -0700",
+    "foo.bar ESMTP Exim 4.89_1b Thu, 05 Apr 2018 21:30:37 +0200",
+    "foo.bar ESMTP Exim 4.89-122312 Thu, 16 Nov 2017 10:33:38 +0200",
+    "foo.bar ESMTP (Exim 4.87) Thu, 30 Nov 2017 03:25:58 -0800"
+  ]
+}

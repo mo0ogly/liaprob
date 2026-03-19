@@ -1,0 +1,119 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-drupal_cms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DRUPAL_CMS",
+  "taxonomy_name": "Drupal CMS",
+  "vendor": "Drupal",
+  "product": "CMS",
+  "source": {
+    "type": "recog",
+    "file": "DRUPAL_CMS.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_drupal_cms_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^f0ee98b4394dfdab17c16245dd799204$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Drupal CMS"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b6341dfc213100c61db4fb8775878cec$",
+          "confidence_delta": 0.4,
+          "version_static": "7.x",
+          "case_insensitive": true,
+          "note": "Drupal CMS (7.x)"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^cf2445dcb53a031c02f9b57e2199bc03$",
+          "confidence_delta": 0.4,
+          "version_static": "8.0.0",
+          "case_insensitive": true,
+          "note": "Drupal CMS (8.0.0)"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^fe22dd2bb09daccf58256611ac491469$",
+          "confidence_delta": 0.4,
+          "version_static": "9.2+",
+          "case_insensitive": true,
+          "note": "Drupal CMS (9.2+)"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^e6a9dc66179d8c9f34288b16a02f987e$",
+          "confidence_delta": 0.4,
+          "version_static": "5.10",
+          "case_insensitive": true,
+          "note": "Drupal CMS (5.10)"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^a4819787db1dabe1a6b669d5d6df3bfd$",
+          "confidence_delta": 0.4,
+          "version_static": "2.x-4.x",
+          "case_insensitive": true,
+          "note": "Drupal CMS (2.x-4.x)"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Drupal|TurnKey Drupal\\d+|Select an installation profile)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Drupal CMS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:drupal:drupal:-",
+  "examples": [
+    "f0ee98b4394dfdab17c16245dd799204",
+    "b6341dfc213100c61db4fb8775878cec",
+    "cf2445dcb53a031c02f9b57e2199bc03",
+    "fe22dd2bb09daccf58256611ac491469",
+    "e6a9dc66179d8c9f34288b16a02f987e",
+    "a4819787db1dabe1a6b669d5d6df3bfd",
+    "Drupal",
+    "TurnKey Drupal8",
+    "TurnKey Drupal7",
+    "Select an installation profile"
+  ]
+}

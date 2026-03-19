@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nominum_cacheserve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOMINUM_CACHESERVE",
+  "taxonomy_name": "Nominum CacheServe",
+  "vendor": "Nominum",
+  "product": "CacheServe",
+  "source": {
+    "type": "recog",
+    "file": "NOMINUM_CACHESERVE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_nominum_cacheserve_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Nominum Vantio(?: CacheServe)? ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Nominum Vantio(?: CacheServe)? ([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Nominum Vantio CacheServe"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Nominum Vantio ([\\d.]+) \\(build (\\d+)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Nominum Vantio ([\\d.]+) \\(build (\\d+)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Nominum Vantio CacheServe, with build"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "Nominum Vantio 4.3.0.2",
+    "Nominum Vantio CacheServe 7.2.1.3",
+    "Nominum Vantio 5.4.5.1 (build 114872)"
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avocent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVOCENT",
+  "taxonomy_name": "Avocent",
+  "vendor": "Avocent",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "AVOCENT.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_avocent_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(DSR\\d+) (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avocent DSR series KVM-over-IP"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(ESP-\\d+) MI V(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avocent ESP Serial Port"
+        }
+      ]
+    },
+    {
+      "id": "recog_avocent_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=avocent.com,OU=AESS,O=Avocent,L=Sunrise,ST=FL,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avocent KVM"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls",
+    "snmp"
+  ],
+  "examples": [
+    "DSR1010 03.00.01.00",
+    "DSR2030 03.04.00.07",
+    "DSR2161 03.00.01.00",
+    "DSR4010 03.00.00.02",
+    "DSR4020 03.06.01.07",
+    "DSR800 03.00.01.00",
+    "ESP-16 MI V3.13",
+    "ESP-16 MI V3.14b",
+    "ESP-2 MI V2.99",
+    "ESP-2 MI V3.08"
+  ]
+}

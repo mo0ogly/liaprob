@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-aruba_aos_10",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARUBA_AOS_10",
+  "taxonomy_name": "Aruba AOS-10",
+  "vendor": "Aruba",
+  "product": "AOS-10",
+  "source": {
+    "type": "recog",
+    "file": "ARUBA_AOS_10.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_aruba_aos_10_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "ArubaOS \\(MODEL: ([^\\)]+)\\), Version (10\\.[^\\s]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Aruba OS 10"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "ArubaOS (MODEL: Aruba7005), Version 10.7.0.1 SSR (91033)"
+  ]
+}

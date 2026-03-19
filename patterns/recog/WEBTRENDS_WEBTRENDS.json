@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-webtrends_webtrends",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBTRENDS_WEBTRENDS",
+  "taxonomy_name": "WebTrends WebTrends",
+  "vendor": "WebTrends",
+  "product": "WebTrends",
+  "source": {
+    "type": "recog",
+    "file": "WEBTRENDS_WEBTRENDS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_webtrends_webtrends_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(WEBTRENDS_?ID)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WebTrends"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "WEBTRENDS_ID=10.247.9.69.1618795409656141; path=/; expires=Tue, 19-Apr-22 01:23:29 GMT; domain=.foo.bar"
+  ]
+}

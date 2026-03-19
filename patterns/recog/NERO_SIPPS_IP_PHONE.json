@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nero_sipps_ip_phone",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NERO_SIPPS_IP_PHONE",
+  "taxonomy_name": "Nero SIPPS IP Phone",
+  "vendor": "Nero",
+  "product": "SIPPS IP Phone",
+  "source": {
+    "type": "recog",
+    "file": "NERO_SIPPS_IP_PHONE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_nero_sipps_ip_phone_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Nero SIPPS IP Phone Version ([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Nero SIPPS IP Phone Version ([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Nero SIPPS IP Phone"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Nero SIPPS IP Phone Version 2.0.51.16"
+  ]
+}

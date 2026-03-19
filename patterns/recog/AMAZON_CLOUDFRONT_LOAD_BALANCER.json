@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-amazon_cloudfront_load_balancer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMAZON_CLOUDFRONT_LOAD_BALANCER",
+  "taxonomy_name": "Amazon CloudFront Load Balancer",
+  "vendor": "Amazon",
+  "product": "CloudFront Load Balancer",
+  "source": {
+    "type": "recog",
+    "file": "AMAZON_CLOUDFRONT_LOAD_BALANCER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_amazon_cloudfront_load_balancer_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ERROR: The request could not be satisfied$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Amazon CloudFront web load balancer endpoint"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^CloudFront$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Amazon CloudFront web load balancer endpoint"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:amazon:amazon_cloudfront:-",
+  "examples": [
+    "ERROR: The request could not be satisfied",
+    "CloudFront"
+  ]
+}

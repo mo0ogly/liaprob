@@ -1,0 +1,93 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-savin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAVIN",
+  "taxonomy_name": "Savin",
+  "vendor": "Savin",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SAVIN.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_savin_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^SAVIN (\\S+) FTP server \\((.*)\\) ready.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SAVIN Printer FTP Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Savin (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Savin Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_savin_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^SAVIN (\\S+)(?: / .*)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Savin Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SAVIN ((?:\\S+ )?\\S+) (\\d\\S+) /",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Savin Printer - version variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "SAVIN 4075 FTP server (4.08) ready.",
+    "SAVIN 9025 FTP server (7.23) ready.",
+    "SAVIN 9050 FTP server (7.30) ready.",
+    "SAVIN 917 FTP server (9.03) ready.",
+    "SAVIN 917 FTP server (9.05.2) ready.",
+    "SAVIN C2525 FTP server (5.14) ready.",
+    "SAVIN C3528 FTP server (4.08.3) ready.",
+    "SAVIN C3528 FTP server (4.17) ready.",
+    "SAVIN C6055 FTP server (7.16) ready.",
+    "SAVIN C9145 FTP server (10.51) ready."
+  ]
+}

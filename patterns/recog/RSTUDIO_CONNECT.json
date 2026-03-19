@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-rstudio_connect",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RSTUDIO_CONNECT",
+  "taxonomy_name": "RStudio Connect",
+  "vendor": "RStudio",
+  "product": "Connect",
+  "source": {
+    "type": "recog",
+    "file": "RSTUDIO_CONNECT.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_rstudio_connect_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^23ab9cf3907dfc3b047d8b14e7303d0d$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "RStudio"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^RStudio Sign In$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "RStudio"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:rstudio:connect:-",
+  "examples": [
+    "23ab9cf3907dfc3b047d8b14e7303d0d",
+    "RStudio Sign In"
+  ]
+}

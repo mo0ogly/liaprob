@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_vms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_VMS",
+  "taxonomy_name": "HP VMS",
+  "vendor": "HP",
+  "product": "VMS",
+  "source": {
+    "type": "recog",
+    "file": "HP_VMS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_vms_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "OpenVMS.*Version\\sV([^\\s]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenVMS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "IFdlbGNvbWUgdG8gT3BlblZNUyAoVE0pIEFscGhhIE9wZXJhdGluZyBTeXN0Z\n      W0sIFZlcnNpb24gVjguNCAgICAgLSBOT1Q3MAoKClVzZXJuYW1lOiA="
+  ]
+}

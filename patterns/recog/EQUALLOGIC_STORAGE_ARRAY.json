@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-equallogic_storage_array",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EQUALLOGIC_STORAGE_ARRAY",
+  "taxonomy_name": "EqualLogic Storage Array",
+  "vendor": "EqualLogic",
+  "product": "Storage Array",
+  "source": {
+    "type": "recog",
+    "file": "EQUALLOGIC_STORAGE_ARRAY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_equallogic_storage_array_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"Equallogic \\(R\\) storage array\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ntpd running on an EqualLogic Storage Array that does not include the NTP version"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "processor=\"Working\", system=\"Equallogic (R) storage array\", leap=3,\n      stratum=16, precision=-7, rootdelay=0.000, rootdispersion=11715.765,\n      peer=0, refid=0.0.0.0, reftime=0x00000000.00000000, poll=6,\n      clock=0xd229efe1.5559b3d0, state=1, phase=0.000, frequency=0.000,\n      jitter=0.000, stability=0.000"
+  ]
+}

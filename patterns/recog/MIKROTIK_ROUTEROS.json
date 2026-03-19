@@ -1,0 +1,129 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mikrotik_routeros",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MIKROTIK_ROUTEROS",
+  "taxonomy_name": "MikroTik RouterOS",
+  "vendor": "MikroTik",
+  "product": "RouterOS",
+  "source": {
+    "type": "recog",
+    "file": "MIKROTIK_ROUTEROS.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    22,
+    23,
+    80,
+    443,
+    445,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mikrotik_routeros_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) FTP server \\(MikroTik ([\\d\\.]+)\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MikroTik"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.{0,1000} FTP server \\(MikroTik (\\d\\.[\\w\\.]+)\\) ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MikroTik with description"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^MikrotikSMB$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mikrotik"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ROSSSH$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MikroTik RouterOS sshd"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*MikroTik v([\\w.]+)(?: \\([\\w-]+\\))?(?:\\r|\\n)+Login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MikroTik RouterOS"
+        }
+      ]
+    },
+    {
+      "id": "recog_mikrotik_routeros_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^RouterOS router configuration page$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MikroTik RouterOS router configuration page"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^RouterOS/(\\S+)UPnP/1.0 MikroTik UPnP/1.0$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "MikroTik RouterOS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh",
+    "telnet",
+    "smb",
+    "http",
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:mikrotik:routeros:{os.version}",
+  "examples": [
+    "example.com FTP server (MikroTik 6.18) ready",
+    "Super Thing_Place-  FTP server (MikroTik 6.43.16) ready",
+    "Super Thing_Place-  FTP server (MikroTik 6.43.16beta2) ready",
+    "Super Thing_Place-  FTP server (MikroTik 6.43.16rc56) ready",
+    "RouterOS router configuration page",
+    "RouterOS/6.43UPnP/1.0 MikroTik UPnP/1.0",
+    "MikrotikSMB",
+    "ROSSSH",
+    "TWlrcm9UaWsgdjUuMg0KTG9naW46Cg==",
+    "TWlrcm9UaWsgdjYuNDIuMyAoc3RhYmxlKQ0KTG9naW46Cg=="
+  ]
+}

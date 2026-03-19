@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bmpx_bmpx_0_40_14",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BMPX_BMPX_0_40_14",
+  "taxonomy_name": "bmpx bmpx (0.40.14)",
+  "vendor": "bmpx",
+  "product": "bmpx (0.40.14)",
+  "source": {
+    "type": "recog",
+    "file": "BMPX_BMPX_0_40_14.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_bmpx_bmpx_0_40_14_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^140e3eb3e173bfb8d15778a578a213aa",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "bmpx (0.40.14)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "140e3eb3e173bfb8d15778a578a213aa"
+  ]
+}

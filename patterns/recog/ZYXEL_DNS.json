@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-zyxel_dns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ZYXEL_DNS",
+  "taxonomy_name": "Zyxel DNS",
+  "vendor": "Zyxel",
+  "product": "DNS",
+  "source": {
+    "type": "recog",
+    "file": "ZYXEL_DNS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_zyxel_dns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^ZyWALL DNS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ZyWALL DNS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "ZyWALL DNS"
+  ]
+}

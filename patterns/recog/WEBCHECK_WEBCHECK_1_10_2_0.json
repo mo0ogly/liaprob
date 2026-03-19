@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-webcheck_webcheck_1_10_2_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBCHECK_WEBCHECK_1_10_2_0",
+  "taxonomy_name": "webcheck webcheck (1.10.2.0)",
+  "vendor": "webcheck",
+  "product": "webcheck (1.10.2.0)",
+  "source": {
+    "type": "recog",
+    "file": "WEBCHECK_WEBCHECK_1_10_2_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_webcheck_webcheck_1_10_2_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2507c0b0a60ecdc816ba45482affaedf",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "webcheck (1.10.2.0)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "2507c0b0a60ecdc816ba45482affaedf"
+  ]
+}

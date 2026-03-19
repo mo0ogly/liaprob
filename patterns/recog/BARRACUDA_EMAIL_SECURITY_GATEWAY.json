@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-barracuda_email_security_gateway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BARRACUDA_EMAIL_SECURITY_GATEWAY",
+  "taxonomy_name": "Barracuda Email Security Gateway",
+  "vendor": "Barracuda",
+  "product": "Email Security Gateway",
+  "source": {
+    "type": "recog",
+    "file": "BARRACUDA_EMAIL_SECURITY_GATEWAY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_barracuda_email_security_gateway_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([\\w.-]{1,512}) ESMTP \\([a-z0-9]{32}\\)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Barracuda Email Security Gateway - physical or virtual appliance"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "barracuda.foo.bar ESMTP (0a8d40ef45300cc1bd0f16ced5c9e6f1)"
+  ]
+}

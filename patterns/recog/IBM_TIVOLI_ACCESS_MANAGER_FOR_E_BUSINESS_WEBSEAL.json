@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_tivoli_access_manager_for_e_business_webseal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_TIVOLI_ACCESS_MANAGER_FOR_E_BUSINESS_WEBSEAL",
+  "taxonomy_name": "IBM Tivoli Access Manager for e-business WebSEAL",
+  "vendor": "IBM",
+  "product": "Tivoli Access Manager for e-business WebSEAL",
+  "source": {
+    "type": "recog",
+    "file": "IBM_TIVOLI_ACCESS_MANAGER_FOR_E_BUSINESS_WEBSEAL.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_tivoli_access_manager_for_e_business_webseal_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(AMWEBJCT!([^!]+)!([^=]+))=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Tivoli Access Manager for e-business WebSEAL\n      http://publib.boulder.ibm.com/infocenter/tivihelp/v2r1/index.jsp?topic=/com.ibm.itame.doc/am60_webseal_admin180.htm"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(PD-S-SESSION-ID|PD-H-SESSION-ID|PD_STATEFUL_[^=]+)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Tivoli Access Manager for e-business WebSeal\n      http://publib.boulder.ibm.com/infocenter/tivihelp/v2r1/index.jsp?topic=/com.ibm.itame.doc/am60_webseal_admin117.htm"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "AMWEBJCT!%2F4plportal!JSESSIONID=fQDCzpljFPMhMVaDUOD+uOBe.undefined; Path=/",
+    "PD-S-SESSION-ID=1_2_0_xRzIc55lBOTYkrYfW+qWHWGgdqlVKeEgwrhtKt+KRfq8R3lW; Path=/; Secure; HttpOnly",
+    "PD_STATEFUL_db45742c-3e5b-11e9-91da-00505682181c=%2F; Path=/"
+  ]
+}

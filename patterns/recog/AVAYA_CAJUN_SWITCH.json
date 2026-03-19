@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avaya_cajun_switch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVAYA_CAJUN_SWITCH",
+  "taxonomy_name": "Avaya Cajun Switch",
+  "vendor": "Avaya",
+  "product": "Cajun Switch",
+  "source": {
+    "type": "recog",
+    "file": "AVAYA_CAJUN_SWITCH.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_avaya_cajun_switch_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Avaya Cajun Switch Agent v(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avaya Cajun Switch"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Avaya Cajun Switch Agent v5.2.10",
+    "Avaya Cajun Switch Agent v5.4.2"
+  ]
+}

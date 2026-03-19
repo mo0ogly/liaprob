@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nortel_business_policy_switch_2000",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NORTEL_BUSINESS_POLICY_SWITCH_2000",
+  "taxonomy_name": "Nortel Business Policy Switch 2000",
+  "vendor": "Nortel",
+  "product": "Business Policy Switch 2000",
+  "source": {
+    "type": "recog",
+    "file": "NORTEL_BUSINESS_POLICY_SWITCH_2000.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_nortel_business_policy_switch_2000_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Business Policy Switch 2000.* SW:v([\\d.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nortel Business Policy Switch 2000"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Business Policy Switch 2000 HW:10 FW:3.6.0.1 SW:v3.1.6.02 ISVN:2"
+  ]
+}

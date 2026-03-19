@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unknown",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNKNOWN",
+  "taxonomy_name": "",
+  "vendor": "",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "UNKNOWN.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_unknown_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Speedport W ?(\\S+) (?:Typ [A|B] )?FTP Server v([\\d.]+) ready$$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FTPD on Speedport WLAN/ADSL routers (Deutsche Telekom mfg by misc)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "Speedport W 723V Typ B FTP Server v1.40.000 ready",
+    "Speedport W 921V FTP Server v1.39.000 ready",
+    "Speedport W722V FTP Server v1.18.000 ready"
+  ]
+}

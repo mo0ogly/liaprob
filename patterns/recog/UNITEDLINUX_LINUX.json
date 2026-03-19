@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-unitedlinux_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UNITEDLINUX_LINUX",
+  "taxonomy_name": "UnitedLinux Linux",
+  "vendor": "UnitedLinux",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "UNITEDLINUX_LINUX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_unitedlinux_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(UnitedLinux\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "UnitedLinux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Apache/1.3.26 (UnitedLinux) mod_ssl/2.8.10"
+  ]
+}

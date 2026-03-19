@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-webcit_webcit_7_37",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WEBCIT_WEBCIT_7_37",
+  "taxonomy_name": "webcit webcit (7.37)",
+  "vendor": "webcit",
+  "product": "webcit (7.37)",
+  "source": {
+    "type": "recog",
+    "file": "WEBCIT_WEBCIT_7_37.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_webcit_webcit_7_37_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ae59960e866e2730e99799ac034eacf7",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "webcit (7.37)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ae59960e866e2730e99799ac034eacf7"
+  ]
+}

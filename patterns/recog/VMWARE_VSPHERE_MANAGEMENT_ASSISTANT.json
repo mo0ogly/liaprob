@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vmware_vsphere_management_assistant",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE_VSPHERE_MANAGEMENT_ASSISTANT",
+  "taxonomy_name": "VMware vSphere Management Assistant",
+  "vendor": "VMware",
+  "product": "vSphere Management Assistant",
+  "source": {
+    "type": "recog",
+    "file": "VMWARE_VSPHERE_MANAGEMENT_ASSISTANT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_vmware_vsphere_management_assistant_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^\"vSphere Management Assistant ([\\d\\.]+)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware vSphere Management assistant, which is a virtual machine (https://www.vmware.com/support/developer/vima/)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "\"vSphere Management Assistant 4.1.0\""
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_ios_xe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_IOS_XE",
+  "taxonomy_name": "Cisco IOS-XE",
+  "vendor": "Cisco",
+  "product": "IOS-XE",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_IOS_XE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_ios_xe_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco IOS Software.*(?:Virtual XE Software|IOS-XE Software|IOSXE).*Version ([\\w.()]*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco IOS XE Software"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Cisco IOS Software [Everest], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 16.6.8, RELEASE SOFTWARE (fc3)",
+    "Cisco IOS Software, IOS-XE Software (PPC_LINUX_IOSD-ADVENTERPRISEK9-M), Version 15.1(3)S2, RELEASE SOFTWARE (fc1)",
+    "Cisco IOS Software [Dublin], Catalyst L3 Switch Software (CAT9K_LITE_IOSXE), Version 17.12.5, RELEASE SOFTWARE (fc5)"
+  ]
+}

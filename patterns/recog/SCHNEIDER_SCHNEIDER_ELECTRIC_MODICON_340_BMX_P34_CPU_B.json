@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-schneider_schneider_electric_modicon_340_bmx_p34_cpu_b",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCHNEIDER_SCHNEIDER_ELECTRIC_MODICON_340_BMX_P34_CPU_B",
+  "taxonomy_name": "Schneider Schneider Electric Modicon 340 / BMX P34 CPU B",
+  "vendor": "Schneider",
+  "product": "Schneider Electric Modicon 340 / BMX P34 CPU B",
+  "source": {
+    "type": "recog",
+    "file": "SCHNEIDER_SCHNEIDER_ELECTRIC_MODICON_340_BMX_P34_CPU_B.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_schneider_schneider_electric_modicon_340_bmx_p34_cpu_b_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8c291e32e7c7c65124d19eb17bceca87",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Schneider Electric Modicon 340 / BMX P34 CPU B"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "8c291e32e7c7c65124d19eb17bceca87"
+  ]
+}

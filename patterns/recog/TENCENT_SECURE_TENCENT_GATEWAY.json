@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tencent_secure_tencent_gateway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TENCENT_SECURE_TENCENT_GATEWAY",
+  "taxonomy_name": "Tencent Secure Tencent Gateway",
+  "vendor": "Tencent",
+  "product": "Secure Tencent Gateway",
+  "source": {
+    "type": "recog",
+    "file": "TENCENT_SECURE_TENCENT_GATEWAY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tencent_secure_tencent_gateway_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^stgw/([\\d.]+)_([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^stgw/([\\d.]+)_([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Tencent Secure Tencent Gateway"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "stgw/1.3.12.9_1.13.5"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-wordpress_wordpress",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WORDPRESS_WORDPRESS",
+  "taxonomy_name": "WordPress WordPress",
+  "vendor": "WordPress",
+  "product": "WordPress",
+  "source": {
+    "type": "recog",
+    "file": "WORDPRESS_WORDPRESS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_wordpress_wordpress_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:b231ad66a2a9b0eb06f72c4c88973039|e1e8bdc3ce87340ab6ebe467519cf245)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WordPress"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b231ad66a2a9b0eb06f72c4c88973039",
+    "e1e8bdc3ce87340ab6ebe467519cf245"
+  ]
+}

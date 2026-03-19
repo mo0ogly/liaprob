@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-jupyter_notebook",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "JUPYTER_NOTEBOOK",
+  "taxonomy_name": "Jupyter Notebook",
+  "vendor": "Jupyter",
+  "product": "Notebook",
+  "source": {
+    "type": "recog",
+    "file": "JUPYTER_NOTEBOOK.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_jupyter_notebook_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Jupyter Notebook|JupyterLab|Home Page - Select or create a notebook)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Jupyter Notebook Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:jupyter:notebook:-",
+  "examples": [
+    "Jupyter Notebook",
+    "JupyterLab",
+    "Home Page - Select or create a notebook"
+  ]
+}

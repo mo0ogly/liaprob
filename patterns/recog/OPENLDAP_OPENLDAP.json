@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-openldap_openldap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENLDAP_OPENLDAP",
+  "taxonomy_name": "OpenLDAP OpenLDAP",
+  "vendor": "OpenLDAP",
+  "product": "OpenLDAP",
+  "source": {
+    "type": "recog",
+    "file": "OPENLDAP_OPENLDAP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_openldap_openldap_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:\\x04..penLDAProotDSE)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenLDAP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:openldap:openldap:-",
+  "examples": [
+    "dm9iamVjdENsYXNzMRYEA3RvcAQPT3BlbkxEQVByb290RFNFMA==",
+    "BBVzdHJ1Y3R1cmFsT2JqZWN0Q2xhc3MxEQQPT3BlbkxEQVByb290RFNFMBwEDQ=="
+  ]
+}

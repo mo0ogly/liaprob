@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-plain_black_webgui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PLAIN_BLACK_WEBGUI",
+  "taxonomy_name": "Plain Black WebGUI",
+  "vendor": "Plain Black",
+  "product": "WebGUI",
+  "source": {
+    "type": "recog",
+    "file": "PLAIN_BLACK_WEBGUI.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_plain_black_webgui_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^wgSession=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Plain Black WebGUI - http://www.plainblack.com/webgui"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "wgSession=xngFQdcbCap87x6d8qc1YA; path=/; expires=Thu, 17-Apr-2031 02:29:05 GMT"
+  ]
+}

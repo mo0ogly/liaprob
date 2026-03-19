@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-software_house_hw_product_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOFTWARE_HOUSE_HW_PRODUCT_FIRMWARE",
+  "taxonomy_name": "Software House {hw.product} Firmware",
+  "vendor": "Software House",
+  "product": "{hw.product} Firmware",
+  "source": {
+    "type": "recog",
+    "file": "SOFTWARE_HOUSE_HW_PRODUCT_FIRMWARE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_software_house_hw_product_firmware_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^c7f62c79333a43b6cd3f24d9e9c69526$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iSTAR Ultra"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_software_house_hw_product_firmware_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=iSTAR Ultra",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iSTAR Ultra"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "c7f62c79333a43b6cd3f24d9e9c69526",
+    "CN=iSTAR Ultra,OU=Access Control and Video Division,O=Johnson Controls,L=Westford,ST=Massachusetts,C=US"
+  ]
+}

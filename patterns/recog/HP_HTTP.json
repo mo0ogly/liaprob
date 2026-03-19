@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_http",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_HTTP",
+  "taxonomy_name": "HP HTTP",
+  "vendor": "HP",
+  "product": "HTTP",
+  "source": {
+    "type": "recog",
+    "file": "HP_HTTP.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_http_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^CompaqHTTPServer/([0-9.]*)(?: HP System Management Homepage(?:/.*)?)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^CompaqHTTPServer/([0-9.]*)(?: HP System Management Homepage(?:/.*)?)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "HP/Compaq HTTP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^eHTTP[/ ]v?(\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^eHTTP[/ ]v?(\\d+\\.\\d+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "HTTP Server present on seemingly only HP ProCurve network devices"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^UOS$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HTTP Server that appears unique to Management Console on HP TippingPoint IPS Devices"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "CompaqHTTPServer/9.9 HP System Management Homepage/2.1.5.146",
+    "CompaqHTTPServer/9.9 HP System Management Homepage/3.0.1.73 httpd/2.2.6+",
+    "CompaqHTTPServer/9.9 HP System Management Homepage/6.0.0.96 httpd/2.2.6+",
+    "CompaqHTTPServer/9.9 HP System Management Homepage",
+    "CompaqHTTPServer/4.1",
+    "EHTTP/1.1",
+    "eHTTP v2.0",
+    "UOS"
+  ]
+}

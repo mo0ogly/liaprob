@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-openresty_openresty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENRESTY_OPENRESTY",
+  "taxonomy_name": "OpenResty OpenResty",
+  "vendor": "OpenResty",
+  "product": "OpenResty",
+  "source": {
+    "type": "recog",
+    "file": "OPENRESTY_OPENRESTY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_openresty_openresty_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^openresty\\/?([\\d.]+)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^openresty\\/?([\\d.]+)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenResty OpenResty"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:openresty:openresty:{version}",
+  "examples": [
+    "openresty",
+    "openresty/1.13.6.2"
+  ]
+}

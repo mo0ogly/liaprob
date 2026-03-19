@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xiongmai_technology_uc_httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XIONGMAI_TECHNOLOGY_UC_HTTPD",
+  "taxonomy_name": "Xiongmai Technology uc-httpd",
+  "vendor": "Xiongmai Technology",
+  "product": "uc-httpd",
+  "source": {
+    "type": "recog",
+    "file": "XIONGMAI_TECHNOLOGY_UC_HTTPD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_xiongmai_technology_uc_httpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^NETSurveillance WEB$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NetSurveillance web interface on DVR and IP Camera devices sourced from Xiongmai Technology"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^uc-httpd[ \\/]([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^uc-httpd[ \\/]([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Xiongmai Tech uc-httpd"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:xiongmaitech:uc-httpd:-",
+  "examples": [
+    "NETSurveillance WEB",
+    "uc-httpd 1.0.0",
+    "uc-httpd/1.0.0"
+  ]
+}

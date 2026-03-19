@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lucene_lucene_2_3_2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LUCENE_LUCENE_2_3_2",
+  "taxonomy_name": "lucene lucene (2.3.2)",
+  "vendor": "lucene",
+  "product": "lucene (2.3.2)",
+  "source": {
+    "type": "recog",
+    "file": "LUCENE_LUCENE_2_3_2.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lucene_lucene_2_3_2_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b8fe2ec1fcc0477c0d0f00084d824071",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "lucene (2.3.2)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b8fe2ec1fcc0477c0d0f00084d824071"
+  ]
+}

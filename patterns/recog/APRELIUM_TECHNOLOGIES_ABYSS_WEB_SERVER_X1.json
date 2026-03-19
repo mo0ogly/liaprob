@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-aprelium_technologies_abyss_web_server_x1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APRELIUM_TECHNOLOGIES_ABYSS_WEB_SERVER_X1",
+  "taxonomy_name": "Aprelium Technologies Abyss Web Server X1",
+  "vendor": "Aprelium Technologies",
+  "product": "Abyss Web Server X1",
+  "source": {
+    "type": "recog",
+    "file": "APRELIUM_TECHNOLOGIES_ABYSS_WEB_SERVER_X1.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_aprelium_technologies_abyss_web_server_x1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Abyss/(\\d\\.[\\d.]+)-X1-Win32 AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Abyss/(\\d\\.[\\d.]+)-X1-Win32 AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Aprelium Technologies Abyss Web Server X1 (free personal edition) on Windows"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Abyss/(\\d\\.[\\d.]+)-X1-Linux AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Abyss/(\\d\\.[\\d.]+)-X1-Linux AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Aprelium Technologies Abyss Web Server X1 (free personal edition) on Linux"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Abyss/(\\d\\.[\\d.]+)-X1-[mM]acOS (?:X )?AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Abyss/(\\d\\.[\\d.]+)-X1-[mM]acOS (?:X )?AbyssLib/(?:\\d\\.[\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Aprelium Technologies Abyss Web Server X1 (free personal edition) on macOS"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:aprelium:abyss_web_server_x1:{version}",
+  "examples": [
+    "Abyss/2.0.0.20-X1-Win32 AbyssLib/2.0.0.20",
+    "Abyss/2.3.2-X1-Win32 AbyssLib/2.3.2",
+    "Abyss/2.14-X1-Linux AbyssLib/2.14",
+    "Abyss/2.12.1-X1-MacOS X AbyssLib/2.12",
+    "Abyss/2.14-X1-macOS AbyssLib/2.14"
+  ]
+}

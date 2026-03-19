@@ -1,0 +1,134 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_dns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_DNS",
+  "taxonomy_name": "Microsoft DNS",
+  "vendor": "Microsoft",
+  "product": "DNS",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_DNS.json",
+    "fingerprint_count": 9
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 9 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_dns_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS (10.0.\\d+)(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Microsoft DNS (10.0.\\d+)(?: \\(([^)]+)\\))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2016: GA"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 6.3.9600(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "6.3.9600",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2012 R2"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 6.2.9200(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "6.2.9200",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2012"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 6.1.7601(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "6.1.7601",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2008 R2 Service Pack 1"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 6.1.7600(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "6.1.7600",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2008 R2"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 6.0.6003(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "6.0.6003",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2008 Service Pack 2 - Preview Rollup KB4489887 and later"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 6.0.6002(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "6.0.6002",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2008 Service Pack 2"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 6.0.6001(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "6.0.6001",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2008 Service Pack 1"
+        },
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Microsoft DNS 5.2.3790(?: \\(([^)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "version_static": "5.2.3790",
+          "case_insensitive": true,
+          "note": "Microsoft DNS on Windows 2003"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_server_2016:-",
+  "examples": [
+    "Microsoft DNS 10.0.14393 (383900CE)",
+    "Microsoft DNS 6.3.9600 (25804825)",
+    "Microsoft DNS 6.2.9200 (23F04000)",
+    "Microsoft DNS 6.1.7601 (1DB15CD4)",
+    "Microsoft DNS 6.1.7601",
+    "Microsoft DNS 6.1.7600 (1DB04228)",
+    "Microsoft DNS 6.0.6003 (1773501D)",
+    "Microsoft DNS 6.0.6002 (17724D35)",
+    "Microsoft DNS 6.0.6001 (17714726)",
+    "Microsoft DNS 5.2.3790 (ECE135D)"
+  ]
+}

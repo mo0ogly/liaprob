@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sparkweb_sparkweb_web_based_collaboration_client_http",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SPARKWEB_SPARKWEB_WEB_BASED_COLLABORATION_CLIENT_HTTP",
+  "taxonomy_name": "SparkWeb SparkWeb web-based collaboration client. http",
+  "vendor": "SparkWeb",
+  "product": "SparkWeb web-based collaboration client. http",
+  "source": {
+    "type": "recog",
+    "file": "SPARKWEB_SPARKWEB_WEB_BASED_COLLABORATION_CLIENT_HTTP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sparkweb_sparkweb_web_based_collaboration_client_http_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^386211e5c0b7d92efabd41390e0fc250",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SparkWeb web-based collaboration client. http"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "386211e5c0b7d92efabd41390e0fc250"
+  ]
+}

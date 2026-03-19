@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-suse_linux_enterprise_desktop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUSE_LINUX_ENTERPRISE_DESKTOP",
+  "taxonomy_name": "SUSE Linux Enterprise Desktop",
+  "vendor": "SUSE",
+  "product": "Linux Enterprise Desktop",
+  "source": {
+    "type": "recog",
+    "file": "SUSE_LINUX_ENTERPRISE_DESKTOP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_suse_linux_enterprise_desktop_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^SUSE(?: SLED)?(?: Linux Enterprise Desktop)?\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SUSE Linux Enterprise Desktop"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:suse:linux_enterprise_desktop:{os.version}",
+  "examples": [
+    "SUSE SLED 11",
+    "SUSE Linux Enterprise Desktop 12"
+  ]
+}

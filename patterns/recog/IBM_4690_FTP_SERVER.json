@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_4690_ftp_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_4690_FTP_SERVER",
+  "taxonomy_name": "IBM 4690 FTP Server",
+  "vendor": "IBM",
+  "product": "4690 FTP Server",
+  "source": {
+    "type": "recog",
+    "file": "IBM_4690_FTP_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_4690_ftp_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FTP server \\(IBM 4690 TCP/IP FTP Version 1\\.0\\) ready\\.",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM 4690 FTP Service"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "FTP server (IBM 4690 TCP/IP FTP Version 1.0) ready."
+  ]
+}

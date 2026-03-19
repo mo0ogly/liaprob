@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-solarwinds_virtualization_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SOLARWINDS_VIRTUALIZATION_MANAGER",
+  "taxonomy_name": "SolarWinds Virtualization Manager",
+  "vendor": "SolarWinds",
+  "product": "Virtualization Manager",
+  "source": {
+    "type": "recog",
+    "file": "SOLARWINDS_VIRTUALIZATION_MANAGER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_solarwinds_virtualization_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^1480757e8415b8cf6ea94553f0581f3e$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SolarWinds Virtualization Manager"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^SolarWinds Virtualization Manager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SolarWinds Virtualization Manager"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:solarwinds:virtualization_manager:-",
+  "examples": [
+    "1480757e8415b8cf6ea94553f0581f3e",
+    "SolarWinds Virtualization Manager"
+  ]
+}

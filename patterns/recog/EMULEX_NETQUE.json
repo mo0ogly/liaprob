@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-emulex_netque",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMULEX_NETQUE",
+  "taxonomy_name": "Emulex NetQue",
+  "vendor": "Emulex",
+  "product": "NetQue",
+  "source": {
+    "type": "recog",
+    "file": "EMULEX_NETQUE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_emulex_netque_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^NetQue Version (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Emulex NetQue print server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "NetQue Version 4.0"
+  ]
+}

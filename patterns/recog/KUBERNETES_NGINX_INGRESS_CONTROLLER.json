@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kubernetes_nginx_ingress_controller",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KUBERNETES_NGINX_INGRESS_CONTROLLER",
+  "taxonomy_name": "Kubernetes NGINX Ingress Controller",
+  "vendor": "Kubernetes",
+  "product": "NGINX Ingress Controller",
+  "source": {
+    "type": "recog",
+    "file": "KUBERNETES_NGINX_INGRESS_CONTROLLER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_kubernetes_nginx_ingress_controller_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Kubernetes Ingress Controller Fake Certificate,O=Acme Co$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kubernetes NGINX Ingress Controller with default cert"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=Kubernetes Ingress Controller Fake Certificate,O=Acme Co$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Kubernetes NGINX Ingress Controller with default cert"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:kubernetes:nginx_ingress_controller:-",
+  "examples": [
+    "CN=Kubernetes Ingress Controller Fake Certificate,O=Acme Co"
+  ]
+}

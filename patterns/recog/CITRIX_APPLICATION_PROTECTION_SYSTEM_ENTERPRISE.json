@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-citrix_application_protection_system_enterprise",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITRIX_APPLICATION_PROTECTION_SYSTEM_ENTERPRISE",
+  "taxonomy_name": "Citrix Application Protection System, Enterprise",
+  "vendor": "Citrix",
+  "product": "Application Protection System, Enterprise",
+  "source": {
+    "type": "recog",
+    "file": "CITRIX_APPLICATION_PROTECTION_SYSTEM_ENTERPRISE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_citrix_application_protection_system_enterprise_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^st8id=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix Application Protection System, Enterprise - http://support.citrix.com/article/CTX109330"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "st8id=1e1bcc1010b6de32734c584317443b31.00.641b86ac5ed3ebb0799138f83af9b63f;"
+  ]
+}

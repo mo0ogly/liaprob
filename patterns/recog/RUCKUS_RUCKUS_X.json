@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ruckus_ruckus_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RUCKUS_RUCKUS_X",
+  "taxonomy_name": "Ruckus Ruckus x",
+  "vendor": "Ruckus",
+  "product": "Ruckus x",
+  "source": {
+    "type": "recog",
+    "file": "RUCKUS_RUCKUS_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ruckus_ruckus_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^ed8cf53ef6836184587ee3a987be074a",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ruckus x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ed8cf53ef6836184587ee3a987be074a"
+  ]
+}

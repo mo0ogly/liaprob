@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-atrium_software_mercur",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATRIUM_SOFTWARE_MERCUR",
+  "taxonomy_name": "Atrium Software MERCUR",
+  "vendor": "Atrium Software",
+  "product": "MERCUR",
+  "source": {
+    "type": "recog",
+    "file": "ATRIUM_SOFTWARE_MERCUR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_atrium_software_mercur_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^MERCUR SMTP-Server \\(v([^ ]+\\.[^ ])0\\.([^ ]+) ([^ ]+)\\) for (.+) ready at (.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^MERCUR SMTP-Server \\(v([^ ]+\\.[^ ])0\\.([^ ]+) ([^ ]+)\\) for (.+) ready at (.+) *$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Atrium's MERCUR SMTP server (http://www.atrium-software.com/pub/support_e.cfm)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "MERCUR SMTP-Server (v3.30.09 SA-0000005) for Windows NT ready at Thu, 30 Nov 2017  10:01:06 +0100"
+  ]
+}

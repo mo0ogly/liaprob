@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-panasonic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PANASONIC",
+  "taxonomy_name": "Panasonic",
+  "vendor": "Panasonic",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "PANASONIC.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_panasonic_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(WV-NS\\S+) Network Camera$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "WV-NS202A Network Camera"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_panasonic_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(WJ-HD\\d+) SWVer(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Panasonic digital disk recorder"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Panasonic ([A-Z][A-Z]-\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Panasonic Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "snmp"
+  ],
+  "examples": [
+    "WV-NS202A Network Camera",
+    "WV-NS954 Network Camera",
+    "WJ-HD300 SWVer1.53",
+    "Panasonic DP-1520P"
+  ]
+}

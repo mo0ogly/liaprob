@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-youngzsoft_ccproxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "YOUNGZSOFT_CCPROXY",
+  "taxonomy_name": "Youngzsoft CCProxy",
+  "vendor": "Youngzsoft",
+  "product": "CCProxy",
+  "source": {
+    "type": "recog",
+    "file": "YOUNGZSOFT_CCPROXY.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    110,
+    119,
+    587,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_youngzsoft_ccproxy_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "CCProxy NNTP Service$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Youngzsoft CCProxy NNTP with no version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^CCProxy ([\\d.]+) POP3 Service Ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^CCProxy ([\\d.]+) POP3 Service Ready$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "CCProxy POP3 server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "CCProxy (\\S+) SMTP Service Ready(?:\\(Unregistered\\))?$",
+          "confidence_delta": 0.4,
+          "version_extract": "CCProxy (\\S+) SMTP Service Ready(?:\\(Unregistered\\))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Youngzsoft CCProxy SMTP"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp",
+    "nntp",
+    "pop3"
+  ],
+  "examples": [
+    "CCProxy NNTP Service",
+    "CCProxy 8.0 POP3 Service Ready",
+    "CCProxy 2010 POP3 Service Ready",
+    "CCProxy 6.4.2 POP3 Service Ready",
+    "CCProxy 7.3 SMTP Service Ready(Unregistered)"
+  ]
+}

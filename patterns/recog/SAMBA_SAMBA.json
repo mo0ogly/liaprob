@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-samba_samba",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAMBA_SAMBA",
+  "taxonomy_name": "Samba Samba",
+  "vendor": "Samba",
+  "product": "Samba",
+  "source": {
+    "type": "recog",
+    "file": "SAMBA_SAMBA.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_samba_samba_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Samba (3\\.0\\.28a-apple)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Samba (3\\.0\\.28a-apple)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Samba on OS X 10.6"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Samba (3\\.0\\.25b-apple)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Samba (3\\.0\\.25b-apple)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Samba on OS X 10.5"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Samba (\\d\\.\\d+.\\d+\\w*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^Samba (\\d\\.\\d+.\\d+\\w*)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Samba"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Samba (?:Samba )?for GuardianOS v\\.?(\\d\\.[\\d.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Samba on a SnapServer appliance"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^unix$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Generally some Samba variant, which reports Unix"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smb"
+  ],
+  "cpe23_template": "cpe:/a:samba:samba:{version}",
+  "examples": [
+    "Samba 3.0.28a-apple",
+    "Samba 3.0.25b-apple",
+    "Samba 3.0.24",
+    "Samba 3.0.28a",
+    "Samba 3.0.32-0.2-2210-SUSE-SL10.3",
+    "Samba 3.6.3",
+    "Samba 3.6.6",
+    "Samba 3.6.9-151.el6_4.1",
+    "Samba Samba for GuardianOS v4.3.007.200609131215",
+    "Samba Samba for GuardianOS v5.0.133.200807301131"
+  ]
+}

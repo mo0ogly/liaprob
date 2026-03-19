@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_phone",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_PHONE",
+  "taxonomy_name": "Microsoft Windows Phone",
+  "vendor": "Microsoft",
+  "product": "Windows Phone",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_PHONE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_phone_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Microsoft )?Windows Phone (\\d|\\d\\.\\d)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Phone 7 and later"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Windows Phone 7.5",
+    "Windows Phone 8"
+  ]
+}

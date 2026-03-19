@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-flac_flac_1_2_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLAC_FLAC_1_2_1",
+  "taxonomy_name": "flac flac (1.2.1)",
+  "vendor": "flac",
+  "product": "flac (1.2.1)",
+  "source": {
+    "type": "recog",
+    "file": "FLAC_FLAC_1_2_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_flac_flac_1_2_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^eb3e307f44581916d9f1197df2fc9de3",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "flac (1.2.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "eb3e307f44581916d9f1197df2fc9de3"
+  ]
+}

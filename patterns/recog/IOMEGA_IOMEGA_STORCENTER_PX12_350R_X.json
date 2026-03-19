@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-iomega_iomega_storcenter_px12_350r_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IOMEGA_IOMEGA_STORCENTER_PX12_350R_X",
+  "taxonomy_name": "Iomega Iomega StorCenter px12-350r x",
+  "vendor": "Iomega",
+  "product": "Iomega StorCenter px12-350r x",
+  "source": {
+    "type": "recog",
+    "file": "IOMEGA_IOMEGA_STORCENTER_PX12_350R_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_iomega_iomega_storcenter_px12_350r_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8dfab2d881ce47dc41459c6c0c652bcf",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Iomega StorCenter px12-350r x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "8dfab2d881ce47dc41459c6c0c652bcf"
+  ]
+}

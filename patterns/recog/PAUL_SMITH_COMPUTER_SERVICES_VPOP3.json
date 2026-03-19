@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-paul_smith_computer_services_vpop3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PAUL_SMITH_COMPUTER_SERVICES_VPOP3",
+  "taxonomy_name": "Paul Smith Computer Services VPOP3",
+  "vendor": "Paul Smith Computer Services",
+  "product": "VPOP3",
+  "source": {
+    "type": "recog",
+    "file": "PAUL_SMITH_COMPUTER_SERVICES_VPOP3.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_paul_smith_computer_services_vpop3_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) VPOP3 E?SMTP Server (?:Ready|access not allowed!)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VPOP3 Email server: http://www.pscs.co.uk/products/vpop3/index.html"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar VPOP3 ESMTP Server Ready",
+    "foo.bar VPOP3 SMTP Server Ready",
+    "foo.bar VPOP3 SMTP Server access not allowed!"
+  ]
+}

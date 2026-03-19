@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mort_bay_jetty",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MORT_BAY_JETTY",
+  "taxonomy_name": "Mort Bay Jetty",
+  "vendor": "Mort Bay",
+  "product": "Jetty",
+  "source": {
+    "type": "recog",
+    "file": "MORT_BAY_JETTY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mort_bay_jetty_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Jetty\\/([1-6]\\.[\\w.]+)(?: \\(([^)]*))?",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Jetty\\/([1-6]\\.[\\w.]+)(?: \\(([^)]*))?",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Mort Bay Jetty with info"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Jetty\\(([1-6]\\S+)\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Jetty\\(([1-6]\\S+)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Mort Bay Jetty"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:mortbay:jetty:{version}",
+  "examples": [
+    "Jetty/4.0.1 (SunOS 5.8 sparc)",
+    "Jetty/4.2.23 (SunOS/5.9 sparc java/1.4.2_04)",
+    "Jetty/4.2.x (VxWorks/WIND version 2.9 ppc java/1.1-rr-std-b12)",
+    "Jetty/5.1.4 (Windows Server 2008 R2/6.1 x86 java/1.5.0_22",
+    "Jetty/5.1.10 (Linux/2.6.12 i386 java/1.5.0_05)",
+    "Jetty(1.4.5)",
+    "Jetty(6.1.12.rc2)"
+  ]
+}

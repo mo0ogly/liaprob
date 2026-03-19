@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-flyspray_flyspray",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FLYSPRAY_FLYSPRAY",
+  "taxonomy_name": "Flyspray Flyspray",
+  "vendor": "Flyspray",
+  "product": "Flyspray",
+  "source": {
+    "type": "recog",
+    "file": "FLYSPRAY_FLYSPRAY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_flyspray_flyspray_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^flyspray_project=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Flyspray"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:flyspray:flyspray:-",
+  "examples": [
+    "flyspray_project=133713381234; Path=/; HttpOnly"
+  ]
+}

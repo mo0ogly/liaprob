@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-owasp_zed_attack_proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OWASP_ZED_ATTACK_PROXY",
+  "taxonomy_name": "OWASP Zed Attack Proxy",
+  "vendor": "OWASP",
+  "product": "Zed Attack Proxy",
+  "source": {
+    "type": "recog",
+    "file": "OWASP_ZED_ATTACK_PROXY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_owasp_zed_attack_proxy_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^1ea465228fa40f5c89f899e51ccc02c9$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OWASP Zed Attack Proxy (ZAP) - API Web UI"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ZAP API UI$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OWASP Zed Attack Proxy (ZAP) - API Web UI"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:owasp:zed_attack_proxy:-",
+  "examples": [
+    "1ea465228fa40f5c89f899e51ccc02c9",
+    "ZAP API UI"
+  ]
+}

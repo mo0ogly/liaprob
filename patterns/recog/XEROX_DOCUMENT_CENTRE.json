@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xerox_document_centre",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XEROX_DOCUMENT_CENTRE",
+  "taxonomy_name": "Xerox Document Centre",
+  "vendor": "Xerox",
+  "product": "Document Centre",
+  "source": {
+    "type": "recog",
+    "file": "XEROX_DOCUMENT_CENTRE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_xerox_document_centre_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Xerox_MicroServer/Xerox11$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Xerox Document Centre"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_xerox_document_centre_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox Document Centre Multi-function System",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Document Centre Multi-function System"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "snmp"
+  ],
+  "examples": [
+    "Xerox Document Centre Multi-function System, ESS 0.19.12.011.1, IOT 28.52.0, UI 0.10.27.31, Finisher 7.95.0",
+    "Xerox Document Centre Multi-function System, ESS 0.19.02.503.6, IOT 0.19.2.503, UI 0.19.2.503"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-openbsd_opensmtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENBSD_OPENSMTPD",
+  "taxonomy_name": "OpenBSD OpenSMTPD",
+  "vendor": "OpenBSD",
+  "product": "OpenSMTPD",
+  "source": {
+    "type": "recog",
+    "file": "OPENBSD_OPENSMTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_openbsd_opensmtpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP OpenSMTPD$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenSMPTD"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:openbsd:opensmtpd:-",
+  "examples": [
+    "foo.bar ESMTP OpenSMTPD"
+  ]
+}

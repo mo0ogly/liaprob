@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-aruba_aos_cx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ARUBA_AOS_CX",
+  "taxonomy_name": "Aruba AOS-CX",
+  "vendor": "Aruba",
+  "product": "AOS-CX",
+  "source": {
+    "type": "recog",
+    "file": "ARUBA_AOS_CX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_aruba_aos_cx_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Aruba\\s+([\\w -]+)\\s+(?:\\D+\\.)?(\\d[\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Aruba OS CX"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Aruba ABC123 ArubaOS-CX_OVA Virtual.10.07.0010",
+    "Aruba R8W85A 8100-24XT4XF4C LL.10.13.1060",
+    "Aruba JL641A 6400M 32G CL4 PoE 4SFP55 Swch FL.10.10.1019"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sonarr_sonarr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SONARR_SONARR",
+  "taxonomy_name": "Sonarr Sonarr",
+  "vendor": "Sonarr",
+  "product": "Sonarr",
+  "source": {
+    "type": "recog",
+    "file": "SONARR_SONARR.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sonarr_sonarr_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:b3ae051d2c6b875b2064288104856291|c24b156cfaa12860760793f43b487c21|657ebbffad0e5c71a1010fbc9b279b1e)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sonarr"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Login - Sonarr$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sonarr"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b3ae051d2c6b875b2064288104856291",
+    "c24b156cfaa12860760793f43b487c21",
+    "657ebbffad0e5c71a1010fbc9b279b1e",
+    "Login - Sonarr"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-brightsign_hw_model_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BRIGHTSIGN_HW_MODEL_FIRMWARE",
+  "taxonomy_name": "BrightSign {hw.model} Firmware",
+  "vendor": "BrightSign",
+  "product": "{hw.model} Firmware",
+  "source": {
+    "type": "recog",
+    "file": "BRIGHTSIGN_HW_MODEL_FIRMWARE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68
+  ],
+  "probes": [
+    {
+      "id": "recog_brightsign_hw_model_firmware_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^BrightSign ((?:HS|XD|LS|XT|HD)\\d{3,4}(?:-W|-PP)?)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "BrightSign Digital Signage Player"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp"
+  ],
+  "examples": [
+    "BrightSign HS124",
+    "BrightSign XD1034",
+    "BrightSign XD1034-W",
+    "BrightSign LS424-W",
+    "BrightSign XT244",
+    "BrightSign HD1023",
+    "BrightSign XT1144-PP"
+  ]
+}

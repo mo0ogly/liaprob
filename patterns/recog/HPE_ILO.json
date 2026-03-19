@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hpe_ilo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HPE_ILO",
+  "taxonomy_name": "HPE iLO",
+  "vendor": "HPE",
+  "product": "iLO",
+  "source": {
+    "type": "recog",
+    "file": "HPE_ILO.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hpe_ilo_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^HPE Virtual Connect Manager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HPE Virtual Connect Manager"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^HPE System Management Homepage$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HPE System Management Homepage"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "HPE Virtual Connect Manager",
+    "HPE System Management Homepage"
+  ]
+}

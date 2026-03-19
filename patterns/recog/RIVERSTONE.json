@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-riverstone",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RIVERSTONE",
+  "taxonomy_name": "Riverstone",
+  "vendor": "Riverstone",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "RIVERSTONE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_riverstone_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)(ES|RS)\\s([^\\s]+) System Software, Version ([^\\s]+).*Riverstone Networks",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "a Riverstone router"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL\n      S0tLS0tLQpFUyAxMDE3MCBTeXN0ZW0gU29mdHdhcmUsIFZlcnNpb24gOS4zLjAuNApSaXZlcnN0b25lIE5ldH\n      dvcmtzLCBJbmMuLCBDb3B5cmlnaHQgKGMpIDIwMDAtMjAwMy4gQWxsIHJpZ2h0cyByZXNlcnZlZC4KU3lzdGV\n      tIHN0YXJ0ZWQgb24gMjAxOC0wOS0wNiAxNTo1ODozMAotLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t\n      LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS4uLg==",
+    "LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tL\n      S0tLS0tLQpSUyA4MDAwIFN5c3RlbSBTb2Z0d2FyZSwgVmVyc2lvbiA5LjMuMC41ClJpdmVyc3RvbmUgTmV0d2\n      9ya3MsIEluYy4sIENvcHlyaWdodCAoYykgMjAwMC0yMDA0LiBBbGwgcmlnaHRzIHJlc2VydmVkLgpTeXN0ZW0\n      gc3RhcnRlZCBvbiAyMDE4LTEwLTExIDIyOjAyOjAzCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t\n      LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS4uLg=="
+  ]
+}

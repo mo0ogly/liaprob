@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xyplex",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XYPLEX",
+  "taxonomy_name": "Xyplex",
+  "vendor": "Xyplex",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "XYPLEX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_xyplex_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "Xyplex hardware (\\S+) .*Xyplex software Terminal Server V(\\S+)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xyplex Terminal Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "- Netlink-Xyplex Xyplex hardware MX-1600 00.00.00 Rom 470000 Xyplex software Terminal Server V6.0S91",
+    "- WTF? Xyplex hardware CSERV-20 00.00.00 Rom 470000 Xyplex software Terminal Server V6.0.3",
+    "- Xyplex Terminal Server Xyplex hardware CSERV-20 00.00.00 Rom 470000 Xyplex software Terminal Server V6.0",
+    "WVN720D.WVNET.EDU - WVN720D Xyplex hardware CSERV-20 00.02.00 Rom 4C0000 Xyplex software Terminal Server V6.1",
+    "Xyplex hardware CSERV-20 08.00.00 Rom 4A0000nXyplex software Terminal Server V6.0.1"
+  ]
+}

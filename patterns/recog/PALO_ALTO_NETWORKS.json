@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-palo_alto_networks",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PALO_ALTO_NETWORKS",
+  "taxonomy_name": "Palo Alto Networks",
+  "vendor": "Palo Alto Networks",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "PALO_ALTO_NETWORKS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_palo_alto_networks_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Palo Alto Networks (\\S+) series firewall$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Palo Alto firewall"
+        }
+      ]
+    },
+    {
+      "id": "recog_palo_alto_networks_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=[a-fA-F0-9]+,O=Palo Alto Networks,L=Santa Clara,ST=CA,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Palo Alto Firewall"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:paloaltonetworks:pan-os:-",
+  "examples": [
+    "Palo Alto Networks PA-2000 series firewall",
+    "Palo Alto Networks PA-500 series firewall",
+    "Palo Alto Networks PA-4000 series firewall",
+    "CN=d9fc2294968367a3a8ad1acd4c816c78444e6ea4d69869b40cc9751951fd3693,O=Palo Alto Networks,L=Santa Clara,ST=CA,C=US"
+  ]
+}

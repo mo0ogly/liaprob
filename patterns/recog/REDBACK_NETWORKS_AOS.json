@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-redback_networks_aos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDBACK_NETWORKS_AOS",
+  "taxonomy_name": "Redback Networks AOS",
+  "vendor": "Redback Networks",
+  "product": "AOS",
+  "source": {
+    "type": "recog",
+    "file": "REDBACK_NETWORKS_AOS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_redback_networks_aos_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Red[bB]ack Networks AOS Release (\\S+) .* Copyright",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Redback networks AOS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "RedBack Networks AOS Release 3.1.6.18 PRODUCTION MAINTENANCE RELEASE Copyright (c) 1997-2001 by RedBack Networks, Inc. Compiled 2001-Oct-24 19:56:11 GMT by wheatley",
+    "Redback Networks AOS Release 5.0.6.10 MAINTENANCE RELEASE Copyright (c) 1997-2002 by Redback Networks, Inc. Compiled 2002-Sep-20 20:53:18 GMT by wheatley",
+    "Redback Networks AOS Release 5.0.6.33 MAINTENANCE RELEASE Copyright (c) 1997-2003 by Redback Networks, Inc. Compiled 2003-Nov-09 19:21:42 GMT by wheatley",
+    "Redback Networks AOS Release 6.0.8.0 PRODUCTION RELEASE Copyright (c) 1997-2003 by Redback Networks, Inc. Compiled 2003-Nov-26 02:22:01 GMT by wheatley",
+    "Redback Networks AOS Release 6.0.8.5 MAINTENANCE RELEASE Copyright (c) 1997-2004 by Redback Networks, Inc. Compiled 2004-Feb-18 09:28:31 GMT by wheatley",
+    "Redback Networks AOS Release 6.0.9.12 MAINTENANCE RELEASE Copyright (c) 1997-2004 by Redback Networks, Inc. Compiled 2004-Jul-28 23:58:03 GMT by wheatley",
+    "Redback Networks AOS Release 6.1.4.13 PRODUCTION MAINTENANCE RELEASE Copyright (c) 1997-2006 by Redback Networks, Inc. Compiled 2006-Oct-06 16:26:44 GMT by relsms",
+    "Redback Networks AOS Release 6.1.4.14 PRODUCTION MAINTENANCE RELEASE Copyright (c) 1997-2006 by Redback Networks, Inc. Compiled 2007-Jan-03 03:15:24 GMT by relsms",
+    "Redback Networks AOS Release 6.1.4.16 PRODUCTION MAINTENANCE RELEASE Copyright (c) 1997-2006 by Redback Networks, Inc. Compiled 2007-Aug-10 21:42:14 GMT by relsms",
+    "Redback Networks AOS Release 6.2.5.0 PRODUCTION RELEASE Copyright (c) 1997-2007 by Redback Networks, Inc. Compiled 2007-Nov-28 02:48:44 GMT by relsms"
+  ]
+}

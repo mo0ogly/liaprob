@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-internet_archive_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTERNET_ARCHIVE_LINUX",
+  "taxonomy_name": "Internet Archive Linux",
+  "vendor": "Internet Archive",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "INTERNET_ARCHIVE_LINUX.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_internet_archive_linux_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^3661adb788ed643f5e575b2ed8536b6f$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Internet Archive Warrior Appliance"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^ArchiveTeam Warrior$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Internet Archive Warrior Appliance"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "3661adb788ed643f5e575b2ed8536b6f",
+    "ArchiveTeam Warrior"
+  ]
+}

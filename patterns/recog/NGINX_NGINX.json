@@ -1,0 +1,101 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nginx_nginx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NGINX_NGINX",
+  "taxonomy_name": "nginx nginx",
+  "vendor": "nginx",
+  "product": "nginx",
+  "source": {
+    "type": "recog",
+    "file": "NGINX_NGINX.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_nginx_nginx_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Welcome to nginx!|Test Page for the Nginx HTTP Server)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Default OS-agnostic nginx"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Test Page for the Nginx HTTP Server on (?:Fedora|EPEL)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Default nginx on Fedora"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to nginx on Debian!$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Default nginx on Debian"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^nginx$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "nginx without version info"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^nginx\\/?([\\d.]+)?",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^nginx\\/?([\\d.]+)?",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "nginx with version info and/or mods"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:f5:nginx:-",
+  "examples": [
+    "Welcome to nginx!",
+    "Test Page for the Nginx HTTP Server",
+    "Test Page for the Nginx HTTP Server on Fedora",
+    "Welcome to nginx on Debian!",
+    "nginx",
+    "nginx/0.8.53 + Phusion Passenger 3.0.0 (mod_rails/mod_rack)",
+    "nginx/0.8.53",
+    "nginx + Phusion Passenger 5.1.11",
+    "nginx + Phusion Passenger"
+  ]
+}

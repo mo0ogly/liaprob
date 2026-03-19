@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-symbol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SYMBOL",
+  "taxonomy_name": "Symbol",
+  "vendor": "Symbol",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SYMBOL.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_symbol_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Symbol ((?:Spectrum24 (?:FHSS|Ethernet) )?Access Point)[,-].*S/W rev:\\s*(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Symbol Access Point - detailed variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Symbol (AP\\S+|WS\\S+) .* SW=(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Symbol Access Point - abreviated variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Symbol Access Point, S/W rev:- S/W rev: 02.70-06",
+    "Symbol Access Point, S/W rev:02.21-01",
+    "Symbol Spectrum24 FHSS Access Point, S/W rev: 04.02-12",
+    "Symbol Access Point- S/W rev: 03.50-26",
+    "Symbol AP-7131 HW=E SW=4.0.3.0-010R MIB=01h18",
+    "Symbol AP5131 HW=A SW=0.0-045R MIB=01b15",
+    "Symbol WS2000 HW=R04 SW=0.0-035R MIB=08c12",
+    "Symbol WS2000 HW=R04 SW=1.5.0.0-216r MIB=08a43"
+  ]
+}

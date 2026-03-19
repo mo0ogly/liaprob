@@ -1,0 +1,137 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-red_hat_jboss_eap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RED_HAT_JBOSS_EAP",
+  "taxonomy_name": "Red Hat JBoss EAP",
+  "vendor": "Red Hat",
+  "product": "JBoss EAP",
+  "source": {
+    "type": "recog",
+    "file": "RED_HAT_JBOSS_EAP.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_red_hat_jboss_eap_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^fa69cdaaf6cac06e634b11bc2e36161b$",
+          "confidence_delta": 0.4,
+          "version_static": "7",
+          "case_insensitive": true,
+          "note": "Red Hat JBoss EAP 7"
+        },
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^192decdad41179599a776494efc3e720$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Red Hat JBoss EAP"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:JBoss )?EAP ([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:JBoss )?EAP ([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "JBoss EAP w/ Version"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Welcome to JBoss EAP$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "JBoss EAP w/o Version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Servlet [\\d\\.]+; JBoss-(\\S+) \\(build: .*\\)/Tomcat-(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Servlet [\\d\\.]+; JBoss-(\\S+) \\(build: .*\\)/Tomcat-(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "JBoss with embedded Tomcat"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Servlet [\\d\\.]+; Tomcat-(\\S+)/JBoss-(\\S+) \\(build: .*\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Servlet [\\d\\.]+; Tomcat-(\\S+)/JBoss-(\\S+) \\(build: .*\\)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "JBoss with embedded Tomcat - Tomcat build variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Servlet [\\d\\.]+; JBoss-([\\S]+)(?: \\(build.*)?/JBossWeb-(\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Servlet [\\d\\.]+; JBoss-([\\S]+)(?: \\(build.*)?/JBossWeb-(\\S+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "JBoss with JBossweb"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^JBoss-EAP\\/(\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^JBoss-EAP\\/(\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "JBoss EAP"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:redhat:jboss_enterprise_application_platform:7",
+  "examples": [
+    "fa69cdaaf6cac06e634b11bc2e36161b",
+    "192decdad41179599a776494efc3e720",
+    "JBoss EAP 7",
+    "EAP 7",
+    "Welcome to JBoss EAP",
+    "Servlet 2.4; JBoss-4.0.4.GA (build: CVSTag=JBoss_4_0_4_GA date=200605151000)/Tomcat-5.5",
+    "Servlet 2.4; Tomcat-5.0.28/JBoss-4.0.1sp1 (build: CVSTag=JBoss_4_0_1_SP1 date=200502160314)",
+    "Servlet 2.4; JBoss-4.2.3.GA (build: SVNTag=JBoss_4_2_3_GA date=200807181439)/JBossWeb-2.0",
+    "Servlet 2.5; JBoss-5.0/JBossWeb-2.1",
+    "JBoss-EAP/7"
+  ]
+}

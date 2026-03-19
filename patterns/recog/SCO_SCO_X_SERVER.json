@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sco_sco_x_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SCO_SCO_X_SERVER",
+  "taxonomy_name": "SCO SCO X server",
+  "vendor": "SCO",
+  "product": "SCO X server",
+  "source": {
+    "type": "recog",
+    "file": "SCO_SCO_X_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    6000
+  ],
+  "probes": [
+    {
+      "id": "recog_sco_sco_x_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Santa Cruz Operation Inc\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Santa Cruz Operation Inc."
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "x11"
+  ],
+  "cpe23_template": "cpe:/o:sco:sco_unix:-",
+  "examples": [
+    "Santa Cruz Operation Inc."
+  ]
+}

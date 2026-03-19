@@ -1,0 +1,95 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-parallels_plesk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PARALLELS_PLESK",
+  "taxonomy_name": "Parallels Plesk",
+  "vendor": "Parallels",
+  "product": "Plesk",
+  "source": {
+    "type": "recog",
+    "file": "PARALLELS_PLESK.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_parallels_plesk_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Parallels )?Plesk (?:(?:Onyx|Panel) )?([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:Parallels )?Plesk (?:(?:Onyx|Panel) )?([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Plesk web hosting platform with a version"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Parallels )?Plesk (?:(?:Onyx|Panel) )?([\\d\\.]+) for Microsoft Windows$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:Parallels )?Plesk (?:(?:Onyx|Panel) )?([\\d\\.]+) for Microsoft Windows$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Plesk web hosting platform with a version on Windows"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "(?i)^Default (?:Parallels )?Plesk (?:Panel )?Page$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Plesk web hosting platform with no version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^sw-cp-server$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Plesk Control Panel Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:parallels:parallels_plesk_panel:{version}",
+  "examples": [
+    "Plesk 12.0.18",
+    "Plesk Onyx 17.5.3",
+    "Parallels Plesk 12.0.1",
+    "Parallels Plesk Panel 11.5.30",
+    "Plesk 12.5.30 for Microsoft Windows",
+    "Parallels Plesk Panel 11.5.30 for Microsoft Windows",
+    "Default Parallels Plesk Panel Page",
+    "Default Parallels Plesk Page",
+    "Default PLESK Page",
+    "sw-cp-server"
+  ]
+}

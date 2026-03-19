@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-analogx_proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ANALOGX_PROXY",
+  "taxonomy_name": "AnalogX Proxy",
+  "vendor": "AnalogX",
+  "product": "Proxy",
+  "source": {
+    "type": "recog",
+    "file": "ANALOGX_PROXY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_analogx_proxy_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) SMTP AnalogX Proxy ([^ ]+\\.[^ ]+) \\(Release\\) ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) SMTP AnalogX Proxy ([^ ]+\\.[^ ]+) \\(Release\\) ready *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "AnalogX proxy  (http://www.analogx.com/contents/download/network/proxy.htm)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:analogx:proxy:{version}",
+  "examples": [
+    "192.168.1.1 SMTP AnalogX Proxy 4.15 (Release) ready"
+  ]
+}

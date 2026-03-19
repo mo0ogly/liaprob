@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-control_web_panel_control_web_panel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONTROL_WEB_PANEL_CONTROL_WEB_PANEL",
+  "taxonomy_name": "Control Web Panel Control Web Panel",
+  "vendor": "Control Web Panel",
+  "product": "Control Web Panel",
+  "source": {
+    "type": "recog",
+    "file": "CONTROL_WEB_PANEL_CONTROL_WEB_PANEL.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_control_web_panel_control_web_panel_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6b774f15b254a3d1548db63b6f411150$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Control Web Panel (CWP) (formerly CentOS Web Panel) - web hosting control panel"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Login \\| Control WebPanel|CWP \\| User)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Control Web Panel (CWP) (formerly CentOS Web Panel) - web hosting control panel"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^cwpsrv-[0-9a-f]{32}=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Control Web Panel (CWP) (formerly CentOS Web Panel) - web hosting control panel"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^cwpsrv$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Control Web Panel (CWP) (formerly CentOS Web Panel) - web hosting control panel web server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:control-webpanel:webpanel:-",
+  "examples": [
+    "6b774f15b254a3d1548db63b6f411150",
+    "Login | Control WebPanel",
+    "CWP | User",
+    "cwpsrv-5df9a64aa14f59216453d6f07164a7f1=aq0jsl5muvuli7cif5p9ut7dtm; path=/",
+    "cwpsrv"
+  ]
+}

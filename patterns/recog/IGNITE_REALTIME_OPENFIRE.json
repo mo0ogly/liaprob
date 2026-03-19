@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ignite_realtime_openfire",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IGNITE_REALTIME_OPENFIRE",
+  "taxonomy_name": "Ignite Realtime OpenFire",
+  "vendor": "Ignite Realtime",
+  "product": "OpenFire",
+  "source": {
+    "type": "recog",
+    "file": "IGNITE_REALTIME_OPENFIRE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ignite_realtime_openfire_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Openfire Admin Console$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Openfire Admin Console"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:igniterealtime:openfire:-",
+  "examples": [
+    "Openfire Admin Console"
+  ]
+}

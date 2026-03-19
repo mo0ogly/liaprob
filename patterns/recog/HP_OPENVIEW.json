@@ -1,0 +1,102 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_openview",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_OPENVIEW",
+  "taxonomy_name": "HP OpenView",
+  "vendor": "HP",
+  "product": "OpenView",
+  "source": {
+    "type": "recog",
+    "file": "HP_OPENVIEW.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_openview_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:BBC \\d+\\.\\d+\\.\\d+\\.?\\d*; )?(?:com.hp.openview.)?[c|C]oda (\\d+\\.\\d+\\.\\d+\\.?\\d*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HP Openview Coda (Communications Daemon)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^BBC \\d+\\.\\d+\\.\\d+\\.?\\d*; ovbbcrcp (\\d+\\.\\d+\\.\\d+\\.?\\d*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "OpenView Reverse Channel Proxy (RCP)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:BBC \\d+\\.\\d+\\.\\d+\\.?\\d*; )?com.hp.openview.bbc.LLBServer (\\d+\\.\\d+\\.\\d+\\.?\\d*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HP Openview LLBServer (Local Location Broker)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^BBC \\d+\\.\\d+\\.\\d+; ovbbccb (\\d+\\.\\d+\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "OpenView Communication Broker (ovbbccb)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^BBC \\d+\\.\\d+\\.\\d+; ovbbccb unknown version$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "OpenView Communication Broker (ovbbccb) with no version"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:hp:openview:-",
+  "examples": [
+    "com.hp.openview.Coda 0.0.1",
+    "BBC 05.20.050; coda 10.00.123",
+    "BBC 2.6.0.7; com.hp.openview.Coda 0.0.1",
+    "BBC 11.00.044; ovbbcrcp 11.00.044",
+    "com.hp.openview.bbc.LLBServer 2.6.8.1",
+    "BBC 2.6.0.7; com.hp.openview.bbc.LLBServer 2.6.0.7",
+    "BBC 06.00.083; ovbbccb 06.00.083",
+    "BBC 11.10.035; ovbbccb 11.10.035",
+    "BBC 11.13.007; ovbbccb unknown version"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_java_system_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_JAVA_SYSTEM_WEB_SERVER",
+  "taxonomy_name": "Sun Java System Web Server",
+  "vendor": "Sun",
+  "product": "Java System Web Server",
+  "source": {
+    "type": "recog",
+    "file": "SUN_JAVA_SYSTEM_WEB_SERVER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_java_system_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^NSES40Session=",
+          "confidence_delta": 0.4,
+          "version_static": "4.0",
+          "case_insensitive": true,
+          "note": "Netscape Enterprise Server (subsequently iPlanet Web Server, Sun ONE Web Server, presently Sun Java System Web Server)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Netscape-Enterprise/(\\d+\\.[\\w\\s.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Netscape-Enterprise/(\\d+\\.[\\w\\s.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Netscape Enterprise Server (subsequently iPlanet Web Server, Sun ONE Web Server, presently Sun Java System Web Server)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:Sun-Java-System-Web-Server|Sun-ONE-Web-Server)/(?:\\d\\.[\\d_]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Sun Java System Web Server (formerly Netscape Enterprise Server, iPlanet Web Server and Sun ONE Web Server)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:sun:java_system_web_server:4.0",
+  "examples": [
+    "NSES40Session=2%253A3e57d375%253Adc59172283a7e72c;path=/;expires=Sat, 22-Feb-2003 20:15:57 GMT",
+    "Netscape-Enterprise/3.5.1",
+    "Netscape-Enterprise/3.6 SP3",
+    "Netscape-Enterprise/6.0",
+    "Sun-Java-System-Web-Server/7.0",
+    "Sun-ONE-Web-Server/6.1"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hydra_project_hydra",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HYDRA_PROJECT_HYDRA",
+  "taxonomy_name": "Hydra Project Hydra",
+  "vendor": "Hydra Project",
+  "product": "Hydra",
+  "source": {
+    "type": "recog",
+    "file": "HYDRA_PROJECT_HYDRA.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hydra_project_hydra_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Hydra/([\\d.]+)(?: GnuTLS/([\\d.]+))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Hydra/([\\d.]+)(?: GnuTLS/([\\d.]+))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Hydra - high performance multi threaded HTTP web server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:hydra_project:hydra:{version}",
+  "examples": [
+    "Hydra/0.1.8",
+    "Hydra/0.1.8 GnuTLS/2.12.23"
+  ]
+}

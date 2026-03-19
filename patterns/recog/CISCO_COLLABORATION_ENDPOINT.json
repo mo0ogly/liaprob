@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_collaboration_endpoint",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_COLLABORATION_ENDPOINT",
+  "taxonomy_name": "Cisco Collaboration Endpoint",
+  "vendor": "Cisco",
+  "product": "Collaboration Endpoint",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_COLLABORATION_ENDPOINT.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_collaboration_endpoint_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^TANDBERG\\/(\\d+) \\((ce\\d+\\S*).*\\) ?(.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence Collaboration Endpoint (RoomOS)"
+        }
+      ]
+    },
+    {
+      "id": "recog_cisco_collaboration_endpoint_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "SoftW:\\s+(ce\\d+\\S*)[\\s\\S]*?MCU:\\s+([^\\n]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco TelePresence Collaboration Endpoint (RoomOS)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip",
+    "snmp"
+  ],
+  "examples": [
+    "TANDBERG/529 (ce9.15.0.d97b604b745) Cisco-RoomKit",
+    "TANDBERG/529 (ce9.15.0.d97b604b745)",
+    "SNMP:\n  Uptime: 840410\n  Description: Cisco Codec\nSoftW: ce9.15.0.11.aec227943ed\nMCU: Cisco Webex Room Kit\nDate: 2021-01-28\nS/N: FOC2236NA6V"
+  ]
+}

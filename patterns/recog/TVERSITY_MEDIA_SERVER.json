@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tversity_media_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TVERSITY_MEDIA_SERVER",
+  "taxonomy_name": "TVersity Media Server",
+  "vendor": "TVersity",
+  "product": "Media Server",
+  "source": {
+    "type": "recog",
+    "file": "TVERSITY_MEDIA_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_tversity_media_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(\\S{1,16}) \\d+/Service Pack \\d+, UPnP/[\\d\\.]+, TVersity Media Server$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^(\\S{1,16}) \\d+/Service Pack \\d+, UPnP/[\\d\\.]+, TVersity Media Server$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "TVersity Media Server UPnP Server with Service Pack"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(\\S{1,16}) 2/, UPnP/\\S+, TVersity Media Server$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^(\\S{1,16}) 2/, UPnP/\\S+, TVersity Media Server$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "TVersity Media Server UPnP Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "5.2.3790 2/Service Pack 1, UPnP/1.0, TVersity Media Server",
+    "5.1.2600 2/Service Pack 3, UPnP/1.0, TVersity Media Server",
+    "6.2.8400 2/, UPnP/1.0, TVersity Media Server",
+    "6.2.9200 2/, UPnP/1.0, TVersity Media Server",
+    "6.0.6000 2/, UPnP/1.0, TVersity Media Server",
+    "6.1.7600 2/, UPnP/1.0, TVersity Media Server"
+  ]
+}

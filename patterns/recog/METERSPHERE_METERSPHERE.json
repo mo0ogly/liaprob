@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-metersphere_metersphere",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METERSPHERE_METERSPHERE",
+  "taxonomy_name": "MeterSphere MeterSphere",
+  "vendor": "MeterSphere",
+  "product": "MeterSphere",
+  "source": {
+    "type": "recog",
+    "file": "METERSPHERE_METERSPHERE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_metersphere_metersphere_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d6abc57c65b787c0418803ffc75a7fa0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MeterSphere - Open-source Continuous Testing Platform"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^MeterSphere$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MeterSphere - Open-source Continuous Testing Platform"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:metersphere:metersphere:-",
+  "examples": [
+    "d6abc57c65b787c0418803ffc75a7fa0",
+    "MeterSphere"
+  ]
+}

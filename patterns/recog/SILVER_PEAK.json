@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-silver_peak",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SILVER_PEAK",
+  "taxonomy_name": "Silver Peak",
+  "vendor": "Silver Peak",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SILVER_PEAK.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_silver_peak_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Silver Peak Systems, Inc\\. (\\S+) Linux (.*?) ([0-9]+\\.[0-9]+\\.[0-9]+\\S*).* (?:[0-9]{4}|[A-Z][A-Z][A-Z]{1,2}|\\+[0-9]+|Local time.*(?:manual|zic|m\\S*)) (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Silver Peak Systems"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Silver Peak Systems, Inc. NX7600 Linux foo 2.6.22.14 hidalgo 3.3.0.0_32549 #1 2010-07-20 04:25:08 SMP x86_64"
+  ]
+}

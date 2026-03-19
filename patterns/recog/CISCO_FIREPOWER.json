@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_firepower",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_FIREPOWER",
+  "taxonomy_name": "Cisco Firepower",
+  "vendor": "Cisco",
+  "product": "Firepower",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_FIREPOWER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_firepower_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=(?:Sourcefire3D|firepower|ciscoasa),OU=Intrusion Management System,O=(?:Sourcefire\\\\, Inc.|Cisco Systems\\\\, Inc),C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Firepower"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "CN=firepower,OU=Intrusion Management System,O=Cisco Systems\\, Inc,C=US",
+    "CN=ciscoasa,OU=Intrusion Management System,O=Cisco Systems\\, Inc,C=US",
+    "CN=Sourcefire3D,OU=Intrusion Management System,O=Sourcefire\\, Inc.,C=US"
+  ]
+}

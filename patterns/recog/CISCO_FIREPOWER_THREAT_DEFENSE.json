@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cisco_firepower_threat_defense",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CISCO_FIREPOWER_THREAT_DEFENSE",
+  "taxonomy_name": "Cisco Firepower Threat Defense",
+  "vendor": "Cisco",
+  "product": "Firepower Threat Defense",
+  "source": {
+    "type": "recog",
+    "file": "CISCO_FIREPOWER_THREAT_DEFENSE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_cisco_firepower_threat_defense_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Cisco Firepower Threat Defense, Version ((?:\\d*\\.){1,5}\\d{1,})",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cisco Firepower Threat Defense"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Cisco Firepower Threat Defense, Version 10.2.3.1 (Build 43), ASA Version 9.9(2)4",
+    "Cisco Firepower Threat Defense, Version 7.0.0 (Build 3), ASA Version 9.16(0)3"
+  ]
+}

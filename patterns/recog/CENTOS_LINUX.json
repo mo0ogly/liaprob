@@ -1,0 +1,91 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-centos_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CENTOS_LINUX",
+  "taxonomy_name": "CentOS Linux",
+  "vendor": "CentOS",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "CENTOS_LINUX.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_centos_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(CentOS\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CentOS Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^CentOS(?: Linux)?(?: [a-z]+)?\\s?(\\d+?(?:\\.\\d+?)*?)?(?:\\s.*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Centos Linux"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^CentOS release ([\\d.]+) \\(Final\\)(?:\\r|\\n)+Kernel ([\\w.-]+) on an (\\w+)(?:\\r|\\n)+(?:([\\w.-]+) )?login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CentOS"
+        }
+      ]
+    },
+    {
+      "id": "recog_centos_linux_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^CentOS release ([\\d.]*)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CentOS Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:centos:centos:-",
+  "examples": [
+    "Apache/2.2.15 (CentOS)",
+    "Centos Linux 5.11",
+    "CentOS 6.7",
+    "CentOS 7",
+    "CentOS release 6.7 (Final)",
+    "CentOS release 4.9 (Final)",
+    "Q2VudE9TIHJlbGVhc2UgNS45IChGaW5hbCkNCktlcm5lbCAyLjYuMTgtMzQ4LjYuMS5lbDUgb\n      24gYW4gaTY4Ng0KbG9naW46Cg==",
+    "Q2VudE9TIHJlbGVhc2UgNi4xMCAoRmluYWwpDQpLZXJuZWwgMi42LjMyLTc1NC4yLjEuZWw2L\n      ng4Nl82NCBvbiBhbiB4ODZfNjQNCnNlcnZlci0wMS4yIGxvZ2luOgo="
+  ]
+}

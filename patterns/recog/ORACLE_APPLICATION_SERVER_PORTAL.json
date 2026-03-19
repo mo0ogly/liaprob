@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_application_server_portal",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_APPLICATION_SERVER_PORTAL",
+  "taxonomy_name": "Oracle Application Server Portal",
+  "vendor": "Oracle",
+  "product": "Application Server Portal",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_APPLICATION_SERVER_PORTAL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_application_server_portal_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^portal=([0-9]+\\.[0-9]+\\.[0-9]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^portal=([0-9]+\\.[0-9]+\\.[0-9]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OracleAS Portal default cookie name - http://download.oracle.com/docs/cd/B14099_19/portal.1014/b19305/cg_app_f.htm"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:oracle:application_server_portal:{version}",
+  "examples": [
+    "portal=2173348032.20480.0000;"
+  ]
+}

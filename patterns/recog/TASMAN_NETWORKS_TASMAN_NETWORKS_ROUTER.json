@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-tasman_networks_tasman_networks_router",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TASMAN_NETWORKS_TASMAN_NETWORKS_ROUTER",
+  "taxonomy_name": "Tasman Networks Tasman Networks router",
+  "vendor": "Tasman Networks",
+  "product": "Tasman Networks router",
+  "source": {
+    "type": "recog",
+    "file": "TASMAN_NETWORKS_TASMAN_NETWORKS_ROUTER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_tasman_networks_tasman_networks_router_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "Tasman Networks Inc.*Telnet Login",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Tasman Networks Login"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "Iy0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0\n      tLS0tLS0tCiMgVGFzbWFuIE5ldHdvcmtzIEluYy4gVGVsbmV0IExvZ2luCiMtLS0tLS0tLS0tLS0tLS0tLS0tLS\n      0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLQpFc2NhcGUgY2hhcmFjd\n      GVyIGlzICdeXScuCgoKICAgICAgICAKbG9naW46IA=="
+  ]
+}

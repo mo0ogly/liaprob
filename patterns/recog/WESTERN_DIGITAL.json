@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-western_digital",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WESTERN_DIGITAL",
+  "taxonomy_name": "Western Digital",
+  "vendor": "Western Digital",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "WESTERN_DIGITAL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_western_digital_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=(?:\\*\\.)?([a-zA-Z0-9\\.\\_\\-]+)\\.wd2go\\.com",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Western Digital WD2GO Devices"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "CN=device1133796-01b3e3fa.wd2go.com,OU=Domain Control Validated+OU=Hosted by Western Digital Corporation+OU=COMODO SSL Unified Communications",
+    "CN=*.device4113440.wd2go.com,OU=Branded Products,O=Western Digital,L=Mountain View,ST=California,C=US"
+  ]
+}

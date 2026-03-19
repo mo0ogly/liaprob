@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lacie_lacie_dashboard_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LACIE_LACIE_DASHBOARD_X",
+  "taxonomy_name": "LaCie LaCie Dashboard x",
+  "vendor": "LaCie",
+  "product": "LaCie Dashboard x",
+  "source": {
+    "type": "recog",
+    "file": "LACIE_LACIE_DASHBOARD_X.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lacie_lacie_dashboard_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^a7fe149a9f2582f38576d14d9b1f0f55",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "LaCie Dashboard x"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "a7fe149a9f2582f38576d14d9b1f0f55"
+  ]
+}

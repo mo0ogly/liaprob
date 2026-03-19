@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-opensips_opensips",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENSIPS_OPENSIPS",
+  "taxonomy_name": "OpenSIPS OpenSIPS",
+  "vendor": "OpenSIPS",
+  "product": "OpenSIPS",
+  "source": {
+    "type": "recog",
+    "file": "OPENSIPS_OPENSIPS.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_opensips_opensips_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSIPS \\(([\\d.]+)(?:-tls|-notls)? \\(x86_64/linux\\)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSIPS \\(([\\d.]+)(?:-tls|-notls)? \\(x86_64/linux\\)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSIPS OpenSIPS - Linux on x86_64"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSIPS \\(([\\d.]+)(?:-tls|-notls)? \\(i386/linux\\)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSIPS \\(([\\d.]+)(?:-tls|-notls)? \\(i386/linux\\)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSIPS OpenSIPS - Linux on x86"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^OpenSIPS \\(([\\d.]+)(?:-tls|-notls)? \\(arm(?:v4tl|v7l)?/linux\\)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^OpenSIPS \\(([\\d.]+)(?:-tls|-notls)? \\(arm(?:v4tl|v7l)?/linux\\)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "OpenSIPS OpenSIPS - Linux on ARM"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip"
+  ],
+  "cpe23_template": "cpe:/a:opensips:opensips:{version}",
+  "examples": [
+    "OpenSIPS (1.7.2-notls (x86_64/linux))",
+    "OpenSIPS (1.11.11-tls (x86_64/linux))",
+    "OpenSIPS (2.2.7 (x86_64/linux))",
+    "OpenSIPS (1.8.2-notls (i386/linux))",
+    "OpenSIPS (1.11.3-tls (i386/linux))",
+    "OpenSIPS (2.3.3 (i386/linux))",
+    "OpenSIPS (2.2.2 (arm/linux))",
+    "OpenSIPS (1.6.0-notls (armv4tl/linux))",
+    "OpenSIPS (1.11.5-tls (armv7l/linux))"
+  ]
+}

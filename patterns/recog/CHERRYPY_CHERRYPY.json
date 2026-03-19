@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cherrypy_cherrypy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CHERRYPY_CHERRYPY",
+  "taxonomy_name": "CherryPy CherryPy",
+  "vendor": "CherryPy",
+  "product": "CherryPy",
+  "source": {
+    "type": "recog",
+    "file": "CHERRYPY_CHERRYPY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cherrypy_cherrypy_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^CherryPy/((?:\\d+\\.)*\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^CherryPy/((?:\\d+\\.)*\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Web server component of CherryPy web application framework."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:cherrypy:cherrypy:{version}",
+  "examples": [
+    "CherryPy/3.1.2",
+    "CherryPy/3"
+  ]
+}

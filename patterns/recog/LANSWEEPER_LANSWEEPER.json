@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lansweeper_lansweeper",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LANSWEEPER_LANSWEEPER",
+  "taxonomy_name": "Lansweeper Lansweeper",
+  "vendor": "Lansweeper",
+  "product": "Lansweeper",
+  "source": {
+    "type": "recog",
+    "file": "LANSWEEPER_LANSWEEPER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lansweeper_lansweeper_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^0a60c945e674ec7b953429b515519567$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lansweeper"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Lansweeper (?:- Login|First Run Wizard)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lansweeper"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:lansweeper:lansweeper:-",
+  "examples": [
+    "0a60c945e674ec7b953429b515519567",
+    "Lansweeper - Login",
+    "Lansweeper First Run Wizard"
+  ]
+}

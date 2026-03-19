@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ramaze_ruby_ramaze_ruby_0_3_9_1_dispatcher",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "RAMAZE_RUBY_RAMAZE_RUBY_0_3_9_1_DISPATCHER",
+  "taxonomy_name": "ramaze-ruby ramaze-ruby (0.3.9.1) - dispatcher",
+  "vendor": "ramaze-ruby",
+  "product": "ramaze-ruby (0.3.9.1) - dispatcher",
+  "source": {
+    "type": "recog",
+    "file": "RAMAZE_RUBY_RAMAZE_RUBY_0_3_9_1_DISPATCHER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ramaze_ruby_ramaze_ruby_0_3_9_1_dispatcher_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6be5ebd07e37d0b415ec83396a077312",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ramaze-ruby (0.3.9.1) - dispatcher"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6be5ebd07e37d0b415ec83396a077312"
+  ]
+}

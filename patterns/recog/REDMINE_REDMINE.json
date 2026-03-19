@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-redmine_redmine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "REDMINE_REDMINE",
+  "taxonomy_name": "Redmine Redmine",
+  "vendor": "Redmine",
+  "product": "Redmine",
+  "source": {
+    "type": "recog",
+    "file": "REDMINE_REDMINE.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_redmine_redmine_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^d316e1622c58825727e7e4e6c954d289$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Redmine"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Redmine(?: 500 error)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Redmine"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^_redmine_session=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Redmine"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:redmine:redmine:-",
+  "examples": [
+    "d316e1622c58825727e7e4e6c954d289",
+    "Redmine",
+    "_redmine_session=BAh7B0kiD3Nlc3Npb25faWQGOgZFRkkiJWY2MGY5MTJiZjg0NGU1ZmQxZWI2OTViNzAxYjU4NTRiBjsAVEkiEF9jc3JmX3Rva2VuBjsARkkiMW1kV3Z5NDl6eVkwWDl4bFQvMUxSSmxmbjhhaDR1WWxERWUrMFQ4dVcvS0k9BjsARg%3D%3D--ce5f52d49b68e30a7ec34b75bf456d6c79d234d2; path=/; HttpOnly"
+  ]
+}

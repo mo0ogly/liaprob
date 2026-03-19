@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lexmark_c760",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LEXMARK_C760",
+  "taxonomy_name": "Lexmark C760",
+  "vendor": "Lexmark",
+  "product": "C760",
+  "source": {
+    "type": "recog",
+    "file": "LEXMARK_C760.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_lexmark_c760_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lexmark C760 version ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lexmark C760 Color Laser Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ]
+}

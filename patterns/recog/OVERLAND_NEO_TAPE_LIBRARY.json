@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-overland_neo_tape_library",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OVERLAND_NEO_TAPE_LIBRARY",
+  "taxonomy_name": "Overland NEO Tape Library",
+  "vendor": "Overland",
+  "product": "NEO Tape Library",
+  "source": {
+    "type": "recog",
+    "file": "OVERLAND_NEO_TAPE_LIBRARY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_overland_neo_tape_library_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Overland Neo Series$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Overland NEO tape library"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Overland Agent Version (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Overland NEO tape library - agent variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Overland Neo Series",
+    "Overland Agent Version 1.1"
+  ]
+}

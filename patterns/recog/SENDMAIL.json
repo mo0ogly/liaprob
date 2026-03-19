@@ -1,0 +1,97 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sendmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SENDMAIL",
+  "taxonomy_name": "Sendmail",
+  "vendor": "",
+  "product": "Sendmail",
+  "source": {
+    "type": "recog",
+    "file": "SENDMAIL.json",
+    "fingerprint_count": 6
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 6 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_sendmail_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*contact the Digital Customer Support Center at 1-800-354-9000",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sendmail on Digital OSF UNIX"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -]2.0.0 This is [s|S]endmail version ([^ ]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^214[ -]2.0.0 This is [s|S]endmail version ([^ ]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sendmail often returns version information for HELP, even when the greeting is obscured"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -]This is [s|S]endmail version ([^ ]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^214[ -]This is [s|S]endmail version ([^ ]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sendmail often returns version information for HELP - variant 1"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^502[ -]5\\.3\\.0 Sendmail ([^ ]+) -- HELP not implemented$",
+          "confidence_delta": 0.4,
+          "version_extract": "^502[ -]5\\.3\\.0 Sendmail ([^ ]+) -- HELP not implemented$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Sendmail - help not implemented variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].*sendmail-bugs@sendmail\\.org",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sendmail often returns version information for HELP - email variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^252[ -](?:2\\.5\\.2)? Cannot VRFY user; try RCPT to attempt delivery \\(or try finger\\) *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sendmail - vrfy variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "502 5.3.0 Sendmail 8.11.2 -- HELP not implemented"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fuppes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FUPPES",
+  "taxonomy_name": "FUPPES",
+  "vendor": "",
+  "product": "FUPPES",
+  "source": {
+    "type": "recog",
+    "file": "FUPPES.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_fuppes_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+), UPnP/\\S+, Free UPnP Entertainment Service/ReadyNAS$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Free UPnP Entertainment Service UPnP Server - Linux on ReadyNAS"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Linux/(\\S+), UPnP/\\S+, Free UPnP Entertainment Service/$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Free UPnP Entertainment Service UPnP Server - Linux"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^FreeBSD/(\\S+), UPnP/\\S+, Free UPnP Entertainment Service/$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Free UPnP Entertainment Service UPnP Server - FreeBSD"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:linux:linux_kernel:{os.version}"
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kamailio_kamailio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KAMAILIO_KAMAILIO",
+  "taxonomy_name": "Kamailio Kamailio",
+  "vendor": "Kamailio",
+  "product": "Kamailio",
+  "source": {
+    "type": "recog",
+    "file": "KAMAILIO_KAMAILIO.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_kamailio_kamailio_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^[Kk]amailio \\(([\\d.]+)(?:-tls|-notls)? \\(x86_64/linux\\)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^[Kk]amailio \\(([\\d.]+)(?:-tls|-notls)? \\(x86_64/linux\\)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Kamailio Kamailio - Linux on x86_64"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^[Kk]amailio \\(([\\d.]+)(?:-tls|-notls)? \\(i386/linux\\)\\)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^[Kk]amailio \\(([\\d.]+)(?:-tls|-notls)? \\(i386/linux\\)\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Kamailio Kamailio - Linux on x86"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip"
+  ],
+  "cpe23_template": "cpe:/a:kamailio:kamailio:{version}",
+  "examples": [
+    "kamailio (4.4.4 (x86_64/linux))",
+    "Kamailio (1.5.2-notls (i386/linux))"
+  ]
+}

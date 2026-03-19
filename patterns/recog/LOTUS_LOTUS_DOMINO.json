@@ -1,0 +1,89 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lotus_lotus_domino",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LOTUS_LOTUS_DOMINO",
+  "taxonomy_name": "Lotus Lotus Domino",
+  "vendor": "Lotus",
+  "product": "Lotus Domino",
+  "source": {
+    "type": "recog",
+    "file": "LOTUS_LOTUS_DOMINO.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_lotus_lotus_domino_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Lotus SMTP MTA Service Ready *$",
+          "confidence_delta": 0.4,
+          "version_static": "4",
+          "case_insensitive": true,
+          "note": "Lotus Notes 4 SMTP MTA"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP Service \\(Lotus Domino Build (V?[\\w.]+)\\) ready at (.+) *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lotus Domino (some early build)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Lotus Notes ESMTP Server X[^ ]+\\.[^ ]+ on (.+) ready at (.+)\\. *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lotus Notes 4.x with SMTP MTA add-on"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^252 Unable to EXPN \".*\", but will accept message and attempt delivery *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lotus Domino"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^252 Unable to VRFY \".*\", but will accept message and attempt delivery *$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lotus Domino - vrfy variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "smtp"
+  ],
+  "cpe23_template": "cpe:/a:ibm:lotus_domino:4",
+  "examples": [
+    "foo.bar Lotus SMTP MTA Service Ready",
+    "foo.bar ESMTP Service (Lotus Domino Build 166.1) ready at Thu, 16 Nov 2017 10:39:22 +0200",
+    "foo.bar ESMTP Service (Lotus Domino Build V85_M2_08202008) ready at Thu, 16 Nov 2017 03:57:40 -0500",
+    "Lotus Notes ESMTP Server X1.0 on FooBar R45 Server/Foo Bar/US ready at Fri, 15 Feb 2002 09:46:19 -0800."
+  ]
+}

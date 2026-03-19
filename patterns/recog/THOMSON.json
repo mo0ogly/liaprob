@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-thomson",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THOMSON",
+  "taxonomy_name": "Thomson",
+  "vendor": "Thomson",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "THOMSON.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_thomson_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Thomson (TG[\\w]+) (?:v\\d )?Build (\\d+\\.[\\w.-]+)(?: CP\\w+)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Thomson TGxxx Router with build info"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Thomson TG784 Build 8.4.2.Q",
+    "Thomson TG784n Build 8.4.H.F",
+    "Thomson TG797n v2 Build 8.C.D.9"
+  ]
+}

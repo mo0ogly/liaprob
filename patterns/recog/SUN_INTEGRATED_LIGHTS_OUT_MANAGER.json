@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sun_integrated_lights_out_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUN_INTEGRATED_LIGHTS_OUT_MANAGER",
+  "taxonomy_name": "Sun Integrated Lights Out Manager",
+  "vendor": "Sun",
+  "product": "Integrated Lights Out Manager",
+  "source": {
+    "type": "recog",
+    "file": "SUN_INTEGRATED_LIGHTS_OUT_MANAGER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sun_integrated_lights_out_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Sun-ILOM-Web-Server/(?:\\d\\.[\\d._]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Sun Integrated Lights Out Manager (ILOM) usually bundled with Sun Fire servers"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_sun_integrated_lights_out_manager_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (?:SUNSP00144F\\S+) (\\S*).* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Yellow Dog (Sun) Linux"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "snmp"
+  ],
+  "examples": [
+    "Sun-ILOM-Web-Server/1.0",
+    "Linux SUNSP00144F9E0508 2.4.22 #1 Sat Apr 21 11:28:21 PDT 2007 ppc"
+  ]
+}

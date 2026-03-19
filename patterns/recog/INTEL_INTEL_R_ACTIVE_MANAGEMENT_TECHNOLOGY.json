@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-intel_intel_r_active_management_technology",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "INTEL_INTEL_R_ACTIVE_MANAGEMENT_TECHNOLOGY",
+  "taxonomy_name": "Intel Intel(R) Active Management Technology",
+  "vendor": "Intel",
+  "product": "Intel(R) Active Management Technology",
+  "source": {
+    "type": "recog",
+    "file": "INTEL_INTEL_R_ACTIVE_MANAGEMENT_TECHNOLOGY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_intel_intel_r_active_management_technology_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Intel\\(R\\) Active Management Technology\\s(\\d+\\.\\d+\\.\\d+\\.\\d+|\\d+\\.\\d+\\.\\d+|\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Intel\\(R\\) Active Management Technology\\s(\\d+\\.\\d+\\.\\d+\\.\\d+|\\d+\\.\\d+\\.\\d+|\\d+\\.\\d+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Intel(R) Active Management Technology (AMT) with a version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:AMT|Intel\\(R\\) Active Management Technology)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Intel(R) Active Management Technology (AMT) without a version"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:intel:active_management_technology_firmware:{os.version}",
+  "examples": [
+    "Intel(R) Active Management Technology 7.1.86",
+    "AMT",
+    "Intel(R) Active Management Technology"
+  ]
+}

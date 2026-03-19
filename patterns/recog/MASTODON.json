@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mastodon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MASTODON",
+  "taxonomy_name": "Mastodon",
+  "vendor": "",
+  "product": "Mastodon",
+  "source": {
+    "type": "recog",
+    "file": "MASTODON.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mastodon_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^_mastodon_session=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mastodon"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Mastodon$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Mastodon"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "_mastodon_session=U09wSzlaMHNuZVI3RGJjR1M2d2lqNFhXc1BXNlJtOXBueTdoM1J2Ykk3UjRXa2V3WkNUNm5BUmY4Z0NISk9FaEtrOVQrMXJCRldvbk1kY3BUaDZkMlRuZkNBUDVXU01EakN3S1JEZDdjbzhNQ0t5MHpXZE9WSGlTOVhKNkhlZWhlaWsxM3Mvd0poU1NHWkZjWUNucmJoeDdNdU85ekpkQVJSbkhDeXdKZ08wMkNuUm1BYnE3cGVBK2FBN1FTUU9SLS1EdUVoNWtLOFFWaWsxNmY2bzErbFVRPT0%3D--4b6087906fdfa25f0bfd46b13d3c1c3a9fb379cd; path=/; secure; HttpOnly",
+    "Mastodon"
+  ]
+}

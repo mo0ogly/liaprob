@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-treck_tcp_ip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TRECK_TCP_IP",
+  "taxonomy_name": "Treck TCP/IP",
+  "vendor": "Treck",
+  "product": "TCP/IP",
+  "source": {
+    "type": "recog",
+    "file": "TRECK_TCP_IP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_treck_tcp_ip_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^\\$ProjectRevision:[\\s\\w:]* ([\\d\\.]+) \\$$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^\\$ProjectRevision:[\\s\\w:]* ([\\d\\.]+) \\$$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "This banner is used to see if devices have Treck TCP/IP"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:treck:tcp%2fip:{version}",
+  "examples": [
+    "$ProjectRevision: 4.0.2.38 $",
+    "$ProjectRevision: 4.2 $",
+    "$ProjectRevision: 6.0.1.5 $",
+    "$ProjectRevision: Last Checkpoint: 4.2.2.13 $"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dell_idrac_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DELL_IDRAC_LINUX",
+  "taxonomy_name": "Dell iDRAC Linux",
+  "vendor": "Dell",
+  "product": "iDRAC Linux",
+  "source": {
+    "type": "recog",
+    "file": "DELL_IDRAC_LINUX.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_dell_idrac_linux_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2c9d5e03f63c39e6336ec491019c4f50$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell DRAC WS endpoint"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:embedded )?WS server test page$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell iDRAC Websocket Endpoint"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_dell_idrac_linux_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=iDRACdefault([a-fA-F0-9]{12}),OU=iDRAC Group,O=Dell Inc.,L=Round Rock,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell iDRAC Remote Access Controller w/MAC"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=idrac-([A-Z0-9]{7}),OU=Remote Access Group,O=Dell Inc\\.,L=Round Rock,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell iDRAC Remote Access Controller w/Service Tag"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=idrac.*,OU=Remote Access Group,O=Dell Inc\\.,L=Round Rock,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell iDRAC Remote Access Controller w/o Service Tag"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=(i?DRAC\\d+) default certificate,OU=Remote Access Group,O=Dell Inc\\.,L=Round Rock,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell iDRAC Remote Access Controller w/Version"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=iDRAC default certificate,OU=Server Firmware Group,O=Dell Inc\\.,L=Round Rock,ST=Texas,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Dell iDRAC Remote Access Controller Default Certificate"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "examples": [
+    "2c9d5e03f63c39e6336ec491019c4f50",
+    "WS server test page",
+    "embedded WS server test page",
+    "CN=iDRACdefault0023AEF89AD1,OU=iDRAC Group,O=Dell Inc.,L=Round Rock,C=US",
+    "CN=idrac-JXJJC02,OU=Remote Access Group,O=Dell Inc.,L=Round Rock,ST=Texas,C=US",
+    "CN=idrac-FMDSJH3,OU=Remote Access Group,O=Dell Inc.,L=Round Rock,ST=Texas,C=US",
+    "CN=idrac-SVCTAG,OU=Remote Access Group,O=Dell Inc.,L=Round Rock,ST=Texas,C=US",
+    "CN=idrac-prosit-laks,OU=Remote Access Group,O=Dell Inc.,L=Round Rock,ST=Texas,C=US",
+    "CN=idrac-,OU=Remote Access Group,O=Dell Inc.,L=Round Rock,ST=Texas,C=US",
+    "CN=idrac,OU=Remote Access Group,O=Dell Inc.,L=Round Rock,ST=Texas,C=US"
+  ]
+}

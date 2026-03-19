@@ -1,0 +1,92 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-freebsd_freebsd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FREEBSD_FREEBSD",
+  "taxonomy_name": "FreeBSD FreeBSD",
+  "vendor": "FreeBSD",
+  "product": "FreeBSD",
+  "source": {
+    "type": "recog",
+    "file": "FREEBSD_FREEBSD.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_freebsd_freebsd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(FreeBSD\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FreeBSD"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"FreeBSD/?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ntp without a version on FreeBSD"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FreeBSD\\/([^\\\\s]+)\\s+\\(([^\\s]+)\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "a FreeBSD"
+        }
+      ]
+    },
+    {
+      "id": "recog_freebsd_freebsd_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^FreeBSD \\S+ ([\\d\\.]+-(?:STABLE|RELEASE)(?:-p\\d+)?).*\\s(\\w+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "FreeBSD 10.0"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:freebsd:freebsd:-",
+  "examples": [
+    "Apache/2.4.51 (FreeBSD) OpenSSL/1.1.1h-freebsd",
+    "processor=\"i386\", system=\"FreeBSD4.1-RELEASE\"",
+    "processor=\"i386\", system=\"FreeBSD2.2.6-RELEASE\",",
+    "FreeBSD freebsd-10-x64-ports-p 10.0-RELEASE-p4 FreeBSD 10.0-RELEASE-p4 #0: Tue Jun 3 13:14:57 UTC 2014 root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC amd64",
+    "FreeBSD freebsd-92-x64-snmp 9.2-RELEASE FreeBSD 9.2-RELEASE #0 r255898: Thu Sep 26 22:50:31 UTC 2013 root@bake.isc.freebsd.org:/usr/obj/usr/src/sys/GENERIC amd64",
+    "FreeBSD freebsd-84-x64-pkgng-p.vuln.lax.rapid7.com 8.4-RELEASE-p11 FreeBSD 8.4-RELEASE-p11 #0: Tue Jun 3 07:47:34 UTC 2014 root@amd64-builder.daemonology.net:/usr/obj/usr/src/sys/GENERIC amd64",
+    "FreeBSD freebsd-8-stable-x64-p.vuln.lax.rapid7.com 8.4-STABLE FreeBSD 8.4-STABLE #0 r266809: Wed May 28 16:54:28 EDT 2014 root@freebsd-8-stable-x64-p.vuln.lax.rapid7.com:/usr/obj/usr/src/sys/GENERIC amd64",
+    "FreeBSD freebsd-64-x64-u.vuln.lax.rapid7.com 6.4-RELEASE FreeBSD 6.4-RELEASE #0: Wed Nov 26 08:21:48 UTC 2008 root@palmer.cse.buffalo.edu:/usr/obj/usr/src/sys/GENERIC amd64",
+    "RnJlZUJTRC9hbWQ2NCAobXMuZ3ltc3Bncy5jeikgKHB0cy8wKQoKCgpsb2dpbjo="
+  ]
+}

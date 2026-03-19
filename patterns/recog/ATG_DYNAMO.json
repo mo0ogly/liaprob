@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-atg_dynamo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATG_DYNAMO",
+  "taxonomy_name": "ATG Dynamo",
+  "vendor": "ATG",
+  "product": "Dynamo",
+  "source": {
+    "type": "recog",
+    "file": "ATG_DYNAMO.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_atg_dynamo_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(ATG_SESSION_ID|DYN_USER_CONFIRM|DYN_USER_ID)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ATG Dynamo"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "ATG_SESSION_ID=yuAUs8xnkzLaF8P3Zk1v5hR28XB4dKsOKZ4jCkVO; path=/"
+  ]
+}

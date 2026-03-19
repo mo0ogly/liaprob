@@ -1,0 +1,180 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-net_snmp_snmp_agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NET_SNMP_SNMP_AGENT",
+  "taxonomy_name": "Net-SNMP SNMP Agent",
+  "vendor": "Net-SNMP",
+  "product": "SNMP Agent",
+  "source": {
+    "type": "recog",
+    "file": "NET_SNMP_SNMP_AGENT.json",
+    "fingerprint_count": 16
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 16 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_net_snmp_snmp_agent_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on hpux9"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on sunos4"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on solaris"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.4$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on osf"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.5$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on ultrix"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.6$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on hpux10"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.7$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on netbsd"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.8$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on freebsd"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.9$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on irix"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.10$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on linux"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.11$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on bsdi"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.12$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on openbsd"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.13$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on win32"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.14$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on hpux11"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.15$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on aix"
+        },
+        {
+          "target": "snmp_sysobjid",
+          "match_type": "regex",
+          "value": "^1\\.3\\.6\\.1\\.4\\.1\\.8072\\.3\\.2\\.16$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Net-SNMP on macosx"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/a:net-snmp:net-snmp:-",
+  "examples": [
+    "1.3.6.1.4.1.8072.3.2.1",
+    "1.3.6.1.4.1.8072.3.2.2",
+    "1.3.6.1.4.1.8072.3.2.3",
+    "1.3.6.1.4.1.8072.3.2.4",
+    "1.3.6.1.4.1.8072.3.2.5",
+    "1.3.6.1.4.1.8072.3.2.6",
+    "1.3.6.1.4.1.8072.3.2.7",
+    "1.3.6.1.4.1.8072.3.2.8",
+    "1.3.6.1.4.1.8072.3.2.9",
+    "1.3.6.1.4.1.8072.3.2.10"
+  ]
+}

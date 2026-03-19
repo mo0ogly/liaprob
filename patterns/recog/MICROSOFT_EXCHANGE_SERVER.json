@@ -1,0 +1,131 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_exchange_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_EXCHANGE_SERVER",
+  "taxonomy_name": "Microsoft Exchange Server",
+  "vendor": "Microsoft",
+  "product": "Exchange Server",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_EXCHANGE_SERVER.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    110,
+    119,
+    143,
+    587,
+    993,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_exchange_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^The Microsoft Exchange IMAP4 service is ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NNTP Service Microsoft. Internet Services (?:.*) Version: (?:[^ ]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Older Microsoft IIS NNTP Servers"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Microsoft Exchange POP3 server version (\\d+\\.\\d+\\.\\d+\\.\\d+) ready$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Microsoft Exchange POP3 server version (\\d+\\.\\d+\\.\\d+\\.\\d+) ready$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange Server"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^The? Microsoft Exchange POP3 service is ready\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange Server, generic"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +ESMTP Server \\(Microsoft Exchange Internet Mail Service (\\d+\\.\\d+\\.\\d+\\.\\d+)\\) ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +ESMTP Server \\(Microsoft Exchange Internet Mail Service (\\d+\\.\\d+\\.\\d+\\.\\d+)\\) ready *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange Server 5.5 and above (for sure, can't be confused with the IIS builtin SMTP service)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Microsoft Exchange Internet Mail Service (\\d+\\.\\d+\\.\\d+\\.\\d+) ready *$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) Microsoft Exchange Internet Mail Service (\\d+\\.\\d+\\.\\d+\\.\\d+) ready *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange Server 5.0 (for sure, can't be confused with the IIS builtin SMTP service)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) Microsoft ESMTP MAIL Service ready at",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange 2007/2010 (for sure, can't be confused with the IIS builtin SMTP service)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^214[ -].* XEXCH50 *",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Microsoft Exchange/IIS server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp",
+    "imap",
+    "generic",
+    "nntp",
+    "pop3"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:exchange_server:-",
+  "examples": [
+    "The Microsoft Exchange IMAP4 service is ready.",
+    "NNTP Service Microsoft. Internet Services 5.00 Version: 5.0.2068.0 Posting Allowed",
+    "NNTP Service Microsoft. Internet Services 5.00.7515. Version: 5.0.0.7515 Posting Allowed",
+    "NNTP Service Microsoft. Internet Services 5.5 Version: 5.5.1726.0 Posting Allowed",
+    "Microsoft Exchange POP3 server version 5.5.2654.50 ready",
+    "The Microsoft Exchange POP3 service is ready.",
+    "foo.bar ESMTP Server (Microsoft Exchange Internet Mail Service 5.5.2653.13) ready",
+    "foo.bar Microsoft Exchange Internet Mail Service 5.0.1460.8 ready",
+    "foo.bar Microsoft ESMTP MAIL Service ready at Wed, 21 Jul 2010 19:04:24 -0700"
+  ]
+}

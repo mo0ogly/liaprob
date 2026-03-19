@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-washington_university_wu_ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WASHINGTON_UNIVERSITY_WU_FTPD",
+  "taxonomy_name": "Washington University WU-FTPD",
+  "vendor": "Washington University",
+  "product": "WU-FTPD",
+  "source": {
+    "type": "recog",
+    "file": "WASHINGTON_UNIVERSITY_WU_FTPD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_washington_university_wu_ftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) +FTP +Server \\(Revision \\S+ Version wuftpd-([^\\(]+)\\(PHNE_\\d+\\) [^\\)]+\\) ready.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) +FTP +Server \\(Revision \\S+ Version wuftpd-([^\\(]+)\\(PHNE_\\d+\\) [^\\)]+\\) ready.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "WU-FTPD on HPUX with a PHNE (HP Networking patch) installed"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(\\S{1,512})(?: \\S{1,512})? FTP Server \\((?:Revision [\\d\\.]+ )?Version wu(?:ftpd)?-([\\d\\.]+).*\\) ready.?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(\\S{1,512})(?: \\S{1,512})? FTP Server \\((?:Revision [\\d\\.]+ )?Version wu(?:ftpd)?-([\\d\\.]+).*\\) ready.?$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "WU-FTPD on various OS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/o:hp:hp-ux:-",
+  "examples": [
+    "example.com FTP server (Revision 1.1 Version wuftpd-2.6.1(PHNE_38578) Fri Sep 5 12:10:54 GMT 2008) ready.",
+    "example.com FTP server (Version wu-2.6.2(1) Sat Jul 19 16:21:30 UTC 2008) ready.",
+    "example.com 192.168.0.1 FTP server (Version wu-2.6.2(1) Wed Sep 21 11:16:21 MEST 2005) ready.",
+    "example.com FTP server (Version wu-2.6.2-11.73.1) ready.",
+    "example.com FTP server (Revision 5.0 Version wuftpd-2.6.1 Thu Apr 29 06:48:40 GMT 2010) ready."
+  ]
+}

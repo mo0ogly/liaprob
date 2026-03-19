@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sork_vacation_h3_sork_vacation_h3_3_0_1",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SORK_VACATION_H3_SORK_VACATION_H3_3_0_1",
+  "taxonomy_name": "sork-vacation-h3 sork-vacation-h3 (3.0.1)",
+  "vendor": "sork-vacation-h3",
+  "product": "sork-vacation-h3 (3.0.1)",
+  "source": {
+    "type": "recog",
+    "file": "SORK_VACATION_H3_SORK_VACATION_H3_3_0_1.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sork_vacation_h3_sork_vacation_h3_3_0_1_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^cb740847c45ea3fbbd80308b9aa4530a",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "sork-vacation-h3 (3.0.1)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "cb740847c45ea3fbbd80308b9aa4530a"
+  ]
+}

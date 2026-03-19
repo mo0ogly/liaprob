@@ -1,0 +1,124 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_windows_vista",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_WINDOWS_VISTA",
+  "taxonomy_name": "Microsoft Windows Vista",
+  "vendor": "Microsoft",
+  "product": "Windows Vista",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_WINDOWS_VISTA.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_windows_vista_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Vista \\(TM\\) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+) (Service Pack \\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista (SP)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Windows Vista \\(TM\\) (\\w+|\\w+ \\w+|\\w+ \\w+ \\w+) (\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista"
+        }
+      ]
+    },
+    {
+      "id": "recog_microsoft_windows_vista_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows Version 6.0 \\(Build 6000",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista on x86"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: \\S+64.*Software: Windows Version 6.0 \\(Build 6000",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista on x86_64"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows Version 6.0 \\(Build 6001",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista SP1 on x86"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: \\S+64.*Software: Windows Version 6.0 \\(Build 6001",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista SP1 on x86_64"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: x86.*Software: Windows Version 6.0 \\(Build 6002",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista SP2 on x86"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hardware: \\S+64.*Software: Windows Version 6.0 \\(Build 6002",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Windows Vista SP2 on x86_64"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smb",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_vista:{os.version}",
+  "examples": [
+    "Windows Vista (TM) Home Premium 6002 Service Pack 2",
+    "Windows Vista (TM) Home Premium 6000",
+    "Hardware: x86 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6000 Multiprocessor Free)",
+    "Hardware: Intel64 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6000 Multiprocessor Free)",
+    "Hardware: x86 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6001 Multiprocessor Free)",
+    "Hardware: AMD64 Family 16 Model 2 Stepping 3 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6001 Multiprocessor Free)",
+    "Hardware: Intel64 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6001 Multiprocessor Free)",
+    "Hardware: x86 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6002 Multiprocessor Free)",
+    "Hardware: AMD64 Family 16 Model 2 Stepping 3 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6002 Multiprocessor Free)",
+    "Hardware: Intel64 Family 15 Model 2 Stepping 5 AT/AT COMPATIBLE - Software: Windows Version 6.0 (Build 6002 Multiprocessor Free)"
+  ]
+}

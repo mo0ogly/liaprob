@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_surestore_tape_library",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_SURESTORE_TAPE_LIBRARY",
+  "taxonomy_name": "HP SureStore Tape Library",
+  "vendor": "HP",
+  "product": "SureStore Tape Library",
+  "source": {
+    "type": "recog",
+    "file": "HP_SURESTORE_TAPE_LIBRARY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_surestore_tape_library_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP Tape Library Remote Management Card$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP SureStore Tape Library"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP Tape Library Remote Management Card"
+  ]
+}

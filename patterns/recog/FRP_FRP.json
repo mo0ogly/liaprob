@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-frp_frp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FRP_FRP",
+  "taxonomy_name": "frp frp",
+  "vendor": "frp",
+  "product": "frp",
+  "source": {
+    "type": "recog",
+    "file": "FRP_FRP.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_frp_frp_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^57801ef5135f6a6e8ea69baef85f8607$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "frp - fast reverse proxy"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:frps dashboard|frp client admin UI)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "frp - fast reverse proxy"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^frp/(\\d+(?:\\.\\d+)*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^frp/(\\d+(?:\\.\\d+)*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "frp - fast reverse proxy, not found response"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "57801ef5135f6a6e8ea69baef85f8607",
+    "frps dashboard",
+    "frp client admin UI",
+    "frp/0.48.0"
+  ]
+}

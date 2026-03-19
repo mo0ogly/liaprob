@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-embedthis_appweb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EMBEDTHIS_APPWEB",
+  "taxonomy_name": "Embedthis Appweb",
+  "vendor": "Embedthis",
+  "product": "Appweb",
+  "source": {
+    "type": "recog",
+    "file": "EMBEDTHIS_APPWEB.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_embedthis_appweb_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Embedthis-(?:Appweb|http)\\/?([\\d.]+)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Embedthis-(?:Appweb|http)\\/?([\\d.]+)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Embedthis AppWeb"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:embedthis:appweb:{version}",
+  "examples": [
+    "Embedthis-Appweb/3.2.3",
+    "Embedthis-http",
+    "Embedthis-http/4.0.0"
+  ]
+}

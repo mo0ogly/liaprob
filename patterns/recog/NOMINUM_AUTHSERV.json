@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nominum_authserv",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOMINUM_AUTHSERV",
+  "taxonomy_name": "Nominum AuthServ",
+  "vendor": "Nominum",
+  "product": "AuthServ",
+  "source": {
+    "type": "recog",
+    "file": "NOMINUM_AUTHSERV.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    53
+  ],
+  "probes": [
+    {
+      "id": "recog_nominum_authserv_dns",
+      "layer": "DNS",
+      "matchers": [
+        {
+          "target": "dns_version",
+          "match_type": "regex",
+          "value": "^Nominum ANS(?:Premier)? ([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Nominum ANS(?:Premier)? ([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Nominum Vantio AuthServ"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dns"
+  ],
+  "examples": [
+    "Nominum ANS 5.4.0.0",
+    "Nominum ANSPremier 5.4.0.0"
+  ]
+}

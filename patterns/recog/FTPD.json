@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FTPD",
+  "taxonomy_name": "FTPD",
+  "vendor": "",
+  "product": "FTPD",
+  "source": {
+    "type": "recog",
+    "file": "FTPD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_ftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^TP-LINK FTP version ([\\d\\.]+)",
+          "confidence_delta": 0.4,
+          "version_extract": "^TP-LINK FTP version ([\\d\\.]+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "FTPD on a TP-LINK device with version, but no host info"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "TP-LINK FTP version 1.0 ready at Wed May  1 20:51:49 2019"
+  ]
+}

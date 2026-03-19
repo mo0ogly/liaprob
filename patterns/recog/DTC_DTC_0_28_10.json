@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-dtc_dtc_0_28_10",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DTC_DTC_0_28_10",
+  "taxonomy_name": "dtc dtc (0.28.10)",
+  "vendor": "dtc",
+  "product": "dtc (0.28.10)",
+  "source": {
+    "type": "recog",
+    "file": "DTC_DTC_0_28_10.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_dtc_dtc_0_28_10_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^bba9f1c29f100d265865626541b20a50",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "dtc (0.28.10)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "bba9f1c29f100d265865626541b20a50"
+  ]
+}

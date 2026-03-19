@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-winroute",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "WINROUTE",
+  "taxonomy_name": "WinRoute",
+  "vendor": "",
+  "product": "WinRoute",
+  "source": {
+    "type": "recog",
+    "file": "WINROUTE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_winroute_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512}) ESMTP - WinRoute Pro ([^ ]+\\.[^ ]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([^ ]{1,512}) ESMTP - WinRoute Pro ([^ ]+\\.[^ ]+)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "WinRoute Pro, runs on 9x/NT/2k http://www.tinysoftware.com/winpro.php"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ESMTP - WinRoute Pro ([^ ]+\\.[^ ]+) *(?: #\\d)? ?.?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^ESMTP - WinRoute Pro ([^ ]+\\.[^ ]+) *(?: #\\d)? ?.?((?:\\w\\w\\w, \\d+ \\w\\w\\w \\d\\d\\d\\d [\\d:]+ [-+]\\d\\d\\d\\d)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WinRoute Pro w/o hostname"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp"
+  ],
+  "examples": [
+    "foo.bar ESMTP - WinRoute Pro 4.2.4",
+    "ESMTP - WinRoute Pro 4.2.1 Thu, 16 Nov 2017 11:48:15 +0300"
+  ]
+}

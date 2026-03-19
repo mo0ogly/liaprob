@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-metabase_metabase",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "METABASE_METABASE",
+  "taxonomy_name": "Metabase Metabase",
+  "vendor": "Metabase",
+  "product": "Metabase",
+  "source": {
+    "type": "recog",
+    "file": "METABASE_METABASE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_metabase_metabase_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:4297c114f263c206ed12aaff4b0c7a50|e5af3b68e837498a85b25ef2c36a0825)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Metabase"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Metabase$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Metabase"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:metabase:metabase:-",
+  "examples": [
+    "4297c114f263c206ed12aaff4b0c7a50",
+    "e5af3b68e837498a85b25ef2c36a0825",
+    "Metabase"
+  ]
+}

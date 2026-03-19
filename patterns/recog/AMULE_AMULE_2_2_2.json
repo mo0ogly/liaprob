@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-amule_amule_2_2_2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AMULE_AMULE_2_2_2",
+  "taxonomy_name": "aMule aMule (2.2.2)",
+  "vendor": "aMule",
+  "product": "aMule (2.2.2)",
+  "source": {
+    "type": "recog",
+    "file": "AMULE_AMULE_2_2_2.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_amule_amule_2_2_2_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^99306a52c76e19e3c298a46616c5899c",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "aMule (2.2.2)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "99306a52c76e19e3c298a46616c5899c"
+  ]
+}

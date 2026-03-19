@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_decserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_DECSERVER",
+  "taxonomy_name": "HP DECserver",
+  "vendor": "HP",
+  "product": "DECserver",
+  "source": {
+    "type": "recog",
+    "file": "HP_DECSERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_decserver_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^DECserver\\s*(\\S+)(?:\\s*, Network Access SW)? V(\\S+) .* LAT V5\\.1,? LOAD IMAGE: \\S+$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "DECserver"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "DECserver 700-08 V1.1 BL44-11 ROM V3.4-9 LAT V5.1 LOAD IMAGE: WWENG1",
+    "DECserver 90TL V1.1A BL45-11 ROM 2.0.0 LAT V5.1 LOAD IMAGE: MNENG1",
+    "DECserver900TM , Network Access SW V2.3A , HW=V1.6 , RO=V7.1-0, SW=BL47-60, LAT V5.1, LOAD IMAGE: WWENG2",
+    "DECserver90M , Network Access SW V2.2 , HW=V4.0 , RO=4.1, SW=BL29-52, LAT V5.1, LOAD IMAGE: MNENG2",
+    "DECserver90M , Network Access SW V2.3A , HW=V4.0 , RO=5.1, SW=BL47-60, LAT V5.1, LOAD IMAGE: MNENG3",
+    "DECserver90M , Network Access SW V2.4 BL50 , HW=V4.0 , RO=4.1, SW=V2.4 BL50, LAT V5.1, LOAD IMAGE: MNENG2",
+    "DECserver90M , Network Access SW V2.4 BL50 , HW=V4.0 , RO=5.1, SW=V2.4 BL50, LAT V5.1, LOAD IMAGE: MNENG3",
+    "DECserver90M , Network Access SW V2.5 BL51 , HW=V4.0 , RO=5.1, SW=V2.5 BL51, LAT V5.1, LOAD IMAGE: MNENG3",
+    "DECserver716, Network Access SW V3.2 BL01 , HW=V1.2 , RO=V7.3-0, LAT V5.1, LOAD IMAGE: WWENG2"
+  ]
+}

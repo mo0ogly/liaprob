@@ -1,0 +1,264 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apache_httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_HTTPD",
+  "taxonomy_name": "Apache HTTPD",
+  "vendor": "Apache",
+  "product": "HTTPD",
+  "source": {
+    "type": "recog",
+    "file": "APACHE_HTTPD.json",
+    "fingerprint_count": 22
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 22 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apache_httpd_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Index of /",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache HTTPD indexes"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Test Page for the Nginx HTTP Server on (?:the )?Amazon Linux(?: AMI)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache HTTPD default installation on Amazon Linux"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Apache HTTP Server Test Page powered by CentOS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache HTTPD default installation on CentOS"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Apache2 Debian Default Page: It works$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache HTTPD default installation on Debian"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Apache2 Ubuntu Default Page: It works$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache HTTPD default installation on Ubuntu"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Sample Home Page for APACHEDFT Server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM iSeries Apache Default Page"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^Apache=(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3})\\.[0-9]+(?:\\.[0-9]+)?;",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache with session ID containing IP and timestamp (timestamp can be micros, millis or seconds)"
+        },
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^Apache=[0-9a-z]{8}\\.[0-9a-z]{13};",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache with opaque session ID"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Stronghold/(\\d\\.\\d) Apache/([012][\\d.]*)\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Stronghold/(\\d\\.\\d) Apache/([012][\\d.]*)\\s*(.*)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Red Hat Stronghold Enterprise Apache"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Apache/\\d$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Apache returning only its major version number"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Apache ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Apache ([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache returning just version number"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Apache$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Apache returning no version information"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^Apache(?:-AdvancedExtranetServer)?(?:/([012][\\d.]*)\\s*(.*))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^Apache(?:-AdvancedExtranetServer)?(?:/([012][\\d.]*)\\s*(.*))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle Application Server/10g \\(([\\d.]+)\\) Apache/([12][\\d.]+)\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Oracle Application Server/10g \\(([\\d.]+)\\) Apache/([12][\\d.]+)\\s*(.*)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Oracle Application Server 10g with Apache info (powered by Apache)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle9iAS/([\\d.]+) Oracle HTTP Server\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Oracle 9i Application Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle HTTP Server Powered by Apache/([12][\\d.]*)\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Oracle HTTP Server Powered by Apache/([12][\\d.]*)\\s*(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Oracle HTTP Server (powered by Apache) - version string variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Oracle HTTP Server Powered by Apache$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Oracle HTTP Server (powered by Apache)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^HP Apache-based Web Server/([012][\\d.]*)\\s*\\(Unix\\)\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^HP Apache-based Web Server/([012][\\d.]*)\\s*\\(Unix\\)\\s*(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache running on HP-UX"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:IBM_HTTP_Server|IBM_HTTP_SERVER)/([\\w.-]+)\\s+Apache/([12][\\d.]+)\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^(?:IBM_HTTP_Server|IBM_HTTP_SERVER)/([\\w.-]+)\\s+Apache/([12][\\d.]+)\\s*(.*)$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "IBM HTTP Server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^(?:IBM_HTTP_SERVER|IBM-HTTP-SERVER)/(\\S+)(?: \\(\\S+\\))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "IBM HTTP Server with hardly useful version info"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^(?:IBM_HTTP_SERVER|IBM-HTTP-SERVER)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "IBM HTTP Server with no version info"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^HP Web Jetadmin/((?:\\d+\\.)*\\d+)\\s*(.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^HP Web Jetadmin/((?:\\d+\\.)*\\d+)\\s*(.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache variant for web access to HP printers."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:apache:http_server:-",
+  "examples": [
+    "Index of /",
+    "Test Page for the Nginx HTTP Server on the Amazon Linux AMI",
+    "Test Page for the Nginx HTTP Server on Amazon Linux",
+    "Apache HTTP Server Test Page powered by CentOS",
+    "Apache2 Debian Default Page: It works",
+    "Apache2 Ubuntu Default Page: It works",
+    "Sample Home Page for APACHEDFT Server",
+    "Apache=10.10.130.165.1643670182768255; path=/",
+    "Apache=10.0.101.6.1643663969718158; path=/; expires=Wed, 31-Jan-24 21:19:29 GMT; domain=.contoso.com",
+    "Apache=10.10.20.18.1643510579.1915; domain=foo.com; path=/; expires=Mon, 30-Jan-2023 02:42:58 GMT"
+  ]
+}

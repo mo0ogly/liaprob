@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_http",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_HTTP",
+  "taxonomy_name": "Microsoft HTTP",
+  "vendor": "Microsoft",
+  "product": "HTTP",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_HTTP.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_http_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Cougar/([0-9.]*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Cougar/([0-9.]*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Windows Media Services (older versions)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^WMServer/([0-9.]*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^WMServer/([0-9.]*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Windows Media Services (newer versions)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "Cougar/9.01.01.3841",
+    "WMServer/9.1.1.3841"
+  ]
+}

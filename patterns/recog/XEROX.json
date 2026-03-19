@@ -1,0 +1,238 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-xerox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "XEROX",
+  "taxonomy_name": "Xerox",
+  "vendor": "Xerox",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "XEROX.json",
+    "fingerprint_count": 21
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 21 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    67,
+    68,
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_xerox_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "(?i)^Mfg=(?:Fuji)?Xerox;Typ=(?:MFP|AIO|Printer);Mod=(?:Xerox )?(\\S+) ([a-zA-Z0-9]+).*;Ser=([A-Z0-9]{9,10})(?:;Loc=.*)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Multifunction Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_xerox_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Xerox WorkCentre ([A-Za-z0-9]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox WorkCentre"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Xerox Phaser (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Phaser Laser Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^XEROX (\\d+) Wide Format",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Wide Format Series of Printers"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Xerox ColorQube (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox ColorQube Multifunction Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:ID=)?Xerox (Phaser \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Phaser Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Xerox (WorkCentre .*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Workcentre Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(XC\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox XC Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(DC\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox DocuColor Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(EX\\d+-\\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox EX Print Server, powered by EFI Fiery"
+        }
+      ]
+    },
+    {
+      "id": "recog_xerox_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox Phaser ([^;]+);\\sOS\\s(\\d+\\.\\d+\\.\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Phaser 3000MFP Series"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox WorkCentre ([^;]+);\\s+SS\\s+(\\d+\\.\\d+\\.\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox WorkCentre 3345/3335 Printers"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox (B\\d+) Multifunction Printer; SS\\s+(\\d+\\.\\d+\\.\\d+\\.\\d+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox B series Multfunction Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox (Phaser [^;]+).*[, ]OS ([^;,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Phaser Laser Printer - OS variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox (Phaser .+) v\\(.*/([^/]+)\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Phaser Laser Printer - memory variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox (Phaser [^;]+);",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Phaser Laser Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox DocuPrint (\\S+) Network Laser Printer - (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox DocuPrint Laser Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox (WorkCentre [^\\s;]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox WorkCentre"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Xerox (\\S+ [^\\s;]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Default"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^XEROX (\\d{4} WIDE FORMAT) PRINTER; ACCXES (\\d+.\\d+) \\d+, IOT",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Wide Format Printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^XEROX (WIDE FORMAT \\d{4}) PRINTER; ACCXES (\\d+.\\d+) \\d+, IOT",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xerox Wide Format Printer - variant 1"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "ftp",
+    "dhcp",
+    "snmp"
+  ],
+  "examples": [
+    "Mfg=Xerox;Typ=MFP;Mod=VersaLink C405;Ser=ABC123456;Loc=Print Room",
+    "Mfg=Xerox;Typ=MFP;Mod=Xerox AltaLink C8055 Multifunction Printer;Ser=1AB234567;Loc=Print Room2",
+    "Mfg=XEROX;Typ=MFP;Mod=WorkCentre 3345;Ser=1AB234567;Loc=",
+    "Mfg=Xerox;Typ=MFP;Mod=Xerox WorkCentre 7845 v1 Multifunction System;Ser=AB1234567;Loc=",
+    "Mfg=FujiXerox;Typ=printer;Mod=Phaser 6500DN;Ser=ABC123456",
+    "Mfg=Xerox;Typ=Printer;Mod=Phaser 6600DN;Ser=ABC123456;Loc=",
+    "mfg=Xerox;typ=MFP;mod=Xerox AltaLink B8045 MFP;ser=A1B234567;loc=Print Room 3",
+    "Mfg=Xerox;Typ=MFP;Mod=VersaLink B7035;Ser=1AB234567C",
+    "Mfg=Xerox;Typ=AIO;Mod=WorkCentre 3615;Ser=A1B234567",
+    "Xerox WorkCentre 6605DN"
+  ]
+}

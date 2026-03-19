@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-fedora_project_389_directory_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "FEDORA_PROJECT_389_DIRECTORY_SERVER",
+  "taxonomy_name": "Fedora Project 389 Directory Server",
+  "vendor": "Fedora Project",
+  "product": "389 Directory Server",
+  "source": {
+    "type": "recog",
+    "file": "FEDORA_PROJECT_389_DIRECTORY_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_fedora_project_389_directory_server_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i:vendorname1.\\x04.Fedora Project0.\\x04\\rvendorversion1.\\x04.Fedora-Directory/(\\d\\.\\d[\\w.]* B\\d+\\.\\d+\\.\\d+))",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i:vendorname1.\\x04.Fedora Project0.\\x04\\rvendorversion1.\\x04.Fedora-Directory/(\\d\\.\\d[\\w.]* B\\d+\\.\\d+\\.\\d+))",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Fedora Project 389 Directory Server - Old Fedora branding"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i:vendorname1.\\x04.389 Project0.\\x04\\rvendorversion1.\\x04.389-Directory/(\\d\\.\\d[\\w.]* B\\d+\\.\\d+\\.\\d+))",
+          "confidence_delta": 0.4,
+          "version_extract": "(?i:vendorname1.\\x04.389 Project0.\\x04\\rvendorversion1.\\x04.389-Directory/(\\d\\.\\d[\\w.]* B\\d+\\.\\d+\\.\\d+))",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Fedora Project 389 Directory Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:fedoraproject:389_directory_server:{version}",
+  "examples": [
+    "dmVuZG9yTmFtZTEQBA5GZWRvcmEgUHJvamVjdDA3BA12ZW5kb3JWZXJzaW9uMSYEJEZlZG9yY\n      S1EaXJlY3RvcnkvMS4wLjQgQjIwMDYuMzEyLjU0NTA=",
+    "dmVuZG9yTmFtZTEQBA5GZWRvcmEgUHJvamVjdDA4BA12ZW5kb3JWZXJzaW9uMScEJUZlZG9yY\n      S1EaXJlY3RvcnkvMS4wLjQgQjIwMDcuMzA0LjExMzgw",
+    "dmVuZG9yTmFtZTENBAszODkgUHJvamVjdDA5BA12ZW5kb3JWZXJzaW9uMSgEJjM4OS1EaXJlY\n      3RvcnkvMS4yLjExLjI1IEIyMDEzLjMyNS4xOTUxMA=="
+  ]
+}

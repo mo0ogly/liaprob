@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-cloudera_smartsense_tool",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CLOUDERA_SMARTSENSE_TOOL",
+  "taxonomy_name": "Cloudera SmartSense Tool",
+  "vendor": "Cloudera",
+  "product": "SmartSense Tool",
+  "source": {
+    "type": "recog",
+    "file": "CLOUDERA_SMARTSENSE_TOOL.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_cloudera_smartsense_tool_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^da897184fba34d5fe72148963f42b577$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cloudera Hortonworks SmartSense Tool"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Hortonworks SmartSense Tool is loading\\.\\.\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Cloudera Hortonworks SmartSense Tool"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "da897184fba34d5fe72148963f42b577",
+    "Hortonworks SmartSense Tool is loading..."
+  ]
+}

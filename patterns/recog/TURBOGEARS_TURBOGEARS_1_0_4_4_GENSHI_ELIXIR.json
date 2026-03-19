@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-turbogears_turbogears_1_0_4_4_genshi_elixir",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TURBOGEARS_TURBOGEARS_1_0_4_4_GENSHI_ELIXIR",
+  "taxonomy_name": "turbogears turbogears (1.0.4.4) - genshi/elixir",
+  "vendor": "turbogears",
+  "product": "turbogears (1.0.4.4) - genshi/elixir",
+  "source": {
+    "type": "recog",
+    "file": "TURBOGEARS_TURBOGEARS_1_0_4_4_GENSHI_ELIXIR.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_turbogears_turbogears_1_0_4_4_genshi_elixir_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^5488c1c8bf5a2264b8d4c8541e2d5ccd",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "turbogears (1.0.4.4) - genshi/elixir"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "5488c1c8bf5a2264b8d4c8541e2d5ccd"
+  ]
+}

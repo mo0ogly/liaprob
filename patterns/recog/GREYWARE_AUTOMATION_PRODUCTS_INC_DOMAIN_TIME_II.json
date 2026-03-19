@@ -1,0 +1,100 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-greyware_automation_products_inc_domain_time_ii",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GREYWARE_AUTOMATION_PRODUCTS_INC_DOMAIN_TIME_II",
+  "taxonomy_name": "Greyware Automation Products, Inc. Domain Time II",
+  "vendor": "Greyware Automation Products, Inc.",
+  "product": "Domain Time II",
+  "source": {
+    "type": "recog",
+    "file": "GREYWARE_AUTOMATION_PRODUCTS_INC_DOMAIN_TIME_II.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_greyware_automation_products_inc_domain_time_ii_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2003.*,processor=(\\S+)",
+          "confidence_delta": 0.4,
+          "version_extract": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2003.*,processor=(\\S+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Greyware Automation Products, Inc. Domain Time II on Windows Server 2003"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2008R2.*,processor=(\\S+)",
+          "confidence_delta": 0.4,
+          "version_extract": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2008R2.*,processor=(\\S+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Greyware Automation Products, Inc. Domain Time II on Windows Server 2008 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2008.*,processor=(\\S+)",
+          "confidence_delta": 0.4,
+          "version_extract": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2008.*,processor=(\\S+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Greyware Automation Products, Inc. Domain Time II on Windows 2008"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2012.*,processor=(\\S+)",
+          "confidence_delta": 0.4,
+          "version_extract": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win2012.*,processor=(\\S+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Greyware Automation Products, Inc. Domain Time II on Windows Server 2012"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win7.*,processor=(\\S+)",
+          "confidence_delta": 0.4,
+          "version_extract": "version=Domain Time II (\\S+),hostname=([^,]+),.*system=Win7.*,processor=(\\S+)",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Greyware Automation Products, Inc. Domain Time II on Windows 7"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows_server_2003:-",
+  "examples": [
+    "version=Domain Time II 5.1.b.20100331R,hostname=blah,domain=,flat=WORKGROUP,system=Win2003 x64,processor=x64",
+    "version=Domain Time II 5.2.b.20110831R,hostname=blah,domain=blah,flat=blah,system=Win2003,processor=x86",
+    "version=Domain Time II 5.2.b.20120215R,hostname=blah,domain=blah,flat=blah,system=Win2008R2 x64,processor=x64",
+    "version=Domain Time II 5.2.b.20140303R,hostname=blah,domain=blah,flat=blah,system=Win2008,processor=x86",
+    "version=Domain Time II 5.2.b.20140523,hostname=blah,domain=blah,flat=blah,system=Win2008 x64,processor=x64",
+    "version=Domain Time II 5.2.b.20140101R,hostname=blah,domain=blah,flat=blah,system=Win2012 x64,processor=x64",
+    "version=Domain Time II 5.2.b.20130405R,hostname=blah,domain=,flat=WORKGROUP,system=Win7 x64,processor=x64"
+  ]
+}

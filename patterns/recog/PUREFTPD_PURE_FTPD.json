@@ -1,0 +1,88 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-pureftpd_pure_ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PUREFTPD_PURE_FTPD",
+  "taxonomy_name": "PureFTPd Pure-FTPd",
+  "vendor": "PureFTPd",
+  "product": "Pure-FTPd",
+  "source": {
+    "type": "recog",
+    "file": "PUREFTPD_PURE_FTPD.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_pureftpd_pure_ftpd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^=\\(<\\*>\\)=-\\.:\\. \\(\\( Welcome to Pure-FTPd ([\\d.]+) \\)\\) \\.:\\.-=\\(<\\*>\\)=-",
+          "confidence_delta": 0.4,
+          "version_extract": "^=\\(<\\*>\\)=-\\.:\\. \\(\\( Welcome to Pure-FTPd ([\\d.]+) \\)\\) \\.:\\.-=\\(<\\*>\\)=-",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Pure-FTPd versions <= 1.0.13 (at least as far back as 1.0.11)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^-{9,10}(?:.*)\\s+Pure-FTPd\\s+(.*)-{9,10}",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Pure-FTPd versions >= 1.0.14 - Config data can be zero or more of: [privsep] [TLS]"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Welcome to )?Pure-FTPd\\.?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Basic Pure-FTPd banner, no version"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^=\\(.\\*.\\)=-\\.:\\. \\(\\( Welcome to PureFTPd (\\d+\\..+) \\)\\) \\.:\\.-=\\(.\\*.\\)=-",
+          "confidence_delta": 0.4,
+          "version_extract": "^=\\(.\\*.\\)=-\\.:\\. \\(\\( Welcome to PureFTPd (\\d+\\..+) \\)\\) \\.:\\.-=\\(.\\*.\\)=-",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Older Pure-FTPd versions"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:pureftpd:pure-ftpd:{version}",
+  "examples": [
+    "=(<*>)=-.:. (( Welcome to Pure-FTPd 1.0.11 )) .:.-=(<*>)=-",
+    "=(<*>)=-.:. (( Welcome to Pure-FTPd 1.0.11 )) .:.-=(<*>)=-\r\nmore stuff",
+    "---------- Welcome to Pure-FTPd ----------",
+    "--------- Bienvenido a Pure-FTPd [privsep] [TLS] ----------",
+    "---------  Pure-FTPd [privsep] ----------",
+    "--------- Welcome to Pure-FTPd [privsep] [TLS] ----------",
+    "--------- Welcome to Pure-FTPd [privsep] [TLS] ----------\r\nmore text",
+    "Welcome to Pure-FTPd",
+    "Pure-FTPd.",
+    "=(<*>)=-.:. (( Welcome to PureFTPd 1.1.0 )) .:.-=(<*>)=-"
+  ]
+}

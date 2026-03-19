@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mitmproxy_mitmproxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MITMPROXY_MITMPROXY",
+  "taxonomy_name": "mitmproxy mitmproxy",
+  "vendor": "mitmproxy",
+  "product": "mitmproxy",
+  "source": {
+    "type": "recog",
+    "file": "MITMPROXY_MITMPROXY.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_mitmproxy_mitmproxy_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^e4ce127909d4697b97bf404a42e7c428$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "mitmweb web interface for mitmproxy - https://github.com/mitmproxy/mitmproxy"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^mitmproxy ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^mitmproxy ([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "mitmproxy interactive HTTPS proxy - https://github.com/mitmproxy/mitmproxy"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:mitmproxy:mitmproxy:-",
+  "examples": [
+    "e4ce127909d4697b97bf404a42e7c428",
+    "mitmproxy 7.0.4"
+  ]
+}

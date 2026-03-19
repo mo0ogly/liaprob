@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-brother",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BROTHER",
+  "taxonomy_name": "Brother",
+  "vendor": "Brother",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "BROTHER.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_brother_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Brother (.+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brother Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_brother_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SP NC-[^,]+, Firmware Ver\\.(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brother multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Brother (NC-\\d+\\S+),\\s*Firmware Ver\\.\\s?([^\\s,]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Brother multifunction device - variant 1"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "snmp"
+  ],
+  "examples": [
+    "Brother HL-1660e",
+    "SP NC-6300h, Firmware Ver.B  ,MID 5CS-157",
+    "SP NC-6300h, Firmware Ver.C  ,MID 5CS-157",
+    "Brother NC-130h, Firmware Ver.0.09  ,MID 8CA-A17-001",
+    "Brother NC-6800h, Firmware Ver.1.04  (09.05.08),MID 8C5-D61,FID 2",
+    "Brother NC-6400h, Firmware Ver.1.11 (06.12.20),MID 84UZ92",
+    "Brother NC-170h, Firmware Ver.0.09 ,MID 8CA-H11-001",
+    "Brother NC-8200h, Firmware Ver.1.03 (10.05.20),MID 84UC07",
+    "Brother NC-110h, Firmware Ver.A ,MID 8CA-814-201",
+    "Brother NC-140w, Firmware Ver.0.09 ,MID 8CA-A17-001"
+  ]
+}

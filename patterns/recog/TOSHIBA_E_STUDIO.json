@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-toshiba_e_studio",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TOSHIBA_E_STUDIO",
+  "taxonomy_name": "Toshiba e-STUDIO",
+  "vendor": "Toshiba",
+  "product": "e-STUDIO",
+  "source": {
+    "type": "recog",
+    "file": "TOSHIBA_E_STUDIO.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21
+  ],
+  "probes": [
+    {
+      "id": "recog_toshiba_e_studio_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^ET(\\S{1,12}) TOSHIBA e-STUDIO500S FTP Server (\\S+) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Toshiba e-STUDIO Printer with MAC address"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^\\S{1,16} TOSHIBA e-STUDIO500S FTP Server (\\S+) ready\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Toshiba e-STUDIO Printer"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ftp"
+  ],
+  "examples": [
+    "ET0004001E9C00 TOSHIBA e-STUDIO500S FTP Server NC2.NPS.N221 ready.",
+    "ET00040089BE42 TOSHIBA e-STUDIO500S FTP Server NC2.NPS.N211 ready.",
+    "JHBPRN13 TOSHIBA e-STUDIO500S FTP Server NC2.NPS.N211 ready."
+  ]
+}

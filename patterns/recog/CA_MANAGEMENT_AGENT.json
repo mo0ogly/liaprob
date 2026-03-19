@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ca_management_agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CA_MANAGEMENT_AGENT",
+  "taxonomy_name": "CA Management Agent",
+  "vendor": "CA",
+  "product": "Management Agent",
+  "source": {
+    "type": "recog",
+    "file": "CA_MANAGEMENT_AGENT.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_ca_management_agent_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(?:Linux )?\\s{0,256}SystemEDGE",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CA SystemEDGE Management Agent"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Linux SystemEDGE Management Agent, Concord Communications, Inc.",
+    "SystemEDGE Management Agent, CA, Inc.",
+    "SystemEDGE for LINUX",
+    "SystemEDGE for Windows"
+  ]
+}

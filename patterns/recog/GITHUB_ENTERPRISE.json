@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-github_enterprise",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GITHUB_ENTERPRISE",
+  "taxonomy_name": "GitHub Enterprise",
+  "vendor": "GitHub",
+  "product": "Enterprise",
+  "source": {
+    "type": "recog",
+    "file": "GITHUB_ENTERPRISE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_github_enterprise_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^bd1fadbf4396e7a8a0abcaed6bdbfc20$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GitHub Enterprise"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:GitHub Enterprise|Setup GitHub Enterprise|GitHub Enterprise preflight check)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GitHub Enterprise"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "bd1fadbf4396e7a8a0abcaed6bdbfc20",
+    "GitHub Enterprise",
+    "Setup GitHub Enterprise",
+    "GitHub Enterprise preflight check"
+  ]
+}

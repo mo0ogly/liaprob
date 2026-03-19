@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-torrentflux_torrentflux_2_4",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TORRENTFLUX_TORRENTFLUX_2_4",
+  "taxonomy_name": "torrentflux torrentflux (2.4)",
+  "vendor": "torrentflux",
+  "product": "torrentflux (2.4)",
+  "source": {
+    "type": "recog",
+    "file": "TORRENTFLUX_TORRENTFLUX_2_4.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_torrentflux_torrentflux_2_4_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^1de863a5023e7e73f050a496e6b104ab",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "torrentflux (2.4)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "1de863a5023e7e73f050a496e6b104ab"
+  ]
+}

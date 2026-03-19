@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-nas4free_nas4free_9_0",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NAS4FREE_NAS4FREE_9_0",
+  "taxonomy_name": "NAS4Free NAS4Free 9.0",
+  "vendor": "NAS4Free",
+  "product": "NAS4Free 9.0",
+  "source": {
+    "type": "recog",
+    "file": "NAS4FREE_NAS4FREE_9_0.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_nas4free_nas4free_9_0_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^b88c0eedc72d3bf4e86c2aa0a6ba6f7b$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NAS4Free"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "b88c0eedc72d3bf4e86c2aa0a6ba6f7b"
+  ]
+}

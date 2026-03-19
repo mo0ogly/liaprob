@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-centos_centos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CENTOS_CENTOS",
+  "taxonomy_name": "CentOS CentOS",
+  "vendor": "CentOS",
+  "product": "CentOS",
+  "source": {
+    "type": "recog",
+    "file": "CENTOS_CENTOS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_centos_centos_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.6\\.9-55[\\d.]*EL(?:smp)?) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CentOS Linux 4.5"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.6\\.18-53[\\d\\.]*el5xen) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "CentOS Linux 5"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:centos:centos:4.5",
+  "examples": [
+    "Linux hostname 2.6.9-55.0.9.ELsmp #1 SMP Thu Sep 27 18:27:41 EDT 2007 i686",
+    "Linux hostname 2.6.18-53.1.4.el5xen #1 SMP Fri Nov 30 01:21:23 EST 2007 x86_64",
+    "Linux hostname 2.6.18-53.1.6.el5xen #1 SMP Wed Jan 23 11:59:21 EST 2008 x86_64",
+    "Linux hostname 2.6.18-53.1.13.el5xen #1 SMP Tue Feb 12 13:33:07 EST 2008 x86_64"
+  ]
+}

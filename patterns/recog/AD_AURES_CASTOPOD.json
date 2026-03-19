@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ad_aures_castopod",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AD_AURES_CASTOPOD",
+  "taxonomy_name": "Ad Aures Castopod",
+  "vendor": "Ad Aures",
+  "product": "Castopod",
+  "source": {
+    "type": "recog",
+    "file": "AD_AURES_CASTOPOD.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ad_aures_castopod_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^53cbf6dd6891950b338d4764f38655c5$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Castopod - Fediverse-aware podcast server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "53cbf6dd6891950b338d4764f38655c5"
+  ]
+}

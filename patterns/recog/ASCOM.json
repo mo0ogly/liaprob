@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ascom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ASCOM",
+  "taxonomy_name": "Ascom",
+  "vendor": "Ascom",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "ASCOM.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_ascom_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:namingContexts1.\\x04.cn=.?pbx.*\\x04.ldapServiceName1.\\x04.(IPBS\\d*)-\\w+-)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ascom IP-DECT Base Station"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:namingContexts1.\\x04.cn=.?pbx.*\\x04.ldapServiceName1.\\x04.(IPBL\\d*)-\\w+-)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ascom IP-DECT Gateway"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "bmFtaW5nQ29udGV4dHMxCQQHY249UEJYMDAjBA9sZGFwU2VydmljZU5hbWUxEAQOSVBCUzItM\n      TktYjEtZTcw",
+    "bmFtaW5nQ29udGV4dHMxCQQHY249UEJYMDAiBA9sZGFwU2VydmljZU5hbWUxDwQNSVBCTC0zM\n      C0yYy0yNTA="
+  ]
+}

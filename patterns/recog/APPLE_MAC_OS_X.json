@@ -1,0 +1,1396 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apple_mac_os_x",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APPLE_MAC_OS_X",
+  "taxonomy_name": "Apple Mac OS X",
+  "vendor": "Apple",
+  "product": "Mac OS X",
+  "source": {
+    "type": "recog",
+    "file": "APPLE_MAC_OS_X.json",
+    "fingerprint_count": 164
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 164 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68,
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apple_mac_os_x_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(Darwin\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apple Mac OS X"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=22",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 13.0 (Ventura)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=21",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 12.0 (Monterey)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=20",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 11.0 (Big Sur)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=19",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.15 (Catalina)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=18",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.14 (Mojave)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=17",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.13 (High Sierra)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=16",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.12 (Sierra)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=15",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.11 (El Capitan)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=14",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.10 (Yosemite)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=13",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.9 (Mavericks)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=12",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OS X 10.8 (Mountain Lion)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=11",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.7 (Lion)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=10",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.6 (Snow Leopard)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=9",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.5 (Leopard)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=8",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.4 (Tiger)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=7",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.3 (Panther)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=6",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.2 (Jaguar)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=5",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.1 (Puma)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^osxvers=4",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.0 (Cheetah)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro18,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (14-Inch, M1, 2021)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro17,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, M1, 2020)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro16,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (16-inch, 2019)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro16,[23]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2020)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro15,4$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2019, Two Thunderbolt 3 ports)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro15,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, 2019)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro15,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2018, Four Thunderbolt 3 ports)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro15,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, 2018)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro14,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, 2017)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro14,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2017, Four Thunderbolt 3 ports)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro14,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro13,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, 2016)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro13,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2016, Four Thunderbolt 3 ports)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro13,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2016, Two Thunderbolt 3 ports)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro12,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 13-inch, Early 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro11,[45]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 15-inch, Mid 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro11,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 15-inch, Late 2013) - rev 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro11,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 15-inch, Late 2013)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro11,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 13-inch, Late 2013)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro10,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 13-inch, Early 2013)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro10,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 15-inch, Early 2013)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro9,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, Mid 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro9,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, Mid 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro8,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (17-inch, Late 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro8,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, Late 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro8,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, Late 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro7,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, Mid 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro6,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, Mid 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro6,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (17-inch, Mid 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro5,5$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, Mid 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro5,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, Mid 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro5,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (17-inch, Mid 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro5,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (15-inch, Late 2008)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookPro4,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (17-inch, Early 2008)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBook10,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook (Retina, 12-inch, 2017)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBook9,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook (Retina, 12-inch, Early 2016)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBook8,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook (Retina, 12-inch, Early 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBook7,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook (13-inch, Mid 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir10,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (M1, 2020)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir9,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (Retina, 13-inch, 2020)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir8,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (Retina, 13-inch, 2019)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir8,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (Retina, 13-inch, 2018)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir7,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (13-inch, 2017)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir7,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (11-inch, Early 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir6,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (13-inch, Early 2014)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir6,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (11-inch, Early 2014)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir5,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (13-inch, Mid 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir5,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (11-inch, Mid 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir4,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (13-inch, Mid 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir4,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (11-inch, Mid 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir3,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (13-inch, Late 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir3,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (11-inch, Late 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacBookAir2,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (Mid 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini9,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (M1, 2020)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini8,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Late 2018)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini7,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Late 2014)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini6,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Late 2012) - rev 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini6,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Late 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini5,[12]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Mid 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini4,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Mid 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini3,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Late 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Macmini2,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac mini (Mid 2007)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacPro7,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac Pro (Late 2019)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacPro6,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac Pro (Late 2013)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacPro5,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac Pro (Mid 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacPro4,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac Pro (Early 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacPro3,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac Pro (Early 2008)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacPro2,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac Pro (Mid 2007)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=MacPro(?:1,1)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac Pro (Mid 2006)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Xserve3,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xserve (Early 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Xserve2,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xserve (Early 2008)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=Xserve1,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xserve (Late 2006)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=RackMac3,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xserve G5"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=RackMac1,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xserve G4 (Slot Load)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=RackMac1,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Xserve G4"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J457AP|iMac21,2)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (24-inch, M1, 2021) with Two Thunderbolt / USB 4 port"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=(?:J456AP|iMac21,1)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (24-inch, M1, 2021) with Two Thunderbolt / USB 4 ports and Two USB 3 ports"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac20,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 5K, 27-inch, 2020)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac19,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 5K, 27-inch, 2019)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac19,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 4K, 21.5-inch, 2019)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMacPro1,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac Pro (Retina 5K, Late 2017)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac18,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 5K, 27-inch, 2017)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac18,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 4K, 21.5-inch, 2017)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac18,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (21.5-inch, 2017)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac17,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 5K, 27-inch, Late 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac16,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 4K, 21.5-inch, Late 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac16,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (21.5-inch, Late 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac15,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 5K, 27-inch, Mid 2015)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac14,4$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (21.5-inch, Mid 2014)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac14,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (27-inch, Late 2013)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac14,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (21.5-inch, Late 2013)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac13,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (27-inch, Late 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac13,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (21.5-inch, Late 2012)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac12,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (27-inch, Mid 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac12,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (21.5-inch, Mid 2011)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac11,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (27-inch, Mid 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac11,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (21.5-inch, Mid 2010)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac11,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac 10 (27-inch, Late 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac10,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac 11 (27-inch, Late 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac9,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (24-inch, Early 2009)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^model=iMac8,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (20/24-inch, Early 2008)"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple OS X|Apple Mac OS X|Mac OS X|OS X|Mac OS)\\s?(\\d+?(?:\\.\\d+?)*?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X with version number"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Cheetah$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Cheetah"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Puma$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Puma"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Jaguar$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Jaguar"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Panther$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Panther"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Tiger$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Tiger"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Leopard$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Leopard"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Snow Leopard$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Snow Leopard"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Lion$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Lion"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Mountain Lion$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Mountain Lion"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Mavericks$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Mavericks"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X Yosemite$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X Yosemite"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Apple )?Mac OS X El Capitan$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X El Capitan"
+        }
+      ]
+    },
+    {
+      "id": "recog_apple_mac_os_x_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/iMac16,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 4K, 21.5-inch, Late 2015)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/iMac18,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac (Retina 4K, 21.5-inch, 2017)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/iMacPro1,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "iMac Pro"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/arm/Mac14,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (M2, 2022)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookAir7,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (13-inch, 2017)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookAir8,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (Retina, 13-inch, 2018)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookAir8,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (Retina, 13-inch, 2019)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/arm/MacBookAir10,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Air (M1, 2020)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro11,4$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (Retina, 15-inch, Mid 2015)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro13,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2016, Two Thunderbolt 3 ports)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro14,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2017, Two Thunderbolt 3 ports)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro14,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2017, Four Thunderbolt 3 ports)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro15,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2018, Four Thunderbolt 3 ports)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro15,4$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2019, Two Thunderbolt 3 ports)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro16,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (16-inch, 2019)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro16,2$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2020, Four Thunderbolt 3 ports)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/i386/MacBookPro16,3$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, 2020, Two Thunderbolt 3 ports)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/arm/MacBookPro17,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (13-inch, M1, 2020)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/arm/MacBookPro18,1$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (16-inch, 2021)"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^AAPLBSDPC/arm/MacBookPro18,[34]$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "MacBook Pro (14-inch, 2021)"
+        }
+      ]
+    },
+    {
+      "id": "recog_apple_mac_os_x_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Rumpus$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Rumpus FTP Server, Web File Manager interface"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^servermgrd$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Mac OS X Server administrative daemon"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_apple_mac_os_x_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 7.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.3 (Panther)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 8.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.4 (Tiger)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 9.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.5 (Leopard)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 10.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.6 (Snow Leopard)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 11.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.7 (Lion)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 12.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.8 (Mountain Lion)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 13.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.9 (Mavericks)"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Darwin (\\S*) \\S* Darwin Kernel Version 14.(\\d+).\\d+: .*RELEASE_\\w* ?\\s* (\\S* ?\\S*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Mac OS X 10.10 (Yosemite)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http",
+    "dhcp",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:apple:mac_os_x:-",
+  "examples": [
+    "Apache/1.3.33 (Darwin)",
+    "AAPLBSDPC/i386/iMac16,2",
+    "AAPLBSDPC/i386/iMac18,2",
+    "AAPLBSDPC/i386/iMacPro1,1",
+    "AAPLBSDPC/arm/Mac14,2",
+    "AAPLBSDPC/i386/MacBookAir7,2",
+    "AAPLBSDPC/i386/MacBookAir8,1",
+    "AAPLBSDPC/i386/MacBookAir8,2",
+    "AAPLBSDPC/arm/MacBookAir10,1",
+    "AAPLBSDPC/i386/MacBookPro11,4"
+  ]
+}

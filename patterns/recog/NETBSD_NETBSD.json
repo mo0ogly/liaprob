@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-netbsd_netbsd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NETBSD_NETBSD",
+  "taxonomy_name": "NetBSD NetBSD",
+  "vendor": "NetBSD",
+  "product": "NetBSD",
+  "source": {
+    "type": "recog",
+    "file": "NETBSD_NETBSD.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_netbsd_netbsd_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "processor=\"([^ ]+)\",.*system=\"NetBSD/?([^ ]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "ntpd running on NetBSD - variant 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NetBSD",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NetBSD"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "telnet"
+  ],
+  "cpe23_template": "cpe:/o:netbsd:netbsd:{os.version}",
+  "examples": [
+    "processor=\"i386\", system=\"NetBSD1.5.3\"",
+    "processor=\"i386\", system=\"NetBSD1.6\"",
+    "processor=\"i386\", system=\"NetBSD1.6.1\"",
+    "processor=\"i386\", system=\"NetBSD1.6.2_STABLE\"",
+    "processor=\"sbmips\", system=\"NetBSD3.0\"",
+    "processor=\"se100\", system=\"NetBSD1.5.3\"",
+    "processor=\"seil3\", system=\"NetBSD1.6.1_STABLE\"",
+    "processor=\"seil3\", system=\"NetBSD1.6.2_STABLE\"",
+    "processor=\"seil4\", system=\"NetBSD1.6.1_STABLE\"",
+    "processor=\"seil4\", system=\"NetBSD1.6.2_STABLE\""
+  ]
+}

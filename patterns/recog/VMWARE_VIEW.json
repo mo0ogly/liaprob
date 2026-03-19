@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-vmware_view",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VMWARE_VIEW",
+  "taxonomy_name": "VMware View",
+  "vendor": "VMware",
+  "product": "View",
+  "source": {
+    "type": "recog",
+    "file": "VMWARE_VIEW.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_vmware_view_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([^,=]{1,256}),OU=VMware View default certificate,O=VMware\\\\, Inc.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "VMware View"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:vmware:view:-",
+  "examples": [
+    "CN=horizon.foo.bar,OU=VMware View default certificate,O=VMware\\, Inc."
+  ]
+}

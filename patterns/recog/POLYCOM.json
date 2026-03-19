@@ -1,0 +1,109 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-polycom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "POLYCOM",
+  "taxonomy_name": "Polycom",
+  "vendor": "Polycom",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "POLYCOM.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    67,
+    68,
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_polycom_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^(?:Polycom|Poly)-(VVX(?:-[A-Z])?\\d{3})$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Polycom IP Phone"
+        }
+      ]
+    },
+    {
+      "id": "recog_polycom_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Polycom SoundPoint IP Telephone HTTPd$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Polycom Soundpoint IP Telephone"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_polycom_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Welcome to ViewStation",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Polycom ViewStation Video Conference System"
+        }
+      ]
+    },
+    {
+      "id": "recog_polycom_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([a-fA-F0-9]{12}),O=Polycom Inc\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Polycom SoundPoint IP Phone"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "telnet",
+    "dhcp",
+    "tls"
+  ],
+  "examples": [
+    "Polycom-VVX410",
+    "Poly-VVX-D230",
+    "Polycom SoundPoint IP Telephone HTTPd",
+    "V2VsY29tZSB0byBWaWV3U3RhdGlvbgoKUGFzc3dvcmQ6",
+    "CN=64167F169981,O=Polycom Inc."
+  ]
+}

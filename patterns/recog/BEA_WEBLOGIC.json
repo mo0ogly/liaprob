@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-bea_weblogic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BEA_WEBLOGIC",
+  "taxonomy_name": "BEA WebLogic",
+  "vendor": "BEA",
+  "product": "WebLogic",
+  "source": {
+    "type": "recog",
+    "file": "BEA_WEBLOGIC.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_bea_weblogic_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^WebLogicSession=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "BEA WebLogic (no timestamp)"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^WebLogic (?:WebLogic )?Server (\\d+\\.\\d+(?:\\s+SP\\d+)?)\\s+",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^WebLogic (?:WebLogic )?Server (\\d+\\.\\d+(?:\\s+SP\\d+)?)\\s+",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "BEA WebLogic"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:bea:weblogic_server:-",
+  "examples": [
+    "WebLogicSession=YfifY2Ck8aWILbJPiaoY3L8aKBjh2MZhUAjHXypG6IBwvWXrun3i|-3385140432258369694/-900104935/6/7009/7009/7010/7010/7009/-1; path=/",
+    "WebLogicSession=QKRlJZbj0b948CrXnoQw8FNuSWvO6fXaJNadlcCWwA3qm6CtqD5a; path=/",
+    "WebLogic Server 8.1 SP3 Tue Jun 29 23:11:19 PDT 2004 404973",
+    "WebLogic Server 7.0 SP4 Tue Aug 12 11:22:26 PDT 2003",
+    "WebLogic WebLogic Server 6.1 SP4  11/08/2002 21:50:43 #221641"
+  ]
+}

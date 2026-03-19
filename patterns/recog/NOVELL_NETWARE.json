@@ -1,0 +1,203 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-novell_netware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "NOVELL_NETWARE",
+  "taxonomy_name": "Novell NetWare",
+  "vendor": "Novell",
+  "product": "NetWare",
+  "source": {
+    "type": "recog",
+    "file": "NOVELL_NETWARE.json",
+    "fingerprint_count": 18
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 18 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_novell_netware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\(NETWARE\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "system=\"NetWare\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "NetWare"
+        }
+      ]
+    },
+    {
+      "id": "recog_novell_netware_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare v3\\.12.*8/12/93$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 3.12"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.00\\.09  *September 21, 2000$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 5.1 SP2"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.00\\.10  *July 10, 2002$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 5.1 SP5"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.00\\.10  *December 9, 2003$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 5.1 SP7"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.00\\.11  *January 19, 2005$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 5.1 SP8"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.60\\.03  *March 27, 2003$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.0 SP3"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.60\\.05  *May 27, 2004$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.0 SP5"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.02  *June 11, 2004$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP2"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.03  *January 20, 2005$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP3"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.03  *May 23, 2005$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP3 CPR"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.04  *August 15, 2005$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP4"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.05  *December 16, 2005$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP5"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.05  *April 11, 2006$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP5 CPR"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.06  *October 26, 2006$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP6"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare 5\\.70\\.07  *September 18, 2007$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare 6.5 SP7"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Novell NetWare ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell NetWare - version capture variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:novell:netware:-",
+  "examples": [
+    "Apache/2.0.64 (NETWARE)",
+    "system=\"NetWare\", leap=0, stratum=2, rootdelay=0.12",
+    "Novell NetWare v3.12 (100 user) 8/12/93",
+    "Novell NetWare 5.00.09  September 21, 2000",
+    "Novell NetWare 5.00.10  July 10, 2002",
+    "Novell NetWare 5.00.10  December 9, 2003",
+    "Novell NetWare 5.00.11  January 19, 2005",
+    "Novell NetWare 5.60.03  March 27, 2003",
+    "Novell NetWare 5.60.05  May 27, 2004",
+    "Novell NetWare 5.70.02  June 11, 2004"
+  ]
+}

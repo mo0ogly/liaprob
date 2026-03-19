@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ubuntu_ubuntu_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "UBUNTU_UBUNTU_LINUX",
+  "taxonomy_name": "Ubuntu Ubuntu Linux",
+  "vendor": "Ubuntu",
+  "product": "Ubuntu Linux",
+  "source": {
+    "type": "recog",
+    "file": "UBUNTU_UBUNTU_LINUX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_ubuntu_ubuntu_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\r|\\n)*Ubuntu ([\\d.]+)(?: LTS)?(?:\\r|\\n)+([\\w.-]+) login:\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ubuntu - most versions"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "cpe23_template": "cpe:/o:canonical:ubuntu_linux:{os.version}",
+  "examples": [
+    "VWJ1bnR1IDE2LjA0LjQgTFRTDQpzZXJ2ZXItMDEuMiBsb2dpbjoK",
+    "VWJ1bnR1IDE3LjA0DQpuZ2lueCBsb2dpbjoK"
+  ]
+}

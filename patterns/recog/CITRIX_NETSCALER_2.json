@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-citrix_netscaler",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CITRIX_NETSCALER",
+  "taxonomy_name": "Citrix Netscaler",
+  "vendor": "Citrix",
+  "product": "Netscaler",
+  "source": {
+    "type": "recog",
+    "file": "CITRIX_NETSCALER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_citrix_netscaler_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=default(?: [A-Z]+)?,OU=NS Internal,O=Citrix ANG,L=San Jose,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix Netscaler (later renamed to Citrix ADC)"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=default(?: [A-Z]+)?,OU=NS Internal,O=Citrix ANG,L=San Jose,ST=California,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Citrix Netscaler (later renamed to Citrix ADC)"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:citrix:netscaler:-",
+  "examples": [
+    "CN=default,OU=NS Internal,O=Citrix ANG,L=San Jose,ST=California,C=US",
+    "CN=default UYENMB,OU=NS Internal,O=Citrix ANG,L=San Jose,ST=California,C=US"
+  ]
+}

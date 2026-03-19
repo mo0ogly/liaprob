@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-atlassian_confluence",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ATLASSIAN_CONFLUENCE",
+  "taxonomy_name": "Atlassian Confluence",
+  "vendor": "Atlassian",
+  "product": "Confluence",
+  "source": {
+    "type": "recog",
+    "file": "ATLASSIAN_CONFLUENCE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_atlassian_confluence_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:bad2c1f96cd66e70b4aa119e7270cc62|966e60f8eb85b7ea43a7b0095f3e2336)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Confluence"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Dashboard|Log In) - Confluence$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Atlassian Confluence"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:atlassian:confluence_server:-",
+  "examples": [
+    "bad2c1f96cd66e70b4aa119e7270cc62",
+    "966e60f8eb85b7ea43a7b0095f3e2336",
+    "Dashboard - Confluence",
+    "Log In - Confluence"
+  ]
+}

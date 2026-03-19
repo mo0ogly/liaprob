@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-deutsche_telekom",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DEUTSCHE_TELEKOM",
+  "taxonomy_name": "Deutsche Telekom",
+  "vendor": "Deutsche Telekom",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "DEUTSCHE_TELEKOM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    1720
+  ],
+  "probes": [
+    {
+      "id": "recog_deutsche_telekom_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^0x0400004[23]\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "confidence_delta": 0.4,
+          "version_extract": "^0x0400004[23]\\:(.*)\\:.*?(\\d*\\.*\\d*\\.*\\d*)",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Deutsche Telekom AG H.323 Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "h323"
+  ]
+}

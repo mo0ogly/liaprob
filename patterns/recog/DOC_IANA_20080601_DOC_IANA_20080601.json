@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-doc_iana_20080601_doc_iana_20080601",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "DOC_IANA_20080601_DOC_IANA_20080601",
+  "taxonomy_name": "doc-iana-20080601 doc-iana-20080601",
+  "vendor": "doc-iana-20080601",
+  "product": "doc-iana-20080601",
+  "source": {
+    "type": "recog",
+    "file": "DOC_IANA_20080601_DOC_IANA_20080601.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_doc_iana_20080601_doc_iana_20080601_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^abeea75cf3c1bac42bbd0e96803c72b9",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "doc-iana-20080601"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "abeea75cf3c1bac42bbd0e96803c72b9"
+  ]
+}

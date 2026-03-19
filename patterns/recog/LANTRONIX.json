@@ -1,0 +1,171 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lantronix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LANTRONIX",
+  "taxonomy_name": "Lantronix",
+  "vendor": "Lantronix",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "LANTRONIX.json",
+    "fingerprint_count": 15
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 15 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_lantronix_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix ((?:LPS|EPS|MPS)\\S+) Version [VB]?([^/\\(\\s]+)[/\\(\\s]?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix print server"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "(?i)^Lantronix ((MSS|SCS|LRS|ETS|EDS)\\S+) (?:Version |[VB])?([^/\\(\\s]+)[/\\(\\s]?",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix terminal server"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix ((EDS)\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix terminal server - model only variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix Inc\\. - (Modbus Bridge)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix modbus bridge"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix (U[TD]S\\S*) (?:Snr )?(?:[\\-\\dA-Za-z]+\\s+)?V?(\\S+)(?: \\d+\\.\\S+)?(?: \\(.*\\))?\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix UDS/UTS serial to ethernet adapter"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix (UDS)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix UDS serial to ethernet adapter"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix (X[pP]ort \\S+) V(\\S+) \\(.*\\)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix XPort serial to ethernet adapter - version and serial variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix (XPort \\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix XPort serial to ethernet adapter"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix (XPress \\S+) V(\\S+) \\(.*\\)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix XPress serial to ethernet adapter"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix (MatchPort \\S+(?: \\S+)?) V(\\S+) \\(",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix MatchPort serial to ethernet adapter"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix (WiBox) V(\\S+) \\(.*\\)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix WiBox"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix ((SDS)\\S*) V(\\S+) \\(.*\\)\\s*$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix SDS"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix ((SLS)\\S*) (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix SLS"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix ((NTS)\\S*) \\S+ (\\S+) \\(",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix NTS"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Lantronix ((NTS)\\S*) V(\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Lantronix NTS - variant 1"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "Lantronix EPS2 Version V3.3/4(950530)",
+    "Lantronix EPS2 Version V3.4/1(960401)",
+    "Lantronix EPS1 Version V3.3/2(941216)",
+    "Lantronix EPS1 Version V3.3/4(950530)",
+    "Lantronix EPS1 Version V3.4/1(960401)",
+    "Lantronix EPS1 Version V3.5/10(990820)",
+    "Lantronix EPS1 Version V3.5/3(971202)",
+    "Lantronix EPS1 Version V3.5/5(980529)",
+    "Lantronix EPS1 Version V3.5/7(981112)",
+    "Lantronix EPS1 Version V3.6/4(000712)"
+  ]
+}

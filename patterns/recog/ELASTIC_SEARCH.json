@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-elastic_search",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ELASTIC_SEARCH",
+  "taxonomy_name": "Elastic Search",
+  "vendor": "Elastic",
+  "product": "Search",
+  "source": {
+    "type": "recog",
+    "file": "ELASTIC_SEARCH.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_elastic_search_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^6177bfb75b498e0bb356223ed76ffe43$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Elastic Search"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "6177bfb75b498e0bb356223ed76ffe43"
+  ]
+}

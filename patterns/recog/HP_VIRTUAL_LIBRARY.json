@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_virtual_library",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_VIRTUAL_LIBRARY",
+  "taxonomy_name": "HP Virtual Library",
+  "vendor": "HP",
+  "product": "Virtual Library",
+  "source": {
+    "type": "recog",
+    "file": "HP_VIRTUAL_LIBRARY.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_virtual_library_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP StorageWorks VLS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP StorageWorks Virtual Library"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "HP StorageWorks VLS"
+  ]
+}

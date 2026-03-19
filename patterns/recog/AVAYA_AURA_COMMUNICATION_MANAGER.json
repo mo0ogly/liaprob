@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avaya_aura_communication_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVAYA_AURA_COMMUNICATION_MANAGER",
+  "taxonomy_name": "Avaya Aura Communication Manager",
+  "vendor": "Avaya",
+  "product": "Aura Communication Manager",
+  "source": {
+    "type": "recog",
+    "file": "AVAYA_AURA_COMMUNICATION_MANAGER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_avaya_aura_communication_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Avaya CMBE/((?:\\d+\\.)*\\d+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Avaya CMBE/((?:\\d+\\.)*\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Web server for Avaya Aura Communication Manager Branch, a SIP-based communications platform."
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:avaya:aura_communication_manager:{version}",
+  "examples": [
+    "Avaya CMBE/2.0.0",
+    "Avaya CMBE/2"
+  ]
+}

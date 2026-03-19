@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-alentis_electronics_netping_firmware",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ALENTIS_ELECTRONICS_NETPING_FIRMWARE",
+  "taxonomy_name": "Alentis Electronics NetPing Firmware",
+  "vendor": "Alentis Electronics",
+  "product": "NetPing Firmware",
+  "source": {
+    "type": "recog",
+    "file": "ALENTIS_ELECTRONICS_NETPING_FIRMWARE.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_alentis_electronics_netping_firmware_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^7d33656392385d5ce695db69c7736608$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alentis Electronics NetPing PDU web interface"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_alentis_electronics_netping_firmware_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^Basic realm=\"NetPing \\d+/PWR-220\\s*v\\d+/(?:ETH|SMS|GSM(?:3G)?)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Alentis Electronics NetPing PDU"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "examples": [
+    "7d33656392385d5ce695db69c7736608",
+    "Basic realm=\"NetPing 2/PWR-220v2/SMS\"",
+    "Basic realm=\"NetPing 2/PWR-220 v12/ETH\"",
+    "Basic realm=\"NetPing 4/PWR-220v3/SMS\""
+  ]
+}

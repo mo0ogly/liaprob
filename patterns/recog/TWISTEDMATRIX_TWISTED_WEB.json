@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-twistedmatrix_twisted_web",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "TWISTEDMATRIX_TWISTED_WEB",
+  "taxonomy_name": "TwistedMatrix Twisted Web",
+  "vendor": "TwistedMatrix",
+  "product": "Twisted Web",
+  "source": {
+    "type": "recog",
+    "file": "TWISTEDMATRIX_TWISTED_WEB.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_twistedmatrix_twisted_web_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^TwistedWeb/([\\d.rc]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^TwistedWeb/([\\d.rc]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Twisted Matrix Labs - TwistedWeb"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Twisted/([\\d.]+) TwistedWeb/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Twisted/([\\d.]+) TwistedWeb/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Twisted Matrix Labs - TwistedWeb - verbose variant"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:twistedmatrix:twistedweb:{version}",
+  "examples": [
+    "TwistedWeb/2.5.0",
+    "TwistedWeb/16.4.0",
+    "TwistedWeb/16.5.0rc2",
+    "Twisted/13.0.0 TwistedWeb/9.0.0",
+    "Twisted/17.9.0 TwistedWeb/9.0.0"
+  ]
+}

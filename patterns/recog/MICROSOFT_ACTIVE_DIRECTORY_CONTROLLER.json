@@ -1,0 +1,116 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-microsoft_active_directory_controller",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MICROSOFT_ACTIVE_DIRECTORY_CONTROLLER",
+  "taxonomy_name": "Microsoft Active Directory Controller",
+  "vendor": "Microsoft",
+  "product": "Active Directory Controller",
+  "source": {
+    "type": "recog",
+    "file": "MICROSOFT_ACTIVE_DIRECTORY_CONTROLLER.json",
+    "fingerprint_count": 8
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 8 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_microsoft_active_directory_controller_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.800.*domainControllerFunctionality1.{1,5}\\x04\\x017)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2016"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.800.*domainControllerFunctionality1.{1,5}\\x04\\x016)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2012 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.800.*domainControllerFunctionality1.{1,5}\\x04\\x015)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2012"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.800.*domainControllerFunctionality1.{1,5}\\x04\\x014)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2008 R2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.800.*domainControllerFunctionality1.{1,5}\\x04\\x013)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2008"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:1.2.840.113556.1.4.800.*domainControllerFunctionality1.{1,5}\\x04\\x012)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2003"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:supportedCapabilities1.{1,5}\\x04\\x161.2.840.113556.1.4.800\\x04\\x171.2.840.113556.1.4.17910.{1,5}\\x04.(?:supportedControl|isSynchronized))",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2000 SP 3"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?im:supportedCapabilities1.{1,5}\\x04\\x161.2.840.113556.1.4.8000.{1,5}\\x04.isSynchronized1)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Active Directory Controller on Windows Server 2000"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/a:microsoft:active_directory:-",
+  "examples": [
+    "dGllczGEAAAAlQQWMS4yLjg0MC4xMTM1NTYuMS40LjgwMAQuZGF0YS5yZW1vdmVkLjCEAAAAK\n      AQdZG9tYWluQ29udHJvbGxlckZ1bmN0aW9uYWxpdHkxhAAAAAMEATc=",
+    "ZXMxhAAAAJUEFjEuMi44NDAuMTEzNTU2LjEuNC44MDAELmRhdGEucmVtb3ZlZC6EAAAAKAQdZ\n      G9tYWluQ29udHJvbGxlckZ1bmN0aW9uYWxpdHkxhAAAAAMEATYw",
+    "aWVzMYQAAACVBBYxLjIuODQwLjExMzU1Ni4xLjQuODAwBC5kYXRhLnJlbW92ZWQwhAAAACgEH\n      WRvbWFpbkNvbnRyb2xsZXJGdW5jdGlvbmFsaXR5MYQAAAADBAE1MA==",
+    "aWVzMYQAAACVBBYxLjIuODQwLjExMzU1Ni4xLjQuODAwBC5kYXRhLnJlbW92ZWQuMIQAAAAoB\n      B1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBNDA=",
+    "aWVzMYQAAACVBBYxLjIuODQwLjExMzU1Ni4xLjQuODAwBC5kYXRhLnJlbW92ZWQuMIQAAAAoB\n      B1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBMzA=",
+    "aWVzMYQAAACVBBYxLjIuODQwLjExMzU1Ni4xLjQuODAwBC5kYXRhLnJlbW92ZWQuMIQAAAAoB\n      B1kb21haW5Db250cm9sbGVyRnVuY3Rpb25hbGl0eTGEAAAAAwQBMjA=",
+    "c3VwcG9ydGVkQ2FwYWJpbGl0aWVzMTEEFjEuMi44NDAuMTEzNTU2LjEuNC44MDAEFzEuMi44N\n      DAuMTEzNTU2LjEuNC4xNzkxMEQEEHN1cHBvcnRlZENvbnRyb2x8",
+    "c3VwcG9ydGVkQ2FwYWJpbGl0aWVzMTEEFjEuMi44NDAuMTEzNTU2LjEuNC44MDAEFzEuMi44N\n      DAuMTEzNTU2LjEuNC4xNzkxMIQAAAAcBA5pc1N5bmNocm9uaXplZDE=",
+    "c3VwcG9ydGVkQ2FwYWJpbGl0aWVzMYQAAAAYBBYxLjIuODQwLjExMzU1Ni4xLjQuODAwMIQAA\n      AAcBA5pc1N5bmNocm9uaXplZDE="
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ma_jian_winwebmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MA_JIAN_WINWEBMAIL",
+  "taxonomy_name": "Ma Jian WinWebMail",
+  "vendor": "Ma Jian",
+  "product": "WinWebMail",
+  "source": {
+    "type": "recog",
+    "file": "MA_JIAN_WINWEBMAIL.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    110,
+    995
+  ],
+  "probes": [
+    {
+      "id": "recog_ma_jian_winwebmail_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^POP3 on WinWebMail \\[([\\d.]+)\\] ready\\.$",
+          "confidence_delta": 0.4,
+          "version_extract": "^POP3 on WinWebMail \\[([\\d.]+)\\] ready\\.$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WinWebmail POP3"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pop3"
+  ],
+  "cpe23_template": "cpe:/o:microsoft:windows:-",
+  "examples": [
+    "POP3 on WinWebMail [1.1.1.1] ready."
+  ]
+}

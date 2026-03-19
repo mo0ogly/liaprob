@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-conexant_accessrunner_adsl_router",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "CONEXANT_ACCESSRUNNER_ADSL_ROUTER",
+  "taxonomy_name": "Conexant AccessRunner ADSL router",
+  "vendor": "Conexant",
+  "product": "AccessRunner ADSL router",
+  "source": {
+    "type": "recog",
+    "file": "CONEXANT_ACCESSRUNNER_ADSL_ROUTER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23
+  ],
+  "probes": [
+    {
+      "id": "recog_conexant_accessrunner_adsl_router_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^CONEXANT SYSTEMS.*ACCESS RUNNER ADSL",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "a Conexant ADSL router"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "telnet"
+  ],
+  "examples": [
+    "Q09ORVhBTlQgU1lTVEVNUywgSU5DLiBBQ0NFU1MgUlVOTkVSIEFEU0wgQ09OU09MRSBQ\n      T1JUPj4+TE9HT04gUEFTU1dPUkQ+My4yNyoqKioqKg=="
+  ]
+}

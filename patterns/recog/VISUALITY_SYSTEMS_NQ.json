@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-visuality_systems_nq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "VISUALITY_SYSTEMS_NQ",
+  "taxonomy_name": "Visuality Systems NQ",
+  "vendor": "Visuality Systems",
+  "product": "NQ",
+  "source": {
+    "type": "recog",
+    "file": "VISUALITY_SYSTEMS_NQ.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    445
+  ],
+  "probes": [
+    {
+      "id": "recog_visuality_systems_nq_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^NQ (\\d\\.\\d+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^NQ (\\d\\.\\d+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Visuality Systems NQ Enterprise Storage SMB stack"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smb"
+  ],
+  "examples": [
+    "NQ 7.3",
+    "NQ 4.32"
+  ]
+}

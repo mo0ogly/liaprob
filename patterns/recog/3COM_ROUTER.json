@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-3com_router",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "3COM_ROUTER",
+  "taxonomy_name": "3Com Router",
+  "vendor": "3Com",
+  "product": "Router",
+  "source": {
+    "type": "recog",
+    "file": "3COM_ROUTER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_3com_router_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^3Com Router .* Software Release ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "3COM Router - release variant"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "examples": [
+    "3Com Router OSR6740 Software Release 1910P02, Standard (build V300R003B04D015SP01)"
+  ]
+}

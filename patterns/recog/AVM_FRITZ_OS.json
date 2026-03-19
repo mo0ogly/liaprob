@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avm_fritz_os",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVM_FRITZ_OS",
+  "taxonomy_name": "AVM FRITZ!OS",
+  "vendor": "AVM",
+  "product": "FRITZ!OS",
+  "source": {
+    "type": "recog",
+    "file": "AVM_FRITZ_OS.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_avm_fritz_os_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^FRITZ!OS$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "AVM Fritz!OS Device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "cpe23_template": "cpe:/o:avm:fritz%21os:-",
+  "examples": [
+    "FRITZ!OS"
+  ]
+}

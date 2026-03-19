@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-phpwiki_phpwiki_1_3_14_gforge_4_6_99_svn6496_wiki",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPWIKI_PHPWIKI_1_3_14_GFORGE_4_6_99_SVN6496_WIKI",
+  "taxonomy_name": "PHPwiki PHPwiki (1.3.14) / gforge (4.6.99+svn6496) - wiki",
+  "vendor": "PHPwiki",
+  "product": "PHPwiki (1.3.14) / gforge (4.6.99+svn6496) - wiki",
+  "source": {
+    "type": "recog",
+    "file": "PHPWIKI_PHPWIKI_1_3_14_GFORGE_4_6_99_SVN6496_WIKI.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_phpwiki_phpwiki_1_3_14_gforge_4_6_99_svn6496_wiki_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^2cc15cfae55e2bb2d85b57e5b5bc3371",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "PHPwiki (1.3.14) / gforge (4.6.99+svn6496) - wiki"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "2cc15cfae55e2bb2d85b57e5b5bc3371"
+  ]
+}

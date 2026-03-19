@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-mariadb_maxscale",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "MARIADB_MAXSCALE",
+  "taxonomy_name": "MariaDB MaxScale",
+  "vendor": "MariaDB",
+  "product": "MaxScale",
+  "source": {
+    "type": "recog",
+    "file": "MARIADB_MAXSCALE.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    3306
+  ],
+  "probes": [
+    {
+      "id": "recog_mariadb_maxscale_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:\\d{1,2}\\.\\d{1,2}\\.[a-f\\d]{1,2})(?:-\\d{1,2}\\.\\d{1,2}\\.[a-f\\d]{1,2})?\\s(\\d{1,2}\\.\\d{1,2}\\.\\d{1,2})-maxscale$",
+          "confidence_delta": 0.4,
+          "version_extract": "^(?:\\d{1,2}\\.\\d{1,2}\\.[a-f\\d]{1,2})(?:-\\d{1,2}\\.\\d{1,2}\\.[a-f\\d]{1,2})?\\s(\\d{1,2}\\.\\d{1,2}\\.\\d{1,2})-maxscale$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "MariaDB MariaDB MaxScale"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "mysql"
+  ],
+  "examples": [
+    "5.5.5-10.0.0 2.1.14-maxscale"
+  ]
+}

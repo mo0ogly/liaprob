@@ -1,0 +1,155 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apache_tomcat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_TOMCAT",
+  "taxonomy_name": "Apache Tomcat",
+  "vendor": "Apache",
+  "product": "Tomcat",
+  "source": {
+    "type": "recog",
+    "file": "APACHE_TOMCAT.json",
+    "fingerprint_count": 10
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 10 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apache_tomcat_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:4644f2d45601037b8423d45e13194c93|d80e364c0d3138c7ecd75bf9896f2cad)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Tomcat"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Apache Tomcat$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Apache Tomcat with no version"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Apache Tomcat/(\\S+)(?: - Error report)?$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Apache Tomcat/(\\S+)(?: - Error report)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache tomcat with minimal version information"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Apache Tomcat/(\\S+) \\(Ubuntu\\) - Error report$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Apache Tomcat/(\\S+) \\(Ubuntu\\) - Error report$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache Tomcat - Error report on Ubuntu"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Apache Tomcat/(\\S+) \\(Debian\\) - Error report$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Apache Tomcat/(\\S+) \\(Debian\\) - Error report$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache Tomcat - Error report on Debian"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Apache[ -]Coyote/(\\d\\.\\d)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HTTP connector for Apache Tomcat to run as a standalone HTTP server - Coyote variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Apache Tomcat$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "HTTP connector for Apache Tomcat with no version"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Apache Tomcat/(\\d\\.[\\d.]+)(?:-LE-jdk14)? \\(HTTP/1.1 Connector\\)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Apache Tomcat/(\\d\\.[\\d.]+)(?:-LE-jdk14)? \\(HTTP/1.1 Connector\\)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "HTTP connector for Apache Tomcat to run as a standalone HTTP server - Apache variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Tomcat Web Server/(\\d\\.[\\dA-Z.]+)(?: Final)?(?:\\s\\(([^\\)]+)\\))?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Tomcat Web Server/(\\d\\.[\\dA-Z.]+)(?: Final)?(?:\\s\\(([^\\)]+)\\))?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "HTTP connector for Apache Tomcat to run as a standalone HTTP server"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^(?:Apache )?Tomcat/([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^(?:Apache )?Tomcat/([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Apache Tomcat with version information"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:apache:tomcat:-",
+  "examples": [
+    "4644f2d45601037b8423d45e13194c93",
+    "d80e364c0d3138c7ecd75bf9896f2cad",
+    "Apache Tomcat",
+    "Apache Tomcat/8.0.32",
+    "Apache Tomcat/5.5.29 - Error report",
+    "Apache Tomcat/8.0.32 (Ubuntu) - Error report",
+    "Apache Tomcat/7.0.56 (Debian) - Error report",
+    "Apache-Coyote/1.1",
+    "Apache Coyote/1.0",
+    "Apache Tomcat/4.0.6 (HTTP/1.1 Connector)"
+  ]
+}

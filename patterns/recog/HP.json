@@ -1,0 +1,320 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP",
+  "taxonomy_name": "HP",
+  "vendor": "HP",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "HP.json",
+    "fingerprint_count": 30
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 30 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    23,
+    67,
+    68,
+    161,
+    443,
+    8443,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^Mfg=Hewlett Packard;Typ=Printer;Mod=HP (LaserJet 200|LaserJet 400) (?:color |colorMFP |MFP )?(M\\d+\\S+);Ser=([A-Z0-9]{10});$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Multifunction Printer"
+        },
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^(?:Hewlett-Packard|HP) (OfficeJet|LaserJet|Printer|JetDirect)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Printer"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^HP (\\S+ Digital Sender)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Digital Sender scanner"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Basic|Digest) realm=\"(?:HP|ProCurve) (J[3]\\d{3}A)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Hubs"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:Basic|Digest) realm=\"(?:HP|ProCurve) (J[489]\\d{3}A)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Switches"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^(?:HP\\s?)?(Digital UNIX|HP-UX|iLO|OpenVMS|ProLiant|Tru64 UNIX)\\s?V?(\\d+(?:\\.\\d+)*(?:-[\\dA-Z]+)?)?$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP OSes"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^.Permission denied: Error 0$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Digital Unix rlogind"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?m)^HP ([^\\s]+) ProCurve Switch",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Switch"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP (V1910\\S+) (?:\\(.*?\\) )?Switch Software Version (\\S+).? Release (\\S+) Copyright",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP (V1905\\S+) Switch Product Version (\\S+) Copyright",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Switch - product version variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Hewlett-Packard Company (\\S+) HP ProCurve Routing Switch.*Software Version (\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Routing Switch - build data variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP (J\\S+) ProCurve Switch.*, revision (\\S+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Routing Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^ProCurve (J\\S+) Switch.*, revision (\\S+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Switch - HP prefix and build path variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP Pro[cC]urve Access Point (\\S+): v(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Wireless Access Point - serial number variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP ProCurve AP (.*?)v(\\d[0-9\\.]+)\\(.*SN-",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Wireless Access Point"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^ProCurve Access Point (\\S+(?: \\S+)) ([^,]+), revision ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Wireless Access Point - boot variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^ProCurve Secure Router ([^,]+), Version: ([^,]+),",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP ProCurve Secure Router"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP (?:Color )?LaserJet (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Color LaserJet"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^MSA (Fabric Switch \\d+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP MSA Fabric Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP StorageWorks (MSA\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP StorageWorks Modular Smart Array"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP StorageWorks (P2000.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP StorageWorks Modular Smart Array - connection type variant"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP StorageWorks (\\S+) Stackable Single Power Supply Fibre Channel Switch$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP StorageWorks Stackable FC Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP StorageWorks (\\S+) Fibre Channel Switch$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP StorageWorks FC Switch"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP ETHERNET MULTI-ENVIRONMENT$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP JetDirect print server"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP ETHERNET MULTI-ENVIRONMENT,ROM (\\S+?),JETDIRECT(?: EX)?,(\\w+),EEPROM",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP JetDirect printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^HP ETHERNET MULTI-ENVIRONMENT,SN:\\w+,FN:\\w+,SVCID:\\d+,PID:HP (?:Color )?LaserJet (.*)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP JetDirect-based printer"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^TippingPoint Core Controller$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "TippingPoint Core Controller"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_jarm",
+          "match_type": "regex",
+          "value": "^16d16d16d14d16d00016d16d16d16da6fda484e06f95db4f56339284c90672$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Printer"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=HP Jetdirect [a-zA-Z0-9]+,OU=([a-fA-F0-9]{12})\\+OU=([a-zA-Z0-9]+),O=Hewlett-Packard Co\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Jet Direct - with host MAC and product"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([a-zA-Z0-9\\.\\-\\_]+),OU=HP-IPG,O=HP,L=Vancouver,ST=Washington,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "HP Jet Direct"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp",
+    "generic",
+    "telnet",
+    "pjl",
+    "tls",
+    "snmp"
+  ],
+  "examples": [
+    "Mfg=Hewlett Packard;Typ=Printer;Mod=HP LaserJet 200 colorMFP M276nw;Ser=ABC1DE2F3G;",
+    "Mfg=Hewlett Packard;Typ=Printer;Mod=HP LaserJet 400 M401dne;Ser=ABCDE12345;",
+    "Mfg=Hewlett Packard;Typ=Printer;Mod=HP LaserJet 400 M401dw;Ser=ABCDE12345;",
+    "Mfg=Hewlett Packard;Typ=Printer;Mod=HP LaserJet 400 M401n;Ser=ABCDE12345;",
+    "Mfg=Hewlett Packard;Typ=Printer;Mod=HP LaserJet 400 MFP M425dn;Ser=ABC1D23E4E;",
+    "Hewlett-Packard LaserJet",
+    "Hewlett-Packard OfficeJet",
+    "HP LaserJet",
+    "HP Printer",
+    "Hewlett-Packard JetDirect"
+  ]
+}

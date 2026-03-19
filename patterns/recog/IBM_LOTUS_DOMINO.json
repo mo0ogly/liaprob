@@ -1,0 +1,141 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ibm_lotus_domino",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IBM_LOTUS_DOMINO",
+  "taxonomy_name": "IBM Lotus Domino",
+  "vendor": "IBM",
+  "product": "Lotus Domino",
+  "source": {
+    "type": "recog",
+    "file": "IBM_LOTUS_DOMINO.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    80,
+    110,
+    143,
+    443,
+    587,
+    993,
+    995,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ibm_lotus_domino_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Lotus(?:-Domino)?(?:/|/0|/Release)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "IBM Lotus Notes/Domino with no useful version info"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Lotus(?:-Domino)?/(?:Release-?)?([4-7][\\d.]+)\\s*(?:.*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^Lotus(?:-Domino)?/(?:Release-?)?([4-7][\\d.]+)\\s*(?:.*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM Lotus Notes/Domino with version info"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_ibm_lotus_domino_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Domino IMAP4 Server Release (\\d+\\.\\d+.*) ready (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Domino IMAP4 Server Release (\\d+\\.\\d+.*) ready (.+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM Lotus Notes/Domino"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Domino IMAP4 Server V\\.?(\\d+\\.\\d+.*) ready (.+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^Domino IMAP4 Server V\\.?(\\d+\\.\\d+.*) ready (.+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM Lotus Notes/Domino - variant 2"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Lotus Notes POP3 server version X[^ ]+ ready on",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "IBM Lotus Notes/Domino"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Lotus Notes POP3 server version Release ([^ ]+) ready on",
+          "confidence_delta": 0.4,
+          "version_extract": "^Lotus Notes POP3 server version Release ([^ ]+) ready on",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "IBM Lotus Notes/Domino - Release variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": " ?(?:([^ ]{1,512}))? {0,8}ESMTP Service \\(Lotus Domino Release (\\d+\\.[\\w.]+(?: FP\\d+)?(?: HF\\d+)?)(?: \\(Intl\\))?\\) ready at (.+) *$",
+          "confidence_delta": 0.4,
+          "version_extract": " ?(?:([^ ]{1,512}))? {0,8}ESMTP Service \\(Lotus Domino Release (\\d+\\.[\\w.]+(?: FP\\d+)?(?: HF\\d+)?)(?: \\(Intl\\))?\\) ready at (.+) *$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "Lotus Domino SMTP MTA"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp",
+    "pop3",
+    "http",
+    "imap"
+  ],
+  "cpe23_template": "cpe:/a:ibm:lotus_domino:-",
+  "examples": [
+    "Lotus",
+    "Lotus-Domino",
+    "Lotus-Domino/0",
+    "Lotus-Domino/Release",
+    "Lotus-Domino/5.0.8",
+    "Lotus-Domino/Release-4.6.7(Intl)",
+    "Domino IMAP4 Server Release 9.0.1FP9 ready Thu, 4 Apr 2019 20:19:31 +0200",
+    "Lotus Notes POP3 server version X2.0 ready on foo/bar.",
+    "Lotus Notes POP3 server version Release 8.5.1FP5 ready on foo/US.",
+    "foo.bar  ESMTP Service (Lotus Domino Release 8.5) ready at Thu, 30 Nov 2017 17:01:45 +0800"
+  ]
+}

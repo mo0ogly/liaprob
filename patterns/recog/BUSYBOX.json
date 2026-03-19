@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-busybox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "BUSYBOX",
+  "taxonomy_name": "Busybox",
+  "vendor": "Busybox",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "BUSYBOX.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    67,
+    68
+  ],
+  "probes": [
+    {
+      "id": "recog_busybox_l4_udp",
+      "layer": "L4_UDP",
+      "matchers": [
+        {
+          "target": "dhcp_vendor",
+          "match_type": "regex",
+          "value": "^udhcp(?:c|\\s)([0-1]\\.\\d+\\.\\d(?:-pre)?)$",
+          "confidence_delta": 0.4,
+          "version_extract": "^udhcp(?:c|\\s)([0-1]\\.\\d+\\.\\d(?:-pre)?)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "Linux System using Busybox"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "dhcp"
+  ],
+  "examples": [
+    "udhcp 1.22.1",
+    "udhcpc1.21.1",
+    "udhcp 0.9.9-pre"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-kdenetwork_kdenetwork_4_1_4",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "KDENETWORK_KDENETWORK_4_1_4",
+  "taxonomy_name": "kdenetwork kdenetwork (4.1.4)",
+  "vendor": "kdenetwork",
+  "product": "kdenetwork (4.1.4)",
+  "source": {
+    "type": "recog",
+    "file": "KDENETWORK_KDENETWORK_4_1_4.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_kdenetwork_kdenetwork_4_1_4_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^8ab2f1a55bcb0cac227828afd5927d39",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "kdenetwork (4.1.4)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "8ab2f1a55bcb0cac227828afd5927d39"
+  ]
+}

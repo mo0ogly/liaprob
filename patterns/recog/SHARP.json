@@ -1,0 +1,119 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sharp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SHARP",
+  "taxonomy_name": "Sharp",
+  "vendor": "Sharp",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "SHARP.json",
+    "fingerprint_count": 7
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 7 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    23,
+    161,
+    9100
+  ],
+  "probes": [
+    {
+      "id": "recog_sharp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^SHARP (MX-\\S+) Ver (\\S+) FTP server\\.$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sharp Printer/Copier/Scanne"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^SHARP (AR-\\S+) Ver (\\S+) FTP server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sharp AR Series multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "(?i)^SHARP (\\S+-\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sharp Printer"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^SHARP (AR-[^\\\\s]+) Ver ([^\\\\s]+) TELNET server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SHARP AR Series multifunction device"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^SHARP (MX-[^\\\\s]+) Ver ([^\\\\s]+) TELNET server",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SHARP MX Series multifunction device"
+        }
+      ]
+    },
+    {
+      "id": "recog_sharp_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SHARP (AR-\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sharp AR Series multifunction device"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^SHARP (MX-\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Sharp MX Series multifunction device"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "pjl",
+    "telnet",
+    "ftp",
+    "snmp"
+  ],
+  "examples": [
+    "SHARP MX-6200N Ver 01.02.00.0e FTP server.",
+    "SHARP MX-M363N Ver 01.05.00.0k FTP server.",
+    "SHARP MX-M363N Ver 01.05.00.1k FTP server.",
+    "SHARP MX-5001N Ver 01.05.00.0n FTP server.",
+    "SHARP MX-5500N Ver 01.02.00.09 FTP server.",
+    "SHARP MX-M453N Ver 01.05.00.0k FTP server.",
+    "SHARP MX-M503N Ver 01.05.00.1k FTP server.",
+    "SHARP MX-M620U Ver 01.03.00 FTP server.",
+    "SHARP MX-M620U Ver 01.04.00.04 FTP server.",
+    "SHARP AR-M450 Ver 01.05.00.0k FTP server."
+  ]
+}

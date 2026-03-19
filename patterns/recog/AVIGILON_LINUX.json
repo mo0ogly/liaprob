@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-avigilon_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "AVIGILON_LINUX",
+  "taxonomy_name": "Avigilon Linux",
+  "vendor": "Avigilon",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "AVIGILON_LINUX.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_avigilon_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^AvigilonOnvifNvt/(\\d+\\.\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avigilon IP Camera"
+        }
+      ]
+    },
+    {
+      "id": "recog_avigilon_linux_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=AVIGILON-CAMERA-([a-zA-Z0-9\\.\\-]+)-\\d+,OU=Certification Manager,O=Avigilon Corporation,L=Vancouver,ST=British Columbia,C=CA$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Avigilon IP Camera"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "tls"
+  ],
+  "examples": [
+    "AvigilonOnvifNvt/2.6.0.130",
+    "CN=AVIGILON-CAMERA-5.0-H3-DP1-1242900,OU=Certification Manager,O=Avigilon Corporation,L=Vancouver,ST=British Columbia,C=CA"
+  ]
+}

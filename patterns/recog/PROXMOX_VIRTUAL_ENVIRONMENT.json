@@ -1,0 +1,102 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-proxmox_virtual_environment",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PROXMOX_VIRTUAL_ENVIRONMENT",
+  "taxonomy_name": "Proxmox Virtual Environment",
+  "vendor": "Proxmox",
+  "product": "Virtual Environment",
+  "source": {
+    "type": "recog",
+    "file": "PROXMOX_VIRTUAL_ENVIRONMENT.json",
+    "fingerprint_count": 5
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 5 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_proxmox_virtual_environment_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:908db8e56aeee8bb7a911b5df4eaf90e|02f4db63a9cfb650c05ffd82956cbfd6)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Proxmox"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^.{1,256} - Proxmox Virtual Environment$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Proxmox open-source virtualization platform"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^pve-api-daemon/[\\d.]+",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Proxmox api daemon"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_proxmox_virtual_environment_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_issuer",
+          "match_type": "regex",
+          "value": "^CN=Proxmox Virtual Environment,OU=[a-f0-9-]+,O=PVE Cluster Manager CA$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Proxmox open-source virtualization platform"
+        },
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=(.{1,256}),OU=PVE Cluster Node,O=Proxmox Virtual Environment$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Proxmox open-source virtualization platform"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http",
+    "tls"
+  ],
+  "cpe23_template": "cpe:/a:proxmox:virtual_environment:-",
+  "examples": [
+    "908db8e56aeee8bb7a911b5df4eaf90e",
+    "02f4db63a9cfb650c05ffd82956cbfd6",
+    "hypervisor - Proxmox Virtual Environment",
+    "pve-api-daemon/3.0",
+    "CN=Proxmox Virtual Environment,OU=dd69676f-e203-490e-b040-79b75ed6a9d7,O=PVE Cluster Manager CA",
+    "CN=pve.example.org,OU=PVE Cluster Node,O=Proxmox Virtual Environment"
+  ]
+}

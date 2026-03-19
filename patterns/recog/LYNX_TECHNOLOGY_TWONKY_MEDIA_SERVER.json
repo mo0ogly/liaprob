@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-lynx_technology_twonky_media_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "LYNX_TECHNOLOGY_TWONKY_MEDIA_SERVER",
+  "taxonomy_name": "Lynx Technology Twonky Media Server",
+  "vendor": "Lynx Technology",
+  "product": "Twonky Media Server",
+  "source": {
+    "type": "recog",
+    "file": "LYNX_TECHNOLOGY_TWONKY_MEDIA_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_lynx_technology_twonky_media_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:07ba76de1eb6c4550bfbf627a21cd6f8|9cc719577e8de0abd0d76f43a40c2956|5f09cded07bb864fd9b3d2dd72b5418e)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Twonky Server"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:Twonky|Twonky Server|TwonkyMedia|TwonkyMedia server media browser)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Twonky Server"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:lynxtechnology:twonky_server:-",
+  "examples": [
+    "07ba76de1eb6c4550bfbf627a21cd6f8",
+    "9cc719577e8de0abd0d76f43a40c2956",
+    "5f09cded07bb864fd9b3d2dd72b5418e",
+    "Twonky",
+    "Twonky Server",
+    "TwonkyMedia",
+    "TwonkyMedia server media browser"
+  ]
+}

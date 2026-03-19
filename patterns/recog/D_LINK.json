@@ -1,0 +1,149 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-d_link",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "D_LINK",
+  "taxonomy_name": "D-Link",
+  "vendor": "D-Link",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "D_LINK.json",
+    "fingerprint_count": 9
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 9 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    161,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_d_link_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^D-Link MiniAVServer$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "D-Link embedded web server for web cams"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Linux, STUNNEL/1.0, (DIR-8\\d+\\w*) Ver (\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "D-Link DIR-8XX Router"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Linux, WEBACCESS/1.0, (DIR-\\d+\\w*) Ver (\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "D-Link DIR-XXX Router - WEBACCESS variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Linux, HTTP/1.1, (DIR-\\d+\\w*) Ver (\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "D-Link DIR-XXX Router - HTTP variant"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "Linux, WEBACCESS/1.0, (DSL-\\d+\\w*) Ver (\\S+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "D-Link DSL-XXX Router - WEBACCESS variant"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_d_link_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"(DCS-[^\"]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "D-Link DCS IP Cameras"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"(DNR-[^\"]+)\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "D-Link DNR Cloud Network Video Recorder"
+        }
+      ]
+    },
+    {
+      "id": "recog_d_link_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^D-link Corp\\. Access Point$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "D-link WAP"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^D-Link (\\S+) Print Server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "D-link Print Server"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http",
+    "snmp"
+  ],
+  "examples": [
+    "Linux, STUNNEL/1.0, DIR-850L Ver 1.09",
+    "Linux, STUNNEL/1.0, DIR-820LW Ver 2.00W",
+    "Linux, WEBACCESS/1.0, DIR-850L Ver 1.09",
+    "Linux, WEBACCESS/1.0, DIR-850L Ver 1.14WW",
+    "Linux, WEBACCESS/1.0, DIR-645 Ver 1.04",
+    "Linux, HTTP/1.1, DIR-815 Ver 1.04",
+    "Linux, WEBACCESS/1.0, DSL-2890AL Ver AU_1.02.10",
+    "Linux, WEBACCESS/1.0, DSL-2890AL Ver 1.01",
+    "Basic realm=\"DCS-5222LB1\"",
+    "Basic realm=\"DCS-2530L\""
+  ]
+}

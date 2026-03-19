@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-palo_alto_networks_panorama_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PALO_ALTO_NETWORKS_PANORAMA_SERVER",
+  "taxonomy_name": "Palo Alto Networks Panorama Server",
+  "vendor": "Palo Alto Networks",
+  "product": "Panorama Server",
+  "source": {
+    "type": "recog",
+    "file": "PALO_ALTO_NETWORKS_PANORAMA_SERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_palo_alto_networks_panorama_server_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Palo Alto Networks Panorama server$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Palo Alto Panorama"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:paloaltonetworks:pan-os:-",
+  "examples": [
+    "Palo Alto Networks Panorama server"
+  ]
+}

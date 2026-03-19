@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-python_software_foundation_wsgiserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PYTHON_SOFTWARE_FOUNDATION_WSGISERVER",
+  "taxonomy_name": "Python Software Foundation WSGIServer",
+  "vendor": "Python Software Foundation",
+  "product": "WSGIServer",
+  "source": {
+    "type": "recog",
+    "file": "PYTHON_SOFTWARE_FOUNDATION_WSGISERVER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_python_software_foundation_wsgiserver_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^WSGIServer/(\\d+(?:\\.\\d+)*)\\s*C?Python/(\\d+(?:\\.\\d+)*)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^WSGIServer/(\\d+(?:\\.\\d+)*)\\s*C?Python/(\\d+(?:\\.\\d+)*)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WSGIServer (wsgiref.simple_server) – a simple WSGI HTTP server for Python"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "WSGIServer/0.1 Python/2.7.18",
+    "WSGIServer/0.2 CPython/3.10.5"
+  ]
+}

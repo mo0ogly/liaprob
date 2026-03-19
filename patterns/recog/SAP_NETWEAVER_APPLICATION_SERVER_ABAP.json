@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-sap_netweaver_application_server_abap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SAP_NETWEAVER_APPLICATION_SERVER_ABAP",
+  "taxonomy_name": "SAP NetWeaver Application Server ABAP",
+  "vendor": "SAP",
+  "product": "NetWeaver Application Server ABAP",
+  "source": {
+    "type": "recog",
+    "file": "SAP_NETWEAVER_APPLICATION_SERVER_ABAP.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_sap_netweaver_application_server_abap_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^SAP NetWeaver Application Server / ABAP ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "^SAP NetWeaver Application Server / ABAP ([\\d.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "SAP NetWeaver Application Server - Advanced Business Application Programming"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:sap:netweaver_application_server_abap:{version}",
+  "examples": [
+    "SAP NetWeaver Application Server / ABAP 731"
+  ]
+}

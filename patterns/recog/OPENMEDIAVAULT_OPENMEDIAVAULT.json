@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-openmediavault_openmediavault",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "OPENMEDIAVAULT_OPENMEDIAVAULT",
+  "taxonomy_name": "OpenMediaVault OpenMediaVault",
+  "vendor": "OpenMediaVault",
+  "product": "OpenMediaVault",
+  "source": {
+    "type": "recog",
+    "file": "OPENMEDIAVAULT_OPENMEDIAVAULT.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_openmediavault_openmediavault_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^(?:7da8813873190b6e3d7d8957d798bd1e|31ccf4e22ba33dbec54cc357a43a36d3)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenMediaVault"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^(?:openmediavault control panel|OpenMediaVault web administration interface) - (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenMediaVault"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "cpe23_template": "cpe:/a:openmediavault:openmediavault:-",
+  "examples": [
+    "7da8813873190b6e3d7d8957d798bd1e",
+    "31ccf4e22ba33dbec54cc357a43a36d3",
+    "openmediavault control panel - raspberrypi",
+    "OpenMediaVault web administration interface - raspberrypi"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-grandstream",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "GRANDSTREAM",
+  "taxonomy_name": "Grandstream",
+  "vendor": "Grandstream",
+  "product": "",
+  "source": {
+    "type": "recog",
+    "file": "GRANDSTREAM.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    5060
+  ],
+  "probes": [
+    {
+      "id": "recog_grandstream_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Grandstream (UCM6\\d\\d\\d)V(\\d\\.\\d\\w) ([\\d.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Grandstream UCM 6xxx series generic"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "sip"
+  ],
+  "examples": [
+    "Grandstream UCM6102V1.5A 1.0.6.10",
+    "Grandstream UCM6302V1.2B 1.0.3.10",
+    "Grandstream UCM6510V1.4B 1.0.14.23"
+  ]
+}

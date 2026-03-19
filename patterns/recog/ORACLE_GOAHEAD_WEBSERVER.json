@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-oracle_goahead_webserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "ORACLE_GOAHEAD_WEBSERVER",
+  "taxonomy_name": "Oracle GoAhead Webserver",
+  "vendor": "Oracle",
+  "product": "GoAhead Webserver",
+  "source": {
+    "type": "recog",
+    "file": "ORACLE_GOAHEAD_WEBSERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_oracle_goahead_webserver_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "(?i)^GoAhead(?:-Webs|-http)?\\/([\\d.]+)(?: PeerSec-MatrixSSL\\/[\\d.]+-OPEN)?$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "version_extract": "(?i)^GoAhead(?:-Webs|-http)?\\/([\\d.]+)(?: PeerSec-MatrixSSL\\/[\\d.]+-OPEN)?$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "GoAhead-Webs - version"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    },
+    {
+      "id": "recog_oracle_goahead_webserver_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"GoAhead\"",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "GoAhead webserver"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "http"
+  ],
+  "examples": [
+    "GoAhead-Webs/2.5.0 PeerSec-MatrixSSL/3.4.2-OPEN",
+    "Goahead/2.5.0 PeerSec-MatrixSSL/3.2.1-OPEN",
+    "GoAhead-Webs/2.5.0",
+    "Basic realm=\"GoAhead\""
+  ]
+}

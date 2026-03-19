@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-thomson_speedtouch",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "THOMSON_SPEEDTOUCH",
+  "taxonomy_name": "Thomson SpeedTouch",
+  "vendor": "Thomson",
+  "product": "SpeedTouch",
+  "source": {
+    "type": "recog",
+    "file": "THOMSON_SPEEDTOUCH.json",
+    "fingerprint_count": 4
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 4 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443
+  ],
+  "probes": [
+    {
+      "id": "recog_thomson_speedtouch_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^Basic realm=\"SpeedTouch\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Thomson SpeedTouch xDSL router - short variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"SpeedTouch \\(([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2})\\)\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Thomson SpeedTouch xDSL router"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"SpeedTouch\", nonce=\"[0-9A-Z]+:([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}):\\d+:\\d+\", qop=\"auth\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Thomson SpeedTouch xDSL router - qop variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^(?:Basic|Digest) realm=\"ST (\\d+) R 5.x Telecom Italia\", nonce=\"[0-9A-Z]+:([0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}-[0-9A-F]{2}):\\d+:\\d+\", qop=\"auth\"$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Thomson SpeedTouch xDSL router - Telecom Italia"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic"
+  ],
+  "examples": [
+    "Basic realm=\"SpeedTouch\"",
+    "Basic realm=\"SpeedTouch (00-90-D0-F9-91-52)\""
+  ]
+}

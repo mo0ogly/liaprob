@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hisilicon_cross_web_server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HISILICON_CROSS_WEB_SERVER",
+  "taxonomy_name": "HiSilicon Cross Web Server",
+  "vendor": "HiSilicon",
+  "product": "Cross Web Server",
+  "source": {
+    "type": "recog",
+    "file": "HISILICON_CROSS_WEB_SERVER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_hisilicon_cross_web_server_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^DVR Components Download$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Web server found on DVR and webcam servers sourced from HiSilicon"
+        },
+        {
+          "target": "header",
+          "match_type": "regex",
+          "value": "^Cross Web Server$",
+          "confidence_delta": 0.4,
+          "field": "server",
+          "case_insensitive": true,
+          "note": "Web server found on DVR and webcam servers sourced from HiSilicon"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "DVR Components Download",
+    "Cross Web Server"
+  ]
+}

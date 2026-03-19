@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-phpldapadmin_phpldapadmin_1_1_0_5",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "PHPLDAPADMIN_PHPLDAPADMIN_1_1_0_5",
+  "taxonomy_name": "phpldapadmin phpldapadmin (1.1.0.5)",
+  "vendor": "phpldapadmin",
+  "product": "phpldapadmin (1.1.0.5)",
+  "source": {
+    "type": "recog",
+    "file": "PHPLDAPADMIN_PHPLDAPADMIN_1_1_0_5.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_phpldapadmin_phpldapadmin_1_1_0_5_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^4b30eec86e9910e663b5a9209e9593b6",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "phpldapadmin (1.1.0.5)"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "4b30eec86e9910e663b5a9209e9593b6"
+  ]
+}

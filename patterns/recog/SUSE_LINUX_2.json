@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-suse_linux",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "SUSE_LINUX",
+  "taxonomy_name": "SuSE Linux",
+  "vendor": "SuSE",
+  "product": "Linux",
+  "source": {
+    "type": "recog",
+    "file": "SUSE_LINUX.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    161
+  ],
+  "probes": [
+    {
+      "id": "recog_suse_linux_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "\\((?:Linux/)?S[uU]SE(?:/Linux)?\\)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Novell SuSE Linux"
+        }
+      ]
+    },
+    {
+      "id": "recog_suse_linux_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^MAS 1\\.0 \\(Intel X86\\) Copyright.*Huawei Technologies Co\\., Ltd on SUSE LINUX ([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Huawei device on SuSE Linux"
+        },
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^Linux (\\S+) (2\\.6\\.4-52(?:-smp)) .* (\\S+)$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "SuSE Linux 9.1"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "generic",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:suse:linux:-",
+  "examples": [
+    "Apache (SuSE/Linux)",
+    "Apache/2.2.12 (Linux/SUSE)",
+    "MAS 1.0 (Intel X86) Copyright (c) 1998-2006 Huawei Technologies Co., Ltd on SUSE LINUX 9.0",
+    "Linux hostname 2.6.4-52-smp #1 SMP Wed Apr 7 02:11:20 UTC 2004 i686"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-hp_openvms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "HP_OPENVMS",
+  "taxonomy_name": "HP OpenVMS",
+  "vendor": "HP",
+  "product": "OpenVMS",
+  "source": {
+    "type": "recog",
+    "file": "HP_OPENVMS.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    25,
+    161,
+    587
+  ],
+  "probes": [
+    {
+      "id": "recog_hp_openvms_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([^ ]{1,512})(?: UCX)? V\\S+, OpenVMS V(\\S+) (\\S+) ready at",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Some unknown mail server on OpenVMS"
+        }
+      ]
+    },
+    {
+      "id": "recog_hp_openvms_snmp",
+      "layer": "SNMP",
+      "matchers": [
+        {
+          "target": "snmp_sysdescr",
+          "match_type": "regex",
+          "value": "^(\\S{1,512}) .*OpenVMS V(\\S+)",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "OpenVMS"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "smtp",
+    "snmp"
+  ],
+  "cpe23_template": "cpe:/o:hp:openvms:{os.version}",
+  "examples": [
+    "foo.bar V5.7-ECO4, OpenVMS V8.4 IA64 ready at Wed, 20 May 2015 01:22:32 +0100 (BST)",
+    "foo.bar V5.4-15E, OpenVMS V7.3-2 Alpha ready at Wed, 20 May 2015 01:22:18 +0100 (BST)",
+    "foo.bar UCX V4.2-21I, OpenVMS V6.2 VAX ready at Wed, 20 May 2015 01:15:16 GMT",
+    "foo.bar UCX V4.2-21I, OpenVMS V6.2-1H3 Alpha ready at Wed, 20 May 2015 00:55:37 GMT",
+    "hostname VAX 4000-200 OpenVMS V7.2 Compaq TCP/IP Services for OpenVMS"
+  ]
+}

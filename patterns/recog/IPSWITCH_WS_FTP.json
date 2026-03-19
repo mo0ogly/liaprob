@@ -1,0 +1,79 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ipswitch_ws_ftp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "IPSWITCH_WS_FTP",
+  "taxonomy_name": "Ipswitch WS_FTP",
+  "vendor": "Ipswitch",
+  "product": "WS_FTP",
+  "source": {
+    "type": "recog",
+    "file": "IPSWITCH_WS_FTP.json",
+    "fingerprint_count": 3
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 3 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    21,
+    22
+  ],
+  "probes": [
+    {
+      "id": "recog_ipswitch_ws_ftp_l4_tcp",
+      "layer": "L4_TCP",
+      "matchers": [
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^([\\w.-]{1,512}) X2 WS_FTP Server ([\\d.]{3,6}\\s?\\(\\d+\\))$",
+          "confidence_delta": 0.4,
+          "version_extract": "^([\\w.-]{1,512}) X2 WS_FTP Server ([\\d.]{3,6}\\s?\\(\\d+\\))$",
+          "version_group": 2,
+          "case_insensitive": true,
+          "note": "WS_FTP FTP Server on Windows - X2 variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "^V2 WS_FTP Server ([\\d.]{3,6}\\s?\\(\\d+\\))$",
+          "confidence_delta": 0.4,
+          "version_extract": "^V2 WS_FTP Server ([\\d.]{3,6}\\s?\\(\\d+\\))$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WS_FTP FTP Server on Windows - V2 variant"
+        },
+        {
+          "target": "banner",
+          "match_type": "regex",
+          "value": "WS_FTP-SSH_([\\d\\.]+)$",
+          "confidence_delta": 0.4,
+          "version_extract": "WS_FTP-SSH_([\\d\\.]+)$",
+          "version_group": 1,
+          "case_insensitive": true,
+          "note": "WS_FTP Server with SSH"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "ssh",
+    "ftp"
+  ],
+  "cpe23_template": "cpe:/a:ipswitch:ws_ftp:{version}",
+  "examples": [
+    "a.host.name.tld X2 WS_FTP Server 7.7(50012467)",
+    "a.host.name.tld X2 WS_FTP Server 5.0.5 (1989540204)",
+    "V2 WS_FTP Server 6.1(05544322)",
+    "WS_FTP-SSH_6.1.1",
+    "WS_FTP-SSH_7.0"
+  ]
+}

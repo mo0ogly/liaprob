@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-q_sys_licensing_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "Q_SYS_LICENSING_MANAGER",
+  "taxonomy_name": "Q-SYS Licensing Manager",
+  "vendor": "Q-SYS",
+  "product": "Licensing Manager",
+  "source": {
+    "type": "recog",
+    "file": "Q_SYS_LICENSING_MANAGER.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    443,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_q_sys_licensing_manager_tls_cert",
+      "layer": "TLS_CERT",
+      "matchers": [
+        {
+          "target": "tls_subject",
+          "match_type": "regex",
+          "value": "^CN=([a-zA-Z0-9]+),OU=RD,O=QSC\\\\, LLC,ST=Colorado,C=US$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Q-SYS Licensing Manager"
+        }
+      ]
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "tls"
+  ],
+  "examples": [
+    "CN=SVRTIP44,OU=RD,O=QSC\\, LLC,ST=Colorado,C=US"
+  ]
+}

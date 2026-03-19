@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-ektron_cms400_net",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "EKTRON_CMS400_NET",
+  "taxonomy_name": "Ektron CMS400.NET",
+  "vendor": "Ektron",
+  "product": "CMS400.NET",
+  "source": {
+    "type": "recog",
+    "file": "EKTRON_CMS400_NET.json",
+    "fingerprint_count": 1
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 1 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_ektron_cms400_net_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "cookie",
+          "match_type": "regex",
+          "value": "^(EktGUID|ecm)=",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Ektron CMS400.net"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "EktGUID=382107cc-a38d-4d25-8182-3748834e21c8; expires=Tue, 19-Apr-2022 03:12:15 GMT; path=/"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "recog-apache_nexus_repository_manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_code": "APACHE_NEXUS_REPOSITORY_MANAGER",
+  "taxonomy_name": "Apache Nexus Repository Manager",
+  "vendor": "Apache",
+  "product": "Nexus Repository Manager",
+  "source": {
+    "type": "recog",
+    "file": "APACHE_NEXUS_REPOSITORY_MANAGER.json",
+    "fingerprint_count": 2
+  },
+  "research": [
+    {
+      "url": "https://github.com/rapid7/recog",
+      "type": "recog_database",
+      "evidence": "Converted from 2 Recog XML fingerprints",
+      "date": "2026-02-28"
+    }
+  ],
+  "default_ports": [
+    80,
+    443,
+    8080,
+    8443
+  ],
+  "probes": [
+    {
+      "id": "recog_apache_nexus_repository_manager_l7_http",
+      "layer": "L7_HTTP",
+      "matchers": [
+        {
+          "target": "favicon_hash",
+          "match_type": "regex",
+          "value": "^9a008becde9c5f250edad4f00e567721$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nexus Repository Manager"
+        },
+        {
+          "target": "body",
+          "match_type": "regex",
+          "value": "^Nexus Repository Manager$",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "note": "Nexus Repository Manager"
+        }
+      ],
+      "method": "GET",
+      "path": "/",
+      "follow_redirects": true
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.6,
+  "tags": [
+    "http"
+  ],
+  "examples": [
+    "9a008becde9c5f250edad4f00e567721",
+    "Nexus Repository Manager"
+  ]
+}
