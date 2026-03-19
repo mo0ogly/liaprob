@@ -15,8 +15,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/pkg/config"
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
 )
 
 // Agent is the agentic coordinator of LiaProbe.

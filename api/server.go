@@ -11,11 +11,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/pkg/agent"
-	"github.com/mo0ogly/liaprobe/pkg/config"
-	"github.com/mo0ogly/liaprobe/pkg/log"
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
-	"github.com/mo0ogly/liaprobe/pkg/store"
+	"github.com/mo0ogly/liaprob/pkg/agent"
+	"github.com/mo0ogly/liaprob/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/log"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/store"
 )
 
 // Server is the LiaProbe HTTP API server.

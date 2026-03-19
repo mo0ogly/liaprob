@@ -1,4 +1,4 @@
-module github.com/mo0ogly/liaprobe
+module github.com/mo0ogly/liaprob
 
 go 1.22.0
 

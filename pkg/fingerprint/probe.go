@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/config"
 )
 
 // ProbeExecutor orchestrates the execution of probes defined in patterns.

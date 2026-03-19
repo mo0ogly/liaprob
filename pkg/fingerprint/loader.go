@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/config"
 )
 
 // PatternLoader loads and validates fingerprinting patterns from the filesystem.

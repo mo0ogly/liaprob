@@ -4,9 +4,9 @@ DATE    ?= $(shell date -u +%Y-%m-%dT%H:%M:%SZ)
 BINARY  := liaprobe
 GOFLAGS := -trimpath
 LDFLAGS := -s -w \
-	-X github.com/mo0ogly/liaprobe/internal/version.Version=$(VERSION) \
-	-X github.com/mo0ogly/liaprobe/internal/version.Commit=$(COMMIT) \
-	-X github.com/mo0ogly/liaprobe/internal/version.BuildDate=$(DATE)
+	-X github.com/mo0ogly/liaprob/internal/version.Version=$(VERSION) \
+	-X github.com/mo0ogly/liaprob/internal/version.Commit=$(COMMIT) \
+	-X github.com/mo0ogly/liaprob/internal/version.BuildDate=$(DATE)
 
 .PHONY: build test lint vet clean release install help
 

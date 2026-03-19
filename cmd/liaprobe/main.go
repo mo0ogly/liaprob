@@ -24,16 +24,16 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/api"
-	"github.com/mo0ogly/liaprobe/internal/version"
-	"github.com/mo0ogly/liaprobe/pkg/agent"
-	"github.com/mo0ogly/liaprobe/pkg/ai"
-	"github.com/mo0ogly/liaprobe/pkg/config"
-	"github.com/mo0ogly/liaprobe/pkg/fingerprint"
-	"github.com/mo0ogly/liaprobe/pkg/log"
-	"github.com/mo0ogly/liaprobe/pkg/output"
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
-	"github.com/mo0ogly/liaprobe/pkg/store"
+	"github.com/mo0ogly/liaprob/api"
+	"github.com/mo0ogly/liaprob/internal/version"
+	"github.com/mo0ogly/liaprob/pkg/agent"
+	"github.com/mo0ogly/liaprob/pkg/ai"
+	"github.com/mo0ogly/liaprob/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/fingerprint"
+	"github.com/mo0ogly/liaprob/pkg/log"
+	"github.com/mo0ogly/liaprob/pkg/output"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/store"
 )
 
 func main() {

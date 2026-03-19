@@ -3,8 +3,8 @@
 package store
 
 import (
-	"github.com/mo0ogly/liaprobe/pkg/agent"
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/agent"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
 )
 
 // Store is the storage interface for LiaProbe.

@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/mo0ogly/liaprobe/pkg/log"
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/log"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
 )
 
 // TableWriter writes results in human-readable table format.

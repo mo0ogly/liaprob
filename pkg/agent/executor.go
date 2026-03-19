@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/pkg/ai"
-	"github.com/mo0ogly/liaprobe/pkg/config"
-	"github.com/mo0ogly/liaprobe/pkg/fingerprint"
-	"github.com/mo0ogly/liaprobe/pkg/portdb"
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/ai"
+	"github.com/mo0ogly/liaprob/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/fingerprint"
+	"github.com/mo0ogly/liaprob/pkg/portdb"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
 )
 
 // ToolKit groups all tools available to the executor.

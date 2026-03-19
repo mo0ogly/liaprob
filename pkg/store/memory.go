@@ -5,8 +5,8 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/mo0ogly/liaprobe/pkg/agent"
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/agent"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
 )
 
 // MemoryStore is an in-memory store for tests and API mode.

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/pkg/portdb"
+	"github.com/mo0ogly/liaprob/pkg/portdb"
 )
 
 // Replanner adjusts a plan during execution when an observation justifies it.

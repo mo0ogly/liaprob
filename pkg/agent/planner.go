@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/mo0ogly/liaprobe/pkg/config"
-	"github.com/mo0ogly/liaprobe/pkg/portdb"
+	"github.com/mo0ogly/liaprob/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/portdb"
 )
 
 // Planner decomposes a ScanGoal into ScanPlan (ordered list of tasks).

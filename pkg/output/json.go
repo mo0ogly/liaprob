@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/mo0ogly/liaprobe/pkg/scanner"
+	"github.com/mo0ogly/liaprob/pkg/scanner"
 )
 
 // JSONWriter writes results in JSON to a writer.

@@ -3,7 +3,7 @@ package agent
 import (
 	"testing"
 
-	"github.com/mo0ogly/liaprobe/pkg/config"
+	"github.com/mo0ogly/liaprob/pkg/config"
 )
 
 func TestCreatePlan_SmartMode(t *testing.T) {
