@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-avm-fritz-box-7300-series-wap-http-config",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AVM FRITZ!Box 7300-series WAP http config",
+  "product": "AVM FRITZ!Box 7300-series WAP http config",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_AVM_FRITZ_BOX_7300_SERIES_WAP_HTTP_CONFIG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/[10]\\.0 200 OK\\nPragma: no-cache\\nContent-Type: text/html; charset=iso-8859-1\\nContent-Length: 63\\n\\n<html><body>ERROR ERR_INVALID_REQ<hr>Bad Request</body></html>\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es)."
+}

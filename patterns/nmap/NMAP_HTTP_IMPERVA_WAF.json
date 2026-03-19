@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-imperva-waf",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Imperva WAF",
+  "product": "Imperva WAF",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_IMPERVA_WAF.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    322,
+    554,
+    3052,
+    3372,
+    5000,
+    7000,
+    7070,
+    8080,
+    10000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 500\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nCache-Control: no-cache\\r\\nPragma: no-cache\\r\\nExpires: 0\\r\\nConnection: close\\r\\n\\r\\n<!DOCTYPE html>\\n<html>\\n<head>\\n  <title>Application Firewall Error</title>\\n  <style type=\"text/css\" media=\"screen\">\\n    body \\{ font-family: Arial, Garamond, sans-serif; padding: 40px; background-color: #333333; \\}\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 500\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nCache-Control: no-cache\\r\\nPragma: no-cache\\r\\nExpires: 0\\r\\nConnection: close\\r\\n\\r\\n<!DOCTYPE html>\\n<html>\\n<head>\\n  <title>Application Firewall Error</title>\\n  <style type=\"text/css\" media=\"screen\">\\n    body \\{ font-family: Arial, Garamond, sans-serif; padding: 40px; background-color: #333333; \\}\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es)."
+}

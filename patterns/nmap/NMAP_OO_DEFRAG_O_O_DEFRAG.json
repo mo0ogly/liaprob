@@ -1,0 +1,89 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-oo-defrag-o-o-defrag",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "O&O Defrag",
+  "product": "O&O Defrag",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_OO_DEFRAG_O_O_DEFRAG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    256,
+    257,
+    389,
+    390,
+    636,
+    637,
+    1526,
+    1527,
+    1702,
+    3268,
+    3269,
+    3892,
+    4035,
+    9088,
+    9089,
+    9090,
+    9091,
+    9092,
+    9093,
+    9094,
+    9095,
+    9096,
+    9097,
+    9098,
+    9099,
+    9100,
+    50000,
+    60000
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^h\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\x07\\x08\\0\\0\\x02\\0\\0\\0\\0d\\0\\0\\0\\0\\xd9\\$\\x01\\0\\0\\0\\0\\0\\0T\\0\\0\\0\\0\\0\\0\\xb7x\\x01\\0\\0\\0\\0\\0\\xc4\\x05\\0\\0\\0\\0\\0\\0\\xc4\\x05\\0\\0\\0\\0\\0\\0\\xe2\\x0b\\0\\0\\0\\0\\0\\0\\xb7\\xb5p@\\^\\xa7\\x08\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x10\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\r\\x08\\0\\0\\x02\\0{7}j\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\x07\\x08\\0\\0\\x02\\0{97}\\x10\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\r\\x08\\0\\0\\x02\\0{7}j\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\x07\\x08\\0\\0\\x02\\0{97}\\x0c\\0\\0\\0\\x01\\0{7}\\xd7\\x07\\0{6}",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_oo-defrag_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^h\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\x07\\x08\\0\\0\\x02\\0\\0\\0\\0d\\0\\0\\0\\0\\xd9\\$\\x01\\0\\0\\0\\0\\0\\0T\\0\\0\\0\\0\\0\\0\\xb7x\\x01\\0\\0\\0\\0\\0\\xc4\\x05\\0\\0\\0\\0\\0\\0\\xc4\\x05\\0\\0\\0\\0\\0\\0\\xe2\\x0b\\0\\0\\0\\0\\0\\0\\xb7\\xb5p@\\^\\xa7\\x08\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x10\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\r\\x08\\0\\0\\x02\\0{7}j\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\x07\\x08\\0\\0\\x02\\0{97}\\x10\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\r\\x08\\0\\0\\x02\\0{7}j\\0\\0\\0\\x01\\0\\0\\0\\x03\\0\\0\\0\\x07\\x08\\0\\0\\x02\\0{97}\\x0c\\0\\0\\0\\x01\\0{7}\\xd7\\x07\\0{6}",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour oo-defrag"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "oo-defrag"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: oo-defrag. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

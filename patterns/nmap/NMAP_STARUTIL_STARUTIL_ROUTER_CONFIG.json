@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-starutil-starutil-router-config",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "StarUTIL router config",
+  "product": "StarUTIL router config",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_STARUTIL_STARUTIL_ROUTER_CONFIG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^star-v3 utility server\\n\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_starutil_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^star-v3 utility server\\n\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour starutil"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "starutil"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: starutil. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-mtap-grouplogic-masstransit-or-adobe-virtual-network",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "GroupLogic MassTransit or Adobe Virtual Network",
+  "product": "GroupLogic MassTransit or Adobe Virtual Network",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MTAP_GROUPLOGIC_MASSTRANSIT_OR_ADOBE_VIRTUAL_NETWORK.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_mtap_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^WATSON!WATSON!",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour mtap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "mtap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: mtap. 0 match(es), 1 softmatch(es)."
+}

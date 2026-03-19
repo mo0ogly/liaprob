@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-teamviewer-teamviewer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TeamViewer",
+  "product": "TeamViewer",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TEAMVIEWER_TEAMVIEWER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:teamviewer:teamviewer:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x17\\x24\\x0a\\x20\\x00....\\x08\\x13\\x80\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x11\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x17\\x24\\x0a\\x20\\x00....\\x88\\x13\\x80\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x11\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x17\\x24\\x0a\\x20\\x00....\\xe8\\x42\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x10\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x17\\x24\\x0a\\x20\\x00....\\x68\\x42\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x11\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_teamviewer_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x17\\x24\\x0a\\x20\\x00....\\x08\\x13\\x80\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x11\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x17\\x24\\x0a\\x20\\x00....\\x88\\x13\\x80\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x11\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x17\\x24\\x0a\\x20\\x00....\\xe8\\x42\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x10\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x17\\x24\\x0a\\x20\\x00....\\x68\\x42\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x11\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour teamviewer"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "teamviewer"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: teamviewer. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:teamviewer:teamviewer:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-acertelecom-ldk-300-pbx-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AcerTelecom LDK-300 PBX telnetd",
+  "product": "AcerTelecom LDK-300 PBX telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_ACERTELECOM_LDK_300_PBX_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nLDK-300 System\\r\\nVersion ([\\w._-]+) .*\\r\\nDATE: .*\\r\\nTIME: .*\\r\\nSITE NAME.*\\r\\nENTER PASSWORD: \\*",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nLDK-300 System\\r\\nVersion ([\\w._-]+) .*\\r\\nDATE: .*\\r\\nTIME: .*\\r\\nSITE NAME.*\\r\\nENTER PASSWORD: \\*",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

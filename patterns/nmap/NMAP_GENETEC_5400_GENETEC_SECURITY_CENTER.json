@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-genetec-5400-genetec-security-center",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Genetec Security Center",
+  "product": "Genetec Security Center",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GENETEC_5400_GENETEC_SECURITY_CENTER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xde\\xad\\xad\\xdeZ\\x03\\0\\0\\x7e\\x9bxeV\\0e\\0r\\0s\\0i\\0o\\0n\\0\\x7c\\x001\\x000\\x002\\x004\\0\\x7c\\0<\\0R\\0S\\0A\\0K\\0e\\0y\\0V\\0a\\0l\\0u\\0e\\0>\\0<\\0M\\0o\\0d\\0u\\0l\\0u\\0s\\0>\\0(?:[\\w/+=]\\0)+<\\0/\\0M\\0o\\0d\\0u\\0l\\0u\\0s\\0>\\0<\\0E\\0x\\0p\\0o\\0n\\0e\\0n\\0t\\0>\\0(?:[\\w/+=]\\0)+<\\0/\\0E\\0x\\0p\\0o\\0n\\0e\\0n\\0t\\0>\\0<\\0/\\0R\\0S\\0A\\0K\\0e\\0y\\0V\\0a\\0l\\0u\\0e\\0>\\0\\x7c\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_genetec-5400_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xde\\xad\\xad\\xdeZ\\x03\\0\\0\\x7e\\x9bxeV\\0e\\0r\\0s\\0i\\0o\\0n\\0\\x7c\\x001\\x000\\x002\\x004\\0\\x7c\\0<\\0R\\0S\\0A\\0K\\0e\\0y\\0V\\0a\\0l\\0u\\0e\\0>\\0<\\0M\\0o\\0d\\0u\\0l\\0u\\0s\\0>\\0(?:[\\w/+=]\\0)+<\\0/\\0M\\0o\\0d\\0u\\0l\\0u\\0s\\0>\\0<\\0E\\0x\\0p\\0o\\0n\\0e\\0n\\0t\\0>\\0(?:[\\w/+=]\\0)+<\\0/\\0E\\0x\\0p\\0o\\0n\\0e\\0n\\0t\\0>\\0<\\0/\\0R\\0S\\0A\\0K\\0e\\0y\\0V\\0a\\0l\\0u\\0e\\0>\\0\\x7c\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour genetec-5400"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "genetec-5400"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: genetec-5400. 1 match(es), 0 softmatch(es)."
+}

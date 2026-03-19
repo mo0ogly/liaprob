@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-tinc-tinc-vpn-daemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "tinc vpn daemon",
+  "product": "tinc vpn daemon",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TINC_TINC_VPN_DAEMON.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^0 \\w+ 17\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_tinc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0 \\w+ 17\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour tinc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "tinc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: tinc. 1 match(es), 0 softmatch(es)."
+}

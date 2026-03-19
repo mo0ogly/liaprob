@@ -1,0 +1,90 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-proxy-squid",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Squid",
+  "product": "Squid",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PROXY_SQUID.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1241,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:squid-cache:squid:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4\\.01 Transitional//EN\" \"http://www\\.w3\\.org/TR/html4/loose\\.dtd\">\\n<HTML><HEAD>\\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\"> \\n<TITLE>\\xe9\\x94\\x99\\xe8\\xaf\\xaf\\xef\\xbc\\x9a\\xe6\\x82\\xa8\\xe6\\x89\\x80\\xe8\\xaf\\xb7\\xe6\\xb1\\x82\\xe7\\x9a\\x84\\xe7\\xbd\\x91\\xe5\\x9d\\x80\\xef\\xbc\\x88URL\\xef\\xbc\\x89\\xe6\\x97\\xa0\\xe6\\xb3\\x95\\xe8\\x8e\\xb7\\xe5\\x8f\\x96</TITLE>\\n<STYLE type=\"text/css\"><!--BODY\\{background-color:#ffffff;font-family:verdana,sans-serif\\}PRE\\{font-family:sans-serif\\}--></STYLE>\\n</HEAD>",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 400 Bad Request\\r\\nServer: squid/([\\w._+-]+)\\r\\n",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4\\.01 Transitional//EN\" \"http://www\\.w3\\.org/TR/html4/loose\\.dtd\">\\n<HTML><HEAD>\\n<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=utf-8\"> \\n<TITLE>\\xe9\\x94\\x99\\xe8\\xaf\\xaf\\xef\\xbc\\x9a\\xe6\\x82\\xa8\\xe6\\x89\\x80\\xe8\\xaf\\xb7\\xe6\\xb1\\x82\\xe7\\x9a\\x84\\xe7\\xbd\\x91\\xe5\\x9d\\x80\\xef\\xbc\\x88URL\\xef\\xbc\\x89\\xe6\\x97\\xa0\\xe6\\xb3\\x95\\xe8\\x8e\\xb7\\xe5\\x8f\\x96</TITLE>\\n<STYLE type=\"text/css\"><!--BODY\\{background-color:#ffffff;font-family:verdana,sans-serif\\}PRE\\{font-family:sans-serif\\}--></STYLE>\\n</HEAD>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 400 Bad Request\\r\\nServer: squid/([\\w._+-]+)\\r\\n",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http-proxy. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:squid-cache:squid:*:*:*:*:*:*:*:*"
+}

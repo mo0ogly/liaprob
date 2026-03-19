@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-galaxy-galaxy-client-event-manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Galaxy Client Event Manager",
+  "product": "Galaxy Client Event Manager",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GALAXY_GALAXY_CLIENT_EVENT_MANAGER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\t\\0\\0\\0\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x042\\0\\0\\0\\x01\\0\\0\\t_\\0\\0\\0h",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_galaxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\t\\0\\0\\0\\x80\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x042\\0\\0\\0\\x01\\0\\0\\t_\\0\\0\\0h",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour galaxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "galaxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: galaxy. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-symantec-esm-symantec-enterprise-security-manager-agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Symantec Enterprise Security Manager agent",
+  "product": "Symantec Enterprise Security Manager agent",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SYMANTEC_ESM_SYMANTEC_ENTERPRISE_SECURITY_MANAGER_AGENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    42,
+    88,
+    135,
+    139,
+    445,
+    660,
+    1025,
+    1027,
+    1031,
+    1112,
+    3006,
+    3900,
+    5000,
+    5009,
+    5432,
+    5555,
+    5600,
+    7461,
+    9102,
+    9103,
+    18182,
+    27000,
+    27001,
+    27002,
+    27003,
+    27004,
+    27005,
+    27006,
+    27007,
+    27008,
+    27009,
+    27010
+  ],
+  "cpe23_template": "cpe:2.3:a:symantec:enterprise_security_manager:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x01[#,]$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_symantec-esm_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x01[#,]$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour symantec-esm"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "symantec-esm"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: symantec-esm. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:symantec:enterprise_security_manager:*:*:*:*:*:*:*:*"
+}

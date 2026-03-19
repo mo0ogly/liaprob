@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ssh-mocana-embedded-ssh",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Mocana embedded SSH",
+  "product": "Mocana embedded SSH",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SSH_MOCANA_EMBEDDED_SSH.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-2\\.0-Mocana SSH\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-2\\.0-Mocana SSH \\r?\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ssh_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-2\\.0-Mocana SSH\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-2\\.0-Mocana SSH \\r?\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ssh"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ssh"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ssh. 2 match(es), 0 softmatch(es)."
+}

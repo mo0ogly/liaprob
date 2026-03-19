@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-citrix-ica-citrix-metaframe-xp-ica",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Citrix Metaframe XP ICA",
+  "product": "Citrix Metaframe XP ICA",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CITRIX_ICA_CITRIX_METAFRAME_XP_ICA.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x7f\\x7fICA\\0\\x7f\\x7fICA\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_citrix-ica_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x7f\\x7fICA\\0\\x7f\\x7fICA\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour citrix-ica"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "citrix-ica"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: citrix-ica. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

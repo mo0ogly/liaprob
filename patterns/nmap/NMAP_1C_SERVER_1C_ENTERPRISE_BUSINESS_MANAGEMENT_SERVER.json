@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-1c-server-1c-enterprise-business-management-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "1C:Enterprise business management server",
+  "product": "1C:Enterprise business management server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_1C_SERVER_1C_ENTERPRISE_BUSINESS_MANAGEMENT_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^S\\xf5\\xc6\\x1a{",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_1c-server_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^S\\xf5\\xc6\\x1a{",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour 1c-server"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "1c-server"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: 1c-server. 1 match(es), 0 softmatch(es)."
+}

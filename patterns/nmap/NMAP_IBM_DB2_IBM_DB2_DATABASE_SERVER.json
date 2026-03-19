@@ -1,0 +1,163 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ibm-db2-ibm-db2-database-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IBM DB2 Database Server",
+  "product": "IBM DB2 Database Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IBM_DB2_IBM_DB2_DATABASE_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    523,
+    9090,
+    9930,
+    9931,
+    9932,
+    9933,
+    9934,
+    50000,
+    50001,
+    50002,
+    50003,
+    50004,
+    50005,
+    50006,
+    50007,
+    50008,
+    50009,
+    50010,
+    50011,
+    50012,
+    50013,
+    50014,
+    50015,
+    50016,
+    50017,
+    50018,
+    50019,
+    50020,
+    50021,
+    50022,
+    50023,
+    50024,
+    50025,
+    60000,
+    60001,
+    60002,
+    60003,
+    60004,
+    60005,
+    60006,
+    60007,
+    60008,
+    60009,
+    60010,
+    60011,
+    60012,
+    60013,
+    60014,
+    60015,
+    60016,
+    60017,
+    60018,
+    60019,
+    60020,
+    60021,
+    60022,
+    60023,
+    60024,
+    60025
+  ],
+  "cpe23_template": "cpe:2.3:a:ibm:db2:{version}.{version}.{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\0DB2DAS\\x20\\x20\\x20\\x20\\x20\\x20.{28}\\x9b\\0\\0\\0\\x0c\\0\\0\\0Z\\0\\0\\0\\x10\\0\\0\\0\\x0c\\0\\0\\0L\\0\\0\\0\\0\\0\\0\\0\\$\\0\\0\\0\\x0c\\0\\0\\0O\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x10\\0\\0\\0\\x0c\\0\\0\\0L\\0\\0\\0\\0\\0\\0\\0\\x19\\0\\0\\0\\x0c\\0\\0\\0\\x04\\0\\0\\x04\\xb8SQL0(\\d)(\\d\\d)(\\d+)",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "DB2/([^\\0]+)\\0\\0\\0\\0\\0\\0\\0\\0.{1,4}\\0\\0\\0\\0\\0\\0\\0SQL0(\\d)(\\d\\d)(\\d+)",
+      "confidence_delta": 0.3,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\xa9\\x10..\\x01\\0\\0SQLDB2RA\\x01\\0\\x05\\0.{10,13}SQLCA",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\xa9\\x10..\\x01\\x0e\\x10SQLDB2RA\\x01\\0\\x05\\0.{10,13}SQLCA",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ibm-db2_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\0DB2DAS\\x20\\x20\\x20\\x20\\x20\\x20.{28}\\x9b\\0\\0\\0\\x0c\\0\\0\\0Z\\0\\0\\0\\x10\\0\\0\\0\\x0c\\0\\0\\0L\\0\\0\\0\\0\\0\\0\\0\\$\\0\\0\\0\\x0c\\0\\0\\0O\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x10\\0\\0\\0\\x0c\\0\\0\\0L\\0\\0\\0\\0\\0\\0\\0\\x19\\0\\0\\0\\x0c\\0\\0\\0\\x04\\0\\0\\x04\\xb8SQL0(\\d)(\\d\\d)(\\d+)",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "DB2/([^\\0]+)\\0\\0\\0\\0\\0\\0\\0\\0.{1,4}\\0\\0\\0\\0\\0\\0\\0SQL0(\\d)(\\d\\d)(\\d+)",
+          "confidence_delta": 0.3,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\xa9\\x10..\\x01\\0\\0SQLDB2RA\\x01\\0\\x05\\0.{10,13}SQLCA",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\xa9\\x10..\\x01\\x0e\\x10SQLDB2RA\\x01\\0\\x05\\0.{10,13}SQLCA",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ibm-db2"
+    },
+    {
+      "id": "nmap_ibm-db2_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DB2RETADDR\\0SQL0(\\d)(\\d\\d)(\\d+)\\0([^\\0]+)\\0",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour ibm-db2"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ibm-db2"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ibm-db2. 5 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:ibm:db2:{version}.{version}.{version}:*:*:*:*:*:*:*"
+}

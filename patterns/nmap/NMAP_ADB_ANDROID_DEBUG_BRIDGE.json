@@ -1,0 +1,105 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-adb-android-debug-bridge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Android Debug Bridge",
+  "product": "Android Debug Bridge",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ADB_ANDROID_DEBUG_BRIDGE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5555
+  ],
+  "cpe23_template": "cpe:2.3:o:google:android:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^CNXN[\\0\\x01]\\0\\0\\x01\\0\\x10\\0\\0........\\xbc\\xb1\\xa7\\xb1(\\w+)::ro.product.name=([^;]+);ro.product.model=([^;]+);ro.product.device=([^;]+);\\0$",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^CNXN[\\0\\x01]\\0\\0\\x01\\0\\x10\\0\\0........\\xbc\\xb1\\xa7\\xb1(\\w+)::ro.product.name=([^;]+);ro.product.model=([^;]+);ro.product.device=([^;]+);features=([^\\0]+)$",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^AUTH\\x01\\0\\0\\0\\0\\0\\0\\0........\\xbc\\xb1\\xa7\\xb1",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^AUTH\\x01\\0\\0\\0\\0\\0\\0\\0........\\xbe\\xaa\\xab\\xb7",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^AUTH(.)\\0\\0\\0\\0\\0\\0\\0........\\xbc\\xb1\\xa7\\xb1",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_adb_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^CNXN[\\0\\x01]\\0\\0\\x01\\0\\x10\\0\\0........\\xbc\\xb1\\xa7\\xb1(\\w+)::ro.product.name=([^;]+);ro.product.model=([^;]+);ro.product.device=([^;]+);\\0$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^CNXN[\\0\\x01]\\0\\0\\x01\\0\\x10\\0\\0........\\xbc\\xb1\\xa7\\xb1(\\w+)::ro.product.name=([^;]+);ro.product.model=([^;]+);ro.product.device=([^;]+);features=([^\\0]+)$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^CNXN\\0\\0\\0\\x01\\0\\x10\\0\\0........\\xbc\\xb1\\xa7\\xb1(\\w+):[^:]*:[^\\0]+\\0$",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^AUTH\\x01\\0\\0\\0\\0\\0\\0\\0........\\xbc\\xb1\\xa7\\xb1",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^AUTH\\x01\\0\\0\\0\\0\\0\\0\\0........\\xbe\\xaa\\xab\\xb7",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^AUTH(.)\\0\\0\\0\\0\\0\\0\\0........\\xbc\\xb1\\xa7\\xb1",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour adb"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "adb"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: adb. 5 match(es), 1 softmatch(es). CPE: cpe:2.3:o:google:android:*:*:*:*:*:*:*:*"
+}

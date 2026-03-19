@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-git-daemon-git-daemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "git-daemon",
+  "product": "git-daemon",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GIT_DAEMON_GIT_DAEMON.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:git:git:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Unknown option: --inetd\\nusage: git \\[--version\\] \\[--exec-path\\[=GIT_EXEC_PATH\\]\\] \\[--html-path\\] \\[-p\\x7c--paginate\\x7c--no-pager\\] \\[--bare\\] \\[--git-dir=GIT_DIR\\] \\[--work-tree=GIT_WORK_TREE\\] \\[--help\\] COMMAND \\[ARGS\\]\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_git-daemon_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Unknown option: --inetd\\nusage: git \\[--version\\] \\[--exec-path\\[=GIT_EXEC_PATH\\]\\] \\[--html-path\\] \\[-p\\x7c--paginate\\x7c--no-pager\\] \\[--bare\\] \\[--git-dir=GIT_DIR\\] \\[--work-tree=GIT_WORK_TREE\\] \\[--help\\] COMMAND \\[ARGS\\]\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour git-daemon"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "git-daemon"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: git-daemon. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:git:git:*:*:*:*:*:*:*:*"
+}

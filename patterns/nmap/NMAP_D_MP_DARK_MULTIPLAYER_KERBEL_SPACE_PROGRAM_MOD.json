@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-d-mp-dark-multiplayer-kerbel-space-program-mod",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Dark MultiPlayer Kerbel Space Program mod",
+  "product": "Dark MultiPlayer Kerbel Space Program mod",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_D_MP_DARK_MULTIPLAYER_KERBEL_SPACE_PROGRAM_MOD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:christopher_andrews:darkmultiplayer:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\0\\0\\0\\x08\\x04\\0\\0\\x04\\x04\\0\\0\\0\\x04\\0\\0.{100}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_d-mp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0\\0\\0\\x08\\x04\\0\\0\\x04\\x04\\0\\0\\0\\x04\\0\\0.{100}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour d-mp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "d-mp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: d-mp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:christopher_andrews:darkmultiplayer:*:*:*:*:*:*:*:*"
+}

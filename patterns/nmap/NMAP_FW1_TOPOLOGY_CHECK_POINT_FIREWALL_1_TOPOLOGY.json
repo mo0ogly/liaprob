@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-fw1-topology-check-point-firewall-1-topology",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Check Point FireWall-1 Topology",
+  "product": "Check Point FireWall-1 Topology",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FW1_TOPOLOGY_CHECK_POINT_FIREWALL_1_TOPOLOGY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:checkpoint:firewall-1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^[QY]\\0\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_fw1-topology_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[QY]\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour fw1-topology"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "fw1-topology"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: fw1-topology. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:checkpoint:firewall-1:*:*:*:*:*:*:*:*"
+}

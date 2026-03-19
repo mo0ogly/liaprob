@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pioneers-pioneers-game-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Pioneers game server",
+  "product": "Pioneers game server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PIONEERS_PIONEERS_GAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^version report\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pioneers_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^version report\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pioneers"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pioneers"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pioneers. 1 match(es), 0 softmatch(es)."
+}

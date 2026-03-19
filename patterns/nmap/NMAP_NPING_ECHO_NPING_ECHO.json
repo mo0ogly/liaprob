@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-nping-echo-nping-echo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Nping echo",
+  "product": "Nping echo",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NPING_ECHO_NPING_ECHO.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x01\\0\\x18.{8}\\0\\0\\0\\0.{32}\\0{16}.{32}$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_nping-echo_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x01\\0\\x18.{8}\\0\\0\\0\\0.{32}\\0{16}.{32}$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour nping-echo"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "nping-echo"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: nping-echo. 1 match(es), 0 softmatch(es)."
+}

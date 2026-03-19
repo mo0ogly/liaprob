@@ -1,0 +1,87 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-warcraft-world-of-warcraft-game-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "World of Warcraft game server",
+  "product": "World of Warcraft game server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WARCRAFT_WORLD_OF_WARCRAFT_GAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    1549,
+    1755,
+    2068,
+    2105,
+    2967,
+    5000,
+    5001,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    9090,
+    13783
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\x09$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\x09$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_warcraft_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x09$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x09$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour warcraft"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "warcraft"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: warcraft. 2 match(es), 0 softmatch(es)."
+}

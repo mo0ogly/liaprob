@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-beep",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "BEEP",
+  "product": "beep",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BEEP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_beep_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RPY \\d \\d \\. \\d \\d+\\r\\nContent-Type: application/beep\\+xml\\r\\n",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour beep"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "beep"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: beep. 0 match(es), 1 softmatch(es)."
+}

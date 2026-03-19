@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-osu-nms-osu-network-monitoring-system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "OSU Network Monitoring System",
+  "product": "OSU Network Monitoring System",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_OSU_NMS_OSU_NETWORK_MONITORING_SYSTEM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    137
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_osu-nms_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x08\\x02\\0\\x03\\x03\\x11\\0\\0\\x03\\x03\\x12\\0\\0\\x03\\x03\\x13\\0\\0\\x03\\x03\\x14\\0\\0\\x06\\x03\\x15\\0\\0\\0\\0\\0\\x06\\x03\\x16\\0\\0\\0\\0\\0\\x03\\x03\\x18\\0\\0\\x04\\x03\\x19\\0\\0\\0\\x06\\x03!\\0\\0\\0\\0\\0\\x06\\x03\\\"\\0\\0\\0\\0\\0\\x06\\x03#\\0\\0\\0\\0\\0\\x06\\x03\\$\\0\\0\\0\\0\\0\\x06\\x03%\\0\\0\\0\\0\\0\\x06\\x03&\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour osu-nms"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "osu-nms"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: osu-nms. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-2-11bsd-derived-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "2.11BSD-derived telnetd",
+  "product": "2.11BSD-derived telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_2_11BSD_DERIVED_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    23,
+    623,
+    992,
+    2023,
+    2323
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x18\\xff\\xfa\\x18\\x01\\xff\\xf0\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x01",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 0 match(es), 1 softmatch(es)."
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-connectups-web-snmp-card-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ConnectUPS Web/SNMP Card telnetd",
+  "product": "ConnectUPS Web/SNMP Card telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_CONNECTUPS_WEB_SNMP_CARD_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfe\\x01\\r\\n\\r\\n\\+=+\\+\\r\\n\\| +\\[ ConnectUPS Web/SNMP Card Configuration Utility \\] +\\|\\r\\n\\+=+\\+\\r\\n\\r\\nEnter Password: ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfe\\x01\\r\\n\\r\\n\\+=+\\+\\r\\n\\| +\\[ ConnectUPS Web/SNMP Card Configuration Utility \\] +\\|\\r\\n\\+\\x08\\x7c +Firmware Revision V([\\w._-]+) +\\|\\r\\n\\+=+\\+\\r\\n\\r\\nEnter Password: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfe\\x01\\r\\n\\r\\n\\+=+\\+\\r\\n\\| +\\[ ConnectUPS Web/SNMP Card Configuration Utility \\] +\\|\\r\\n\\+=+\\+\\r\\n\\r\\nEnter Password: ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfe\\x01\\r\\n\\r\\n\\+=+\\+\\r\\n\\| +\\[ ConnectUPS Web/SNMP Card Configuration Utility \\] +\\|\\r\\n\\+\\x08\\x7c +Firmware Revision V([\\w._-]+) +\\|\\r\\n\\+=+\\+\\r\\n\\r\\nEnter Password: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

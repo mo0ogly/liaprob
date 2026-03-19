@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-backorifice-backorifice-trojan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "BackOrifice trojan",
+  "product": "BackOrifice trojan",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BACKORIFICE_BACKORIFICE_TROJAN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    31337
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_BackOrifice_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xCE\\x63\\xD1\\xD2\\x16\\xE7\\x13\\xCF........\\x01\\x12\\x78\\xC4\\xE3\\xD6\\xA6\\x65\\x51\\x75\\x51\\xEB\\x2A\\x3F",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour BackOrifice"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "BackOrifice"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: BackOrifice. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

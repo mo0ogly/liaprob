@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-adb-android-debug-bridge-device",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Android Debug Bridge device",
+  "product": "Android Debug Bridge device",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ADB_ANDROID_DEBUG_BRIDGE_DEVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5555
+  ],
+  "cpe23_template": "cpe:2.3:o:google:android:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "CNXN\\0\\0\\0\\x01\\0\\x10\\0\\0\\t\\0\\0\\0\\xe4\\x02\\0\\0\\xbc\\xb1\\xa7\\xb1device::\\0$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_adb_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "CNXN\\0\\0\\0\\x01\\0\\x10\\0\\0\\t\\0\\0\\0\\xe4\\x02\\0\\0\\xbc\\xb1\\xa7\\xb1device::\\0$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour adb"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "adb"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: adb. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:google:android:*:*:*:*:*:*:*:*"
+}

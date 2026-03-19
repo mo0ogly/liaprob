@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rtsp-shairport-rtspd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Shairport rtspd",
+  "product": "Shairport rtspd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RTSP_SHAIRPORT_RTSPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    322,
+    554,
+    3052,
+    3372,
+    5000,
+    7000,
+    7070,
+    8080,
+    10000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 200 OK\\r\\nAudio-Jack-Status: .*\\r\\nPublic: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, TEARDOWN, OPTIONS, GET_PARAMETER, SET_PARAMETER\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rtsp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 200 OK\\r\\nAudio-Jack-Status: .*\\r\\nPublic: ANNOUNCE, SETUP, RECORD, PAUSE, FLUSH, TEARDOWN, OPTIONS, GET_PARAMETER, SET_PARAMETER\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rtsp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rtsp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rtsp. 1 match(es), 0 softmatch(es)."
+}

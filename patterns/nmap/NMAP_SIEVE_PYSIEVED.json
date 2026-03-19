@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sieve-pysieved",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "pysieved",
+  "product": "pysieved",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIEVE_PYSIEVED.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^/usr/share/pysieved/plugins/dovecot\\.py:27: DeprecationWarning: The popen2 module is deprecated\\.  Use the subprocess module\\.\\n  import popen2\\n\\\"IMPLEMENTATION\\\" \\\"pysieved ([\\w._+-]+)\\\"\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\\"IMPLEMENTATION\\\" \\\"pysieved ([\\w._-]+)\\\"\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\\"IMPLEMENTATION\\\" \\\"(\\d+\\.\\d+)\\\"\\r\\n\\\"SASL\\\" \\\"PLAIN\\\"\\r\\n\\\"SIEVE\\\" \\\"fileinto reject envelope vacation imapflags notify subaddress relational comparator-i;ascii-numeric\\\"\\r\\nOK\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sieve_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^/usr/share/pysieved/plugins/dovecot\\.py:27: DeprecationWarning: The popen2 module is deprecated\\.  Use the subprocess module\\.\\n  import popen2\\n\\\"IMPLEMENTATION\\\" \\\"pysieved ([\\w._+-]+)\\\"\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\\"IMPLEMENTATION\\\" \\\"pysieved ([\\w._-]+)\\\"\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\\"IMPLEMENTATION\\\" \\\"(\\d+\\.\\d+)\\\"\\r\\n\\\"SASL\\\" \\\"PLAIN\\\"\\r\\n\\\"SIEVE\\\" \\\"fileinto reject envelope vacation imapflags notify subaddress relational comparator-i;ascii-numeric\\\"\\r\\nOK\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sieve"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sieve"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sieve. 3 match(es), 0 softmatch(es). Extraction de version disponible."
+}

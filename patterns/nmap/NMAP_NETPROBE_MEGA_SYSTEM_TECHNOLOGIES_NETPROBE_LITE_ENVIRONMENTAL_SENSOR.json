@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netprobe-mega-system-technologies-netprobe-lite-environmental-sensor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Mega System Technologies NetProbe Lite environmental sensor",
+  "product": "Mega System Technologies NetProbe Lite environmental sensor",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETPROBE_MEGA_SYSTEM_TECHNOLOGIES_NETPROBE_LITE_ENVIRONMENTAL_SENSOR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    69,
+    135,
+    1761,
+    26198
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netprobe_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour netprobe"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netprobe"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netprobe. 1 match(es), 0 softmatch(es)."
+}

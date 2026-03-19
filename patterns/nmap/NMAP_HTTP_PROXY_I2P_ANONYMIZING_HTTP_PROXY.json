@@ -1,0 +1,231 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-proxy-i2p-anonymizing-http-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "I2P anonymizing http proxy",
+  "product": "I2P anonymizing http proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PROXY_I2P_ANONYMIZING_HTTP_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:i2p_project:i2p:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Warning: Non-HTTP Protocol</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Warnung: Kein HTTP Protokoll</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Advertencia: Protocolo no HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Avertissement : protocole non HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Peringatan: Protokol Non-HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Waarschuwing: non-HTTP protocol</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Ostrzeżenie: protokół inny niż HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Aviso: Protocolo não-HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Aviso: Protocolo fora do padrão HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Atenție: protocolul Non-HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Предупреждение: Протокол не HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Varning: Ej HTTP Protokoll</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?警告：非 HTTP 协议</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nCache-control: no-cache\\r\\nConnection: close\\r\\nProxy-Connection: close\\r\\n\\r\\n.*<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\"",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Warning: Non-HTTP Protocol</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Warnung: Kein HTTP Protokoll</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Advertencia: Protocolo no HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Avertissement : protocole non HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Peringatan: Protokol Non-HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Waarschuwing: non-HTTP protocol</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Ostrzeżenie: protokół inny niż HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Aviso: Protocolo não-HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Aviso: Protocolo fora do padrão HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Atenție: protocolul Non-HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Предупреждение: Протокол не HTTP</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?Varning: Ej HTTP Protokoll</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\n.*<title>(?:I2P )?警告：非 HTTP 协议</title>\\r\\n<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\" ?>\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 403 Bad Protocol\\r\\nContent-Type: text/html; charset=UTF-8\\r\\nCache-control: no-cache\\r\\nConnection: close\\r\\nProxy-Connection: close\\r\\n\\r\\n.*<link rel=\\\"shortcut icon\\\" href=\\\"http://proxy\\.i2p/themes/console/images/favicon\\.ico\\\"",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http-proxy. 14 match(es), 0 softmatch(es). CPE: cpe:2.3:a:i2p_project:i2p:*:*:*:*:*:*:*:*"
+}

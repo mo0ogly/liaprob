@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-allseeingeye-all-seeing-eye",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "All-Seeing Eye",
+  "product": "All-Seeing Eye",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ALLSEEINGEYE_ALL_SEEING_EYE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1258,
+    2126,
+    3123,
+    12444,
+    13200,
+    23196,
+    26000,
+    27138,
+    27244,
+    27777,
+    28138
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_allseeingeye_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^EYE1.(.*?)(\\x02\\d|\\x03\\d{2}|\\x04\\d{3}|\\x05\\d{4}|\\x06\\d{5})",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour allseeingeye"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "allseeingeye"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: allseeingeye. 1 match(es), 0 softmatch(es)."
+}

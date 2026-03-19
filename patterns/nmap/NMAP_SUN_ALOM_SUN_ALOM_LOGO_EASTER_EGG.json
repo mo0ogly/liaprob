@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sun-alom-sun-alom-logo-easter-egg",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sun ALOM logo easter egg",
+  "product": "Sun ALOM logo easter egg",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SUN_ALOM_SUN_ALOM_LOGO_EASTER_EGG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:sun:advanced_lights_out_manager:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ {31}\\.,ad8{8}baa,\\n {28},d8{19}ba\\.\\n {25}\\.a8{26}a\\n {24}a8{12}\\\"{6}8{12}a\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sun-alom_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ {31}\\.,ad8{8}baa,\\n {28},d8{19}ba\\.\\n {25}\\.a8{26}a\\n {24}a8{12}\\\"{6}8{12}a\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sun-alom"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sun-alom"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sun-alom. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:sun:advanced_lights_out_manager:*:*:*:*:*:*:*:*"
+}

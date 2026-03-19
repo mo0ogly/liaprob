@@ -1,0 +1,198 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-lotus-domino-smtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lotus Domino smtpd",
+  "product": "Lotus Domino smtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_LOTUS_DOMINO_SMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3025,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:ibm:lotus_domino:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220   ESMTP Service \\(Lotus Domino Release ([\\w._-]+)\\) ready at ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino Release (\\d[-.\\w ]+)\\) ready",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino (\\d[-.\\w ]+)\\) ready at",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220  ESMTP Service \\(Lotus Domino Release (\\d[-.\\w ]+)\\) ready at ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino Build V([\\w_]+) Beta (\\w+)\\) ready at ",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220  ESMTP Service \\(Lotus Domino Build V([\\w_]+) Beta (\\w+)\\) ready at ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino Versione ([\\w._ -]+)\\) ready",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .* SMTP ready at .*\\r\\n501 Command \\\"EHLO\\\" requires an argument\\r\\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Hello\\r\\n501 Command \\\"EHLO\\\" requires an argument\\r\\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ESMTP Service ready at .*\\r\\n214-Enter one of the following commands:\\r\\n214-HELO EHLO MAIL RCPT DATA RSET NOOP QUIT\\r\\n214 HELP \\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220   ESMTP Service \\(Lotus Domino Release ([\\w._-]+)\\) ready at ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino Release (\\d[-.\\w ]+)\\) ready",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino (\\d[-.\\w ]+)\\) ready at",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220  ESMTP Service \\(Lotus Domino Release (\\d[-.\\w ]+)\\) ready at ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino Build V([\\w_]+) Beta (\\w+)\\) ready at ",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220  ESMTP Service \\(Lotus Domino Build V([\\w_]+) Beta (\\w+)\\) ready at ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) ESMTP Service \\(Lotus Domino Versione ([\\w._ -]+)\\) ready",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .* SMTP ready at .*\\r\\n501 Command \\\"EHLO\\\" requires an argument\\r\\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Hello\\r\\n501 Command \\\"EHLO\\\" requires an argument\\r\\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ESMTP Service ready at .*\\r\\n214-Enter one of the following commands:\\r\\n214-HELO EHLO MAIL RCPT DATA RSET NOOP QUIT\\r\\n214 HELP \\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 10 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:ibm:lotus_domino:{version}:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ws-discovery-ws-print-1-0-responder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "WS-Print 1.0 responder",
+  "product": "WS-Print 1.0 responder",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WS_DISCOVERY_WS_PRINT_1_0_RESPONDER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5060
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ws-discovery_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<\\?xml version=\\\"1\\.0\\\" encoding=\\\"UTF-8\\\"\\?>\\n<SOAP-ENV:Envelope .*xmlns:\\w+=\\\"http://schemas\\.xmlsoap\\.org/ws/2005/04/discovery\\\" .*xmlns:\\w+=\\\"http://schemas\\.microsoft\\.com/windows/2006/08/wdp/print\\\"",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour ws-discovery"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ws-discovery"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ws-discovery. 0 match(es), 1 softmatch(es)."
+}

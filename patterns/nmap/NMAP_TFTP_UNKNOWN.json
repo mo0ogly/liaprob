@@ -1,0 +1,46 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-tftp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TFTP",
+  "product": "tftp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TFTP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    69,
+    135,
+    1761,
+    26198
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_tftp_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x05\\0[\\0-\\x07][^\\0]+\\0$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour tftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "tftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: tftp. 0 match(es), 1 softmatch(es)."
+}

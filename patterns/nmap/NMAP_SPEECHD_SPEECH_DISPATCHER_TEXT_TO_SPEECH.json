@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-speechd-speech-dispatcher-text-to-speech",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Speech Dispatcher text to speech",
+  "product": "Speech Dispatcher text to speech",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SPEECHD_SPEECH_DISPATCHER_TEXT_TO_SPEECH.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^248-  SPEAK           -- say text \\r\\n248-  KEY             -- say a combination of keys \\r\\n248-  CHAR            -- say a character \\r\\n248-  SOUND_ICON      -- execute a sound icon \\r\\n248-  SET             -- set a parameter \\r\\n248-  LIST            -- list available arguments \\r\\n248-  HISTORY         -- commands related to history \\r\\n248-  QUIT            -- close the connection \\r\\n248 OK HELP SENT\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_speechd_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^248-  SPEAK           -- say text \\r\\n248-  KEY             -- say a combination of keys \\r\\n248-  CHAR            -- say a character \\r\\n248-  SOUND_ICON      -- execute a sound icon \\r\\n248-  SET             -- set a parameter \\r\\n248-  LIST            -- list available arguments \\r\\n248-  HISTORY         -- commands related to history \\r\\n248-  QUIT            -- close the connection \\r\\n248 OK HELP SENT\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour speechd"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "speechd"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: speechd. 1 match(es), 0 softmatch(es)."
+}

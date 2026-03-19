@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-nemesis-smtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Nemesis smtpd",
+  "product": "Nemesis smtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_NEMESIS_SMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Welcome to Nemesis ESMTP server on \\S+",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([\\w_.-]+) \\(\\w+\\) Welcome to Nemesis ESMTP server\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^554-([\\w._-]+) \\(\\w+\\) Nemesis ESMTP Service not available\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Welcome to Nemesis ESMTP server on \\S+",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([\\w_.-]+) \\(\\w+\\) Welcome to Nemesis ESMTP server\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^554-([\\w._-]+) \\(\\w+\\) Nemesis ESMTP Service not available\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 3 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,134 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-printer-lpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "lpd",
+  "product": "lpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PRINTER_LPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^lpd: (.*)\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([\\w._/-]+/lpd): (.*)\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([-\\w_.]+): lpd: hostname for your address \\([\\d.]+\\) unknown\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([-\\w_.]+): lpd: address for your hostname \\([\\d.]+\\) not matched\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([-\\w_.]+): /usr/lib/lpd: Malformed from address\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([-\\w_.]+): lpd: Illegal service request\\n$",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_printer_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^lpd: (.*)\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([\\w._/-]+/lpd): (.*)\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([-\\w_.]+): lpd: hostname for your address \\([\\d.]+\\) unknown\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([-\\w_.]+): lpd: address for your hostname \\([\\d.]+\\) not matched\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([-\\w_.]+): /usr/lib/lpd: Malformed from address\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([-\\w_.]+): lpd: Illegal service request\\n$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour printer"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "printer"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: printer. 6 match(es), 0 softmatch(es)."
+}

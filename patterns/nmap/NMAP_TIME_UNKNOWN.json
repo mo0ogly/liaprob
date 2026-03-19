@@ -1,0 +1,84 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-time",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TIME",
+  "product": "time",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TIME_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    7,
+    13,
+    37,
+    42
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^[\\xd5-\\xef]...$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^[\\xd5-\\xef]....\\0\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_time_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\xd5-\\xef]...$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\xd5-\\xef]....\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour time"
+    },
+    {
+      "id": "nmap_time_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\xd5-\\xef]...$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\xd5-\\xef]....\\0\\0\\0$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour time"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "time"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: time. 4 match(es), 0 softmatch(es)."
+}

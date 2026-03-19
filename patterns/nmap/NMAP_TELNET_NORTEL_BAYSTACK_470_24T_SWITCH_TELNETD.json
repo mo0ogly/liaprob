@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-nortel-baystack-470-24t-switch-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Nortel BayStack 470-24T switch telnetd",
+  "product": "Nortel BayStack 470-24T switch telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_NORTEL_BAYSTACK_470_24T_SWITCH_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:nortel:baystack_470-24t:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[32897132;1H\\x1b\\[0m\\x1b\\[1;1H \\*\\*\\*\\*\\*      \\*\\*\\*     \\*     \\*    \\*\\*\\*\\*\\*   \\*\\*\\*\\*\\*\\*\\*\\*\\*     \\*\\*\\*       \\*\\*\\*\\*\\*  \\*      \\*\\x1b\\[2;1H \\*    \\*    \\*   \\*    \\*     \\*   \\*            \\*        \\*   \\*     \\*       \\*      \\*\\x1b\\[3;1H",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[32897132;1H\\x1b\\[0m\\x1b\\[1;1H \\*\\*\\*\\*\\*      \\*\\*\\*     \\*     \\*    \\*\\*\\*\\*\\*   \\*\\*\\*\\*\\*\\*\\*\\*\\*     \\*\\*\\*       \\*\\*\\*\\*\\*  \\*      \\*\\x1b\\[2;1H \\*    \\*    \\*   \\*    \\*     \\*   \\*            \\*        \\*   \\*     \\*       \\*      \\*\\x1b\\[3;1H",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:nortel:baystack_470-24t:*:*:*:*:*:*:*:*"
+}

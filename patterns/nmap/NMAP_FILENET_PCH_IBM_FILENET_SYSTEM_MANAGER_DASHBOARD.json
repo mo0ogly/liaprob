@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-filenet-pch-ibm-filenet-system-manager-dashboard",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IBM FileNet System Manager Dashboard",
+  "product": "IBM FileNet System Manager Dashboard",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FILENET_PCH_IBM_FILENET_SYSTEM_MANAGER_DASHBOARD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:ibm:datacap:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^protocol\\x08([\\d.]+)\\napp_name\\x08TMS\\napp_version\\x08([\\d.]+)\\nhostname\\x08(\\S+)\\nos\\.arch\\x08\\S+\\npagesize\\x08\\d+\\nprocessors\\x08\\d+\\nos\\.name\\x08(\\S+)\\nos\\.version\\x08(\\S+)\\ntime\\x08\\d+\\n\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_filenet-pch_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^protocol\\x08([\\d.]+)\\napp_name\\x08TMS\\napp_version\\x08([\\d.]+)\\nhostname\\x08(\\S+)\\nos\\.arch\\x08\\S+\\npagesize\\x08\\d+\\nprocessors\\x08\\d+\\nos\\.name\\x08(\\S+)\\nos\\.version\\x08(\\S+)\\ntime\\x08\\d+\\n\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^protocol\\x08([\\d.]+)\\napp_name\\x08(\\S+)\\napp_version\\x08([\\d.]+)\\nhostname\\x08(\\S+)\\nos\\.arch\\x08\\S+\\npagesize\\x08\\d+\\nprocessors\\x08\\d+\\nos\\.name\\x08(\\S+)\\nos\\.version\\x08(\\S+)\\ntime\\x08\\d+\\n\\n",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour filenet-pch"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "filenet-pch"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: filenet-pch. 1 match(es), 1 softmatch(es). CPE: cpe:2.3:a:ibm:datacap:{version}:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-softether-rpc-softether-vpn-client-config-port",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SoftEther VPN client config port",
+  "product": "SoftEther VPN client config port",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SOFTETHER_RPC_SOFTETHER_VPN_CLIENT_CONFIG_PORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    523,
+    9090,
+    9930,
+    9931,
+    9932,
+    9933,
+    9934,
+    50000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^@+$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_softether-rpc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^@+$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour softether-rpc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "softether-rpc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: softether-rpc. 1 match(es), 0 softmatch(es)."
+}

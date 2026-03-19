@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-slx-saleslogix-db",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SalesLogix DB",
+  "product": "SalesLogix DB",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SLX_SALESLOGIX_DB.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0,\\x9b\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0.{32}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_slx_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0,\\x9b\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0.{32}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour slx"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "slx"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: slx. 1 match(es), 0 softmatch(es)."
+}

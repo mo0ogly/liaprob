@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-konica-minolta-lpc-httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Konica Minolta LPC httpd",
+  "product": "Konica Minolta LPC httpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_KONICA_MINOLTA_LPC_HTTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    88,
+    443,
+    2100,
+    4443,
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    8005,
+    8006,
+    8007,
+    8008,
+    8009,
+    8010,
+    8080,
+    8081,
+    8082,
+    8083,
+    8084,
+    8085,
+    8443,
+    8880,
+    8881,
+    8882,
+    8883,
+    8884,
+    8885,
+    8886,
+    8887,
+    8888,
+    9999,
+    49152
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 200 OK\\r\\nContent-Type:text/html\\r\\nExpires: .*\\r\\nPragma: no-cache\\r\\nServer: LPC Http Server/V([\\d.]+)\\r\\n\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

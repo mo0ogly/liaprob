@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ms-wbt-server-proxy-nmproxy-netmeeting-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "nmproxy NetMeeting proxy",
+  "product": "nmproxy NetMeeting proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MS_WBT_SERVER_PROXY_NMPROXY_NETMEETING_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    515,
+    1028,
+    1068,
+    1503,
+    1720,
+    1935,
+    2040,
+    3388,
+    3389
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^nmproxy: Procotol byte is not 8\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ms-wbt-server-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^nmproxy: Procotol byte is not 8\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ms-wbt-server-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ms-wbt-server-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ms-wbt-server-proxy. 1 match(es), 0 softmatch(es)."
+}

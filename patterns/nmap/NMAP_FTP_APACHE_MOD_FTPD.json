@@ -1,0 +1,90 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-apache-mod-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Apache mod_ftpd",
+  "product": "Apache mod_ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_APACHE_MOD_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) FTP server ready \\(mod_ftpd/([\\d.]+)\\)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-Welcome to ESRS Gateway FTP service\\.\\r\\n220 httpdftp FTP Server \\(Apache\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220(?:-.*\\r\\n220)* [\\d.]+ FTP Server \\(Apache/([\\w._-]+) \\(Ubuntu\\) (.*)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220(?:-.*\\r\\n220)* ([\\w._-]+) FTP Server \\(Apache/([\\w._-]+) \\(Linux/SUSE\\)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) FTP server ready \\(mod_ftpd/([\\d.]+)\\)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-Welcome to ESRS Gateway FTP service\\.\\r\\n220 httpdftp FTP Server \\(Apache\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220(?:-.*\\r\\n220)* [\\d.]+ FTP Server \\(Apache/([\\w._-]+) \\(Ubuntu\\) (.*)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220(?:-.*\\r\\n220)* ([\\w._-]+) FTP Server \\(Apache/([\\w._-]+) \\(Linux/SUSE\\)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*"
+}

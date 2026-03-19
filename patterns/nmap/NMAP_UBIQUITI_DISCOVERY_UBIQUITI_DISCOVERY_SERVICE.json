@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ubiquiti-discovery-ubiquiti-discovery-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ubiquiti Discovery Service",
+  "product": "Ubiquiti Discovery Service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_UBIQUITI_DISCOVERY_UBIQUITI_DISCOVERY_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    10001
+  ],
+  "cpe23_template": "cpe:2.3:h:ubnt:aircam:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ubiquiti-discovery_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0.[^\\0].*\\x0c\\0\\x06AirCam",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0.[^\\0].*\\x0c\\0\\nAirCamDome",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0.[^\\0].*\\x0c\\0.([\\w-]+)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0.[^\\0].{48}",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02[\\x06\\x09\\x0b].[^\\0].*\\x15\\0.([\\w-]+)\\x16\\0.([\\d.]+)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02[\\x06\\x09\\x0b].[^\\0].*\\x15\\0.([\\w-]+)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02[\\x06\\x09\\x0b].[^\\0].{48}",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour ubiquiti-discovery"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ubiquiti-discovery"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ubiquiti-discovery. 5 match(es), 2 softmatch(es). CPE: cpe:2.3:h:ubnt:aircam:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-printer-json-dell-mfp-json-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Dell MFP JSON service",
+  "product": "Dell MFP JSON service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PRINTER_JSON_DELL_MFP_JSON_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\{\"Result\":false,\"Reason\":\"Busying\"\\}\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_printer-json_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\{\"Result\":false,\"Reason\":\"Busying\"\\}\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour printer-json"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "printer-json"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: printer-json. 1 match(es), 0 softmatch(es)."
+}

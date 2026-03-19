@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-svnserve-subversion",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Subversion",
+  "product": "Subversion",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SVNSERVE_SUBVERSION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:apache:subversion:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\( success \\( \\d \\d \\( (?:ANONYMOUS )?\\) \\( ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_svnserve_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\( success \\( \\d \\d \\( (?:ANONYMOUS )?\\) \\( ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour svnserve"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "svnserve"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: svnserve. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:apache:subversion:*:*:*:*:*:*:*:*"
+}

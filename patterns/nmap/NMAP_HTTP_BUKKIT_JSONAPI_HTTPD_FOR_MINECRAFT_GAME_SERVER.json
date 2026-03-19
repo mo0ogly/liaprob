@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-bukkit-jsonapi-httpd-for-minecraft-game-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Bukkit JSONAPI httpd for Minecraft game server",
+  "product": "Bukkit JSONAPI httpd for Minecraft game server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_BUKKIT_JSONAPI_HTTPD_FOR_MINECRAFT_GAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 400 Bad Request \\r\\nContent-Type: text/plain\\r\\nDate: .*\\r\\n\\r\\nBAD REQUEST: Syntax error\\. Usage: GET /example/file\\.html$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 400 Bad Request \\r\\nContent-Type: text/plain\\r\\nDate: .*\\r\\n\\r\\nBAD REQUEST: Missing URI\\. Usage: GET /example/file\\.html$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 400 Bad Request \\r\\nContent-Type: text/plain\\r\\nDate: .*\\r\\n\\r\\nBAD REQUEST: Missing URI\\. Usage: GET /example/file\\.html$",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 400 Bad Request \\r\\nContent-Type: text/plain\\r\\nDate: .*\\r\\n\\r\\nBAD REQUEST: Syntax error\\. Usage: GET /example/file\\.html$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 400 Bad Request \\r\\nContent-Type: text/plain\\r\\nDate: .*\\r\\n\\r\\nBAD REQUEST: Missing URI\\. Usage: GET /example/file\\.html$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 400 Bad Request \\r\\nContent-Type: text/plain\\r\\nDate: .*\\r\\n\\r\\nBAD REQUEST: Missing URI\\. Usage: GET /example/file\\.html$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 3 match(es), 0 softmatch(es). Extraction de version disponible."
+}

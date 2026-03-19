@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-lotusnotes-lotus-domino-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lotus Domino server",
+  "product": "Lotus Domino server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LOTUSNOTES_LOTUS_DOMINO_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    130,
+    427,
+    1352,
+    1972,
+    7171,
+    8728,
+    22001
+  ],
+  "cpe23_template": "cpe:2.3:a:ibm:lotus_domino_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0.\\0\\0\\0\\x03\\0\\0@\\x02\\x0f\\0.*\\x03\\0\\0\\0\\0\\x02\\0/\\0.\\0\\0\\0\\0\\0\\0\\0.*CN=([-.\\w ]+)/O=([-.\\w ]+)[^-.\\w ]",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0.\\0\\0\\0\\x03\\0\\0@\\x02\\x0f\\0.*\\x03\\0\\0\\0\\0\\x02\\0/\\0.\\0\\0\\0\\0\\0\\0\\0.*CN=([-.\\w ]+)/OU=([-.\\w ]+)/O=([-.\\w ]+)[^-.\\w ]",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0.\\0\\0\\0\\x03\\0\\0@\\x02\\x0f\\0.*\\x03\\0\\0\\0\\0\\x02\\0/\\0.\\0\\0\\0\\0\\0\\0\\0.*CN=([-.\\w ]+)/OU=([-.\\w ]+)/OU=([-.\\w ]+)/O=([-.\\w ]+)",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_lotusnotes_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0.\\0\\0\\0\\x03\\0\\0@\\x02\\x0f\\0.*\\x03\\0\\0\\0\\0\\x02\\0/\\0.\\0\\0\\0\\0\\0\\0\\0.*CN=([-.\\w ]+)/O=([-.\\w ]+)[^-.\\w ]",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0.\\0\\0\\0\\x03\\0\\0@\\x02\\x0f\\0.*\\x03\\0\\0\\0\\0\\x02\\0/\\0.\\0\\0\\0\\0\\0\\0\\0.*CN=([-.\\w ]+)/OU=([-.\\w ]+)/O=([-.\\w ]+)[^-.\\w ]",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0.\\0\\0\\0\\x03\\0\\0@\\x02\\x0f\\0.*\\x03\\0\\0\\0\\0\\x02\\0/\\0.\\0\\0\\0\\0\\0\\0\\0.*CN=([-.\\w ]+)/OU=([-.\\w ]+)/OU=([-.\\w ]+)/O=([-.\\w ]+)",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour lotusnotes"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "lotusnotes"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: lotusnotes. 3 match(es), 0 softmatch(es). CPE: cpe:2.3:a:ibm:lotus_domino_server:*:*:*:*:*:*:*:*"
+}

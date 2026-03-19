@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-control-m-bmc-control-m-em-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "BMC Control-M/EM server",
+  "product": "BMC Control-M/EM server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CONTROL_M_BMC_CONTROL_M_EM_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:bmc:software_control-m_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^a 00000094S         000000             L E CTM5761S0103Control-M server already connected to another gateway\\. ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_control-m_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^a 00000094S         000000             L E CTM5761S0103Control-M server already connected to another gateway\\. ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour control-m"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "control-m"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: control-m. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:bmc:software_control-m_server:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-issc-iss-system-scanner-console",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ISS System Scanner Console",
+  "product": "ISS System Scanner Console",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ISSC_ISS_SYSTEM_SCANNER_CONSOLE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\rYou do not have permission to connect to the builder port\\.\\r\\nTalk to an admin at port \\d+ for entry\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_issc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\rYou do not have permission to connect to the builder port\\.\\r\\nTalk to an admin at port \\d+ for entry\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour issc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "issc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: issc. 1 match(es), 0 softmatch(es)."
+}

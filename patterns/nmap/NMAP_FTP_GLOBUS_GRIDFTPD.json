@@ -1,0 +1,91 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-globus-gridftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Globus GridFTPd",
+  "product": "Globus GridFTPd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_GLOBUS_GRIDFTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) GridFTP Server ([\\w._-]+) \\((gcc\\w+), [-\\d]+\\) (?:\\[unknown\\] )?ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([\\w._-]+) GridFTP Server ([\\w._-]+) \\((gcc\\w+), [-\\d]+\\) \\[Globus Toolkit ([\\w._-]+)\\] ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) (?:[A-Z]+ )?GridFTP Server ([\\d.]+) (GSSAPI type Globus/GSI wu-\\S+) \\(gcc\\w+, [-\\d]+\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) FTP server \\(GridFTP Server ([\\d.]+) \\[(GSI patch v[\\d\\.]+)\\] (wu-\\S+) .+\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) GridFTP Server ([\\w._-]+) \\((gcc\\w+), [-\\d]+\\) (?:\\[unknown\\] )?ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([\\w._-]+) GridFTP Server ([\\w._-]+) \\((gcc\\w+), [-\\d]+\\) \\[Globus Toolkit ([\\w._-]+)\\] ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) (?:[A-Z]+ )?GridFTP Server ([\\d.]+) (GSSAPI type Globus/GSI wu-\\S+) \\(gcc\\w+, [-\\d]+\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) FTP server \\(GridFTP Server ([\\d.]+) \\[(GSI patch v[\\d\\.]+)\\] (wu-\\S+) .+\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 4 match(es), 0 softmatch(es). Extraction de version disponible."
+}

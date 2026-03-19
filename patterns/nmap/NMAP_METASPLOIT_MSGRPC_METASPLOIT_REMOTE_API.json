@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-metasploit-msgrpc-metasploit-remote-api",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Metasploit Remote API",
+  "product": "Metasploit Remote API",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_METASPLOIT_MSGRPC_METASPLOIT_REMOTE_API.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    3790,
+    50505,
+    55552
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 200 OK\\r\\nContent-Type: binary/message-pack\\r\\nConnection: close\\r\\nServer: Rex\\r\\nContent-Length: 1084\\r\\n\\r\\n\\x85\\xa5error\\xc3\\xaberror_class\\xadArgumentError\\xacerror_string\\xbdInvalid Request Verb: '\\\"GET\\\"'\\xaferror_backtrace\\xdc\\x00\\x12\\xda\\x000lib/msf/core/rpc/v10/service\\.rb:107:in `process'\\xda\\x006lib/msf/core/rpc/v10/service\\.rb:88:in `on_request_uri'\\xda\\x006lib/msf/core/rpc/v10/service\\.rb:70:in `block in start'\\xda\\x00/lib/rex/proto/http/handler/proc\\.rb:37:in `call'\\xda\\x005lib/rex/proto/http/handler/proc\\.rb:37:in `on_request'\\xda\\x00",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_metasploit-msgrpc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 200 OK\\r\\nContent-Type: binary/message-pack\\r\\nConnection: close\\r\\nServer: Rex\\r\\nContent-Length: 1084\\r\\n\\r\\n\\x85\\xa5error\\xc3\\xaberror_class\\xadArgumentError\\xacerror_string\\xbdInvalid Request Verb: '\\\"GET\\\"'\\xaferror_backtrace\\xdc\\x00\\x12\\xda\\x000lib/msf/core/rpc/v10/service\\.rb:107:in `process'\\xda\\x006lib/msf/core/rpc/v10/service\\.rb:88:in `on_request_uri'\\xda\\x006lib/msf/core/rpc/v10/service\\.rb:70:in `block in start'\\xda\\x00/lib/rex/proto/http/handler/proc\\.rb:37:in `call'\\xda\\x005lib/rex/proto/http/handler/proc\\.rb:37:in `on_request'\\xda\\x00",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour metasploit-msgrpc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "metasploit-msgrpc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: metasploit-msgrpc. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

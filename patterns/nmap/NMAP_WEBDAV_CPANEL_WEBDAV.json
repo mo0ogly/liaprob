@@ -1,0 +1,102 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-webdav-cpanel-webdav",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "cPanel webdav",
+  "product": "cPanel webdav",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WEBDAV_CPANEL_WEBDAV.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    406,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5060,
+    5061,
+    5232,
+    6000,
+    8080,
+    8081,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    31337,
+    37435,
+    49400
+  ],
+  "cpe23_template": "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: cPanel\\r\\nContent-Length: 0\\r\\nConnection: Keep-Alive\\r\\nAllow: UNLOCK,HEAD,MOVE,OPTIONS,LOCK,POST,PUT,COPY,MKCOL,GET,DELETE,PROPFIND\\r\\nContent-Type: httpd/unix-directory\\r\\nDAV: 1,2,<http://apache\\.org/dav/propset/fs/1>\\r\\nKeep-Alive: timeout=15, max=96\\r\\nMS-Author-Via: DAV\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: cPanel\\r\\nPersistent-Auth: false\\r\\nCache-Control: no-cache[^\\r\\n]*\\r\\nConnection: Keep-Alive\\r\\nVary: Accept-Encoding\\r\\nAllow: [A-Z, ]+\\r\\nContent-Length: 0\\r\\nContent-Type: text/plain\\r\\nExpires: Fri, 01 Jan 1990 00:00:00 GMT\\r\\nDAV: 1, 2\\r\\nKeep-Alive: timeout=15, max=96\\r\\nMS-Author-Via: DAV\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_webdav_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: cPanel\\r\\nPersistent-Auth: false\\r\\nCache-Control: no-cache[^\\r\\n]*\\r\\nConnection: Keep-Alive\\r\\nVary: Accept-Encoding\\r\\nAllow: [A-Z, ]+\\r\\nContent-Length: 0\\r\\nContent-Type: text/plain\\r\\nExpires: Fri, 01 Jan 1990 00:00:00 GMT\\r\\nDAV: 1, 2\\r\\nKeep-Alive: timeout=15, max=96\\r\\nMS-Author-Via: DAV\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour webdav"
+    },
+    {
+      "id": "nmap_webdav_1",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: cPanel\\r\\nContent-Length: 0\\r\\nConnection: Keep-Alive\\r\\nAllow: UNLOCK,HEAD,MOVE,OPTIONS,LOCK,POST,PUT,COPY,MKCOL,GET,DELETE,PROPFIND\\r\\nContent-Type: httpd/unix-directory\\r\\nDAV: 1,2,<http://apache\\.org/dav/propset/fs/1>\\r\\nKeep-Alive: timeout=15, max=96\\r\\nMS-Author-Via: DAV\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: cPanel\\r\\nPersistent-Auth: false\\r\\nCache-Control: no-cache[^\\r\\n]*\\r\\nConnection: Keep-Alive\\r\\nVary: Accept-Encoding\\r\\nAllow: [A-Z, ]+\\r\\nContent-Length: 0\\r\\nContent-Type: text/plain\\r\\nExpires: Fri, 01 Jan 1990 00:00:00 GMT\\r\\nDAV: 1, 2\\r\\nKeep-Alive: timeout=15, max=96\\r\\nMS-Author-Via: DAV\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour webdav"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "webdav"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: webdav. 3 match(es), 0 softmatch(es). CPE: cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*"
+}

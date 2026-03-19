@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-vidyoroom-vidyoroom-hd-220-videoconferencing-system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "VidyoRoom HD-220 videoconferencing system",
+  "product": "VidyoRoom HD-220 videoconferencing system",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_VIDYOROOM_VIDYOROOM_HD_220_VIDEOCONFERENCING_SYSTEM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Error VCXCI_ERROR_BADREQUEST error Code:3\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_vidyoroom_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Error VCXCI_ERROR_BADREQUEST error Code:3\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour vidyoroom"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "vidyoroom"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: vidyoroom. 1 match(es), 0 softmatch(es)."
+}

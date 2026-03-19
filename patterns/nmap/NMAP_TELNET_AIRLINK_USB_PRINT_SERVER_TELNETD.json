@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-airlink-usb-print-server-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AirLink USB print server telnetd",
+  "product": "AirLink USB print server telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_AIRLINK_USB_PRINT_SERVER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\r\\n\\n\\*+\\r\\n\\*  Welcome to Print Server  \\*\\r\\n\\*     Telnet Console        \\*\\r\\n\\*+\\r\\n\\r\\nServer Name    :  ([\\w._ -]+)\\0\\r\\nServer Model   :  APSUSB1\\0+\\r\\nF/W Version    :  ([\\w._-]+)  \\0\\0\\0\\0\\r\\nMAC Address    :  ([\\w ]+)\\r\\nUptime         :  ([^\\r\\n]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\r\\n\\n\\*+\\r\\n\\*  Welcome to Print Server  \\*\\r\\n\\*     Telnet Console        \\*\\r\\n\\*+\\r\\n\\r\\nServer Name    :  ([\\w._ -]+)\\0\\r\\nServer Model   :  APSUSB1\\0+\\r\\nF/W Version    :  ([\\w._-]+)  \\0\\0\\0\\0\\r\\nMAC Address    :  ([\\w ]+)\\r\\nUptime         :  ([^\\r\\n]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

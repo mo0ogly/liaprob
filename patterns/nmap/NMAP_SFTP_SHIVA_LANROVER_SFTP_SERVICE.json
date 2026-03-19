@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sftp-shiva-lanrover-sftp-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Shiva LanRover SFTP service",
+  "product": "Shiva LanRover SFTP service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SFTP_SHIVA_LANROVER_SFTP_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+Shiva SFTP Service\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+Shiva SFTP Service\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sftp. 1 match(es), 0 softmatch(es)."
+}

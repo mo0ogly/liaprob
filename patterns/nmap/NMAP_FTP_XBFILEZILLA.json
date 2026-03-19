@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-xbfilezilla",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "XBFileZilla",
+  "product": "XBFileZilla",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_XBFILEZILLA.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:xbmc:xbfilezilla:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-Welcome to XBOX FileZilla(?: \\(XBMC\\)|)\\r\\n220-version: XBFileZilla version ([\\d.]+), \\(based on FileZilla Server ([\\d.]+)\\)\\r\\n220 http://sourceforge\\.net/projects/xbfilezilla\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-Welcome to XBOX FileZilla(?: \\(XBMC\\)|)\\r\\n220-version: XBMC:FileZilla version ([\\d.]+), \\(based on FileZilla Server ([\\d.]+)\\)\\r\\n220 http://sourceforge\\.net/projects/xbfilezilla\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-Welcome to XBOX FileZilla(?: \\(XBMC\\)|)\\r\\n220-version: XBFileZilla version ([\\d.]+), \\(based on FileZilla Server ([\\d.]+)\\)\\r\\n220 http://sourceforge\\.net/projects/xbfilezilla\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-Welcome to XBOX FileZilla(?: \\(XBMC\\)|)\\r\\n220-version: XBMC:FileZilla version ([\\d.]+), \\(based on FileZilla Server ([\\d.]+)\\)\\r\\n220 http://sourceforge\\.net/projects/xbfilezilla\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:xbmc:xbfilezilla:{version}:*:*:*:*:*:*:*"
+}

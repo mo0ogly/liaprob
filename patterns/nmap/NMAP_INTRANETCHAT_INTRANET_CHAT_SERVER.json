@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-intranetchat-intranet-chat-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Intranet Chat Server",
+  "product": "Intranet Chat Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_INTRANETCHAT_INTRANET_CHAT_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\d+\\0FORWARD\\0\\x0b\\xc2c\\x0c\\xc1a\\x9f@",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_intranetchat_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\d+\\0FORWARD\\0\\x0b\\xc2c\\x0c\\xc1a\\x9f@",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour intranetchat"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "intranetchat"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: intranetchat. 1 match(es), 0 softmatch(es)."
+}

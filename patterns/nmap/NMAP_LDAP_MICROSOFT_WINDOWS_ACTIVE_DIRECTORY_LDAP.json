@@ -1,0 +1,93 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ldap-microsoft-windows-active-directory-ldap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft Windows Active Directory LDAP",
+  "product": "Microsoft Windows Active Directory LDAP",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LDAP_MICROSOFT_WINDOWS_ACTIVE_DIRECTORY_LDAP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    256,
+    257,
+    389,
+    390,
+    636,
+    637,
+    1702,
+    3268,
+    3269,
+    3892,
+    11711,
+    11712
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^0\\x84\\0\\0..\\x02\\x01.*dsServiceName1\\x84\\0\\0\\0.\\x04.CN=NTDS\\x20Settings,CN=([^,]+),CN=Servers,CN=([^,]+),CN=Sites,CN=Configuration,DC=([^,]+),DC=([^,]+)0\\x84\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^0\\x84\\0\\0..\\x02\\x01.*dsServiceName1\\x84\\0\\0\\0.\\x04.CN=NTDS\\x20Settings,CN=([^,]+),CN=Servers,CN=([^,]+),CN=Sites,CN=Configuration,DC=([^,]+),DC=([^,]+),DC=([^,]+)0\\x84\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ldap_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0\\x84\\0\\0..\\x02\\x01.*dsServiceName1\\x84\\0\\0\\0.\\x04.CN=NTDS\\x20Settings,CN=([^,]+),CN=Servers,CN=([^,]+),CN=Sites,CN=Configuration,DC=([^,]+),DC=([^,]+)0\\x84\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0\\x84\\0\\0..\\x02\\x01.*dsServiceName1\\x84\\0\\0\\0.\\x04.CN=NTDS\\x20Settings,CN=([^,]+),CN=Servers,CN=([^,]+),CN=Sites,CN=Configuration,DC=([^,]+),DC=([^,]+),DC=([^,]+)0\\x84\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ldap"
+    },
+    {
+      "id": "nmap_ldap_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0\\x84\\0\\0..\\x02\\x01.*dsServiceName1\\x84\\0\\0\\0.\\x04.CN=NTDS\\x20Settings,CN=([^,]+),CN=Servers,CN=([^,]+),CN=Sites,CN=Configuration,DC=([^,]+),DC=([^,]+)0\\x84\\0",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0\\x84\\0\\0..\\x02\\x01.*dsServiceName1\\x84\\0\\0\\0.\\x04.CN=NTDS\\x20Settings,CN=([^,]+),CN=Servers,CN=([^,]+),CN=Sites,CN=Configuration,DC=([^,]+),DC=([^,]+),DC=([^,]+)0\\x84\\0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour ldap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ldap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ldap. 4 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

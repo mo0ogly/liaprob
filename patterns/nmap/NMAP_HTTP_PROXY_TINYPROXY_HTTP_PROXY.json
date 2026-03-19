@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-proxy-tinyproxy-http-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "tinyproxy http proxy",
+  "product": "tinyproxy http proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PROXY_TINYPROXY_HTTP_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:banu:tinyproxy:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/HTTP/0\\.0 408 Timeout\\r\\nServer: tinyproxy/([\\w._-]+)\\r\\nContent-Type: text/html\\r\\nConnection: close\\r\\n\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 408 Timeout\\r\\nServer: tinyproxy/([\\w._-]+)\\r\\nContent-Type: text/html\\r\\nConnection: close\\r\\n\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/HTTP/0\\.0 408 Timeout\\r\\nServer: tinyproxy/([\\w._-]+)\\r\\nContent-Type: text/html\\r\\nConnection: close\\r\\n\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 408 Timeout\\r\\nServer: tinyproxy/([\\w._-]+)\\r\\nContent-Type: text/html\\r\\nConnection: close\\r\\n\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http-proxy. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:banu:tinyproxy:{version}:*:*:*:*:*:*:*"
+}

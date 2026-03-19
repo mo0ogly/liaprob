@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-hp-procurve",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HP ProCurve",
+  "product": "HP ProCurve",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_HP_PROCURVE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:hp:procurve_switch_software:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b.*HP [-.\\w]+ ProCurve Switch ([-.\\w]+)\\r\\n\\rFirmware revision ([-.\\w]+)\\r\\n\\r\\r",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x1b\\[20;1H\\r\\n\\r\\x1b\\[\\?25h\\x1b\\[20;11H\\x1b\\[21;1HSession Terminated, Connect again\\r\\n\\r\\x1b\\[\\?25h\\x1b\\[21;1H\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b\\[[34];23r\\x1b\\[\\?6l\\x1b\\[1;1H\\x1b\\[\\?25l\\x1b\\[1;1HHP [-.\\w]+ ProCurve Switch ([-.\\w]+)\\r\\n\\rFirmware revision ([-.\\w]+)\\r\\n\\r\\r",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b.*ProCurve [\\w._-]+ Switch ([\\w._-]+)\\r\\r\\nSoftware revision ([\\w._-]+)\\r\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b\\[3;23r\\x1b\\[\\?6l\\x1b\\[1;1H\\x1b\\[\\?25l\\x1b\\[1;1HProCurve J\\w+ Switch ([\\w-]+)\\r\\n\\rSoftware revision ([\\w._-]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b.*HP [-.\\w]+ ProCurve Switch ([-.\\w]+)\\r\\n\\rFirmware revision ([-.\\w]+)\\r\\n\\r\\r",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1b\\[20;1H\\r\\n\\r\\x1b\\[\\?25h\\x1b\\[20;11H\\x1b\\[21;1HSession Terminated, Connect again\\r\\n\\r\\x1b\\[\\?25h\\x1b\\[21;1H\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b\\[[34];23r\\x1b\\[\\?6l\\x1b\\[1;1H\\x1b\\[\\?25l\\x1b\\[1;1HHP [-.\\w]+ ProCurve Switch ([-.\\w]+)\\r\\n\\rFirmware revision ([-.\\w]+)\\r\\n\\r\\r",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b.*ProCurve [\\w._-]+ Switch ([\\w._-]+)\\r\\r\\nSoftware revision ([\\w._-]+)\\r\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x18\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[\\?7l\\x1b\\[3;23r\\x1b\\[\\?6l\\x1b\\[1;1H\\x1b\\[\\?25l\\x1b\\[1;1HProCurve J\\w+ Switch ([\\w-]+)\\r\\n\\rSoftware revision ([\\w._-]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:hp:procurve_switch_software:{version}:*:*:*:*:*:*:*"
+}

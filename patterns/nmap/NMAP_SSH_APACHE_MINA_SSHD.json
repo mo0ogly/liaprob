@@ -1,0 +1,104 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ssh-apache-mina-sshd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Apache Mina sshd",
+  "product": "Apache Mina sshd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SSH_APACHE_MINA_SSHD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:apache:sshd:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-SSHD-CORE-([\\w._-]+)-ATLASSIAN([\\w._-]*)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-SSHD-UNKNOWN\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-GerritCodeReview_([\\w._-]+) \\(SSHD-CORE-([\\w._-]+)\\)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-SSHD-CORE-([\\w._-]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-Gitblit_v([\\d.]+) \\(SSHD-CORE-([\\d.]+)-NIO2\\)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ssh_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-SSHD-CORE-([\\w._-]+)-ATLASSIAN([\\w._-]*)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-SSHD-UNKNOWN\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-GerritCodeReview_([\\w._-]+) \\(SSHD-CORE-([\\w._-]+)\\)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-SSHD-CORE-([\\w._-]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-Gitblit_v([\\d.]+) \\(SSHD-CORE-([\\d.]+)-NIO2\\)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ssh"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ssh"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ssh. 5 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:apache:sshd:{version}:*:*:*:*:*:*:*"
+}

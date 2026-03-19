@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-spice",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SPICE",
+  "product": "spice",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SPICE_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1761,
+    1762,
+    1763,
+    2701,
+    5709
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^REDQ\\x02\\0\\0\\0\\x02\\0\\0\\0[^\\0]",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_spice_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^REDQ\\x02\\0\\0\\0\\x02\\0\\0\\0[^\\0]",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour spice"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "spice"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: spice. 1 match(es), 0 softmatch(es)."
+}

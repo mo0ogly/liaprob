@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-tibia-tibia-graphical-mud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Tibia graphical MUD",
+  "product": "Tibia graphical MUD",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TIBIA_TIBIA_GRAPHICAL_MUD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    130,
+    427,
+    1352,
+    1972,
+    7171,
+    8728,
+    22001
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^V\\0\\x02\\0Your terminal version is too old\\.\\nPlease get a new version at\\nhttp://www\\.tibia\\.com\\.\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_tibia_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^V\\0\\x02\\0Your terminal version is too old\\.\\nPlease get a new version at\\nhttp://www\\.tibia\\.com\\.\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour tibia"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "tibia"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: tibia. 1 match(es), 0 softmatch(es)."
+}

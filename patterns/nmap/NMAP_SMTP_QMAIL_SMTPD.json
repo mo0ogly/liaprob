@@ -1,0 +1,188 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-qmail-smtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "qmail smtpd",
+  "product": "qmail smtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_QMAIL_SMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3025,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:djb:qmail:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^451 Temporary local problem - please try later\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^421 unable to read controls \\(#4\\.3\\.0\\)\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([\\w._-]+) ESMTP\\r\\n250-\\1\\r\\n250-STARTTLS\\r\\n250-SIZE 50000000\\r\\n250-PIPELINING\\r\\n250 8BITMIME\\r\\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) ESMTP ?\\r\\n214[\\s-]qmail home page: http://cr\\.yp\\.to/qmail\\.html, LinuxMagic Support http://www\\.linuxmagic\\.com\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-].*ESMTP ?\\r\\n214[- ]qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) (?:OK )?ESMTP ?\\r\\n214[- ]qmail home page: http://pobox\\.com/~djb/qmail\\.html",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220  ESMTP\\r\\n214 qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) ESMTP\\r\\n214-Gentoo Linux qmail-([-\\w.]+)\\r\\n214 qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+      "confidence_delta": 0.5,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .* ESMTP\\r\\n214-Gentoo Linux qmail-([-\\w.]+)\\r\\n214 qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) ESMTP .*\\r\\n214-qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n214 qmail-ldap patch home page: http://www\\.nrg4u\\.com\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^451 Temporary local problem - please try later\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^421 unable to read controls \\(#4\\.3\\.0\\)\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([\\w._-]+) ESMTP\\r\\n250-\\1\\r\\n250-STARTTLS\\r\\n250-SIZE 50000000\\r\\n250-PIPELINING\\r\\n250 8BITMIME\\r\\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) ESMTP ?\\r\\n214[\\s-]qmail home page: http://cr\\.yp\\.to/qmail\\.html, LinuxMagic Support http://www\\.linuxmagic\\.com\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-].*ESMTP ?\\r\\n214[- ]qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) (?:OK )?ESMTP ?\\r\\n214[- ]qmail home page: http://pobox\\.com/~djb/qmail\\.html",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220  ESMTP\\r\\n214 qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) ESMTP\\r\\n214-Gentoo Linux qmail-([-\\w.]+)\\r\\n214 qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .* ESMTP\\r\\n214-Gentoo Linux qmail-([-\\w.]+)\\r\\n214 qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) ESMTP .*\\r\\n214-qmail home page: http://pobox\\.com/~djb/qmail\\.html\\r\\n214 qmail-ldap patch home page: http://www\\.nrg4u\\.com\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 10 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:djb:qmail:*:*:*:*:*:*:*:*"
+}

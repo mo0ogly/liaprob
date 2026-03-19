@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-mcmyadmin-minecraft-game-admin-console",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "McMyAdmin Minecraft game admin console",
+  "product": "McMyAdmin Minecraft game admin console",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_MCMYADMIN_MINECRAFT_GAME_ADMIN_CONSOLE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    199,
+    1080,
+    1090,
+    1095,
+    1100,
+    1105,
+    1109,
+    3128,
+    6588,
+    6660,
+    6661,
+    6662,
+    6663,
+    6664,
+    6665,
+    6666,
+    6667,
+    6668,
+    6669,
+    7777,
+    8000,
+    8008,
+    8010,
+    8080,
+    8088,
+    9481
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 500 Unexpected new line: \\x05\\x04\\0\\x01\\x02\\x3f\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\r\\nContent-Type: text/html\\r\\nContent-Length: 763\\r\\nConnection: Close\\r\\n\\r\\n<html>\\r\\n    <head>\\r\\n        <meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=utf-8\\\" />\\r\\n        <title>Unexpected new line: \\x05\\x04\\0\\x01\\x02\\?\\x05\\x01\\0\\x03\\[CRLF\\]\\.</title>\\r\\n    </head>\\r\\n    <body>\\r\\n        <h1>500 - Unexpected new line: \\x05\\x04\\0\\x01\\x02\\?\\x05\\x01\\0\\x03\\[CRLF\\]\\.</h1>\\r\\n        <pre>System\\.InvalidOperationException: Unexpected new line: \\x05\\x04\\0\\x01\\x02\\?\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\n  at fp\\.bb \\(Char A_0\\) \\[0x00000\\] in <filename unknown>:0 \\n  at ha\\.d \\(\\) \\[0x00000\\] in <filename unknown>:0 \\n  at ha\\.b \\(System\\.Byte\\[\\] A_0, Int32 A_1, Int32 A_2\\) \\[0x00000\\] in <filename unknown>:0 \\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 500 Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\r\\nContent-Type: text/html\\r\\nContent-Length: 769\\r\\nConnection: Close\\r\\n\\r\\n<html>\\r\\n    <head>\\r\\n        <meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=utf-8\\\" />\\r\\n        <title>Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</title>\\r\\n    </head>\\r\\n    <body>\\r\\n        <h1>500 - Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</h1>\\r\\n        <pre>System\\.InvalidOperationException: Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\n  at fp\\.ba \\(Char A_0\\) \\[0x00000\\] in <filename unknown>:0 \\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 500 Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\r\\nContent-Type: text/html\\r\\nContent-Length: 769\\r\\nConnection: Close\\r\\n\\r\\n<html>\\r\\n    <head>\\r\\n        <meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=utf-8\\\" />\\r\\n        <title>Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</title>\\r\\n    </head>\\r\\n    <body>\\r\\n        <h1>500 - Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</h1>\\r\\n        <pre>System\\.InvalidOperationException: Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\n  at f8\\.be \\(Char A_0\\) \\[0x00000\\] in <filename unknown>:0 \\n",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 500 Unexpected new line: \\x05\\x04\\0\\x01\\x02\\x3f\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\r\\nContent-Type: text/html\\r\\nContent-Length: 763\\r\\nConnection: Close\\r\\n\\r\\n<html>\\r\\n    <head>\\r\\n        <meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=utf-8\\\" />\\r\\n        <title>Unexpected new line: \\x05\\x04\\0\\x01\\x02\\?\\x05\\x01\\0\\x03\\[CRLF\\]\\.</title>\\r\\n    </head>\\r\\n    <body>\\r\\n        <h1>500 - Unexpected new line: \\x05\\x04\\0\\x01\\x02\\?\\x05\\x01\\0\\x03\\[CRLF\\]\\.</h1>\\r\\n        <pre>System\\.InvalidOperationException: Unexpected new line: \\x05\\x04\\0\\x01\\x02\\?\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\n  at fp\\.bb \\(Char A_0\\) \\[0x00000\\] in <filename unknown>:0 \\n  at ha\\.d \\(\\) \\[0x00000\\] in <filename unknown>:0 \\n  at ha\\.b \\(System\\.Byte\\[\\] A_0, Int32 A_1, Int32 A_2\\) \\[0x00000\\] in <filename unknown>:0 \\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 500 Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\r\\nContent-Type: text/html\\r\\nContent-Length: 769\\r\\nConnection: Close\\r\\n\\r\\n<html>\\r\\n    <head>\\r\\n        <meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=utf-8\\\" />\\r\\n        <title>Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</title>\\r\\n    </head>\\r\\n    <body>\\r\\n        <h1>500 - Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</h1>\\r\\n        <pre>System\\.InvalidOperationException: Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\n  at fp\\.ba \\(Char A_0\\) \\[0x00000\\] in <filename unknown>:0 \\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 500 Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\r\\nContent-Type: text/html\\r\\nContent-Length: 769\\r\\nConnection: Close\\r\\n\\r\\n<html>\\r\\n    <head>\\r\\n        <meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=utf-8\\\" />\\r\\n        <title>Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</title>\\r\\n    </head>\\r\\n    <body>\\r\\n        <h1>500 - Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.</h1>\\r\\n        <pre>System\\.InvalidOperationException: Unexpected new line: \\x05\\x04\\0\\x01\\x02\\xef\\xbf\\xbd\\x05\\x01\\0\\x03\\[CRLF\\]\\.\\n  at f8\\.be \\(Char A_0\\) \\[0x00000\\] in <filename unknown>:0 \\n",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 3 match(es), 0 softmatch(es). Extraction de version disponible."
+}

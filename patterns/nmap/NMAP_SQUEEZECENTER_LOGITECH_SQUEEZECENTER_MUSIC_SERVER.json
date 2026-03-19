@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-squeezecenter-logitech-squeezecenter-music-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Logitech SqueezeCenter music server",
+  "product": "Logitech SqueezeCenter music server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SQUEEZECENTER_LOGITECH_SQUEEZECENTER_MUSIC_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    3483
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_squeezecenter_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ENAME.{1}(.+)JSON.{1}(\\d+)VERS.{1}(.+)UUID.{1}(.+)$",
+          "confidence_delta": 0.3,
+          "version_group": 3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour squeezecenter"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "squeezecenter"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: squeezecenter. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

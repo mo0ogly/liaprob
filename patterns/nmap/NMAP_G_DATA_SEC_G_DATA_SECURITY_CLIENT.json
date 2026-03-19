@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-g-data-sec-g-data-security-client",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "G Data Security client",
+  "product": "G Data Security client",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_G_DATA_SEC_G_DATA_SECURITY_CLIENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x94\\x00\\x00\\x00\\x06\\x02\\x00\\x00\\x00\\xa4\\x00\\x00RSA1\\x00\\x04\\x00\\x00\\x01\\x00\\x01\\x00.{128}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_g-data-sec_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x94\\x00\\x00\\x00\\x06\\x02\\x00\\x00\\x00\\xa4\\x00\\x00RSA1\\x00\\x04\\x00\\x00\\x01\\x00\\x01\\x00.{128}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour g-data-sec"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "g-data-sec"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: g-data-sec. 1 match(es), 0 softmatch(es)."
+}

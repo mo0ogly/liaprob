@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-altiris-agent-altiris-remote-monitoring-agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Altiris remote monitoring agent",
+  "product": "Altiris remote monitoring agent",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ALTIRIS_AGENT_ALTIRIS_REMOTE_MONITORING_AGENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<\\0r\\0e\\0s\\0p\\0o\\0n\\0s\\0e\\0>\\0C\\0o\\0n\\0n\\0e\\0c\\0t\\0e\\0d\\0 \\0t\\0o\\0 [\\0\\d.]*<\\0/\\0r\\0e\\0s\\0p\\0o\\0n\\0s\\0e\\0>\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_altiris-agent_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<\\0r\\0e\\0s\\0p\\0o\\0n\\0s\\0e\\0>\\0C\\0o\\0n\\0n\\0e\\0c\\0t\\0e\\0d\\0 \\0t\\0o\\0 [\\0\\d.]*<\\0/\\0r\\0e\\0s\\0p\\0o\\0n\\0s\\0e\\0>\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour altiris-agent"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "altiris-agent"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: altiris-agent. 1 match(es), 0 softmatch(es)."
+}

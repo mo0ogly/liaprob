@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-efficient-networks-5871-idsl-router-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Efficient Networks 5871 IDSL router telnetd",
+  "product": "Efficient Networks 5871 IDSL router telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_EFFICIENT_NETWORKS_5871_IDSL_ROUTER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nEfficient 5871 IDSL Router \\(5871-601 / 5871-001 HW\\) v([-\\d.]+) Ready\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nEfficient 5871 IDSL Router \\(5871-601 / 5871-001 HW\\) v([-\\d.]+) Ready\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-pcounter-httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Pcounter httpd",
+  "product": "Pcounter httpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PCOUNTER_HTTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 400 Bad Request\\r\\nContent-Type: text/plain\\r\\nContent-Length: 51\\r\\nConnection: close\\r\\n\\r\\nError 400: Bad Request\\nCan not parse request: \\[\\r\\n\\r\\]$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 400 Bad Request\\r\\nContent-Type: text/plain\\r\\nContent-Length: 51\\r\\nConnection: close\\r\\n\\r\\nError 400: Bad Request\\nCan not parse request: \\[\\r\\n\\r\\]$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-trinitycore-trinitycore-game-server-remote-admin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TrinityCore game server remote admin",
+  "product": "TrinityCore game server remote admin",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TRINITYCORE_TRINITYCORE_GAME_SERVER_REMOTE_ADMIN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Wrong IP!$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_trinitycore_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Wrong IP!$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour trinitycore"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "trinitycore"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: trinitycore. 1 match(es), 0 softmatch(es)."
+}

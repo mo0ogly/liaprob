@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-netgear-dg632-router-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Netgear DG632 router ftpd",
+  "product": "Netgear DG632 router ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_NETGEAR_DG632_ROUTER_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:h:netgear:dg632:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 FTPU ready\\.\\r\\n500 Sorry, no such command\\.\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 FTPU ready\\.\\r\\n500 Sorry, no such command\\.\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:netgear:dg632:*:*:*:*:*:*:*:*"
+}

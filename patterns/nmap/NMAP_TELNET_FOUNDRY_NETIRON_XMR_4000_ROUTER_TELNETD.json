@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-foundry-netiron-xmr-4000-router-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Foundry NetIron XMR 4000 router telnetd",
+  "product": "Foundry NetIron XMR 4000 router telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_FOUNDRY_NETIRON_XMR_4000_ROUTER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:foundrynet:netiron_xmr_4000:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\*{60}\\r\\n\\* WARNING ALERT: AUTHORIZED USERS ONLY! +\\*\\r\\n\\* +\\*\\r\\n\\* All activities conducted on this system may be monitored \\*\\r\\n\\* and recorded\\. If you are not an authorized user, log off \\*\\r\\n\\* immediately\\.  Illegal entry, misuse, and / or criminal   \\*\\r\\n\\* activity will be documented and prosecuted to the full   \\*\\r\\n\\* extend of the law\\. +\\*\\r\\n\\*{60}\\r\\n\\r\\n\\r\\nPress <Enter> to accept and continue the login process\\.\\.\\.\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\*{60}\\r\\n\\* WARNING ALERT: AUTHORIZED USERS ONLY! +\\*\\r\\n\\* +\\*\\r\\n\\* All activities conducted on this system may be monitored \\*\\r\\n\\* and recorded\\. If you are not an authorized user, log off \\*\\r\\n\\* immediately\\.  Illegal entry, misuse, and / or criminal   \\*\\r\\n\\* activity will be documented and prosecuted to the full   \\*\\r\\n\\* extend of the law\\. +\\*\\r\\n\\*{60}\\r\\n\\r\\n\\r\\nPress <Enter> to accept and continue the login process\\.\\.\\.\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:foundrynet:netiron_xmr_4000:*:*:*:*:*:*:*:*"
+}

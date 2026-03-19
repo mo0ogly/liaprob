@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-beidpcscd-beidpcscd-belgian-eid-daemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "beidpcscd Belgian eID daemon",
+  "product": "beidpcscd Belgian eID daemon",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BEIDPCSCD_BEIDPCSCD_BELGIAN_EID_DAEMON.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x1e\\xffV\\x92l\\xfbUL\\x87\\xabw\\x1f\\xb2\\n\\xd8\\xef/\\0\\0\\0\\x05Alive\\0\\0\\0\\x011",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_beidpcscd_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x1e\\xffV\\x92l\\xfbUL\\x87\\xabw\\x1f\\xb2\\n\\xd8\\xef/\\0\\0\\0\\x05Alive\\0\\0\\0\\x011",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour beidpcscd"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "beidpcscd"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: beidpcscd. 1 match(es), 0 softmatch(es)."
+}

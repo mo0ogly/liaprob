@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-qaweb-quickaddress-pro-for-the-web",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "QuickAddress Pro for the Web",
+  "product": "QuickAddress Pro for the Web",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_QAWEB_QUICKADDRESS_PRO_FOR_THE_WEB.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^QAS2$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_qaweb_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^QAS2$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour qaweb"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "qaweb"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: qaweb. 1 match(es), 0 softmatch(es)."
+}

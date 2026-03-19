@@ -1,0 +1,87 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-trend-micro-imss-smtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Trend Micro IMSS smtpd",
+  "product": "Trend Micro IMSS smtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_TREND_MICRO_IMSS_SMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 imss-2 ESMTP ready at .*\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 SMTP\\r\\n214-Usage: HELP <topic>\\r\\n214-Topics:\\r\\n214-\\tHELO EHLO MAIL RCPT DATA\\r\\n214-\\tVRFY EXPN RSET NOOP QUIT\\r\\n214 End of HELP info\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 imss-2 ESMTP ready at .*\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 SMTP\\r\\n214-Usage: HELP <topic>\\r\\n214-Topics:\\r\\n214-\\tHELO EHLO MAIL RCPT DATA\\r\\n214-\\tVRFY EXPN RSET NOOP QUIT\\r\\n214 End of HELP info\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-varnish-cli-varnish-cache-cli",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Varnish Cache CLI",
+  "product": "Varnish Cache CLI",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_VARNISH_CLI_VARNISH_CACHE_CLI.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:varnish-cache:varnish:2.1:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^200 \\d+ +\\n-----------------------------\\nVarnish HTTP accelerator CLI.\\n-----------------------------\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^200 \\d+ +\\n-----------------------------\\nVarnish HTTP accelerator CLI.\\n-----------------------------\\n([^,]+),([^,]+),[^\\n]*\\n\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^200 \\d+ +\\n-----------------------------\\nVarnish Cache CLI 1.0\\n-----------------------------\\n([^,]+),([^,]+),[^\\n]*\\n\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^200 \\d+ +\\n-----------------------------\\nVarnish Cache CLI 1.0\\n-----------------------------\\n([^,]+),([^,]+),[^\\n]*\\nvarnish-([\\w._-]+) revision [0-9a-f]+\\n\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n\\n",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^107 59      \\n[a-z]{32}\\n\\nAuthentication required\\.\\n\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_varnish-cli_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 \\d+ +\\n-----------------------------\\nVarnish HTTP accelerator CLI.\\n-----------------------------\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 \\d+ +\\n-----------------------------\\nVarnish HTTP accelerator CLI.\\n-----------------------------\\n([^,]+),([^,]+),[^\\n]*\\n\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 \\d+ +\\n-----------------------------\\nVarnish Cache CLI 1.0\\n-----------------------------\\n([^,]+),([^,]+),[^\\n]*\\n\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 \\d+ +\\n-----------------------------\\nVarnish Cache CLI 1.0\\n-----------------------------\\n([^,]+),([^,]+),[^\\n]*\\nvarnish-([\\w._-]+) revision [0-9a-f]+\\n\\nType 'help' for command list\\.\\nType 'quit' to close CLI session\\.\\n\\n",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^107 59      \\n[a-z]{32}\\n\\nAuthentication required\\.\\n\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour varnish-cli"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "varnish-cli"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: varnish-cli. 5 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:varnish-cache:varnish:2.1:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-metasploit-metasploit-framework-msfd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Metasploit Framework msfd",
+  "product": "Metasploit Framework msfd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_METASPLOIT_METASPLOIT_FRAMEWORK_MSFD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\n.*=\\[ msf v([^\\r\\n]+)\\r?\\n.*\\d+ exploits.*\\d+ payloads.*\\d+ encoders.*\\d+ nops.*msf > $",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_metasploit_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\n.*=\\[ msf v([^\\r\\n]+)\\r?\\n.*\\d+ exploits.*\\d+ payloads.*\\d+ encoders.*\\d+ nops.*msf > $",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour metasploit"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "metasploit"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: metasploit. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

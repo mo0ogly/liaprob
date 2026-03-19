@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-terraria",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TERRARIA",
+  "product": "terraria",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TERRARIA_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0R\\0\\0[\\x01-\\x06]\\0.{6}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_terraria_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0R\\0\\0[\\x01-\\x06]\\0.{6}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour terraria"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "terraria"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: terraria. 1 match(es), 0 softmatch(es)."
+}

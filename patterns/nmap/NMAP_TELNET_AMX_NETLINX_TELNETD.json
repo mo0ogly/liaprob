@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-amx-netlinx-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AMX NetLinx telnetd",
+  "product": "AMX NetLinx telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_AMX_NETLINX_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:harman:amx_firmware:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\r\\nWelcome to NetLinx v([\\d.]+) Copyright AMX ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\r\\nWelcome to NetLinx v([\\d.]+) , AMX LLC\\r\\n>",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\r\\nWelcome to NetLinx v([\\d.]+) Copyright AMX ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\r\\nWelcome to NetLinx v([\\d.]+) , AMX LLC\\r\\n>",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:harman:amx_firmware:{version}:*:*:*:*:*:*:*"
+}

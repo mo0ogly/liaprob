@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ts3-teamspeak-3-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TeamSpeak 3 server",
+  "product": "TeamSpeak 3 server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TS3_TEAMSPEAK_3_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    9987
+  ],
+  "cpe23_template": "cpe:2.3:a:teamspeak:teamspeak3:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ts3_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^........\\x00\\x00\\x02\\x97\\x76\\x8b\\x54\\xad\\x79\\xe3\\xaf\\x87\\xeb\\xaa\\x1a\\x19\\xba\\xcf\\x41\\xe0\\x16\\xa2\\x32\\x6c\\xf3\\xcf\\xf4\\x8e\\x3c\\x44\\x83\\xc8\\x8d\\x51\\x45\\x6f\\x90\\x95\\x23\\x33\\x08\\x86\\x2d\\x40",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^........\\x00\\x00\\x02\\x9bj\\x90O\\xb6/\\xef\\xb3\\xca\\xbf\\xf6L\\x19\\xb6\\xd0V\\xb5\\x14\\xf33Y\\xdc\\xd4\\xf8\\xcd\\x12n\\xc2\\xcb\\x8c\\x15\\x19T\\xde\\xc7v%\\t\\x938\\x18\\(\\xd3W\\xc4U\\xdc\\xd5m\\xf7Z\\xcd~@\\x8e\\x8fN\\x97h",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour ts3"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ts3"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ts3. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:teamspeak:teamspeak3:*:*:*:*:*:*:*:*"
+}

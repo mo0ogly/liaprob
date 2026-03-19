@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-guildwars2-heartbeat-guild-wars-2-game-heartbeat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Guild Wars 2 game heartbeat",
+  "product": "Guild Wars 2 game heartbeat",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GUILDWARS2_HEARTBEAT_GUILD_WARS_2_GAME_HEARTBEAT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x17\\0\\0\\0\\0\\t\\0\\0\\0Heartbeat \\0\\0\\0\\x046\\0\\0\\0\\0\\n\\0\\0\\0Compressed \\0\\0\\0\\x04\\x1a",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_guildwars2-heartbeat_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x17\\0\\0\\0\\0\\t\\0\\0\\0Heartbeat \\0\\0\\0\\x046\\0\\0\\0\\0\\n\\0\\0\\0Compressed \\0\\0\\0\\x04\\x1a",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour guildwars2-heartbeat"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "guildwars2-heartbeat"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: guildwars2-heartbeat. 1 match(es), 0 softmatch(es)."
+}

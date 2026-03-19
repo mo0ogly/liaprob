@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-paloalto-agent-palo-alto-networks-terminal-services-agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Palo Alto Networks Terminal Services agent",
+  "product": "Palo Alto Networks Terminal Services agent",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PALOALTO_AGENT_PALO_ALTO_NETWORKS_TERMINAL_SERVICES_AGENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:paloaltonetworks:terminal_services_agent:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^PTA\\0\\0\\0\\x03\\0 \\0\\0\\0\\0\\0\\0\\$\\0\\0\\0\\x0f\\0\\0N \\0\\0\\x9c\\?\\0\\0\\0\\xc8\\0\\0\\x07\\xd0\\0\\0\\0d\\0\\0N \\0\\0\\0\\0\\r\\0\\0\\0PTA\\0\\0\\0\\x03\\0!\\0\\0\\0\\0\\0\\0\\x08\\0\\0\\0\\x08\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_paloalto-agent_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^PTA\\0\\0\\0\\x03\\0 \\0\\0\\0\\0\\0\\0\\$\\0\\0\\0\\x0f\\0\\0N \\0\\0\\x9c\\?\\0\\0\\0\\xc8\\0\\0\\x07\\xd0\\0\\0\\0d\\0\\0N \\0\\0\\0\\0\\r\\0\\0\\0PTA\\0\\0\\0\\x03\\0!\\0\\0\\0\\0\\0\\0\\x08\\0\\0\\0\\x08\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour paloalto-agent"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "paloalto-agent"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: paloalto-agent. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:paloaltonetworks:terminal_services_agent:*:*:*:*:*:*:*:*"
+}

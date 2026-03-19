@@ -1,0 +1,225 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-socks5",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SOCKS5",
+  "product": "socks5",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SOCKS5_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    199,
+    1080,
+    1090,
+    1095,
+    1100,
+    1105,
+    1109,
+    3128,
+    6588,
+    6660,
+    6661,
+    6662,
+    6663,
+    6664,
+    6665,
+    6666,
+    6667,
+    6668,
+    6669,
+    7777,
+    8000,
+    8008,
+    8010,
+    8080,
+    8088,
+    9481
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\0\\0\\x01.{6}HTTP",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x01",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x02",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x03",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x04",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x05",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x06",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x07",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\x05\\x08",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\x01",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\x02",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\xFF$",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_socks5_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\0\\0\\x01.{6}HTTP",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x01",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x02",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x03",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x04",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x05",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x06",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x07",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\x05\\x08",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\x01",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\x02",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\xFF$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour socks5"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "socks5"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: socks5. 13 match(es), 1 softmatch(es)."
+}

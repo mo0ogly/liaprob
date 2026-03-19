@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netstat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NETSTAT",
+  "product": "netstat",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETSTAT_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Active Internet connections \\(.*\\)\\nProto Recv-Q Send-Q Local Address           Foreign Address         State      \\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Active Internet connections\\nProto Recv-Q Send-Q  Local Address          Foreign Address        \\(state\\)\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netstat_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Active Internet connections \\(.*\\)\\nProto Recv-Q Send-Q Local Address           Foreign Address         State      \\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Active Internet connections\\nProto Recv-Q Send-Q  Local Address          Foreign Address        \\(state\\)\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netstat"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netstat"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netstat. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*"
+}

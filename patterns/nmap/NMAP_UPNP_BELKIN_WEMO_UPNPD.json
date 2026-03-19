@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-upnp-belkin-wemo-upnpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Belkin Wemo upnpd",
+  "product": "Belkin Wemo upnpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_UPNP_BELKIN_WEMO_UPNPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/0\\.0 400 Bad Request\\r\\nSERVER: Unspecified, UPnP/1\\.0, Unspecified\\r\\nCONTENT-LENGTH: 50\\r\\nCONTENT-TYPE: text/html\\r\\n\\r\\n<html><body><h1>400 Bad Request</h1></body></html>",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_upnp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/0\\.0 400 Bad Request\\r\\nSERVER: Unspecified, UPnP/1\\.0, Unspecified\\r\\nCONTENT-LENGTH: 50\\r\\nCONTENT-TYPE: text/html\\r\\n\\r\\n<html><body><h1>400 Bad Request</h1></body></html>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour upnp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "upnp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: upnp. 1 match(es), 0 softmatch(es)."
+}

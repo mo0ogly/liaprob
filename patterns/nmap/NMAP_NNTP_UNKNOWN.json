@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-nntp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NNTP",
+  "product": "nntp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NNTP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_nntp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 [-\\[\\]\\(\\)!,/+:<>@.\\w ]*nntp[-\\[\\]\\(\\)!,/+:<>@.\\w ]*\\r\\n$",
+          "confidence_delta": 0.2,
+          "case_insensitive": true,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 .*posting(?: ok| allowed| permitted)?[ ).]*\\r\\n",
+          "confidence_delta": 0.2,
+          "case_insensitive": true,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour nntp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "nntp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: nntp. 0 match(es), 2 softmatch(es)."
+}

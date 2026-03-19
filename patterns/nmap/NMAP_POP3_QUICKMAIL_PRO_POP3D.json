@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pop3-quickmail-pro-pop3d",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "QuickMail Pro pop3d",
+  "product": "QuickMail Pro pop3d",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POP3_QUICKMAIL_PRO_POP3D.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:apple:mac_os:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK POP3 server ready QuickMail Pro Server for MacOS ([\\d.]+) <[\\w.]+@([-\\w_.]+)>\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pop3_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK POP3 server ready QuickMail Pro Server for MacOS ([\\d.]+) <[\\w.]+@([-\\w_.]+)>\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pop3"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pop3"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pop3. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:apple:mac_os:*:*:*:*:*:*:*:*"
+}

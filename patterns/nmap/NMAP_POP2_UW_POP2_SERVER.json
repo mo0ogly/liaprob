@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pop2-uw-pop2-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "UW POP2 server",
+  "product": "UW POP2 server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POP2_UW_POP2_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:uw:imap_toolkit:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+ POP2 \\[[\\d.]+\\] v([\\w._-]+) server ready\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+ POP2 ([\\w._-]+)(?: \\[[\\d.]+\\])? v([\\w._-]+) server ready\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+ POP2 ([\\w._-]+) ([\\w._-]+) server ready\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pop2_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+ POP2 \\[[\\d.]+\\] v([\\w._-]+) server ready\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+ POP2 ([\\w._-]+)(?: \\[[\\d.]+\\])? v([\\w._-]+) server ready\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+ POP2 ([\\w._-]+) ([\\w._-]+) server ready\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pop2"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pop2"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pop2. 3 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:uw:imap_toolkit:{version}:*:*:*:*:*:*:*"
+}

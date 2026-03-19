@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-d-link-d-500g-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "D-Link D-500G telnetd",
+  "product": "D-Link D-500G telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_D_LINK_D_500G_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:dlink:d-500g:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x03\\xff\\xfb\\x03\\n\\r.*\\n\\r\\n\\rSoftware Release R([-\\w_.]+)\\([^)]+\\)\\n\\rCopyright \\(c\\) 2001-2003 by D-Link, Inc\\.\\n\\r\\n\\rlogin: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x03\\xff\\xfb\\x03\\n\\r.*\\n\\r\\n\\rSoftware Release R([-\\w_.]+)\\([^)]+\\)\\n\\rCopyright \\(c\\) 2001-2003 by D-Link, Inc\\.\\n\\r\\n\\rlogin: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:dlink:d-500g:*:*:*:*:*:*:*:*"
+}

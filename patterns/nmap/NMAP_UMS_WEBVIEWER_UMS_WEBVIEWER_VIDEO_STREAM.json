@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ums-webviewer-ums-webviewer-video-stream",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "UMS WebViewer video stream",
+  "product": "UMS WebViewer video stream",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_UMS_WEBVIEWER_UMS_WEBVIEWER_VIDEO_STREAM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^UMSA\\x14\\0\\0\\0\\x01\\x01\\x01\\0\\0\\0\\0\\0\\x01\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ums-webviewer_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^UMSA\\x14\\0\\0\\0\\x01\\x01\\x01\\0\\0\\0\\0\\0\\x01\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ums-webviewer"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ums-webviewer"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ums-webviewer. 1 match(es), 0 softmatch(es)."
+}

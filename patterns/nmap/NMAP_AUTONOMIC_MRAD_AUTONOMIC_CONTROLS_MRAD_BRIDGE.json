@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-autonomic-mrad-autonomic-controls-mrad-bridge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Autonomic Controls MRAD Bridge",
+  "product": "Autonomic Controls MRAD Bridge",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_AUTONOMIC_MRAD_AUTONOMIC_CONTROLS_MRAD_BRIDGE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    443,
+    444,
+    465,
+    636,
+    989,
+    990,
+    992,
+    993,
+    994,
+    995,
+    1241,
+    1311,
+    2252,
+    3388,
+    3389,
+    4433,
+    4444,
+    5061,
+    6679,
+    6697,
+    8443,
+    8883,
+    9001
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_autonomic-mrad_0",
+      "layer": "TLS_CERT",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1b\\[2J\\x1b\\[2J\\r\\n\\r\\nAutonomic Controls MRAD Bridge version (\\d[\\w.]+) Release\\.\\r\\nMore info found on the Web http://www\\.Autonomic-Controls\\.com\\r\\n\\r\\nType '\\?' for help or 'help <command>' for help on <command>\\.\\r\\n\\r\\n\\r\\nError: Unknown command '\\x01'\\.\\r\\nError: Unknown command '\\x03'\\.\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe TLS_CERT pour autonomic-mrad"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "autonomic-mrad"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: autonomic-mrad. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

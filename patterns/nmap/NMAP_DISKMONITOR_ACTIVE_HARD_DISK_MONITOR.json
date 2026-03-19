@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-diskmonitor-active-hard-disk-monitor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Active@ Hard Disk Monitor",
+  "product": "Active@ Hard Disk Monitor",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DISKMONITOR_ACTIVE_HARD_DISK_MONITOR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^000001a2[0-9a-f]{410}\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^0000019a[0-9a-f]{402}\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_diskmonitor_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^000001a2[0-9a-f]{410}\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0000019a[0-9a-f]{402}\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour diskmonitor"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "diskmonitor"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: diskmonitor. 2 match(es), 0 softmatch(es)."
+}

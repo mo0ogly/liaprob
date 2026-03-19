@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-remotemouse-emote-remote-mouse",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Emote Remote Mouse",
+  "product": "Emote Remote Mouse",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_REMOTEMOUSE_EMOTE_REMOTE_MOUSE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:remotemouse:emote_interactive_studio:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIN 15win nop nop 300$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_remotemouse_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIN 15win nop nop 300$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour remotemouse"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "remotemouse"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: remotemouse. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:remotemouse:emote_interactive_studio:*:*:*:*:*:*:*:*"
+}

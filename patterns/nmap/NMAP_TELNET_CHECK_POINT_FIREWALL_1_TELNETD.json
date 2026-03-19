@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-check-point-firewall-1-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Check Point Firewall-1 telnetd",
+  "product": "Check Point Firewall-1 telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_CHECK_POINT_FIREWALL_1_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:checkpoint:firewall-1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Check Point FireWall-1 authenticated Telnet server running on",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Check Point FireWall-1 authenticated Telnet server running on",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:checkpoint:firewall-1:*:*:*:*:*:*:*:*"
+}

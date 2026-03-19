@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ms-wbt-server-gnome-remote-desktop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "GNOME remote desktop",
+  "product": "GNOME remote desktop",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MS_WBT_SERVER_GNOME_REMOTE_DESKTOP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    515,
+    1028,
+    1068,
+    1503,
+    1720,
+    1935,
+    2040,
+    3388,
+    3389
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x03\\0\\0\\x13\\x0e\\xd0\\0\\0\\0\\0\\0\\x02\\x03\\x08\\0\\x02\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ms-wbt-server_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x03\\0\\0\\x13\\x0e\\xd0\\0\\0\\0\\0\\0\\x02\\x03\\x08\\0\\x02\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ms-wbt-server"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ms-wbt-server"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ms-wbt-server. 1 match(es), 0 softmatch(es)."
+}

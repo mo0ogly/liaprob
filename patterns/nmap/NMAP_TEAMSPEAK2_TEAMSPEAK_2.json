@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-teamspeak2-teamspeak-2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TeamSpeak 2",
+  "product": "TeamSpeak 2",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TEAMSPEAK2_TEAMSPEAK_2.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    8767
+  ],
+  "cpe23_template": "cpe:2.3:a:teamspeak:teamspeak2:2.0.23.19:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_teamspeak2_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xf4\\xbe\\x04\\x00\\x00\\x00\\x00\\x00....\\x02\\x00\\x00\\x00.....([^\\0]+)\\0*.Win32\\0*\\x02\\x00\\x00\\x00\\x17\\x00\\x13\\x00",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xf4\\xbe\\x04\\x00\\x00\\x00\\x00\\x00....\\x02\\x00\\x00\\x00.....([^\\0]+)\\0*.Linux\\0*\\x02\\x00\\x00\\x00\\x17\\x00\\x13\\x00",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xf4\\xbe\\x04\\x00\\x00\\x00\\x00\\x00....\\x02\\x00\\x00\\x00....\\0{60}.{356}$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour teamspeak2"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "teamspeak2"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: teamspeak2. 3 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:teamspeak:teamspeak2:2.0.23.19:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-xwall-smtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "XWall smtpd",
+  "product": "XWall smtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_XWALL_SMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 (\\S+) ESMTP XWall v(\\d\\S+)",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 (\\S+) ESMTP XWall v(\\d\\S+)",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

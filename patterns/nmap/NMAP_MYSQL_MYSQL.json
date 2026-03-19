@@ -1,0 +1,347 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-mysql-mysql",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MySQL",
+  "product": "MySQL",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MYSQL_MYSQL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    21,
+    23,
+    35,
+    43,
+    79,
+    98,
+    110,
+    113,
+    119,
+    199,
+    214,
+    264,
+    449,
+    505,
+    510,
+    540,
+    587,
+    616,
+    628,
+    666,
+    731,
+    771,
+    782,
+    989,
+    990,
+    992,
+    995,
+    1000,
+    1010,
+    1040,
+    1041,
+    1042,
+    1043,
+    1080,
+    1212,
+    1220,
+    1248,
+    1302,
+    1400,
+    1432,
+    1467,
+    1501,
+    1505,
+    1666,
+    1687,
+    1688,
+    2010,
+    2024,
+    2600,
+    3000,
+    3005,
+    3128,
+    3310,
+    3333,
+    3940,
+    4155,
+    5000,
+    5400,
+    5432,
+    5555,
+    5570,
+    6112,
+    6432,
+    6667,
+    6668,
+    6669,
+    6670,
+    7144,
+    7145,
+    7200,
+    7780,
+    8000,
+    8138,
+    9000,
+    9001,
+    9002,
+    9003,
+    9801,
+    11371,
+    11965,
+    13720,
+    15000,
+    15001,
+    15002,
+    18086,
+    19150,
+    26214,
+    26470,
+    30444,
+    31416,
+    34012,
+    56667
+  ],
+  "cpe23_template": "cpe:2.3:a:mysql:mysql:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.?\\0\\0\\0\\xff..Host .* is not allowed to connect to this MySQL server$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\xff..Too many connections",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\xff..Host .* is blocked because of many connection errors",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\xff..Le h\\xf4te '[-.\\w]+' n'est pas authoris\\xe9 \\xe0 se connecter \\xe0 ce serveur MySQL$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\xff..Host hat keine Berechtigung, eine Verbindung zu diesem MySQL Server herzustellen\\.",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\xff..Host '[-\\w_.]+' hat keine Berechtigung, sich mit diesem MySQL-Server zu verbinden",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\xff..Al sistema '[-.\\w]+' non e` consentita la connessione a questo server MySQL$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0...Servidor '[-.\\w]+' est\\xe1 bloqueado por muchos errores de conexi\\xf3n\\.  Desbloquear con 'mysqladmin flush-hosts'",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0...'Host' '[-.\\w]+' n\\xe3o tem permiss\\xe3o para se conectar com este servidor MySQL",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0.(3\\.[-_~.+\\w]+)\\0.*\\x08\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\x0a(3\\.[-_~.+\\w]+)\\0...\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\x0a(4\\.[-_~.+\\w]+)\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\x0a(5\\.[-_~.+\\w]+)\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\x0a(6\\.[-_~.+\\w]+)\\0...\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\x0a(8\\.[-_~.+\\w]+)\\0....",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\0\\0\\xffj\\x04'[\\d.]+' .* MySQL",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_mysql_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.?\\0\\0\\0\\xff..Host .* is not allowed to connect to this MySQL server$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\xff..Too many connections",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\xff..Host .* is blocked because of many connection errors",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\xff..Le h\\xf4te '[-.\\w]+' n'est pas authoris\\xe9 \\xe0 se connecter \\xe0 ce serveur MySQL$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\xff..Host hat keine Berechtigung, eine Verbindung zu diesem MySQL Server herzustellen\\.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\xff..Host '[-\\w_.]+' hat keine Berechtigung, sich mit diesem MySQL-Server zu verbinden",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\xff..Al sistema '[-.\\w]+' non e` consentita la connessione a questo server MySQL$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0...Servidor '[-.\\w]+' est\\xe1 bloqueado por muchos errores de conexi\\xf3n\\.  Desbloquear con 'mysqladmin flush-hosts'",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0...'Host' '[-.\\w]+' n\\xe3o tem permiss\\xe3o para se conectar com este servidor MySQL",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0.(3\\.[-_~.+\\w]+)\\0.*\\x08\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\x0a(3\\.[-_~.+\\w]+)\\0...\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\x0a(4\\.[-_~.+\\w]+)\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\x0a(5\\.[-_~.+\\w]+)\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\x0a(6\\.[-_~.+\\w]+)\\0...\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\x0a(8\\.[-_~.+\\w]+)\\0....",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\0\\0\\xffj\\x04'[\\d.]+' .* MySQL",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour mysql"
+    },
+    {
+      "id": "nmap_mysql_1",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x10\\0\\0\\x01\\xff\\x13\\x04Bad handshake$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour mysql"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "mysql"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: mysql. 17 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:mysql:mysql:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-slmp-mitsubishi-plc-slmp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Mitsubishi PLC SLMP",
+  "product": "Mitsubishi PLC SLMP",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SLMP_MITSUBISHI_PLC_SLMP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    130,
+    427,
+    1352,
+    1549,
+    1755,
+    1972,
+    5001,
+    7171,
+    8728,
+    9090,
+    22001
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_slmp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xd4\\0MP\\x04\\0\\0\\0TNM\\x0b\\0P\\0\\0\\0.......",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xd4\\0MP\\x04\\0\\0\\0TNM\\x0b\\0P\\0\\0\\0.......",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour slmp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "slmp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: slmp. 0 match(es), 2 softmatch(es)."
+}

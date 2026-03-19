@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-softbank-trio-1-wap-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Softbank Trio 1 WAP telnetd",
+  "product": "Softbank Trio 1 WAP telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_SOFTBANK_TRIO_1_WAP_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01AMBIT VoIP TRIO, ([\\w._/]+), MAC:([0-9A-F]{12}),VOIP FLG=1\\n\\r\\n\\rInternational numbers routed to VoIP\\.\\n\\r\\n\\rLogin: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01AMBIT VoIP TRIO, ([\\w._/]+), MAC:([0-9A-F]{12}),VOIP FLG=1\\n\\r\\n\\rInternational numbers routed to VoIP\\.\\n\\r\\n\\rLogin: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

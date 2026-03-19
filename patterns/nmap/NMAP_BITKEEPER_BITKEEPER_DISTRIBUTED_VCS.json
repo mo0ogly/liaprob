@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bitkeeper-bitkeeper-distributed-vcs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "BitKeeper distributed VCS",
+  "product": "BitKeeper distributed VCS",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BITKEEPER_BITKEEPER_DISTRIBUTED_VCS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:bitmover:bitkeeper:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^@SERVER INFO@\\nPROTOCOL=([\\d.]+)\\nVERSION=bk-([\\w._-]+)\\nUTC=\\d+\\nTIME_T=\\d+\\nROOT=([^\\n]+)\\nUSER=(?:[^\\n]+)\\nHOST=(?:[^\\n]+)\\nREALUSER=(?:[^\\n]+)\\nREALHOST=([^\\n]+)\\nPLATFORM=([^\\n]+)\\n",
+      "confidence_delta": 0.5,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bitkeeper_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^@SERVER INFO@\\nPROTOCOL=([\\d.]+)\\nVERSION=bk-([\\w._-]+)\\nUTC=\\d+\\nTIME_T=\\d+\\nROOT=([^\\n]+)\\nUSER=(?:[^\\n]+)\\nHOST=(?:[^\\n]+)\\nREALUSER=(?:[^\\n]+)\\nREALHOST=([^\\n]+)\\nPLATFORM=([^\\n]+)\\n",
+          "confidence_delta": 0.5,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour bitkeeper"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bitkeeper"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bitkeeper. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:bitmover:bitkeeper:{version}:*:*:*:*:*:*:*"
+}

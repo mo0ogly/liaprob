@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-mitel-3300-pbx-controller-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Mitel 3300 PBX controller ftpd",
+  "product": "Mitel 3300 PBX controller ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_MITEL_3300_PBX_CONTROLLER_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 FTP server \\(ver 1\\.0\\) ready\\.\\r\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 FTP server \\(ver 1\\.0\\) ready\\.\\r\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

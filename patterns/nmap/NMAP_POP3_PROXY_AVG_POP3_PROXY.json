@@ -1,0 +1,104 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pop3-proxy-avg-pop3-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AVG pop3 proxy",
+  "product": "AVG pop3 proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POP3_PROXY_AVG_POP3_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:avg:anti-virus:{version}_beta:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK AVG POP3 Proxy Server Beta - ([\\d/.]+) \\[[\\d.]+\\]\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK AVG POP3 Proxy Server ([\\d/.]+) \\[[\\w/.]+\\]\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK AVG POP3 Proxy Server <[\\w.]+@[-\\w_.]+> ([\\d/.]+) \\[[\\d/.]+\\]\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^-ERR AVG POP3 Proxy Server: Cannot connect to the mail server!\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK AVG POP3 Proxy Server <[\\d.]+@([-\\w_.]+)> ([\\d.]+)/[\\d.]+ \\[[\\d/.]+\\]\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pop3-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK AVG POP3 Proxy Server Beta - ([\\d/.]+) \\[[\\d.]+\\]\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK AVG POP3 Proxy Server ([\\d/.]+) \\[[\\w/.]+\\]\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK AVG POP3 Proxy Server <[\\w.]+@[-\\w_.]+> ([\\d/.]+) \\[[\\d/.]+\\]\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^-ERR AVG POP3 Proxy Server: Cannot connect to the mail server!\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK AVG POP3 Proxy Server <[\\d.]+@([-\\w_.]+)> ([\\d.]+)/[\\d.]+ \\[[\\d/.]+\\]\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pop3-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pop3-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pop3-proxy. 5 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:avg:anti-virus:{version}_beta:*:*:*:*:*:*:*"
+}

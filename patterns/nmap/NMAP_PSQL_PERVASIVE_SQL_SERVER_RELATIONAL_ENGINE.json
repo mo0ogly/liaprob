@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-psql-pervasive-sql-server-relational-engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Pervasive.SQL Server - Relational Engine",
+  "product": "Pervasive.SQL Server - Relational Engine",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PSQL_PERVASIVE_SQL_SERVER_RELATIONAL_ENGINE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1583,
+    3351
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0{255}",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0Server string for PARC version 1 Wire Encryption version 1\\0",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_psql_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0{255}",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0Server string for PARC version 1 Wire Encryption version 1\\0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour psql"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "psql"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: psql. 2 match(es), 0 softmatch(es)."
+}

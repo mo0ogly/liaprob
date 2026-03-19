@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pc-duo-vector-pc-duo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Vector PC-Duo",
+  "product": "Vector PC-Duo",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PC_DUO_VECTOR_PC_DUO.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1505
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pc-duo_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.........(.*)\\0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour pc-duo"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pc-duo"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pc-duo. 1 match(es), 0 softmatch(es)."
+}

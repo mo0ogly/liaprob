@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-giop-cisco-ons-corba-name-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco ONS CORBA name server",
+  "product": "Cisco ONS CORBA name server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GIOP_CISCO_ONS_CORBA_NAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^GIOP\\x01.\\0\\x01\\0\\0\\x008\\0\\0\\0\\0\\xdf\\xdf\\xdf\\xdf\\0\\0\\0\\x02\\0\\0\\0\\x1eIDL:omg\\.org/CORBA/MARSHAL:1\\.0\\0\\xdf\\xdf\\0\\0\\x13\\x8a\\0\\0\\0\\x01",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_giop_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GIOP\\x01.\\0\\x01\\0\\0\\x008\\0\\0\\0\\0\\xdf\\xdf\\xdf\\xdf\\0\\0\\0\\x02\\0\\0\\0\\x1eIDL:omg\\.org/CORBA/MARSHAL:1\\.0\\0\\xdf\\xdf\\0\\0\\x13\\x8a\\0\\0\\0\\x01",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour giop"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "giop"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: giop. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ndmp-symantec-veritas-backup-exec-ndmp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Symantec/Veritas Backup Exec ndmp",
+  "product": "Symantec/Veritas Backup Exec ndmp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NDMP_SYMANTEC_VERITAS_BACKUP_EXEC_NDMP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:symantec:veritas_backup_exec:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80\\0\\0\\x24\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x03\\0\\0\\0\\x00$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ndmp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\0\\0\\x24\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x03\\0\\0\\0\\x00$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ndmp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ndmp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ndmp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:symantec:veritas_backup_exec:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,152 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-iis-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IIS ftpd",
+  "product": "IIS ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_IIS_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    261,
+    271,
+    322,
+    324,
+    443,
+    444,
+    448,
+    465,
+    515,
+    548,
+    563,
+    585,
+    587,
+    636,
+    684,
+    853,
+    989,
+    990,
+    992,
+    993,
+    994,
+    995,
+    1111,
+    1241,
+    1311,
+    1443,
+    2000,
+    2221,
+    2252,
+    2376,
+    2401,
+    2443,
+    2627,
+    3000,
+    3443,
+    3493,
+    4433,
+    4443,
+    4444,
+    4911,
+    5061,
+    5443,
+    5550,
+    5868,
+    5986,
+    6251,
+    6443,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    6679,
+    6697,
+    7000,
+    7210,
+    7272,
+    7443,
+    8009,
+    8181,
+    8194,
+    8443,
+    8531,
+    8883,
+    9001,
+    9443,
+    10443,
+    12345,
+    14443,
+    14690,
+    15002,
+    22490,
+    44443,
+    60443
+  ],
+  "cpe23_template": "cpe:2.3:a:microsoft:internet_information_services:7:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* ==>'s unimplemented\\)\\.\\r\\n    ABOR \\r\\n    ACCT \\r\\n    ADAT \\*\\r\\n    ALLO \\r\\n    APPE \\r\\n    AUTH \\r\\n    CCC \\r\\n    CDUP \\r\\n    CWD \\r\\n    DELE \\r\\n    ENC \\*\\r\\n    EPRT \\r\\n    EPSV \\r\\n    FEAT \\r\\n    HELP \\r\\n    HOST \\r\\n    LANG \\r\\n    LIST \\r\\n    MDTM \\r\\n    MIC \\*\\r\\n    MKD \\r\\n    MODE \\r\\n    NLST \\r\\n    NOOP \\r\\n    OPTS \\r\\n    PASS \\r\\n    PASV \\r\\n    PBSZ \\r\\n    PORT \\r\\n    PROT \\r\\n    PWD \\r\\n    QUIT \\r\\n    REIN \\r\\n    REST \\r\\n    RETR \\r\\n    RMD \\r\\n    RNFR \\r\\n    RNTO \\r\\n    SITE \\r\\n    SIZE \\r\\n    SMNT \\r\\n    STAT \\r\\n    STOR \\r\\n    STOU \\r\\n    STRU \\r\\n    SYST \\r\\n    TYPE \\r\\n    USER \\r\\n    XCUP \\r\\n    XCWD \\r\\n    XMKD \\r\\n    XPWD \\r\\n    XRMD \\r\\n214 HELP command successful\\.\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* ==>'s unimplemented\\)\\.\\r\\n    ABOR \\r\\n    ACCT \\r\\n    ADAT \\*\\r\\n    ALLO \\r\\n    APPE \\r\\n    AUTH \\r\\n    CCC \\r\\n    CDUP \\r\\n    CWD \\r\\n    DELE \\r\\n    ENC \\*\\r\\n    EPRT \\r\\n    EPSV \\r\\n    FEAT \\r\\n    HELP \\r\\n    HOST \\r\\n    LANG \\r\\n    LIST \\r\\n    MDTM \\r\\n    MIC \\*\\r\\n    MKD \\r\\n    MODE \\r\\n    NLST \\r\\n    NOOP \\r\\n    OPTS \\r\\n    PASS \\r\\n    PASV \\r\\n    PBSZ \\r\\n    PORT \\r\\n    PROT \\r\\n    PWD \\r\\n    QUIT \\r\\n    REIN \\r\\n    REST \\r\\n    RETR \\r\\n    RMD \\r\\n    RNFR \\r\\n    RNTO \\r\\n    SITE \\r\\n    SIZE \\r\\n    SMNT \\r\\n    STAT \\r\\n    STOR \\r\\n    STOU \\r\\n    STRU \\r\\n    SYST \\r\\n    TYPE \\r\\n    USER \\r\\n    XCUP \\r\\n    XCWD \\r\\n    XMKD \\r\\n    XPWD \\r\\n    XRMD \\r\\n214 HELP command successful\\.\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    },
+    {
+      "id": "nmap_ftp_1",
+      "layer": "TLS_CERT",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 \\r\\n451 The parameter is incorrect\\. \\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n451 The parameter is incorrect\\. \\r\\n",
+          "confidence_delta": 0.25,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe TLS_CERT pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 2 match(es), 1 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:microsoft:internet_information_services:7:*:*:*:*:*:*:*"
+}

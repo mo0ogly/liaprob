@@ -1,0 +1,199 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-echo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ECHO",
+  "product": "echo",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ECHO_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    13,
+    21,
+    25,
+    37,
+    42,
+    79,
+    113,
+    119,
+    123,
+    161,
+    260,
+    261,
+    271,
+    322,
+    324,
+    443,
+    444,
+    448,
+    465,
+    515,
+    548,
+    563,
+    585,
+    587,
+    636,
+    684,
+    853,
+    989,
+    990,
+    992,
+    993,
+    994,
+    995,
+    1111,
+    1241,
+    1311,
+    1443,
+    2000,
+    2221,
+    2252,
+    2376,
+    2401,
+    2443,
+    2627,
+    3000,
+    3401,
+    3443,
+    3493,
+    4433,
+    4443,
+    4444,
+    4911,
+    5061,
+    5353,
+    5443,
+    5550,
+    5868,
+    5986,
+    6251,
+    6443,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    6679,
+    6697,
+    7000,
+    7210,
+    7272,
+    7443,
+    8009,
+    8181,
+    8194,
+    8443,
+    8531,
+    8883,
+    9001,
+    9100,
+    9443,
+    10443,
+    12345,
+    14443,
+    14690,
+    15002,
+    20547,
+    22490,
+    44443,
+    60443
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HELP\\r\\n$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xcc\\x01\\0\\x0b@\\x02\\0\\0G\\xee",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_echo_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^help\\r\\n\\r\\n$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xe3\\x00\\x04\\xfa\\x00\\x01\\x00\\x00\\x00\\x01\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\xc5\\x4f\\x23\\x4b\\x71\\xb1\\x52\\xf3$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0\\x82\\0/\\x02\\x01\\0\\x04\\x06public\\xa0\\x82\\0\\x20\\x02\\x04\\x4c\\x33\\xa7\\x56\\x02\\x01\\0\\x02\\x01\\0\\x30\\x82\\0\\x10\\x30\\x82\\0\\x0c\\x06\\x08\\x2b\\x06\\x01\\x02\\x01\\x01\\x05\\0\\x05\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x30\\x3a\\x02\\x01\\x03\\x30\\x0f\\x02\\x02\\x4a\\x69\\x02\\x03\\0\\xff\\xe3\\x04\\x01\\x04\\x02\\x01\\x03\\x04\\x10\\x30\\x0e\\x04\\0\\x02\\x01\\0\\x02\\x01\\0\\x04\\0\\x04\\0\\x04\\0\\x30\\x12\\x04\\0\\x04\\0\\xa0\\x0c\\x02\\x02\\x37\\xf0\\x02\\x01\\0\\x02\\x01\\0\\x30\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour echo"
+    },
+    {
+      "id": "nmap_echo_1",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HELP\\r\\n$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xcc\\x01\\0\\x0b@\\x02\\0\\0G\\xee",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour echo"
+    },
+    {
+      "id": "nmap_echo_2",
+      "layer": "TLS_CERT",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x16\\x03\\0\\0S\\x01\\0\\0O\\x03\\0\\?G\\xd7\\xf7\\xba,\\xee\\xea\\xb2`~\\xf3\\0\\xfd\\x82\\{\\xb9\\xd5\\x96\\xc8w\\x9b\\xe6\\xc4\\xdb<=\\xdbo\\xef\\x10n\\0\\0\\(\\0\\x16\\0\\x13\\0\\n",
+          "confidence_delta": 0.25,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe TLS_CERT pour echo"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "echo"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: echo. 6 match(es), 1 softmatch(es)."
+}

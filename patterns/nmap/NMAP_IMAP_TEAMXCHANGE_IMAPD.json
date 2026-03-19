@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-imap-teamxchange-imapd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TeamXchange imapd",
+  "product": "TeamXchange imapd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IMAP_TEAMXCHANGE_IMAPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\* OK TeamXchange IMAP4rev1 server \\(([\\w._-]+)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_imap_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* OK TeamXchange IMAP4rev1 server \\(([\\w._-]+)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour imap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "imap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: imap. 1 match(es), 0 softmatch(es)."
+}

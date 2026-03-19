@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pc-anywhere-symantec-pcanywhere",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Symantec pcAnywhere",
+  "product": "Symantec pcAnywhere",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PC_ANYWHERE_SYMANTEC_PCANYWHERE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    130,
+    427,
+    1352,
+    1972,
+    5632,
+    7171,
+    8728,
+    22001
+  ],
+  "cpe23_template": "cpe:2.3:a:symantec:pcanywhere:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "\\x1bY2\\0\\x01\\x03B\\0\\0\\x01\\0\\x14....................\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pc-anywhere_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x1bY2\\0\\x01\\x03B\\0\\0\\x01\\0\\x14....................\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pc-anywhere"
+    },
+    {
+      "id": "nmap_pc-anywhere_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NR([^_]*)_*AHM_3___\\0$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour pc-anywhere"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pc-anywhere"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pc-anywhere. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:symantec:pcanywhere:*:*:*:*:*:*:*:*"
+}

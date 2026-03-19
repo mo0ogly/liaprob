@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-imap-classic-hamster-imapd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Classic Hamster imapd",
+  "product": "Classic Hamster imapd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IMAP_CLASSIC_HAMSTER_IMAPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\* OK IMAP4rev1 Server Classic Hamster (?:Vr.|Version) [\\d.]+ \\(Build ([\\d.]+)\\) greets you!\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_imap_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* OK IMAP4rev1 Server Classic Hamster (?:Vr.|Version) [\\d.]+ \\(Build ([\\d.]+)\\) greets you!\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour imap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "imap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: imap. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

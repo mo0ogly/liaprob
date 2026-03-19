@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-directfb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DIRECTFB",
+  "product": "directfb",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DIRECTFB_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    3333,
+    19700,
+    19800,
+    59100
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x1c\\0\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0\\xd1a\\x91\\x03\\x05\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_directfb_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1c\\0\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0\\xd1a\\x91\\x03\\x05\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour directfb"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "directfb"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: directfb. 1 match(es), 0 softmatch(es)."
+}

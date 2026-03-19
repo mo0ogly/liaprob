@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-cops-common-open-policy-service-cops",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Common Open Policy Service (COPS)",
+  "product": "Common Open Policy Service (COPS)",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_COPS_COMMON_OPEN_POLICY_SERVICE_COPS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x10\\x06[\\x80-\\xff].......\\x0b\\x01([\\w._-]+)\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_cops_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x10\\x06[\\x80-\\xff].......\\x0b\\x01([\\w._-]+)\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour cops"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "cops"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: cops. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

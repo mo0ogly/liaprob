@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-digifort-analytics-digifort-enterprise-analytics",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Digifort Enterprise analytics",
+  "product": "Digifort Enterprise analytics",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DIGIFORT_ANALYTICS_DIGIFORT_ENTERPRISE_ANALYTICS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:digifort:digifort:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xd1Q\\xf0'\\0\\0\\0A\\x01\\x15CMD_ANALYTICS_VERSION\\0\\0\\0&\\x01\\x01\\0\\0\\0\\x07Version\\x08\\x14\\0\\0\\0DIGIFORT ([\\w._ -]+)\\xd1Q\\xf0'\\0\\0\\0I\\x01\\x13CMD_ANALYTICS_NONCE\\0\\0\\0\\x30\\x01\\x01\\0\\0\\0\\x05NOnce\\x08 \\0\\0\\0\\x30CD6DD9A883431A881BC14DE48F0F892\\xd1Q\\xf0'\\0\\0\\0\\x18\\x01\\x12CMD_ANALYTICS_PING\\0\\0\\0\\0\\xd1Q\\xf0'\\0\\0\\0\\x18\\x01\\x12CMD_ANALYTICS_PING\\0\\0\\0\\0$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_digifort-analytics_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xd1Q\\xf0'\\0\\0\\0A\\x01\\x15CMD_ANALYTICS_VERSION\\0\\0\\0&\\x01\\x01\\0\\0\\0\\x07Version\\x08\\x14\\0\\0\\0DIGIFORT ([\\w._ -]+)\\xd1Q\\xf0'\\0\\0\\0I\\x01\\x13CMD_ANALYTICS_NONCE\\0\\0\\0\\x30\\x01\\x01\\0\\0\\0\\x05NOnce\\x08 \\0\\0\\0\\x30CD6DD9A883431A881BC14DE48F0F892\\xd1Q\\xf0'\\0\\0\\0\\x18\\x01\\x12CMD_ANALYTICS_PING\\0\\0\\0\\0\\xd1Q\\xf0'\\0\\0\\0\\x18\\x01\\x12CMD_ANALYTICS_PING\\0\\0\\0\\0$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour digifort-analytics"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "digifort-analytics"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: digifort-analytics. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:digifort:digifort:{version}:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-login-ataman-atrls-rlogind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ataman ATRLS rlogind",
+  "product": "Ataman ATRLS rlogind",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LOGIN_ATAMAN_ATRLS_RLOGIND.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^A connection was attempted on an illegal port\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_login_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^A connection was attempted on an illegal port\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour login"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "login"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: login. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

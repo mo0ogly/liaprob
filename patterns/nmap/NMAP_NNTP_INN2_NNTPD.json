@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-nntp-inn2-nntpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "inn2 nntpd",
+  "product": "inn2 nntpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NNTP_INN2_NNTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^502 Could not get your access name\\.  Goodbye\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_nntp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^502 Could not get your access name\\.  Goodbye\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour nntp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "nntp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: nntp. 1 match(es), 0 softmatch(es)."
+}

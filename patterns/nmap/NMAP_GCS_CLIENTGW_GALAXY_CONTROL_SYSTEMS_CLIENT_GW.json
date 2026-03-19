@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-gcs-clientgw-galaxy-control-systems-client-gw",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Galaxy Control Systems Client GW",
+  "product": "Galaxy Control Systems Client GW",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GCS_CLIENTGW_GALAXY_CONTROL_SYSTEMS_CLIENT_GW.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\0\\0\\0....$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_gcs-clientgw_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\0\\0\\0....$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour gcs-clientgw"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "gcs-clientgw"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: gcs-clientgw. 1 match(es), 0 softmatch(es)."
+}

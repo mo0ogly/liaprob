@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-millennium-millennium-process-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Millennium Process Server",
+  "product": "Millennium Process Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MILLENNIUM_MILLENNIUM_PROCESS_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\0\\0\\0\\x1a\\0\\0\\0Millennium Process Server\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_millennium_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0\\0\\0\\x1a\\0\\0\\0Millennium Process Server\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour millennium"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "millennium"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: millennium. 1 match(es), 0 softmatch(es)."
+}

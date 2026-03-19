@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-lscp-linuxsampler",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "LinuxSampler",
+  "product": "LinuxSampler",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LSCP_LINUXSAMPLER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    8888
+  ],
+  "cpe23_template": "cpe:2.3:a:linuxsampler:linuxsampler:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DESCRIPTION: LinuxSampler - modular, streaming capable sampler\\r\\nVERSION: ([\\d.]+)\\r\\nPROTOCOL_VERSION: ([\\d.]+)\\r\\n",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_lscp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DESCRIPTION: LinuxSampler - modular, streaming capable sampler\\r\\nVERSION: ([\\d.]+)\\r\\nPROTOCOL_VERSION: ([\\d.]+)\\r\\n",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour lscp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "lscp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: lscp. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:linuxsampler:linuxsampler:{version}:*:*:*:*:*:*:*"
+}

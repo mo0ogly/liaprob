@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pop3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "POP3",
+  "product": "pop3",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POP3_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pop3_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK [^<]+ <[\\d.]+@([\\w.-]+)>\\r\\n$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK [-\\[\\]\\(\\)!,/+:<>@.\\w ]+\\r\\n$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pop3"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pop3"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pop3. 0 match(es), 2 softmatch(es)."
+}

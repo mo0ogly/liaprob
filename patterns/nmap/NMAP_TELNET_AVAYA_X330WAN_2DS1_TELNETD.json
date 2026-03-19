@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-avaya-x330wan-2ds1-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Avaya X330WAN-2DS1 telnetd",
+  "product": "Avaya X330WAN-2DS1 telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_AVAYA_X330WAN_2DS1_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:avaya:x330wan-2ds1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\r\\n\\r\\n\\t\\tWelcome to X330WAN-2DS1\\r\\n\\t\\tSW version ([\\d.]+)\\r\\n\\r\\n\\r\\nLogin: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\r\\n\\r\\n\\t\\tWelcome to X330WAN-2DS1\\r\\n\\t\\tSW version ([\\d.]+)\\r\\n\\r\\n\\r\\nLogin: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:avaya:x330wan-2ds1:*:*:*:*:*:*:*:*"
+}

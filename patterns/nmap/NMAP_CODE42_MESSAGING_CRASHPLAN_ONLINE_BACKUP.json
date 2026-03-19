@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-code42-messaging-crashplan-online-backup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CrashPlan online backup",
+  "product": "CrashPlan online backup",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CODE42_MESSAGING_CRASHPLAN_ONLINE_BACKUP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80c\\0\\0\\x00622996\\|com\\.code42\\.messaging\\.security\\.DHPublicKeyMessageY\\xd4\\0\\0\\0.0\\x81.0\\x81.\\x06\\t\\*\\x86H\\x86\\xf7\\r\\x01\\x03\\x010\\x81.\\x02A\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80c\\0\\0\\x00A-18782\\|com\\.code42\\.messaging\\.security\\.SecurityProviderReadyMessage\\xb6\\xa2\\0\\0\\0\\\"\\x01\\0................................$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_code42-messaging_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80c\\0\\0\\x00622996\\|com\\.code42\\.messaging\\.security\\.DHPublicKeyMessageY\\xd4\\0\\0\\0.0\\x81.0\\x81.\\x06\\t\\*\\x86H\\x86\\xf7\\r\\x01\\x03\\x010\\x81.\\x02A\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80c\\0\\0\\x00A-18782\\|com\\.code42\\.messaging\\.security\\.SecurityProviderReadyMessage\\xb6\\xa2\\0\\0\\0\\\"\\x01\\0................................$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour code42-messaging"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "code42-messaging"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: code42-messaging. 2 match(es), 0 softmatch(es)."
+}

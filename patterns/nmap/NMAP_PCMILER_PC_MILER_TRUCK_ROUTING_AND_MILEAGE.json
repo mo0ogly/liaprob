@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pcmiler-pc-miler-truck-routing-and-mileage",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "PC*MILER truck routing and mileage",
+  "product": "PC*MILER truck routing and mileage",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PCMILER_PC_MILER_TRUCK_ROUTING_AND_MILEAGE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ALK PCMILER SERVER READY\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pcmiler_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ALK PCMILER SERVER READY\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pcmiler"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pcmiler"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pcmiler. 1 match(es), 0 softmatch(es)."
+}

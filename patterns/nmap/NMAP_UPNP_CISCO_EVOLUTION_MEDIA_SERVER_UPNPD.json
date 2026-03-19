@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-upnp-cisco-evolution-media-server-upnpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco Evolution Media Server upnpd",
+  "product": "Cisco Evolution Media Server upnpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_UPNP_CISCO_EVOLUTION_MEDIA_SERVER_UPNPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    88,
+    443,
+    2100,
+    4443,
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    8005,
+    8006,
+    8007,
+    8008,
+    8009,
+    8010,
+    8080,
+    8081,
+    8082,
+    8083,
+    8084,
+    8085,
+    8443,
+    8880,
+    8881,
+    8882,
+    8883,
+    8884,
+    8885,
+    8886,
+    8887,
+    8888,
+    9999,
+    49152
+  ],
+  "cpe23_template": "cpe:2.3:a:cisco:evolution_media_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_upnp_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.[01] \\d\\d\\d (?:[^\\r\\n]*\\r\\n)*?SERVER: Linux/(([\\d.]+)-[\\d.]+) UPnP/([\\d.]+) Evolution Media Server DLNADOC/([\\d.]+)\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour upnp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "upnp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: upnp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:cisco:evolution_media_server:*:*:*:*:*:*:*:*"
+}

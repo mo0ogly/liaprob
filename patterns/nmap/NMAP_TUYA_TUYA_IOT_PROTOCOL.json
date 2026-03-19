@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-tuya-tuya-iot-protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Tuya IoT protocol",
+  "product": "Tuya IoT protocol",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TUYA_TUYA_IOT_PROTOCOL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    2068,
+    2105,
+    2967,
+    5000,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    13783
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0U\\xaa\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\0.\\0\\0\\0\\x00([\\w.]+)\\0.*\\0\\0\\xaaU$",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_tuya_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0U\\xaa\\0\\0.*\\0\\0\\xaaU$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0U\\xaa\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\0.\\0\\0\\0\\x00([\\w.]+)\\0.*\\0\\0\\xaaU$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour tuya"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "tuya"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: tuya. 1 match(es), 1 softmatch(es)."
+}

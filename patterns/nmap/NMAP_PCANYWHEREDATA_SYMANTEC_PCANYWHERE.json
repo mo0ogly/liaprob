@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pcanywheredata-symantec-pcanywhere",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Symantec pcAnywhere",
+  "product": "Symantec pcAnywhere",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PCANYWHEREDATA_SYMANTEC_PCANYWHERE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:symantec:pcanywhere:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0X\\x08\\0\\}\\x08\\r\\n\\0\\.\\x08.*\\.\\.\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pcanywheredata_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0X\\x08\\0\\}\\x08\\r\\n\\0\\.\\x08.*\\.\\.\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pcanywheredata"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pcanywheredata"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pcanywheredata. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:symantec:pcanywhere:*:*:*:*:*:*:*:*"
+}

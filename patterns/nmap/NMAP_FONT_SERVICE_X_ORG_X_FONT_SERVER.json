@@ -1,0 +1,93 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-font-service-x-org-x-font-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "X.Org X Font Server",
+  "product": "X.Org X Font Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FONT_SERVICE_X_ORG_X_FONT_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    443,
+    497,
+    1550,
+    2002,
+    5302,
+    6000,
+    6001,
+    6002,
+    6003,
+    6004,
+    6005,
+    6006,
+    6007,
+    6008,
+    6009,
+    6010,
+    6011,
+    6012,
+    6013,
+    6014,
+    6015,
+    6016,
+    6017,
+    6018,
+    6019,
+    6020,
+    7000,
+    7100,
+    7101,
+    7777,
+    8000
+  ],
+  "cpe23_template": "cpe:2.3:a:x:x.org_x11:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x07\\0\\0\\0\\0 \\x10\\0....X\\.Org Foundation\\x01\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x07\\0\\0\\0\\0.......The X\\.Org Group",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_font-service_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x07\\0\\0\\0\\0 \\x10\\0....X\\.Org Foundation\\x01\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x07\\0\\0\\0\\0.......The X\\.Org Group",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour font-service"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "font-service"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: font-service. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:x:x.org_x11:*:*:*:*:*:*:*:*"
+}

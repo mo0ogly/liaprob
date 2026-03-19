@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-freelancer-freelancer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Freelancer",
+  "product": "Freelancer",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FREELANCER_FREELANCER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    2302
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_freelancer_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x00\\x03\\xf1\\x26.{88}(.*)\\0\\0(?:.*?:){5}(.*)\\0\\0$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour freelancer"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "freelancer"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: freelancer. 1 match(es), 0 softmatch(es)."
+}

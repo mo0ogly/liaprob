@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-acarsd-acarsd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "acarsd",
+  "product": "acarsd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ACARSD_ACARSD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:acarsd:acarsd:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^g\\0\\0\\0\\x1b\\0\\0\\0\\0\\0\\0\\0acarsd\\t([\\w._-]+)\\tAPI-([\\w._-]+)\\)\\0\\0\\0\\x06\\x05\\0\\0\\0\\0\\0\\0<\\?xml ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_acarsd_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^g\\0\\0\\0\\x1b\\0\\0\\0\\0\\0\\0\\0acarsd\\t([\\w._-]+)\\tAPI-([\\w._-]+)\\)\\0\\0\\0\\x06\\x05\\0\\0\\0\\0\\0\\0<\\?xml ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour acarsd"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "acarsd"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: acarsd. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:acarsd:acarsd:{version}:*:*:*:*:*:*:*"
+}

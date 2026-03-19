@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bacnet-bacnet-building-automation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "BACnet building automation",
+  "product": "BACnet building automation",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BACNET_BACNET_BUILDING_AUTOMATION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    177
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bacnet_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x81\\n\\0\\t\\x01\\0`\\x01\\t$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour bacnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bacnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bacnet. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-hpiod-hp-linux-imaging-and-printing-system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HP Linux Imaging and Printing System",
+  "product": "HP Linux Imaging and Printing System",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HPIOD_HP_LINUX_IMAGING_AND_PRINTING_SYSTEM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:hp:linux_imaging_and_printing_project:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^msg=MessageError\\nresult-code=5\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_hpiod_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^msg=MessageError\\nresult-code=5\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour hpiod"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "hpiod"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: hpiod. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:hp:linux_imaging_and_printing_project:*:*:*:*:*:*:*:*"
+}

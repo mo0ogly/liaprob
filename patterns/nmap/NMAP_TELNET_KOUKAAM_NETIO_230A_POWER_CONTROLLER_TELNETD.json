@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-koukaam-netio-230a-power-controller-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Koukaam NETIO-230A power controller telnetd",
+  "product": "Koukaam NETIO-230A power controller telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_KOUKAAM_NETIO_230A_POWER_CONTROLLER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:koukaam:netio-230a:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^100 HELLO [0-9A-F]{8} - KSHELL V([\\w._-]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^100 HELLO [0-9A-F]{8}\\r\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^100 HELLO [0-9A-F]{8} - KSHELL V([\\w._-]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^100 HELLO [0-9A-F]{8}\\r\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:koukaam:netio-230a:*:*:*:*:*:*:*:*"
+}

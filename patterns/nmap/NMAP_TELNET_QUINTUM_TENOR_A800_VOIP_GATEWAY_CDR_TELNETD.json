@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-quintum-tenor-a800-voip-gateway-cdr-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Quintum Tenor A800 VoIP gateway CDR telnetd",
+  "product": "Quintum Tenor A800 VoIP gateway CDR telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_QUINTUM_TENOR_A800_VOIP_GATEWAY_CDR_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:quintum:tenor_a800:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Tenor Multipath Switch CDR Server\\r\\nConnected from IpAddr/Port# [\\d.]+/\\d+ to Port# \\d+\\r\\nPassword: ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Tenor Multipath Switch CDR Server\\r\\nConnected from IpAddr/Port# [\\d.]+/\\d+ to Port# \\d+\\r\\nPassword: ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:quintum:tenor_a800:*:*:*:*:*:*:*:*"
+}

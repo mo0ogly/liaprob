@@ -1,0 +1,194 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ms-sql-s-microsoft-sql-server-2008",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft SQL Server 2008",
+  "product": "Microsoft SQL Server 2008",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MS_SQL_S_MICROSOFT_SQL_SERVER_2008.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1433
+  ],
+  "cpe23_template": "cpe:2.3:a:microsoft:sql_server:2008:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x04\\x33",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x06\\x40",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x06\\xfb",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x09\\xe3",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x0a\\xba",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x0f\\xa0",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x0f\\xe0",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x15\\x7c",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x15\\x88",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x15\\xa2",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x17\\x70",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x18\\x61",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00(..)",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ms-sql-s_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x04\\x33",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x06\\x40",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x06\\xfb",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x09\\xe3",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x0a\\xba",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x0f\\xa0",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x0f\\xe0",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x15\\x7c",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x15\\x88",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x15\\xa2",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x17\\x70",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00\\x18\\x61",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0a\\x00(..)",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ms-sql-s"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ms-sql-s"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ms-sql-s. 13 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:microsoft:sql_server:2008:*:*:*:*:*:*:*"
+}

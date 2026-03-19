@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-atalla-atalla-hardware-security-module-payment-system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Atalla Hardware Security Module payment system",
+  "product": "Atalla Hardware Security Module payment system",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ATALLA_ATALLA_HARDWARE_SECURITY_MODULE_PAYMENT_SYSTEM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<00#020035#0101##>\\r\\n<00#020035#0101##>\\r\\n<00#020035#0101##>\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_atalla_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<00#020035#0101##>\\r\\n<00#020035#0101##>\\r\\n<00#020035#0101##>\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour atalla"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "atalla"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: atalla. 1 match(es), 0 softmatch(es)."
+}

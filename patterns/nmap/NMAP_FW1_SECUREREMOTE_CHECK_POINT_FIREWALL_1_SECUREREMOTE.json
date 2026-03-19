@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-fw1-secureremote-check-point-firewall-1-secureremote",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Check Point Firewall-1 SecureRemote",
+  "product": "Check Point Firewall-1 SecureRemote",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FW1_SECUREREMOTE_CHECK_POINT_FIREWALL_1_SECUREREMOTE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    256,
+    257,
+    389,
+    390,
+    636,
+    637,
+    1702,
+    3268,
+    3269,
+    3892,
+    4035
+  ],
+  "cpe23_template": "cpe:2.3:a:checkpoint:firewall-1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^[AQ]\\0\\0\\0\\0\\0\\0[^\\0]",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_fw1-secureremote_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[AQ]\\0\\0\\0\\0\\0\\0[^\\0]",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour fw1-secureremote"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "fw1-secureremote"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: fw1-secureremote. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:checkpoint:firewall-1:*:*:*:*:*:*:*:*"
+}

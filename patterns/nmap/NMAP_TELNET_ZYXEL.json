@@ -1,0 +1,102 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-zyxel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ZyXEL",
+  "product": "ZyXEL",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_ZYXEL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:zyxel:$1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x03\\xff\\xfb\\x03\\n\\r +\\*+\\n\\r +Welcome to (ZXDSL [\\w._-]+)\\n\\r +\\*+\\n\\r\\n\\rZTE Corporation, Software Release VIK-([-\\w_.]+)\\n\\r",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03                        =======================\\r\\n                        Welcome to (ZXDSL [\\w._-]+)\\r\\n                        =======================\\r\\nLogin:",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x01\\xff\\xfb\\x03\\xff\\xfd\\x03\\xff\\xfb\\x05\\xff\\xfd\\x05Welcome to Telnet Server ([\\w._-]+)\\r\\n\\x1b\\[0m\\x1b\\[2J\\x1b\\[05;28HDimension Switch (ES-\\w+)\\x1b\\[07;22H",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\nZyXEL ([\\w._-]+) login: ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\nmsm V([\\d.]+\\(ABFR\\.\\d+\\)C\\d+) ([A-Z]+\\d+)\\r\\n\\r\\r\\n\\r\\r\\n[A-Z]+\\d+ login: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x03\\xff\\xfb\\x03\\n\\r +\\*+\\n\\r +Welcome to (ZXDSL [\\w._-]+)\\n\\r +\\*+\\n\\r\\n\\rZTE Corporation, Software Release VIK-([-\\w_.]+)\\n\\r",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03                        =======================\\r\\n                        Welcome to (ZXDSL [\\w._-]+)\\r\\n                        =======================\\r\\nLogin:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x01\\xff\\xfb\\x03\\xff\\xfd\\x03\\xff\\xfb\\x05\\xff\\xfd\\x05Welcome to Telnet Server ([\\w._-]+)\\r\\n\\x1b\\[0m\\x1b\\[2J\\x1b\\[05;28HDimension Switch (ES-\\w+)\\x1b\\[07;22H",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\nZyXEL ([\\w._-]+) login: ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\nmsm V([\\d.]+\\(ABFR\\.\\d+\\)C\\d+) ([A-Z]+\\d+)\\r\\n\\r\\r\\n\\r\\r\\n[A-Z]+\\d+ login: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 5 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:zyxel:$1:*:*:*:*:*:*:*:*"
+}

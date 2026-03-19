@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-serial-opengear-serial-port-unauthenticated-access",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Opengear serial port unauthenticated access",
+  "product": "Opengear serial port unauthenticated access",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SERIAL_OPENGEAR_SERIAL_PORT_UNAUTHENTICATED_ACCESS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\nAccess to serial port port01 via unauthorised telnet is not allowed\\n\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_serial_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\nAccess to serial port port01 via unauthorised telnet is not allowed\\n\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour serial"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "serial"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: serial. 1 match(es), 0 softmatch(es)."
+}

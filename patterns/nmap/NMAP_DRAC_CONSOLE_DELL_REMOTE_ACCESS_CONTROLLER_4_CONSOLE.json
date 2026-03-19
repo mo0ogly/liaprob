@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-drac-console-dell-remote-access-controller-4-console",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Dell Remote Access Controller 4 console",
+  "product": "Dell Remote Access Controller 4 console",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DRAC_CONSOLE_DELL_REMOTE_ACCESS_CONTROLLER_4_CONSOLE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:dell:remote_access_card:4:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x0c\\0\\0\\0\\?\\0\\0\\0\\x02$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_drac-console_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x0c\\0\\0\\0\\?\\0\\0\\0\\x02$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour drac-console"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "drac-console"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: drac-console. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:dell:remote_access_card:4:*:*:*:*:*:*:*"
+}

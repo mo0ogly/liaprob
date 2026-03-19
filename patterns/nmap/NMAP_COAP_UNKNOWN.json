@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-coap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "COAP",
+  "product": "coap",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_COAP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    177,
+    5683,
+    5684
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_coap_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^`E",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^`E",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour coap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "coap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: coap. 0 match(es), 2 softmatch(es)."
+}

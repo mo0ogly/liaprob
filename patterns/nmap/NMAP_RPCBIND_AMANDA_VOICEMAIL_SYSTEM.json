@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rpcbind-amanda-voicemail-system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Amanda voicemail system",
+  "product": "Amanda voicemail system",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RPCBIND_AMANDA_VOICEMAIL_SYSTEM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    130,
+    427,
+    1352,
+    1972,
+    7171,
+    8728,
+    22001
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x18\\0\\x01\\x02Invalid packet length\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rpcbind_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x18\\0\\x01\\x02Invalid packet length\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rpcbind"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rpcbind"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rpcbind. 1 match(es), 0 softmatch(es)."
+}

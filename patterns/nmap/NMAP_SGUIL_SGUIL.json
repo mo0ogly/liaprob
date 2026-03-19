@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sguil-sguil",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sguil",
+  "product": "Sguil",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SGUIL_SGUIL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:sguil:sguil:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SGUIL-([\\w._-]+) OPENSSL ENABLED\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sguil_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SGUIL-([\\w._-]+) OPENSSL ENABLED\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sguil"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sguil"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sguil. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:sguil:sguil:{version}:*:*:*:*:*:*:*"
+}

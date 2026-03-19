@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-hama-radio2-hama-radio-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HAMA radio service",
+  "product": "HAMA radio service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HAMA_RADIO2_HAMA_RADIO_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^w\\d{5}.{255}h@",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_hama-radio2_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^w\\d{5}.{255}h@",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour hama-radio2"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "hama-radio2"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: hama-radio2. 1 match(es), 0 softmatch(es)."
+}

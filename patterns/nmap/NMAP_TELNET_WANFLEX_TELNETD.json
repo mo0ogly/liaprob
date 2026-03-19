@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-wanflex-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "WANFleX telnetd",
+  "product": "WANFleX telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_WANFLEX_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:infinet:wanflex:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nWANFleX Access Control 0\\r\\nSbt\\r\\n\\r\\n\\xff\\xfb\\x01\\xff\\xfe\"\\xff\\xfd\\x03\\xff\\xfd\\x1f\\rLogin:\\r\\x1b\\[6C\\x1b\\[K\\r\\x1b\\[6C",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nWANFleX Access Control 0\\r\\nSbt\\r\\n\\r\\n\\xff\\xfb\\x01\\xff\\xfe\"\\xff\\xfd\\x03\\xff\\xfd\\x1f\\rLogin:\\r\\x1b\\[6C\\x1b\\[K\\r\\x1b\\[6C",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:infinet:wanflex:*:*:*:*:*:*:*:*"
+}

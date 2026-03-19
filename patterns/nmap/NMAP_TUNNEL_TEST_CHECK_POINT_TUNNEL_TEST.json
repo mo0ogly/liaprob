@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-tunnel-test-check-point-tunnel-test",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Check Point tunnel_test",
+  "product": "Check Point tunnel_test",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TUNNEL_TEST_CHECK_POINT_TUNNEL_TEST.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    1967,
+    2967,
+    26198
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_tunnel-test_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x06\\x01\\0\\0\\x02\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour tunnel-test"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "tunnel-test"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: tunnel-test. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pyro-python-remote-object-nameserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Python Remote Object Nameserver",
+  "product": "Python Remote Object Nameserver",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PYRO_PYTHON_REMOTE_OBJECT_NAMESERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^PYRO\\0\\x04\\0\\x12\\0\\0\\0\\x10\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^PYRO\\0\\x05\\0\\x12\\0\\0\\0\\x10\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pyro_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^PYRO\\0\\x04\\0\\x12\\0\\0\\0\\x10\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^PYRO\\0\\x05\\0\\x12\\0\\0\\0\\x10\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pyro"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pyro"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pyro. 2 match(es), 0 softmatch(es)."
+}

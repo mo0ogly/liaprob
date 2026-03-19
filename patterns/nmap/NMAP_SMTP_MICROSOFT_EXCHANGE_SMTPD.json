@@ -1,0 +1,116 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-microsoft-exchange-smtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft Exchange smtpd",
+  "product": "Microsoft Exchange smtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_MICROSOFT_EXCHANGE_SMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:exchange_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) Microsoft ESMTP MAIL Service ready at",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Microsoft ESMTP MAIL Service, Version: ([\\w._-]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.+\\w]+) ESMTP Server \\(Microsoft Exchange Internet Mail Service ([-\\w.]+)\\) ready",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) Microsoft Exchange Internet Mail Service ([-\\w_.]+) ready\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 \\+OK Microsoft Exchange SMTP server version ([\\d.]+)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^421 [\\d.]+ Service not available, closing transmission channel\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) Microsoft ESMTP MAIL Service ready at",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Microsoft ESMTP MAIL Service, Version: ([\\w._-]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.+\\w]+) ESMTP Server \\(Microsoft Exchange Internet Mail Service ([-\\w.]+)\\) ready",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) Microsoft Exchange Internet Mail Service ([-\\w_.]+) ready\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 \\+OK Microsoft Exchange SMTP server version ([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^421 [\\d.]+ Service not available, closing transmission channel\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 6 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:microsoft:exchange_server:*:*:*:*:*:*:*:*"
+}

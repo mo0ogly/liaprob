@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-lantronix",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lantronix",
+  "product": "Lantronix",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_LANTRONIX.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\*\\*\\* Lantronix ([\\w._-]+) Device Server \\*\\*\\*\\r\\0\\nMAC address (\\w+)\\n\\r\\0Software version V([\\w._-]+) \\((\\d+)\\) \\r\\0\\n",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\r\\n\\nLantronix (SCS\\d+) Version V([\\d/().]+)\\n\\r\\nType HELP",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\*\\*\\* Lantronix ([\\w._-]+) Device Server \\*\\*\\*\\r\\0\\nMAC address (\\w+)\\n\\r\\0Software version V([\\w._-]+) \\((\\d+)\\) \\r\\0\\n",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\r\\n\\nLantronix (SCS\\d+) Version V([\\d/().]+)\\n\\r\\nType HELP",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

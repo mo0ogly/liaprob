@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-xmpp-isode-m-link-xmpp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Isode M-Link XMPP",
+  "product": "Isode M-Link XMPP",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_XMPP_ISODE_M_LINK_XMPP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "cpe23_template": "cpe:2.3:a:isode:m-link:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<stream:error><bad-format xmlns='urn:ietf:params:xml:ns:xmpp-streams'/></stream:error></stream:stream>$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_xmpp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<stream:error><bad-format xmlns='urn:ietf:params:xml:ns:xmpp-streams'/></stream:error></stream:stream>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour xmpp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "xmpp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: xmpp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:isode:m-link:*:*:*:*:*:*:*:*"
+}

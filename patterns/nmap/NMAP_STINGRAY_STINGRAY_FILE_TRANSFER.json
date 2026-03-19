@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-stingray-stingray-file-transfer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "StingRay file transfer",
+  "product": "StingRay file transfer",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_STINGRAY_STINGRAY_FILE_TRANSFER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_stingray_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02\\x004ComDU2\\0\\0\\0\\0\\0\\0\\0\\0\\0ON\\0\\x08OPTIONS \\0\\0\\0\\0<\\x9e\\x0e\\x08!\\x8a6@@\\xb2W@\\0\\0\\0\\00\\xd8\\xdd\\xbf\\xbe\\x99\\r9@\\x0c\\xe0\\x0b\\x08\\xb5\\xd6\\x0f@\\xe8\\xdd\\xbf\\xbeh\\xa6>@0O\\x18\\x08\\xd4\\xb4U@",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour stingray"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "stingray"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: stingray. 1 match(es), 0 softmatch(es)."
+}

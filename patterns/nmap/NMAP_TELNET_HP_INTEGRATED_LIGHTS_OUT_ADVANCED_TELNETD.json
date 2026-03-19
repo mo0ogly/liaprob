@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-hp-integrated-lights-out-advanced-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HP Integrated Lights-Out Advanced telnetd",
+  "product": "HP Integrated Lights-Out Advanced telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_HP_INTEGRATED_LIGHTS_OUT_ADVANCED_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:hp:integrated_lights-out:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\r\\n \\*{73}\\r\\n  This is a private system\\. \\r\\n  Do not attempt to login unless you are an authorized user\\.  \\r\\n  Any authorized or unauthorized access or use may be monitored and can\\r\\n  result in criminal or civil prosecution under applicable law\\.\\r\\n \\*{73}\\r\\n\\r\\nMP login: ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\r\\n \\*{73}\\r\\n  This is a private system\\. \\r\\n  Do not attempt to login unless you are an authorized user\\.  \\r\\n  Any authorized or unauthorized access or use may be monitored and can\\r\\n  result in criminal or civil prosecution under applicable law\\.\\r\\n \\*{73}\\r\\n\\r\\nMP login: ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:hp:integrated_lights-out:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-castv2-ninja-sphere-chromecast-driver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ninja Sphere Chromecast driver",
+  "product": "Ninja Sphere Chromecast driver",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CASTV2_NINJA_SPHERE_CHROMECAST_DRIVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0X\\x08\\0\\x12\\x0bTr@n\\$p0rt-0\\x1a\\x0bTr@n\\$p0rt-0\\\"'urn:x-cast:com\\.google\\.cast\\.tp\\.heartbeat\\(\\x002\\x0f{\\\"type\\\":\\\"PING\\\"}$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0Z\\x08\\0\\x12\\x0bTr@n\\$p0rt-0\\x1a\\x0bTr@n\\$p0rt-0\"'urn:x-cast:com\\.google\\.cast\\.tp\\.heartbeat\\(\\x002\\x0f\\{\"type\":\"PING\"\\}@\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_castv2_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0X\\x08\\0\\x12\\x0bTr@n\\$p0rt-0\\x1a\\x0bTr@n\\$p0rt-0\\\"'urn:x-cast:com\\.google\\.cast\\.tp\\.heartbeat\\(\\x002\\x0f{\\\"type\\\":\\\"PING\\\"}$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0Z\\x08\\0\\x12\\x0bTr@n\\$p0rt-0\\x1a\\x0bTr@n\\$p0rt-0\"'urn:x-cast:com\\.google\\.cast\\.tp\\.heartbeat\\(\\x002\\x0f\\{\"type\":\"PING\"\\}@\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour castv2"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "castv2"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: castv2. 2 match(es), 0 softmatch(es)."
+}

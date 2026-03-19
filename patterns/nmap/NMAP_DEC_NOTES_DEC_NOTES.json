@@ -1,0 +1,68 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-dec-notes-dec-notes",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DEC Notes",
+  "product": "DEC Notes",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DEC_NOTES_DEC_NOTES.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1549,
+    1755,
+    3333,
+    5001,
+    9090,
+    19700,
+    19800,
+    59100
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x08\\0\\0\\0\\x01\\0\\x02\\x04\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x7c\\0\\0\\0\\x01\\0\\x1f\\x83\\x01\\x80\\x1f\\x86\\x013%NOTES-E-SRV_INVSEQ, invalid sequence of operations\\0\\0\\x1f\\x83\\x01\\x80\\x1f\\x86\\x013%NOTES-E-SRV_INVSEQ, invalid sequence of operations\\0\\0",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_dec-notes_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x08\\0\\0\\0\\x01\\0\\x02\\x04\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x7c\\0\\0\\0\\x01\\0\\x1f\\x83\\x01\\x80\\x1f\\x86\\x013%NOTES-E-SRV_INVSEQ, invalid sequence of operations\\0\\0\\x1f\\x83\\x01\\x80\\x1f\\x86\\x013%NOTES-E-SRV_INVSEQ, invalid sequence of operations\\0\\0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour dec-notes"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "dec-notes"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: dec-notes. 2 match(es), 0 softmatch(es)."
+}

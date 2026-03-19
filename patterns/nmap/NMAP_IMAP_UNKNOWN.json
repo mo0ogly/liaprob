@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-imap",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IMAP",
+  "product": "imap",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IMAP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_imap_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* OK ([-.\\w]+) [-.\\w,:+ ]*imap[-.\\w,:+ ]*\\r\\n$",
+          "confidence_delta": 0.2,
+          "case_insensitive": true,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* OK [\\x20-\\x7e]*imap[\\x20-\\x7e]*\\r\\n$",
+          "confidence_delta": 0.2,
+          "case_insensitive": true,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* OK \\[CAPABILITY IMAP4[Rr][Ee][Vv]1",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour imap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "imap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: imap. 0 match(es), 3 softmatch(es)."
+}

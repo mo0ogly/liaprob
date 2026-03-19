@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-libp2p-multistream-libp2p-multistream-protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "libp2p multistream protocol",
+  "product": "libp2p multistream protocol",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LIBP2P_MULTISTREAM_LIBP2P_MULTISTREAM_PROTOCOL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^./multistream/([\\d.]+)\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_libp2p-multistream_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^./multistream/([\\d.]+)\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour libp2p-multistream"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "libp2p-multistream"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: libp2p-multistream. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

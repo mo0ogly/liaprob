@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ssl-sslv2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SSLv2",
+  "product": "SSLv2",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SSL_SSLV2.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    443,
+    444,
+    465,
+    548,
+    636,
+    989,
+    990,
+    992,
+    993,
+    994,
+    995,
+    1241,
+    1311,
+    2000,
+    4433,
+    4444,
+    5550,
+    7210,
+    7272,
+    8009,
+    8194,
+    8443,
+    9001
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ssl_0",
+      "layer": "TLS_CERT",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\x04\\0.\\0\\x02",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe TLS_CERT pour ssl"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ssl"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ssl. 1 match(es), 0 softmatch(es)."
+}

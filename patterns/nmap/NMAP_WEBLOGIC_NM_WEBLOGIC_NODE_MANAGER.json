@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-weblogic-nm-weblogic-node-manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "WebLogic Node Manager",
+  "product": "WebLogic Node Manager",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WEBLOGIC_NM_WEBLOGIC_NODE_MANAGER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:oracle:weblogic_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0:-ERR Error reading from socket: Unknown protocol exception\\0\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\xaa-ERR Error reading from socket: Received java\\.io\\.IOException but without detailed error message\\. Please enable Node Manager debug to see the full stack trace if necessary\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_weblogic-nm_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0:-ERR Error reading from socket: Unknown protocol exception\\0\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\xaa-ERR Error reading from socket: Received java\\.io\\.IOException but without detailed error message\\. Please enable Node Manager debug to see the full stack trace if necessary\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour weblogic-nm"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "weblogic-nm"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: weblogic-nm. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:oracle:weblogic_server:*:*:*:*:*:*:*:*"
+}

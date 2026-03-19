@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-adobe-crossdomain-brass-monkey-cross-domain-policy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Brass Monkey cross-domain-policy",
+  "product": "Brass Monkey cross-domain-policy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ADOBE_CROSSDOMAIN_BRASS_MONKEY_CROSS_DOMAIN_POLICY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<\\?xml version=\\\"1\\.0\\\"\\?><cross-domain-policy><allow-access-from domain=\\\"\\*\\\" to-ports=\\\"1008-49151\\\" /></cross-domain-policy>\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_adobe-crossdomain_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<\\?xml version=\\\"1\\.0\\\"\\?><cross-domain-policy><allow-access-from domain=\\\"\\*\\\" to-ports=\\\"1008-49151\\\" /></cross-domain-policy>\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour adobe-crossdomain"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "adobe-crossdomain"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: adobe-crossdomain. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-icabrowser-citrix-metaframe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Citrix MetaFrame",
+  "product": "Citrix MetaFrame",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ICABROWSER_CITRIX_METAFRAME.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1604
+  ],
+  "cpe23_template": "cpe:2.3:a:citrix:metaframe:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_icabrowser_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x30\\0\\x02\\x31\\x02\\xfd\\xa8\\xe3\\x02\\0\\x06\\x44",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour icabrowser"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "icabrowser"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: icabrowser. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:citrix:metaframe:*:*:*:*:*:*:*:*"
+}

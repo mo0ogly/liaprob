@@ -1,0 +1,43 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-hbn3-lexmark-s300-s400-series-hbn3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lexmark S300-S400 series HBN3",
+  "product": "Lexmark S300-S400 series HBN3",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HBN3_LEXMARK_S300_S400_SERIES_HBN3.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    123,
+    5353,
+    9100
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_hbn3_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x84\\0\\0\\0\\0\\x05\\0\\0\\0\\0\\x15S300-S400 Series \\(32\\).+ET(\\w{2})(\\w{2})(\\w{2})(\\w{2})(\\w{2})(\\w{2})",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour hbn3"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "hbn3"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: hbn3. 1 match(es), 0 softmatch(es)."
+}

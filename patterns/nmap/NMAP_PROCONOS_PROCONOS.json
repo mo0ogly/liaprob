@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-proconos-proconos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ProConOS",
+  "product": "ProConOS",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PROCONOS_PROCONOS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    20547
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xcc\\x01...\\x02\\x92\\0V\\d+\\.\\d+ProConOS V([\\d.]+) \\w\\w\\w +\\d+ \\d+\\0+\\0([^\\0]+)\\0+([^\\0]+)\\0+([^\\0]+)\\0+([^\\0]+)\\0",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_proconos_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xcc\\x01...\\x02\\x92\\0V\\d+\\.\\d+ProConOS V([\\d.]+) \\w\\w\\w +\\d+ \\d+\\0+\\0([^\\0]+)\\0+([^\\0]+)\\0+([^\\0]+)\\0+([^\\0]+)\\0",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour proconos"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "proconos"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: proconos. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

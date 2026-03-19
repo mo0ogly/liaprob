@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smpp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SMPP",
+  "product": "smpp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMPP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    42,
+    88,
+    135,
+    139,
+    445,
+    660,
+    1025,
+    1027,
+    1031,
+    1112,
+    3006,
+    3900,
+    5000,
+    5009,
+    5432,
+    5555,
+    5600,
+    7461,
+    9102,
+    9103,
+    18182,
+    27000,
+    27001,
+    27002,
+    27003,
+    27004,
+    27005,
+    27006,
+    27007,
+    27008,
+    27009,
+    27010
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smpp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x10\\x80\\0\\0\\0\\0\\0\\0\\x03....$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x10\\x80\\0\\0\\0\\0\\0\\0\\x03....$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smpp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smpp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smpp. 0 match(es), 2 softmatch(es)."
+}

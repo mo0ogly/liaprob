@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-niagara-fox-tridium-niagara",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Tridium Niagara",
+  "product": "Tridium Niagara",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NIAGARA_FOX_TRIDIUM_NIAGARA.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1911,
+    4911
+  ],
+  "cpe23_template": "cpe:2.3:a:tridium:niagara:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^fox a 0 -1 fox hello\\n\\{\\nfox\\.version=s:([\\d.]+)\\nid=i:\\d+.*\\napp\\.name=s:Station\\napp\\.version=s:([\\d.]+)\\n",
+      "confidence_delta": 0.3,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_niagara-fox_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^fox a 0 -1 fox hello\\n\\{\\nfox\\.version=s:([\\d.]+)\\nid=i:\\d+.*\\napp\\.name=s:Station\\napp\\.version=s:([\\d.]+)\\n",
+          "confidence_delta": 0.3,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour niagara-fox"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "niagara-fox"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: niagara-fox. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:tridium:niagara:{version}:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,109 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-distccd-distccd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "distccd",
+  "product": "distccd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DISTCCD_DISTCCD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    3632
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DONE00000001STAT00000000SERR00000000SOUT00000000DOTO.*?GCC: ([^\\0]+)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DONE00000001STAT00000100SERR000000\\w+/tmp/distccd_.*:\\d+: internal compiler error: Segmentation fault",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DONE00000001.*?DOTO00",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DONE00000001.*ccache: failed to create /usr/share/distcc/\\.ccache \\(Permission denied\\)\\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DONE00000001.*CRITICAL! distcc seems to have invoked itself recursively!\\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^[\\w._-]+DONE[\\w._-]+ .*ERROR: attempt to use unknown compiler aborted: ([\\w._-]+)\\n",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_distccd_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DONE00000001STAT00000000SERR00000000SOUT00000000DOTO.*?GCC: ([^\\0]+)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DONE00000001STAT00000100SERR000000\\w+/tmp/distccd_.*:\\d+: internal compiler error: Segmentation fault",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DONE00000001.*?DOTO00",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DONE00000001.*ccache: failed to create /usr/share/distcc/\\.ccache \\(Permission denied\\)\\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DONE00000001.*CRITICAL! distcc seems to have invoked itself recursively!\\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\w._-]+DONE[\\w._-]+ .*ERROR: attempt to use unknown compiler aborted: ([\\w._-]+)\\n",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour distccd"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "distccd"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: distccd. 6 match(es), 0 softmatch(es). Extraction de version disponible."
+}

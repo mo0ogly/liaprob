@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-honeypot-dionaea-honeypot-httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Dionaea Honeypot httpd",
+  "product": "Dionaea Honeypot httpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HONEYPOT_DIONAEA_HONEYPOT_HTTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 200 OK\\r\\nAllow: OPTIONS, GET, HEAD, POST\\r\\nContent-Length: 0\\r\\nConnection: close\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_honeypot_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 200 OK\\r\\nAllow: OPTIONS, GET, HEAD, POST\\r\\nContent-Length: 0\\r\\nConnection: close\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour honeypot"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "honeypot"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: honeypot. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netsupport-netsupport-pc-remote-control",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NetSupport PC remote control",
+  "product": "NetSupport PC remote control",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETSUPPORT_NETSUPPORT_PC_REMOTE_CONTROL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.\\0\\x02\\0([^\\0]+)\\0+.\\0\\x01\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netsupport_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.\\0\\x02\\0([^\\0]+)\\0+.\\0\\x01\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netsupport"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netsupport"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netsupport. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smpp-apache-zookeeper-smpp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Apache Zookeeper smpp",
+  "product": "Apache Zookeeper smpp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMPP_APACHE_ZOOKEEPER_SMPP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    524,
+    1200,
+    1217,
+    2000,
+    3000,
+    3001,
+    3002,
+    3003,
+    3004,
+    3005,
+    3006,
+    3031,
+    6802
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\(\\0\\0\\0\\x01\\0\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0\\x02\\0\\0.*\\0\\0\\0\\0\\0\\0\\0\\x03\\0\\0\\0\\0\\0\\0\\0\\x03\\0\\0\\0\\x01",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smpp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\(\\0\\0\\0\\x01\\0\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0\\x02\\0\\0.*\\0\\0\\0\\0\\0\\0\\0\\x03\\0\\0\\0\\0\\0\\0\\0\\x03\\0\\0\\0\\x01",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smpp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smpp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smpp. 1 match(es), 0 softmatch(es)."
+}

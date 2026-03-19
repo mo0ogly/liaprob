@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-tandberg-mxp-video-conference-appliance-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Tandberg MXP Video Conference appliance telnetd",
+  "product": "Tandberg MXP Video Conference appliance telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_TANDBERG_MXP_VIDEO_CONFERENCE_APPLIANCE_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x03\\xff\\xfd\\x03\\xff\\xfb\\x01Welcome to ([-\\w\\s.]+)\\r\\nTANDBERG Codec Release ([\\w.]+)",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x03\\xff\\xfd\\x03\\xff\\xfb\\x01Welcome to \\r\\nTANDBERG Codec Release ([\\w._ -]+)\\r\\nSW Release Date: ([\\w._-]+)\\r\\n\\r\\nPassword: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x03\\xff\\xfd\\x03\\xff\\xfb\\x01Welcome to ([-\\w\\s.]+)\\r\\nTANDBERG Codec Release ([\\w.]+)",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x03\\xff\\xfd\\x03\\xff\\xfb\\x01Welcome to \\r\\nTANDBERG Codec Release ([\\w._ -]+)\\r\\nSW Release Date: ([\\w._-]+)\\r\\n\\r\\nPassword: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

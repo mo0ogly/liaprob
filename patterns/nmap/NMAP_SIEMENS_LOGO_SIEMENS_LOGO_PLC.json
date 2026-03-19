@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-siemens-logo-siemens-logo-plc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Siemens LOGO! PLC",
+  "product": "Siemens LOGO! PLC",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIEMENS_LOGO_SIEMENS_LOGO_PLC.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5000,
+    5001,
+    5002,
+    10001,
+    10002,
+    10003
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x06\\x03\\x04\\0\\0\\x002",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_siemens-logo_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x06\\x03\\x04\\0\\0\\x002",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour siemens-logo"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "siemens-logo"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: siemens-logo. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-yamaha-comm-yamaha-rx-v2067-av-receiver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Yamaha RX-V2067 AV receiver",
+  "product": "Yamaha RX-V2067 AV receiver",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_YAMAHA_COMM_YAMAHA_RX_V2067_AV_RECEIVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "cpe23_template": "cpe:2.3:h:yamaha:rx-v2067:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^@SYS:INPNAMEMULTICH=MULTI CH\\r\\n@SYS:INPNAMEPHONO=PHONO\\r\\n@SYS:INPNAMEAV1=Blu-ray\\r\\n@SYS:INPNAMEAV2=Dreambox\\r\\n@SYS:INPNAMEAV3=PS 3\\r\\n@SYS:INPNAMEAV4=AV4\\r\\n@SYS:INPNAMEAV5=AV5\\r\\n@SYS:INPNAMEAV6=AV6\\r\\n@SYS:INPNAMEAV7=AV7\\r\\n@SYS:INPNAMEVAUX=V-AUX\\r\\n@SYS:INPNAMEAUDIO1=TV\\r\\n@SYS:INPNAMEAUDIO2=AUDIO2\\r\\n@SYS:INPNAMEAUDIO3=AUDIO3\\r\\n@SYS:INPNAMEAUDIO4=AUDIO4\\r\\n@SYS:INPNAMEDOCK=DOCK\\r\\n@SYS:INPNAMEUSB=USB\\r\\n@TUN:AVAIL=Not Ready\\r\\n@MAIN:ZONENAME=Main\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_yamaha-comm_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^@SYS:INPNAMEMULTICH=MULTI CH\\r\\n@SYS:INPNAMEPHONO=PHONO\\r\\n@SYS:INPNAMEAV1=Blu-ray\\r\\n@SYS:INPNAMEAV2=Dreambox\\r\\n@SYS:INPNAMEAV3=PS 3\\r\\n@SYS:INPNAMEAV4=AV4\\r\\n@SYS:INPNAMEAV5=AV5\\r\\n@SYS:INPNAMEAV6=AV6\\r\\n@SYS:INPNAMEAV7=AV7\\r\\n@SYS:INPNAMEVAUX=V-AUX\\r\\n@SYS:INPNAMEAUDIO1=TV\\r\\n@SYS:INPNAMEAUDIO2=AUDIO2\\r\\n@SYS:INPNAMEAUDIO3=AUDIO3\\r\\n@SYS:INPNAMEAUDIO4=AUDIO4\\r\\n@SYS:INPNAMEDOCK=DOCK\\r\\n@SYS:INPNAMEUSB=USB\\r\\n@TUN:AVAIL=Not Ready\\r\\n@MAIN:ZONENAME=Main\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour yamaha-comm"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "yamaha-comm"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: yamaha-comm. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:yamaha:rx-v2067:*:*:*:*:*:*:*:*"
+}

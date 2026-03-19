@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-caicci-cai-cci",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CAI-CCI",
+  "product": "CAI-CCI",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CAICCI_CAI_CCI.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x02\\x07\\x04\\0\\xe0\\0{11}\\x02\\0{7}\\x04\\x03\\x02\\x010\\0{7}\\x01\\0\\0\\0\\x01\\0\\0\\0\\xe0\\0{8}\\x80\\0\\0\\0\\x80\\0\\0\\0ems-p-sp\\0{8}\\x01\\0{10}\\x12\\x01\\0\\0EMS-P-SPO-01\\0{53}EMS-P-SPO-01\\0{55}$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_caicci_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02\\x07\\x04\\0\\xe0\\0{11}\\x02\\0{7}\\x04\\x03\\x02\\x010\\0{7}\\x01\\0\\0\\0\\x01\\0\\0\\0\\xe0\\0{8}\\x80\\0\\0\\0\\x80\\0\\0\\0ems-p-sp\\0{8}\\x01\\0{10}\\x12\\x01\\0\\0EMS-P-SPO-01\\0{53}EMS-P-SPO-01\\0{55}$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour caicci"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "caicci"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: caicci. 1 match(es), 0 softmatch(es)."
+}

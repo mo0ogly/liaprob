@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-fortinet-sso-fortinet-sso-collector-agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Fortinet SSO Collector Agent",
+  "product": "Fortinet SSO Collector Agent",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FORTINET_SSO_FORTINET_SSO_COLLECTOR_AGENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.\\x80\\x06\\0\\0\\0\\n\\x01\\x03\\0\\x03V.\\0\\0\\0\\n\\x10\\x03\\0\\0\\0\\x02\\0\\0\\0\\x13\\x11\\x05FSSO ([\\d.]+)\\0\\0\\0\\x16\\x12\\x01.{16}\\0\\0\\0\\x17\\x13\\x01FSAE_SERVER_10001",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_fortinet-sso_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.\\x80\\x06\\0\\0\\0\\n\\x01\\x03\\0\\x03V.\\0\\0\\0\\n\\x10\\x03\\0\\0\\0\\x02\\0\\0\\0\\x13\\x11\\x05FSSO ([\\d.]+)\\0\\0\\0\\x16\\x12\\x01.{16}\\0\\0\\0\\x17\\x13\\x01FSAE_SERVER_10001",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour fortinet-sso"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "fortinet-sso"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: fortinet-sso. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

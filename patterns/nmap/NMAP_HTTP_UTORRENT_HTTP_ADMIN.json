@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-utorrent-http-admin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "uTorrent http admin",
+  "product": "uTorrent http admin",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_UTORRENT_HTTP_ADMIN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    199,
+    1080,
+    1090,
+    1095,
+    1100,
+    1105,
+    1109,
+    3128,
+    6588,
+    6660,
+    6661,
+    6662,
+    6663,
+    6664,
+    6665,
+    6666,
+    6667,
+    6668,
+    6669,
+    7777,
+    8000,
+    8008,
+    8010,
+    8080,
+    8088,
+    9481
+  ],
+  "cpe23_template": "cpe:2.3:a:utorrent:utorrent:3.0:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 400 ERROR\\r\\nConnection: keep-alive\\r\\nContent-Length: 17\\r\\nContent-Type: text/html\\r\\n\\r\\n\\r\\ninvalid requestHTTP/1\\.1 400 ERROR\\r\\nConnection: keep-alive\\r\\nContent-Length: 17\\r\\nContent-Type: text/html\\r\\n\\r\\n\\r\\ninvalid request",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 400 ERROR\\r\\nConnection: keep-alive\\r\\nContent-Length: 17\\r\\nContent-Type: text/html\\r\\n\\r\\n\\r\\ninvalid requestHTTP/1\\.1 400 ERROR\\r\\nConnection: keep-alive\\r\\nContent-Length: 17\\r\\nContent-Type: text/html\\r\\n\\r\\n\\r\\ninvalid request",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:utorrent:utorrent:3.0:*:*:*:*:*:*:*"
+}

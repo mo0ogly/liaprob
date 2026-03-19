@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-dbsnmp-oracle-intelligent-agent",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Oracle Intelligent Agent",
+  "product": "Oracle Intelligent Agent",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DBSNMP_ORACLE_INTELLIGENT_AGENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1035,
+    1521,
+    1522,
+    1525,
+    1526,
+    1574,
+    1748,
+    1754,
+    14238,
+    20000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0.\\0\\0\\x02\\0\\0\\0.*\\(IAGENT = \\(AGENT_VERSION = ([\\d.]+)\\)\\(RPC_VERSION = ([\\d.]+)\\)\\)",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_dbsnmp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0.\\0\\0\\x02\\0\\0\\0.*\\(IAGENT = \\(AGENT_VERSION = ([\\d.]+)\\)\\(RPC_VERSION = ([\\d.]+)\\)\\)",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour dbsnmp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "dbsnmp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: dbsnmp. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-vbrick-4300-video-encoder-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "VBrick 4300 video encoder telnetd",
+  "product": "VBrick 4300 video encoder telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_VBRICK_4300_VIDEO_ENCODER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfc\\x01\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\xff\\xfb\\x18\\xff\\xfd\\x1f\\xff\\xfb\\x1f\\xff\\xfb\\\"\\xff\\xfb\\x05Login:",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfc\\x01\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\xff\\xfb\\x18\\xff\\xfd\\x1f\\xff\\xfb\\x1f\\xff\\xfb\\\"\\xff\\xfb\\x05Login:",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

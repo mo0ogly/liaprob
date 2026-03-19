@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-slurm-slurm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SLURM",
+  "product": "SLURM",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SLURM_SLURM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.\\x1b\\0\\0\\0\\x1fA\\0\\0\\0\\x04\\0\\0\\0\\0......\\0\\0\\0\\x0bauth/munge\\0\\0\\0\\0\\n\\0\\0..MUNGE:[\\w/+=]+:\\0\\0\\0\\x03\\xf0",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_slurm_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.\\x1b\\0\\0\\0\\x1fA\\0\\0\\0\\x04\\0\\0\\0\\0......\\0\\0\\0\\x0bauth/munge\\0\\0\\0\\0\\n\\0\\0..MUNGE:[\\w/+=]+:\\0\\0\\0\\x03\\xf0",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour slurm"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "slurm"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: slurm. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-proxy-ctrl-wwwoffle-proxy-control",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "WWWOFFLE proxy control",
+  "product": "WWWOFFLE proxy control",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PROXY_CTRL_WWWOFFLE_PROXY_CONTROL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    706,
+    8081
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^WWWOFFLE Server Status\\n-*\\nVersion *: (\\d.*)\\n",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^WWWOFFLE Incorrect Password\\n",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http-proxy-ctrl_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^WWWOFFLE Server Status\\n-*\\nVersion *: (\\d.*)\\n",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^WWWOFFLE Incorrect Password\\n",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http-proxy-ctrl"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http-proxy-ctrl"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http-proxy-ctrl. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

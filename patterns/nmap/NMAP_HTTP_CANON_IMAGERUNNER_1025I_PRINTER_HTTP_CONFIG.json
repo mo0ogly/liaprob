@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-canon-imagerunner-1025i-printer-http-config",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Canon imageRUNNER 1025i printer http config",
+  "product": "Canon imageRUNNER 1025i printer http config",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_CANON_IMAGERUNNER_1025I_PRINTER_HTTP_CONFIG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "cpe23_template": "cpe:2.3:h:canon:imagerunner_1025i:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 405 Method Not Allowed\\r\\nPragma: no-cache\\r\\nConnection: close\\r\\nCache-Control: no-cache\\r\\n\\r\\n<html><head><title>Error</title></head><body>Error: 405 METHOD NOT ALLOWED</body></html>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:canon:imagerunner_1025i:*:*:*:*:*:*:*:*"
+}

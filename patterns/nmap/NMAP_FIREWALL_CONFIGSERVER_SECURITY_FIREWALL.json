@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-firewall-configserver-security-firewall",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ConfigServer Security & Firewall",
+  "product": "ConfigServer Security & Firewall",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FIREWALL_CONFIGSERVER_SECURITY_FIREWALL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Your connection to this server has been blocked in this server's firewall\\.\\r\\nYou need to contact the server owner for further information\\.\\r\\nYour blocked IP address is .*\\r\\nThis server's hostname is ([\\w._-]+)\\r\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_firewall_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Your connection to this server has been blocked in this server's firewall\\.\\r\\nYou need to contact the server owner for further information\\.\\r\\nYour blocked IP address is .*\\r\\nThis server's hostname is ([\\w._-]+)\\r\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour firewall"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "firewall"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: firewall. 1 match(es), 0 softmatch(es)."
+}

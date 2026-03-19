@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-omniback-hp-openview-omniback",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HP OpenView Omniback",
+  "product": "HP OpenView Omniback",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_OMNIBACK_HP_OPENVIEW_OMNIBACK.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    42,
+    88,
+    135,
+    139,
+    445,
+    660,
+    1025,
+    1027,
+    1031,
+    1112,
+    3006,
+    3900,
+    5000,
+    5009,
+    5432,
+    5555,
+    5600,
+    7461,
+    9102,
+    9103,
+    18182,
+    27000,
+    27001,
+    27002,
+    27003,
+    27004,
+    27005,
+    27006,
+    27007,
+    27008,
+    27009,
+    27010
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.\\xff\\xfe1\\x005\\0\\0\\0 \\0\\x07\\0\\x01\\0\\[\\x001\\x002\\0:\\x001\\0\\]\\0\\0\\0 \\0\\x07\\0\\x02\\0\\[\\x002\\x000\\x000\\x003\\0\\]\\0\\0\\0 ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_omniback_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.\\xff\\xfe1\\x005\\0\\0\\0 \\0\\x07\\0\\x01\\0\\[\\x001\\x002\\0:\\x001\\0\\]\\0\\0\\0 \\0\\x07\\0\\x02\\0\\[\\x002\\x000\\x000\\x003\\0\\]\\0\\0\\0 ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour omniback"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "omniback"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: omniback. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

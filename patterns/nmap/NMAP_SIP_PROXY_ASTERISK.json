@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-proxy-asterisk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Asterisk",
+  "product": "Asterisk",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_PROXY_ASTERISK.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5060
+  ],
+  "cpe23_template": "cpe:2.3:a:digium:asterisk:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip-proxy_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 200 OK\\r\\nVia: SIP/2\\.0/UDP nm;branch=foo;received=[\\d.]+;rport=\\d+\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=as\\d+\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nServer: -(\\d[\\w._-]+)\\((\\d[\\w._-]+)\\)\\r\\nAllow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO, PUBLISH\\r\\nSupported: replaces, timer\\r\\nContact: .*\\r\\nAccept: application/sdp\\r\\nContent-Length: 0\\r\\n\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 404 Not Found\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: Asterisk PBX\\r\\n(?:[^\\r\\n]+\\r\\n)*?Allow: INVITE, ACK, CANCEL, OPTIONS, BYE, REFER, SUBSCRIBE, NOTIFY, INFO",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour sip-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip-proxy. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:digium:asterisk:{version}:*:*:*:*:*:*:*"
+}

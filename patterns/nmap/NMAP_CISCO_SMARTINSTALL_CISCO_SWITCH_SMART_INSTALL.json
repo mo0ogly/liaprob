@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-cisco-smartinstall-cisco-switch-smart-install",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco Switch Smart Install",
+  "product": "Cisco Switch Smart Install",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CISCO_SMARTINSTALL_CISCO_SWITCH_SMART_INSTALL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    3050
+  ],
+  "cpe23_template": "cpe:2.3:o:cisco:ios:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x04\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\x04\\0\\0\\0\\x01",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_cisco-smartinstall_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x04\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\x04\\0\\0\\0\\x01",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour cisco-smartinstall"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "cisco-smartinstall"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: cisco-smartinstall. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:cisco:ios:*:*:*:*:*:*:*:*"
+}

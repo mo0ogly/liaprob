@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-check-mk-check-mk-extension-for-nagios",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "check_mk extension for Nagios",
+  "product": "check_mk extension for Nagios",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CHECK_MK_CHECK_MK_EXTENSION_FOR_NAGIOS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<<<check_mk>>>\\nVersion: ([\\w._-]+)\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_check_mk_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<<<check_mk>>>\\nVersion: ([\\w._-]+)\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour check_mk"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "check_mk"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: check_mk. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

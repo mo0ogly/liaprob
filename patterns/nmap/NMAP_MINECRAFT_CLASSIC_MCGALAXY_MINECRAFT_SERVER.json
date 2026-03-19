@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-minecraft-classic-mcgalaxy-minecraft-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MCGalaxy Minecraft server",
+  "product": "MCGalaxy Minecraft server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MINECRAFT_CLASSIC_MCGALAXY_MINECRAFT_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    25565
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x01\\x0eUnhandled message id \"254\"! {37}",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_minecraft-classic_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x01\\x0eUnhandled message id \"254\"! {37}",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour minecraft-classic"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "minecraft-classic"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: minecraft-classic. 1 match(es), 0 softmatch(es)."
+}

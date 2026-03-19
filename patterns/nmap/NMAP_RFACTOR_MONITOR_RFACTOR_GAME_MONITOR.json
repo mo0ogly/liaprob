@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rfactor-monitor-rfactor-game-monitor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "rFactor game monitor",
+  "product": "rFactor game monitor",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RFACTOR_MONITOR_RFACTOR_GAME_MONITOR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    515,
+    2947,
+    3333,
+    19350,
+    32211
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x02rFactorMonitor\\x000400\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rfactor-monitor_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02rFactorMonitor\\x000400\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rfactor-monitor"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rfactor-monitor"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rfactor-monitor. 1 match(es), 0 softmatch(es)."
+}

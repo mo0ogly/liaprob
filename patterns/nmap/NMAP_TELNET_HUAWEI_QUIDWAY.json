@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-huawei-quidway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Huawei Quidway",
+  "product": "Huawei Quidway",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_HUAWEI_QUIDWAY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:huawei:quidway_$1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\n\\r        Welcome to QUIDWAY ([\\w._-]+) Access Server\\n\\r      Copyright \\(c\\) \\d+-\\d+ HUAWEI TECH CO\\. LTD\\.\\n\\r\\n\\rUser Name:",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\n\\r        Welcome to QUIDWAY ([\\w._-]+) Access Server\\n\\r      Copyright \\(c\\) \\d+-\\d+ HUAWEI TECH CO\\. LTD\\.\\n\\r\\n\\rUser Name:",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:huawei:quidway_$1:*:*:*:*:*:*:*:*"
+}

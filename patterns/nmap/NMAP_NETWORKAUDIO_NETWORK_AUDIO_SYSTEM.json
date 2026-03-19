@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-networkaudio-network-audio-system",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Network Audio System",
+  "product": "Network Audio System",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETWORKAUDIO_NETWORK_AUDIO_SYSTEM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    443,
+    497,
+    1550,
+    2002,
+    5302,
+    6000,
+    6001,
+    6002,
+    6003,
+    6004,
+    6005,
+    6006,
+    6007,
+    6008,
+    6009,
+    6010,
+    6011,
+    6012,
+    6013,
+    6014,
+    6015,
+    6016,
+    6017,
+    6018,
+    6019,
+    6020,
+    7000,
+    7100,
+    7101,
+    7777,
+    8000
+  ],
+  "cpe23_template": "cpe:2.3:a:radscan:network_audio_system:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x19\\x02\\0\\x02\\0\\x07\\0Protocol version mismatch\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_networkaudio_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x19\\x02\\0\\x02\\0\\x07\\0Protocol version mismatch\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour networkaudio"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "networkaudio"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: networkaudio. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:radscan:network_audio_system:*:*:*:*:*:*:*:*"
+}

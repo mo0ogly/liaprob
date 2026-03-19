@@ -1,0 +1,88 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-imap-lotus-domino-imapd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lotus Domino imapd",
+  "product": "Lotus Domino imapd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IMAP_LOTUS_DOMINO_IMAPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:ibm:lotus_domino:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\* OK Domino IMAP4 Server Release (\\d[-.\\w ]+) +ready +(.*)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\* OK Domino IMAP4 Server Build V([\\w_]+ Beta \\w+) ready .*\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\* BYE Domino IMAP4 Server Unable to authenticate session\\.",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\* BYE Domino IMAP4 Server Configured for SSL Connections only\\. Please reconnect using SSL Port (\\d+), .*\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_imap_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* OK Domino IMAP4 Server Release (\\d[-.\\w ]+) +ready +(.*)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* OK Domino IMAP4 Server Build V([\\w_]+ Beta \\w+) ready .*\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* BYE Domino IMAP4 Server Unable to authenticate session\\.",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\* BYE Domino IMAP4 Server Configured for SSL Connections only\\. Please reconnect using SSL Port (\\d+), .*\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour imap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "imap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: imap. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:ibm:lotus_domino:{version}:*:*:*:*:*:*:*"
+}

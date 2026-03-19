@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-burk-autopilot-burk-autopilot-plus-remote-management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Burk AutoPilot Plus remote management",
+  "product": "Burk AutoPilot Plus remote management",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BURK_AUTOPILOT_BURK_AUTOPILOT_PLUS_REMOTE_MANAGEMENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x19\\0\\0\\0\\0\\0\\x0f\\xbeB!\\x012\\x02\\xd1\\x02\\x032\\x02p\\0\\x062\\x02\\x80\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_burk-autopilot_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x19\\0\\0\\0\\0\\0\\x0f\\xbeB!\\x012\\x02\\xd1\\x02\\x032\\x02p\\0\\x062\\x02\\x80\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour burk-autopilot"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "burk-autopilot"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: burk-autopilot. 1 match(es), 0 softmatch(es)."
+}

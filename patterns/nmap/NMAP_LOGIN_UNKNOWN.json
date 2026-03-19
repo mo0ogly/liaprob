@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-login",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "LOGIN",
+  "product": "login",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LOGIN_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    2068,
+    2105,
+    2967,
+    5000,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    13783
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01Permission denied : Error \\d+\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01rlogind: Permission denied\\.\\r\\n$",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_login_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01Permission denied : Error \\d+\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01rlogind: Permission denied\\.\\r\\n$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour login"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "login"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: login. 2 match(es), 0 softmatch(es)."
+}

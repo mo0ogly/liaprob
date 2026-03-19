@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-emerson-deltav-batch-server-maintenance-port",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Emerson DeltaV batch server maintenance port",
+  "product": "Emerson DeltaV batch server maintenance port",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_EMERSON_DELTAV_BATCH_SERVER_MAINTENANCE_PORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:emerson:deltav:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x1b\\[m\\x1b\\[H\\x1b\\[2J\\x1b\\[1;1H\\t\\tDeltaV Batch Runtime Server Maintainance Port\\r\\n\\r\\n {9}1\\. General Information\\r\\n {9}2\\. Client Information\\r\\n {9}3\\. Cache Information\\r\\n {9}4\\. Audit Trail\\r\\n {9}5\\. Logging Information\\r\\n\\x1b\\[12;1H {79}\\x1b\\[11;1H\\r\\n\\tSelect:  ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1b\\[m\\x1b\\[H\\x1b\\[2J\\x1b\\[1;1H\\t\\tDeltaV Batch Runtime Server Maintainance Port\\r\\n\\r\\n {9}1\\. General Information\\r\\n {9}2\\. Client Information\\r\\n {9}3\\. Cache Information\\r\\n {9}4\\. Audit Trail\\r\\n {9}5\\. Logging Information\\r\\n\\x1b\\[12;1H {79}\\x1b\\[11;1H\\r\\n\\tSelect:  ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:emerson:deltav:*:*:*:*:*:*:*:*"
+}

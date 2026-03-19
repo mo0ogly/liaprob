@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bzfs-bzflag-game-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "BZFlag game server",
+  "product": "BZFlag game server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BZFS_BZFLAG_GAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^BZFS\\d\\d\\d\\d\\0$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^BZFS\\d\\d\\d\\d\\r\\n\\r\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bzfs_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^BZFS\\d\\d\\d\\d\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^BZFS\\d\\d\\d\\d\\r\\n\\r\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour bzfs"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bzfs"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bzfs. 2 match(es), 0 softmatch(es)."
+}

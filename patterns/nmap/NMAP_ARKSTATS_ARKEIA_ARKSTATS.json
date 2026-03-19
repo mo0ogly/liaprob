@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-arkstats-arkeia-arkstats",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Arkeia arkstats",
+  "product": "Arkeia arkstats",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ARKSTATS_ARKEIA_ARKSTATS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0`\\0\\x03\\0\\0\\0\\x1810\\x000\\x000\\x00852224\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_arkstats_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0`\\0\\x03\\0\\0\\0\\x1810\\x000\\x000\\x00852224\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour arkstats"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "arkstats"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: arkstats. 1 match(es), 0 softmatch(es)."
+}

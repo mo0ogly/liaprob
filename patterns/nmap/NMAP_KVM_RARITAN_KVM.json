@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-kvm-raritan-kvm",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Raritan KVM",
+  "product": "Raritan KVM",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_KVM_RARITAN_KVM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x0b<CSC/>\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_kvm_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x0b<CSC/>\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour kvm"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "kvm"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: kvm. 1 match(es), 0 softmatch(es)."
+}

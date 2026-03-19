@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pop3-proxy-analogx-pop3-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AnalogX POP3 proxy",
+  "product": "AnalogX POP3 proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POP3_PROXY_ANALOGX_POP3_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:analogx:proxy:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK POP3 AnalogX Proxy (\\d[-.\\w]+) \\(Release\\) ready\\.\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pop3-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK POP3 AnalogX Proxy (\\d[-.\\w]+) \\(Release\\) ready\\.\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pop3-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pop3-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pop3-proxy. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:analogx:proxy:{version}:*:*:*:*:*:*:*"
+}

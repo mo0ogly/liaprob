@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sumatra-ds-sumatra-ds-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sumatra DS Server",
+  "product": "Sumatra DS Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SUMATRA_DS_SUMATRA_DS_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^v7\\x87\\x12\\0\\0\\0\\x01........$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sumatra-ds_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^v7\\x87\\x12\\0\\0\\0\\x01........$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sumatra-ds"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sumatra-ds"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sumatra-ds. 1 match(es), 0 softmatch(es)."
+}

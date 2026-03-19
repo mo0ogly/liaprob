@@ -1,0 +1,166 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-stomp-apache-activemq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Apache ActiveMQ",
+  "product": "Apache ActiveMQ",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_STOMP_APACHE_ACTIVEMQ.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    6163,
+    61613
+  ],
+  "cpe23_template": "cpe:2.3:a:apache:activemq:5:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:270\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:254\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:241\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:267\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:266\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:268\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:269\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:270\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:244\\)",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:258\\)",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_stomp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:270\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:254\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:241\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:267\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:266\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:268\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:269\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:270\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:244\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\ncontent-type:text/plain\\nmessage:Unknown STOMP action: HELP\\n\\norg\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolException: Unknown STOMP action: HELP\\r\\n\\tat org\\.apache\\.activemq\\.transport\\.stomp\\.ProtocolConverter\\.onStompCommand\\(ProtocolConverter\\.java:258\\)",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR\\n(?:[^\\n]+\\n)?message:Unknown STOMP action:.+ org\\.apache\\.activemq\\.",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour stomp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "stomp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: stomp. 10 match(es), 1 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:apache:activemq:5:*:*:*:*:*:*:*"
+}

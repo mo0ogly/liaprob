@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netusb-trendnet-netusb",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TRENDnet NetUSB",
+  "product": "TRENDnet NetUSB",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETUSB_TRENDNET_NETUSB.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0. connect success [\\da-f]+ \\n\\0\\0\\0\\0. NetUSB ([\\w._-]+), 2\\d\\d\\d, [\\dA-F]+ \\n\\0\\0\\0\\0\\x0c AUTH ISOC\\n\\0\\0\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netusb_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0. connect success [\\da-f]+ \\n\\0\\0\\0\\0. NetUSB ([\\w._-]+), 2\\d\\d\\d, [\\dA-F]+ \\n\\0\\0\\0\\0\\x0c AUTH ISOC\\n\\0\\0\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netusb"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netusb"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netusb. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

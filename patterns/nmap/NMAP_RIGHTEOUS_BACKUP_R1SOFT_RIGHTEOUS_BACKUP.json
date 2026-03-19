@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-righteous-backup-r1soft-righteous-backup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "R1Soft Righteous Backup",
+  "product": "R1Soft Righteous Backup",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RIGHTEOUS_BACKUP_R1SOFT_RIGHTEOUS_BACKUP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xe1\\xe7\\xe6\\x07\\0\\x01\\0 $",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_righteous-backup_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xe1\\xe7\\xe6\\x07\\0\\x01\\0 $",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour righteous-backup"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "righteous-backup"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: righteous-backup. 1 match(es), 0 softmatch(es)."
+}

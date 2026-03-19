@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-printer-digi-ip-to-serial-print-server-lpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Digi IP-to-serial print server lpd",
+  "product": "Digi IP-to-serial print server lpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PRINTER_DIGI_IP_TO_SERIAL_PRINT_SERVER_LPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^MAX_INCOMING has been exceeded\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_printer_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^MAX_INCOMING has been exceeded\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour printer"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "printer"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: printer. 1 match(es), 0 softmatch(es)."
+}

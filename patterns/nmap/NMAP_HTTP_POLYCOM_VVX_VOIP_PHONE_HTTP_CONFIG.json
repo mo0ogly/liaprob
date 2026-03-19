@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-polycom-vvx-voip-phone-http-config",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Polycom VVX VoIP phone http config",
+  "product": "Polycom VVX VoIP phone http config",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_POLYCOM_VVX_VOIP_PHONE_HTTP_CONFIG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    515,
+    2947,
+    3333,
+    19350,
+    32211
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<html><head><title>Error</title></head>\\n<body>Your client sent an invalid \\x01default request without a\\nprotocol version \\(assuming HTTP v0\\.9\\)\\.\\n<p>The request can not be processed\\.</body></html>$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<html><head><title>Error</title></head>\\n<body>Your client sent an invalid \\x01default request without a\\nprotocol version \\(assuming HTTP v0\\.9\\)\\.\\n<p>The request can not be processed\\.</body></html>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es)."
+}

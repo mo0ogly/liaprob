@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-servicetags-sun-service-tags",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sun service tags",
+  "product": "Sun service tags",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SERVICETAGS_SUN_SERVICE_TAGS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:sun:service_tags:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^I/O error : Permission denied\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_servicetags_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^I/O error : Permission denied\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour servicetags"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "servicetags"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: servicetags. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:sun:service_tags:*:*:*:*:*:*:*:*"
+}

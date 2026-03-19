@@ -1,0 +1,86 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pop3-communigate-pro-pop3d",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CommuniGate Pro pop3d",
+  "product": "CommuniGate Pro pop3d",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POP3_COMMUNIGATE_PRO_POP3D.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:stalker:communigate_pro:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK POP3 Server OK <[\\d.]+@([-\\w_.]+)>\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK ([\\w._-]+) CommuniGate Pro POP3 Server (\\d[\\w._-]+) ready <[\\d.]+@\\1>\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^-ERR access from your network is denied\\r\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^-ERR access from your network is temporarily disabled\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pop3_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK POP3 Server OK <[\\d.]+@([-\\w_.]+)>\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK ([\\w._-]+) CommuniGate Pro POP3 Server (\\d[\\w._-]+) ready <[\\d.]+@\\1>\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^-ERR access from your network is denied\\r\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^-ERR access from your network is temporarily disabled\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pop3"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pop3"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pop3. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:stalker:communigate_pro:*:*:*:*:*:*:*:*"
+}

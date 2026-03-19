@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-vmware-esx-4-0-server-httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "VMware ESX 4.0 Server httpd",
+  "product": "VMware ESX 4.0 Server httpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_VMWARE_ESX_4_0_SERVER_HTTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    88,
+    443,
+    2100,
+    4443,
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    8005,
+    8006,
+    8007,
+    8008,
+    8009,
+    8010,
+    8080,
+    8081,
+    8082,
+    8083,
+    8084,
+    8085,
+    8443,
+    8880,
+    8881,
+    8882,
+    8883,
+    8884,
+    8885,
+    8886,
+    8887,
+    8888,
+    9999,
+    49152
+  ],
+  "cpe23_template": "cpe:2.3:o:vmware:esx:4.0:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 301 Moved Permanently\\r\\nDate: .*\\r\\nLocation: https://([\\w_.-]+)/nice%20ports%2C/Tri%6Eity\\.txt%2ebak\\r\\nConnection: close\\r\\nContent-Type: text/html\\r\\nContent-Length: 56\\r\\n\\r\\n<HTML><BODY><H1>301 Moved Permanently</H1></BODY></HTML>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:vmware:esx:4.0:*:*:*:*:*:*:*"
+}

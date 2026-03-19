@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ssh-d-link-netgear-dsl-router-modified-dropbear-sshd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "D-Link/Netgear DSL router modified dropbear sshd",
+  "product": "D-Link/Netgear DSL router modified dropbear sshd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SSH_D_LINK_NETGEAR_DSL_ROUTER_MODIFIED_DROPBEAR_SSHD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-2\\.0-OpenSSH_3\\.6p1\\r?\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ssh_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-2\\.0-OpenSSH_3\\.6p1\\r?\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ssh"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ssh"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ssh. 1 match(es), 0 softmatch(es)."
+}

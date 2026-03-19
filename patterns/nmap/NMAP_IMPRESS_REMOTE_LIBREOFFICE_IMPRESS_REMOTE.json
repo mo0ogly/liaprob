@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-impress-remote-libreoffice-impress-remote",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "LibreOffice Impress remote",
+  "product": "LibreOffice Impress remote",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IMPRESS_REMOTE_LIBREOFFICE_IMPRESS_REMOTE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1599
+  ],
+  "cpe23_template": "cpe:2.3:a:libreoffice:libreoffice:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^LO_SERVER_VALIDATING_PIN\\n$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_impress-remote_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^LO_SERVER_VALIDATING_PIN\\n$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour impress-remote"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "impress-remote"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: impress-remote. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:libreoffice:libreoffice:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ncd-diag-ncd-thinster-terminal-diagnostic-port",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NCD Thinster Terminal Diagnostic port",
+  "product": "NCD Thinster Terminal Diagnostic port",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NCD_DIAG_NCD_THINSTER_TERMINAL_DIAGNOSTIC_PORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^WinCE/WBT Diagnostic port\\n\\rSerial Number: (\\w+)  MAC Address: 0000(\\w+)\\s+.*CPU info: ([ -.+\\w/ ]+)\\r\\n.*(Windows CE Kernel[-.+:\\w ]+)\\r",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ncd-diag_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^WinCE/WBT Diagnostic port\\n\\rSerial Number: (\\w+)  MAC Address: 0000(\\w+)\\s+.*CPU info: ([ -.+\\w/ ]+)\\r\\n.*(Windows CE Kernel[-.+:\\w ]+)\\r",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ncd-diag"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ncd-diag"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ncd-diag. 1 match(es), 0 softmatch(es)."
+}

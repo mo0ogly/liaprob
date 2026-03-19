@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-novastor-backup-novanet-web-backup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NovaNET-WEB backup",
+  "product": "NovaNET-WEB backup",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NOVASTOR_BACKUP_NOVANET_WEB_BACKUP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x02\\0\\0\\0\\0\\0\\0#\\x01\\x80\\x01.([\\w._-]+)\\x02\\x13(\\d\\d/\\d\\d/\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d)\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_novastor-backup_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02\\0\\0\\0\\0\\0\\0#\\x01\\x80\\x01.([\\w._-]+)\\x02\\x13(\\d\\d/\\d\\d/\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d)\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour novastor-backup"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "novastor-backup"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: novastor-backup. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

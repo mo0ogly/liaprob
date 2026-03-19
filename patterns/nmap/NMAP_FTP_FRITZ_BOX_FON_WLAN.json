@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-fritz-box-fon-wlan",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "FRITZ!Box Fon WLAN",
+  "product": "FRITZ!Box Fon WLAN",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_FRITZ_BOX_FON_WLAN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 FRITZ!BoxFonWLAN(\\w+)(?:\\(\\w+\\))? FTP server ready\\.\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 FRITZ!Box Fon WLAN (\\d+) FTP server ready\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 FRITZ!BoxFonWLAN(\\w+)(?:\\(\\w+\\))? FTP server ready\\.\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 FRITZ!Box Fon WLAN (\\d+) FTP server ready\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 2 match(es), 0 softmatch(es)."
+}

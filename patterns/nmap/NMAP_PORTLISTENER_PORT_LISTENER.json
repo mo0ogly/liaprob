@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-portlistener-port-listener",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Port Listener",
+  "product": "Port Listener",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PORTLISTENER_PORT_LISTENER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:rjl_software:port_listener:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Hello !\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_portlistener_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Hello !\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour portlistener"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "portlistener"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: portlistener. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:rjl_software:port_listener:*:*:*:*:*:*:*:*"
+}

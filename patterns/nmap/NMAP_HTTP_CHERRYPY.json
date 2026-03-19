@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-cherrypy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CherryPy",
+  "product": "CherryPy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_CHERRYPY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "cpe23_template": "cpe:2.3:a:cherrypy:cherrypy:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 500 Internal Server Error\\r\\nContent-Length: \\d+\\r\\nContent-Type: text/plain\\r\\n\\r\\nTraceback \\(most recent call last\\):\\n  File \\\"([\\w._/-]+/(?:sickbeard|Sick-Beard)/cherrypy)/wsgiserver/__init__\\.py\\\", line \\d+, in communicate\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 500 Internal Server Error\\r\\nContent-Length: \\d+\\r\\nContent-Type: text/plain\\r\\n\\r\\nTraceback \\(most recent call last\\):\\n  File \\\"([\\w._/-]+/(?:sickbeard|Sick-Beard)/cherrypy)/wsgiserver/__init__\\.py\\\", line \\d+, in communicate\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:cherrypy:cherrypy:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-epp-extensible-provisioning-protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Extensible Provisioning Protocol",
+  "product": "Extensible Provisioning Protocol",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_EPP_EXTENSIBLE_PROVISIONING_PROTOCOL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x00\\x00..<\\?xml version=\\\"1\\.0\\\" encoding=\\\"UTF-8\\\" standalone=\\\"no\\\" \\?>\\n<epp xmlns=\\\"http://www\\.yoursrs\\.com/xml/epp/epp-1\\.0\\\" xmlns:xsi=\\\"http://www\\.w3\\.org/2001/XMLSchema-instance\\\" xsi:schemaLocation=\\\"http://www\\.yoursrs\\.com/xml/epp/epp-1\\.0 epp-1\\.0\\.xsd\\\">\\n\\n  <greeting>\\n    <svID>([^<]+)</svID>\\n    <svDate>.*</svDate>\\n    <svcMenu>\\n      <version>([\\w._-]+)</version>\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_epp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x00\\x00..<\\?xml version=\\\"1\\.0\\\" encoding=\\\"UTF-8\\\" standalone=\\\"no\\\" \\?>\\n<epp xmlns=\\\"http://www\\.yoursrs\\.com/xml/epp/epp-1\\.0\\\" xmlns:xsi=\\\"http://www\\.w3\\.org/2001/XMLSchema-instance\\\" xsi:schemaLocation=\\\"http://www\\.yoursrs\\.com/xml/epp/epp-1\\.0 epp-1\\.0\\.xsd\\\">\\n\\n  <greeting>\\n    <svID>([^<]+)</svID>\\n    <svDate>.*</svDate>\\n    <svcMenu>\\n      <version>([\\w._-]+)</version>\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0...<\\?xml version=\"1\\.0\" encoding=\"[uU][tT][fF]-8\" standalone=\"no\"\\?>\\s*<epp xmlns=\"urn:ietf:params:xml:ns:epp-1\\.0\".*<svID>([^<]+)</svID>",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour epp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "epp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: epp. 1 match(es), 1 softmatch(es). Extraction de version disponible."
+}

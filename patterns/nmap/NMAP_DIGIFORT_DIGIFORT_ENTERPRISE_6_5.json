@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-digifort-digifort-enterprise-6-5",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Digifort Enterprise 6.5",
+  "product": "Digifort Enterprise 6.5",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DIGIFORT_DIGIFORT_ENTERPRISE_6_5.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:digifort:digifort:6.5.0_final:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xd1Q\\xf0'\\0\\0\\0;\\x01\\x05LOGIN\\0\\0\\0\\x30\\x01\\x01\\0\\0\\0\\x05NONCE\\x08 \\0\\0\\0[0-9A-F]{32}$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_digifort_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xd1Q\\xf0'\\0\\0\\0;\\x01\\x05LOGIN\\0\\0\\0\\x30\\x01\\x01\\0\\0\\0\\x05NONCE\\x08 \\0\\0\\0[0-9A-F]{32}$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour digifort"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "digifort"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: digifort. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:digifort:digifort:6.5.0_final:*:*:*:*:*:*:*"
+}

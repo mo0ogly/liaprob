@@ -1,0 +1,206 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-drawpile-drawpile",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DrawPile",
+  "product": "DrawPile",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DRAWPILE_DRAWPILE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:calle_laakkonen:drawpile:0.7.0:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 3 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 4 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 5 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 6 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 7 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 8 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 9 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 10 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 11 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 12 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 13 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 14 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0DRAWPILE 15 ([A-Z,]+)",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0\\0\\{\"flags\":\\[([^]]+)\\],\"message\":\"Drawpile server (\\d[\\w._-]+)\",\"type\":\"login\",\"version\":(\\d+)\\}",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_drawpile_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 3 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 4 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 5 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 6 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 7 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 8 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 9 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 10 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 11 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 12 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 13 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 14 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0DRAWPILE 15 ([A-Z,]+)",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0\\0\\{\"flags\":\\[([^]]+)\\],\"message\":\"Drawpile server (\\d[\\w._-]+)\",\"type\":\"login\",\"version\":(\\d+)\\}",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour drawpile"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "drawpile"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: drawpile. 14 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:calle_laakkonen:drawpile:0.7.0:*:*:*:*:*:*:*"
+}

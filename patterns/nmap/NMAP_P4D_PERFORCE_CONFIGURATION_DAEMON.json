@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-p4d-perforce-configuration-daemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Perforce configuration daemon",
+  "product": "Perforce configuration daemon",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_P4D_PERFORCE_CONFIGURATION_DAEMON.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0\\0\\0xfiles\\0\\x01\\0\\0\\x005\\0server\\0\\x01\\0\\0\\x003\\0server2\\0\\x02\\0\\0\\x00..\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_p4d_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0\\0\\0xfiles\\0\\x01\\0\\0\\x005\\0server\\0\\x01\\0\\0\\x003\\0server2\\0\\x02\\0\\0\\x00..\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour p4d"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "p4d"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: p4d. 1 match(es), 0 softmatch(es)."
+}

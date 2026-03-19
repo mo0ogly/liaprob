@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-crossfire-crossfire-game-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Crossfire game server",
+  "product": "Crossfire game server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CROSSFIRE_CROSSFIRE_GAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:crossfire:crossfire:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0#version 1023 1027 Crossfire Server\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0#version 1023 102[89] Crossfire Server\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_crossfire_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0#version 1023 1027 Crossfire Server\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0#version 1023 102[89] Crossfire Server\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0#version \\d+ \\d+ Crossfire Server\\n",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour crossfire"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "crossfire"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: crossfire. 2 match(es), 1 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:crossfire:crossfire:*:*:*:*:*:*:*:*"
+}

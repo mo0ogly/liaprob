@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-mcafee-email-gateway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "McAfee Email Gateway",
+  "product": "McAfee Email Gateway",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_MCAFEE_EMAIL_GATEWAY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    25,
+    465,
+    587,
+    3025
+  ],
+  "cpe23_template": "cpe:2.3:a:mcafee:email_gateway:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([\\w.-]+) Ready\\r\\n250-Requested mail action okay, completed\\.\\r\\n250 STARTTLS\\r\\n",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([\\w.-]+) Ready\\r\\n250-Requested mail action okay, completed\\.\\r\\n250 STARTTLS\\r\\n",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:mcafee:email_gateway:*:*:*:*:*:*:*:*"
+}

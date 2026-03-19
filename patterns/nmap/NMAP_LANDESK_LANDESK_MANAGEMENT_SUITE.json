@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-landesk-landesk-management-suite",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "LANDesk Management Suite",
+  "product": "LANDesk Management Suite",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LANDESK_LANDESK_MANAGEMENT_SUITE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:landesk:landesk_management_suite:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^TDMM\\x1c\\0\\0\\0\\x14\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_landesk_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^TDMM\\x1c\\0\\0\\0\\x14\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour landesk"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "landesk"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: landesk. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:landesk:landesk_management_suite:*:*:*:*:*:*:*:*"
+}

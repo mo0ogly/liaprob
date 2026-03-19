@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-hptsvr-highpoint-raid-management-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HighPoint RAID management service",
+  "product": "HighPoint RAID management service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HPTSVR_HIGHPOINT_RAID_MANAGEMENT_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\(\\0\\0\\0hpt_stor\\x01..\\xbf\\0\\0\\0\\0\\0\\0\\0\\0....\\.\\.\\.E\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\(\\0\\0\\0\\0\\0\\0\\0..`\\0\\x01\\xff\\xff\\xff\\xcc\\xfa\\x85\\0C\\x1d\\xe6whfnk\\.\\.\\.E\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_hptsvr_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\(\\0\\0\\0hpt_stor\\x01..\\xbf\\0\\0\\0\\0\\0\\0\\0\\0....\\.\\.\\.E\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\(\\0\\0\\0\\0\\0\\0\\0..`\\0\\x01\\xff\\xff\\xff\\xcc\\xfa\\x85\\0C\\x1d\\xe6whfnk\\.\\.\\.E\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\(\\0\\0\\0hpt_stor\\x01..\\0\\0\\0\\0\\0\\0\\0\\0\\0....\\.\\.\\.E\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour hptsvr"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "hptsvr"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: hptsvr. 2 match(es), 1 softmatch(es). Extraction de version disponible."
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-zhone-znid-gpon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Zhone zNID GPON",
+  "product": "Zhone zNID GPON",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_ZHONE_ZNID_GPON.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:zhone:znid_gpon_$1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\n               Welcome to Zhone Technologies\\r\\n               Model: ZNID-GPON-([\\w._-]+) Router\\r\\n               Release: S([\\w._-]+)\\r\\n\\r\\nCopyright \\(C\\) \\d+-\\d+ by Zhone Technologies\\.  All Rights Reserved\\.\\r\\nConfidential, Unpublished Property of Zhone Technologies\\.\\r\\nRights Reserved Under the Copyright Laws of the United States\\.\\r\\n\\r\\nLogin: ",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\n               Welcome to Zhone Technologies\\r\\n               Model: ZNID-GPON-([\\w._-]+) Router\\r\\n               Release: S([\\w._-]+)\\r\\n\\r\\nCopyright \\(C\\) \\d+-\\d+ by Zhone Technologies\\.  All Rights Reserved\\.\\r\\nConfidential, Unpublished Property of Zhone Technologies\\.\\r\\nRights Reserved Under the Copyright Laws of the United States\\.\\r\\n\\r\\nLogin: ",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:zhone:znid_gpon_$1:*:*:*:*:*:*:*:*"
+}

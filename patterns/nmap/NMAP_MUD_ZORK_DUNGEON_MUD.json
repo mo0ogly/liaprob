@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-mud-zork-dungeon-mud",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Zork Dungeon MUD",
+  "product": "Zork Dungeon MUD",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MUD_ZORK_DUNGEON_MUD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Welcome to Dungeon\\.\\t\\t\\tThis version created ([\\w-]+)\\.\\nYou are in an open field west of a big white house",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_mud_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Welcome to Dungeon\\.\\t\\t\\tThis version created ([\\w-]+)\\.\\nYou are in an open field west of a big white house",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour mud"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "mud"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: mud. 1 match(es), 0 softmatch(es)."
+}

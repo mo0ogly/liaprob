@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rbnb-ring-buffered-network-bus",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ring Buffered Network Bus",
+  "product": "Ring Buffered Network Bus",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RBNB_RING_BUFFERED_NETWORK_BUS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    515,
+    2947,
+    3333,
+    19350,
+    32211
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^EXM {EXC \\0\\x1fcom\\.rbnb\\.api\\.SerializeExceptionMSG \\0JUnrecognizable parameter read from input stream\\.\\nElement read was \\x01default}\\r\\nPNG {}\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rbnb_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^EXM {EXC \\0\\x1fcom\\.rbnb\\.api\\.SerializeExceptionMSG \\0JUnrecognizable parameter read from input stream\\.\\nElement read was \\x01default}\\r\\nPNG {}\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rbnb"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rbnb"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rbnb. 1 match(es), 0 softmatch(es)."
+}

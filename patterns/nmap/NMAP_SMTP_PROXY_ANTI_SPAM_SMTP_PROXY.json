@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-proxy-anti-spam-smtp-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Anti-Spam SMTP Proxy",
+  "product": "Anti-Spam SMTP Proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_PROXY_ANTI_SPAM_SMTP_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) SMTP; .*\\r\\n500 Syntax error, command unrecognized\\.\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) SMTP; .*\\r\\n500 Syntax error, command unrecognized\\.\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp-proxy. 1 match(es), 0 softmatch(es)."
+}

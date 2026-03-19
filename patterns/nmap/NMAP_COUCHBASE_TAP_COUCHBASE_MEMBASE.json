@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-couchbase-tap-couchbase-membase",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Couchbase Membase",
+  "product": "Couchbase Membase",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_COUCHBASE_TAP_COUCHBASE_MEMBASE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    11210
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x81\\x10..\\0\\0\\0\\0\\0\\0\\0.....\\0\\0\\0\\0\\0\\0\\0\\0ep_version([._\\w]+).*ep_dbname([_\\\\\\/\\w\\s:]+)",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x81\\x10..\\0\\0\\0\\0\\0\\0\\0.....\\0\\0\\0\\0\\0\\0\\0\\0ep_version([._\\w]+)",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_couchbase-tap_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x81\\x10..\\0\\0\\0\\0\\0\\0\\0.....\\0\\0\\0\\0\\0\\0\\0\\0ep_version([._\\w]+).*ep_dbname([_\\\\\\/\\w\\s:]+)",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x81\\x10..\\0\\0\\0\\0\\0\\0\\0.....\\0\\0\\0\\0\\0\\0\\0\\0ep_version([._\\w]+)",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour couchbase-tap"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "couchbase-tap"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: couchbase-tap. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

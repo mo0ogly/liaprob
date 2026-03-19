@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-draytek-vigor-2820-adsl-router-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DrayTek Vigor 2820 ADSL router ftpd",
+  "product": "DrayTek Vigor 2820 ADSL router ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_DRAYTEK_VIGOR_2820_ADSL_ROUTER_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:draytek:vigor_2820:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "Permission denied\\.\\(Please check access control list\\)\\r\\nPermission denied\\.\\(Please check access control list\\)\\r\\n\\n\\rSystem administrator is connecting from [\\d.]+\\n\\rReject the connection request !!!\\n\\r\\n\\rSystem administrator is connecting from [\\d.]+\\n\\rReject the connection request !!!\\n\\r",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "Permission denied\\.\\(Please check access control list\\)\\r\\nPermission denied\\.\\(Please check access control list\\)\\r\\n\\n\\rSystem administrator is connecting from [\\d.]+\\n\\rReject the connection request !!!\\n\\r\\n\\rSystem administrator is connecting from [\\d.]+\\n\\rReject the connection request !!!\\n\\r",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:draytek:vigor_2820:*:*:*:*:*:*:*:*"
+}

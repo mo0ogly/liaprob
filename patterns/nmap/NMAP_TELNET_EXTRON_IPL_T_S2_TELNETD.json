@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-extron-ipl-t-s2-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Extron IPL T S2 telnetd",
+  "product": "Extron IPL T S2 telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_EXTRON_IPL_T_S2_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\n\\(c\\) Copyright 2005, Extron Electronics, IPL T S2, V([\\d.]+),",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\n\\(c\\) Copyright 2005, Extron Electronics, IPL T S2, V([\\d.]+),",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

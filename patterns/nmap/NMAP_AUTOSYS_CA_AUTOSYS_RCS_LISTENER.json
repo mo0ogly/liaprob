@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-autosys-ca-autosys-rcs-listener",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CA AutoSys RCS Listener",
+  "product": "CA AutoSys RCS Listener",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_AUTOSYS_CA_AUTOSYS_RCS_LISTENER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([\\w._-]+)\\nListener for [\\w._-]+ AutoSysAdapter\\nEOS\\nExit Code = 1001\\nIP <[\\d.]+> is not authorized for this request\\. Please contact your Web Administrator\\.\\nEOS\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_autosys_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([\\w._-]+)\\nListener for [\\w._-]+ AutoSysAdapter\\nEOS\\nExit Code = 1001\\nIP <[\\d.]+> is not authorized for this request\\. Please contact your Web Administrator\\.\\nEOS\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour autosys"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "autosys"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: autosys. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

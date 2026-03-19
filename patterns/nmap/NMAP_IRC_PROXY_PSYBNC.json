@@ -1,0 +1,133 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-irc-proxy-psybnc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "psyBNC",
+  "product": "psyBNC",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IRC_PROXY_PSYBNC.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:.*!psyBNC@lam3rz\\.de NOTICE \\* :psyBNC([-.\\w]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:.*!pb@lam3rz\\.de NOTICE \\* :pb([-.\\w]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:.*!psyBNC@lam3rz\\.de NOTICE \\* :",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:.*!psyBNC@[-\\w_.]+ NOTICE \\* :psyBNC on ([-\\w_.]+)\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:.*!psyBNC@([-\\w_.]+) NOTICE \\* :psyBNC([-\\w_.]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:.*!BNC@([\\w._-]+) NOTICE \\* :psyBNC([\\w._-]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Login failed\\. Disconnecting\\.\\r\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_irc-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:.*!psyBNC@lam3rz\\.de NOTICE \\* :psyBNC([-.\\w]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:.*!pb@lam3rz\\.de NOTICE \\* :pb([-.\\w]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:.*!psyBNC@lam3rz\\.de NOTICE \\* :",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:.*!psyBNC@[-\\w_.]+ NOTICE \\* :psyBNC on ([-\\w_.]+)\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:.*!psyBNC@([-\\w_.]+) NOTICE \\* :psyBNC([-\\w_.]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:.*!BNC@([\\w._-]+) NOTICE \\* :psyBNC([\\w._-]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Login failed\\. Disconnecting\\.\\r\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour irc-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "irc-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: irc-proxy. 7 match(es), 0 softmatch(es). Extraction de version disponible."
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-kerberos-sec-heimdal-kerberos",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Heimdal Kerberos",
+  "product": "Heimdal Kerberos",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_KERBEROS_SEC_HEIMDAL_KERBEROS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    88
+  ],
+  "cpe23_template": "cpe:2.3:a:heimdal:kerberos:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0[\\x62-\\x64]~[\\x60-\\x62]0[\\x5e-\\x60]\\xa0\\x03\\x02\\x01\\x05\\xa1\\x03\\x02\\x01\\x1e\\xa4\\x11\\x18\\x0f(\\d\\d\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)Z\\xa5[\\x03-\\x05]\\x02(?:\\x03...|\\x02..|\\x01.)\\xa6\\x03\\x02\\x01<\\xa9\\x04\\x1b\\x02NM\\xaa\\x170\\x15\\xa0\\x03\\x02\\x01\\0\\xa1\\x0e0\\x0c\\x1b\\x06krbtgt\\x1b\\x02NM\\xab\\x16\\x1b\\x14No client in request$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_kerberos-sec_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0[\\x62-\\x64]~[\\x60-\\x62]0[\\x5e-\\x60]\\xa0\\x03\\x02\\x01\\x05\\xa1\\x03\\x02\\x01\\x1e\\xa4\\x11\\x18\\x0f(\\d\\d\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)Z\\xa5[\\x03-\\x05]\\x02(?:\\x03...|\\x02..|\\x01.)\\xa6\\x03\\x02\\x01<\\xa9\\x04\\x1b\\x02NM\\xaa\\x170\\x15\\xa0\\x03\\x02\\x01\\0\\xa1\\x0e0\\x0c\\x1b\\x06krbtgt\\x1b\\x02NM\\xab\\x16\\x1b\\x14No client in request$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour kerberos-sec"
+    },
+    {
+      "id": "nmap_kerberos-sec_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^~[\\x60-\\x62]0[\\x5e-\\x60]\\xa0\\x03\\x02\\x01\\x05\\xa1\\x03\\x02\\x01\\x1e\\xa4\\x11\\x18\\x0f(\\d\\d\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)(\\d\\d)Z\\xa5[\\x03-\\x05]\\x02(?:\\x03...|\\x02..|\\x01.)\\xa6\\x03\\x02\\x01<\\xa9\\x04\\x1b\\x02NM\\xaa\\x170\\x15\\xa0\\x03\\x02\\x01\\0\\xa1\\x0e0\\x0c\\x1b\\x06krbtgt\\x1b\\x02NM\\xab\\x16\\x1b\\x14No client in request$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour kerberos-sec"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "kerberos-sec"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: kerberos-sec. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:heimdal:kerberos:*:*:*:*:*:*:*:*"
+}

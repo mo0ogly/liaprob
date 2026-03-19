@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-avaya-ethernet-routing-switch-4550t-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Avaya Ethernet Routing Switch 4550T telnetd",
+  "product": "Avaya Ethernet Routing Switch 4550T telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_AVAYA_ETHERNET_ROUTING_SWITCH_4550T_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:avaya:4550t:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x1b\\[\\?25l\\xff\\xfb\\x01\\xff\\xfb\\x03\\x1b\\[2J\\x1b\\[0m\\x1b\\[1;1H\\x1b\\[2;1H\\x1b\\[3;1H {9}###   ### {12}###   ###   ### {12}###   ###\\x1b\\[4;1H {8}#{5}   ### {10}###   #{5}   ### {10}###   #{5}\\x1b\\[5;1H {7}### ###   ### {8}###   ### ###   ### {8}###   ### ###\\x1b\\[6;1H {6}###   ###   ### {6}###   ###   ###   ### {6}###   ###   ###\\x1b\\[7;1H {5}### {5}###   ###    ###   ### {5}###   ###    ###   ### {5}###\\x1b\\[8;1H    ### {7}###   ###  ###   ### {7}###   ###  ###   ### {7}###\\x1b\\[9;1H   #{10}  ###   #{6}   #{10}  ###   #{6}   #{10}  ###\\x1b\\[10;1H  #{12}  ###   ####   #{12}  ###   ####   #{12}  ###\\x1b\\[11;1H ### {13}###   ##   ### {13}###  ###   ### {13}###\\x1b\\[12;1H {48}###\\x1b\\[13;1H {47}###\\x1b\\[14;1H\\x1b\\[15;1H\\x1b\\[16;1HEnter Ctrl-Y to begin\\.\\x1b\\[18;3H\\*{17}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1b\\[\\?25l\\xff\\xfb\\x01\\xff\\xfb\\x03\\x1b\\[2J\\x1b\\[0m\\x1b\\[1;1H\\x1b\\[2;1H\\x1b\\[3;1H {9}###   ### {12}###   ###   ### {12}###   ###\\x1b\\[4;1H {8}#{5}   ### {10}###   #{5}   ### {10}###   #{5}\\x1b\\[5;1H {7}### ###   ### {8}###   ### ###   ### {8}###   ### ###\\x1b\\[6;1H {6}###   ###   ### {6}###   ###   ###   ### {6}###   ###   ###\\x1b\\[7;1H {5}### {5}###   ###    ###   ### {5}###   ###    ###   ### {5}###\\x1b\\[8;1H    ### {7}###   ###  ###   ### {7}###   ###  ###   ### {7}###\\x1b\\[9;1H   #{10}  ###   #{6}   #{10}  ###   #{6}   #{10}  ###\\x1b\\[10;1H  #{12}  ###   ####   #{12}  ###   ####   #{12}  ###\\x1b\\[11;1H ### {13}###   ##   ### {13}###  ###   ### {13}###\\x1b\\[12;1H {48}###\\x1b\\[13;1H {47}###\\x1b\\[14;1H\\x1b\\[15;1H\\x1b\\[16;1HEnter Ctrl-Y to begin\\.\\x1b\\[18;3H\\*{17}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:avaya:4550t:*:*:*:*:*:*:*:*"
+}

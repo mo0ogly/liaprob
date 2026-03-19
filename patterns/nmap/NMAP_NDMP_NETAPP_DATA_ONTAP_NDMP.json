@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ndmp-netapp-data-ontap-ndmp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NetApp Data ONTAP ndmp",
+  "product": "NetApp Data ONTAP ndmp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NDMP_NETAPP_DATA_ONTAP_NDMP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:netapp:data_ontap:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80\\0\\0\\x24\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\x00$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80\\0\\0\\x3c\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\x15Connection successful\\0\\0\\0$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80\\0\\0\\x38\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0\\x04\\0\\0\\0\\x12Connection refused\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ndmp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\0\\0\\x24\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\x00$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\0\\0\\x3c\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\x15Connection successful\\0\\0\\0$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\0\\0\\x38\\0\\0\\0\\x01....\\0\\0\\0\\0\\0\\0\\x05\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0\\x04\\0\\0\\0\\x12Connection refused\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ndmp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ndmp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ndmp. 3 match(es), 0 softmatch(es). CPE: cpe:2.3:a:netapp:data_ontap:*:*:*:*:*:*:*:*"
+}

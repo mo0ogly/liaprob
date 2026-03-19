@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-asterisk-proxy-asterisk-call-manager-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Asterisk Call Manager Proxy",
+  "product": "Asterisk Call Manager Proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ASTERISK_PROXY_ASTERISK_CALL_MANAGER_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:digium:asterisk:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Response: Follows\\r\\nPrivilege: Command\\r\\n--END COMMAND--\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_asterisk-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Response: Follows\\r\\nPrivilege: Command\\r\\n--END COMMAND--\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour asterisk-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "asterisk-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: asterisk-proxy. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:digium:asterisk:*:*:*:*:*:*:*:*"
+}

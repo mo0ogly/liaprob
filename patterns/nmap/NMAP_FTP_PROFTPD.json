@@ -1,0 +1,579 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-proftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ProFTPD",
+  "product": "ProFTPD",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_PROFTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    23,
+    25,
+    35,
+    43,
+    79,
+    98,
+    110,
+    113,
+    119,
+    199,
+    214,
+    264,
+    449,
+    465,
+    505,
+    510,
+    515,
+    540,
+    587,
+    616,
+    628,
+    666,
+    731,
+    771,
+    782,
+    989,
+    990,
+    992,
+    995,
+    1000,
+    1010,
+    1040,
+    1041,
+    1042,
+    1043,
+    1080,
+    1111,
+    1212,
+    1220,
+    1248,
+    1302,
+    1311,
+    1400,
+    1432,
+    1467,
+    1501,
+    1505,
+    1666,
+    1687,
+    1688,
+    2010,
+    2024,
+    2401,
+    2600,
+    2627,
+    3000,
+    3005,
+    3128,
+    3310,
+    3333,
+    3493,
+    3940,
+    4155,
+    5000,
+    5400,
+    5432,
+    5555,
+    5570,
+    6112,
+    6432,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    7144,
+    7145,
+    7200,
+    7780,
+    8000,
+    8138,
+    9000,
+    9001,
+    9002,
+    9003,
+    9801,
+    11371,
+    11965,
+    12345,
+    13720,
+    14690,
+    15000,
+    15001,
+    15002,
+    18086,
+    19150,
+    22490,
+    26214,
+    26470,
+    30444,
+    31416,
+    34012,
+    56667
+  ],
+  "cpe23_template": "cpe:2.3:a:proftpd:proftpd:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220  Server \\(ProFTPD\\) \\[([-.\\w]+)\\]\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ProFTPD (\\d\\S+) Server",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 FTP Server \\[([-\\w_.]+)\\]\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) FTP server ready\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*ProFTP[dD].*Server ready",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ProFTP Server Ready\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ProFTP Ready\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Welcome @ my\\.ftp\\.org\\r\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-.*\\r\\n220 ProFTPD ([\\d.]+) Server",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .* FTP Server \\(ProFTPD ([\\d.]+) on Red Hat linux ([\\d.]+)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ProFTP-Server auf ([-\\w_.]+)\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*\\r\\n220 ProFTPD ([\\w._-]+) Server \\(ProFTPD\\)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) FTP server ready!\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^500 Sorry, no server available to handle request on ([-\\w_.:]+)\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^500 Sorry, no server available to handle request on ([-\\w_.:]+)\\.\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-CentOS release ([\\w._-]+) .*\\r\\n220 ProFTPD ([\\w._-]+) Server \\(ProFTPD Default Installation\\)",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 BCB1COOL Server \\(Proftpd FTP Server\\) \\[([\\w._-]+)\\]\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Serveur FTP ::ffff:[\\d.]+ pr\\xc3\\xaat\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ - error: no valid servers configured\\n - Fatal: error processing configuration file '/etc/proftpd/proftpd\\.conf'\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-Debian GNU/Linux (\\d+)\\r\\n220 ProFTPD ([\\w._-]+) Server ",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 FTP Server[^[]* \\[([\\w.-]+)\\]\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n QUIT    REIN\\*   PORT    PASV    TYPE    STRU\\*   MODE\\*   RETR    \\r\\n STOR    STOU\\*   APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n SIZE    LIST    NLST    SITE    SYST    STAT    HELP    NOOP    \\r\\n214 Direct comments to ",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) FTP server ready\\.\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n STOR    STOU\\*   APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n SIZE    LIST    ",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 FTP-Server on \\[([-\\w_.]+)\\]\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n214-STOR    STOU\\*   APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n214-DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n214-SIZE    LIST",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) FTP server ready\\.\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    EPRT    EPSV    TYPE    STRU    \\r\\n214-MODE    RETR    STOR    STOU    APPE    ALLO\\*   REST    RNFR    \\r\\n214-RNTO    ABOR    DELE    MDTM    RMD     XRMD    MKD     XMKD",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+ )?FTP [sS]erver ready\\.?\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    EPRT    EPSV    TYPE    STRU    \\r\\n214-MODE    RETR    STOR    STOU    APPE    ALLO\\*   REST    RNFR    \\r\\n214-RNTO    ABOR    DELE    MDTM    RMD     XRMD    MKD     XMKD",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n(?:214-| )USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n(?:214-| )QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n(?:214-| )STOR    STOU    APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n(?:214-| )DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n(?:214-| )SIZE",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n(?:214-| )USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n(?:214-| )QUIT    REIN\\*   PORT    PASV    EPRT    EPSV    TYPE    STRU    \\r\\n(?:214-| )MODE    RETR    STOR    STOU    APPE    ALLO\\*   REST    RNFR    \\r\\n(?:214-| )RNTO    ABOR    DELE    MDTM    RMD     XRMD    MKD     XMKD    \\r\\n(?:214-| )PWD     XPWD    SIZE    LIST    NLST    SITE    SYST    STAT    \\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "220 localhost FTP server ready\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n214-STOR    STOU    APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n214-DELE",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\):\\r\\n CWD     XCWD    CDUP    XCUP    SMNT\\*   QUIT    PORT    PASV    \\r\\n EPRT    EPSV    ALLO\\*   RNFR    RNTO    DELE    MDTM    RMD     \\r\\n XRMD    MKD     XMKD    PWD     XPWD    SIZE    SYST    HELP    \\r\\n NOOP    FEAT    OPTS    AUTH\\*?   CCC\\*    CONF\\*   ENC\\*    MIC\\*    \\r\\n PBSZ\\*?   PROT\\*?   TYPE    STRU    MODE    RETR    STOR    STOU    \\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\):\\r\\n CWD     XCWD    CDUP    XCUP    SMNT\\*   QUIT    PORT    PASV    \\r\\n EPRT    EPSV    ALLO\\*   RNFR    RNTO    DELE    MDTM    RMD     \\r\\n XRMD    MKD     XMKD    PWD     XPWD    SIZE    SYST    HELP    \\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[ -].*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\):\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .*\\r\\n214-\\xd1\\xeb\\xe5\\xe4\\xf3\\xfe\\xf9\\xe8\\xe5 \\xea\\xee\\xec\\xe0\\xed\\xe4\\xfb \\xe1\\xfb\\xeb\\xe8 \\xf0\\xe0\\xf1\\xef\\xee\\xe7\\xed\\xe0\\xed\\xfb \\(\\* => \\xed\\xe5 \\xf0\\xe5\\xe0\\xeb\\xe8\\xe7\\xee\\xe2\\xe0\\xed\\xee\\):\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+)\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n.*\\r\\n214 Direct comments to",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[ -].*\\r\\n550 SSL/TLS required on the control channel\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220  Server \\(ProFTPD\\) \\[([-.\\w]+)\\]\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ProFTPD (\\d\\S+) Server",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 FTP Server \\[([-\\w_.]+)\\]\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) FTP server ready\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*ProFTP[dD].*Server ready",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ProFTP Server Ready\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ProFTP Ready\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Welcome @ my\\.ftp\\.org\\r\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-.*\\r\\n220 ProFTPD ([\\d.]+) Server",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .* FTP Server \\(ProFTPD ([\\d.]+) on Red Hat linux ([\\d.]+)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ProFTP-Server auf ([-\\w_.]+)\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*\\r\\n220 ProFTPD ([\\w._-]+) Server \\(ProFTPD\\)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) FTP server ready!\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^500 Sorry, no server available to handle request on ([-\\w_.:]+)\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^500 Sorry, no server available to handle request on ([-\\w_.:]+)\\.\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-CentOS release ([\\w._-]+) .*\\r\\n220 ProFTPD ([\\w._-]+) Server \\(ProFTPD Default Installation\\)",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 BCB1COOL Server \\(Proftpd FTP Server\\) \\[([\\w._-]+)\\]\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Serveur FTP ::ffff:[\\d.]+ pr\\xc3\\xaat\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ - error: no valid servers configured\\n - Fatal: error processing configuration file '/etc/proftpd/proftpd\\.conf'\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-Debian GNU/Linux (\\d+)\\r\\n220 ProFTPD ([\\w._-]+) Server ",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 FTP Server[^[]* \\[([\\w.-]+)\\]\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n QUIT    REIN\\*   PORT    PASV    TYPE    STRU\\*   MODE\\*   RETR    \\r\\n STOR    STOU\\*   APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n SIZE    LIST    NLST    SITE    SYST    STAT    HELP    NOOP    \\r\\n214 Direct comments to ",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) FTP server ready\\.\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n STOR    STOU\\*   APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n SIZE    LIST    ",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 FTP-Server on \\[([-\\w_.]+)\\]\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n214-STOR    STOU\\*   APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n214-DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n214-SIZE    LIST",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) FTP server ready\\.\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    EPRT    EPSV    TYPE    STRU    \\r\\n214-MODE    RETR    STOR    STOU    APPE    ALLO\\*   REST    RNFR    \\r\\n214-RNTO    ABOR    DELE    MDTM    RMD     XRMD    MKD     XMKD",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+ )?FTP [sS]erver ready\\.?\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    EPRT    EPSV    TYPE    STRU    \\r\\n214-MODE    RETR    STOR    STOU    APPE    ALLO\\*   REST    RNFR    \\r\\n214-RNTO    ABOR    DELE    MDTM    RMD     XRMD    MKD     XMKD",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n(?:214-| )USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n(?:214-| )QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n(?:214-| )STOR    STOU    APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n(?:214-| )DELE    MDTM    RMD     XRMD    MKD     XMKD    PWD     XPWD    \\r\\n(?:214-| )SIZE",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n(?:214-| )USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n(?:214-| )QUIT    REIN\\*   PORT    PASV    EPRT    EPSV    TYPE    STRU    \\r\\n(?:214-| )MODE    RETR    STOR    STOU    APPE    ALLO\\*   REST    RNFR    \\r\\n(?:214-| )RNTO    ABOR    DELE    MDTM    RMD     XRMD    MKD     XMKD    \\r\\n(?:214-| )PWD     XPWD    SIZE    LIST    NLST    SITE    SYST    STAT    \\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "220 localhost FTP server ready\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n214-USER    PASS    ACCT\\*   CWD     XCWD    CDUP    XCUP    SMNT\\*   \\r\\n214-QUIT    REIN\\*   PORT    PASV    TYPE    STRU    MODE    RETR    \\r\\n214-STOR    STOU    APPE    ALLO\\*   REST    RNFR    RNTO    ABOR    \\r\\n214-DELE",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\):\\r\\n CWD     XCWD    CDUP    XCUP    SMNT\\*   QUIT    PORT    PASV    \\r\\n EPRT    EPSV    ALLO\\*   RNFR    RNTO    DELE    MDTM    RMD     \\r\\n XRMD    MKD     XMKD    PWD     XPWD    SIZE    SYST    HELP    \\r\\n NOOP    FEAT    OPTS    AUTH\\*?   CCC\\*    CONF\\*   ENC\\*    MIC\\*    \\r\\n PBSZ\\*?   PROT\\*?   TYPE    STRU    MODE    RETR    STOR    STOU    \\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\):\\r\\n CWD     XCWD    CDUP    XCUP    SMNT\\*   QUIT    PORT    PASV    \\r\\n EPRT    EPSV    ALLO\\*   RNFR    RNTO    DELE    MDTM    RMD     \\r\\n XRMD    MKD     XMKD    PWD     XPWD    SIZE    SYST    HELP    \\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[ -].*\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\):\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n214-\\xd1\\xeb\\xe5\\xe4\\xf3\\xfe\\xf9\\xe8\\xe5 \\xea\\xee\\xec\\xe0\\xed\\xe4\\xfb \\xe1\\xfb\\xeb\\xe8 \\xf0\\xe0\\xf1\\xef\\xee\\xe7\\xed\\xe0\\xed\\xfb \\(\\* => \\xed\\xe5 \\xf0\\xe5\\xe0\\xeb\\xe8\\xe7\\xee\\xe2\\xe0\\xed\\xee\\):\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+)\\r\\n214-The following commands are recognized \\(\\* =>'s unimplemented\\)\\.\\r\\n.*\\r\\n214 Direct comments to",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[ -].*\\r\\n550 SSL/TLS required on the control channel\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    },
+    {
+      "id": "nmap_ftp_1",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^550 Access is denied\\.\\r\\n550 Access is denied\\.\\r\\n220 ProFTPD ([\\w._-]+) Server \\(([\\w._-]+)\\)",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 35 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:proftpd:proftpd:*:*:*:*:*:*:*:*"
+}

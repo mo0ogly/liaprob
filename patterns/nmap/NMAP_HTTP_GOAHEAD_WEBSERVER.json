@@ -1,0 +1,475 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-goahead-webserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "GoAhead WebServer",
+  "product": "GoAhead WebServer",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_GOAHEAD_WEBSERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    70,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    88,
+    113,
+    119,
+    139,
+    143,
+    280,
+    443,
+    465,
+    497,
+    505,
+    514,
+    515,
+    540,
+    554,
+    587,
+    591,
+    620,
+    631,
+    641,
+    783,
+    888,
+    898,
+    900,
+    901,
+    990,
+    993,
+    995,
+    1026,
+    1042,
+    1080,
+    1111,
+    1214,
+    1220,
+    1234,
+    1311,
+    1314,
+    1344,
+    1443,
+    1503,
+    1610,
+    1611,
+    1830,
+    1900,
+    2001,
+    2002,
+    2030,
+    2064,
+    2160,
+    2301,
+    2306,
+    2396,
+    2401,
+    2525,
+    2627,
+    2715,
+    2869,
+    3000,
+    3002,
+    3052,
+    3128,
+    3280,
+    3372,
+    3443,
+    3493,
+    3531,
+    3689,
+    3872,
+    4000,
+    4443,
+    4444,
+    4567,
+    4660,
+    4711,
+    5000,
+    5060,
+    5061,
+    5222,
+    5232,
+    5269,
+    5280,
+    5427,
+    5432,
+    5800,
+    5801,
+    5802,
+    5803,
+    5900,
+    5985,
+    5986,
+    6000,
+    6103,
+    6346,
+    6544,
+    6560,
+    6600,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    6699,
+    6969,
+    7002,
+    7007,
+    7070,
+    7100,
+    7402,
+    7443,
+    7776,
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    8005,
+    8006,
+    8007,
+    8008,
+    8009,
+    8010,
+    8080,
+    8081,
+    8082,
+    8083,
+    8084,
+    8085,
+    8088,
+    8118,
+    8181,
+    8443,
+    8530,
+    8531,
+    8880,
+    8881,
+    8882,
+    8883,
+    8884,
+    8885,
+    8886,
+    8887,
+    8888,
+    9000,
+    9001,
+    9030,
+    9050,
+    9080,
+    9090,
+    9443,
+    9999,
+    10000,
+    10001,
+    10005,
+    10031,
+    10443,
+    11371,
+    12345,
+    13013,
+    13666,
+    13722,
+    14443,
+    14534,
+    14690,
+    15000,
+    17988,
+    18264,
+    22490,
+    31337,
+    37435,
+    40193,
+    44443,
+    49400,
+    50000,
+    55555,
+    60443
+  ],
+  "cpe23_template": "cpe:2.3:a:goahead:goahead_webserver:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 400 Page not found\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\n\\r\\n<html><head><title>Document Error: Page not found</title></head>\\r\\n\\t\\t<body><h2>Access Error: Page not found</h2>\\r\\n\\t\\t<p>Bad request type</p></body></html>\\r\\n\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: http(s?)://SwitchViewIP\\.Avocent\\.com/splashscreen\\.asp\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: https://(iDRAC-\\w+)(?::443)?(?:/Applications/dellUI/login\\.htm)?\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 401 Password Required\\r\\nWWW-Authenticate: Basic realm= StarVoice\\r\\nServer: GoAhead-Webs\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 401 Unauthorized\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nWWW-Authenticate: Basic realm=\\\"Default: admin/1234\\\"\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nExpires: 0\\r\\n<META http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=ISO-8559-1\\\">\\r\\nLocation: http://\\(null\\)/index\\.html\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: http://Netlinx/WebControl\\.asp\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\n.*\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: http://Device/config/log_off_page\\.htm\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 401 Unauthorized\\r\\nServer: GoAhead-Webs\\r\\nDate: (?:[^\\r\\n]*\\r\\n)*?WWW-Authenticate: Basic realm=\\\"Wireless Access Point\\\"\\r\\n.*\\r\\n<html><head><title>Document Error: Unauthorized</title></head>\\r\\n\\t\\t<body><h2>Access Error: Unauthorized</h2>\\r\\n\\t\\twhen trying to obtain <b>/</b><br><p>Access to this document requires a User ID</p></body></html>\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 \\d\\d\\d .*\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nWWW-Authenticate: Basic realm=\\\"Venturi NMS\\\"\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 \\d\\d\\d .*\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nWWW-Authenticate: Basic realm=\\\"ATAboy2-",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 \\d\\d\\d .*\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nP3P: CP=\\\"NON DSP CURa OUR NOR UNI\\\"\\r\\nLocation: http://[\\d.]+/auth\\.asp\\r\\n\\r\\n<html><head></head><body>\\r\\nMoved to this <a href=\\\"http://[\\d.]+/auth\\.asp\\\">location</a>\\.\\r\\n<!-- response_code_begin ERIC_RESPONSE_OK",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 \\d\\d\\d .*\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nWWW-Authenticate: Basic realm=\\\"DCM-202\\\"\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 \\d\\d\\d .*\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nWWW-Authenticate: Basic realm=\\\"(GN-\\w+)\\\"\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 401 Unauthorized\\r\\nDate: .*\\r\\nServer: GoAhead-Webs\\r\\nConnection: close\\r\\nWWW-Authenticate: Basic realm=\\\"CameraServer\\\"\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 \\d\\d\\d (?:[^\\r\\n]*\\r\\n)*?Server: GoAhead-Webs\\r\\n.*<!-- response_code_begin ERIC_RESPONSE_OK",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 401 \\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nWWW-Authenticate: Basic realm=\\\"AirMagnet SmartEdge Sensor\\\"\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 401 Unauthorized\\r\\nServer: GoAhead-Webs\\r\\n(?:[^\\r\\n]+\\r\\n)*?WWW-Authenticate: Basic realm=\\\"Wireless Router \\(username: admin\\)\\\"\\r\\n.*<body background=/menu-images/config_bg\\.gif>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nConnection: close\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: http://Device/config/log_off_page\\.htm\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nConnection: close\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: http://\\(null\\)/config/log_off_page\\.htm\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: http://[\\w._-]+/index\\.asp\\r\\n\\r\\n<html><head></head><body>\\r\\n\\t\\tThis document has moved to a new",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nConnection: Close\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\nLocation: http://\\xee{64}/index\\.html\\r\\n\\r\\n<html><head></head><body>\\r\\n\\t\\tThis document has moved to a new",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\n(?:[^\\r\\n]+\\r\\n)*?Location: https://Device/config/log_off_page\\.htm\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 401 Unauthorized\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nWWW-Authenticate: Basic realm=\\\"WebAdmin\\\"\\r\\n.*<p>Access to this document requires a User ID</p>",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\n(?:[^\\r\\n]+\\r\\n)*?Location: https?://vxtarget/esm_loginMain\\.htm\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\n(?:[^\\r\\n]+\\r\\n)*?Location: https?://3100icp/esm_loginMain\\.asp\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 302 Redirect\\r\\nServer: GoAhead-Webs\\r\\n(?:[^\\r\\n]+\\r\\n)*?Location: http://([\\w._-]+)/login\\.asp\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 401 Unauthorized\\r\\nServer: GoAhead-Webs\\r\\n.*Basic realm=\\\"(P-[\\w -]+) \\(username: ([\\w._-]+)\\)\\\"\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 401 Unauthorized\\r\\nServer: GoAhead-Webs\\r\\nDate: .* \\d\\d\\d\\d\\r\\nWWW-Authenticate: Basic realm=\\\"Internet Camera\\\"\\r\\n.*<CENTER><FONT SIZE=\\\"5\\\" COLOR=\\\"#FF0000\\\" face=\\\"Arial\\\">Access Denied</FONT></CENTER></BODY></HTML> {500}",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.[01] \\d\\d\\d .*\\r\\nServer: GoAhead\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.[01] \\d\\d\\d .*\\r\\nServer: GoAhead-Webs\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.[01] \\d\\d\\d .*\\r\\nServer: GoAhead/([0-2][\\d.]+)\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.[01] \\d\\d\\d .*\\r\\nServer: GoAhead/([\\d.]+)\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.[01] \\d\\d\\d .*\\r\\nServer: GoAhead-http\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 \\d\\d\\d .*\\r\\nServer: GoAhead-Webs/([\\w._-]+)\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 400 Page not found\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\n\\r\\n<html><head><title>Document Error: Page not found</title></head>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 400 Page not found\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html; charset=iso-8859-1;\\r\\n\\r\\n<html><head><title>Document Error: Page not found</title></head>\\r\\n        <body><h2>Access Error: Page not found</h2>\\r\\n        <p>Bad request type</p></body></html>\\r\\n\\r\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 400 Page not found\\r\\nServer: Go[aA]head(?:-Webs)?/([\\d.]+) PeerSec-MatrixSSL/(\\d[\\w.]+)-OPEN\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    },
+    {
+      "id": "nmap_http_1",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 400 Page not found\\r\\nServer: GoAhead-Webs\\r\\nDate: .*\\r\\nPragma: no-cache\\r\\nCache-Control: no-cache\\r\\nContent-Type: text/html\\r\\n\\r\\n<html><head><title>Document Error: Page not found</title></head>\\r\\n\\t\\t<body><h2>Access Error: Page not found</h2>\\r\\n\\t\\t<p>Bad request type</p></body></html>\\r\\n\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 39 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:goahead:goahead_webserver:*:*:*:*:*:*:*:*"
+}

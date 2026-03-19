@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-nettalk",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "netTALK",
+  "product": "netTALK",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_NETTALK.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 200 OK\\r\\nVia: SIP/2\\.0/TCP nm;received=[\\d.]+;branch=foo\\r\\nCall-ID: 50000\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=foo\\r\\nCSeq: 42 OPTIONS\\r\\nAllow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS\\r\\nAccept: application/sdp, application/pidf\\+xml, application/xpidf\\+xml, application/simple-message-summary, message/sipfrag;version=2\\.0, application/im-iscomposing\\+xml, text/plain\\r\\nSupported: replaces, 100rel, timer, norefersub\\r\\nAllow-Events: presence, message-summary, refer\\r\\nUser-Agent: netTALK\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 200 OK\\r\\nVia: SIP/2\\.0/TCP nm;received=[\\d.]+;branch=foo\\r\\nCall-ID: 50000\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=foo\\r\\nCSeq: 42 OPTIONS\\r\\nAllow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS\\r\\nAccept: application/sdp, application/pidf\\+xml, application/xpidf\\+xml, application/simple-message-summary, message/sipfrag;version=2\\.0, application/im-iscomposing\\+xml, text/plain\\r\\nSupported: replaces, 100rel, timer, norefersub\\r\\nAllow-Events: presence, message-summary, refer\\r\\nUser-Agent: netTALK\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sip"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip. 1 match(es), 0 softmatch(es)."
+}

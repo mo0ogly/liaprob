@@ -1,0 +1,65 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-afs-openafs",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "OpenAFS",
+  "product": "OpenAFS",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_AFS_OPENAFS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1719,
+    7001
+  ],
+  "cpe23_template": "cpe:2.3:a:openafs:openafs:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_afs_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\d\\D]{28}\\s*OpenAFS\\s+([\\d\\.]+)\\s+([^\\0]+)\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\d\\D]{28}\\s*OpenAFS\\s+stable\\s+([\\d\\.]+)\\s+([^\\0]+)\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\d\\D]{28}\\s*OpenAFS([\\d\\.]{3}[^\\s\\0]*)\\s+([^\\0]+)\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[\\d\\D]{28}\\s*OpenAFS([\\d\\.]{3}[^\\s\\0]*)\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour afs"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "afs"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: afs. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:openafs:openafs:{version}:*:*:*:*:*:*:*"
+}

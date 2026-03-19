@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-windows-nt-4-0-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Windows NT 4.0 telnetd",
+  "product": "Windows NT 4.0 telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_WINDOWS_NT_4_0_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows_nt:4.0:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x25\\xff\\xfb\\x01\\xff\\xfd\\x03\\xff\\xfd\\x1f\\xff\\xfd\\x00\\xff\\xfb\\x00",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 0 match(es), 1 softmatch(es). CPE: cpe:2.3:o:microsoft:windows_nt:4.0:*:*:*:*:*:*:*"
+}

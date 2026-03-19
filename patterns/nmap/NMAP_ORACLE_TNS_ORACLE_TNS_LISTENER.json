@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-oracle-tns-oracle-tns-listener",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Oracle TNS listener",
+  "product": "Oracle TNS listener",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ORACLE_TNS_ORACLE_TNS_LISTENER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1035,
+    1521,
+    1522,
+    1525,
+    1526,
+    1574,
+    1748,
+    1754,
+    14238,
+    20000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^..\\0\\0\\x04\\0\\0\\0\\\"\\0..\\(DESCRIPTION=\\(ERR=12504\\)\\)\\0",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_oracle-tns_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\0\\0\\x04\\0\\0\\0\\\"\\0..\\(DESCRIPTION=\\(ERR=12504\\)\\)\\0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour oracle-tns"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "oracle-tns"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: oracle-tns. 1 match(es), 0 softmatch(es)."
+}

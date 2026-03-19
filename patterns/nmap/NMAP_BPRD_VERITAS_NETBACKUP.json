@@ -1,0 +1,96 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bprd-veritas-netbackup",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Veritas Netbackup",
+  "product": "Veritas Netbackup",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BPRD_VERITAS_NETBACKUP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:symantec:netbackup:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.EXIT[ _]STATUS \\d+$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^request daemon can't accept sessions\\nanother instance may already be running\\.\\nAddress already in use\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^bp[-\\w]+: error while loading shared libraries: libstdc\\+\\+-libc6\\.2-2\\.so\\.3: cannot open shared object file: No such file or directory\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^gethostbyaddr: [\\w ]+\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^bpjava-msvc: error while loading shared libraries: libpam\\.so\\.0: cannot open shared object file: No such file or directory\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bprd_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.EXIT[ _]STATUS \\d+$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^request daemon can't accept sessions\\nanother instance may already be running\\.\\nAddress already in use\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^bp[-\\w]+: error while loading shared libraries: libstdc\\+\\+-libc6\\.2-2\\.so\\.3: cannot open shared object file: No such file or directory\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^gethostbyaddr: [\\w ]+\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^bpjava-msvc: error while loading shared libraries: libpam\\.so\\.0: cannot open shared object file: No such file or directory\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour bprd"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bprd"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bprd. 5 match(es), 0 softmatch(es). CPE: cpe:2.3:a:symantec:netbackup:*:*:*:*:*:*:*:*"
+}

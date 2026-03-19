@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pptp-point-to-point-tunneling-protocol",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Point to Point Tunneling Protocol",
+  "product": "Point to Point Tunneling Protocol",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PPTP_POINT_TO_POINT_TUNNELING_PROTOCOL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x10\\0\\x01\\x1a\\+<M\\0\\x05\\0\\0\\0\\0\\0\\x01$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pptp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x10\\0\\x01\\x1a\\+<M\\0\\x05\\0\\0\\0\\0\\0\\x01$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pptp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pptp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pptp. 1 match(es), 0 softmatch(es)."
+}

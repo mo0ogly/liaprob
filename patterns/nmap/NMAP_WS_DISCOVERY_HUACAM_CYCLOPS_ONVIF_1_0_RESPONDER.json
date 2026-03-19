@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ws-discovery-huacam-cyclops-onvif-1-0-responder",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Huacam Cyclops ONVIF 1.0 responder",
+  "product": "Huacam Cyclops ONVIF 1.0 responder",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WS_DISCOVERY_HUACAM_CYCLOPS_ONVIF_1_0_RESPONDER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5060
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ws-discovery_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<\\?xml version=\\\"1\\.0\\\" encoding=\\\"UTF-8\\\"\\?>\\n<SOAP-ENV:Envelope xmlns:SOAP-ENV=\\\"http://www\\.w3\\.org/2003/05/soap-envelope\\\" xmlns:SOAP-ENC=\\\"http://www\\.w3\\.org/2003/05/soap-encoding\\\" xmlns:xsi=\\\"http://www\\.w3\\.org/2001/XMLSchema-instance\\\" xmlns:xsd=\\\"http://www\\.w3\\.org/2001/XMLSchema\\\" xmlns:wsa=\\\"http://schemas\\.xmlsoap\\.org/ws/2004/08/addressing\\\" xmlns:d=\\\"http://schemas\\.xmlsoap\\.org/ws/2005/04/discovery\\\" xmlns:d3=\\\"http://www\\.onvif\\.org/ver10/network/wsdl/RemoteDiscoveryBinding\\\" xmlns:d4=\\\"http://www\\.onvif\\.org/ver10/network/wsdl/DiscoveryLookupBinding\\\" xmlns:dn=\\\"http://www\\.onvif\\.org/ver10/network/wsdl\\\"><SOAP-ENV:Body><SOAP-ENV:Fault><faultcode>SOAP-ENV:Client</faultcode><faultstring>No XML element tag</faultstring></SOAP-ENV:Fault></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour ws-discovery"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ws-discovery"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ws-discovery. 1 match(es), 0 softmatch(es)."
+}

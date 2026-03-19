@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-panasonic-wv-np1000-webcam-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Panasonic WV-NP1000 webcam ftpd",
+  "product": "Panasonic WV-NP1000 webcam ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_PANASONIC_WV_NP1000_WEBCAM_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:panasonic:wv-np1000:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 PrNET FTP server \\(PrNET FTP ([\\d.]+)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 PrNET FTP server \\(PrNET FTP ([\\d.]+)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:panasonic:wv-np1000:*:*:*:*:*:*:*:*"
+}

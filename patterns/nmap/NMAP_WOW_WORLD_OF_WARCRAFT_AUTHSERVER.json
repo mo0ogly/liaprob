@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-wow-world-of-warcraft-authserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "World of Warcraft authserver",
+  "product": "World of Warcraft authserver",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WOW_WORLD_OF_WARCRAFT_AUTHSERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    513,
+    514,
+    853,
+    1035,
+    1521,
+    1522,
+    1525,
+    1526,
+    1574,
+    1748,
+    1754,
+    6050,
+    14238,
+    20000,
+    41523
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\t.{32}\\x01.*?\\0\\x10..\\0\\0\\0\\0......([^\\0]+)\\x00([\\d.]{7,15}:\\d+)\\0",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\t.{32}\\x01..{32}",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_wow_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\t.{32}\\x01.*?\\0\\x10..\\0\\0\\0\\0......([^\\0]+)\\x00([\\d.]{7,15}:\\d+)\\0",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\t.{32}\\x01..{32}",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour wow"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "wow"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: wow. 2 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-snmp-fortinet-snmp-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Fortinet SNMP service",
+  "product": "Fortinet SNMP service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SNMP_FORTINET_SNMP_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    161,
+    260,
+    3401
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_snmp_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^..\\x02\\x01\\x030.\\x02\\x02Ji\\x02.{3,4}\\x04\\x01.\\x02\\x01\\x03\\x04.{5,6}\\x80\\0\\x30\\x44",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour snmp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "snmp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: snmp. 1 match(es), 0 softmatch(es)."
+}

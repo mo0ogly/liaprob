@@ -1,0 +1,223 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-pure-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Pure-FTPd",
+  "product": "Pure-FTPd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_PURE_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:pureftpd:pure-ftpd:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*Welcome to .*Pure-?FTPd (\\d\\S+\\s*)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*Welcome to .*Pure-?FTPd[^(]+\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*Bienvenue sur .*Pure-?FTPd.*\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*Bienvenue sur .*Pure-?FTPd (\\d[-.\\w]+)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*Velkommen til .*Pure-?FTPd.*\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*Bem-vindo.*Pure-?FTPd.*\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[- ]FTP server ready\\.\\r\\n.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220---------- Welcome to Pure-FTPd \\[privsep\\] \\[TLS\\] ----------\\r\\n220-You are user number",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220---------- .* Pure-FTPd ----------\\r\\n220-",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.Welcome to ([-\\w_.]+)\\r\\n214-The following SITE commands are recognized\\r\\n.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^214-The following SITE commands are recognized\\r\\n.*214 Pure-FTPd - http://pureftpd\\.org/\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*Welcome to .*Pure-?FTPd (\\d\\S+\\s*)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*Welcome to .*Pure-?FTPd[^(]+\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*Bienvenue sur .*Pure-?FTPd.*\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*Bienvenue sur .*Pure-?FTPd (\\d[-.\\w]+)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*Velkommen til .*Pure-?FTPd.*\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*Bem-vindo.*Pure-?FTPd.*\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[- ]FTP server ready\\.\\r\\n.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220---------- Welcome to Pure-FTPd \\[privsep\\] \\[TLS\\] ----------\\r\\n220-You are user number",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220---------- .* Pure-FTPd ----------\\r\\n220-",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.Welcome to ([-\\w_.]+)\\r\\n214-The following SITE commands are recognized\\r\\n.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^214-The following SITE commands are recognized\\r\\n.*214 Pure-FTPd - http://pureftpd\\.org/\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.*214 Pure-FTPd - http://pureftpd\\.org/?\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 13 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:pureftpd:pure-ftpd:{version}:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-siemens-315-2pn-dp-programmable-logic-controller-http-admin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Siemens 315-2PN/DP programmable logic controller http admin",
+  "product": "Siemens 315-2PN/DP programmable logic controller http admin",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_SIEMENS_315_2PN_DP_PROGRAMMABLE_LOGIC_CONTROLLER_HTTP_ADMIN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "cpe23_template": "cpe:2.3:h:siemens:315-2pn%2Fdp:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 405 Method Not Allowed\\r\\nContent-Length: 0\\r\\nConnection: close\\r\\nAllow: GET, POST\\r\\nContent-Type: text/html\\r\\n\\r\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:siemens:315-2pn%2Fdp:*:*:*:*:*:*:*:*"
+}

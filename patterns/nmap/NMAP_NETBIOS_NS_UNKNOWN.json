@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netbios-ns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NETBIOS-NS",
+  "product": "netbios-ns",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETBIOS_NS_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    137
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netbios-ns_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\xf0[\\x80-\\x8f].\\0\\0\\0.\\0\\0\\0\\0 CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\0\\0!\\0\\x01",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour netbios-ns"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netbios-ns"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netbios-ns. 0 match(es), 1 softmatch(es)."
+}

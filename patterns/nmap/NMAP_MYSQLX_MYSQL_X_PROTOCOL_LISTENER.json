@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-mysqlx-mysql-x-protocol-listener",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MySQL X protocol listener",
+  "product": "MySQL X protocol listener",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MYSQLX_MYSQL_X_PROTOCOL_LISTENER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:mysql:mysql:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x05\\0\\0\\0\\x0b\\x08\\x05\\x1a\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_mysqlx_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x05\\0\\0\\0\\x0b\\x08\\x05\\x1a\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour mysqlx"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "mysqlx"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: mysqlx. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:mysql:mysql:*:*:*:*:*:*:*:*"
+}

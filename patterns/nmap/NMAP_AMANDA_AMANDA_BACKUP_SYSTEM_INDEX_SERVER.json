@@ -1,0 +1,88 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-amanda-amanda-backup-system-index-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Amanda backup system index server",
+  "product": "Amanda backup system index server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_AMANDA_AMANDA_BACKUP_SYSTEM_INDEX_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:amanda:amanda:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) AMANDA index server \\((\\d[-.\\w ]+)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^501 Could not read config file [^!\\r\\n]+!\\r\\n220 ([-.\\w]+) AMANDA index server \\(([-\\w_.]+)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ld\\.so\\.1: amandad: fatal: (libsunmath\\.so\\.1): open failed: No such file or directory\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\n\\*\\* \\(process:\\d+\\): CRITICAL \\*\\*: GLib version too old \\(micro mismatch\\): Amanda was compiled with glib-[\\d.]+, but linking with ([\\d.]+)\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_amanda_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) AMANDA index server \\((\\d[-.\\w ]+)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^501 Could not read config file [^!\\r\\n]+!\\r\\n220 ([-.\\w]+) AMANDA index server \\(([-\\w_.]+)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ld\\.so\\.1: amandad: fatal: (libsunmath\\.so\\.1): open failed: No such file or directory\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\n\\*\\* \\(process:\\d+\\): CRITICAL \\*\\*: GLib version too old \\(micro mismatch\\): Amanda was compiled with glib-[\\d.]+, but linking with ([\\d.]+)\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour amanda"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "amanda"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: amanda. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:amanda:amanda:{version}:*:*:*:*:*:*:*"
+}

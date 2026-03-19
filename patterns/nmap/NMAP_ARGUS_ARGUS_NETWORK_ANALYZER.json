@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-argus-argus-network-analyzer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Argus network analyzer",
+  "product": "Argus network analyzer",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ARGUS_ARGUS_NETWORK_ANALYZER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80\\x01\\0\\x80\\0\\x80\\0\\0\\xe5az\\xcb\\0\\0\\0\\0J...............\\x02\\0\\x01\\0\\0<\\x01,.......\\0...\\0\\0\\0\\0\\x01\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff\\xff\\xff\\x01\\x04\\0.\\0\\x80\\x08",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_argus_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\x01\\0\\x80\\0\\x80\\0\\0\\xe5az\\xcb\\0\\0\\0\\0J...............\\x02\\0\\x01\\0\\0<\\x01,.......\\0...\\0\\0\\0\\0\\x01\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff\\xff\\xff\\x01\\x04\\0.\\0\\x80\\x08",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour argus"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "argus"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: argus. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

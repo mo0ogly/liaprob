@@ -1,0 +1,219 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-saprouter-saprouter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SAProuter",
+  "product": "SAProuter",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SAPROUTER_SAPROUTER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    21,
+    23,
+    35,
+    43,
+    79,
+    98,
+    110,
+    113,
+    119,
+    199,
+    214,
+    264,
+    449,
+    505,
+    510,
+    540,
+    587,
+    616,
+    628,
+    666,
+    731,
+    771,
+    782,
+    989,
+    990,
+    992,
+    995,
+    1000,
+    1010,
+    1040,
+    1041,
+    1042,
+    1043,
+    1080,
+    1212,
+    1220,
+    1248,
+    1302,
+    1400,
+    1432,
+    1467,
+    1501,
+    1505,
+    1666,
+    1687,
+    1688,
+    2010,
+    2024,
+    2600,
+    3000,
+    3005,
+    3128,
+    3310,
+    3333,
+    3940,
+    4155,
+    5000,
+    5400,
+    5432,
+    5555,
+    5570,
+    6112,
+    6432,
+    6667,
+    6668,
+    6669,
+    6670,
+    7144,
+    7145,
+    7200,
+    7780,
+    8000,
+    8138,
+    9000,
+    9001,
+    9002,
+    9003,
+    9801,
+    11371,
+    11965,
+    13720,
+    15000,
+    15001,
+    15002,
+    18086,
+    19150,
+    26214,
+    26470,
+    30444,
+    31416,
+    34012,
+    56667
+  ],
+  "cpe23_template": "cpe:2.3:a:sap:network_interface_router:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: no route received within 5s \\(CONNECTED\\)\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) \\(SP(\\d+)\\) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: no route received within 5s \\(CONNECTED\\)\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: CONNECTED timeout\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) \\(SP(\\d+)\\) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: CONNECTED timeout\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xa4\\0\\0\\0.\\*ERR\\*\\x001\\0route could not be established\\0-92\\0NI \\(network interface\\)\\0\\d+\\0\\0\\0\\0\\0([^\\0]+)\\0\\0\\0\\0\\0SAProuter\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_saprouter_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: no route received within 5s \\(CONNECTED\\)\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) \\(SP(\\d+)\\) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: no route received within 5s \\(CONNECTED\\)\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: CONNECTED timeout\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) \\(SP(\\d+)\\) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xfb\\0\\0\\0.\\*ERR\\*\\x001\\0connection timed out\\0-5\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nirout\\.cpp\\x00\\d+\\0RTPENDLIST::timeoutPend: CONNECTED timeout\\0([^\\0]+)\\0\\0\\0\\0\\d+\\0SAProuter ([\\d.]+) on '([\\w._-]+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xa4\\0\\0\\0.\\*ERR\\*\\x001\\0route could not be established\\0-92\\0NI \\(network interface\\)\\0\\d+\\0\\0\\0\\0\\0([^\\0]+)\\0\\0\\0\\0\\0SAProuter\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour saprouter"
+    },
+    {
+      "id": "nmap_saprouter_1",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xa3\\0\\0\\0.\\*ERR\\*\\x001\\0Network packet too big\\0-93\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nibuf\\.cpp\\x00\\d+\\0NiBufIIn: message length 218762506 exceeds max \\(10024\\)\\0([^\\0]*)\\0\\0\\0\\x00\\d+\\0SAProuter ([\\d.]+) \\(SP(\\d+)\\) on '([^']+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.5,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0.NI_RTERR\\0.\\0\\0\\xff\\xff\\xff\\xa3\\0\\0\\0.\\*ERR\\*\\x001\\0Network packet too big\\0-93\\0NI \\(network interface\\)\\x00\\d+\\x00\\d+\\0nibuf\\.cpp\\x00\\d+\\0NiBufIIn: message length 218762506 exceeds max \\(10024\\)\\0([^\\0]*)\\0\\0\\0\\x00\\d+\\0SAProuter ([\\d.]+) on '([^']+)'\\0\\0\\0\\0\\0\\*ERR\\*\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.5,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour saprouter"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "saprouter"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: saprouter. 7 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:sap:network_interface_router:{version}:*:*:*:*:*:*:*"
+}

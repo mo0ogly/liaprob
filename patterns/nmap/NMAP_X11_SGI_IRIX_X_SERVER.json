@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-x11-sgi-irix-x-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SGI IRIX X server",
+  "product": "SGI IRIX X server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_X11_SGI_IRIX_X_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    443,
+    497,
+    1550,
+    2002,
+    5302,
+    6000,
+    6001,
+    6002,
+    6003,
+    6004,
+    6005,
+    6006,
+    6007,
+    6008,
+    6009,
+    6010,
+    6011,
+    6012,
+    6013,
+    6014,
+    6015,
+    6016,
+    6017,
+    6018,
+    6019,
+    6020,
+    7000,
+    7100,
+    7101,
+    7777,
+    8000
+  ],
+  "cpe23_template": "cpe:2.3:o:sgi:irix:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\0\\x0b\\0\\0.....\\0\\0\\0\\0.*Silicon Graphics",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_X11_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0\\x0b\\0\\0.....\\0\\0\\0\\0.*Silicon Graphics",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour X11"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "X11"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: X11. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:sgi:irix:*:*:*:*:*:*:*:*"
+}

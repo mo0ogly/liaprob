@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rtsp-wowza-streaming-engine-rtspd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Wowza Streaming Engine rtspd",
+  "product": "Wowza Streaming Engine rtspd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RTSP_WOWZA_STREAMING_ENGINE_RTSPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    322,
+    554,
+    3052,
+    3372,
+    5000,
+    7000,
+    7070,
+    8080,
+    10000
+  ],
+  "cpe23_template": "cpe:2.3:a:wowza:wowza_streaming_engine:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 200 OK\\r\\nSupported: play\\.basic, con\\.persistent\\r\\nCseq: 0\\r\\nServer: Wowza Streaming Engine ([\\w._-]+) build(\\d+)\\r\\nPublic: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, OPTIONS, ANNOUNCE, RECORD, GET_PARAMETER\\r\\nCache-Control: no-cache\\r\\n\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 200 OK\\r\\nCSeq: 0\\r\\nServer: Wowza Streaming Engine ([\\d.]+) build ?(\\d+)\\r\\nCache-Control: no-cache\\r\\nPublic: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, OPTIONS, ANNOUNCE, RECORD, GET_PARAMETER\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rtsp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 200 OK\\r\\nSupported: play\\.basic, con\\.persistent\\r\\nCseq: 0\\r\\nServer: Wowza Streaming Engine ([\\w._-]+) build(\\d+)\\r\\nPublic: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, OPTIONS, ANNOUNCE, RECORD, GET_PARAMETER\\r\\nCache-Control: no-cache\\r\\n\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 200 OK\\r\\nCSeq: 0\\r\\nServer: Wowza Streaming Engine ([\\d.]+) build ?(\\d+)\\r\\nCache-Control: no-cache\\r\\nPublic: DESCRIBE, SETUP, TEARDOWN, PLAY, PAUSE, OPTIONS, ANNOUNCE, RECORD, GET_PARAMETER\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rtsp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rtsp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rtsp. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:wowza:wowza_streaming_engine:{version}:*:*:*:*:*:*:*"
+}

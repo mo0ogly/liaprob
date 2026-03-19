@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-psql-btrieve-pervasive-sql-server-btrieve-engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Pervasive.SQL Server - Btrieve Engine",
+  "product": "Pervasive.SQL Server - Btrieve Engine",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PSQL_BTRIEVE_PERVASIVE_SQL_SERVER_BTRIEVE_ENGINE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1583,
+    3351
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^A\\0K\\0\\0\\0....\\0\\0\\0\\0\\0\\0\\xff\\xff\\xff\\xff\\0\\0\\n\\x04\\xa0",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_psql-btrieve_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^A\\0K\\0\\0\\0....\\0\\0\\0\\0\\0\\0\\xff\\xff\\xff\\xff\\0\\0\\n\\x04\\xa0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour psql-btrieve"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "psql-btrieve"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: psql-btrieve. 1 match(es), 0 softmatch(es)."
+}

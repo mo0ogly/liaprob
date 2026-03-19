@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-blue-coat-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Blue Coat telnetd",
+  "product": "Blue Coat telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_BLUE_COAT_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:bluecoat:sgos:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\xff\\xfd\\x1f\\r\\n\\r\\nUsername: $",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\xff\\xfd\\x1f\\r\\nUsing telnet exposes your password\\. Using ssh is a safer choice\\.\\r\\n\\r\\nUsername: ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\xff\\xfd\\x1f\\r\\n\\r\\nUsername: $",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01\\xff\\xfd\\x1f\\r\\nUsing telnet exposes your password\\. Using ssh is a safer choice\\.\\r\\n\\r\\nUsername: ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:o:bluecoat:sgos:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-vxworks-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "VxWorks ftpd",
+  "product": "VxWorks ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_VXWORKS_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:windriver:vxworks:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 VxWorks \\((\\d[^)]+)\\) FTP server ready",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 VxWorks \\(VxWorks(\\d[^)]+)\\) FTP server ready",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 VxWorks FTP server \\(VxWorks ?([\\w._-]+)\\) ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 VxWorks \\((\\d[^)]+)\\) FTP server ready",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 VxWorks \\(VxWorks(\\d[^)]+)\\) FTP server ready",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 VxWorks FTP server \\(VxWorks ?([\\w._-]+)\\) ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 3 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:windriver:vxworks:*:*:*:*:*:*:*:*"
+}

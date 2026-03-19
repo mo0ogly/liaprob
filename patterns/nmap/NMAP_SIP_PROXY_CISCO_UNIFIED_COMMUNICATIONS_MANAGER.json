@@ -1,0 +1,66 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-proxy-cisco-unified-communications-manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco Unified Communications Manager",
+  "product": "Cisco Unified Communications Manager",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_PROXY_CISCO_UNIFIED_COMMUNICATIONS_MANAGER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "cpe23_template": "cpe:2.3:a:cisco:unified_communications_manager:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 503 Service Unavailable\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo;received=[\\d.]+\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=\\w+\\r\\nDate: .*?\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nWarning: \\d+ [\\w._-]+ \\\"Unable to find a device handler for the request received on port \\d+ from [\\d.]+\\\"\\r\\nContent-Length: 0\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 503 Service Unavailable\\r\\nDate: .*\\r\\nWarning: \\d+ \\\"Routing failed: ccbid=\\d+ tcpindex=\\d+ socket=nm:\\d+'\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nContent-Length: 0\\r\\nTo: <sip:nm2@nm2>;tag=\\d+\\r\\nCall-ID: 50000\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo;received=[\\d.]+\\r\\nCSeq: 42 OPTIONS\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 503 Service Unavailable\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo;received=[\\d.]+\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=\\w+\\r\\nDate: .*?\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nWarning: \\d+ [\\w._-]+ \\\"Unable to find a device handler for the request received on port \\d+ from [\\d.]+\\\"\\r\\nContent-Length: 0\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 503 Service Unavailable\\r\\nDate: .*\\r\\nWarning: \\d+ \\\"Routing failed: ccbid=\\d+ tcpindex=\\d+ socket=nm:\\d+'\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nContent-Length: 0\\r\\nTo: <sip:nm2@nm2>;tag=\\d+\\r\\nCall-ID: 50000\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo;received=[\\d.]+\\r\\nCSeq: 42 OPTIONS\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sip-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip-proxy. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:cisco:unified_communications_manager:*:*:*:*:*:*:*:*"
+}

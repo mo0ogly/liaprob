@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-websocket-websockify",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "websockify",
+  "product": "websockify",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WEBSOCKET_WEBSOCKIFY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "cpe23_template": "cpe:2.3:a:python:python:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_websocket_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 501 Unsupported method \\('OPTIONS'\\)\\r\\nServer: SimpleHTTP/([\\w._-]+) Python/([\\w._+-]+)\\r\\nDate: .* GMT\\r\\nContent-Type: text/html\\r\\nConnection: close\\r\\n\\r\\n<head>\\n<title>Error response</title>\\n</head>\\n<body>\\n<h1>Error response</h1>\\n<p>Error code 501\\.\\n<p>Message: Unsupported method \\('OPTIONS'\\)\\.\\n<p>Error code explanation: 501 = Server does not support this operation\\.\\n</body>\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour websocket"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "websocket"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: websocket. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:python:python:{version}:*:*:*:*:*:*:*"
+}

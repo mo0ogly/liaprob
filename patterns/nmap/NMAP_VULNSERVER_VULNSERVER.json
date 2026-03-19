@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-vulnserver-vulnserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Vulnserver",
+  "product": "Vulnserver",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_VULNSERVER_VULNSERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Welcome to Vulnerable Server! Enter HELP for help\\.\\nValid Commands:\\nHELP\\nSTATS \\[stat_value\\]\\nRTIME \\[rtime_value\\]\\nLTIME \\[ltime_value\\]\\nSRUN \\[srun_value\\]\\nTRUN \\[trun_value\\]\\nGMON \\[gmon_value\\]\\nGDOG \\[gdog_value\\]\\nKSTET \\[kstet_value\\]\\nGTER \\[gter_value\\]\\nHTER \\[hter_value\\]\\nLTER \\[lter_value\\]\\nKSTAN \\[lstan_value\\]\\nEXIT\\n$",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_vulnserver_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Welcome to Vulnerable Server! Enter HELP for help\\.\\nValid Commands:\\nHELP\\nSTATS \\[stat_value\\]\\nRTIME \\[rtime_value\\]\\nLTIME \\[ltime_value\\]\\nSRUN \\[srun_value\\]\\nTRUN \\[trun_value\\]\\nGMON \\[gmon_value\\]\\nGDOG \\[gdog_value\\]\\nKSTET \\[kstet_value\\]\\nGTER \\[gter_value\\]\\nHTER \\[hter_value\\]\\nLTER \\[lter_value\\]\\nKSTAN \\[lstan_value\\]\\nEXIT\\n$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour vulnserver"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "vulnserver"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: vulnserver. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

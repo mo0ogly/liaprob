@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-greenplum-greenplum-database",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Greenplum database",
+  "product": "Greenplum database",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GREENPLUM_GREENPLUM_DATABASE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    42,
+    88,
+    135,
+    139,
+    445,
+    660,
+    1025,
+    1027,
+    1031,
+    1112,
+    3006,
+    3900,
+    5000,
+    5009,
+    5432,
+    5555,
+    5600,
+    7461,
+    9102,
+    9103,
+    18182,
+    27000,
+    27001,
+    27002,
+    27003,
+    27004,
+    27005,
+    27006,
+    27007,
+    27008,
+    27009,
+    27010
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^E\\0\\0\\0\\x83SFATAL\\0C0A000\\0Munsupported frontend protocol 3923\\.19778: server supports 1\\.0 to 3\\.0\\0Fpostmaster\\.c\\0L2504\\0RProcessStartupPacket\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_greenplum_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^E\\0\\0\\0\\x83SFATAL\\0C0A000\\0Munsupported frontend protocol 3923\\.19778: server supports 1\\.0 to 3\\.0\\0Fpostmaster\\.c\\0L2504\\0RProcessStartupPacket\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour greenplum"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "greenplum"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: greenplum. 1 match(es), 0 softmatch(es)."
+}

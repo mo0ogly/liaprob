@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-irc-proxy-shroudbnc-irc-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ShroudBNC irc-proxy",
+  "product": "ShroudBNC irc-proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IRC_PROXY_SHROUDBNC_IRC_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:gunnar_beutner:shroudbnc:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:[-\\w_.!@]+ NOTICE \\S+ :\\*\\*\\* shroudBNC *([\\d.]+) .Revision: (\\d+)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:shroudbnc\\.info NOTICE AUTH :\\*\\*\\* shroudBNC ([\\d.]+) ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_irc-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:[-\\w_.!@]+ NOTICE \\S+ :\\*\\*\\* shroudBNC *([\\d.]+) .Revision: (\\d+)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:shroudbnc\\.info NOTICE AUTH :\\*\\*\\* shroudBNC ([\\d.]+) ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour irc-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "irc-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: irc-proxy. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:gunnar_beutner:shroudbnc:{version}:*:*:*:*:*:*:*"
+}

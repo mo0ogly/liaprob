@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-printer-lpsched",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "lpsched",
+  "product": "lpsched",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PRINTER_LPSCHED.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([-\\w_.]+): lpsched: Malformed from address\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([-\\w_.]+): lpsched: Your host does not have line printer access\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^([-\\w_.]+): lpsched: Host name for your address \\([\\d.]+\\) unknown\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_printer_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([-\\w_.]+): lpsched: Malformed from address\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([-\\w_.]+): lpsched: Your host does not have line printer access\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^([-\\w_.]+): lpsched: Host name for your address \\([\\d.]+\\) unknown\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour printer"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "printer"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: printer. 3 match(es), 0 softmatch(es)."
+}

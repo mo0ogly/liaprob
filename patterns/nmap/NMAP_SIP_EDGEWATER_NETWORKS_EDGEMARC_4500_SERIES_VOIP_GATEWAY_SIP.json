@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-edgewater-networks-edgemarc-4500-series-voip-gateway-sip",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Edgewater Networks Edgemarc 4500 series VoIP gateway SIP",
+  "product": "Edgewater Networks Edgemarc 4500 series VoIP gateway SIP",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_EDGEWATER_NETWORKS_EDGEMARC_4500_SERIES_VOIP_GATEWAY_SIP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 404 Not found\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=local-tag\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nContact: <sip:nm@nm>\\r\\nContent-Length: 0\\r\\n\\r\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 404 Not found\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=local-tag\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nContact: <sip:nm@nm>\\r\\nContent-Length: 0\\r\\n\\r\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sip"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip. 1 match(es), 0 softmatch(es)."
+}

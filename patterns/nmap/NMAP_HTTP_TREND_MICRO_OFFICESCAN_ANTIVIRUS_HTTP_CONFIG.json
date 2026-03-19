@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-trend-micro-officescan-antivirus-http-config",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Trend Micro OfficeScan Antivirus http config",
+  "product": "Trend Micro OfficeScan Antivirus http config",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_TREND_MICRO_OFFICESCAN_ANTIVIRUS_HTTP_CONFIG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    12345
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 400 Bad Request\\r\\nServer: OfficeScan Client\\r\\nContent-Type: text/plain\\r\\nAccept-Ranges: bytes\\r\\nContent-Length: 4\\r\\n\\r\\nFail",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1.0 \\d\\d\\d .*\\r\\nServer: OfficeScan Client",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 400 Bad Request\\r\\nServer: OfficeScan Client\\r\\nContent-Type: text/plain\\r\\nAccept-Ranges: bytes\\r\\nContent-Length: 4\\r\\n\\r\\nFail",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1.0 \\d\\d\\d .*\\r\\nServer: OfficeScan Client",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netbios-ns-brother-printer-netbios-ns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Brother printer netbios-ns",
+  "product": "Brother printer netbios-ns",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETBIOS_NS_BROTHER_PRINTER_NETBIOS_NS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    137
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netbios-ns_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\xf0\\x84\\0\\0\\0\\0\\x01\\0\\0\\0\\0 CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\0\\0!\\0\\x01\\0\\x04\\x93\\xe0...([\\w-]+)\\0D\\0......\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour netbios-ns"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netbios-ns"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netbios-ns. 1 match(es), 0 softmatch(es)."
+}

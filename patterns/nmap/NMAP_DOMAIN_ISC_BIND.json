@@ -1,0 +1,128 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-domain-isc-bind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ISC BIND",
+  "product": "ISC BIND",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DOMAIN_ISC_BIND.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    1967,
+    2967,
+    26198
+  ],
+  "cpe23_template": "cpe:2.3:a:isc:bind:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_domain_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(\\d[-\\w.+]*?)-RedHat-[-\\w._+]+.fc(\\d+)",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(\\d[-\\w.+]*?)-RedHat-[-\\w._+]+.el(\\d+)",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(\\d[-\\w.+]*?)-RedHat-",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(9[-\\w.+]*?)-RH",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(\\d[-\\w.+]*?)-[Uu]buntu",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(?:BIND )?(\\d[-\\w.+~]*?)-[Dd]ebian",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}((\\d[\\w.]*)[-\\w.+~]*?[-+~]\\d*deb(\\d+)[-\\w.+~]*)",
+          "confidence_delta": 0.5,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(?:BIND )?(\\d[-\\w.+~]*?)-9\\+deb8u[-\\w._+~]*?Raspbian",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}(?:BIND )?(\\d[-\\w.+~]*?)-Raspbian",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}([89][.\\d]+-APPLE(?:-[SPW]\\d+)?)",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03(?:\\xc0\\x0c|\\x07VERSION\\x04BIND\\0)\\0\\x10\\0\\x03.{7}(?:BIND )?([89][.\\d]+(?:[ab]\\d+)?(?:rc\\d)?(?:-REL)?(?:-rpz[\\d.]+)?(?:[-+]rl[\\d.]+)?(?:-ESV(?:-R\\d+)?)?(?:-[SPW][W\\d.-]+)?(?:-NOESW)?)(?:\\0|\\xc0|$)",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}Served by Bind - www\\.isc\\.org/software/bind",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x06\\0\\x03.{6}\\xc0\\x0c\\nhostmaster\\xc0\\x0c",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour domain"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "domain"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: domain. 13 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:isc:bind:{version}:*:*:*:*:*:*:*"
+}

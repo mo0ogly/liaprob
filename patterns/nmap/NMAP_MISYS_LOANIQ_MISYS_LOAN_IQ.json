@@ -1,0 +1,94 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-misys-loaniq-misys-loan-iq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Misys Loan IQ",
+  "product": "Misys Loan IQ",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MISYS_LOANIQ_MISYS_LOAN_IQ.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    443,
+    444,
+    465,
+    548,
+    636,
+    989,
+    990,
+    992,
+    993,
+    994,
+    995,
+    1241,
+    1311,
+    2000,
+    4433,
+    4444,
+    5550,
+    7210,
+    7272,
+    8009,
+    8194,
+    8443,
+    9001
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Loan IQ %1 Request Server - Ready for Request\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_misys-loaniq_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Loan IQ %1 Request Server - Ready for Request\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour misys-loaniq"
+    },
+    {
+      "id": "nmap_misys-loaniq_1",
+      "layer": "TLS_CERT",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0#sJ\\0\\0\\0\\0\\0\\0#\\0\\0\\0Invalid time string: \\n\\0\\0\\0\\0#sJ\\0\\0\\0\\0\\0\\0#\\0\\0\\0Invalid time string: \\n\\0\\0\\0\\0#sJ\\0\\0\\0\\0\\0\\0#\\0\\0\\0Invalid time string: \\n\\0\\0\\0\\0#sJ\\0\\0\\0\\0\\0\\0#\\0\\0\\0Invalid time string: \\n\\0\\0\\0..sJ\\0\\0\\0\\0\\0\\0..\\0\\0\\n Misys Loan IQ ([\\w._-]+) \\(Server\\)\\n Build  : for Windows using Oracle \\(built: (\\w\\w\\w \\d\\d \\d\\d\\d\\d_\\d\\d:\\d\\d:\\d\\d) \\([\\w._-]+@[\\w._-]+-C:\\\\[^)]*\\)\\)\\n Patch Info : \\[(?:[\\w._-]+(?:, )?)+\\]\\n\\n Environment name: \\w+ Prime - \\w+\\n    ADMCP Primary node: \\w+;  Secondary node: \\w+; Portdaem Port = (\\d+)\\n\\n Current time: [^\\n]*\\n On: \\w+  \\([\\w._-]+\\)\\n OS: (Microsoft Windows[^\\n]*)\\n MEMORY  \\(Tot/Free\\) : ([\\d.]+) / ([\\d.]+) MB\\n\\n Last Logger Start : [^\\n]*\\n L$",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0@\\0tJ\\0\\0\\0\\0\\0\\0\\0@\\0\\0\\n Misys Loan IQ ([\\w._-]+) \\(Server\\)\\n Build  : for Windows using Oracle \\(built: (\\w\\w\\w \\d\\d \\d\\d\\d\\d_\\d\\d:\\d\\d:\\d\\d) \\([\\w._-]+@[\\w._-]+-C:\\\\[^)]*\\)\\)\\n Patch Info : \\[\\]\\n\\n Environment name: \\w+ \\w+\\n    ADMCP Primary node: \\w+;  Secondary node: \\w+; Portdaem Port = (\\d+)\\n\\n Current time: [^\\n]*\\n On: \\w+  \\([\\w._-]+\\)\\n OS: (Microsoft Windows[^\\n]*)\\n MEMORY  \\(Tot/Free\\) : ([\\d.]+) / ([\\d.]+) MB\\n",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe TLS_CERT pour misys-loaniq"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "misys-loaniq"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: misys-loaniq. 3 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

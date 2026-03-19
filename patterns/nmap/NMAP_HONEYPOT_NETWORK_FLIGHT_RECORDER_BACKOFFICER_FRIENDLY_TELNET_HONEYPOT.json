@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-honeypot-network-flight-recorder-backofficer-friendly-telnet-honeypot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Network Flight Recorder BackOfficer Friendly telnet honeypot",
+  "product": "Network Flight Recorder BackOfficer Friendly telnet honeypot",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HONEYPOT_NETWORK_FLIGHT_RECORDER_BACKOFFICER_FRIENDLY_TELNET_HONEYPOT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nlogin: \\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_honeypot_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nlogin: \\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour honeypot"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "honeypot"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: honeypot. 1 match(es), 0 softmatch(es)."
+}

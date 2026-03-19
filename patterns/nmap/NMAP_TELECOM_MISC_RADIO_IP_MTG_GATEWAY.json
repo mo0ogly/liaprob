@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telecom-misc-radio-ip-mtg-gateway",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Radio IP MTG gateway",
+  "product": "Radio IP MTG gateway",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELECOM_MISC_RADIO_IP_MTG_GATEWAY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    2068,
+    2105,
+    2967,
+    5000,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    13783
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x1e\\x02\\x06\\x01\\0\\0\\0\\0\\0\\0\\xf1\\0",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telecom-misc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x1e\\x02\\x06\\x01\\0\\0\\0\\0\\0\\0\\xf1\\0",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telecom-misc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telecom-misc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telecom-misc. 1 match(es), 0 softmatch(es)."
+}

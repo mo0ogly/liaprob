@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-mitsubishi-qj71e71-mitsubishi-qj71e71",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Mitsubishi QJ71E71",
+  "product": "Mitsubishi QJ71E71",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MITSUBISHI_QJ71E71_MITSUBISHI_QJ71E71.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5000,
+    5001,
+    5002,
+    10001,
+    10002,
+    10003
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x80\\[\\0K\\xc7P",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_mitsubishi-qj71e71_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\[\\0K\\xc7P",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour mitsubishi-qj71e71"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "mitsubishi-qj71e71"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: mitsubishi-qj71e71. 1 match(es), 0 softmatch(es)."
+}

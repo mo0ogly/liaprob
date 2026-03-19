@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-timeedit-evolvera-timeedit",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Evolvera TimeEdit",
+  "product": "Evolvera TimeEdit",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TIMEEDIT_EVOLVERA_TIMEEDIT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0H\\0\\0\\0\\x02\\x0fTimeEdit131\\.",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_timeedit_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0H\\0\\0\\0\\x02\\x0fTimeEdit131\\.",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour timeedit"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "timeedit"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: timeedit. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

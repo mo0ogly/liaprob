@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-iscsi-hp-storageworks-d2d-backup-system-iscsi",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HP StorageWorks D2D backup system iSCSI",
+  "product": "HP StorageWorks D2D backup system iSCSI",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ISCSI_HP_STORAGEWORKS_D2D_BACKUP_SYSTEM_ISCSI.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1035,
+    1521,
+    1522,
+    1525,
+    1526,
+    1574,
+    1748,
+    1754,
+    14238,
+    20000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x3f\\x80\\x04\\0\\0\\0\\x00\\x30\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x00\\x00\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0Z\\0\\0\\x01\\0\\0\\0\\x016\\x01\\x2c\\0\\0\\x08\\0\\x7f\\xff\\x7f\\x08\\0\\0\\0\\x01\\0\\x20\\0\\x3a\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x004\\xe6\\0\\0$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_iscsi_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x3f\\x80\\x04\\0\\0\\0\\x00\\x30\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x00\\x00\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0Z\\0\\0\\x01\\0\\0\\0\\x016\\x01\\x2c\\0\\0\\x08\\0\\x7f\\xff\\x7f\\x08\\0\\0\\0\\x01\\0\\x20\\0\\x3a\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x004\\xe6\\0\\0$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour iscsi"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "iscsi"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: iscsi. 1 match(es), 0 softmatch(es)."
+}

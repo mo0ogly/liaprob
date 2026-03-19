@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-niagara-fox",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NIAGARA-FOX",
+  "product": "niagara-fox",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NIAGARA_FOX_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1911,
+    4911
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_niagara-fox_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^fox a 0",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour niagara-fox"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "niagara-fox"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: niagara-fox. 0 match(es), 1 softmatch(es)."
+}

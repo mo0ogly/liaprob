@@ -1,0 +1,81 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-serversettingsd-apple-serversettingsd-administration-daemon",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Apple serversettingsd administration daemon",
+  "product": "Apple serversettingsd administration daemon",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SERVERSETTINGSD_APPLE_SERVERSETTINGSD_ADMINISTRATION_DAEMON.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    42,
+    88,
+    135,
+    139,
+    445,
+    660,
+    1025,
+    1027,
+    1031,
+    1112,
+    3006,
+    3900,
+    5000,
+    5009,
+    5432,
+    5555,
+    5600,
+    7461,
+    9102,
+    9103,
+    18182,
+    27000,
+    27001,
+    27002,
+    27003,
+    27004,
+    27005,
+    27006,
+    27007,
+    27008,
+    27009,
+    27010
+  ],
+  "cpe23_template": "cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\x004main\\0\\0\\x01\\0\\0\\0\\0\\x0c\\0\\0\\0\\0\\0\\0\\0\\x0c\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0quit\\xff\\xff\\xff\\xffcrpt$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_serversettingsd_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x004main\\0\\0\\x01\\0\\0\\0\\0\\x0c\\0\\0\\0\\0\\0\\0\\0\\x0c\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0quit\\xff\\xff\\xff\\xffcrpt$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour serversettingsd"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "serversettingsd"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: serversettingsd. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*"
+}

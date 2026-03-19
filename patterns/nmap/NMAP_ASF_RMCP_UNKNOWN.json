@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-asf-rmcp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ASF-RMCP",
+  "product": "asf-rmcp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ASF_RMCP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    623
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_asf-rmcp_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x06\\0\\xff\\x07\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x10",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour asf-rmcp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "asf-rmcp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: asf-rmcp. 0 match(es), 1 softmatch(es)."
+}

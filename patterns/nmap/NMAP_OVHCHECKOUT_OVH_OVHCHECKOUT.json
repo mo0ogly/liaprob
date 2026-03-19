@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ovhcheckout-ovh-ovhcheckout",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "OVH OvhCheckOut",
+  "product": "OVH OvhCheckOut",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_OVHCHECKOUT_OVH_OVHCHECKOUT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^200 OK [\\d.]+ ([\\w._-]+) oco-([\\w._-]+) \\n$",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ovhcheckout_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 OK [\\d.]+ ([\\w._-]+) oco-([\\w._-]+) \\n$",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ovhcheckout"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ovhcheckout"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ovhcheckout. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

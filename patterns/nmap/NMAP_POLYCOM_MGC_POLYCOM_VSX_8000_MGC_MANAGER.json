@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-polycom-mgc-polycom-vsx-8000-mgc-manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Polycom VSX 8000 MGC Manager",
+  "product": "Polycom VSX 8000 MGC Manager",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POLYCOM_MGC_POLYCOM_VSX_8000_MGC_MANAGER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^NotAuthorized\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_polycom-mgc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NotAuthorized\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour polycom-mgc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "polycom-mgc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: polycom-mgc. 1 match(es), 0 softmatch(es)."
+}

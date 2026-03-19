@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rhapsody-mckesson-rhapsody-engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "McKesson Rhapsody Engine",
+  "product": "McKesson Rhapsody Engine",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RHAPSODY_MCKESSON_RHAPSODY_ENGINE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0:R\\0\\0\\0\\0\\x01\\0\\0\\x0016791614489711164477\\x7cRhapsody Engine ([\\w._-]+)\\x7c4$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rhapsody_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0:R\\0\\0\\0\\0\\x01\\0\\0\\x0016791614489711164477\\x7cRhapsody Engine ([\\w._-]+)\\x7c4$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rhapsody"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rhapsody"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rhapsody. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

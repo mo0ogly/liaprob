@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rfbuoy-datawell-rfbuoy-wavebuoy-communication-software",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Datawell rfBuoy wavebuoy communication software",
+  "product": "Datawell rfBuoy wavebuoy communication software",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RFBUOY_DATAWELL_RFBUOY_WAVEBUOY_COMMUNICATION_SOFTWARE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<rfBuoy/>",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rfbuoy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<rfBuoy/>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rfbuoy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rfbuoy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rfbuoy. 1 match(es), 0 softmatch(es)."
+}

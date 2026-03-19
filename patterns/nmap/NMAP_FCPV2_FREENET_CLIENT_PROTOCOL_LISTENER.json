@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-fcpv2-freenet-client-protocol-listener",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Freenet Client Protocol listener",
+  "product": "Freenet Client Protocol listener",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FCPV2_FREENET_CLIENT_PROTOCOL_LISTENER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ProtocolError\\nFatal=true\\nCodeDescription=ClientHello must be first message\\nCode=1\\nGlobal=false\\nEndMessage\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ProtocolError\\nCodeDescription=ClientHello must be first message\\nFatal=true\\nCode=1\\nGlobal=false\\nEndMessage\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_fcpv2_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ProtocolError\\nFatal=true\\nCodeDescription=ClientHello must be first message\\nCode=1\\nGlobal=false\\nEndMessage\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ProtocolError\\nCodeDescription=ClientHello must be first message\\nFatal=true\\nCode=1\\nGlobal=false\\nEndMessage\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour fcpv2"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "fcpv2"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: fcpv2. 2 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-opera-unite-httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Opera Unite httpd",
+  "product": "Opera Unite httpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_OPERA_UNITE_HTTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 404 Resource not found\\r\\nServer: Opera/([\\w._-]+)\\r\\n(?:[^\\r\\n]+\\r\\n)*?Set-Cookie: unite-session-id=[0-9a-f]+; Max-Age=2073600; path=/\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 404 Resource not found\\r\\nServer: Opera/([\\w._-]+)\\r\\n(?:[^\\r\\n]+\\r\\n)*?Set-Cookie: unite-session-id=[0-9a-f]+; Max-Age=2073600; path=/\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

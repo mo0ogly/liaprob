@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-proxy-mikrotik-httpproxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MikroTik HttpProxy",
+  "product": "MikroTik HttpProxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PROXY_MIKROTIK_HTTPPROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    322,
+    554,
+    3052,
+    3372,
+    5000,
+    7000,
+    7070,
+    8080,
+    10000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 400 Bad Request\\r\\nContent-Length: 103\\r\\nConnection: close\\r\\n\\r\\n<html><body> <h2>Mikrotik HttpProxy</h2>\\n\\r<hr>\\n\\r<h2>\\n\\rError: 400 Bad Request\\r\\n\\r\\n</h2>\\n\\r</body></html>\\n\\r$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 400 Bad Request\\r\\nContent-Length: 103\\r\\nConnection: close\\r\\n\\r\\n<html><body> <h2>Mikrotik HttpProxy</h2>\\n\\r<hr>\\n\\r<h2>\\n\\rError: 400 Bad Request\\r\\n\\r\\n</h2>\\n\\r</body></html>\\n\\r$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http-proxy. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-adtran-atlass-500-t1-router-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Adtran Atlass 500 T1 router telnetd",
+  "product": "Adtran Atlass 500 T1 router telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_ADTRAN_ATLASS_500_T1_ROUTER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:adtran:atlass_500_t1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x03\\xff\\xfb\\x03\\x1b\\(B\\x1b\\)0\\x1b\\[2J\\x1b\\[H\\x1b\\[m\\x0f\\x1b\\[10;32H\\x0e                 \\x1b\\[11;32H lq\\x0f\\x1b\\[1mLogin\\x0e\\x1b\\[mqqqqqqqqk\\x1b\\[12;32H x\\x1b\\[13C x\\x1b\\[13;32H mqqqqqqqqqqqqqqj\\x1b\\[12;34H",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfd\\x03\\xff\\xfb\\x03\\x1b\\(B\\x1b\\)0\\x1b\\[2J\\x1b\\[H\\x1b\\[m\\x0f\\x1b\\[10;32H\\x0e                 \\x1b\\[11;32H lq\\x0f\\x1b\\[1mLogin\\x0e\\x1b\\[mqqqqqqqqk\\x1b\\[12;32H x\\x1b\\[13C x\\x1b\\[13;32H mqqqqqqqqqqqqqqj\\x1b\\[12;34H",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:adtran:atlass_500_t1:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rtsp-helix-mobile-server-rtspd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Helix Mobile Server rtspd",
+  "product": "Helix Mobile Server rtspd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RTSP_HELIX_MOBILE_SERVER_RTSPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    322,
+    554,
+    3052,
+    3372,
+    5000,
+    7000,
+    7070,
+    8080,
+    10000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: Helix Mobile Server Version ([\\w._-]+) \\(win32\\) \\(RealServer compatible\\)\\r\\nPublic: OPTIONS, DESCRIBE, PLAY, PAUSE, SETUP, GET_PARAMETER, SET_PARAMETER, TEARDOWN\\r\\nTurboPlay: 1\\r\\nRealChallenge1: [0-9a-f]+\\r\\nStatsMask: 8\\r\\n\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: Helix Mobile Server Version ([\\w._-]+) \\(win32\\) \\(RealServer compatible\\)\\r\\nPublic: OPTIONS, DESCRIBE, ANNOUNCE, PLAY, PAUSE, SETUP, GET_PARAMETER, SET_PARAMETER, TEARDOWN\\r\\nTurboPlay: 1\\r\\nRealChallenge1: [0-9a-f]+\\r\\nStatsMask: 8\\r\\n\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rtsp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: Helix Mobile Server Version ([\\w._-]+) \\(win32\\) \\(RealServer compatible\\)\\r\\nPublic: OPTIONS, DESCRIBE, PLAY, PAUSE, SETUP, GET_PARAMETER, SET_PARAMETER, TEARDOWN\\r\\nTurboPlay: 1\\r\\nRealChallenge1: [0-9a-f]+\\r\\nStatsMask: 8\\r\\n\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: Helix Mobile Server Version ([\\w._-]+) \\(win32\\) \\(RealServer compatible\\)\\r\\nPublic: OPTIONS, DESCRIBE, ANNOUNCE, PLAY, PAUSE, SETUP, GET_PARAMETER, SET_PARAMETER, TEARDOWN\\r\\nTurboPlay: 1\\r\\nRealChallenge1: [0-9a-f]+\\r\\nStatsMask: 8\\r\\n\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rtsp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rtsp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rtsp. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

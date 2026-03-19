@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-drobo-dsvc-drobo-fs-ddsvc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Drobo-FS DDSVC",
+  "product": "Drobo-FS DDSVC",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DROBO_DSVC_DROBO_FS_DDSVC.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    256,
+    257,
+    389,
+    390,
+    636,
+    637,
+    1702,
+    3268,
+    3269,
+    3892,
+    4035
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DRIDDSVC\\x07\\x01.\\0\\0\\0..<ESATMUpdate>\\r\\n\\t<mESAUpdateSignature>ESAINFO</mESAUpdateSignature>\\r\\n\\t<mESAUpdateVersion>\\d+</mESAUpdateVersion>\\r\\n\\t<mESAUpdateSize>\\d+</mESAUpdateSize>\\r\\n\\t<mESAID>0db\\d+</mESAID>\\r\\n\\t<mSerial>(tDB\\d+)</mSerial>\\r\\n\\t<mName>([^<]+)</mName>\\r\\n\\t<mVersion>([][\\w._ ]+)</mVersion>\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^(?:DRIDDSVC\\x07\\x01.\\0\\0\\0..[^\\0]*\\0)?DRIDDSVC\\x07\\x01.\\0\\0\\0..<ESATMUpdate>\\r\\n\\t<mESAUpdateSignature>ESAINFO</mESAUpdateSignature>\\r\\n\\t<mESAUpdateVersion>\\d+</mESAUpdateVersion>\\r\\n\\t<mESAUpdateSize>\\d+</mESAUpdateSize>\\r\\n\\t<mESAID>\\w+</mESAID>\\r\\n\\t<mSerial>\\w+</mSerial>\\r\\n\\t<mName>Drobo(?:-FS)?</mName>\\r\\n\\t<mVersion>([][\\w._ ]+)</mVersion>\\r\\n\\t<mReleaseDate>([^<]+)</mReleaseDate>\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_drobo-dsvc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DRIDDSVC\\x07\\x01.\\0\\0\\0..<ESATMUpdate>\\r\\n\\t<mESAUpdateSignature>ESAINFO</mESAUpdateSignature>\\r\\n\\t<mESAUpdateVersion>\\d+</mESAUpdateVersion>\\r\\n\\t<mESAUpdateSize>\\d+</mESAUpdateSize>\\r\\n\\t<mESAID>0db\\d+</mESAID>\\r\\n\\t<mSerial>(tDB\\d+)</mSerial>\\r\\n\\t<mName>([^<]+)</mName>\\r\\n\\t<mVersion>([][\\w._ ]+)</mVersion>\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^(?:DRIDDSVC\\x07\\x01.\\0\\0\\0..[^\\0]*\\0)?DRIDDSVC\\x07\\x01.\\0\\0\\0..<ESATMUpdate>\\r\\n\\t<mESAUpdateSignature>ESAINFO</mESAUpdateSignature>\\r\\n\\t<mESAUpdateVersion>\\d+</mESAUpdateVersion>\\r\\n\\t<mESAUpdateSize>\\d+</mESAUpdateSize>\\r\\n\\t<mESAID>\\w+</mESAID>\\r\\n\\t<mSerial>\\w+</mSerial>\\r\\n\\t<mName>Drobo(?:-FS)?</mName>\\r\\n\\t<mVersion>([][\\w._ ]+)</mVersion>\\r\\n\\t<mReleaseDate>([^<]+)</mReleaseDate>\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour drobo-dsvc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "drobo-dsvc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: drobo-dsvc. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

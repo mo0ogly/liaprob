@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netsoul-netsoul-instant-messaging",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Netsoul instant messaging",
+  "product": "Netsoul instant messaging",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETSOUL_NETSOUL_INSTANT_MESSAGING.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^salut \\d+ [0-9a-f]{32} [\\d.]+ \\d+ \\d+\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netsoul_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^salut \\d+ [0-9a-f]{32} [\\d.]+ \\d+ \\d+\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netsoul"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netsoul"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netsoul. 1 match(es), 0 softmatch(es)."
+}

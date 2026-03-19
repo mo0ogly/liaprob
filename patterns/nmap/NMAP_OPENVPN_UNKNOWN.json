@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-openvpn",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "OPENVPN",
+  "product": "openvpn",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_OPENVPN_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    443,
+    500,
+    1194
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_openvpn_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x1e@........\\x02\\0\\0\\0\\0\\0\\0\\0\\x007\\xa5&\\x08\\xa2\\x1b\\xa0\\xb1\\0\\0\\0\\0\\0\\x0e@........\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour openvpn"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "openvpn"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: openvpn. 0 match(es), 1 softmatch(es)."
+}

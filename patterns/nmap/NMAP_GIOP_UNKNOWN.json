@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-giop",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "GIOP",
+  "product": "giop",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GIOP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    2481,
+    2482
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_giop_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GIOP\\x01.[\\0\\x01][\\x01-\\x08]",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GIOP\\x01\\x00\\x01\\x01........\\x01\\x00\\x00\\x00",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GIOP.*IDL:omg\\.org",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour giop"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "giop"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: giop. 0 match(es), 3 softmatch(es)."
+}

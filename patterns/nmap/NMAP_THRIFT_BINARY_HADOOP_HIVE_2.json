@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-thrift-binary-hadoop-hive-2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Hadoop Hive 2",
+  "product": "Hadoop Hive 2",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_THRIFT_BINARY_HADOOP_HIVE_2.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    130,
+    427,
+    1352,
+    1972,
+    7171,
+    8728,
+    22001
+  ],
+  "cpe23_template": "cpe:2.3:a:apache:hive:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\0\\0\\0\\x11Invalid status 58$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_thrift-binary_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\0\\0\\0\\x11Invalid status 58$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour thrift-binary"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "thrift-binary"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: thrift-binary. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:apache:hive:*:*:*:*:*:*:*:*"
+}

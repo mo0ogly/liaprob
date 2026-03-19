@@ -1,0 +1,87 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-lmtp-dbmail-lmtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DBMail lmtpd",
+  "product": "DBMail lmtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LMTP_DBMAIL_LMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:paul_j_stevens:dbmail:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) DBMail LMTP service ready to rock\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([\\w.-]+) LMTP\\r\\n214-This is DBMail-LMTP\\.\\r\\n214-The following commands are supported:\\r\\n214-LHLO, RSET, NOOP, QUIT, HELP\\.\\r\\n214-VRFY, EXPN, MAIL, RCPT, DATA\\.\\r\\n214-For more information about a command:\\r\\n214 Use HELP <command>\\.\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_lmtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) DBMail LMTP service ready to rock\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([\\w.-]+) LMTP\\r\\n214-This is DBMail-LMTP\\.\\r\\n214-The following commands are supported:\\r\\n214-LHLO, RSET, NOOP, QUIT, HELP\\.\\r\\n214-VRFY, EXPN, MAIL, RCPT, DATA\\.\\r\\n214-For more information about a command:\\r\\n214 Use HELP <command>\\.\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour lmtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "lmtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: lmtp. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:paul_j_stevens:dbmail:*:*:*:*:*:*:*:*"
+}

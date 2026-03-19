@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pkzip-file-zip-file",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": ".ZIP file",
+  "product": ".ZIP file",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PKZIP_FILE_ZIP_FILE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pkzip-file_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^PK\\x03\\x04",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pkzip-file"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pkzip-file"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pkzip-file. 0 match(es), 1 softmatch(es)."
+}

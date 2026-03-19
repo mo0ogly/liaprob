@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-scanager-indiana-university-scanager-db",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Indiana University Scanager DB",
+  "product": "Indiana University Scanager DB",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SCANAGER_INDIANA_UNIVERSITY_SCANAGER_DB.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\*\\*\\* ITSO_DB_FAIL \\*\\*\\* invalid request\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_scanager_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\*\\*\\* ITSO_DB_FAIL \\*\\*\\* invalid request\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour scanager"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "scanager"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: scanager. 1 match(es), 0 softmatch(es)."
+}

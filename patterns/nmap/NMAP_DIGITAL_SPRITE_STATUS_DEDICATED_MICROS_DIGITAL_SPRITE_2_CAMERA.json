@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-digital-sprite-status-dedicated-micros-digital-sprite-2-camera",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Dedicated Micros Digital Sprite 2 camera",
+  "product": "Dedicated Micros Digital Sprite 2 camera",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DIGITAL_SPRITE_STATUS_DEDICATED_MICROS_DIGITAL_SPRITE_2_CAMERA.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^acam_bitmask\\[0\\]=1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768\\r\\nact_actions\\[0\\]=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\\r\\nact_buzzer=0\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_digital-sprite-status_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^acam_bitmask\\[0\\]=1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768\\r\\nact_actions\\[0\\]=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1\\r\\nact_buzzer=0\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour digital-sprite-status"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "digital-sprite-status"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: digital-sprite-status. 1 match(es), 0 softmatch(es)."
+}

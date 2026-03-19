@@ -1,0 +1,56 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-m5t-sip-client-engine",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "M5T SIP Client Engine",
+  "product": "M5T SIP Client Engine",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_M5T_SIP_CLIENT_ENGINE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "cpe23_template": "cpe:2.3:a:media5corp:m5t_sip_client_engine:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 200 OK\\r\\nAccept: application/sdp, application/dtmf-relay, application/QSIG, application/broadsoft\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: Patton (\\w+) [^\\r\\n]+ M5T SIP Stack/([\\w._-]+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 200 OK\\r\\nAccept: application/sdp, application/dtmf-relay, application/QSIG, application/broadsoft\\r\\n(?:[^\\r\\n]+\\r\\n)*?Server: Patton (\\w+) [^\\r\\n]+ M5T SIP Stack/([\\w._-]+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sip"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:media5corp:m5t_sip_client_engine:{version}:*:*:*:*:*:*:*"
+}

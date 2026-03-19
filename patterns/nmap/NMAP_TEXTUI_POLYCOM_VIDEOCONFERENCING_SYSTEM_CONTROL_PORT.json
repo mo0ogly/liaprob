@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-textui-polycom-videoconferencing-system-control-port",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Polycom videoconferencing system control port",
+  "product": "Polycom videoconferencing system control port",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TEXTUI_POLYCOM_VIDEOCONFERENCING_SYSTEM_CONTROL_PORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:polycom:$2:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nHi, my name is : *(\\w.*)\\r\\nHere is what I know about myself:\\r\\nModel: *(\\w.*)\\r\\nSerial Number: *(\\w+)\\r\\nSoftware Version: *([\\d.]+)\\r\\nBuild Information: *\\d+\\r\\nTime In Last Call: *[\\d:]+\\r\\nTotal Time In Calls: *[\\d:]+\\r\\nTotal Calls: *\\d+\\r\\nSNTP Time Service: *\\w+ \\r\\nLocal Time is: .* ([-+]\\d\\d\\d\\d)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_textui_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nHi, my name is : *(\\w.*)\\r\\nHere is what I know about myself:\\r\\nModel: *(\\w.*)\\r\\nSerial Number: *(\\w+)\\r\\nSoftware Version: *([\\d.]+)\\r\\nBuild Information: *\\d+\\r\\nTime In Last Call: *[\\d:]+\\r\\nTotal Time In Calls: *[\\d:]+\\r\\nTotal Calls: *\\d+\\r\\nSNTP Time Service: *\\w+ \\r\\nLocal Time is: .* ([-+]\\d\\d\\d\\d)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour textui"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "textui"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: textui. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:polycom:$2:*:*:*:*:*:*:*:*"
+}

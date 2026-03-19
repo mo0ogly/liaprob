@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-finger-icculusfinger",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IcculusFinger",
+  "product": "IcculusFinger",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FINGER_ICCULUSFINGER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^iFinger v(\\d[-.\\w]+)\\n\\n",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_finger_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^iFinger v(\\d[-.\\w]+)\\n\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour finger"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "finger"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: finger. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-devonthink-devonthink-dcoument-management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DEVONthink dcoument management",
+  "product": "DEVONthink dcoument management",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DEVONTHINK_DEVONTHINK_DCOUMENT_MANAGEMENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xe6\\x01\\0\\0\\0\\0\\0\\0bplist00\\xd4\\x01\\x02\\x03\\x04\\x05\\x06\\x1e\\x1fX\\$versionX\\$objectsY\\$archiverT\\$top\\x12\\0\\x01\\x86\\xa0\\xa5\\x07\\x08\\x0f\\x13\\x1aU\\$null\\xd3\\t\\n\\x0b\\x0c\\r\\x0eStag\\[dataContentV\\$class\\x10\\x01\\x80\\x02\\x80\\x04\\xd2\\x10\\x0b\\x11\\x12WNS\\.dataO\\x10\\x98bplist00\\xd2\\x01\\x02\\x03\\x04_\\x10\\x16ComputerIdentificationZPINCodeKey_\\x10:([\\w._-]+)\\x08",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_devonthink_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xe6\\x01\\0\\0\\0\\0\\0\\0bplist00\\xd4\\x01\\x02\\x03\\x04\\x05\\x06\\x1e\\x1fX\\$versionX\\$objectsY\\$archiverT\\$top\\x12\\0\\x01\\x86\\xa0\\xa5\\x07\\x08\\x0f\\x13\\x1aU\\$null\\xd3\\t\\n\\x0b\\x0c\\r\\x0eStag\\[dataContentV\\$class\\x10\\x01\\x80\\x02\\x80\\x04\\xd2\\x10\\x0b\\x11\\x12WNS\\.dataO\\x10\\x98bplist00\\xd2\\x01\\x02\\x03\\x04_\\x10\\x16ComputerIdentificationZPINCodeKey_\\x10:([\\w._-]+)\\x08",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour devonthink"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "devonthink"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: devonthink. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*"
+}

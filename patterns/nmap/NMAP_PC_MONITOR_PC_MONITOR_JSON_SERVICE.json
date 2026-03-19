@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pc-monitor-pc-monitor-json-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "PC-Monitor JSON service",
+  "product": "PC-Monitor JSON service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PC_MONITOR_PC_MONITOR_JSON_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^{\\\"CpuInfo\\\":{\\\"uiLoad\\\":\\[[\\d,]+\\],\\\"uiTjMax\\\":\\[[\\d,]+\\],\\\"uiCoreCnt\\\":\\d+,\\\"uiCPUCnt\\\":\\d,\\\"fTemp\\\":\\[[\\d.,]+\\],\\\"fVID\\\":[\\d.]+,\\\"fCPUSpeed\\\":[\\d.]+,\\\"fFSBSpeed\\\":[\\d.]+,\\\"fMultipier\\\":\\d,\\\"CPUName\\\":\\\"([^\"]+)\\\",",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pc-monitor_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^{\\\"CpuInfo\\\":{\\\"uiLoad\\\":\\[[\\d,]+\\],\\\"uiTjMax\\\":\\[[\\d,]+\\],\\\"uiCoreCnt\\\":\\d+,\\\"uiCPUCnt\\\":\\d,\\\"fTemp\\\":\\[[\\d.,]+\\],\\\"fVID\\\":[\\d.]+,\\\"fCPUSpeed\\\":[\\d.]+,\\\"fFSBSpeed\\\":[\\d.]+,\\\"fMultipier\\\":\\d,\\\"CPUName\\\":\\\"([^\"]+)\\\",",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pc-monitor"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pc-monitor"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pc-monitor. 1 match(es), 0 softmatch(es)."
+}

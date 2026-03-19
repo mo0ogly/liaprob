@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-vspe-eterlogic-virtual-serial-posts-emulator",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Eterlogic Virtual Serial Posts Emulator",
+  "product": "Eterlogic Virtual Serial Posts Emulator",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_VSPE_ETERLOGIC_VIRTUAL_SERIAL_POSTS_EMULATOR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\nADA38072\\r\\nAD_80099\\r\\nABA39071\\r\\nAB_07096\\r\\nACA40064\\r\\nAC_00090\\r\\nADA41066\\r\\nAD_81100\\r\\nABA42065\\r\\nAB_08097\\r\\nACA43067\\r\\nACA44068\\r\\nAC_01091\\r\\nADA45070\\r\\nAD_81100\\r\\nADA45070\\r\\nADA45070\\r\\nADA45070\\r\\nABA46069\\r\\nAB_09098\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_vspe_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\nADA38072\\r\\nAD_80099\\r\\nABA39071\\r\\nAB_07096\\r\\nACA40064\\r\\nAC_00090\\r\\nADA41066\\r\\nAD_81100\\r\\nABA42065\\r\\nAB_08097\\r\\nACA43067\\r\\nACA44068\\r\\nAC_01091\\r\\nADA45070\\r\\nAD_81100\\r\\nADA45070\\r\\nADA45070\\r\\nADA45070\\r\\nABA46069\\r\\nAB_09098\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour vspe"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "vspe"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: vspe. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

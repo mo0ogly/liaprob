@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-conexant-access-runner-adsl-router-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Conexant Access Runner adsl router telnetd",
+  "product": "Conexant Access Runner adsl router telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_CONEXANT_ACCESS_RUNNER_ADSL_ROUTER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x1b\\[0m\\x1b\\[2J\\x1b\\[01;28HCONEXANT SYSTEMS, INC\\.\\x1b\\[02;19H ACCESS RUNNER ADSL CONSOLE PORT\\x1b\\[24;01H>>>\\x1b\\[24;01HLOGON PASSWORD>\\x1b\\[02;53H3\\.\\d+\\x1b\\[24;17H\\x1b\\[24;17H\\x1b\\[24;17H\\x1b\\[24;17H",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1b\\[0m\\x1b\\[2J\\x1b\\[01;28HCONEXANT SYSTEMS, INC\\.\\x1b\\[02;19H ACCESS RUNNER ADSL CONSOLE PORT\\x1b\\[24;01H>>>\\x1b\\[24;01HLOGON PASSWORD>\\x1b\\[02;53H3\\.\\d+\\x1b\\[24;17H\\x1b\\[24;17H\\x1b\\[24;17H\\x1b\\[24;17H",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

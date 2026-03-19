@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-nnsrv-istar-driver-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "iStar Driver Service",
+  "product": "iStar Driver Service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NNSRV_ISTAR_DRIVER_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x94\\0\\0\\0\\xf4\\xff\\xff\\xff\\x01\\0\\0\\0\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\xa5\\0\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_nnsrv_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x94\\0\\0\\0\\xf4\\xff\\xff\\xff\\x01\\0\\0\\0\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\xa5\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour nnsrv"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "nnsrv"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: nnsrv. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-sharp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sharp",
+  "product": "Sharp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_SHARP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:sharp:$1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03SHARP (AR-\\w+) Ver ([\\w._+-]+) TELNET server\\.\\r\\0\\nCopyright\\([cC]\\) [\\d -]+,? silex technology, Inc\\.\\r\\0\\nlogin: $",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03SHARP (MX-\\w+) Ver ([\\w._+-]+) TELNET server\\.\\r\\0\\nCopyright\\(C\\) [\\d -]+ SHARP CORPORATION\\r\\0\\nCopyright\\(C\\) [\\d -]+ silex technology, Inc\\.\\r\\0\\nlogin: ",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03Sharp (AR-\\w+) Ver ([\\w._+-]+) TELNET server\\.\\r\\0\\nCopyright\\(C\\) [\\d -]+ SHARP CORPORATION\\r\\0\\nCopyright\\(C\\) [\\d -]+ Japan Computer Industry Inc\\.\\r\\0\\nlogin: ",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03SHARP (MX-\\w+) Ver ([-\\w_.]+) TELNET server\\.",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03SHARP (AR-\\w+) Ver ([\\w._+-]+) TELNET server\\.\\r\\0\\nCopyright\\([cC]\\) [\\d -]+,? silex technology, Inc\\.\\r\\0\\nlogin: $",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03SHARP (MX-\\w+) Ver ([\\w._+-]+) TELNET server\\.\\r\\0\\nCopyright\\(C\\) [\\d -]+ SHARP CORPORATION\\r\\0\\nCopyright\\(C\\) [\\d -]+ silex technology, Inc\\.\\r\\0\\nlogin: ",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03Sharp (AR-\\w+) Ver ([\\w._+-]+) TELNET server\\.\\r\\0\\nCopyright\\(C\\) [\\d -]+ SHARP CORPORATION\\r\\0\\nCopyright\\(C\\) [\\d -]+ Japan Computer Industry Inc\\.\\r\\0\\nlogin: ",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x01\\xff\\xfb\\x03SHARP (MX-\\w+) Ver ([-\\w_.]+) TELNET server\\.",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:sharp:$1:*:*:*:*:*:*:*:*"
+}

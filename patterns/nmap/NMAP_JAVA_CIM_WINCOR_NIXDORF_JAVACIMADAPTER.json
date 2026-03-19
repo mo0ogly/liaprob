@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-java-cim-wincor-nixdorf-javacimadapter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Wincor Nixdorf JavaCIMAdapter",
+  "product": "Wincor Nixdorf JavaCIMAdapter",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_JAVA_CIM_WINCOR_NIXDORF_JAVACIMADAPTER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^JavaCIMAdapter: connection closed - remote access not allowed\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_java-cim_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^JavaCIMAdapter: connection closed - remote access not allowed\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour java-cim"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "java-cim"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: java-cim. 1 match(es), 0 softmatch(es)."
+}

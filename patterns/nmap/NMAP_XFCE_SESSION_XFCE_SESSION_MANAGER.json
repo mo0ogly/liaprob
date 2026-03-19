@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-xfce-session-xfce-session-manager",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "XFCE Session Manager",
+  "product": "XFCE Session Manager",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_XFCE_SESSION_XFCE_SESSION_MANAGER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x01\\0.\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_xfce-session_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x01\\0.\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour xfce-session"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "xfce-session"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: xfce-session. 1 match(es), 0 softmatch(es)."
+}

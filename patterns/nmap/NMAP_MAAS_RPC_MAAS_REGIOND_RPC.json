@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-maas-rpc-maas-regiond-rpc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "maas-regiond RPC",
+  "product": "maas-regiond RPC",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MAAS_RPC_MAAS_REGIOND_RPC.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:canonical:maas:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x04_ask\\0\\x011\\0\\x08_command\\0\\x08Identify\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_maas-rpc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x04_ask\\0\\x011\\0\\x08_command\\0\\x08Identify\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour maas-rpc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "maas-rpc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: maas-rpc. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:canonical:maas:*:*:*:*:*:*:*:*"
+}

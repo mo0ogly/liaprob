@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-alcatel",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Alcatel",
+  "product": "Alcatel",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_ALCATEL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:alcatel:timos:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-TiMOS-B-([\\w._-]+) both/hops ALCATEL SR ([\\w._-]+) Copyright \\(c\\) \\d+-\\d+ Alcatel-Lucent\\.\\r\\n220-All rights reserved\\. All use subject to applicable license agreements\\.\\r\\n220-Built on (.*) by builder in /rel[\\w._-]+/[\\w._-]+/[\\w._-]+/panos/main\\r\\n220-\\r\\n220-This is a Maxcom, system restricted to authorized individuals\\. This system is subject to monitoring\\. Unauthorized users, access, and/or modification will be prosecuted\\.\\r\\n220 FTP server ready\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-TiMOS-B-([\\w._-]+) both/hops ALCATEL SR ([\\w._-]+) Copyright \\(c\\) \\d+-\\d+ Alcatel-Lucent\\.\\r\\n220-All rights reserved\\. All use subject to applicable license agreements\\.\\r\\n220-Built on (.*) by builder in /rel[\\w._-]+/[\\w._-]+/[\\w._-]+/panos/main\\r\\n220-\\r\\n220-This is a Maxcom, system restricted to authorized individuals\\. This system is subject to monitoring\\. Unauthorized users, access, and/or modification will be prosecuted\\.\\r\\n220 FTP server ready\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:alcatel:timos:{version}:*:*:*:*:*:*:*"
+}

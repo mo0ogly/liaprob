@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-linksys-wrt54g-with-wifi-box-net-firmware-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Linksys WRT54G with wifi-box.net firmware telnetd",
+  "product": "Linksys WRT54G with wifi-box.net firmware telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_LINKSYS_WRT54G_WITH_WIFI_BOX_NET_FIRMWARE_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\r\\n\\r\\r\\n\\r           Welcome to the WRT54G Shell Box\\r\\n\\r\\r\\n\\rFirmware version: Wifi-box\\.net ([\\d.]+)\\.wfb \\d\\d/\\d\\d/\\d\\d\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\r\\n\\r\\r\\n\\r           Welcome to the WRT54G Shell Box\\r\\n\\r\\r\\n\\rFirmware version: Wifi-box\\.net ([\\d.]+)\\.wfb \\d\\d/\\d\\d/\\d\\d\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

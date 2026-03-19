@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ms-pe-exe-microsoft-pe-executable-file",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft PE executable file",
+  "product": "Microsoft PE executable file",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MS_PE_EXE_MICROSOFT_PE_EXECUTABLE_FILE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ms-pe-exe_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.{0,4}MZ.{76}This program cannot be run in DOS mode\\.",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ms-pe-exe"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ms-pe-exe"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ms-pe-exe. 0 match(es), 1 softmatch(es)."
+}

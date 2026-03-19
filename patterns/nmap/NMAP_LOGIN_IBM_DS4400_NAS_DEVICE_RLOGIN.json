@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-login-ibm-ds4400-nas-device-rlogin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IBM DS4400 NAS device rlogin",
+  "product": "IBM DS4400 NAS device rlogin",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LOGIN_IBM_DS4400_NAS_DEVICE_RLOGIN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    2068,
+    2105,
+    2967,
+    5000,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    13783
+  ],
+  "cpe23_template": "cpe:2.3:h:ibm:ds4400:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\^A\\^@\\^@\\^@\\^@\\^@\\^@\\^Gversion\\^Dbind\\^@\\^@\\^P\\^@\\n\\r\\n\\r\\n\\r\\n\\r#####################################################################\\n\\r###                                                               ###\\n\\r###               Engenio Series 4, RAID Controller               ###\\n\\r###  Copyright 2003-2004, Engenio Information Technologies, Inc\\.  ###\\n\\r###                                                               ###\\n\\r###                Series 4 Disk Array Controller                 ###\\n\\r###                  Serial number:  (\\w+)                   ###\\n\\r###                     Network name:  ([\\w._-]+) *###\\n\\r",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_login_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\^A\\^@\\^@\\^@\\^@\\^@\\^@\\^Gversion\\^Dbind\\^@\\^@\\^P\\^@\\n\\r\\n\\r\\n\\r\\n\\r#####################################################################\\n\\r###                                                               ###\\n\\r###               Engenio Series 4, RAID Controller               ###\\n\\r###  Copyright 2003-2004, Engenio Information Technologies, Inc\\.  ###\\n\\r###                                                               ###\\n\\r###                Series 4 Disk Array Controller                 ###\\n\\r###                  Serial number:  (\\w+)                   ###\\n\\r###                     Network name:  ([\\w._-]+) *###\\n\\r",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour login"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "login"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: login. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:ibm:ds4400:*:*:*:*:*:*:*:*"
+}

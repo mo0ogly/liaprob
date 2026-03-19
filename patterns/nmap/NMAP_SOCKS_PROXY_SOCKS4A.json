@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-socks-proxy-socks4a",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Socks4A",
+  "product": "Socks4A",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SOCKS_PROXY_SOCKS4A.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_socks-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x00\\x5b......$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour socks-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "socks-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: socks-proxy. 0 match(es), 1 softmatch(es)."
+}

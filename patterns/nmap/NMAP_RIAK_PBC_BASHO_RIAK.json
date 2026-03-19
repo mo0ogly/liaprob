@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-riak-pbc-basho-riak",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Basho Riak",
+  "product": "Basho Riak",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RIAK_PBC_BASHO_RIAK.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    8087
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^....\\x08..(riak@[\\w._-]+)..([\\w._-]+)$",
+      "confidence_delta": 0.3,
+      "version_group": 2
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_riak-pbc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^....\\x08..(riak@[\\w._-]+)..([\\w._-]+)$",
+          "confidence_delta": 0.3,
+          "version_group": 2
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour riak-pbc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "riak-pbc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: riak-pbc. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

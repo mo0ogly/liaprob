@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-philips-strand-light-palette-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Philips Strand Light Palette telnetd",
+  "product": "Philips Strand Light Palette telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_PHILIPS_STRAND_LIGHT_PALETTE_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Horizon Control Remote Connection\\r\\nCopyright 2006-2009 Horizon Control Inc\\. All Rights Reserved\\r\\n    local commands: echo, noecho, prompt, noprompt, help, exit\\r\\n<tab><enter> at the start of a line will re-run the previous command\\r\\nHC>",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Horizon Control Remote Connection\\r\\nCopyright 2006-2009 Horizon Control Inc\\. All Rights Reserved\\r\\n    local commands: echo, noecho, prompt, noprompt, help, exit\\r\\n<tab><enter> at the start of a line will re-run the previous command\\r\\nHC>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

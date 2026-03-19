@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sophos-sophos-message-router",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sophos Message Router",
+  "product": "Sophos Message Router",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SOPHOS_SOPHOS_MESSAGE_ROUTER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:sophos:enterprise_console:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^IOR:[a-zA-Z0-9]{32}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sophos_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^IOR:[a-zA-Z0-9]{32}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sophos"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sophos"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sophos. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:sophos:enterprise_console:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-finger-lexmark-t642-printer-fingerd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lexmark T642 printer fingerd",
+  "product": "Lexmark T642 printer fingerd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FINGER_LEXMARK_T642_PRINTER_FINGERD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:lexmark:t642:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nIntegrated port\\r\\nPrinter Type: Lexmark T642\\r\\nPrint Job Status:",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_finger_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nIntegrated port\\r\\nPrinter Type: Lexmark T642\\r\\nPrint Job Status:",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour finger"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "finger"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: finger. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:lexmark:t642:*:*:*:*:*:*:*:*"
+}

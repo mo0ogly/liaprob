@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-siemens-5940-t1e1-router-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Siemens 5940 T1E1 router telnetd",
+  "product": "Siemens 5940 T1E1 router telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_SIEMENS_5940_T1E1_ROUTER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:siemens:5940_t1e1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nSiemens 5940 T1E1 \\[COMBO\\] Router \\(5940-001\\) v([\\w._-]+) Ready\\r\\n\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x01\\xff\\xfe\\x01Username: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nSiemens 5940 T1E1 \\[COMBO\\] Router \\([\\w._-]+\\) v([\\w._-]+) Ready\\r\\n\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x01\\xff\\xfe\\x01Username: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nSiemens 5940 T1E1 \\[COMBO\\] Router \\(5940-001\\) v([\\w._-]+) Ready\\r\\n\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x01\\xff\\xfe\\x01Username: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nSiemens 5940 T1E1 \\[COMBO\\] Router \\([\\w._-]+\\) v([\\w._-]+) Ready\\r\\n\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x01\\xff\\xfe\\x01Username: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:siemens:5940_t1e1:*:*:*:*:*:*:*:*"
+}

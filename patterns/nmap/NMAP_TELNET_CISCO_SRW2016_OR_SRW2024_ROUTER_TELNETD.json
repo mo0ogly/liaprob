@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-cisco-srw2016-or-srw2024-router-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco SRW2016 or SRW2024 router telnetd",
+  "product": "Cisco SRW2016 or SRW2024 router telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_CISCO_SRW2016_OR_SRW2024_ROUTER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:cisco:telnet:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x03\\xff\\xfd\\x01\\xff\\xfb\\x01\\r\\n\\r\\x1b\\[2J\\x1b\\[0;0H\\x1b\\[K\\x1b\\[1;0H\\x1b\\[K\\x1b\\[2;0H\\x1b\\[K\\x1b\\[3;0H\\x1b\\[K\\x1b\\[4;0H\\x1b\\[K\\x1b\\[5;0H\\x1b\\[K\\x1b\\[6;0H\\x1b\\[K\\x1b\\[7;0H\\x1b\\[K\\x1b\\[8;0H\\x1b\\[K\\x1b\\[9;0H\\x1b\\[K\\x1b\\[10;0H\\x1b\\[K\\x1b\\[11;0H\\x1b\\[K\\x1b\\[12;0H\\x1b\\[K\\x1b\\[13;0H\\x1b\\[K\\x1b\\[14;0H\\x1b\\[K\\x1b\\[15;0H\\x1b\\[K\\x1b\\[16;0H\\x1b\\[K\\x1b\\[17;0H\\x1b\\[K\\x1b\\[18;0H\\x1b\\[K\\x1b\\[19;0H\\x1b\\[K\\x1b\\[20;0H\\x1b\\[K\\x1b\\[21;0H\\x1b\\[K\\x1b\\[22;0H\\x1b\\[K\\x1b\\[0;0H\\x1b\\[K\\x1b\\[1;0H\\x1b\\[K\\x1b\\[2;0H\\x1b\\[K\\x1b\\[3;0H\\x1b\\[K\\x1b\\[4;0H\\x1b\\[K\\x1b\\[5;0H\\x1b\\[K\\x1b\\[6;0H\\x1b\\[K\\x1b\\[7;0H\\x1b\\[K\\x1b\\[8;0H\\x1b\\[K\\x1b\\[9;0H\\x1b\\[K\\x1b\\[10;0H\\x1b\\[K\\x1b\\[11;0H\\x1b\\[K\\x1b\\[12;0H\\x1b\\[K\\x1b\\[13;0H\\x1b\\[K\\x1b\\[14;0H\\x1b\\[K\\x1b\\[15;0H\\x1b\\[K\\x1b\\[16;0H\\x1b\\[K\\x1b\\[17;0H\\x1b\\[K\\x1b\\[18;0H\\x1b\\[K\\x1b\\[19;0H\\x1b\\[K\\x1b\\[20;0H\\x1b\\[K\\x1b\\[3;27H            \\x1b\\[3;27HLogin Screen\\x1b\\[4;27H            \\x1b\\[4;27H============\\x1b\\[7;24H          \\x1b\\[7;24HUser Name:\\x1b\\[9;24H         \\x1b\\[9;24HPassword:\\x1b\\[7m\\x1b\\[7;36H                    \\x1b\\[7;36H                     \\x1b\\[7;36H\\x1b\\[7;36H",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x03\\xff\\xfb\\x03\\xff\\xfd\\x01\\xff\\xfb\\x01\\r\\n\\r\\x1b\\[2J\\x1b\\[0;0H\\x1b\\[K\\x1b\\[1;0H\\x1b\\[K\\x1b\\[2;0H\\x1b\\[K\\x1b\\[3;0H\\x1b\\[K\\x1b\\[4;0H\\x1b\\[K\\x1b\\[5;0H\\x1b\\[K\\x1b\\[6;0H\\x1b\\[K\\x1b\\[7;0H\\x1b\\[K\\x1b\\[8;0H\\x1b\\[K\\x1b\\[9;0H\\x1b\\[K\\x1b\\[10;0H\\x1b\\[K\\x1b\\[11;0H\\x1b\\[K\\x1b\\[12;0H\\x1b\\[K\\x1b\\[13;0H\\x1b\\[K\\x1b\\[14;0H\\x1b\\[K\\x1b\\[15;0H\\x1b\\[K\\x1b\\[16;0H\\x1b\\[K\\x1b\\[17;0H\\x1b\\[K\\x1b\\[18;0H\\x1b\\[K\\x1b\\[19;0H\\x1b\\[K\\x1b\\[20;0H\\x1b\\[K\\x1b\\[21;0H\\x1b\\[K\\x1b\\[22;0H\\x1b\\[K\\x1b\\[0;0H\\x1b\\[K\\x1b\\[1;0H\\x1b\\[K\\x1b\\[2;0H\\x1b\\[K\\x1b\\[3;0H\\x1b\\[K\\x1b\\[4;0H\\x1b\\[K\\x1b\\[5;0H\\x1b\\[K\\x1b\\[6;0H\\x1b\\[K\\x1b\\[7;0H\\x1b\\[K\\x1b\\[8;0H\\x1b\\[K\\x1b\\[9;0H\\x1b\\[K\\x1b\\[10;0H\\x1b\\[K\\x1b\\[11;0H\\x1b\\[K\\x1b\\[12;0H\\x1b\\[K\\x1b\\[13;0H\\x1b\\[K\\x1b\\[14;0H\\x1b\\[K\\x1b\\[15;0H\\x1b\\[K\\x1b\\[16;0H\\x1b\\[K\\x1b\\[17;0H\\x1b\\[K\\x1b\\[18;0H\\x1b\\[K\\x1b\\[19;0H\\x1b\\[K\\x1b\\[20;0H\\x1b\\[K\\x1b\\[3;27H            \\x1b\\[3;27HLogin Screen\\x1b\\[4;27H            \\x1b\\[4;27H============\\x1b\\[7;24H          \\x1b\\[7;24HUser Name:\\x1b\\[9;24H         \\x1b\\[9;24HPassword:\\x1b\\[7m\\x1b\\[7;36H                    \\x1b\\[7;36H                     \\x1b\\[7;36H\\x1b\\[7;36H",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:cisco:telnet:*:*:*:*:*:*:*:*"
+}

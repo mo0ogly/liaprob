@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-nortel-5510-switch-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Nortel 5510 switch telnetd",
+  "product": "Nortel 5510 switch telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_NORTEL_5510_SWITCH_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:nortel:5510:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x1b\\[\\?25l\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[0m\\x1b\\[1;1H\\x1b\\[2;1H\\x1b\\[3;1H\\x1b\\[4;1H ###      ###  ###########   ##########  ############# ########### ###\\x1b\\[5;1H ####     ### ############# ############ ############# ########### ###\\x1b\\[6;1H[ #]{70}\\x1b\\[7;1H[ #]{70}\\x1b\\[8;1H[ #]{70}\\x1b\\[9;1H[ #]{70}\\x1b\\[10;1H[ #]{70}\\x1b\\[11;1H[ #]{70}\\x1b\\[12;1H[ #]{78}\\x1b\\[13;1H[ #]{78}\\x1b\\[14;1H\\x1b\\[15;1H\\x1b\\[16;1HEnter Ctrl-Y to begin\\.\\x1b\\[18;3H\\*{35}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1b\\[\\?25l\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[0m\\x1b\\[1;1H\\x1b\\[2;1H\\x1b\\[3;1H\\x1b\\[4;1H ###      ###  ###########   ##########  ############# ########### ###\\x1b\\[5;1H ####     ### ############# ############ ############# ########### ###\\x1b\\[6;1H[ #]{70}\\x1b\\[7;1H[ #]{70}\\x1b\\[8;1H[ #]{70}\\x1b\\[9;1H[ #]{70}\\x1b\\[10;1H[ #]{70}\\x1b\\[11;1H[ #]{70}\\x1b\\[12;1H[ #]{78}\\x1b\\[13;1H[ #]{78}\\x1b\\[14;1H\\x1b\\[15;1H\\x1b\\[16;1HEnter Ctrl-Y to begin\\.\\x1b\\[18;3H\\*{35}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:nortel:5510:*:*:*:*:*:*:*:*"
+}

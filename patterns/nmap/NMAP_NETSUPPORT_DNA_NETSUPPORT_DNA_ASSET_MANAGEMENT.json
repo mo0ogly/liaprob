@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netsupport-dna-netsupport-dna-asset-management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NetSupport DNA asset management",
+  "product": "NetSupport DNA asset management",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETSUPPORT_DNA_NETSUPPORT_DNA_ASSET_MANAGEMENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\0\\0\\0\\x01\\0\\0\\0\\0\\0\\0\\0\\n\\x0c00\\d{10}$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netsupport-dna_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0\\0\\0\\x01\\0\\0\\0\\0\\0\\0\\0\\n\\x0c00\\d{10}$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netsupport-dna"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netsupport-dna"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netsupport-dna. 1 match(es), 0 softmatch(es)."
+}

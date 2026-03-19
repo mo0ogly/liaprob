@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-irc-bahamut-ircd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Bahamut ircd",
+  "product": "Bahamut ircd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IRC_BAHAMUT_IRCD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:([\\w._-]+) NOTICE ZUSR :You have been throttled for 2 minutes for too many connections in a short period of time\\. Further connections in this period will reset your throttle and you will have to wait longer\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_irc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:([\\w._-]+) NOTICE ZUSR :You have been throttled for 2 minutes for too many connections in a short period of time\\. Further connections in this period will reset your throttle and you will have to wait longer\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour irc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "irc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: irc. 1 match(es), 0 softmatch(es)."
+}

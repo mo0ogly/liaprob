@@ -1,0 +1,83 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-efi-workstation-efi-fiery-command-workstation",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "EFI Fiery Command WorkStation",
+  "product": "EFI Fiery Command WorkStation",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_EFI_WORKSTATION_EFI_FIERY_COMMAND_WORKSTATION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\(m\\xe9l@k\\xb7\\xf5\\x03$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\(m\\xe9l@k\\xb3\\xf7\\x1e\\xa5$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\(m\\xe9l@k\\xb1\\xf1\\x15\\xa5$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\(m\\xe9l@k\\xb3\\xf7\\x1f\\xa5$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_efi-workstation_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\(m\\xe9l@k\\xb7\\xf5\\x03$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\(m\\xe9l@k\\xb3\\xf7\\x1e\\xa5$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\(m\\xe9l@k\\xb1\\xf1\\x15\\xa5$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\(m\\xe9l@k\\xb3\\xf7\\x1f\\xa5$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour efi-workstation"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "efi-workstation"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: efi-workstation. 4 match(es), 0 softmatch(es)."
+}

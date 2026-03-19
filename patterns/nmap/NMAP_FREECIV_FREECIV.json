@@ -1,0 +1,134 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-freeciv-freeciv",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Freeciv",
+  "product": "Freeciv",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FREECIV_FREECIV.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    2068,
+    2105,
+    2967,
+    5000,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    13783
+  ],
+  "cpe23_template": "cpe:2.3:a:freeciv:freeciv:1:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x03\\x02\\0\\.\\x01\\0\\0\\0\\0Invalid name ''\\0\\+1\\.14\\.0 conn_info team\\0\\0\\x03\\x03$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x03X\\0.\\x01\\0\\0\\0\\0Your client is too old\\. To use this server please upgrade your client to a CVS version later than 2003-11-28 or Freeciv 1\\.15\\.0 or later\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x03X\\0.\\x01\\0\\0\\0\\0Tw\\xc3\\xb3j klient jest zbyt stary\\. Aby wej\\xc5\\x9b\\xc4\\x87 na ten serwer musisz u\\xc5\\xbcywa\\xc4\\x87 klienta w wersji co najmniej 1\\.15\\.0\\. \\(Lub z CVS'a po 18\\.11\\.2003\\)\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x03X\\0.\\x01\\0\\0\\0\\0Votre client est trop vieux\\. Pour utiliser ce serveur veuillez mettre votre client \\xc3\\xa0 jour avec une version Freeciv 2\\.2 ou ult\\xc3\\xa9rieure\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0(?:\\x03\\x58\\0)?\\x6a\\x01\\0\\0\\0\\0Your client is too old\\. To use this server, please upgrade your client to a Freeciv 2\\.2 or later\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x03\\x58\\0\\x16\\x01\\0\\0\\0\\0Freeciv ([\\d.]+)\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_freeciv_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x03\\x02\\0\\.\\x01\\0\\0\\0\\0Invalid name ''\\0\\+1\\.14\\.0 conn_info team\\0\\0\\x03\\x03$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x03X\\0.\\x01\\0\\0\\0\\0Your client is too old\\. To use this server please upgrade your client to a CVS version later than 2003-11-28 or Freeciv 1\\.15\\.0 or later\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x03X\\0.\\x01\\0\\0\\0\\0Tw\\xc3\\xb3j klient jest zbyt stary\\. Aby wej\\xc5\\x9b\\xc4\\x87 na ten serwer musisz u\\xc5\\xbcywa\\xc4\\x87 klienta w wersji co najmniej 1\\.15\\.0\\. \\(Lub z CVS'a po 18\\.11\\.2003\\)\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x03X\\0.\\x01\\0\\0\\0\\0Votre client est trop vieux\\. Pour utiliser ce serveur veuillez mettre votre client \\xc3\\xa0 jour avec une version Freeciv 2\\.2 ou ult\\xc3\\xa9rieure\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0(?:\\x03\\x58\\0)?\\x6a\\x01\\0\\0\\0\\0Your client is too old\\. To use this server, please upgrade your client to a Freeciv 2\\.2 or later\\.\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x03\\x58\\0\\x16\\x01\\0\\0\\0\\0Freeciv ([\\d.]+)\\0\\0\\0\\x03\\0\\0\\x03\\x01$",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour freeciv"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "freeciv"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: freeciv. 6 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:freeciv:freeciv:1:*:*:*:*:*:*:*"
+}

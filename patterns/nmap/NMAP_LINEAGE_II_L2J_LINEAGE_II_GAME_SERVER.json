@@ -1,0 +1,57 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-lineage-ii-l2j-lineage-ii-game-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "L2J Lineage II game server",
+  "product": "L2J Lineage II game server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LINEAGE_II_L2J_LINEAGE_II_GAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    515,
+    1028,
+    1068,
+    1503,
+    1720,
+    1935,
+    2040,
+    3388,
+    3389
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^G\\0\\0\\x01\\0\\0\\0\\xce\\x1e\\0\\0\\xce\\x1e\\0\\0\\xce\\x1e\\0\\0/\\x04\\0\\x000\\0,\\x006\\0,\\x003\\x003\\x003\\x002\\0,\\x003\\x003\\x003\\x003\\0\\0\\0\\x81\\x8d\\0\\0\\x81\\x8d\\0\\0\\x91\\x91\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_lineage-ii_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^G\\0\\0\\x01\\0\\0\\0\\xce\\x1e\\0\\0\\xce\\x1e\\0\\0\\xce\\x1e\\0\\0/\\x04\\0\\x000\\0,\\x006\\0,\\x003\\x003\\x003\\x002\\0,\\x003\\x003\\x003\\x003\\0\\0\\0\\x81\\x8d\\0\\0\\x81\\x8d\\0\\0\\x91\\x91\\0\\0\\0\\0\\0\\0\\x02\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour lineage-ii"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "lineage-ii"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: lineage-ii. 1 match(es), 0 softmatch(es)."
+}

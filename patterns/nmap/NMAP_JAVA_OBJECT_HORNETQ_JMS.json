@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-java-object-hornetq-jms",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HornetQ JMS",
+  "product": "HornetQ JMS",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_JAVA_OBJECT_HORNETQ_JMS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xac\\xed\\0\\x05sr\\0\\x19java\\.rmi\\.MarshalledObject\\x7c\\xbd\\x1e\\x97\\xedc\\xfc>\\x02\\0\\x03I\\0\\x04hash\\[\\0\\x08locBytest\\0\\x02\\[B\\[\\0\\x08objBytesq\\0~\\0\\x01xp\\x01\\xc3\\xed\\x9epur\\0\\x02\\[B\\xac\\xf3\\x17\\xf8\\x06\\x08T\\xe0\\x02\\0\\0xp\\0\\0\\0\\xc5\\xac\\xed\\0\\x05sr\\0 org\\.jnp\\.server\\.NamingServer_Stub\\0\\0\\0\\0\\0\\0\\0\\x02\\x02\\0\\0xr\\0\\x1ajava\\.rmi\\.server\\.RemoteStub\\xe9\\xfe\\xdc\\xc9\\x8b\\xe1e\\x1a\\x02\\0\\0xr\\0\\x1cjava\\.rmi\\.server\\.RemoteObject\\xd3a\\xb4\\x91\\x0ca3\\x1e\\x03\\0\\0xpw9\\0\\x0bUnicastRef2\\0\\0\\x0e",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_java-object_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xac\\xed\\0\\x05sr\\0\\x19java\\.rmi\\.MarshalledObject\\x7c\\xbd\\x1e\\x97\\xedc\\xfc>\\x02\\0\\x03I\\0\\x04hash\\[\\0\\x08locBytest\\0\\x02\\[B\\[\\0\\x08objBytesq\\0~\\0\\x01xp\\x01\\xc3\\xed\\x9epur\\0\\x02\\[B\\xac\\xf3\\x17\\xf8\\x06\\x08T\\xe0\\x02\\0\\0xp\\0\\0\\0\\xc5\\xac\\xed\\0\\x05sr\\0 org\\.jnp\\.server\\.NamingServer_Stub\\0\\0\\0\\0\\0\\0\\0\\x02\\x02\\0\\0xr\\0\\x1ajava\\.rmi\\.server\\.RemoteStub\\xe9\\xfe\\xdc\\xc9\\x8b\\xe1e\\x1a\\x02\\0\\0xr\\0\\x1cjava\\.rmi\\.server\\.RemoteObject\\xd3a\\xb4\\x91\\x0ca3\\x1e\\x03\\0\\0xpw9\\0\\x0bUnicastRef2\\0\\0\\x0e",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour java-object"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "java-object"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: java-object. 1 match(es), 0 softmatch(es)."
+}

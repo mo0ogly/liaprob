@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-qnap-rtrr-qnap-realtime-remote-replication",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "QNAP Realtime Remote Replication",
+  "product": "QNAP Realtime Remote Replication",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_QNAP_RTRR_QNAP_REALTIME_REMOTE_REPLICATION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xab\\xca\\xa5\\]\\0\\0\\0\\x18\\xc0\\0\\0\\x01\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_qnap-rtrr_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xab\\xca\\xa5\\]\\0\\0\\0\\x18\\xc0\\0\\0\\x01\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour qnap-rtrr"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "qnap-rtrr"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: qnap-rtrr. 1 match(es), 0 softmatch(es)."
+}

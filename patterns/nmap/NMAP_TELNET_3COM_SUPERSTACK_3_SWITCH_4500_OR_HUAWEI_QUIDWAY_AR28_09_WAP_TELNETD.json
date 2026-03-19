@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-3com-superstack-3-switch-4500-or-huawei-quidway-ar28-09-wap-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "3Com SuperStack 3 Switch 4500 or Huawei Quidway AR28-09 WAP telnetd",
+  "product": "3Com SuperStack 3 Switch 4500 or Huawei Quidway AR28-09 WAP telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_3COM_SUPERSTACK_3_SWITCH_4500_OR_HUAWEI_QUIDWAY_AR28_09_WAP_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\xff\\xfd\\x1f\\r\\n\\*{57}\\r\\n\\*          All rights reserved \\(1997-2005\\)              \\*\\r\\n\\*      Without the owner's prior written consent,       \\*\\r\\n\\*no decompiling or reverse-engineering shall be allowed\\.\\*\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\xff\\xfd\\x1f\\r\\n\\*{57}\\r\\n\\*          All rights reserved \\(1997-2005\\)              \\*\\r\\n\\*      Without the owner's prior written consent,       \\*\\r\\n\\*no decompiling or reverse-engineering shall be allowed\\.\\*\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

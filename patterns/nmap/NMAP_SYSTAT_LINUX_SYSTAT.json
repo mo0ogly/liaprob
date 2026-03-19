@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-systat-linux-systat",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Linux systat",
+  "product": "Linux systat",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SYSTAT_LINUX_SYSTAT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_systat_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour systat"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "systat"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: systat. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*"
+}

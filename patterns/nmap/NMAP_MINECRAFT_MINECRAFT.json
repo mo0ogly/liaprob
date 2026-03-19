@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-minecraft-minecraft",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Minecraft",
+  "product": "Minecraft",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MINECRAFT_MINECRAFT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    25565
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\x00.\\x00\\xa7\\x00\\x31\\x00\\x00(.+?)\\x00\\x00(.+?)\\x00\\x00(.+?)\\x00\\x00(.+?)\\x00\\x00(.+)",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_minecraft_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\x00.\\x00\\xa7\\x00\\x31\\x00\\x00(.+?)\\x00\\x00(.+?)\\x00\\x00(.+?)\\x00\\x00(.+?)\\x00\\x00(.+)",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour minecraft"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "minecraft"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: minecraft. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

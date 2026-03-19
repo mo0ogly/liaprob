@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-ibm-os-2-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IBM OS/2 ftpd",
+  "product": "IBM OS/2 ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_IBM_OS_2_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:ibm:os2_ftp_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-/.+\\w]+) IBM TCP/IP for OS/2 - FTP Server [Vv]er \\d+:\\d+:\\d+ on [A-Z]",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-/.+\\w]+) IBM TCP/IP f\\xfcr OS/2 - FTP-Server [Vv]er \\d+:\\d+:\\d+ .* bereit\\.\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220  IBM TCP/IP for OS/2 - FTP Server ver ([\\d:.]+) on .* ready\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-/.+\\w]+) IBM TCP/IP for OS/2 - FTP Server [Vv]er \\d+:\\d+:\\d+ on [A-Z]",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-/.+\\w]+) IBM TCP/IP f\\xfcr OS/2 - FTP-Server [Vv]er \\d+:\\d+:\\d+ .* bereit\\.\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220  IBM TCP/IP for OS/2 - FTP Server ver ([\\d:.]+) on .* ready\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 3 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:ibm:os2_ftp_server:*:*:*:*:*:*:*:*"
+}

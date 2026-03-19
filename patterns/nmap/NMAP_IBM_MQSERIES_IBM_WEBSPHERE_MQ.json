@@ -1,0 +1,99 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ibm-mqseries-ibm-websphere-mq",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IBM WebSphere MQ",
+  "product": "IBM WebSphere MQ",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IBM_MQSERIES_IBM_WEBSPHERE_MQ.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1414,
+    1415,
+    1416,
+    1417,
+    1418,
+    1419,
+    1420
+  ],
+  "cpe23_template": "cpe:2.3:a:ibm:websphere_mq:6.0:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^TSH\\x20\\0\\0\\0\\xec\\x02\\x01\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x11\\x01\\x00\\x00..\\0\\0ID\\x20\\x20\\x08&\\0\\x98\\0\\0\\0\\0\\xf6\\x7f\\x00\\x00\\0\\x00\\x40\\0\\0\\0\\0\\0([^\\s]*)\\s*\\x2c\\x01\\0\\0\\0\\0\\0\\0\\0\\xff\\0\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0\\0\\n\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x02MQJB00000000CANNED_DATA\\s*$",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^TSH\\x20\\0\\0\\0\\xec\\x02\\x01\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x11\\x01\\x00\\x00..\\0\\0ID\\x20\\x20\\x0a&\\0\\x90\\0\\0\\0\\0\\xf6\\x7f\\x00\\x00\\0\\x00\\x40\\0\\0\\0\\0\\0([^\\s]*)\\s*\\x51\\x00\\xb5\\x01([^\\s]*)\\s*\\x2c\\x01\\0\\0\\0\\0\\0\\0\\0\\xff\\0\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\n\\0\\0\\0\\0\\0\\0\\0..\\0\\0.\\0\\0\\0.\\0\\0\\0[^\\s]*\\s*$",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^TSH\\x20\\0\\0\\0\\xec\\x01\\x01\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x00\\x00\\x01\\x11..\\0\\0ID\\x20\\x20\\x0a&\\0\\x90\\0\\0\\0\\0\\x00\\x00\\x7f\\xf6\\0\\x40\\x00\\0\\0\\0\\0\\0([^\\s]*)\\s*\\x00\\x00\\x01\\x2c\\0\\0\\0\\0\\0\\xff\\0\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0\\0\\n\\0\\0\\0\\0\\0.*MQMM07000107JJ\\.PRD\\.(QM02_\\d\\d\\d\\d-\\d\\d-\\d\\d_\\d+\\.\\d+\\.\\d+)\\s*$",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^TSH\\x20\\0\\0\\0\\$\\x01\\x05\\n\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x02\\\"\\x04\\xb8\\0\\0\\0\\0\\0\\x08\\0\\0\\0\\x01$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ibm-mqseries_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^TSH\\x20\\0\\0\\0\\xec\\x02\\x01\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x11\\x01\\x00\\x00..\\0\\0ID\\x20\\x20\\x08&\\0\\x98\\0\\0\\0\\0\\xf6\\x7f\\x00\\x00\\0\\x00\\x40\\0\\0\\0\\0\\0([^\\s]*)\\s*\\x2c\\x01\\0\\0\\0\\0\\0\\0\\0\\xff\\0\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0\\0\\n\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x02MQJB00000000CANNED_DATA\\s*$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^TSH\\x20\\0\\0\\0\\xec\\x02\\x01\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x11\\x01\\x00\\x00..\\0\\0ID\\x20\\x20\\x0a&\\0\\x90\\0\\0\\0\\0\\xf6\\x7f\\x00\\x00\\0\\x00\\x40\\0\\0\\0\\0\\0([^\\s]*)\\s*\\x51\\x00\\xb5\\x01([^\\s]*)\\s*\\x2c\\x01\\0\\0\\0\\0\\0\\0\\0\\xff\\0\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\n\\0\\0\\0\\0\\0\\0\\0..\\0\\0.\\0\\0\\0.\\0\\0\\0[^\\s]*\\s*$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^TSH\\x20\\0\\0\\0\\xec\\x01\\x01\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x00\\x00\\x01\\x11..\\0\\0ID\\x20\\x20\\x0a&\\0\\x90\\0\\0\\0\\0\\x00\\x00\\x7f\\xf6\\0\\x40\\x00\\0\\0\\0\\0\\0([^\\s]*)\\s*\\x00\\x00\\x01\\x2c\\0\\0\\0\\0\\0\\xff\\0\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\0\\0\\0\\0\\0\\0\\0\\0\\0\\n\\0\\0\\0\\0\\0.*MQMM07000107JJ\\.PRD\\.(QM02_\\d\\d\\d\\d-\\d\\d-\\d\\d_\\d+\\.\\d+\\.\\d+)\\s*$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^TSH\\x20\\0\\0\\0\\$\\x01\\x05\\n\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x02\\\"\\x04\\xb8\\0\\0\\0\\0\\0\\x08\\0\\0\\0\\x01$",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^TSH\\x20\\0\\0\\0",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ibm-mqseries"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ibm-mqseries"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ibm-mqseries. 4 match(es), 1 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:ibm:websphere_mq:6.0:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pafserver",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "PAFSERVER",
+  "product": "pafserver",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PAFSERVER_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    2068,
+    2105,
+    2967,
+    5000,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    13783
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0&\\xa2\\xf4\\x04\\x97\\xbcNp\\xe4\\xc1\\x7cI\\xff\\xf9\\xe8\\x0c\\xd9\\xac\\xf1_u\\xa0\\x1d\\x82X\\0\\xde\\xd5\\xdd\\x19\\xce\\xc2\\xe0\\x92yD\\xde",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pafserver_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0&\\xa2\\xf4\\x04\\x97\\xbcNp\\xe4\\xc1\\x7cI\\xff\\xf9\\xe8\\x0c\\xd9\\xac\\xf1_u\\xa0\\x1d\\x82X\\0\\xde\\xd5\\xdd\\x19\\xce\\xc2\\xe0\\x92yD\\xde",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pafserver"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pafserver"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pafserver. 1 match(es), 0 softmatch(es)."
+}

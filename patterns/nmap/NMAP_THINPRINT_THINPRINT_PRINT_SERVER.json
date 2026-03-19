@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-thinprint-thinprint-print-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ThinPrint print server",
+  "product": "ThinPrint print server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_THINPRINT_THINPRINT_PRINT_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x94$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_thinprint_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x94$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour thinprint"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "thinprint"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: thinprint. 1 match(es), 0 softmatch(es)."
+}

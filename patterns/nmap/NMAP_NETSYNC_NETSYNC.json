@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netsync-netsync",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Netsync",
+  "product": "Netsync",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETSYNC_NETSYNC.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x06\\x02...([\\w._@-]+)..",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x00\\x64\\x01\\x00$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netsync_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x06\\x02...([\\w._@-]+)..",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x00\\x64\\x01\\x00$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netsync"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netsync"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netsync. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

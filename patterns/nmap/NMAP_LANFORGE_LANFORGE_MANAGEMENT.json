@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-lanforge-lanforge-management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "LANforge management",
+  "product": "LANforge management",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LANFORGE_LANFORGE_MANAGEMENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0<@\\0\\0\\x0c\\0\\0\\n\\nWelcome to LANforge\\.  Enter 'help' for more information\\.\\n\\0\\x01W@\\0\\0\\x0c\\0\\0Licenses: Shelves: \\d+  Cards: \\d+  Ports: \\d+  Active Ports: \\d+\\n  WanLinks: \\d+  Wl-2m: \\d+  Wl-45m: \\d+  Wl-155m: \\d+  Wl-1g: \\d+\\n  WanPaths: \\d+  Armageddon: \\d+  VOIP: \\d+\\n\\nThese licenses will never expire\\.\\nCurrent use: Ports: \\d+  WL-2m: \\d+  WL-45m: \\d+  WL-155m: \\d+  WL-1G: \\d+\\n  Armageddon: \\d+  VOIP: \\d+\\nLANforge Support and Software Upgrades expire in: ([^.]*)\\.\\n\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_lanforge_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0<@\\0\\0\\x0c\\0\\0\\n\\nWelcome to LANforge\\.  Enter 'help' for more information\\.\\n\\0\\x01W@\\0\\0\\x0c\\0\\0Licenses: Shelves: \\d+  Cards: \\d+  Ports: \\d+  Active Ports: \\d+\\n  WanLinks: \\d+  Wl-2m: \\d+  Wl-45m: \\d+  Wl-155m: \\d+  Wl-1g: \\d+\\n  WanPaths: \\d+  Armageddon: \\d+  VOIP: \\d+\\n\\nThese licenses will never expire\\.\\nCurrent use: Ports: \\d+  WL-2m: \\d+  WL-45m: \\d+  WL-155m: \\d+  WL-1G: \\d+\\n  Armageddon: \\d+  VOIP: \\d+\\nLANforge Support and Software Upgrades expire in: ([^.]*)\\.\\n\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour lanforge"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "lanforge"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: lanforge. 1 match(es), 0 softmatch(es)."
+}

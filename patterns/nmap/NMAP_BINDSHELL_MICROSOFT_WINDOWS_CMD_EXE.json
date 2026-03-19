@@ -1,0 +1,64 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bindshell-microsoft-windows-cmd-exe",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft Windows cmd.exe",
+  "product": "Microsoft Windows cmd.exe",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BINDSHELL_MICROSOFT_WINDOWS_CMD_EXE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Microsoft Windows (2000|XP|NT 4\\.0) \\[Version ([\\d.]+)\\]\\r\\n\\(C\\) Copyright 1985-20\\d\\d Microsoft Corp\\.\\r\\n\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Microsoft Windows \\[Version ([\\d.]+)\\]\\r\\n\\(C\\) Copyright 1985-20\\d\\d Microsoft Corp\\.\\r\\n\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bindshell_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Microsoft Windows (2000|XP|NT 4\\.0) \\[Version ([\\d.]+)\\]\\r\\n\\(C\\) Copyright 1985-20\\d\\d Microsoft Corp\\.\\r\\n\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Microsoft Windows \\[Version ([\\d.]+)\\]\\r\\n\\(C\\) Copyright 1985-20\\d\\d Microsoft Corp\\.\\r\\n\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour bindshell"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bindshell"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bindshell. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

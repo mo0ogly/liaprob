@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pcp-sgi-performance-co-pilot",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SGI Performance Co-Pilot",
+  "product": "SGI Performance Co-Pilot",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PCP_SGI_PERFORMANCE_CO_PILOT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:sgi:performance_co-pilot:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x14\\0\\0p\\0\\0\\0..\\0\\0\\0\\0\\x02\\x01\\0\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x14\\0\\0p\\0\\0\\0..\\xff\\xff\\xfc\\x11\\x02\\x000a",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pcp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x14\\0\\0p\\0\\0\\0..\\0\\0\\0\\0\\x02\\x01\\0\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x14\\0\\0p\\0\\0\\0..\\xff\\xff\\xfc\\x11\\x02\\x000a",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pcp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pcp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pcp. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:a:sgi:performance_co-pilot:*:*:*:*:*:*:*:*"
+}

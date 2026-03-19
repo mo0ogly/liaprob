@@ -1,0 +1,96 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-netgear",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Netgear",
+  "product": "Netgear",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_NETGEAR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:netgear:$1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\r\\n(FVS\\w+) login: ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\n\\((FSM\\w+)\\) \\r\\nUser:",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\r\\n(DGFV\\w+) login: ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\r\\n(FVX\\w+) login: ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Welcome to ([\\w._-]+)\\.\\r\\r\\nUnauthorized access is punishable by law\\.\\r\\r\\n\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\n\\((GSM[\\w._-]+)\\) \\r\\nUser:",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\r\\n(FVS\\w+) login: ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\n\\((FSM\\w+)\\) \\r\\nUser:",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\r\\n(DGFV\\w+) login: ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\r\\n(FVX\\w+) login: ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Welcome to ([\\w._-]+)\\.\\r\\r\\nUnauthorized access is punishable by law\\.\\r\\r\\n\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\n\\((GSM[\\w._-]+)\\) \\r\\nUser:",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 5 match(es), 0 softmatch(es). CPE: cpe:2.3:h:netgear:$1:*:*:*:*:*:*:*:*"
+}

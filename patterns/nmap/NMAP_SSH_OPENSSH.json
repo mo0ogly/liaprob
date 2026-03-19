@@ -1,0 +1,636 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ssh-openssh",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "OpenSSH",
+  "product": "OpenSSH",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SSH_OPENSSH.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:openbsd:openssh:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) Debian-(\\S*maemo\\S*)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_](.*ubuntu.*)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Ubuntu[ -_]([^\\r\\n]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_[\\w.]+-FC-([\\w.-]+)\\.fc(\\d+)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-([\\d]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD localisations (\\d+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-openssh-portable-(?:base-|amd64-)?[\\w.,]+\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-openssh-portable-overwrite-base",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-openssh-gssapi-",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) miniBSD-([\\d]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) NetBSD_Secure_Shell-([\\w._+-]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)_Mikrotik_v([\\d.]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) in RemotelyAnywhere ([\\d.]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)\\+CAN-2004-0175\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) NCSA_GSSAPI_20040818 KRB5\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[-_]hpn(\\w+) *(?:\\\"\\\")?\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+\\+sftpfilecontrol-v[\\d.]+-hpn\\w+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-hpn) NCSA_GSSAPI_\\d+ KRB5\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_3\\.4\\+p1\\+gssapi\\+OpenSSH_3\\.7\\.1buf_fix\\+2006100301\\r?\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+\\.RL)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-CERN\\d+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+\\.cern-hpn)",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-hpn)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-pwexp\\d+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)-chrootssh\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w.]+)[-_]hpn(\\w+) DragonFly-",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w.]+) DragonFly-",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w_.-]+) FIPS\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w_.-]+) FIPS\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w_.-]+) NCSA_GSSAPI_GPT_([-\\w_.]+) GSI\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) \\.\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) PKIX\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)-FIPS\\(capable\\)\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)-sshjail\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) Raspbian-([^\\r\\n]+)\\r?\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) OVH-rescue\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) Trisquel_GNU/linux_([\\d.]+)(?:-\\d+)?\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) \\+ILOM\\.2015-5600\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) SolidFire Element \\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH[_-]([\\w.]+)\\s*\\r?\\n",
+      "confidence_delta": 0.4,
+      "case_insensitive": true,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SSH-([\\d.]+)-OpenSSH\\r?\\n$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ssh_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) Debian-(\\S*maemo\\S*)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_](.*ubuntu.*)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Ubuntu[ -_]([^\\r\\n]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[ -]{1,2}Debian[ -_]([^\\r\\n]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_[\\w.]+-FC-([\\w.-]+)\\.fc(\\d+)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-([\\d]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD localisations (\\d+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-openssh-portable-(?:base-|amd64-)?[\\w.,]+\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-openssh-portable-overwrite-base",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD-openssh-gssapi-",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) FreeBSD\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) miniBSD-([\\d]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) NetBSD_Secure_Shell-([\\w._+-]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)_Mikrotik_v([\\d.]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) in RemotelyAnywhere ([\\d.]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)\\+CAN-2004-0175\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) NCSA_GSSAPI_20040818 KRB5\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)[-_]hpn(\\w+) *(?:\\\"\\\")?\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+\\+sftpfilecontrol-v[\\d.]+-hpn\\w+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-hpn) NCSA_GSSAPI_\\d+ KRB5\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_3\\.4\\+p1\\+gssapi\\+OpenSSH_3\\.7\\.1buf_fix\\+2006100301\\r?\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+\\.RL)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-CERN\\d+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+\\.cern-hpn)",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-hpn)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+-pwexp\\d+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)-chrootssh\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w.]+)[-_]hpn(\\w+) DragonFly-",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w.]+) DragonFly-",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w_.-]+) FIPS\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w_.-]+) FIPS\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w_.-]+) NCSA_GSSAPI_GPT_([-\\w_.]+) GSI\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) \\.\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) PKIX\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)-FIPS\\(capable\\)\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+)-sshjail\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) Raspbian-([^\\r\\n]+)\\r?\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) OVH-rescue\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) Trisquel_GNU/linux_([\\d.]+)(?:-\\d+)?\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) \\+ILOM\\.2015-5600\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH_([\\w._-]+) SolidFire Element \\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH[_-]([\\w.]+)\\s*\\r?\\n",
+          "confidence_delta": 0.4,
+          "case_insensitive": true,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SSH-([\\d.]+)-OpenSSH\\r?\\n$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ssh"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ssh"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ssh. 43 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:openbsd:openssh:{version}:*:*:*:*:*:*:*"
+}

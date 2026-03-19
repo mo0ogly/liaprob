@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-vss-geovision-ip-camera-video-streaming-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "GeoVision IP camera Video Streaming Service",
+  "product": "GeoVision IP camera Video Streaming Service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_VSS_GEOVISION_IP_CAMERA_VIDEO_STREAMING_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^GeOv\\x10\\0\\0\\0..\\0\\0\\0P\\x01\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_vss_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GeOv\\x10\\0\\0\\0..\\0\\0\\0P\\x01\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour vss"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "vss"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: vss. 1 match(es), 0 softmatch(es)."
+}

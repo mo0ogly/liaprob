@@ -1,0 +1,85 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-perforce-p4web-http-interface",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Perforce p4web http interface",
+  "product": "Perforce p4web http interface",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PERFORCE_P4WEB_HTTP_INTERFACE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    88,
+    443,
+    2100,
+    4443,
+    8000,
+    8001,
+    8002,
+    8003,
+    8004,
+    8005,
+    8006,
+    8007,
+    8008,
+    8009,
+    8010,
+    8080,
+    8081,
+    8082,
+    8083,
+    8084,
+    8085,
+    8443,
+    8880,
+    8881,
+    8882,
+    8883,
+    8884,
+    8885,
+    8886,
+    8887,
+    8888,
+    9999,
+    49152
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 200 OK\\nContent-Type: text/html \\n\\n<tr>\\n<td>\\n<img src=\\\"/clearpixelIcon\\?ac=20\\\" height=\\\"5\\\" width=\\\"0\\\" border=\\\"0\\\" alt=\\\"\\\" title=\\\"\\\">",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 200 OK\\r\\nContent-Type: text/html \\r\\n\\r\\n<tr>\\n<td>\\n<img src=\\\"/clearpixelIcon\\?ac=20\\\" height=\\\"5\\\" width=\\\"0\\\" border=\\\"0\\\" alt=\\\"\\\" title=\\\"\\\">",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 2 match(es), 0 softmatch(es)."
+}

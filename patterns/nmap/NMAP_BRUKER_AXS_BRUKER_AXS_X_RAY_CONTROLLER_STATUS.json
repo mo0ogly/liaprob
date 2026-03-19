@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bruker-axs-bruker-axs-x-ray-controller-status",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Bruker AXS X-ray controller status",
+  "product": "Bruker AXS X-ray controller status",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BRUKER_AXS_BRUKER_AXS_X_RAY_CONTROLLER_STATUS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\[ANGLESTATUS.*\\[XYZSTATUS.*\\[ZOOMSTATUS.*\\[INSTRUMENTSTATUS.*XRAYSON=1",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\[ANGLESTATUS.*\\[XYZSTATUS.*\\[ZOOMSTATUS.*\\[INSTRUMENTSTATUS.*XRAYSON=0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bruker-axs_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\[ANGLESTATUS.*\\[XYZSTATUS.*\\[ZOOMSTATUS.*\\[INSTRUMENTSTATUS.*XRAYSON=1",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\[ANGLESTATUS.*\\[XYZSTATUS.*\\[ZOOMSTATUS.*\\[INSTRUMENTSTATUS.*XRAYSON=0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour bruker-axs"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bruker-axs"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bruker-axs. 2 match(es), 0 softmatch(es)."
+}

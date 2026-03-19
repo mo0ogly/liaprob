@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-reverse-ssl-fortiguard-management-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "FortiGuard management service",
+  "product": "FortiGuard management service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_REVERSE_SSL_FORTIGUARD_MANAGEMENT_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x16\\x03\\x01..\\x01...\\x03\\x03.{32} .{32}.*?\\0\\0.[\\w._-]*support\\.fortinet\\.com\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_reverse-ssl_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x16\\x03\\x01..\\x01...\\x03\\x03.{32} .{32}.*?\\0\\0.[\\w._-]*support\\.fortinet\\.com\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour reverse-ssl"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "reverse-ssl"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: reverse-ssl. 1 match(es), 0 softmatch(es)."
+}

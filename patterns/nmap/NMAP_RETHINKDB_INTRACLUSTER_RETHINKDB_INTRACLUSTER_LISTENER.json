@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rethinkdb-intracluster-rethinkdb-intracluster-listener",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "RethinkDB intracluster listener",
+  "product": "RethinkDB intracluster listener",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RETHINKDB_INTRACLUSTER_RETHINKDB_INTRACLUSTER_LISTENER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:canonical:ubuntu_linux:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RethinkDB ([\\w._~-]+ubuntu[\\w._~-]+) cluster\\n\\xab\\xa6\\x04\\^\\x11!M\\xd6\\x99\\xb6\\xb5\\xbe\\x1cxR\\xdd\\x02\\0\\0\\0\\0\\0\\0\\0\\x7f\\0\\0\\x01\\x7f\\0\\x01\\x01Wq\\0\\0$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rethinkdb-intracluster_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RethinkDB ([\\w._~-]+ubuntu[\\w._~-]+) cluster\\n\\xab\\xa6\\x04\\^\\x11!M\\xd6\\x99\\xb6\\xb5\\xbe\\x1cxR\\xdd\\x02\\0\\0\\0\\0\\0\\0\\0\\x7f\\0\\0\\x01\\x7f\\0\\x01\\x01Wq\\0\\0$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rethinkdb-intracluster"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rethinkdb-intracluster"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rethinkdb-intracluster. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:canonical:ubuntu_linux:*:*:*:*:*:*:*:*"
+}

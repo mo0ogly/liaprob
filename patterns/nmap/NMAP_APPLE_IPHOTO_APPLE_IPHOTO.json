@@ -1,0 +1,52 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-apple-iphoto-apple-iphoto",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Apple iPhoto",
+  "product": "Apple iPhoto",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_APPLE_IPHOTO_APPLE_IPHOTO.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    8770
+  ],
+  "cpe23_template": "cpe:2.3:a:apple:iphoto:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 200 OK\\r\\nDate: .*\\r\\nDPAP-Server: iPhoto/(.*)\\r\\nContent-Type: application/x-dmap-tagged\\r\\nContent-Length: \\d+\\r\\n\\r\\nmsrv\\0\\0\\0\\x83mstt\\0\\0\\0\\x04\\0\\0\\0\\xc8mpro\\0\\0\\0\\x04\\0\\x02\\0\\0ppro\\0\\0\\0\\x04\\0\\x01\\0\\x01minm\\0\\0\\0.(.*)mslr\\0\\0\\0\\x01\\0mstm\\0\\0\\0\\x04\\0\\0\\x07\\x08msal\\0\\0\\0\\x01\\0msau\\0\\0\\0\\x01\\x02msas\\0\\0\\0\\x01\\x03msix\\0\\0\\0\\x01\\0msdc\\0\\0\\0\\x04\\0\\0\\0\\x01$",
+      "confidence_delta": 0.3,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_apple-iphoto_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 200 OK\\r\\nDate: .*\\r\\nDPAP-Server: iPhoto/(.*)\\r\\nContent-Type: application/x-dmap-tagged\\r\\nContent-Length: \\d+\\r\\n\\r\\nmsrv\\0\\0\\0\\x83mstt\\0\\0\\0\\x04\\0\\0\\0\\xc8mpro\\0\\0\\0\\x04\\0\\x02\\0\\0ppro\\0\\0\\0\\x04\\0\\x01\\0\\x01minm\\0\\0\\0.(.*)mslr\\0\\0\\0\\x01\\0mstm\\0\\0\\0\\x04\\0\\0\\x07\\x08msal\\0\\0\\0\\x01\\0msau\\0\\0\\0\\x01\\x02msas\\0\\0\\0\\x01\\x03msix\\0\\0\\0\\x01\\0msdc\\0\\0\\0\\x04\\0\\0\\0\\x01$",
+          "confidence_delta": 0.3,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour apple-iphoto"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "apple-iphoto"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: apple-iphoto. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:apple:iphoto:{version}:*:*:*:*:*:*:*"
+}

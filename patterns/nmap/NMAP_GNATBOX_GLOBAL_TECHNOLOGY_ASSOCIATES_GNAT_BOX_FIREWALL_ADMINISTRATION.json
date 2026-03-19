@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-gnatbox-global-technology-associates-gnat-box-firewall-administration",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Global Technology Associates Gnat Box firewall administration",
+  "product": "Global Technology Associates Gnat Box firewall administration",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GNATBOX_GLOBAL_TECHNOLOGY_ASSOCIATES_GNAT_BOX_FIREWALL_ADMINISTRATION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^GBPK\\xfb\\xf7n\\x93W\\xaf\\x86\\x93x@\\xa9\\x0e\\xca\\*\\x9bS\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_gnatbox_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GBPK\\xfb\\xf7n\\x93W\\xaf\\x86\\x93x@\\xa9\\x0e\\xca\\*\\x9bS\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour gnatbox"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "gnatbox"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: gnatbox. 1 match(es), 0 softmatch(es)."
+}

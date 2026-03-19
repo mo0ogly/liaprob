@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-meterpreter-metasploit-meterpreter",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Metasploit meterpreter",
+  "product": "Metasploit meterpreter",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_METERPRETER_METASPLOIT_METERPRETER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0.\\x0b\\0MZ\\xe8\\0\\0\\0\\0\\x5b\\x52\\x45\\x55\\x89\\xe5\\x81\\xc3..\\0\\0\\xff\\xd3\\x89\\xc3Wh\\x04\\0\\0\\0P\\xff\\xd0h....h\\x05\\0\\0\\0P\\xff\\xd3\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\0\\x0e\\x1f\\xba\\x0e\\0\\xb4\\t\\xcd!\\xb8\\x01L\\xcd!This program cannot be run in DOS mode\\.\\r\\r\\n\\$\\0\\0\\0\\0\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_meterpreter_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0.\\x0b\\0MZ\\xe8\\0\\0\\0\\0\\x5b\\x52\\x45\\x55\\x89\\xe5\\x81\\xc3..\\0\\0\\xff\\xd3\\x89\\xc3Wh\\x04\\0\\0\\0P\\xff\\xd0h....h\\x05\\0\\0\\0P\\xff\\xd3\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\0\\x0e\\x1f\\xba\\x0e\\0\\xb4\\t\\xcd!\\xb8\\x01L\\xcd!This program cannot be run in DOS mode\\.\\r\\r\\n\\$\\0\\0\\0\\0\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour meterpreter"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "meterpreter"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: meterpreter. 1 match(es), 0 softmatch(es)."
+}

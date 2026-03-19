@@ -1,0 +1,43 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-hbn3-lexmark-hbn3-dns-sd-like-configuration",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lexmark hbn3 (DNS-SD-like configuration)",
+  "product": "Lexmark hbn3 (DNS-SD-like configuration)",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HBN3_LEXMARK_HBN3_DNS_SD_LIKE_CONFIGURATION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    5353
+  ],
+  "cpe23_template": "cpe:2.3:h:lexmark:$1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_hbn3_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x84\\0\\0\\0\\0\\x01\\0\\0\\0\\0.Lexmark (\\w+)\\x0c_host-config\\x04_udp\\x05local\\0\\0\\x10\\0\\x01\\0\\0\\0<\\x01\\x19.IPADDRESS [\\d.]+.IPNETMASK [\\d.]+.IPGATEWAY [\\d.]+.IPNAME \\\"([\\w._-]+)\\\"\\x15MACLAA \\\"000000000000\\\"\\x15MACUAA \\\"([0-9A-F]{12})\\\"",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour hbn3"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "hbn3"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: hbn3. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:lexmark:$1:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netbios-ns-microsoft-windows-2012-r2-netbios-ns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft Windows 2012 R2 netbios-ns",
+  "product": "Microsoft Windows 2012 R2 netbios-ns",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETBIOS_NS_MICROSOFT_WINDOWS_2012_R2_NETBIOS_NS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    137
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows_server_2012:r2:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netbios-ns_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\xf0\\x84\\0\\0\\0\\0\\x01\\0\\0\\0\\0 CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\\0\\0!\\0\\x01\\0\\0\\0\\0...[\\w\\-]{1,15}[\\s]{0,14}\\0\\xc4\\0.*?([\\w\\-]{1,15})[\\s]{0,14}\\0D\\0.*?([\\w\\-]{1,15})[\\s]{0,14}\\x1c\\xc4\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour netbios-ns"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netbios-ns"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netbios-ns. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows_server_2012:r2:*:*:*:*:*:*:*"
+}

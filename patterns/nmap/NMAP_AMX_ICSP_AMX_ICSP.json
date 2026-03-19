@@ -1,0 +1,50 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-amx-icsp-amx-icsp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AMX ICSP",
+  "product": "AMX ICSP",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_AMX_ICSP_AMX_ICSP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:windriver:vxworks:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x02\\0\\]\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x81\\0\\x97\\0\\0\\0.\\0\\x04\\0\\0\\0\\x01\\x01\\+\\d+x\\d+\\0\\0\\x01\\|v([\\d.]+)\\0NI Master\\0AMX Corp\\.\\0\\x06\\x0c\\xc0\\xa8\\\"D\\x05'\\0`\\x9f....\\x02\\0U\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x82\\0\\x97\\0\\0\\0.\\0\\x04\\x01\\0\\0\\x01\\x01\\+N/A             \\x01zv([\\d.]+)\\0vxWorks Image\\0AMX Corp\\.\\0\\0\\0.\\x02\\0O\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x83\\0\\x97\\0\\0\\0.\\0\\x04\\x02\\0\\0\\x01\\x01\\+N/A             \\x01{v([\\d.]+)\\0BootROM\\0AMX Corp\\.\\0\\0\\0.\\x02\\0\\^\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x84\\0\\x97\\0\\0\\0.\\0\\x04\\x03\\0\\0\\x01\\x01\\x000000000000000000\\x01\\x0ev([\\d.]+)\\0AXLink I/F uController  \\0AMX Corp\\.\\0\\x03\\0.$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_amx-icsp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x02\\0\\]\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x81\\0\\x97\\0\\0\\0.\\0\\x04\\0\\0\\0\\x01\\x01\\+\\d+x\\d+\\0\\0\\x01\\|v([\\d.]+)\\0NI Master\\0AMX Corp\\.\\0\\x06\\x0c\\xc0\\xa8\\\"D\\x05'\\0`\\x9f....\\x02\\0U\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x82\\0\\x97\\0\\0\\0.\\0\\x04\\x01\\0\\0\\x01\\x01\\+N/A             \\x01zv([\\d.]+)\\0vxWorks Image\\0AMX Corp\\.\\0\\0\\0.\\x02\\0O\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x83\\0\\x97\\0\\0\\0.\\0\\x04\\x02\\0\\0\\x01\\x01\\+N/A             \\x01{v([\\d.]+)\\0BootROM\\0AMX Corp\\.\\0\\0\\0.\\x02\\0\\^\\x02\\0\\0\\0\\0\\0\\0\\x01\\0.\\0\\0\\0\\x01\\x0f\\xff\\x84\\0\\x97\\0\\0\\0.\\0\\x04\\x03\\0\\0\\x01\\x01\\x000000000000000000\\x01\\x0ev([\\d.]+)\\0AXLink I/F uController  \\0AMX Corp\\.\\0\\x03\\0.$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour amx-icsp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "amx-icsp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: amx-icsp. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:windriver:vxworks:*:*:*:*:*:*:*:*"
+}

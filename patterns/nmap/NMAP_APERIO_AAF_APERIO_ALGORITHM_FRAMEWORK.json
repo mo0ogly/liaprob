@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-aperio-aaf-aperio-algorithm-framework",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Aperio Algorithm Framework",
+  "product": "Aperio Algorithm Framework",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_APERIO_AAF_APERIO_ALGORITHM_FRAMEWORK.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<aafMessage><aafInitRequest></aafInitRequest></aafMessage>",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_aperio-aaf_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<aafMessage><aafInitRequest></aafInitRequest></aafMessage>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour aperio-aaf"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "aperio-aaf"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: aperio-aaf. 1 match(es), 0 softmatch(es)."
+}

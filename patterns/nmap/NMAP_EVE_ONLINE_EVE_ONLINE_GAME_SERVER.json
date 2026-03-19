@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-eve-online-eve-online-game-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "EVE Online game server",
+  "product": "EVE Online game server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_EVE_ONLINE_EVE_ONLINE_GAME_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^7\\0\\0\\0~\\0\\0\\0\\0\\x14\\x06\\x04\\xe8\\x99\\x02\\0\\x05\\xeb\\0\\x04\\xdf\\x92\\0\\0\\n\\xd7\\xa3p=\\n\\xd7\\x18@\\x04\\x95\\xf1\\x01\\0\\x13\\x13EVE-EVE-RELEASE@ccp$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:\\0\\0\\0~\\0\\0\\0\\0\\x14\\x07\\x04\\xe8\\x99\\x02\\0\\x05\\x3b\\x01\\x05\\x03k\\n333333\\x1d@\\x04\\re\\x05\\0\\x13\\x17EVE-EVE-TRANQUILITY@ccp\\x01$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_eve-online_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^7\\0\\0\\0~\\0\\0\\0\\0\\x14\\x06\\x04\\xe8\\x99\\x02\\0\\x05\\xeb\\0\\x04\\xdf\\x92\\0\\0\\n\\xd7\\xa3p=\\n\\xd7\\x18@\\x04\\x95\\xf1\\x01\\0\\x13\\x13EVE-EVE-RELEASE@ccp$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:\\0\\0\\0~\\0\\0\\0\\0\\x14\\x07\\x04\\xe8\\x99\\x02\\0\\x05\\x3b\\x01\\x05\\x03k\\n333333\\x1d@\\x04\\re\\x05\\0\\x13\\x17EVE-EVE-TRANQUILITY@ccp\\x01$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour eve-online"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "eve-online"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: eve-online. 2 match(es), 0 softmatch(es)."
+}

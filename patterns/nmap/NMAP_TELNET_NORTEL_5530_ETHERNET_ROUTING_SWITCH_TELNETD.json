@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-nortel-5530-ethernet-routing-switch-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Nortel 5530 Ethernet Routing Switch telnetd",
+  "product": "Nortel 5530 Ethernet Routing Switch telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_NORTEL_5530_ETHERNET_ROUTING_SWITCH_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:nortel:ethernet_routing_switch_5530:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x1b\\[\\?25l\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[11;26HSwitch Password:  \\[ \\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\* \\]\\x1b\\[23;1H\\x1b\\[2KEnter text, press <Return> or <Enter> when complete\\.\\x1b\\[14;1H\\x1b\\[2K\\x1b\\[14;26HEnter Password: ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x1b\\[\\?25l\\xff\\xfb\\x01\\x1b\\[2J\\x1b\\[11;26HSwitch Password:  \\[ \\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\*\\* \\]\\x1b\\[23;1H\\x1b\\[2KEnter text, press <Return> or <Enter> when complete\\.\\x1b\\[14;1H\\x1b\\[2K\\x1b\\[14;26HEnter Password: ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:nortel:ethernet_routing_switch_5530:*:*:*:*:*:*:*:*"
+}

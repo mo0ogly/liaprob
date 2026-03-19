@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-quake-quake-1-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Quake 1 server",
+  "product": "Quake 1 server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_QUAKE_QUAKE_1_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    26000,
+    26001,
+    26002,
+    26003,
+    26004
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_quake_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x80\\x00..\\x83([^\\x00]*)\\x00([^\\x00]*)\\x00",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour quake"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "quake"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: quake. 1 match(es), 0 softmatch(es)."
+}

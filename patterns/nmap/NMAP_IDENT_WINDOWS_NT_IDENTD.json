@@ -1,0 +1,75 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ident-windows-nt-identd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Windows NT identd",
+  "product": "Windows NT identd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IDENT_WINDOWS_NT_IDENTD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows_nt:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^0, 0 : ERROR : UNKNOWN-ERROR$",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ident_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0, 0 : ERROR : UNKNOWN-ERROR$",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ident"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ident"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ident. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:microsoft:windows_nt:*:*:*:*:*:*:*:*"
+}

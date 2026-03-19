@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-efi-webtools-efi-fiery-webtools-communication",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "EFI Fiery WebTools communication",
+  "product": "EFI Fiery WebTools communication",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_EFI_WEBTOOLS_EFI_FIERY_WEBTOOLS_COMMUNICATION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\?p\\xf7/Zq\\xa2\\xf5\\x03.......\\xf4\\xea.......B$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_efi-webtools_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\?p\\xf7/Zq\\xa2\\xf5\\x03.......\\xf4\\xea.......B$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour efi-webtools"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "efi-webtools"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: efi-webtools. 1 match(es), 0 softmatch(es)."
+}

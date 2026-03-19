@@ -1,0 +1,103 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rtsp-darwin-streaming-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Darwin Streaming Server",
+  "product": "Darwin Streaming Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RTSP_DARWIN_STREAMING_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    322,
+    554,
+    3052,
+    3372,
+    5000,
+    7000,
+    7070,
+    8080,
+    10000
+  ],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/Win32",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/Solaris",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/Linux",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/FreeBSD",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rtsp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/Win32",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/Solaris",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/Linux",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RTSP/1\\.0 \\d\\d\\d .*\\r\\nServer: DSS/([\\d.]+) \\(Build/[\\d.]+; Platform/FreeBSD",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rtsp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rtsp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rtsp. 4 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

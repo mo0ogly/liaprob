@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-nmea-0183-nmea-0183-gps-data",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "NMEA 0183 GPS data",
+  "product": "NMEA 0183 GPS data",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NMEA_0183_NMEA_0183_GPS_DATA.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^(?:\\$GP[A-Z]{3},[\\w.,]+\\*[A-F\\d]{2}\\r\\n)*\\$GPGGA,(\\d\\d)(\\d\\d)(\\d\\d),([-\\d.]+,[NS]),([-\\d.]+,[EW]),\\d,",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\$GP[A-Z]{3},[\\w.,]+\\*[A-F\\d]{2}\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_nmea-0183_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^(?:\\$GP[A-Z]{3},[\\w.,]+\\*[A-F\\d]{2}\\r\\n)*\\$GPGGA,(\\d\\d)(\\d\\d)(\\d\\d),([-\\d.]+,[NS]),([-\\d.]+,[EW]),\\d,",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\$GP[A-Z]{3},[\\w.,]+\\*[A-F\\d]{2}\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour nmea-0183"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "nmea-0183"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: nmea-0183. 2 match(es), 0 softmatch(es)."
+}

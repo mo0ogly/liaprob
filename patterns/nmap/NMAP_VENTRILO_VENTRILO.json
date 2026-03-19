@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ventrilo-ventrilo",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ventrilo",
+  "product": "Ventrilo",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_VENTRILO_VENTRILO.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    3784
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ventrilo_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.{111}",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour ventrilo"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ventrilo"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ventrilo. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

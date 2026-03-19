@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-cccam-cccam-dvr-card-sharing-system-information",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CCcam DVR card sharing system information",
+  "product": "CCcam DVR card sharing system information",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CCCAM_CCCAM_DVR_CARD_SHARING_SYSTEM_INFORMATION.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Welcome to the CCcam information client\\.\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_cccam_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Welcome to the CCcam information client\\.\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour cccam"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "cccam"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: cccam. 1 match(es), 0 softmatch(es)."
+}

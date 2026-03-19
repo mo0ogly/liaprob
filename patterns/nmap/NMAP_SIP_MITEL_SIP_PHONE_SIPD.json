@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-mitel-sip-phone-sipd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Mitel SIP phone sipd",
+  "product": "Mitel SIP phone sipd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_MITEL_SIP_PHONE_SIPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "cpe23_template": "cpe:2.3:h:mitel:$1-ip:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?User-Agent:Mitel-(\\d\\w+)-SIP-Phone ([\\d.]+) [0-9A-F]{12}\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?User-Agent:Mitel-Mitel-SIP-Phone ([\\d.]+) [0-9A-F]{12}\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?User-Agent:Mitel-(\\d\\w+)-SIP-Phone ([\\d.]+) [0-9A-F]{12}\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 200 OK\\r\\n(?:[^\\r\\n]+\\r\\n)*?User-Agent:Mitel-Mitel-SIP-Phone ([\\d.]+) [0-9A-F]{12}\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sip"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:h:mitel:$1-ip:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ixia-unknown-ixia-tcl-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ixia TCL server",
+  "product": "Ixia TCL server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IXIA_UNKNOWN_IXIA_TCL_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nWelcome to the Ixia Socket/Serial TCL Server\\r\\nPress Ctrl-C to reset Tcl Session\\r\\nIxia>",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ixia-unknown_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nWelcome to the Ixia Socket/Serial TCL Server\\r\\nPress Ctrl-C to reset Tcl Session\\r\\nIxia>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ixia-unknown"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ixia-unknown"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ixia-unknown. 1 match(es), 0 softmatch(es)."
+}

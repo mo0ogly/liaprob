@@ -1,0 +1,43 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-h-323-gatekeeper-discovery-cisco-unified-communications-manager-gatekeeper-ras-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco Unified Communications Manager Gatekeeper RAS service",
+  "product": "Cisco Unified Communications Manager Gatekeeper RAS service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_H_323_GATEKEEPER_DISCOVERY_CISCO_UNIFIED_COMMUNICATIONS_MANAGER_GATEKEEPER_RAS_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1719,
+    7001
+  ],
+  "cpe23_template": "cpe:2.3:a:cisco:unified_communications_manager:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_H.323-gatekeeper-discovery_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x06\\x80\\x03\\xe7\\x06\\0\\x08\\x91J\\0\\x05\\x12\\0G\\0A\\0T\\0E\\0K\\0E\\0E\\0P\\0E\\0R\\0......",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour H.323-gatekeeper-discovery"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "H.323-gatekeeper-discovery"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: H.323-gatekeeper-discovery. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:cisco:unified_communications_manager:*:*:*:*:*:*:*:*"
+}

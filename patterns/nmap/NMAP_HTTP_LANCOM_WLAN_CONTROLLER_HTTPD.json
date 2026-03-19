@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-lancom-wlan-controller-httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lancom WLAN Controller httpd",
+  "product": "Lancom WLAN Controller httpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_LANCOM_WLAN_CONTROLLER_HTTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "cpe23_template": "cpe:2.3:h:lancom:wlc-$1:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4\\.01 Transitional//EN\" \"http://www\\.w3\\.org/TR/html4/loose\\.dtd\">\\r\\n<html>\\r\\n<head>\\r\\n<link rel=\"shortcut icon\" href=\"/images/favicon\\.ico\" type=\"image/x-icon\">\\r\\n<title>WLC_Control - Error - 400</title>\\r\\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\">\\r\\n\\r\\n<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/login\\.css\">\\r\\n    </head><body  ><div class=\"header\">\\r\\n<a href=\"http://www\\.lancom-systems\\.de\"><img class=\"headerimg\" src=\"/images/productsvg\\.svg\" alt=\"LANCOM Systems Homepage\"></a><p class=\"headerp\">LANCOM WLC-([\\w._+-]+)</p>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:lancom:wlc-$1:*:*:*:*:*:*:*:*"
+}

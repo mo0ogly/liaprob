@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-airhid-airhid-andrioid-remote-mouse-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "AirHID Andrioid remote mouse server",
+  "product": "AirHID Andrioid remote mouse server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_AIRHID_AIRHID_ANDRIOID_REMOTE_MOUSE_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    13246
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_AirHID_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^andReceiver-\\d+\\.\\d+\\.\\d+$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour AirHID"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "AirHID"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: AirHID. 1 match(es), 0 softmatch(es)."
+}

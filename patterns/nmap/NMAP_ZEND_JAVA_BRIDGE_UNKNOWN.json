@@ -1,0 +1,54 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-zend-java-bridge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ZEND-JAVA-BRIDGE",
+  "product": "zend-java-bridge",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ZEND_JAVA_BRIDGE_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5000,
+    5001,
+    5002,
+    10001,
+    10002,
+    10003
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x15\\x04\\0\\0\\0\\x10java\\.lang\\.String$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_zend-java-bridge_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x15\\x04\\0\\0\\0\\x10java\\.lang\\.String$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour zend-java-bridge"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "zend-java-bridge"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: zend-java-bridge. 1 match(es), 0 softmatch(es)."
+}

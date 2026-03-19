@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-proxy-cc-proxy",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CC Proxy",
+  "product": "CC Proxy",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_PROXY_CC_PROXY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<h1>\\xd5\\xca\\xba\\xc5\\xc8\\xcf\\xd6\\xa4\\xca\\xa7\\xb0\\xdc \\.\\.\\.</h1>\\r\\n<h2>IP \\xb5\\xd8\\xd6\\xb7: [][\\w:.]+<br>\\r\\nMAC \\xb5\\xd8\\xd6\\xb7: <br>\\r\\n\\xb7\\xfe\\xce\\xf1\\xb6\\xcb\\xca\\xb1\\xbc\\xe4: \\d+-\\d+-\\d+ \\d+:\\d+:\\d+<br>\\r\\n\\xd1\\xe9\\xd6\\xa4\\xbd\\xe1\\xb9\\xfb: Invalid user\\.</h2>$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<h1>\\xd5\\xca\\xba\\xc5\\xc8\\xcf\\xd6\\xa4\\xca\\xa7\\xb0\\xdc \\.\\.\\.</h1>\\r\\n<h2>IP \\xb5\\xd8\\xd6\\xb7: [][\\w:.]+<br>\\r\\nMAC \\xb5\\xd8\\xd6\\xb7: <br>\\r\\n\\xb7\\xfe\\xce\\xf1\\xb6\\xcb\\xca\\xb1\\xbc\\xe4: \\d+-\\d+-\\d+ \\d+:\\d+:\\d+<br>\\r\\n\\xd1\\xe9\\xd6\\xa4\\xbd\\xe1\\xb9\\xfb: Invalid user\\.</h2>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http-proxy. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pafserver-sun-cobalt-adaptive-firewall",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sun Cobalt Adaptive Firewall",
+  "product": "Sun Cobalt Adaptive Firewall",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PAFSERVER_SUN_COBALT_ADAPTIVE_FIREWALL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    135,
+    512,
+    513,
+    514,
+    543,
+    544,
+    628,
+    853,
+    1029,
+    2068,
+    2105,
+    2967,
+    5000,
+    5323,
+    5520,
+    5530,
+    5555,
+    5556,
+    6543,
+    7000,
+    7008,
+    13783
+  ],
+  "cpe23_template": "cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0&\\xeb\\xefTQM\\xee\\[B",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pafserver_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0&\\xeb\\xefTQM\\xee\\[B",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pafserver"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pafserver"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pafserver. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:linux:linux_kernel:*:*:*:*:*:*:*:*"
+}

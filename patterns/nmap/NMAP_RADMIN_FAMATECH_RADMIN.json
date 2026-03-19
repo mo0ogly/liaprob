@@ -1,0 +1,154 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-radmin-famatech-radmin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Famatech Radmin",
+  "product": "Famatech Radmin",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RADMIN_FAMATECH_RADMIN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    4899,
+    9001
+  ],
+  "cpe23_template": "cpe:2.3:a:famatech:radmin:2:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x09\\x00\\x01\\x10\\x08\\x01\\x00\\x09\\x08",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x0a\\x00\\x01\\x10\\x08\\x01\\x00\\x0a\\x08",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x00\\x00\\x02\\x12\\x08\\x02\\x00\\x00\\x0a",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x71\\x00\\x02\\x12\\x08\\x02\\x00\\x71\\x0a",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x08\\x00\\x02\\x12\\x08\\x02\\x00\\x08\\x0a",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x79\\x00\\x02\\x12\\x08\\x02\\x00\\x79\\x0a",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x59\\x00\\x02\\x12\\x08\\x02\\x00\\x59\\x0a",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x25\\x04\\x00\\x02\\x12\\x08\\x02\\x00\\x04\\x0a",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\x00\\x00\\x00\\x09\\x00\\x00\\x10\\x4f\\x2f\\x10\\x00\\x00\\x04\\x00\\x00\\x00\\x1c",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_radmin_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x09\\x00\\x01\\x10\\x08\\x01\\x00\\x09\\x08",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x0a\\x00\\x01\\x10\\x08\\x01\\x00\\x0a\\x08",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x00\\x00\\x02\\x12\\x08\\x02\\x00\\x00\\x0a",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x71\\x00\\x02\\x12\\x08\\x02\\x00\\x71\\x0a",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x08\\x00\\x02\\x12\\x08\\x02\\x00\\x08\\x0a",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x79\\x00\\x02\\x12\\x08\\x02\\x00\\x79\\x0a",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x59\\x00\\x02\\x12\\x08\\x02\\x00\\x59\\x0a",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25\\x04\\x00\\x02\\x12\\x08\\x02\\x00\\x04\\x0a",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x09\\x00\\x00\\x10\\x4f\\x2f\\x10\\x00\\x00\\x04\\x00\\x00\\x00\\x1c",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\x00\\x00\\x00\\x25.\\x00..\\x08.\\x00..",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour radmin"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "radmin"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: radmin. 9 match(es), 1 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:famatech:radmin:2:*:*:*:*:*:*:*"
+}

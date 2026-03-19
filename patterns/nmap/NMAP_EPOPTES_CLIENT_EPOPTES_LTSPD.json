@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-epoptes-client-epoptes-ltspd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Epoptes LTSPd",
+  "product": "Epoptes LTSPd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_EPOPTES_CLIENT_EPOPTES_LTSPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:epoptes:epoptes:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\ndie\\(\\) {\\n    echo \\\"epoptes-client ERROR: \\$@\\\" >&2\\n    exit 1\\n}\\n\\ninfo\\(\\) {\\n    local server_ip def_iface\\n\\n    if \\[ -z \\\"\\$cached_info\\\" \\]; then\\n        VERSION=\\${VERSION:-([\\d.]+)}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_epoptes-client_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\ndie\\(\\) {\\n    echo \\\"epoptes-client ERROR: \\$@\\\" >&2\\n    exit 1\\n}\\n\\ninfo\\(\\) {\\n    local server_ip def_iface\\n\\n    if \\[ -z \\\"\\$cached_info\\\" \\]; then\\n        VERSION=\\${VERSION:-([\\d.]+)}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour epoptes-client"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "epoptes-client"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: epoptes-client. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:epoptes:epoptes:*:*:*:*:*:*:*:*"
+}

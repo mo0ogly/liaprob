@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ixia-unknown-ixia-400t-traffic-qa",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ixia 400T traffic QA",
+  "product": "Ixia 400T traffic QA",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IXIA_UNKNOWN_IXIA_400T_TRAFFIC_QA.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Enter port cpu supported card port number and hit Enter\\. For example \\\"3 4\\\"\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^.*\\0\\x18Ixia Hardware I/O Server\\x13Ixia Communications\\x18Ixia Hardware I/O Server\\x0b([\\d.]+)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ixia-unknown_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Enter port cpu supported card port number and hit Enter\\. For example \\\"3 4\\\"\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.*\\0\\x18Ixia Hardware I/O Server\\x13Ixia Communications\\x18Ixia Hardware I/O Server\\x0b([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ixia-unknown"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ixia-unknown"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ixia-unknown. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

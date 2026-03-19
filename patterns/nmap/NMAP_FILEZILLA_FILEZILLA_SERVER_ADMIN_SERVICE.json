@@ -1,0 +1,67 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-filezilla-filezilla-server-admin-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "FileZilla Server admin service",
+  "product": "FileZilla Server admin service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FILEZILLA_FILEZILLA_SERVER_ADMIN_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:filezilla-project:filezilla_server:0.9:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^FZS\\0\\x04..\\t\\0\\0\\x04\\0\\x0d\\x01\\0\\0\\x14\\0\\0\\0\\0\\x08.{18}",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^FZS\\0\\x04..\\t\\0\\0\\x04\\0\\x0b\\x01\\0\\0\\x14\\0\\0\\0\\0\\x08.{18}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_filezilla_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^FZS\\0\\x04..\\t\\0\\0\\x04\\0\\x0d\\x01\\0\\0\\x14\\0\\0\\0\\0\\x08.{18}",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^FZS\\0\\x04..\\t\\0\\0\\x04\\0\\x0b\\x01\\0\\0\\x14\\0\\0\\0\\0\\x08.{18}",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^FZS\\0\\x04...\\0\\0\\x04\\0..\\0\\0.",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour filezilla"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "filezilla"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: filezilla. 2 match(es), 1 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:filezilla-project:filezilla_server:0.9:*:*:*:*:*:*:*"
+}

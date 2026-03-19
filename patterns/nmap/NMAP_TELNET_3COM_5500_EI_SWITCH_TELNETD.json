@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-3com-5500-ei-switch-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "3Com 5500-EI switch telnetd",
+  "product": "3Com 5500-EI switch telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_3COM_5500_EI_SWITCH_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:3com:5500-ei:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\xff\\xfd\\x1f\\r\\n\\*{80}\\r\\n\\*  Copyright\\(c\\) 2004-2009 3Com Corp\\. and its licensors\\. All rights reserved\\.   \\*\\r\\n\\*  Without the owner's prior written consent,                                  \\*\\r\\n\\*  no decompiling or reverse-engineering shall be allowed\\.",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfd\\x18\\xff\\xfd\\x1f\\r\\n\\*{80}\\r\\n\\*  Copyright\\(c\\) 2004-2009 3Com Corp\\. and its licensors\\. All rights reserved\\.   \\*\\r\\n\\*  Without the owner's prior written consent,                                  \\*\\r\\n\\*  no decompiling or reverse-engineering shall be allowed\\.",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:3com:5500-ei:*:*:*:*:*:*:*:*"
+}

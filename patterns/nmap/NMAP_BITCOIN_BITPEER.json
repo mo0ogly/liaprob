@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bitcoin-bitpeer",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Bitpeer",
+  "product": "Bitpeer",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BITCOIN_BITPEER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xf9\\xbe\\xb4\\xd9version\\0\\0\\0\\0\\0.\\0\\0\\0....\\x71\\x11\\x01\\0\\0\\0\\0\\0\\0\\0\\0\\0........\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff......\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff.............../Bitpeer:([\\w._-]+)/\\0\\0\\0\\0\\x01$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bitcoin_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xf9\\xbe\\xb4\\xd9version\\0\\0\\0\\0\\0.\\0\\0\\0....\\x71\\x11\\x01\\0\\0\\0\\0\\0\\0\\0\\0\\0........\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff......\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff.............../Bitpeer:([\\w._-]+)/\\0\\0\\0\\0\\x01$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour bitcoin"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bitcoin"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bitcoin. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

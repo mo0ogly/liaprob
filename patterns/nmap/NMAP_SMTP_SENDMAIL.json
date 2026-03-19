@@ -1,0 +1,346 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-sendmail",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sendmail",
+  "product": "Sendmail",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_SENDMAIL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3025,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:sendmail:sendmail:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) E?SMTP Sendmail (\\d[^; ]+)",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) E?SMTP Sendmail ready ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) E?SMTP Sendmail AIX([\\d.]+)/(\\d[^; ]+)",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) E?SMTP Sendmail AIX([\\d.]+)/UCB (\\d[^; ]+);",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) E?SMTP Sendmail @\\(#\\)Sendmail version (\\d[^; ]+) - Revision ([\\d.]+) ",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) E?SMTP Sendmail @\\(#\\)Sendmail version (\\d[^; ]+) - Revision ([\\d.]+):: HP-UX([\\d.]+)",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-](\\S+) Sendmail (SMI-\\S+) ready at .*\\r\\n$",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-]([-\\w_.]+) Sendmail (\\S+) ready at .*\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220[\\s-]([-\\w_.]+) ESMTP Sendmail SGI-(\\d[^; ]+)",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220  E?SMTP ([\\w._-]+) Sendmail ([\\w._-]+)/[\\w._-]+ ready at ",
+      "confidence_delta": 0.4,
+      "version_group": 2
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^421 4\\.3\\.2 Connection rate limit exceeded\\.\\r\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-\\S+ Sendmail ([\\d.]+)/A/UX ([\\d.]+) ready at .*\\r\\n220 ESMTP spoken here\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ;; ESMTP connection timed out; no servers could be reached Sendmail ([-\\w_.]+)/",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^554 ([-\\w_.]+) ESMTP not accepting messages\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220  ESMTP\\r\\n501 5\\.0\\.0 EHLO requires domain address\\r\\n",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "214-2\\.0\\.0 This is sendmail version (\\S+)\\r?\\n214-2\\.0\\.0 Topics:",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "214-2\\.0\\.0 This is sendmail\\r\\n214-2\\.0\\.0 Topics:",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 (\\S+) E?SMTP Sendmail;",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220.* Sendmail (\\d[-.\\w]+) -- HELP not implemented\\r\\n",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-\\w_.]+) ESMTP MTA\\r\\n214-This is Sendmail version AIX([\\d.]+)/([\\w.]+)\\r\\n",
+      "confidence_delta": 0.5,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Service ESMTP Ready\\r\\n214-This is Sendmail version ([\\d.]+) \\((P[-\\w_.]+)\\)\\r\\n.*future enhancements, contact your HP representative",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) E?SMTP Sendmail (\\d[^; ]+)",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) E?SMTP Sendmail ready ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) E?SMTP Sendmail AIX([\\d.]+)/(\\d[^; ]+)",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) E?SMTP Sendmail AIX([\\d.]+)/UCB (\\d[^; ]+);",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) E?SMTP Sendmail @\\(#\\)Sendmail version (\\d[^; ]+) - Revision ([\\d.]+) ",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) E?SMTP Sendmail @\\(#\\)Sendmail version (\\d[^; ]+) - Revision ([\\d.]+):: HP-UX([\\d.]+)",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-](\\S+) Sendmail (SMI-\\S+) ready at .*\\r\\n$",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-]([-\\w_.]+) Sendmail (\\S+) ready at .*\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-]([-\\w_.]+) ESMTP Sendmail SGI-(\\d[^; ]+)",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220  E?SMTP ([\\w._-]+) Sendmail ([\\w._-]+)/[\\w._-]+ ready at ",
+          "confidence_delta": 0.4,
+          "version_group": 2
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^421 4\\.3\\.2 Connection rate limit exceeded\\.\\r\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-\\S+ Sendmail ([\\d.]+)/A/UX ([\\d.]+) ready at .*\\r\\n220 ESMTP spoken here\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ;; ESMTP connection timed out; no servers could be reached Sendmail ([-\\w_.]+)/",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^554 ([-\\w_.]+) ESMTP not accepting messages\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220  ESMTP\\r\\n501 5\\.0\\.0 EHLO requires domain address\\r\\n",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "214-2\\.0\\.0 This is sendmail version (\\S+)\\r?\\n214-2\\.0\\.0 Topics:",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "214-2\\.0\\.0 This is sendmail\\r\\n214-2\\.0\\.0 Topics:",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 (\\S+) E?SMTP Sendmail;",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220.* Sendmail (\\d[-.\\w]+) -- HELP not implemented\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-\\w_.]+) ESMTP MTA\\r\\n214-This is Sendmail version AIX([\\d.]+)/([\\w.]+)\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Service ESMTP Ready\\r\\n214-This is Sendmail version ([\\d.]+) \\((P[-\\w_.]+)\\)\\r\\n.*future enhancements, contact your HP representative",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 21 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:sendmail:sendmail:{version}:*:*:*:*:*:*:*"
+}

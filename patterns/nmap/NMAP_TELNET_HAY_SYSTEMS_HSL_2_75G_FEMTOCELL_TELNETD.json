@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-hay-systems-hsl-2-75g-femtocell-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Hay Systems HSL 2.75G Femtocell telnetd",
+  "product": "Hay Systems HSL 2.75G Femtocell telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_HAY_SYSTEMS_HSL_2_75G_FEMTOCELL_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:hay_systems:hsl_2.75g_femtocell:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01HGFMA-B> GET / HTTP/1\\.0\\r\\nGET: Command not found\\.\\r\\nHGFMA-B> \\r\\nHGFMA-B> ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x03\\xff\\xfb\\x01HGFMA-B> GET / HTTP/1\\.0\\r\\nGET: Command not found\\.\\r\\nHGFMA-B> \\r\\nHGFMA-B> ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:hay_systems:hsl_2.75g_femtocell:*:*:*:*:*:*:*:*"
+}

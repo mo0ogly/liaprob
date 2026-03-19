@@ -1,0 +1,70 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-essnet-hyperion-essbase",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Hyperion Essbase",
+  "product": "Hyperion Essbase",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ESSNET_HYPERION_ESSBASE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    1761,
+    1762,
+    1763,
+    2701,
+    5060,
+    5061,
+    5709,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\0\\x13\\0/v\\x0f\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\xc8\\0\\t\\0/v\\x0f\\0\\x04\\x001040025\\0\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\0\\x13\\0/v\\x0f\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\xc8\\0\\t\\0/v\\x0f\\0\\x04\\x001040025\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_essnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\0\\x13\\0/v\\x0f\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\xc8\\0\\t\\0/v\\x0f\\0\\x04\\x001040025\\0\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\0\\x13\\0/v\\x0f\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\xc8\\0\\t\\0/v\\x0f\\0\\x04\\x001040025\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour essnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "essnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: essnet. 2 match(es), 0 softmatch(es)."
+}

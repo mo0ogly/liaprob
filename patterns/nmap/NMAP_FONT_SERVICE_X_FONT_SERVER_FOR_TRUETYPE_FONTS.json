@@ -1,0 +1,80 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-font-service-x-font-server-for-truetype-fonts",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "X Font Server for TrueType Fonts",
+  "product": "X Font Server for TrueType Fonts",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FONT_SERVICE_X_FONT_SERVER_FOR_TRUETYPE_FONTS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    443,
+    497,
+    1550,
+    2002,
+    5302,
+    6000,
+    6001,
+    6002,
+    6003,
+    6004,
+    6005,
+    6006,
+    6007,
+    6008,
+    6009,
+    6010,
+    6011,
+    6012,
+    6013,
+    6014,
+    6015,
+    6016,
+    6017,
+    6018,
+    6019,
+    6020,
+    7000,
+    7100,
+    7101,
+    7777,
+    8000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\0.......HD\\0@",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_font-service_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\x02\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x04\\0\\0\\0\\0.......HD\\0@",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour font-service"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "font-service"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: font-service. 1 match(es), 0 softmatch(es)."
+}

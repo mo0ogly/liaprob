@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-unknown-cisco-or-hp-network-device-sshd-or-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco or HP network device sshd or telnetd",
+  "product": "Cisco or HP network device sshd or telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_UNKNOWN_CISCO_OR_HP_NETWORK_DEVICE_SSHD_OR_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\n%connection refused by remote host\\.$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_unknown_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\n%connection refused by remote host\\.$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour unknown"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "unknown"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: unknown. 1 match(es), 0 softmatch(es)."
+}

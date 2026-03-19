@@ -1,0 +1,108 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SMTP",
+  "product": "smtp",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^554 Please check your SMTP server is set to [-\\w_.]+\\.co\\.uk\\. Further help is available at",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^554 Please check that your outgoing mail server settings are correct\\. Contact your service provider's technical support for assistance\\.\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^554 Please check your SMTP server is set to [-\\w_.]+\\.co\\.uk\\. Further help is available at",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^554 Please check that your outgoing mail server settings are correct\\. Contact your service provider's technical support for assistance\\.\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-].*?E?SMTP[^\\r]*\\r\\n",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^572 Relay not authorized\\r\\n",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220[\\s-].*smtp[^\\r]*\\r\\n214[\\s-]",
+          "confidence_delta": 0.25,
+          "case_insensitive": true,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 2 match(es), 3 softmatch(es)."
+}

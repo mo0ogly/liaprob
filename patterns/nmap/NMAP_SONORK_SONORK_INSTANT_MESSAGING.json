@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sonork-sonork-instant-messaging",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Sonork instant messaging",
+  "product": "Sonork instant messaging",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SONORK_SONORK_INSTANT_MESSAGING.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\x01\\x88\\0\\0\\0Sonork Server V([\\w._ ()-]+) ready\\n\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0SGI=\\0\\0\\0\\0\\x07\\x17\\0\\0\\xe5\\x04\\0\\0\\x0b\\0.\\0\\x06\\0\\0\\0\\x000\\x01\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\x02\\0\\x08.\\xc0\\xa8\\(\\?\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sonork_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x01\\x88\\0\\0\\0Sonork Server V([\\w._ ()-]+) ready\\n\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0SGI=\\0\\0\\0\\0\\x07\\x17\\0\\0\\xe5\\x04\\0\\0\\x0b\\0.\\0\\x06\\0\\0\\0\\x000\\x01\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\x02\\0\\x08.\\xc0\\xa8\\(\\?\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sonork"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sonork"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sonork. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

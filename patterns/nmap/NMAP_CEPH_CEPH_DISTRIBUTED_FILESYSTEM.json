@@ -1,0 +1,61 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ceph-ceph-distributed-filesystem",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Ceph distributed filesystem",
+  "product": "Ceph distributed filesystem",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CEPH_CEPH_DISTRIBUTED_FILESYSTEM.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ceph (v\\d+)\\0\\0\\0\\0....\\0\\x02......\\0{120}\\0\\0\\0\\0....\\0\\x02......\\0{120}",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ceph v2\\n\\x10\\0.{16}$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ceph_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ceph (v\\d+)\\0\\0\\0\\0....\\0\\x02......\\0{120}\\0\\0\\0\\0....\\0\\x02......\\0{120}",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ceph v2\\n\\x10\\0.{16}$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ceph"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ceph"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ceph. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

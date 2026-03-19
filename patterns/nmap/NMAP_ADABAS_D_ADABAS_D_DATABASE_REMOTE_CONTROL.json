@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-adabas-d-adabas-d-database-remote-control",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Adabas D database remote control",
+  "product": "Adabas D database remote control",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ADABAS_D_ADABAS_D_DATABASE_REMOTE_CONTROL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Adabas D Remote Control Server Version ([\\d.]+) Date [\\d-]+ \\(key is [0-9a-f]+\\)\\r\\nOK> ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_adabas-d_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Adabas D Remote Control Server Version ([\\d.]+) Date [\\d-]+ \\(key is [0-9a-f]+\\)\\r\\nOK> ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour adabas-d"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "adabas-d"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: adabas-d. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

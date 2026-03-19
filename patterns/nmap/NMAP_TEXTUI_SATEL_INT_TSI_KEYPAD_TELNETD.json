@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-textui-satel-int-tsi-keypad-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Satel INT-TSI keypad telnetd",
+  "product": "Satel INT-TSI keypad telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TEXTUI_SATEL_INT_TSI_KEYPAD_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^l\\0o\\0g\\0i\\0n\\0 \\0a\\0s\\0:\\0 \\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Cannot accept a new connection",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_textui_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^l\\0o\\0g\\0i\\0n\\0 \\0a\\0s\\0:\\0 \\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Cannot accept a new connection",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour textui"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "textui"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: textui. 2 match(es), 0 softmatch(es)."
+}

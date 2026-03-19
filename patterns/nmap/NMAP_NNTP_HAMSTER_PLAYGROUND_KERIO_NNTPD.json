@@ -1,0 +1,74 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-nntp-hamster-playground-kerio-nntpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Hamster Playground/Kerio nntpd",
+  "product": "Hamster Playground/Kerio nntpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NNTP_HAMSTER_PLAYGROUND_KERIO_NNTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^200 NNTP server ready\\r\\n100 Avaliable commands:\\r\\nARTICLE\\r\\nAUTHINFO\\r\\nBODY\\r\\nGROUP\\r\\nHEAD\\r\\nHELP\\r\\nIHAVE\\r\\nLAST\\r\\nLIST\\r\\nNEWGROUPS\\r\\nNEWNEWS\\r\\nNEXT\\r\\nPOST\\r\\nQUIT\\r\\nSLAVE\\r\\nSTAT\\r\\nXHDR\\r\\n\\.\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_nntp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^200 NNTP server ready\\r\\n100 Avaliable commands:\\r\\nARTICLE\\r\\nAUTHINFO\\r\\nBODY\\r\\nGROUP\\r\\nHEAD\\r\\nHELP\\r\\nIHAVE\\r\\nLAST\\r\\nLIST\\r\\nNEWGROUPS\\r\\nNEWNEWS\\r\\nNEXT\\r\\nPOST\\r\\nQUIT\\r\\nSLAVE\\r\\nSTAT\\r\\nXHDR\\r\\n\\.\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour nntp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "nntp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: nntp. 1 match(es), 0 softmatch(es)."
+}

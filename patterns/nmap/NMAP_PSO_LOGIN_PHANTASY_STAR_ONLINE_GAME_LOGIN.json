@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pso-login-phantasy-star-online-game-login",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Phantasy Star Online game login",
+  "product": "Phantasy Star Online game login",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PSO_LOGIN_PHANTASY_STAR_ONLINE_GAME_LOGIN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x64\\x00\\x00\\x00\\x00\\x00\\x3f\\x01\\x03\\x04\\x19\\x55Tethealla Login\\x00................................................................\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pso-login_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x64\\x00\\x00\\x00\\x00\\x00\\x3f\\x01\\x03\\x04\\x19\\x55Tethealla Login\\x00................................................................\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pso-login"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pso-login"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pso-login. 1 match(es), 0 softmatch(es)."
+}

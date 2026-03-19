@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-chess-lasker-internet-chess-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lasker Internet Chess server",
+  "product": "Lasker Internet Chess server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CHESS_LASKER_INTERNET_CHESS_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\n\\r             _       __     __                             __      \\n\\r            \\| \\|     / /__  / /________  ____ ___  ___     / /_____ \\n\\r            \\| \\| /\\| / / _ \\\\/ / ___/ __ \\\\/ __ `__ \\\\/ _ \\\\   / __/ __ \\\\\\n\\r",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_chess_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\n\\r             _       __     __                             __      \\n\\r            \\| \\|     / /__  / /________  ____ ___  ___     / /_____ \\n\\r            \\| \\| /\\| / / _ \\\\/ / ___/ __ \\\\/ __ `__ \\\\/ _ \\\\   / __/ __ \\\\\\n\\r",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour chess"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "chess"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: chess. 1 match(es), 0 softmatch(es)."
+}

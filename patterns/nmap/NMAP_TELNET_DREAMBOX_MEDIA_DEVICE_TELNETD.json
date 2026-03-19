@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-dreambox-media-device-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Dreambox media device telnetd",
+  "product": "Dreambox media device telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_DREAMBOX_MEDIA_DEVICE_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:linux:linux_kernel:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\*+\\r\\n\\r\\* +\\*\\r\\n\\r\\*   The Gemini Project   \\*\\r\\n\\r\\* +\\*\\r\\n\\r\\*+\\r\\n\\r\\r\\n\\rwelcome on your dreambox! - Kernel ([\\w._-]+) ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\*+\\r\\n\\r\\* +\\*\\r\\n\\r\\* +The Gemini Project (v[\\w. ]+) +\\*\\r\\n\\r\\* +XD mod, date: (?:[\\d.]+) +\\*\\r\\n\\r\\* +!!! WITHOUT BOMB !!! +\\*\\r\\n\\r\\* +\\*\\r\\n\\r\\*+\\r\\n\\r\\r\\n\\rwelcome on your dreambox! - Kernel ([\\w._-]+) ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\*+\\r\\n\\r\\* +\\*\\r\\n\\r\\*   The Gemini Project   \\*\\r\\n\\r\\* +\\*\\r\\n\\r\\*+\\r\\n\\r\\r\\n\\rwelcome on your dreambox! - Kernel ([\\w._-]+) ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfd!\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\n\\*+\\r\\n\\r\\* +\\*\\r\\n\\r\\* +The Gemini Project (v[\\w. ]+) +\\*\\r\\n\\r\\* +XD mod, date: (?:[\\d.]+) +\\*\\r\\n\\r\\* +!!! WITHOUT BOMB !!! +\\*\\r\\n\\r\\* +\\*\\r\\n\\r\\*+\\r\\n\\r\\r\\n\\rwelcome on your dreambox! - Kernel ([\\w._-]+) ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). CPE: cpe:2.3:o:linux:linux_kernel:{version}:*:*:*:*:*:*:*"
+}

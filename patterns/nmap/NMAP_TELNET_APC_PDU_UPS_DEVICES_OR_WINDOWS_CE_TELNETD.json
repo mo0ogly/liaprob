@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-apc-pdu-ups-devices-or-windows-ce-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "APC PDU/UPS devices or Windows CE telnetd",
+  "product": "APC PDU/UPS devices or Windows CE telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_APC_PDU_UPS_DEVICES_OR_WINDOWS_CE_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 0 match(es), 1 softmatch(es)."
+}

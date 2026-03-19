@@ -1,0 +1,171 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-irc-ircu-ircd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ircu ircd",
+  "product": "ircu ircd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IRC_IRCU_IRCD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:undernet:ircu:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Found your hostname, cached\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* No ident response\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* Couldn't look up your hostname\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* Got ident response\\r\\nNOTICE AUTH :\\*\\*\\* Couldn't look up your hostname\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^ERROR..Your host is trying to \\(re\\)connect too fast -- throttled\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* Found your hostname\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:([-\\w_.]+) 451 HELP :You have not registered\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^:([-\\w_.]+) 451  HELP :Register first\\.\\r\\n",
+      "confidence_delta": 0.5
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^NOTICE AUTH :\\*\\*\\* Checking Ident\\r\\n:([-\\w_.]+) 451 \\*  :Register first\\.\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_irc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Found your hostname, cached\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* No ident response\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* Couldn't look up your hostname\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* Got ident response\\r\\nNOTICE AUTH :\\*\\*\\* Couldn't look up your hostname\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^ERROR..Your host is trying to \\(re\\)connect too fast -- throttled\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NOTICE AUTH :\\*\\*\\* Looking up your hostname\\r\\nNOTICE AUTH :\\*\\*\\* Checking Ident\\r\\nNOTICE AUTH :\\*\\*\\* Found your hostname\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:([-\\w_.]+) 451 HELP :You have not registered\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^:([-\\w_.]+) 451  HELP :Register first\\.\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^NOTICE AUTH :\\*\\*\\* Checking Ident\\r\\n:([-\\w_.]+) 451 \\*  :Register first\\.\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour irc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "irc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: irc. 9 match(es), 0 softmatch(es). CPE: cpe:2.3:a:undernet:ircu:*:*:*:*:*:*:*:*"
+}

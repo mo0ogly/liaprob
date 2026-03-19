@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-quake3-master",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "QUAKE3-MASTER",
+  "product": "quake3-master",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_QUAKE3_MASTER_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    27950,
+    30710
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_quake3-master_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xff\\xff\\xffgetserversResponse",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour quake3-master"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "quake3-master"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: quake3-master. 1 match(es), 0 softmatch(es)."
+}

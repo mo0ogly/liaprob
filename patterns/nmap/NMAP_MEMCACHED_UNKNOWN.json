@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-memcached",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MEMCACHED",
+  "product": "memcached",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MEMCACHED_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    2181,
+    11211
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_memcached_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^STAT pid \\d+\\r\\n",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour memcached"
+    },
+    {
+      "id": "nmap_memcached_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\x01\\0\\0\\0\\x01\\0\\0STAT ",
+          "confidence_delta": 0.15,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour memcached"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "memcached"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: memcached. 0 match(es), 2 softmatch(es)."
+}

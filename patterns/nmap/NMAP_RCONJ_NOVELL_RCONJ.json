@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rconj-novell-rconj",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Novell rconj",
+  "product": "Novell rconj",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RCONJ_NOVELL_RCONJ.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0.\\0\\x01\\0\\0\\0\\0.*\\x0b\\0\\0\\0\\0([-\\w_]+)\\x00437",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rconj_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0.\\0\\x01\\0\\0\\0\\0.*\\x0b\\0\\0\\0\\0([-\\w_]+)\\x00437",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rconj"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rconj"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rconj. 1 match(es), 0 softmatch(es)."
+}

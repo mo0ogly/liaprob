@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-mdns-dns-based-service-discovery",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DNS-based service discovery",
+  "product": "DNS-based service discovery",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MDNS_DNS_BASED_SERVICE_DISCOVERY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    5353
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_mdns_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^(?:..)?\\0\\0\\x84\\0\\0\\x01..\\0\\0\\0\\0\\x09_services\\x07_dns-sd\\x04_udp\\x05local\\0\\0\\x0c\\0\\x01",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour mdns"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "mdns"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: mdns. 1 match(es), 0 softmatch(es)."
+}

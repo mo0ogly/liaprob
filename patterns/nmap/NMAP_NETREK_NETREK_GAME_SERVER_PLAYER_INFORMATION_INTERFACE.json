@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netrek-netrek-game-server-player-information-interface",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Netrek game server player information interface",
+  "product": "Netrek game server player information interface",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETREK_NETREK_GAME_SERVER_PLAYER_INFORMATION_INTERFACE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<>=======================================================================<>\\n  Pl: Rank       Name             Login      Host name                Type\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netrek_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<>=======================================================================<>\\n  Pl: Rank       Name             Login      Host name                Type\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netrek"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netrek"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netrek. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,99 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-smtp-communigate-pro-smtpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CommuniGate Pro smtpd",
+  "product": "CommuniGate Pro smtpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SMTP_COMMUNIGATE_PRO_SMTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:stalker:communigate_pro:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) ESMTP Service. Welcome.\\r\\n$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 ([-.\\w]+) ESMTP CommuniGate Pro\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 .*\\r\\n214-Commands Supported:\\r\\n214-HELO EHLO AUTH HELP QUIT MAIL NOOP RSET RCPT DATA ETRN VRFY STARTTLS\\r\\n214-Copyright \\(c\\) 1995-200\\d, Stalker Software, Inc\\.\\r\\n",
+      "confidence_delta": 0.5
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_smtp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) ESMTP Service. Welcome.\\r\\n$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 ([-.\\w]+) ESMTP CommuniGate Pro\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 .*\\r\\n214-Commands Supported:\\r\\n214-HELO EHLO AUTH HELP QUIT MAIL NOOP RSET RCPT DATA ETRN VRFY STARTTLS\\r\\n214-Copyright \\(c\\) 1995-200\\d, Stalker Software, Inc\\.\\r\\n",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour smtp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "smtp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: smtp. 3 match(es), 0 softmatch(es). CPE: cpe:2.3:a:stalker:communigate_pro:*:*:*:*:*:*:*:*"
+}

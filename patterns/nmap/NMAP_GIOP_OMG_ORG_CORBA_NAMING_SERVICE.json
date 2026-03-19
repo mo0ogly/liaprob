@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-giop-omg-org-corba-naming-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "omg.org CORBA naming service",
+  "product": "omg.org CORBA naming service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_GIOP_OMG_ORG_CORBA_NAMING_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    2481,
+    2482
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^GIOP\\x01\\0\\x01\\x01@\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x02\\0\\0\\0'\\0\\0\\0IDL:omg\\.org/CORBA/OBJECT_NOT_EXIST:1\\.0\\0",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^GIOP\\x01\\0\\0\\x01\\0\\0\\0@\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x02\\0\\0\\0'IDL:omg\\.org/CORBA/OBJECT_NOT_EXIST:1\\.0\\0\\0OM\\0\\x02\\0\\0\\0\\x01",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_giop_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GIOP\\x01\\0\\x01\\x01@\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x02\\0\\0\\0'\\0\\0\\0IDL:omg\\.org/CORBA/OBJECT_NOT_EXIST:1\\.0\\0",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^GIOP\\x01\\0\\0\\x01\\0\\0\\0@\\0\\0\\0\\0\\0\\0\\0\\x01\\0\\0\\0\\x02\\0\\0\\0'IDL:omg\\.org/CORBA/OBJECT_NOT_EXIST:1\\.0\\0\\0OM\\0\\x02\\0\\0\\0\\x01",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour giop"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "giop"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: giop. 2 match(es), 0 softmatch(es)."
+}

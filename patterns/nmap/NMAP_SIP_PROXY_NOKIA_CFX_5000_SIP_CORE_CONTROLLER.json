@@ -1,0 +1,73 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-proxy-nokia-cfx-5000-sip-core-controller",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Nokia CFX-5000 SIP core controller",
+  "product": "Nokia CFX-5000 SIP core controller",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_PROXY_NOKIA_CFX_5000_SIP_CORE_CONTROLLER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 400 Bad Request - Branch in top Via header has no Magic Cookie\\r\\nv:SIP/2\\.0/TCP nm;branch=foo;received=[\\d.]+\\r\\nf:<sip:nm@nm>;tag=root\\r\\nt:<sip:nm2@nm2>;tag=to_tag_[\\da-f]+\\r\\ni:50000\\r\\nCSeq:42 OPTIONS\\r\\nl:0\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 400 Bad Request - Branch in top Via header has no Magic Cookie\\r\\nv:SIP/2\\.0/TCP nm;branch=foo;received=[\\d.]+\\r\\nf:<sip:nm@nm>;tag=root\\r\\nt:<sip:nm2@nm2>;tag=to_tag_[\\da-f]+\\r\\ni:50000\\r\\nCSeq:42 OPTIONS\\r\\nl:0\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sip-proxy"
+    },
+    {
+      "id": "nmap_sip-proxy_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 400 Bad Request - [A-Z] - 16007\\r\\nv:SIP/2\\.0/UDP nm;branch=foo;rport=\\d+;received=[\\d.]+\\r\\nf:<sip:nm@nm>;tag=root\\r\\nt:<sip:nm2@nm2>;tag=\\d+\\r\\ni:50000\\r\\nCSeq:42 OPTIONS\\r\\nl:0\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 400 Bad Request - [A-Z] - 16007\\r\\nVia: SIP/2\\.0/UDP nm;branch=foo;rport=\\d+;received=[\\d.]+\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=\\d+\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nContent-Length: 0\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour sip-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip-proxy. 3 match(es), 0 softmatch(es)."
+}

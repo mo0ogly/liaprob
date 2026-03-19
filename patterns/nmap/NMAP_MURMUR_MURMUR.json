@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-murmur-murmur",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Murmur",
+  "product": "Murmur",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MURMUR_MURMUR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    64738
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_murmur_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0...abcdefgh............$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour murmur"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "murmur"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: murmur. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

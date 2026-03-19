@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-jdbc-hsqldb-jdbc",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HSQLDB JDBC",
+  "product": "HSQLDB JDBC",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_JDBC_HSQLDB_JDBC.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:hsql:hsqldb:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HSQLDB JDBC Network Listener\\.\\nUse JDBC driver with Network Compatibility Version([\\d.]+) and a JDBC URL like jdbc:hsqldb:hsql://hostname\\.\\.\\.\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_jdbc_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HSQLDB JDBC Network Listener\\.\\nUse JDBC driver with Network Compatibility Version([\\d.]+) and a JDBC URL like jdbc:hsqldb:hsql://hostname\\.\\.\\.\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour jdbc"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "jdbc"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: jdbc. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:hsql:hsqldb:*:*:*:*:*:*:*:*"
+}

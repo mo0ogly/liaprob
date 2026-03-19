@@ -1,0 +1,91 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-daytime",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "DAYTIME",
+  "product": "daytime",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DAYTIME_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    7,
+    13,
+    37,
+    42
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^[0-3]\\d [A-Z][A-Z][A-Z] (?:19|20)\\d\\d \\d\\d:\\d\\d:\\d\\d \\S+\\r\\n",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^[A-Z][a-z]{2} [A-Z][a-z]{2} +\\d{1,2} +\\d\\d:\\d\\d:\\d\\d (?:19|20)\\d\\d\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_daytime_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[0-3]\\d [A-Z][A-Z][A-Z] (?:19|20)\\d\\d \\d\\d:\\d\\d:\\d\\d \\S+\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[A-Z][a-z]{2} [A-Z][a-z]{2} +\\d{1,2} +\\d\\d:\\d\\d:\\d\\d (?:19|20)\\d\\d\\r\\n",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[0-2]\\d:[0-5]\\d:[0-5]\\d [12]\\d\\d\\d/\\d\\d?/\\d\\d?\\n$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour daytime"
+    },
+    {
+      "id": "nmap_daytime_1",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^[0-3]\\d [A-Z][A-Z][A-Z] 20\\d\\d \\d\\d:\\d\\d:\\d\\d \\S+\\r\\n",
+          "confidence_delta": 0.5
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^(\\w\\w\\w \\w\\w\\w \\d\\d \\d\\d:\\d\\d:\\d\\d \\w+ \\d\\d\\d\\d)\\r\\n\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0 \\0\\0\\0\\x7f\\xff\\xec0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\x04\\x01Q\\xa0\\0\\0\\0\\0\\0\\x01\\0\\x15\\x90-d\\0\\0\\0\\0\\0\\0\\0\\0\\x1c\\0\\0\\xff\\xfe\\xff\\xff\\xff\\xff\\xc5:H\\0\\0\\x16\\xc3\\xd8\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\xff\\xff\\xac\\x10\\x0b\\x05\\0\\xff\\0\\x06T\\xa3\\0\\0 !\\\"#\\$%&'\\(\\)\\*\\+,-\\./0123456789:;<=>\\?@ABCDEFGHIJKLMNO\\xd3\\$\\x12\\xccTUVWOy\\x94L\\0\\r\\xd1z\\0\\0\\0\\0\\x04\\x02\\x1b`\\0\\0\\0\\0\\x04\\x02\\x1b`",
+          "confidence_delta": 0.5
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour daytime"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "daytime"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: daytime. 4 match(es), 1 softmatch(es)."
+}

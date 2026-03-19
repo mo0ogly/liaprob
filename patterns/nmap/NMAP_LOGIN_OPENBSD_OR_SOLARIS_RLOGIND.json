@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-login-openbsd-or-solaris-rlogind",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "OpenBSD or Solaris rlogind",
+  "product": "OpenBSD or Solaris rlogind",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_LOGIN_OPENBSD_OR_SOLARIS_RLOGIND.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01rlogind: Permission denied\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_login_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01rlogind: Permission denied\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour login"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "login"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: login. 1 match(es), 0 softmatch(es)."
+}

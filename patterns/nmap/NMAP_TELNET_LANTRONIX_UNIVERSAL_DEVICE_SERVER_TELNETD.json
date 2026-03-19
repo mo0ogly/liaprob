@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-lantronix-universal-device-server-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lantronix Universal Device Server telnetd",
+  "product": "Lantronix Universal Device Server telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_LANTRONIX_UNIVERSAL_DEVICE_SERVER_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\0\\r\\n\\*\\*\\* Lantronix Universal Device Server \\*\\*\\*\\r\\n\\r\\0Serial Number (\\d+)  MAC address ([\\w:]+)\\r\\n\\r\\0Software Version V([\\d.]+) \\((\\d+)\\)\\r\\0\\r\\n\\r\\n\\r\\0Press Enter to go into Setup Mode \\r\\n\\r\\0",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\0\\n\\*\\*\\* Lantronix Universal Device Server \\*\\*\\*\\r\\0\\nSerial Number (\\d+)  MAC address ([\\w:]+)\\n\\r\\0Software version V?0*([\\d.]+) \\((\\d+)\\)\\r\\0\\n",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\0\\r\\n\\*\\*\\* Lantronix Universal Device Server \\*\\*\\*\\r\\n\\r\\0Serial Number (\\d+)  MAC address ([\\w:]+)\\r\\n\\r\\0Software Version V([\\d.]+) \\((\\d+)\\)\\r\\0\\r\\n\\r\\n\\r\\0Press Enter to go into Setup Mode \\r\\n\\r\\0",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\0\\n\\*\\*\\* Lantronix Universal Device Server \\*\\*\\*\\r\\0\\nSerial Number (\\d+)  MAC address ([\\w:]+)\\n\\r\\0Software version V?0*([\\d.]+) \\((\\d+)\\)\\r\\0\\n",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 2 match(es), 0 softmatch(es). Extraction de version disponible."
+}

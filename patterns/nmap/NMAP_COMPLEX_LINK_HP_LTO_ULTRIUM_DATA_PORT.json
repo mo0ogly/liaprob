@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-complex-link-hp-lto-ultrium-data-port",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HP LTO Ultrium data port",
+  "product": "HP LTO Ultrium data port",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_COMPLEX_LINK_HP_LTO_ULTRIUM_DATA_PORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x06\\x07\\xd0\\0\\x01\\0\\0\\0\\x01\\0\\x02\\x07\\xd0\\0\\x01\\0\\0\\x01\\x0f\\x01\\xf4\\0\\0\\0\\0HP +LTO ULTRIUM",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_complex-link_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x06\\x07\\xd0\\0\\x01\\0\\0\\0\\x01\\0\\x02\\x07\\xd0\\0\\x01\\0\\0\\x01\\x0f\\x01\\xf4\\0\\0\\0\\0HP +LTO ULTRIUM",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour complex-link"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "complex-link"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: complex-link. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-citynet-citynet-sv-3",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "CityNet SV.3",
+  "product": "CityNet SV.3",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CITYNET_CITYNET_SV_3.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^CityNetDUTChannel\\[AT3V1\\]\\x04\\0\\xa5\\x0f\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0........",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_citynet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^CityNetDUTChannel\\[AT3V1\\]\\x04\\0\\xa5\\x0f\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0........",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour citynet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "citynet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: citynet. 1 match(es), 0 softmatch(es)."
+}

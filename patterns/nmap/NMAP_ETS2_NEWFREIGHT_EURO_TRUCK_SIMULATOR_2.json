@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ets2-newfreight-euro-truck-simulator-2",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "newfreight Euro Truck Simulator 2",
+  "product": "newfreight Euro Truck Simulator 2",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ETS2_NEWFREIGHT_EURO_TRUCK_SIMULATOR_2.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "cpe23_template": "cpe:2.3:a:scs_software:euro_truck_simulator_2:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ets2_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfe\\\\\\0n\\0e\\0w\\0f\\0r\\0e\\0i\\0g\\0h\\0t\\0 \\0E\\0u\\0r\\0o\\0 \\0T\\0r\\0u\\0c\\0k\\0 \\0S\\0i\\0m\\0u\\0l\\0a\\0t\\0o\\0r\\0 \\x002\\0;([^;]+);",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour ets2"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ets2"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ets2. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:scs_software:euro_truck_simulator_2:*:*:*:*:*:*:*:*"
+}

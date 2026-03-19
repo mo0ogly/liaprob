@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-check-point-r65-firewall-http-config",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Check Point R65 firewall http config",
+  "product": "Check Point R65 firewall http config",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_CHECK_POINT_R65_FIREWALL_HTTP_CONFIG.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    322,
+    554,
+    3052,
+    3372,
+    5000,
+    7000,
+    7070,
+    8080,
+    10000
+  ],
+  "cpe23_template": "cpe:2.3:h:checkpoint:r65:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.0 200 OK\\r\\nPragma: no-cache\\r\\nCache-Control: no-store\\r\\nContent-Type: text/html\\r\\nContent-Length: 229\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n<title> Error </title>\\r\\n</head>\\r\\n<body>\\r\\n<!-- user defined strings -->\\r\\nAccess denied due to security policy violation<br><br><!-- reject ID -->\\r\\nReject ID: [0-9a-f-]+\\r\\n<br>\\r\\n<br>\\r\\n</body>\\r\\n</html>$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.0 200 OK\\r\\nPragma: no-cache\\r\\nCache-Control: no-store\\r\\nContent-Type: text/html\\r\\nContent-Length: 229\\r\\n\\r\\n<html>\\r\\n<head>\\r\\n<title> Error </title>\\r\\n</head>\\r\\n<body>\\r\\n<!-- user defined strings -->\\r\\nAccess denied due to security policy violation<br><br><!-- reject ID -->\\r\\nReject ID: [0-9a-f-]+\\r\\n<br>\\r\\n<br>\\r\\n</body>\\r\\n</html>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:checkpoint:r65:*:*:*:*:*:*:*:*"
+}

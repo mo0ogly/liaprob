@@ -1,0 +1,53 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-proxy-telos-z-ip-one-sipd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Telos Z/IP ONE sipd",
+  "product": "Telos Z/IP ONE sipd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_PROXY_TELOS_Z_IP_ONE_SIPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    406,
+    5060,
+    5061,
+    8081,
+    31337
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^SIP/2\\.0 200 OK\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo;received=.*\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=[a-f0-9]{32}\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nAllow: INVITE, ACK, BYE, CANCEL, REFER, OPTIONS, INFO, NOTIFY, PRACK, UPDATE\\r\\nAccept: application/sdp\\r\\nContent-Type: application/sdp\\r\\nContent-Length: \\d+\\r\\n\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip-proxy_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 200 OK\\r\\nVia: SIP/2\\.0/TCP nm;branch=foo;received=.*\\r\\nFrom: <sip:nm@nm>;tag=root\\r\\nTo: <sip:nm2@nm2>;tag=[a-f0-9]{32}\\r\\nCall-ID: 50000\\r\\nCSeq: 42 OPTIONS\\r\\nAllow: INVITE, ACK, BYE, CANCEL, REFER, OPTIONS, INFO, NOTIFY, PRACK, UPDATE\\r\\nAccept: application/sdp\\r\\nContent-Type: application/sdp\\r\\nContent-Length: \\d+\\r\\n\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour sip-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip-proxy. 1 match(es), 0 softmatch(es)."
+}

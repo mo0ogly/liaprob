@@ -1,0 +1,51 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-quic",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "QUIC",
+  "product": "quic",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_QUIC_UNKNOWN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    443,
+    5060
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_quic_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\rPTIONS sQ\\d\\d\\d",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\x89\\xc1\\x9c\\x1c\\*\\xff\\xfc\\xf1((?:Q[0-8]\\d\\d)+)$",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour quic"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "quic"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: quic. 0 match(es), 2 softmatch(es)."
+}

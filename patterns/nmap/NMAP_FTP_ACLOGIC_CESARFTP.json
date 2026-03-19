@@ -1,0 +1,77 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-aclogic-cesarftp",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ACLogic CesarFTP",
+  "product": "ACLogic CesarFTP",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_ACLOGIC_CESARFTP.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "cpe23_template": "cpe:2.3:a:aclogic:cesarftpd:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220-Rival Group FTP Server\\r\\n220-Unauthorized access prohibited\\r\\n220 All activity is logged\\.\\r\\n214-CesarFTP server ([\\w._-]+) supports the following commands:\\r\\n214-ABOR ACCT ALLO APPE CDUP CWD  DELE HELP LIST\\r\\n214-MDTM MKD  MODE NLST NOOP PASS PASV PORT PWD \\r\\n214-QUIT REIN REST RETR RMD  RNFR RNTO SITE SMNT\\r\\n214-STAT STOR STOU STRU SYST TYPE\\r\\n214-\\r\\n214-CesarFTP server [\\w._-]+ supports specific commands\\r\\n214-invoked with the SITE command:\\r\\n214-\\r\\n214-SITE MSG\\r\\n214-\\r\\n214 \\r\\n",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220-Rival Group FTP Server\\r\\n220-Unauthorized access prohibited\\r\\n220 All activity is logged\\.\\r\\n214-CesarFTP server ([\\w._-]+) supports the following commands:\\r\\n214-ABOR ACCT ALLO APPE CDUP CWD  DELE HELP LIST\\r\\n214-MDTM MKD  MODE NLST NOOP PASS PASV PORT PWD \\r\\n214-QUIT REIN REST RETR RMD  RNFR RNTO SITE SMNT\\r\\n214-STAT STOR STOU STRU SYST TYPE\\r\\n214-\\r\\n214-CesarFTP server [\\w._-]+ supports specific commands\\r\\n214-invoked with the SITE command:\\r\\n214-\\r\\n214-SITE MSG\\r\\n214-\\r\\n214 \\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 1 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:aclogic:cesarftpd:{version}:*:*:*:*:*:*:*"
+}

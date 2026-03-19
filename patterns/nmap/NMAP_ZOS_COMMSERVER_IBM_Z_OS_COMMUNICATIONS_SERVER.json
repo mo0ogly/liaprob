@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-zos-commserver-ibm-z-os-communications-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IBM z/OS Communications Server",
+  "product": "IBM z/OS Communications Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ZOS_COMMSERVER_IBM_Z_OS_COMMUNICATIONS_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:ibm:z%2fos:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^EZY1315E \\d\\d/\\d\\d/\\d\\d \\d\\d:\\d\\d:\\d\\d INVALID TRANID=\\r\\n\\r\\n PARTNER INET ADDR=[\\d.]+ PORT=   \\d+                                      ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_zos-commserver_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^EZY1315E \\d\\d/\\d\\d/\\d\\d \\d\\d:\\d\\d:\\d\\d INVALID TRANID=\\r\\n\\r\\n PARTNER INET ADDR=[\\d.]+ PORT=   \\d+                                      ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour zos-commserver"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "zos-commserver"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: zos-commserver. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:ibm:z%2fos:*:*:*:*:*:*:*:*"
+}

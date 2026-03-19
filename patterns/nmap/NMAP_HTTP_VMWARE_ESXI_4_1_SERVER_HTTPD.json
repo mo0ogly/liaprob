@@ -1,0 +1,63 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-vmware-esxi-4-1-server-httpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "VMware ESXi 4.1 Server httpd",
+  "product": "VMware ESXi 4.1 Server httpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_VMWARE_ESXI_4_1_SERVER_HTTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    443,
+    631,
+    641,
+    2301,
+    3128,
+    4443,
+    5232,
+    6000,
+    8080,
+    8443,
+    8888,
+    9999,
+    10000,
+    10031,
+    37435,
+    49400
+  ],
+  "cpe23_template": "cpe:2.3:o:vmware:esxi:4.1:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L7_HTTP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 501 Not Implemented\\r\\nDate: .* GMT\\r\\nConnection: close\\r\\nContent-Type: text/html\\r\\nContent-Length: 54\\r\\n\\r\\n<HTML><BODY><H1>501 Not Implemented</H1></BODY></HTML>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L7_HTTP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:vmware:esxi:4.1:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-bandwidth-test-mikrotik-bandwidth-test-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MikroTik bandwidth-test server",
+  "product": "MikroTik bandwidth-test server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BANDWIDTH_TEST_MIKROTIK_BANDWIDTH_TEST_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\0\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_bandwidth-test_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour bandwidth-test"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "bandwidth-test"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: bandwidth-test. 1 match(es), 0 softmatch(es)."
+}

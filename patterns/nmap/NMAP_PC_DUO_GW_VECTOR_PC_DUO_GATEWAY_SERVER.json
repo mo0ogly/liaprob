@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pc-duo-gw-vector-pc-duo-gateway-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Vector PC-Duo Gateway Server",
+  "product": "Vector PC-Duo Gateway Server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PC_DUO_GW_VECTOR_PC_DUO_GATEWAY_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    2303
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pc-duo-gw_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^.........(.*)\\0",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour pc-duo-gw"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pc-duo-gw"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pc-duo-gw. 1 match(es), 0 softmatch(es)."
+}

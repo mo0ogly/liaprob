@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-genetec-integration-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Genetec Integration Service",
+  "product": "Genetec Integration Service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_GENETEC_INTEGRATION_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfe\\x01Genetec Integration Service \\(STUDENT03\\)\\r\\n\\r\\n\\r\\n\\r\\n========================================================================\\r\\n  Integration Service Main Menu\\r\\n========================================================================\\r\\n\\r\\n  1\\) CONFIG\\r\\n     Displays the configuration settings for the service\\r\\n\\r\\n  2\\) STATUS\\r\\n     Displays the status of the external systems being run by this\\r\\n     service\\.\\r\\n\\r\\n  \\?\\) Help\\r\\n\\r\\n  x\\) Exit\\r\\n========================================================================\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfe\\x01Genetec Integration Service \\(STUDENT03\\)\\r\\n\\r\\n\\r\\n\\r\\n========================================================================\\r\\n  Integration Service Main Menu\\r\\n========================================================================\\r\\n\\r\\n  1\\) CONFIG\\r\\n     Displays the configuration settings for the service\\r\\n\\r\\n  2\\) STATUS\\r\\n     Displays the status of the external systems being run by this\\r\\n     service\\.\\r\\n\\r\\n  \\?\\) Help\\r\\n\\r\\n  x\\) Exit\\r\\n========================================================================\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

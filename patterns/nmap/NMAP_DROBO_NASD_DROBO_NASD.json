@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-drobo-nasd-drobo-nasd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Drobo NASD",
+  "product": "Drobo NASD",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DROBO_NASD_DROBO_NASD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^DRINASD[9a]?\\0\\x01\\x01\\0\\0\\0\\0..<\\?xml version=\"1\\.0\" encoding=\"utf-8\"\\?>\\n\\n<ESATMUpdate>\\n    <mESAUpdateSignature>ESAINFO</mESAUpdateSignature>\\n    <mESAUpdateVersion>\\d+</mESAUpdateVersion>\\n    <mESAUpdateSize>\\d+</mESAUpdateSize>\\n    <mESAID>\\w+</mESAID>\\n    <mSerial>(\\w+)</mSerial>\\n    <mName>([^<]+)</mName>\\n    <mVersion>([][\\w._ ]+)</mVersion>\\n",
+      "confidence_delta": 0.4,
+      "version_group": 3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_drobo-nasd_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^DRINASD[9a]?\\0\\x01\\x01\\0\\0\\0\\0..<\\?xml version=\"1\\.0\" encoding=\"utf-8\"\\?>\\n\\n<ESATMUpdate>\\n    <mESAUpdateSignature>ESAINFO</mESAUpdateSignature>\\n    <mESAUpdateVersion>\\d+</mESAUpdateVersion>\\n    <mESAUpdateSize>\\d+</mESAUpdateSize>\\n    <mESAID>\\w+</mESAID>\\n    <mSerial>(\\w+)</mSerial>\\n    <mName>([^<]+)</mName>\\n    <mVersion>([][\\w._ ]+)</mVersion>\\n",
+          "confidence_delta": 0.4,
+          "version_group": 3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour drobo-nasd"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "drobo-nasd"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: drobo-nasd. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

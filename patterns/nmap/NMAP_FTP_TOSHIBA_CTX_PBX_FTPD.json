@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-toshiba-ctx-pbx-ftpd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Toshiba CTX PBX ftpd",
+  "product": "Toshiba CTX PBX ftpd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_TOSHIBA_CTX_PBX_FTPD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Welcome to This FTP Server\\. Service ready for new user\\.\\r\\n214-The following commands are recognised:\\r\\nUSER\\r\\nPASS\\r\\nCWD\\r\\nQUIT\\r\\nTYPE\\r\\nPORT\\r\\nRETR\\r\\nSTOR\\r\\nSTOU\\r\\nAPPE\\r\\nRNFR\\r\\nRNTO\\r\\nABOR\\r\\nDELE\\r\\nCDUP\\r\\nRMD\\r\\nMKD\\r\\nPWD\\r\\nLIST\\r\\nNLST\\r\\nHELP\\r\\nNOOP\\r\\nXCUP\\r\\nXCWD\\r\\nXPWD\\r\\nXRMD\\r\\nXMKD\\r\\n214 List End\\.\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Welcome to This FTP Server\\. Service ready for new user\\.\\r\\n214-The following commands are recognised:\\r\\nUSER\\r\\nPASS\\r\\nCWD\\r\\nQUIT\\r\\nTYPE\\r\\nPORT\\r\\nRETR\\r\\nSTOR\\r\\nSTOU\\r\\nAPPE\\r\\nRNFR\\r\\nRNTO\\r\\nABOR\\r\\nDELE\\r\\nCDUP\\r\\nRMD\\r\\nMKD\\r\\nPWD\\r\\nLIST\\r\\nNLST\\r\\nHELP\\r\\nNOOP\\r\\nXCUP\\r\\nXCWD\\r\\nXPWD\\r\\nXRMD\\r\\nXMKD\\r\\n214 List End\\.\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 1 match(es), 0 softmatch(es)."
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pcmeasure-messpc-pcmeasure",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MessPC PCMeasure",
+  "product": "MessPC PCMeasure",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_PCMEASURE_MESSPC_PCMEASURE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:messpc:pcmeasure:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^port0;valid=0;value=0\\.00;counter0=0;counter1=0;\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pcmeasure_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^port0;valid=0;value=0\\.00;counter0=0;counter1=0;\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pcmeasure"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pcmeasure"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pcmeasure. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:messpc:pcmeasure:*:*:*:*:*:*:*:*"
+}

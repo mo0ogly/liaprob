@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-beep-subethaedit-collaborative-text-editor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SubEthaEdit collaborative text editor",
+  "product": "SubEthaEdit collaborative text editor",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_BEEP_SUBETHAEDIT_COLLABORATIVE_TEXT_EDITOR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^RPY \\d \\d \\. \\d \\d+\\r\\nContent-Type: application/beep\\+xml\\r\\n\\r\\n<greeting><profile uri=\\\"http://www\\.codingmonkeys\\.de/BEEP/SubEthaEditHandshake\\\"",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_beep_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^RPY \\d \\d \\. \\d \\d+\\r\\nContent-Type: application/beep\\+xml\\r\\n\\r\\n<greeting><profile uri=\\\"http://www\\.codingmonkeys\\.de/BEEP/SubEthaEditHandshake\\\"",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour beep"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "beep"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: beep. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:o:apple:mac_os_x:*:*:*:*:*:*:*:*"
+}

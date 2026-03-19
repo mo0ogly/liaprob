@@ -1,0 +1,72 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-cmrcservice-microsoft-configuration-manager-remote-control-service",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft Configuration Manager Remote Control service",
+  "product": "Microsoft Configuration Manager Remote Control service",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CMRCSERVICE_MICROSOFT_CONFIGURATION_MANAGER_REMOTE_CONTROL_SERVICE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:systems_management_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\\"\\0\\0\\x80 \\0S\\0T\\0A\\0R\\0T\\0_\\0H\\0A\\0N\\0D\\0S\\0H\\0A\\0K\\0E\\0\\0\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^,\\0\\0\\x80\\*\\0E\\0R\\0R\\0O\\0R\\0_\\0N\\0O\\0_\\0A\\0C\\0T\\0I\\0V\\0E\\0_\\0U\\0S\\0E\\0R\\0\\0\\0",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^0\\0\\0\\x80\\.\\0E\\0R\\0R\\0O\\0R\\0_\\0E\\0X\\0I\\0S\\0T\\0I\\0N\\0G\\0_\\0S\\0E\\0S\\0S\\0I\\0O\\0N\\0\\0\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_cmrcservice_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\\"\\0\\0\\x80 \\0S\\0T\\0A\\0R\\0T\\0_\\0H\\0A\\0N\\0D\\0S\\0H\\0A\\0K\\0E\\0\\0\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^,\\0\\0\\x80\\*\\0E\\0R\\0R\\0O\\0R\\0_\\0N\\0O\\0_\\0A\\0C\\0T\\0I\\0V\\0E\\0_\\0U\\0S\\0E\\0R\\0\\0\\0",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0\\0\\0\\x80\\.\\0E\\0R\\0R\\0O\\0R\\0_\\0E\\0X\\0I\\0S\\0T\\0I\\0N\\0G\\0_\\0S\\0E\\0S\\0S\\0I\\0O\\0N\\0\\0\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour cmrcservice"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "cmrcservice"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: cmrcservice. 3 match(es), 0 softmatch(es). CPE: cpe:2.3:a:microsoft:systems_management_server:*:*:*:*:*:*:*:*"
+}

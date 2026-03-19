@@ -1,0 +1,82 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-netbios-ssn-epson-print-server-smbd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Epson print server smbd",
+  "product": "Epson print server smbd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_NETBIOS_SSN_EPSON_PRINT_SERVER_SMBD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    42,
+    88,
+    135,
+    139,
+    445,
+    660,
+    1025,
+    1027,
+    1031,
+    1112,
+    3006,
+    3900,
+    5000,
+    5009,
+    5432,
+    5555,
+    5600,
+    7461,
+    9102,
+    9103,
+    18182,
+    27000,
+    27001,
+    27002,
+    27003,
+    27004,
+    27005,
+    27006,
+    27007,
+    27008,
+    27009,
+    27010
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x82\\0\\0\\0\\n-> doHttp: Connection timeouted!\\n\\ntelnetd: This system \\*IN USE\\* via telnet\\.\\nshell restarted\\.\\n\\x08\\x08\\x08\\x08        \\*\\*\\*  EPSON Network Print Server \\(([^)]+)\\)  \\*\\*\\*\\n\\n\\x08\\x08\\x08\\x08        \\nPassword: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_netbios-ssn_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x82\\0\\0\\0\\n-> doHttp: Connection timeouted!\\n\\ntelnetd: This system \\*IN USE\\* via telnet\\.\\nshell restarted\\.\\n\\x08\\x08\\x08\\x08        \\*\\*\\*  EPSON Network Print Server \\(([^)]+)\\)  \\*\\*\\*\\n\\n\\x08\\x08\\x08\\x08        \\nPassword: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour netbios-ssn"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "netbios-ssn"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: netbios-ssn. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

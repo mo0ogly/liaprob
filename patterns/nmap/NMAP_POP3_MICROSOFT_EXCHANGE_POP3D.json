@@ -1,0 +1,160 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-pop3-microsoft-exchange-pop3d",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft Exchange pop3d",
+  "product": "Microsoft Exchange pop3d",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_POP3_MICROSOFT_EXCHANGE_POP3D.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:microsoft:exchange_server:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Microsoft Exchange POP3 server version (\\S+) ready\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Microsoft Exchange POP3 server version ([\\d.]+) ready  <[\\d.]+@([-\\w_.]+)>\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Der Microsoft Exchange POP3-Server \\(Version ([\\d\\.]+)\\) ist betriebsbereit\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Microsoft Exchange POP3-server versie ([\\d.]+) is gereed\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK \\xd1\\xe5\\xf0\\xe2\\xe5\\xf0 Microsoft Exchange POP3 \\xe2\\xe5\\xf0\\xf1\\xe8\\xe8 ([\\d.]+)  \\xe3\\xee\\xf2\\xee\\xe2\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Microsoft Exchange POP3 kiszolg\\xe1l\\xf3 verzi\\xf3 ([\\d.]+) k\\xe9sz\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Le serveur POP3 Microsoft Exchange version ([\\d.]+) est pr\\xeat\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Microsoft Exchange POP3 server verze ([\\d.]+) je p\\xf8ipraven\\.\\r\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\+OK Authorized Users Only! \\(([-\\w_.]+)\\)\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_pop3_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Microsoft Exchange POP3 server version (\\S+) ready\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Microsoft Exchange POP3 server version ([\\d.]+) ready  <[\\d.]+@([-\\w_.]+)>\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Der Microsoft Exchange POP3-Server \\(Version ([\\d\\.]+)\\) ist betriebsbereit\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Microsoft Exchange POP3-server versie ([\\d.]+) is gereed\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK \\xd1\\xe5\\xf0\\xe2\\xe5\\xf0 Microsoft Exchange POP3 \\xe2\\xe5\\xf0\\xf1\\xe8\\xe8 ([\\d.]+)  \\xe3\\xee\\xf2\\xee\\xe2\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Microsoft Exchange POP3 kiszolg\\xe1l\\xf3 verzi\\xf3 ([\\d.]+) k\\xe9sz\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Le serveur POP3 Microsoft Exchange version ([\\d.]+) est pr\\xeat\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Microsoft Exchange POP3 server verze ([\\d.]+) je p\\xf8ipraven\\.\\r\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\+OK Authorized Users Only! \\(([-\\w_.]+)\\)\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour pop3"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "pop3"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: pop3. 9 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:microsoft:exchange_server:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-snmp-zyxel-prestige-660hw-adsl-router",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ZyXEL Prestige 660HW ADSL router",
+  "product": "ZyXEL Prestige 660HW ADSL router",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SNMP_ZYXEL_PRESTIGE_660HW_ADSL_ROUTER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    161,
+    260,
+    3401
+  ],
+  "cpe23_template": "cpe:2.3:h:zyxel:prestige_660hw:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_snmp_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0\\x82\\0\\x3a\\x02\\x01\\0\\x04\\x06public\\xa2\\x82\\0\\x2b.{20}\\x06\\x08\\x2b\\x06\\x01\\x02\\x01\\x01\\x05\\0\\x04\\x0bcfr25657985",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour snmp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "snmp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: snmp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:zyxel:prestige_660hw:*:*:*:*:*:*:*:*"
+}

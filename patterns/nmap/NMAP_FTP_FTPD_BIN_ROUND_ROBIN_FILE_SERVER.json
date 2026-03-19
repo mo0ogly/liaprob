@@ -1,0 +1,76 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ftp-ftpd-bin-round-robin-file-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ftpd.bin round-robin file server",
+  "product": "ftpd.bin round-robin file server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_FTP_FTPD_BIN_ROUND_ROBIN_FILE_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1,
+    7,
+    21,
+    25,
+    79,
+    113,
+    119,
+    465,
+    515,
+    587,
+    990,
+    1111,
+    1311,
+    2401,
+    2627,
+    3000,
+    3493,
+    6560,
+    6666,
+    6667,
+    6668,
+    6669,
+    6670,
+    12345,
+    14690,
+    22490
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^220 Speak friend, and enter\\r\\n214-\\r\\n  ftpd\\.bin - Round-robin File Transfer Server, version ([\\w.]+)\\r\\n",
+      "confidence_delta": 0.5,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ftp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^220 Speak friend, and enter\\r\\n214-\\r\\n  ftpd\\.bin - Round-robin File Transfer Server, version ([\\w.]+)\\r\\n",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ftp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ftp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ftp. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

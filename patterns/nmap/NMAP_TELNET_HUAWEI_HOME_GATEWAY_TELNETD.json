@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-huawei-home-gateway-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Huawei Home Gateway telnetd",
+  "product": "Huawei Home Gateway telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_HUAWEI_HOME_GATEWAY_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfb\\x18\\r\\nWelcome Visiting Huawei Home Gateway\\r\\nCopyright by Huawei Technologies Co\\., Ltd\\.\\r\\n\\r\\nLogin:",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\xff\\xfb\\x03\\xff\\xfb\\x18\\r\\nWelcome Visiting Huawei Home Gateway\\r\\nCopyright by Huawei Technologies Co\\., Ltd\\.\\r\\n\\r\\nLogin:",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

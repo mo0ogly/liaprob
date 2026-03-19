@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-cisco-integrated-management-controller-utility-shell",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Cisco Integrated Management Controller utility shell",
+  "product": "Cisco Integrated Management Controller utility shell",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_CISCO_INTEGRATED_MANAGEMENT_CONTROLLER_UTILITY_SHELL.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:cisco:unified_computing_system_integrated_management_controller:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\nCIMC Debug Firmware Utility Shell\\r\\n\\[ help \\]# ",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x01\\xff\\xfd\\x1f\\xff\\xfb\\x01\\xff\\xfb\\x03\\r\\r\\nCIMC Debug Firmware Utility Shell\\r\\n\\[ help \\]# ",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:cisco:unified_computing_system_integrated_management_controller:*:*:*:*:*:*:*:*"
+}

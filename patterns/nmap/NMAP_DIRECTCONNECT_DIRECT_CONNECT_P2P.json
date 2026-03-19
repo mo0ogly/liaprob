@@ -1,0 +1,62 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-directconnect-direct-connect-p2p",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Direct Connect P2P",
+  "product": "Direct Connect P2P",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DIRECTCONNECT_DIRECT_CONNECT_P2P.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\$MyNick ([-.\\w]+)|\\$Lock",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nDConnect Daemon v([\\d.]+)\\r\\nlogin: ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_directconnect_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\$MyNick ([-.\\w]+)|\\$Lock",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nDConnect Daemon v([\\d.]+)\\r\\nlogin: ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour directconnect"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "directconnect"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: directconnect. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:o:microsoft:windows:*:*:*:*:*:*:*:*"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-roku-roku-soundbridge",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Roku SoundBridge",
+  "product": "Roku SoundBridge",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_ROKU_ROKU_SOUNDBRIDGE.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^roku: ready\\r\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_roku_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^roku: ready\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour roku"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "roku"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: roku. 1 match(es), 0 softmatch(es)."
+}

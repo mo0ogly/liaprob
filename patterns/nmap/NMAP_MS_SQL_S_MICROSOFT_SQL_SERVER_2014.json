@@ -1,0 +1,98 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-ms-sql-s-microsoft-sql-server-2014",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft SQL Server 2014",
+  "product": "Microsoft SQL Server 2014",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MS_SQL_S_MICROSOFT_SQL_SERVER_2014.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1433
+  ],
+  "cpe23_template": "cpe:2.3:a:microsoft:sql_server:2014:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x07\\xd0",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x10\\x04",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x10\\x75",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x13\\x88",
+      "confidence_delta": 0.3
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00(..)",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_ms-sql-s_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x07\\xd0",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x10\\x04",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x10\\x75",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00\\x13\\x88",
+          "confidence_delta": 0.3
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x04\\x01\\x00\\x25\\x00\\x00\\x01\\x00\\x00\\x00\\x15\\x00\\x06\\x01\\x00\\x1b\\x00\\x01\\x02\\x00\\x1c\\x00\\x01\\x03\\x00\\x1d\\x00\\x00\\xff\\x0c\\x00(..)",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour ms-sql-s"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "ms-sql-s"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: ms-sql-s. 5 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:microsoft:sql_server:2014:*:*:*:*:*:*:*"
+}

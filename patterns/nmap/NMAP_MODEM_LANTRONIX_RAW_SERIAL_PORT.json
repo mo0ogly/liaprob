@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-modem-lantronix-raw-serial-port",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Lantronix raw serial port",
+  "product": "Lantronix raw serial port",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MODEM_LANTRONIX_RAW_SERIAL_PORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^(?:ATZ\\r)?(?:\\+\\+\\+ATZ\\r)",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_modem_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^(?:ATZ\\r)?(?:\\+\\+\\+ATZ\\r)",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour modem"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "modem"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: modem. 1 match(es), 0 softmatch(es)."
+}

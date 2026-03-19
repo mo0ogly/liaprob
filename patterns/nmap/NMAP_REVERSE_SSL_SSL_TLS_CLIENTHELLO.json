@@ -1,0 +1,41 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-reverse-ssl-ssl-tls-clienthello",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "SSL/TLS ClientHello",
+  "product": "SSL/TLS ClientHello",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_REVERSE_SSL_SSL_TLS_CLIENTHELLO.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_reverse-ssl_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x16\\x03[\\x00-\\x03]..\\x01...\\x03[\\x00-\\x03].{32}",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour reverse-ssl"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "reverse-ssl"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: reverse-ssl. 0 match(es), 1 softmatch(es)."
+}

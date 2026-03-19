@@ -1,0 +1,69 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-wms-microsoft-windows-media-services",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Microsoft Windows Media Services",
+  "product": "Microsoft Windows Media Services",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_WMS_MICROSOFT_WINDOWS_MEDIA_SERVICES.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1549,
+    1755,
+    5001,
+    9090
+  ],
+  "cpe23_template": "cpe:2.3:a:microsoft:windows_media_services:{version}.{version}.{version}.{version}{version}{version}{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\0\\0.\\xce\\xfa\\x0b\\xb0.\\0\\0\\0MMS .\\0{7}.{9}\\0\\0\\0\\x01\\0\\x04\\0\\0\\0\\0\\0\\xf0\\xf0\\xf0\\xf0\\x0b\\0\\x04\\0\\x1c\\0\\x03\\0\\0\\0\\0\\0\\0\\0\\xf0\\?\\x01\\0\\0\\0\\x01\\0\\0\\0\\0\\x80\\0\\0...\\0.\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\x00(\\d)\\0\\.\\x00(\\d)\\0\\.\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\x00(\\d)\\x00(\\d)\\0\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\x01\\0\\0.\\xce\\xfa\\x0b\\xb0.\\0\\0\\0MMS .\\0{7}.{9}\\0\\0\\0\\x01\\0\\x04\\0\\0\\0\\0\\0\\xf0\\xf0\\xf0\\xf0\\x0b\\0\\x04\\0\\x1c\\0\\x03\\0\\0\\0\\0\\0\\0\\0\\xf0\\?\\x01\\0\\0\\0\\x01\\0\\0\\0\\0\\x80\\0\\0...\\0.\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\x00(\\d)\\x00(\\d)\\0\\0\\0",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_wms_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0\\0.\\xce\\xfa\\x0b\\xb0.\\0\\0\\0MMS .\\0{7}.{9}\\0\\0\\0\\x01\\0\\x04\\0\\0\\0\\0\\0\\xf0\\xf0\\xf0\\xf0\\x0b\\0\\x04\\0\\x1c\\0\\x03\\0\\0\\0\\0\\0\\0\\0\\xf0\\?\\x01\\0\\0\\0\\x01\\0\\0\\0\\0\\x80\\0\\0...\\0.\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\x00(\\d)\\0\\.\\x00(\\d)\\0\\.\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\x00(\\d)\\x00(\\d)\\0\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\x01\\0\\0.\\xce\\xfa\\x0b\\xb0.\\0\\0\\0MMS .\\0{7}.{9}\\0\\0\\0\\x01\\0\\x04\\0\\0\\0\\0\\0\\xf0\\xf0\\xf0\\xf0\\x0b\\0\\x04\\0\\x1c\\0\\x03\\0\\0\\0\\0\\0\\0\\0\\xf0\\?\\x01\\0\\0\\0\\x01\\0\\0\\0\\0\\x80\\0\\0...\\0.\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0.\\0\\0\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\0\\.\\x00(\\d)\\x00(\\d)\\x00(\\d)\\x00(\\d)\\0\\0\\0",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour wms"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "wms"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: wms. 2 match(es), 0 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:microsoft:windows_media_services:{version}.{version}.{version}.{version}{version}{version}{version}:*:*:*:*:*:*:*"
+}

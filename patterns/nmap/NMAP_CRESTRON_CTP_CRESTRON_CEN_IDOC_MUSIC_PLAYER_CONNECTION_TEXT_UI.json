@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-crestron-ctp-crestron-cen-idoc-music-player-connection-text-ui",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Crestron CEN-IDOC music player connection text ui",
+  "product": "Crestron CEN-IDOC music player connection text ui",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_CRESTRON_CTP_CRESTRON_CEN_IDOC_MUSIC_PLAYER_CONNECTION_TEXT_UI.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:crestron:cen-iodc:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\r\\nCEN-IDOC Control Console\\r\\n\\r\\nCEN-IDOC>",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_crestron-ctp_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\r\\nCEN-IDOC Control Console\\r\\n\\r\\nCEN-IDOC>",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour crestron-ctp"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "crestron-ctp"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: crestron-ctp. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:crestron:cen-iodc:*:*:*:*:*:*:*:*"
+}

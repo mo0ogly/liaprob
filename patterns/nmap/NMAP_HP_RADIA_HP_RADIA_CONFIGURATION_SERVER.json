@@ -1,0 +1,58 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-hp-radia-hp-radia-configuration-server",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "HP Radia configuration server",
+  "product": "HP Radia configuration server",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HP_RADIA_HP_RADIA_CONFIGURATION_SERVER.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    1035,
+    1521,
+    1522,
+    1525,
+    1526,
+    1574,
+    1748,
+    1754,
+    14238,
+    20000
+  ],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xff$",
+      "confidence_delta": 0.3
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_hp-radia_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xff$",
+          "confidence_delta": 0.3
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour hp-radia"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "hp-radia"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: hp-radia. 1 match(es), 0 softmatch(es)."
+}

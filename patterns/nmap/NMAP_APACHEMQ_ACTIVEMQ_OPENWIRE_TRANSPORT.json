@@ -1,0 +1,116 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-apachemq-activemq-openwire-transport",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "ActiveMQ OpenWire transport",
+  "product": "ActiveMQ OpenWire transport",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_APACHEMQ_ACTIVEMQ_OPENWIRE_TRANSPORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:a:apache:activemq:{version}:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0cProviderName\\t\\0\\x08ActiveMQ.*\\x0fPlatformDetails\\t..JVM: (\\d[^,]*), [^,]*, Oracle Corporation, OS: Linux, (\\d\\.[\\d.]+)[^,]*, ([\\w_-]+).*\\x0fProviderVersion\\t..(\\d[\\w._-]*)",
+      "confidence_delta": 0.4,
+      "version_group": 4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0cProviderName\\t\\0\\x08ActiveMQ.*\\x0fPlatformDetails\\t..Java\\0.*\\x0fProviderVersion\\t..(\\d[\\w._-]*)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0fPlatformDetails\\t..Java\\0.*\\x0cProviderName\\t\\0\\x08ActiveMQ.*\\x0fProviderVersion\\t..(\\d[\\w._-]*)",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0cMaxFrameSize\\x06",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0..\\x01ActiveMQ\\0",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_apachemq_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0cProviderName\\t\\0\\x08ActiveMQ.*\\x0fPlatformDetails\\t..JVM: (\\d[^,]*), [^,]*, Oracle Corporation, OS: Linux, (\\d\\.[\\d.]+)[^,]*, ([\\w_-]+).*\\x0fProviderVersion\\t..(\\d[\\w._-]*)",
+          "confidence_delta": 0.4,
+          "version_group": 4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0cProviderName\\t\\0\\x08ActiveMQ.*\\x0fPlatformDetails\\t..Java\\0.*\\x0fProviderVersion\\t..(\\d[\\w._-]*)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0fPlatformDetails\\t..Java\\0.*\\x0cProviderName\\t\\0\\x08ActiveMQ.*\\x0fProviderVersion\\t..(\\d[\\w._-]*)",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0fPlatform",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0fProvider",
+          "confidence_delta": 0.2,
+          "note": "softmatch nmap (confidence reduite)"
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0..\\x01ActiveMQ\\0\\0\\0.\\x01\\0\\0.*\\x0cMaxFrameSize\\x06",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0..\\x01ActiveMQ\\0",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour apachemq"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "apachemq"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: apachemq. 5 match(es), 2 softmatch(es). Extraction de version disponible. CPE: cpe:2.3:a:apache:activemq:{version}:*:*:*:*:*:*:*"
+}

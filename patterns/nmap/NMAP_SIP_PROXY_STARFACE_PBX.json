@@ -1,0 +1,42 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-sip-proxy-starface-pbx",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "STARFACE PBX",
+  "product": "STARFACE PBX",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_SIP_PROXY_STARFACE_PBX.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    5060
+  ],
+  "cpe23_template": "cpe:2.3:a:starface:starface_pbx:*:*:*:*:*:*:*:*",
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_sip-proxy_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^SIP/2\\.0 (?:[^\\r\\n]*\\r\\n)*?Server: STARFACE PBX\\r\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour sip-proxy"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "sip-proxy"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: sip-proxy. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:starface:starface_pbx:*:*:*:*:*:*:*:*"
+}

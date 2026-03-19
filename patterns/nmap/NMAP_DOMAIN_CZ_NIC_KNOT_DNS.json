@@ -1,0 +1,45 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-domain-cz-nic-knot-dns",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "cz.nic Knot DNS",
+  "product": "cz.nic Knot DNS",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DOMAIN_CZ_NIC_KNOT_DNS.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    53,
+    1967,
+    2967,
+    26198
+  ],
+  "banner_matchers": [],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_domain_0",
+      "layer": "L4_UDP",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "\\x07version\\x04bind\\0\\0\\x10\\0\\x03\\xc0\\x0c\\0\\x10\\0\\x03.{7}Knot DNS ([\\d.]+(?:-dev)?)",
+          "confidence_delta": 0.5,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_UDP pour domain"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "domain"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: domain. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

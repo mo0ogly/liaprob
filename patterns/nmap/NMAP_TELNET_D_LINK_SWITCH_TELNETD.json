@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-telnet-d-link-switch-telnetd",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "D-Link switch telnetd",
+  "product": "D-Link switch telnetd",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TELNET_D_LINK_SWITCH_TELNETD.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfb\\x01\\x1b\\[0m\\x1b\\[2J\\x1b\\[0m\\x1b\\[9;20HCopyright\\(C\\) 1995-99 D-Link Systems Inc\\.\\x1b\\[13;30HUser Name\\x1b\\[14;30HPassword\\x1b\\[23;10HMAC Address:\\x1b\\[8;29H([-.\\w]+) Console Program\\x1b\\[13;41H",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_telnet_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfb\\x01\\x1b\\[0m\\x1b\\[2J\\x1b\\[0m\\x1b\\[9;20HCopyright\\(C\\) 1995-99 D-Link Systems Inc\\.\\x1b\\[13;30HUser Name\\x1b\\[14;30HPassword\\x1b\\[23;10HMAC Address:\\x1b\\[8;29H([-.\\w]+) Console Program\\x1b\\[13;41H",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour telnet"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "telnet"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: telnet. 1 match(es), 0 softmatch(es)."
+}

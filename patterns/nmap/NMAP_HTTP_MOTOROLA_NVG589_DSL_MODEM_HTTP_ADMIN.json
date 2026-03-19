@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-http-motorola-nvg589-dsl-modem-http-admin",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "Motorola NVG589 DSL modem http admin",
+  "product": "Motorola NVG589 DSL modem http admin",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_HTTP_MOTOROLA_NVG589_DSL_MODEM_HTTP_ADMIN.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:motorola:nvg589:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^HTTP/1\\.1 408 Request Timeout\\r\\nContent-Type: text/html\\r\\nConection: close\\r\\n\\r\\n<html>\\n<head>\\n<title>408 Request Timeout</title>\\n</head>\\n<body>\\n<h1>408 Request Timeout</h1>\\n</body>\\n</html>\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_http_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^HTTP/1\\.1 408 Request Timeout\\r\\nContent-Type: text/html\\r\\nConection: close\\r\\n\\r\\n<html>\\n<head>\\n<title>408 Request Timeout</title>\\n</head>\\n<body>\\n<h1>408 Request Timeout</h1>\\n</body>\\n</html>\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour http"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "http"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: http. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:motorola:nvg589:*:*:*:*:*:*:*:*"
+}

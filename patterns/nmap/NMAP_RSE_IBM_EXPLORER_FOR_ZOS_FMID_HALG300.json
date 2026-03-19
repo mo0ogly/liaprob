@@ -1,0 +1,60 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-rse-ibm-explorer-for-zos-fmid-halg300",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IBM Explorer for zOS (FMID HALG300)",
+  "product": "IBM Explorer for zOS (FMID HALG300)",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_RSE_IBM_EXPLORER_FOR_ZOS_FMID_HALG300.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [
+    256,
+    257,
+    389,
+    390,
+    636,
+    637,
+    1702,
+    3268,
+    3269,
+    3892,
+    4035
+  ],
+  "cpe23_template": "cpe:2.3:a:ibm:zos_explorer:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xa2\\x85\\x99\\xa5\\x85\\x99@",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_rse_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xa2\\x85\\x99\\xa5\\x85\\x99@",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour rse"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "rse"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: rse. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:a:ibm:zos_explorer:*:*:*:*:*:*:*:*"
+}

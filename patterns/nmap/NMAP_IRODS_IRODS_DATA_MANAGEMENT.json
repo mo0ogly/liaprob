@@ -1,0 +1,49 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-irods-irods-data-management",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "IRODS data management",
+  "product": "IRODS data management",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_IRODS_IRODS_DATA_MANAGEMENT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\0\\0\\0\\x8b<MsgHeader_PI>\\n<type>RODS_VERSION</type>\\n<msgLen>\\d+</msgLen>\\n<errorLen>0</errorLen>\\n<bsLen>0</bsLen>\\n<intInfo>0</intInfo>\\n</MsgHeader_PI>\\n<Version_PI>\\n<status>-\\d+</status>\\n<relVersion>rods([\\w._-]+)</relVersion>\\n<apiVersion>d</apiVersion>\\n<reconnPort>0</reconnPort>\\n<reconnAddr></reconnAddr>\\n<cookie>0</cookie>\\n</Version_PI>\\n",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_irods_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\0\\0\\0\\x8b<MsgHeader_PI>\\n<type>RODS_VERSION</type>\\n<msgLen>\\d+</msgLen>\\n<errorLen>0</errorLen>\\n<bsLen>0</bsLen>\\n<intInfo>0</intInfo>\\n</MsgHeader_PI>\\n<Version_PI>\\n<status>-\\d+</status>\\n<relVersion>rods([\\w._-]+)</relVersion>\\n<apiVersion>d</apiVersion>\\n<reconnPort>0</reconnPort>\\n<reconnAddr></reconnAddr>\\n<cookie>0</cookie>\\n</Version_PI>\\n",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour irods"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "irods"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: irods. 1 match(es), 0 softmatch(es). Extraction de version disponible."
+}

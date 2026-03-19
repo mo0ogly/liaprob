@@ -1,0 +1,47 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-musicvr-musicvr",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MusicVR",
+  "product": "MusicVR",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_MUSICVR_MUSICVR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^W\\xff..\\0\\0A.[\\x01-\\x20][\\w.]{1,32}[\\x01-\\x20][\\w.]{1,32}",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_musicvr_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^W\\xff..\\0\\0A.[\\x01-\\x20][\\w.]{1,32}[\\x01-\\x20][\\w.]{1,32}",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour musicvr"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "musicvr"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: musicvr. 1 match(es), 0 softmatch(es)."
+}

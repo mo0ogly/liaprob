@@ -1,0 +1,59 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-intermapper-intermapper-network-monitor",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "InterMapper network monitor",
+  "product": "InterMapper network monitor",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_INTERMAPPER_INTERMAPPER_NETWORK_MONITOR.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<KU_goodbye>Access not allowed for [\\d.]+\\. Check the InterMapper server&apos;s access restrictions\\.</KU_goodbye>$",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^<KU_goodbye>Protocol Error: XML data is not well-formed\\.</KU_goodbye>$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_intermapper_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<KU_goodbye>Access not allowed for [\\d.]+\\. Check the InterMapper server&apos;s access restrictions\\.</KU_goodbye>$",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^<KU_goodbye>Protocol Error: XML data is not well-formed\\.</KU_goodbye>$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour intermapper"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "intermapper"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: intermapper. 2 match(es), 0 softmatch(es)."
+}

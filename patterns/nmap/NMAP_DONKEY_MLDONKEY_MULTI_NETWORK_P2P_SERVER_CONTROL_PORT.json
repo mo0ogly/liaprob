@@ -1,0 +1,109 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-donkey-mldonkey-multi-network-p2p-server-control-port",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "MLDonkey multi-network P2P server control port",
+  "product": "MLDonkey multi-network P2P server control port",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_DONKEY_MLDONKEY_MULTI_NETWORK_P2P_SERVER_CONTROL_PORT.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x1f ?Welcome to MLdonkey ?\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x1fWelcome to MLDonkey ([\\d.]+)\\n\\x1b\\[3.mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+      "confidence_delta": 0.4,
+      "version_group": 1
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x1f\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x1fWelcome to MLdonkey, visit http://mldonkey\\.dyndns\\.info for new Versions\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^\\xff\\xfd\\x1f([^']+)'s mlDonkey\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n>",
+      "confidence_delta": 0.4
+    },
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^Telnet connection from [\\d.]+ rejected \\(see allowed_ips setting\\)\\n",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_donkey_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x1f ?Welcome to MLdonkey ?\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x1fWelcome to MLDonkey ([\\d.]+)\\n\\x1b\\[3.mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+          "confidence_delta": 0.4,
+          "version_group": 1
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x1f\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x1fWelcome to MLdonkey, visit http://mldonkey\\.dyndns\\.info for new Versions\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n> ",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^\\xff\\xfd\\x1f([^']+)'s mlDonkey\\n\\x1b\\[34mWelcome on mldonkey command-line\\x1b\\[2;37;0m\\n\\nUse \\x1b\\[31m\\?\\x1b\\[2;37;0m for help\\n\\n\\x1b\\[7mMLdonkey command-line:\\x1b\\[2;37;0m\\n>",
+          "confidence_delta": 0.4
+        },
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^Telnet connection from [\\d.]+ rejected \\(see allowed_ips setting\\)\\n",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour donkey"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "donkey"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: donkey. 6 match(es), 0 softmatch(es). Extraction de version disponible."
+}

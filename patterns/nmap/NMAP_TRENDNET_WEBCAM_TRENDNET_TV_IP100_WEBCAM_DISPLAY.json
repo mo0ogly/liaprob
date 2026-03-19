@@ -1,0 +1,48 @@
+{
+  "$schema": "lia-fingerprint-v1",
+  "id": "nmap-trendnet-webcam-trendnet-tv-ip100-webcam-display",
+  "version": "1.0.0",
+  "enabled": true,
+  "taxonomy_name": "TRENDnet TV-IP100 webcam display",
+  "product": "TRENDnet TV-IP100 webcam display",
+  "source": {
+    "type": "nmap",
+    "file": "NMAP_TRENDNET_WEBCAM_TRENDNET_TV_IP100_WEBCAM_DISPLAY.json",
+    "origin": "nmap-service-probes",
+    "license": "Nmap Public Source License"
+  },
+  "default_ports": [],
+  "cpe23_template": "cpe:2.3:h:trendnet:tv-ip100:*:*:*:*:*:*:*:*",
+  "banner_matchers": [
+    {
+      "target": "banner",
+      "match_type": "regex",
+      "value": "^0301&<\\x16\\0\\x84\\xc7\\x02\\xe0\\xe1\\xb1\\x008\\x13\\x1e\\x0b\\x80<\\x16\\0\\xc7\\t\\x8f\\x05\\xc0\\xf0X\\0\\x1c\\xc2c\\x01p\\x1e\\x0b\\x80\\xe3c\\x01p\\xdcX\\0\\x1c7\\x8f\\x05\\xc0q\\x0b\\x80\\xe3F\\xc7\\x02\\xe0\\xb8,\\0\\x8e\\x1b\\xb1\\x008n\\x05\\xc0q\\xa3\\x008n\\xb4\\x02\\xe0\\xb8\\xd1\\x01p\\xdch\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+      "confidence_delta": 0.4
+    }
+  ],
+  "service_matchers": [],
+  "probes": [
+    {
+      "id": "nmap_trendnet-webcam_0",
+      "layer": "L4_TCP",
+      "send": "",
+      "timeout_ms": 3000,
+      "matchers": [
+        {
+          "target": "response",
+          "match_type": "regex",
+          "value": "^0301&<\\x16\\0\\x84\\xc7\\x02\\xe0\\xe1\\xb1\\x008\\x13\\x1e\\x0b\\x80<\\x16\\0\\xc7\\t\\x8f\\x05\\xc0\\xf0X\\0\\x1c\\xc2c\\x01p\\x1e\\x0b\\x80\\xe3c\\x01p\\xdcX\\0\\x1c7\\x8f\\x05\\xc0q\\x0b\\x80\\xe3F\\xc7\\x02\\xe0\\xb8,\\0\\x8e\\x1b\\xb1\\x008n\\x05\\xc0q\\xa3\\x008n\\xb4\\x02\\xe0\\xb8\\xd1\\x01p\\xdch\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0\\0$",
+          "confidence_delta": 0.4
+        }
+      ],
+      "note": "Nmap probe L4_TCP pour trendnet-webcam"
+    }
+  ],
+  "base_confidence": 0.0,
+  "confidence_threshold": 0.5,
+  "tags": [
+    "trendnet-webcam"
+  ],
+  "notes": "Genere depuis nmap-service-probes. Service: trendnet-webcam. 1 match(es), 0 softmatch(es). CPE: cpe:2.3:h:trendnet:tv-ip100:*:*:*:*:*:*:*:*"
+}
