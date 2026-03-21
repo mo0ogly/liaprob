@@ -259,23 +259,34 @@ func (e *Executor) executeFingerprint(ctx context.Context, task *ScanTask) Obser
 				Banner:   port.Banner,
 			}
 
-			// Non-standard port without patterns: detect protocol and borrow standard port patterns
-			if len(patterns) == 0 {
-				if port.Banner != "" {
-					if strings.HasPrefix(port.Banner, "SSH-") {
-						patterns = index.ByPort[22]
-					} else if strings.HasPrefix(port.Banner, "220 ") || strings.HasPrefix(port.Banner, "220-") {
-						patterns = append(index.ByPort[21], index.ByPort[25]...)
-					} else if strings.Contains(port.Banner, "mysql") || strings.Contains(port.Banner, "MariaDB") {
-						patterns = index.ByPort[3306]
-					} else if strings.HasPrefix(port.Banner, "+OK") || strings.HasPrefix(port.Banner, "* OK") {
-						patterns = append(index.ByPort[110], index.ByPort[143]...)
-					}
+			// Non-standard port: detect protocol from banner and borrow standard port patterns
+			if len(patterns) == 0 && port.Banner != "" {
+				bl := strings.ToLower(port.Banner)
+				switch {
+				case strings.HasPrefix(port.Banner, "SSH-"):
+					patterns = index.ByPort[22]
+				case strings.HasPrefix(port.Banner, "220 ") || strings.HasPrefix(port.Banner, "220-"):
+					patterns = append(append([]*fingerprint.FingerprintPattern(nil), index.ByPort[21]...), index.ByPort[25]...)
+				case strings.Contains(bl, "caching_sha2_password") || strings.Contains(bl, "mysql_native_password"):
+					patterns = index.ByPort[3306]
+				case strings.Contains(bl, "redis_version") || strings.Contains(bl, "redis_mode"):
+					patterns = index.ByPort[6379]
+				case strings.HasPrefix(port.Banner, "PostgreSQL SSL:") || strings.Contains(bl, "scram-sha-256"):
+					patterns = index.ByPort[5432]
+				case strings.HasPrefix(port.Banner, "MongoDB:") || strings.Contains(bl, "ismaster"):
+					patterns = index.ByPort[27017]
+				case strings.HasPrefix(port.Banner, "AMQP"):
+					patterns = index.ByPort[5672]
+				case strings.HasPrefix(port.Banner, "+OK") || strings.HasPrefix(port.Banner, "* OK"):
+					patterns = append(append([]*fingerprint.FingerprintPattern(nil), index.ByPort[110]...), index.ByPort[143]...)
+				case strings.HasPrefix(port.Banner, "HTTP/") || strings.Contains(bl, "<!doctype"):
+					patterns = index.ByPort[80]
 				}
 			}
 
-			// Auto HTTP probe: for known HTTP ports OR unknown ports without patterns/banner
-			if port.Banner == "" && (index.HTTPPorts[port.Port] || len(patterns) == 0) {
+			// Auto HTTP probe: for known HTTP ports, unknown ports, or ports with HTTP-like banners
+			isHTTPBanner := strings.HasPrefix(port.Banner, "HTTP/") || strings.Contains(strings.ToLower(port.Banner), "<!doctype")
+			if index.HTTPPorts[port.Port] || (len(patterns) == 0 && port.Banner == "") || isHTTPBanner {
 				defaultHTTPProbe := fingerprint.PatternProbe{
 					ID:    "_auto_http",
 					Layer: "L7_HTTP",
