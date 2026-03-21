@@ -1,0 +1,45 @@
+ip,port,technology,category,source
+93.184.216.34,80,Nginx,web-servers,public-known
+104.16.132.229,443,Nginx,web-servers,public-known
+23.215.0.136,80,Apache,web-servers,public-known
+198.49.23.145,80,Apache,web-servers,public-known
+13.107.21.200,80,Apache,web-servers,public-known
+104.21.73.125,443,LiteSpeed,web-servers,public-known
+172.67.162.80,443,LiteSpeed,web-servers,public-known
+104.21.15.97,443,LiteSpeed,web-servers,public-known
+ci.jenkins.io,443,Jenkins,ci-cd,public-demo
+updates.jenkins.io,443,Jenkins,ci-cd,public-demo
+pkg.jenkins.io,443,Jenkins,ci-cd,public-demo
+gitlab.com,443,GitLab,ci-cd,public-demo
+gitlab.gnome.org,443,GitLab,ci-cd,public-demo
+salsa.debian.org,443,GitLab,ci-cd,public-demo
+developer.wordpress.org,443,WordPress,cms,public-demo
+developer.wordpress.com,443,WordPress,cms,public-demo
+wptavern.com,443,WordPress,cms,public-demo
+drupal.org,443,Drupal,cms,public-demo
+www.drupal.org,443,Drupal,cms,public-demo
+groups.drupal.org,443,Drupal,cms,public-demo
+play.grafana.org,443,Grafana,monitoring,public-demo
+grafana.com,443,Grafana,monitoring,public-demo
+community.grafana.com,443,Grafana,monitoring,public-demo
+github.com,22,OpenSSH,ssh,public-known
+gitlab.com,22,OpenSSH,ssh,public-known
+bitbucket.org,22,OpenSSH,ssh,public-known
+mx1.freebsd.org,25,Postfix,mail-servers,public-known
+mail.kernel.org,25,Postfix,mail-servers,public-known
+mx.zoho.com,25,Postfix,mail-servers,public-known
+ftp.gnu.org,21,ProFTPD,ftp,public-known
+search.maven.org,443,Jetty,web-appservers,public-known
+repo1.maven.org,443,Jetty,web-appservers,public-known
+central.sonatype.com,443,Jetty,web-appservers,public-known
+registry.hub.docker.com,443,Docker Registry,containers,public-known
+registry-1.docker.io,443,Docker Registry,containers,public-known
+ghcr.io,443,Docker Registry,containers,public-known
+www.bbc.co.uk,443,Varnish,web-proxies,public-known
+www.theguardian.com,443,Varnish,web-proxies,public-known
+www.reuters.com,443,Varnish,web-proxies,public-known
+nextcloud.com,443,Nextcloud,storage,public-demo
+demo.nextcloud.com,443,Nextcloud,storage,public-demo
+apps.nextcloud.com,443,Nextcloud,storage,public-demo
+45.33.32.156,22,OpenSSH,ssh,public-known
+45.33.32.156,80,Apache,web-servers,public-known

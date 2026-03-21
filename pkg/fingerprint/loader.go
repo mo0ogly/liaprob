@@ -1,25 +1,16 @@
 package fingerprint
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
 	"strings"
 	"sync"
 	"time"
 
-	"github.com/mo0ogly/liaprob/pkg/config"
+	"github.com/mo0ogly/liaprobe/pkg/config"
 )
-
-// backreferenceRe detects \1, \2, etc. backreferences unsupported by Go regexp (RE2).
-var backreferenceRe = regexp.MustCompile(`(?:^|[^\\])\\([1-9])`)
-
-// perlSyntaxRe detects Perl-only syntax: lookaheads (?!, (?=, lookbehinds (?<!, (?<=
-var perlSyntaxRe = regexp.MustCompile(`\(\?[!=<]`)
-
 
 // PatternLoader loads and validates fingerprinting patterns from the filesystem.
 type PatternLoader struct {
@@ -113,86 +104,95 @@ func (pl *PatternLoader) LoadDir(dir string, source string) ([]*FingerprintPatte
 		}
 
 		filePath := filepath.Join(dir, entry.Name())
-		filePatterns, err := pl.loadFile(filePath, source)
+		pattern, err := pl.loadFile(filePath, source)
 		if err != nil {
 			pl.warn("FINGERPRINT_LOADER", "FILE_LOAD_FAILED",
 				fmt.Sprintf("Skipping %s: %v", filePath, err))
 			continue
 		}
 
-		for _, pattern := range filePatterns {
-			if err := pl.ValidatePattern(pattern); err != nil {
-				pl.warn("FINGERPRINT_LOADER", "VALIDATION_FAILED",
-					fmt.Sprintf("Skipping %s/%s: %v", filePath, pattern.ID, err))
-				continue
-			}
-			patterns = append(patterns, pattern)
+		if err := pl.ValidatePattern(pattern); err != nil {
+			pl.warn("FINGERPRINT_LOADER", "VALIDATION_FAILED",
+				fmt.Sprintf("Skipping %s: %v", filePath, err))
+			continue
 		}
+
+		patterns = append(patterns, pattern)
 	}
 
 	return patterns, nil
 }
 
-// loadFile reads and parses a JSON file into FingerprintPattern(s).
-// Supports both formats:
-//   - Full format: single FingerprintPattern object
-//   - Simple format: array of simplified patterns (community-friendly)
-func (pl *PatternLoader) loadFile(filePath string, source string) ([]*FingerprintPattern, error) {
+// loadFile lit et parse un fichier JSON en FingerprintPattern.
+func (pl *PatternLoader) loadFile(filePath string, source string) (*FingerprintPattern, error) {
 	data, err := os.ReadFile(filePath)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read file: %w", err)
 	}
 
-	// Trim whitespace to check first character
-	trimmed := bytes.TrimSpace(data)
-	if len(trimmed) == 0 {
-		return nil, fmt.Errorf("empty file")
+	// Pre-process: fix send_hex type mismatch (nuclei uses int 0 instead of string "")
+	var raw map[string]interface{}
+	if err := json.Unmarshal(data, &raw); err != nil {
+		return nil, fmt.Errorf("invalid JSON: %w", err)
 	}
-
-	var patterns []*FingerprintPattern
-
-	if trimmed[0] == '[' {
-		// Array format: try simple format first, then full format
-		simplePatterns, err := parseSimplePatterns(data, filepath.Base(filePath))
-		if err == nil && len(simplePatterns) > 0 {
-			patterns = simplePatterns
-		} else {
-			// Try full format array
-			var fullPatterns []*FingerprintPattern
-			if err := json.Unmarshal(data, &fullPatterns); err != nil {
-				return nil, fmt.Errorf("invalid JSON array: %w", err)
+	if probes, ok := raw["probes"].([]interface{}); ok {
+		for _, probe := range probes {
+			if pm, ok := probe.(map[string]interface{}); ok {
+				if v, exists := pm["send_hex"]; exists {
+					switch v.(type) {
+					case float64, int:
+						pm["send_hex"] = ""
+					}
+				}
 			}
-			patterns = fullPatterns
 		}
-	} else {
-		// Single object format (full)
-		var pattern FingerprintPattern
-		if err := json.Unmarshal(data, &pattern); err != nil {
-			return nil, fmt.Errorf("invalid JSON: %w", err)
-		}
-		patterns = append(patterns, &pattern)
+	}
+	// Re-marshal with fixed types
+	data, err = json.Marshal(raw)
+	if err != nil {
+		return nil, fmt.Errorf("failed to re-marshal: %w", err)
 	}
 
-	// Set source and normalize
-	for _, p := range patterns {
-		if p.Source.Type == "" {
-			p.Source.Type = source
-		}
-		pl.normalizePattern(p)
+	var pattern FingerprintPattern
+	if err := json.Unmarshal(data, &pattern); err != nil {
+		return nil, fmt.Errorf("invalid JSON: %w", err)
 	}
 
-	return patterns, nil
+	if pattern.Source.Type == "" {
+		pattern.Source.Type = source
+	}
+
+	pl.normalizePattern(&pattern)
+
+	return &pattern, nil
 }
 
-// normalizePattern applique les valeurs par defaut, filtre les probes non supportes,
-// desactive les matchers avec backreferences RE2-incompatibles,
-// et ajuste le confidence_threshold si le pattern est unreachable.
+// normalizePattern applique les valeurs par defaut et filtre les probes non supportes.
 func (pl *PatternLoader) normalizePattern(p *FingerprintPattern) {
+	// Fallback taxonomy_code <- taxonomy_name (nmap patterns n'ont pas de taxonomy_code)
+	if p.TaxonomyCode == "" && p.TaxonomyName != "" {
+		p.TaxonomyCode = p.TaxonomyName
+	}
 	if p.TaxonomyName == "" && p.TaxonomyCode != "" {
 		p.TaxonomyName = p.TaxonomyCode
 	}
 
-	// Filtrer les probes non supportes
+	// Default confidence_threshold si absent
+	if p.ConfidenceThreshold <= 0 {
+		p.ConfidenceThreshold = 0.50
+	}
+
+	// Force enabled=true si non specifie (nmap/nuclei patterns n'ont pas toujours enabled)
+	// Note: les patterns explicitement disabled (enabled=false) restent disabled
+	// car json.Unmarshal met false par defaut et on ne peut pas distinguer
+
+	// Fix send_hex int->string (nuclei patterns ont parfois send_hex: 0 au lieu de "")
+	for i := range p.Probes {
+		if p.Probes[i].ID == "" {
+			p.Probes[i].ID = fmt.Sprintf("probe_%d", i)
+		}
+	}
+
 	supportedLayers := map[string]bool{
 		"L7_HTTP": true, "L4_TCP": true, "L4_TCP_HEX": true, "TLS_CERT": true,
 		"L4_UDP": true, "L4_UDP_SSDP": true, "L4_UDP_MDNS": true,
@@ -200,90 +200,37 @@ func (pl *PatternLoader) normalizePattern(p *FingerprintPattern) {
 	var validProbes []PatternProbe
 	for _, probe := range p.Probes {
 		if supportedLayers[probe.Layer] {
+			// Filter out catch-all matchers that match any response
+			var validMatchers []PatternMatcher
+			for _, m := range probe.Matchers {
+				if isCatchAllMatcher(m) {
+					continue
+				}
+				validMatchers = append(validMatchers, m)
+			}
+			probe.Matchers = validMatchers
 			validProbes = append(validProbes, probe)
 		}
 	}
 	p.Probes = validProbes
-
-	// Desactiver les matchers avec backreferences (\1, \2...) incompatibles RE2
-	pl.disableInvalidRegexMatchers(p)
-
-	// Ajuster le threshold si le pattern est unreachable
-	pl.adjustUnreachableThreshold(p)
 }
 
-// disableInvalidRegexMatchers desactive les matchers regex contenant des syntaxes RE2-incompatibles :
-// backreferences (\1), lookaheads (?!), lookbehinds (?<!), et regex qui ne compilent pas.
-func (pl *PatternLoader) disableInvalidRegexMatchers(p *FingerprintPattern) {
-	disableFn := func(matchers []PatternMatcher) {
-		for i := range matchers {
-			if matchers[i].Disabled || matchers[i].MatchType != "regex" {
-				continue
-			}
-			if reason := re2IncompatibleReason(matchers[i].Value); reason != "" {
-				matchers[i].Disabled = true
-				matchers[i].DisabledReason = reason
-			}
-			if matchers[i].VersionExtract != "" {
-				if reason := re2IncompatibleReason(matchers[i].VersionExtract); reason != "" {
-					matchers[i].VersionExtract = ""
-					matchers[i].DisabledReason = reason
-				}
-			}
-		}
+// isCatchAllMatcher returns true if a matcher will match any non-empty response
+// or any standard HTML page. These produce false positives on every HTTP target.
+func isCatchAllMatcher(m PatternMatcher) bool {
+	v := strings.TrimSpace(m.Value)
+	switch m.MatchType {
+	case "exists":
+		return v == "" || v == "''"
+	case "regex":
+		return v == "" || v == ".*" || v == "^.*$" || v == "^(next)?.*$"
+	case "contains":
+		// HTML boilerplate present on virtually all web pages
+		vl := strings.ToLower(v)
+		return vl == "<html" || vl == "<body" || vl == "</html>" || vl == "</body>" ||
+			vl == "content-type: text/html"
 	}
-
-	disableFn(p.BannerMatchers)
-	disableFn(p.ServiceMatchers)
-	for pi := range p.Probes {
-		disableFn(p.Probes[pi].Matchers)
-	}
-}
-
-// adjustUnreachableThreshold abaisse le threshold si aucune combinaison de matchers ne peut l'atteindre.
-func (pl *PatternLoader) adjustUnreachableThreshold(p *FingerprintPattern) {
-	maxConf := p.BaseConfidence
-	for _, m := range p.BannerMatchers {
-		if !m.Disabled {
-			maxConf += m.ConfidenceDelta
-		}
-	}
-	for _, m := range p.ServiceMatchers {
-		if !m.Disabled {
-			maxConf += m.ConfidenceDelta
-		}
-	}
-	for _, probe := range p.Probes {
-		for _, m := range probe.Matchers {
-			if !m.Disabled {
-				maxConf += m.ConfidenceDelta
-			}
-		}
-	}
-
-	if maxConf > 0 && maxConf < p.ConfidenceThreshold {
-		// Ajuster le threshold a 80% du max atteignable (laisse une marge de securite)
-		newThreshold := maxConf * 0.8
-		if newThreshold < 0.1 {
-			newThreshold = 0.1
-		}
-		p.ConfidenceThreshold = newThreshold
-	}
-}
-
-// re2IncompatibleReason retourne la raison si la regex est incompatible RE2, ou "" si OK.
-func re2IncompatibleReason(pattern string) string {
-	if backreferenceRe.MatchString(pattern) {
-		return "RE2-incompatible: backreference detected"
-	}
-	if perlSyntaxRe.MatchString(pattern) {
-		return "RE2-incompatible: Perl lookahead/lookbehind detected"
-	}
-	// Tentative de compilation RE2 pour attraper les autres erreurs
-	if _, err := regexp.Compile(pattern); err != nil {
-		return fmt.Sprintf("RE2-incompatible: %v", err)
-	}
-	return ""
+	return false
 }
 
 // ValidatePattern verifie qu'un pattern est conforme au schema lia-fingerprint-v1.
@@ -294,20 +241,29 @@ func (pl *PatternLoader) ValidatePattern(p *FingerprintPattern) error {
 	if p.ID == "" {
 		return fmt.Errorf("id is required")
 	}
-	if p.TaxonomyCode == "" && p.TaxonomyName != "" {
-		p.TaxonomyCode = p.TaxonomyName
-	}
 	if p.TaxonomyCode == "" {
 		return fmt.Errorf("taxonomy_code is required")
 	}
 	if p.TaxonomyName == "" {
 		return fmt.Errorf("taxonomy_name is required")
 	}
+	// Skip explicitly disabled patterns (those with "enabled": false AND a disable reason)
 	if !p.Enabled {
 		return fmt.Errorf("pattern disabled (enabled=false)")
 	}
 	if p.ConfidenceThreshold <= 0 || p.ConfidenceThreshold > 1.0 {
 		return fmt.Errorf("confidence_threshold must be in (0, 1.0], got %f", p.ConfidenceThreshold)
+	}
+	// Prevent auto-match: base_confidence alone must not exceed the threshold.
+	// At least one matcher must contribute for the pattern to match.
+	if p.BaseConfidence >= p.ConfidenceThreshold {
+		pl.warn("FINGERPRINT_LOADER", "AUTO_MATCH_RISK",
+			fmt.Sprintf("Pattern %s: base_confidence (%.2f) >= confidence_threshold (%.2f), clamping base to threshold-0.05",
+				p.ID, p.BaseConfidence, p.ConfidenceThreshold))
+		p.BaseConfidence = p.ConfidenceThreshold - 0.05
+		if p.BaseConfidence < 0 {
+			p.BaseConfidence = 0
+		}
 	}
 
 	allMatchers := append(p.BannerMatchers, p.ServiceMatchers...)

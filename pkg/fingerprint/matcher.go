@@ -21,9 +21,11 @@ type FingerprintMatcher struct {
 }
 
 // NewFingerprintMatcher creates a new matcher with regex cache.
+// OnWarn defaults to a no-op so regex compile errors are never silently swallowed.
 func NewFingerprintMatcher() *FingerprintMatcher {
 	return &FingerprintMatcher{
 		regexCache: make(map[string]*regexp.Regexp),
+		OnWarn:     func(component, action, details string) {},
 	}
 }
 
@@ -188,6 +190,18 @@ func (fm *FingerprintMatcher) evaluateProbeMatchers(probe PatternProbe, data *Co
 	var details []FingerprintMatchDetail
 	var version string
 
+	// resolveHTTPResponse finds the HTTP response for this probe,
+	// falling back to _auto_http pre-probe if the specific probe hasn't been executed yet.
+	resolveHTTP := func() *HTTPProbeResponse {
+		if resp, ok := data.HTTPResponses[probe.ID]; ok {
+			return resp
+		}
+		if resp, ok := data.HTTPResponses["_auto_http"]; ok {
+			return resp
+		}
+		return nil
+	}
+
 	for _, m := range probe.Matchers {
 		if m.Disabled {
 			continue
@@ -200,6 +214,16 @@ func (fm *FingerprintMatcher) evaluateProbeMatchers(probe PatternProbe, data *Co
 				targetValue = tcpResp.Data
 			} else if udpResp, ok := data.UDPResponses[probe.ID]; ok {
 				targetValue = udpResp.Data
+			} else if httpResp := resolveHTTP(); httpResp != nil {
+				// Build raw HTTP response for nmap-style patterns matching on "response"
+				var raw strings.Builder
+				raw.WriteString(fmt.Sprintf("HTTP/1.1 %d\r\n", httpResp.StatusCode))
+				for k, v := range httpResp.Headers {
+					raw.WriteString(fmt.Sprintf("%s: %s\r\n", k, v))
+				}
+				raw.WriteString("\r\n")
+				raw.WriteString(httpResp.Body)
+				targetValue = raw.String()
 			}
 		case "response_hex":
 			if tcpResp, ok := data.TCPResponses[probe.ID]; ok {
@@ -208,11 +232,11 @@ func (fm *FingerprintMatcher) evaluateProbeMatchers(probe PatternProbe, data *Co
 				targetValue = udpResp.DataHex
 			}
 		case "body":
-			if httpResp, ok := data.HTTPResponses[probe.ID]; ok {
+			if httpResp := resolveHTTP(); httpResp != nil {
 				targetValue = httpResp.Body
 			}
 		case "header":
-			if httpResp, ok := data.HTTPResponses[probe.ID]; ok && m.Field != "" {
+			if httpResp := resolveHTTP(); httpResp != nil && m.Field != "" {
 				targetValue = httpResp.Headers[m.Field]
 				if targetValue == "" {
 					for k, v := range httpResp.Headers {
@@ -224,19 +248,19 @@ func (fm *FingerprintMatcher) evaluateProbeMatchers(probe PatternProbe, data *Co
 				}
 			}
 		case "status_code":
-			if httpResp, ok := data.HTTPResponses[probe.ID]; ok {
+			if httpResp := resolveHTTP(); httpResp != nil {
 				targetValue = fmt.Sprintf("%d", httpResp.StatusCode)
 			}
 		case "cookie":
-			if httpResp, ok := data.HTTPResponses[probe.ID]; ok && m.Field != "" {
+			if httpResp := resolveHTTP(); httpResp != nil && m.Field != "" {
 				targetValue = httpResp.Cookies[m.Field]
 			}
 		case "favicon_hash":
-			if httpResp, ok := data.HTTPResponses[probe.ID]; ok {
+			if httpResp := resolveHTTP(); httpResp != nil {
 				targetValue = Mmh3Hash32([]byte(httpResp.Body))
 			}
 		case "json_field":
-			if httpResp, ok := data.HTTPResponses[probe.ID]; ok && m.Field != "" {
+			if httpResp := resolveHTTP(); httpResp != nil && m.Field != "" {
 				targetValue = ExtractJSONField(httpResp.Body, m.Field)
 			}
 			if targetValue == "" {

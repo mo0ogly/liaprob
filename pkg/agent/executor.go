@@ -3,13 +3,14 @@ package agent
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
-	"github.com/mo0ogly/liaprob/pkg/ai"
-	"github.com/mo0ogly/liaprob/pkg/config"
-	"github.com/mo0ogly/liaprob/pkg/fingerprint"
-	"github.com/mo0ogly/liaprob/pkg/portdb"
-	"github.com/mo0ogly/liaprob/pkg/scanner"
+	"github.com/mo0ogly/liaprobe/pkg/ai"
+	"github.com/mo0ogly/liaprobe/pkg/config"
+	"github.com/mo0ogly/liaprobe/pkg/fingerprint"
+	"github.com/mo0ogly/liaprobe/pkg/portdb"
+	"github.com/mo0ogly/liaprobe/pkg/scanner"
 )
 
 // ToolKit groups all tools available to the executor.
@@ -62,10 +63,10 @@ func (e *Executor) ExecuteTask(ctx context.Context, task *ScanTask) Observation 
 		obs = e.executeFingerprint(ctx, task)
 	case TaskContextExpand:
 		obs = e.executeContextExpand(ctx, task)
+	case TaskValidate:
+		obs = e.executeValidate(ctx, task)
 	case TaskAIAnalyze:
 		obs = e.executeAIAnalyze(ctx, task)
-	case TaskAIIdentify:
-		obs = e.executeAIIdentifyBanner(ctx, task)
 	case TaskReport:
 		obs = e.executeReport(ctx, task)
 	default:
@@ -204,12 +205,11 @@ func (e *Executor) executeBannerGrab(ctx context.Context, task *ScanTask) Observ
 
 	task.Status = TaskComplete
 
-	if unknownBanners > 0 && e.tools.AI.Available() {
+	if unknownBanners > 0 {
 		return Observation{
-			NeedsReplan: true,
+			NeedsReplan: false,
 			NeedsAI:     true,
-			Trigger:     TriggerUnknownBanner,
-			Details:     fmt.Sprintf("%d ports with empty banners, AI available for identification", unknownBanners),
+			Details:     fmt.Sprintf("%d ports with empty banners", unknownBanners),
 		}
 	}
 
@@ -251,45 +251,82 @@ func (e *Executor) executeFingerprint(ctx context.Context, task *ScanTask) Obser
 				continue
 			}
 			patterns := index.ByPort[port.Port]
-
-			// Fallback: if no patterns match this port, try all patterns
-			// (banner-based for TCP, or HTTP probes for web services)
-			if len(patterns) == 0 {
-				patterns = index.All
-			}
 			if len(patterns) == 0 {
 				continue
 			}
 
-			// Collect probe data, injecting the banner already grabbed in t4
+			// Phase 0: Pre-probe HTTP/TLS for HTTP ports with no banner
 			collected := &fingerprint.CollectedServiceData{
-				Port:   port.Port,
-				Banner: port.Banner,
+				Port:     port.Port,
+				Protocol: port.Protocol,
+				Banner:   port.Banner,
 			}
+
+			if port.Banner == "" && index.HTTPPorts[port.Port] {
+				// HTTP ports need a request to get headers - do a default HTTP probe
+				defaultHTTPProbe := fingerprint.PatternProbe{
+					ID:    "_auto_http",
+					Layer: "L7_HTTP",
+					Ports: []int{port.Port},
+				}
+				probeExec.ExecuteProbes(ctx, host.IP, port.Port,
+					[]fingerprint.PatternProbe{defaultHTTPProbe}, collected)
+			}
+			if index.TLSPorts[port.Port] && collected.TLSCert == nil {
+				// TLS ports: grab cert for CN/SAN matching
+				tlsProbe := fingerprint.PatternProbe{
+					ID:    "_auto_tls",
+					Layer: "TLS_CERT",
+					Ports: []int{port.Port},
+				}
+				probeExec.ExecuteProbes(ctx, host.IP, port.Port,
+					[]fingerprint.PatternProbe{tlsProbe}, collected)
+			}
+
+			// Phase 1: Passive matching (banner + service + HTTP headers)
+			maxProbes := e.tools.Config.Fingerprint.MaxProbesPerService
+			if maxProbes <= 0 {
+				maxProbes = 10
+			}
+			var candidates []*fingerprint.FingerprintPattern
 			for _, pattern := range patterns {
+				result := matcher.EvaluatePattern(pattern, collected)
+				if result != nil && result.Confidence > 0 {
+					candidates = append(candidates, pattern)
+				}
+			}
+
+			// If no passive matches, take top-priority patterns (limit to maxProbes)
+			if len(candidates) == 0 {
+				limit := maxProbes
+				if limit > len(patterns) {
+					limit = len(patterns)
+				}
+				candidates = patterns[:limit]
+			}
+
+			// Phase 2: Active probes only on candidates (limited)
+			if len(candidates) > maxProbes {
+				candidates = candidates[:maxProbes]
+			}
+			for _, pattern := range candidates {
 				probeExec.ExecuteProbes(ctx, host.IP, port.Port, pattern.Probes, collected)
 			}
 
-			// Match patterns against collected data -- keep best match
-			var bestResult *fingerprint.FingerprintResult
-			for _, pattern := range patterns {
+			// Phase 3: Final matching on enriched data
+			for _, pattern := range candidates {
 				result := matcher.EvaluatePattern(pattern, collected)
 				if result != nil && result.Confidence >= e.tools.Config.Fingerprint.ConfidenceThreshold {
-					if bestResult == nil || result.Confidence > bestResult.Confidence {
-						bestResult = result
-					}
+					e.memory.AddService(host.IP, ServiceState{
+						Port:       port.Port,
+						Name:       result.TaxonomyName,
+						Product:    result.TaxonomyCode,
+						Version:    result.Version,
+						CPE:        result.CPE23,
+						Confidence: result.Confidence,
+						PatternID:  result.PatternID,
+					})
 				}
-			}
-			if bestResult != nil {
-				e.memory.AddService(host.IP, ServiceState{
-					Port:       port.Port,
-					Name:       bestResult.TaxonomyName,
-					Product:    bestResult.TaxonomyCode,
-					Version:    bestResult.Version,
-					CPE:        bestResult.CPE23,
-					Confidence: bestResult.Confidence,
-					PatternID:  bestResult.PatternID,
-				})
 			}
 		}
 	}
@@ -368,215 +405,36 @@ func (e *Executor) executeContextExpand(ctx context.Context, task *ScanTask) Obs
 	return Observation{}
 }
 
-// executeAIAnalyze asks AI to analyze results with full scan data.
+// executeAIAnalyze asks AI to analyze results.
 func (e *Executor) executeAIAnalyze(ctx context.Context, task *ScanTask) Observation {
 	if !e.tools.AI.Available() {
 		task.Status = TaskSkipped
 		return Observation{}
 	}
 
-	// Build detailed prompt with real scan data
-	e.memory.mu.RLock()
-	var hostDetails string
-	for _, h := range e.memory.Hosts {
-		if !h.Alive {
-			continue
-		}
-		hostDetails += fmt.Sprintf("\nHost: %s", h.IP)
-		if h.Hostname != "" {
-			hostDetails += fmt.Sprintf(" (%s)", h.Hostname)
-		}
-		hostDetails += "\n"
-		for _, p := range h.OpenPorts {
-			hostDetails += fmt.Sprintf("  Port %d/%s open", p.Port, p.Protocol)
-			if p.Banner != "" {
-				banner := p.Banner
-				if len(banner) > 100 {
-					banner = banner[:100]
-				}
-				hostDetails += fmt.Sprintf(" banner=%q", banner)
-			}
-			hostDetails += "\n"
-		}
-		for _, svc := range h.Services {
-			hostDetails += fmt.Sprintf("  Service: %s %s (confidence: %.0f%%) CPE: %s\n",
-				svc.Name, svc.Version, svc.Confidence*100, svc.CPE)
-		}
-	}
+	// Build prompt with memory data
 	stats := e.memory.GetStats()
-	e.memory.mu.RUnlock()
-
 	prompt := fmt.Sprintf(
-		"SCAN SUMMARY: %d targets, %d alive, %d open ports, %d services fingerprinted.\n\n"+
-			"HOST DATA:\n%s\n"+
-			"Provide your analysis following the output format specified in the system prompt.",
+		"Analyze this network scan result:\n"+
+			"- Targets: %d\n- Alive hosts: %d\n- Open ports: %d\n"+
+			"- Services identified: %d\n- Banners grabbed: %d\n"+
+			"Provide security observations and recommendations.",
 		stats.TargetsTotal, stats.HostsAlive, stats.PortsOpen,
-		stats.ServicesIdentified, hostDetails,
+		stats.ServicesIdentified, stats.BannersGrabbed,
 	)
-
-	e.journal.LogAI("AI_QUERY_START", "", map[string]interface{}{
-		"provider":   e.tools.AI.Name(),
-		"prompt_len": len(prompt),
-	}, 0)
-
-	systemPrompt := "You are a network security auditor analyzing automated scan results from LiaProbe.\n\n" +
-		"RULES:\n" +
-		"- Only report findings supported by the scan data below. Never invent CVEs or versions not present in the data.\n" +
-		"- If a service version is unknown, say \"version unknown\" -- do not guess.\n" +
-		"- Severity levels: CRITICAL, HIGH, MEDIUM, LOW, INFO.\n\n" +
-		"OUTPUT FORMAT (follow exactly):\n" +
-		"## Critical Findings\n" +
-		"* [SEVERITY] Host:Port - Finding description\n\n" +
-		"## Risk Assessment\n" +
-		"* Host IP - CRITICAL|HIGH|MEDIUM|LOW - One-line justification\n\n" +
-		"## Remediation (priority order)\n" +
-		"1. Action - affected hosts - reason\n\n" +
-		"EXAMPLE:\n" +
-		"## Critical Findings\n" +
-		"* [CRITICAL] 10.0.0.5:6379 - Redis exposed without authentication\n" +
-		"* [HIGH] 10.0.0.3:22 - OpenSSH 7.4 (EOL, CVE-2023-38408)\n" +
-		"* [MEDIUM] 10.0.0.1:80 - Apache 2.4.49 (path traversal CVE-2021-41773)\n\n" +
-		"## Risk Assessment\n" +
-		"* 10.0.0.5 - CRITICAL - Unauthenticated data store exposed\n\n" +
-		"## Remediation (priority order)\n" +
-		"1. Bind Redis to 127.0.0.1 or enable AUTH - 10.0.0.5 - data exfiltration risk"
-
-	// Scale max tokens based on host count (minimum 1024, +128 per host)
-	maxTokens := 1024 + stats.HostsAlive*128
-	if maxTokens > 4096 {
-		maxTokens = 4096
-	}
 
 	start := time.Now()
 	resp, err := e.tools.AI.Query(ctx, ai.Request{
-		SystemPrompt: systemPrompt,
+		SystemPrompt: "You are a network security analyst. Analyze scan results concisely.",
 		UserPrompt:   prompt,
-		MaxTokens:    maxTokens,
-		Temperature:  0.2,
+		MaxTokens:    512,
+		Temperature:  0.3,
 	})
 
 	if err != nil {
 		task.Status = TaskFailed
 		task.Error = err.Error()
 		e.journal.LogAI("AI_QUERY_FAILED", "", map[string]interface{}{
-			"error":    err.Error(),
-			"provider": e.tools.AI.Name(),
-		}, time.Since(start).Milliseconds())
-		return Observation{}
-	}
-
-	task.Status = TaskComplete
-	task.Result = resp.Content
-
-	e.memory.mu.Lock()
-	e.memory.Stats.AIQueries++
-	e.memory.AIAnalysis = resp.Content
-	e.memory.mu.Unlock()
-
-	e.journal.LogAI("AI_ANALYSIS_COMPLETE", "", map[string]interface{}{
-		"provider":    resp.Provider,
-		"model":       resp.Model,
-		"tokens_used": resp.TokensUsed,
-		"response_len": len(resp.Content),
-	}, resp.DurationMs)
-
-	return Observation{}
-}
-
-// executeAIIdentifyBanner asks AI to identify unknown services from banners.
-// Collects all ports without an identified service and sends them in batch.
-func (e *Executor) executeAIIdentifyBanner(ctx context.Context, task *ScanTask) Observation {
-	if !e.tools.AI.Available() {
-		task.Status = TaskSkipped
-		return Observation{}
-	}
-
-	// Collect unidentified ports with banners
-	e.memory.mu.RLock()
-	var unknownPorts []string
-	identifiedPorts := make(map[string]bool)
-	for _, h := range e.memory.Hosts {
-		for _, svc := range h.Services {
-			key := fmt.Sprintf("%s:%d", h.IP, svc.Port)
-			identifiedPorts[key] = true
-		}
-	}
-	for _, h := range e.memory.Hosts {
-		if !h.Alive {
-			continue
-		}
-		for _, p := range h.OpenPorts {
-			key := fmt.Sprintf("%s:%d", h.IP, p.Port)
-			if identifiedPorts[key] {
-				continue
-			}
-			entry := fmt.Sprintf("  %s port %d/%s", h.IP, p.Port, p.Protocol)
-			if p.Banner != "" {
-				banner := p.Banner
-				if len(banner) > 120 {
-					banner = banner[:120]
-				}
-				entry += fmt.Sprintf(" banner=%q", banner)
-			}
-			unknownPorts = append(unknownPorts, entry)
-		}
-	}
-	e.memory.mu.RUnlock()
-
-	if len(unknownPorts) == 0 {
-		task.Status = TaskComplete
-		return Observation{}
-	}
-
-	prompt := fmt.Sprintf(
-		"Identify each service below. Output one line per entry, nothing else.\n\n"+
-			"UNIDENTIFIED PORTS:\n%s",
-		stringJoin(unknownPorts, "\n"),
-	)
-
-	bannerSystemPrompt := "You identify network services from port numbers and TCP banners.\n\n" +
-		"RULES:\n" +
-		"- One line per service, no extra text.\n" +
-		"- Format: IP:PORT -> ServiceName Version (cpe:2.3:a:vendor:product:version)\n" +
-		"- If banner contains a version string, extract it exactly. Do not round or guess versions.\n" +
-		"- If the service cannot be identified with confidence, output: IP:PORT -> UNKNOWN\n" +
-		"- If the service is identified but version is unknown: IP:PORT -> ServiceName (no version)\n" +
-		"- Common port hints: 3306=MySQL, 5432=PostgreSQL, 6379=Redis, 27017=MongoDB, 5672=RabbitMQ, " +
-		"9200=Elasticsearch, 9090=Prometheus, 8500=Consul, 5601=Kibana, 8080/8443=HTTP proxy.\n\n" +
-		"EXAMPLES:\n" +
-		"Input:  10.0.0.1 port 3306/tcp banner=\"J 8.0.36\\x00..caching_sha2_p\"\n" +
-		"Output: 10.0.0.1:3306 -> MySQL 8.0.36 (cpe:2.3:a:oracle:mysql:8.0.36)\n\n" +
-		"Input:  10.0.0.2 port 22/tcp banner=\"SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu1\"\n" +
-		"Output: 10.0.0.2:22 -> OpenSSH 9.6p1 (cpe:2.3:a:openbsd:openssh:9.6p1)\n\n" +
-		"Input:  10.0.0.3 port 8080/tcp\n" +
-		"Output: 10.0.0.3:8080 -> UNKNOWN"
-
-	e.journal.LogAI("AI_BANNER_ID_START", "", map[string]interface{}{
-		"unknown_count": len(unknownPorts),
-		"provider":      e.tools.AI.Name(),
-	}, 0)
-
-	// Scale tokens: ~40 tokens per identification line
-	maxBannerTokens := len(unknownPorts)*40 + 64
-	if maxBannerTokens < 256 {
-		maxBannerTokens = 256
-	}
-	if maxBannerTokens > 2048 {
-		maxBannerTokens = 2048
-	}
-
-	start := time.Now()
-	resp, err := e.tools.AI.Query(ctx, ai.Request{
-		SystemPrompt: bannerSystemPrompt,
-		UserPrompt:   prompt,
-		MaxTokens:    maxBannerTokens,
-		Temperature:  0.0,
-	})
-
-	if err != nil {
-		task.Status = TaskFailed
-		task.Error = err.Error()
-		e.journal.LogAI("AI_BANNER_ID_FAILED", "", map[string]interface{}{
 			"error": err.Error(),
 		}, time.Since(start).Milliseconds())
 		return Observation{}
@@ -589,26 +447,125 @@ func (e *Executor) executeAIIdentifyBanner(ctx context.Context, task *ScanTask) 
 	e.memory.Stats.AIQueries++
 	e.memory.mu.Unlock()
 
-	e.journal.LogAI("AI_BANNER_ID_COMPLETE", "", map[string]interface{}{
+	e.journal.LogAI("AI_ANALYSIS", "", map[string]interface{}{
 		"provider":    resp.Provider,
 		"model":       resp.Model,
 		"tokens_used": resp.TokensUsed,
-		"identifications": resp.Content,
 	}, resp.DurationMs)
 
 	return Observation{}
 }
 
-// stringJoin joins strings with a separator (avoids importing strings in executor).
-func stringJoin(elems []string, sep string) string {
-	if len(elems) == 0 {
-		return ""
+// executeValidate compares expected services against discovered services.
+func (e *Executor) executeValidate(_ context.Context, task *ScanTask) Observation {
+	// Get goal from the plan via journal/params -- we use the executor's memory
+	// The expectations are passed as task params by the agent
+	expectations, ok := task.Params["expectations"].([]ServiceExpectation)
+	if !ok || len(expectations) == 0 {
+		task.Status = TaskSkipped
+		return Observation{Details: "no expectations to validate"}
 	}
-	result := elems[0]
-	for _, e := range elems[1:] {
-		result += sep + e
+
+	for _, exp := range expectations {
+		host := e.memory.GetHost(exp.IP)
+
+		// Host not found or not alive
+		if host == nil || !host.Alive {
+			e.memory.AddValidation(ValidationState{
+				IP:       exp.IP,
+				Port:     exp.Port,
+				Expected: exp.Service,
+				Found:    "",
+				Verdict:  "UNREACHABLE",
+				Details:  "host not alive or not found",
+			})
+			continue
+		}
+
+		// Find the service on the expected port
+		var found *ServiceState
+		for _, svc := range host.Services {
+			if svc.Port == exp.Port {
+				found = &svc
+				break
+			}
+		}
+
+		if found == nil {
+			// Check if the port is open but no service identified
+			portOpen := false
+			for _, p := range host.OpenPorts {
+				if p.Port == exp.Port {
+					portOpen = true
+					break
+				}
+			}
+			if !portOpen {
+				e.memory.AddValidation(ValidationState{
+					IP:       exp.IP,
+					Port:     exp.Port,
+					Expected: exp.Service,
+					Found:    "",
+					Verdict:  "UNREACHABLE",
+					Details:  "port not open",
+				})
+			} else {
+				e.memory.AddValidation(ValidationState{
+					IP:       exp.IP,
+					Port:     exp.Port,
+					Expected: exp.Service,
+					Found:    "",
+					Verdict:  "UNKNOWN",
+					Details:  "port open but service not identified",
+				})
+			}
+			continue
+		}
+
+		// Compare expected vs found
+		if matchesExpectation(exp.Service, *found) {
+			e.memory.AddValidation(ValidationState{
+				IP:         exp.IP,
+				Port:       exp.Port,
+				Expected:   exp.Service,
+				Found:      found.Name,
+				Verdict:    "PASS",
+				Confidence: found.Confidence,
+			})
+		} else {
+			e.memory.AddValidation(ValidationState{
+				IP:         exp.IP,
+				Port:       exp.Port,
+				Expected:   exp.Service,
+				Found:      found.Name,
+				Verdict:    "FAIL",
+				Confidence: found.Confidence,
+				Details:    fmt.Sprintf("expected %s, found %s", exp.Service, found.Name),
+			})
+		}
 	}
-	return result
+
+	task.Status = TaskComplete
+	return Observation{}
+}
+
+// matchesExpectation checks if a found service matches the expected service name.
+// Supports exact (case-insensitive), contains, and partial matching.
+func matchesExpectation(expected string, found ServiceState) bool {
+	norm := strings.ToLower(expected)
+
+	// Exact match on name or product
+	if strings.EqualFold(found.Name, expected) || strings.EqualFold(found.Product, expected) {
+		return true
+	}
+
+	// Contains match
+	if strings.Contains(strings.ToLower(found.Name), norm) ||
+		strings.Contains(strings.ToLower(found.Product), norm) {
+		return true
+	}
+
+	return false
 }
 
 // executeReport is a no-op in the executor (formatting is done outside).
