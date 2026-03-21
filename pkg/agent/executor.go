@@ -251,19 +251,31 @@ func (e *Executor) executeFingerprint(ctx context.Context, task *ScanTask) Obser
 				continue
 			}
 			patterns := index.ByPort[port.Port]
-			if len(patterns) == 0 {
-				continue
-			}
 
-			// Phase 0: Pre-probe HTTP/TLS for HTTP ports with no banner
+			// Phase 0: Build collected data and detect protocol on non-standard ports
 			collected := &fingerprint.CollectedServiceData{
 				Port:     port.Port,
 				Protocol: port.Protocol,
 				Banner:   port.Banner,
 			}
 
-			if port.Banner == "" && index.HTTPPorts[port.Port] {
-				// HTTP ports need a request to get headers - do a default HTTP probe
+			// Non-standard port without patterns: detect protocol and borrow standard port patterns
+			if len(patterns) == 0 {
+				if port.Banner != "" {
+					if strings.HasPrefix(port.Banner, "SSH-") {
+						patterns = index.ByPort[22]
+					} else if strings.HasPrefix(port.Banner, "220 ") || strings.HasPrefix(port.Banner, "220-") {
+						patterns = append(index.ByPort[21], index.ByPort[25]...)
+					} else if strings.Contains(port.Banner, "mysql") || strings.Contains(port.Banner, "MariaDB") {
+						patterns = index.ByPort[3306]
+					} else if strings.HasPrefix(port.Banner, "+OK") || strings.HasPrefix(port.Banner, "* OK") {
+						patterns = append(index.ByPort[110], index.ByPort[143]...)
+					}
+				}
+			}
+
+			// Auto HTTP probe: for known HTTP ports OR unknown ports without patterns/banner
+			if port.Banner == "" && (index.HTTPPorts[port.Port] || len(patterns) == 0) {
 				defaultHTTPProbe := fingerprint.PatternProbe{
 					ID:    "_auto_http",
 					Layer: "L7_HTTP",
@@ -271,9 +283,12 @@ func (e *Executor) executeFingerprint(ctx context.Context, task *ScanTask) Obser
 				}
 				probeExec.ExecuteProbes(ctx, host.IP, port.Port,
 					[]fingerprint.PatternProbe{defaultHTTPProbe}, collected)
+				// If HTTP responded and no patterns yet, borrow from port 80
+				if len(patterns) == 0 && len(collected.HTTPResponses) > 0 {
+					patterns = index.ByPort[80]
+				}
 			}
 			if index.TLSPorts[port.Port] && collected.TLSCert == nil {
-				// TLS ports: grab cert for CN/SAN matching
 				tlsProbe := fingerprint.PatternProbe{
 					ID:    "_auto_tls",
 					Layer: "TLS_CERT",
@@ -281,6 +296,10 @@ func (e *Executor) executeFingerprint(ctx context.Context, task *ScanTask) Obser
 				}
 				probeExec.ExecuteProbes(ctx, host.IP, port.Port,
 					[]fingerprint.PatternProbe{tlsProbe}, collected)
+			}
+
+			if len(patterns) == 0 {
+				continue
 			}
 
 			// Phase 1: Passive matching (banner + service + HTTP headers)
